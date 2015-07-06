@@ -1,5 +1,17 @@
 /* app css stylesheet */
 
+div#main-king{
+  width: 360px;
+  height: 640px;
+  margin: 10px;
+  border: 3px solid gray;
+}
+
+.full{
+  width: 100%;
+  height: 100%;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;

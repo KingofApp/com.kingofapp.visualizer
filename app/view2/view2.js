@@ -62,41 +62,67 @@ angular.module('myApp.view2', ['ngRoute'])
 
       }
   })
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider','$controllerProvider', '$provide', '$compileProvider', function($routeProvider,$controllerProvider, $provide, $compileProvider) {
   //Default Route
   $routeProvider.when('/view2', {
     templateUrl: 'view2/view2.html',
     controller: 'View2Ctrl',
     action: "section-view2"
   })
-  //Dynamic Routes
-  // .when("/c/:catchAll*", {
-  //       resolve: {
-  //           catchAll: "cResolver"
-  //       }
-  //   })
   .otherwise({
     templateUrl: 'view2/view2.html',
     controller: 'View2Ctrl',
     action: "section-view2"
   });
+
+  [
+    {name: 'controller', provider: $controllerProvider, method: 'register'},
+    {name: 'service',    provider: $provide,            method: 'service'},
+    {name: 'factory',    provider: $provide,            method: 'factory'},
+    {name: 'value',      provider: $provide,            method: 'value'},
+    {name: 'directive',  provider: $compileProvider,    method: 'directive '}
+  ].forEach(function(row){
+    // Let's keep the older references.
+    angular['_'+row.name] = angular[row.name];
+    // Provider-based controller,service,factory,value,directive, ?filter
+    angular[row.name] = function(name, constructor){
+      row.provider[row.method](name, constructor);
+      return(this);
+    }
+  });
 }])
-.controller('KingModuleCtrl', ['$scope','$route','$location', function($scope,$route, $location) {
-  $scope.routeAction = "URL "+$location.$$path.toString();
-}])
-.controller('View2Ctrl', ['$scope','$route','$location', function($scope,$route, $location) {
+.service('LocationServices', function($location){
+  this.getControllerName = function(){
+    var path = $location.$$path.toString().split(/[\/ -]/);
+    var mname = '';
+
+    for(var key in path){
+      mname += path[key].charAt(0).toUpperCase() + path[key].substr(1).toLowerCase();
+    }
+
+    return mname;
+  }
+
+})
+.controller('View2Ctrl', ['$scope','$route','$location','withLazyModule','LocationServices', function($scope,$route, $location,withLazyModule,LocationServices) {
   console.log("View2Ctrol");
-  // I show the action associated with the current route.
-  console.log($location.$$path.toString().replace('/c/',""));
-// ang-module + Ctrl
-  $route.when(
-      $location.$$path,
-      {
-          templateUrl: 'view2/view2.html',
-          action: "section-c-"+$location.$$path.toString().replace('/c/',""),
-          controller: 'KingModuleCtrl'
-      }
-  ).reload();
+
+  function setRoute(template){
+    $route.when(
+        $location.$$path,
+        {
+            template: template,
+            controller: LocationServices.getControllerName()+'Ctrl'
+        }
+    ).reload();
+  }
+
+  withLazyModule().then(
+    function(data) {
+      console.log( "Lazy module loaded.",data);
+      setRoute(data);
+    }
+  );
 
   // I listen for the route change and store the current route action
   // so that we can see how the routes changes after user interaction.
@@ -109,4 +135,85 @@ angular.module('myApp.view2', ['ngRoute'])
       //console.log('next', next);
       }
   );
-}]);
+}])
+.factory(
+    "withLazyModule",
+    function( $rootScope, $templateCache, $q, LocationServices ) {
+        var deferred = $q.defer();
+        var promise = null;
+        console.log("Dentro de Lazy module");
+        function loadModule( successCallback, errorCallback ) {
+
+            successCallback = ( successCallback || angular.noop );
+            errorCallback = ( errorCallback || angular.noop );
+
+            // If the module has already been loaded then
+            // simply bind the handlers to the existing promise.
+            // No need to try and load the files again.
+            if ( promise ) {
+
+                return(
+                    promise.then( successCallback, errorCallback )
+                );
+
+            }
+
+            promise = deferred.promise;
+
+            // Wire the callbacks into the deferred outcome.
+            promise.then( successCallback, errorCallback );
+
+            // Load the module templates and components.
+            // --
+            // The first dependency here is an HTML file which
+            // is loaded using the text! plugin. This will pass
+            // the value through as an HTML string.
+            // ----------- NOTE ------------
+            // Hacer dinamico
+            // Que ocurre cuando cargas 2 controladores con el mismo nombre
+            // Pruebas con muchos modulos angular
+            // Organizar un poco el codigo y separar en archivos
+            // -----------------------------
+
+            require(
+                [
+                    "components/requirejs/text!modules/"+LocationServices.getControllerName().toLowerCase()+"/index.html",
+                    "modules/"+LocationServices.getControllerName().toLowerCase()+"/controller.js"
+                ],
+                function requireSuccess( templatesHtml ) {
+                    // is expected to be a list of top level
+                    // Script tags.
+                    console.log("requireSuccess");
+
+                    // Module loaded, resolve deferred.
+                    $rootScope.$apply(
+                        function() {
+                            console.log("Module Loaded");
+                            deferred.resolve(templatesHtml);
+
+                        }
+                    );
+
+                },
+                function requireError( error ) {
+
+                    // Module load failed, reject deferred.
+                    $rootScope.$apply(
+                        function() {
+
+                            deferred.reject( error );
+
+                        }
+                    );
+
+                }
+            );
+
+            return( promise );
+
+        }
+
+        return( loadModule );
+
+    }
+);

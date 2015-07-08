@@ -9,6 +9,7 @@
     "jquery": "2.x",
     "angular": "1.4.0-rc.1",
     "angular-route": "1.4.x",
+    "angular-resource": "1.4.x",
     "angular-loader": "1.4.x",
     "angular-mocks": "~1.4.x",
     "html5-boilerplate": "~4.3.0"

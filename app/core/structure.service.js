@@ -24,10 +24,34 @@ angular
       name: 'youtube',
       type: 'A',
       scope: {
-        video: "k1eKW37q8Fo"
+        video: "k1eKW37q8Fo",
+        time: {hours: 12, minutes: 7},
+        map: 'spain'
       },
       view: "modules/youtube/index.html",
       ctrl: "modules/youtube/controller.js",
+      config: {
+        video: {
+          type: 'text',
+          min: 4,
+          max: 200,
+          regex: '/\w./',
+        }
+        time: {
+          type: 'composed',
+          elements: {
+            hours:   { type: number, min: 0, max: 23 },
+            minutes: { type: number, min: 0, max: 59 }
+          }
+        },
+        map: {
+          type: custom,
+          view: "modules/youtube/index.html",
+          ctrl: "modules/youtube/controller.js",
+
+        }
+      }
+      
     };
 
     var data = {

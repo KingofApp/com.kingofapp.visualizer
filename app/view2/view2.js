@@ -62,41 +62,117 @@ angular.module('myApp.view2', ['ngRoute'])
 
       }
   })
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider','$controllerProvider', '$provide', '$compileProvider', function($routeProvider,$controllerProvider, $provide, $compileProvider) {
   //Default Route
   $routeProvider.when('/view2', {
     templateUrl: 'view2/view2.html',
     controller: 'View2Ctrl',
     action: "section-view2"
   })
-  //Dynamic Routes
-  // .when("/c/:catchAll*", {
-  //       resolve: {
-  //           catchAll: "cResolver"
-  //       }
-  //   })
   .otherwise({
     templateUrl: 'view2/view2.html',
     controller: 'View2Ctrl',
     action: "section-view2"
   });
+  // Let's keep the older references.
+  // angular._controller = angular.controller;
+  // angular._service = angular.service;
+  // angular._factory = angular.factory;
+  // angular._value = angular.value;
+  // angular._directive = angular.directive;
+
+  [
+    {name: 'controller', provider: $controllerProvider, method: 'register'},
+    {name: 'service',    provider: $provide,            method: 'service'},
+    {name: 'factory',    provider: $provide,            method: 'factory'},
+    {name: 'value',      provider: $provide,            method: 'value'},
+    {name: 'directive',  provider: $compileProvider,    method: 'directive '}
+  ].forEach(function(row){
+    angular['_'+row.name] = angular[row.name];
+    angular[row.name] = function(name, constructor){
+      row.provider[row.method](name, constructor);
+      return(this);
+    }
+  });
+
+  // Provider-based controller.
+  // angular.controller = function( name, constructor ) {
+  //
+  //     $controllerProvider.register( name, constructor );
+  //     return( this );
+  //
+  // };
+  //
+  // // Provider-based service.
+  // angular.service = function( name, constructor ) {
+  //
+  //     $provide.service( name, constructor );
+  //     return( this );
+  //
+  // };
+  //
+  // // Provider-based factory.
+  // angular.factory = function( name, factory ) {
+  //
+  //     $provide.factory( name, factory );
+  //     return( this );
+  //
+  // };
+  //
+  // // Provider-based value.
+  // angular.value = function( name, value ) {
+  //
+  //     $provide.value( name, value );
+  //     return( this );
+  //
+  // };
+  //
+  // // Provider-based directive.
+  // angular.directive = function( name, factory ) {
+  //
+  //     $compileProvider.directive( name, factory );
+  //     return( this );
+  //
+  // };
+
+  // NOTE: You can do the same thing with the "filter"
+  // and the "$filterProvider"; but, I don't really use
+  // custom filters.
 }])
 .controller('KingModuleCtrl', ['$scope','$route','$location', function($scope,$route, $location) {
-  $scope.routeAction = "URL "+$location.$$path.toString();
+  $scope.testotro = "URL "+$location.$$path.toString();
 }])
-.controller('View2Ctrl', ['$scope','$route','$location', function($scope,$route, $location) {
+/*.controller('AngModuleCtrl', ['$scope', function($scope) {
+  $scope.test = "URLqwdqw";
+}])*/
+.controller('View2Ctrl', ['$scope','$route','$location','withLazyModule', function($scope,$route, $location,withLazyModule) {
   console.log("View2Ctrol");
   // I show the action associated with the current route.
-  console.log($location.$$path.toString().replace('/c/',""));
-// ang-module + Ctrl
-  $route.when(
-      $location.$$path,
-      {
-          templateUrl: 'view2/view2.html',
-          action: "section-c-"+$location.$$path.toString().replace('/c/',""),
-          controller: 'KingModuleCtrl'
-      }
-  ).reload();
+  var path = $location.$$path.toString().split(/[\/ -]/);
+  var name = '';
+
+  for(var key in path){
+    name += path[key].charAt(0).toUpperCase() + path[key].substr(1).toLowerCase();
+  }
+
+  function setRoute(template){
+    console.log(template);
+    $route.when(
+        $location.$$path,
+        {
+            template: template,
+            action: "section-c-"+$location.$$path.toString().replace('/c/',""),
+            controller: name+'Ctrl'
+        }
+    ).reload();
+  }
+
+  withLazyModule().then(
+    function(data) {
+      console.log( "Lazy module loaded.", data, arguments );
+      setRoute(data);
+    }
+  );
 
   // I listen for the route change and store the current route action
   // so that we can see how the routes changes after user interaction.
@@ -109,4 +185,93 @@ angular.module('myApp.view2', ['ngRoute'])
       //console.log('next', next);
       }
   );
-}]);
+}])
+.factory(
+    "withLazyModule",
+    function( $rootScope, $templateCache, $q ) {
+
+        var deferred = $q.defer();
+        var promise = null;
+
+        function loadModule( successCallback, errorCallback ) {
+
+            successCallback = ( successCallback || angular.noop );
+            errorCallback = ( errorCallback || angular.noop );
+
+            // If the module has already been loaded then
+            // simply bind the handlers to the existing promise.
+            // No need to try and load the files again.
+            if ( promise ) {
+
+                return(
+                    promise.then( successCallback, errorCallback )
+                );
+
+            }
+
+            promise = deferred.promise;
+
+            // Wire the callbacks into the deferred outcome.
+            promise.then( successCallback, errorCallback );
+
+            // Load the module templates and components.
+            // --
+            // The first dependency here is an HTML file which
+            // is loaded using the text! plugin. This will pass
+            // the value through as an HTML string.
+            require(
+                [
+                    "components/requirejs/text!modules/angmodule/index.html",
+                    "modules/angmodule/controller.js"
+                ],
+                function requrieSuccess( templatesHtml ) {
+                  console.log('templatesHtml',templatesHtml);
+                  console.log('arguments',arguments);
+                    // is expected to be a list of top level
+                    // Script tags.
+                    console.log("requireSuccess");
+                    /*$( templatesHtml ).each(
+                        function() {
+                          //debugger;
+
+                            var template = $( this );
+                            var id = template.attr( "id" );
+                            var content = template.html();
+                            //$templateCache.put( id, content );
+
+                        }
+                    );*/
+
+                    // Module loaded, resolve deferred.
+                    $rootScope.$apply(
+                        function() {
+                            console.log("Module Loaded");
+                            console.log(templatesHtml);
+                            deferred.resolve(templatesHtml);
+
+                        }
+                    );
+
+                },
+                function requireError( error ) {
+
+                    // Module load failed, reject deferred.
+                    $rootScope.$apply(
+                        function() {
+
+                            deferred.reject( error );
+
+                        }
+                    );
+
+                }
+            );
+
+            return( promise );
+
+        }
+
+        return( loadModule );
+
+    }
+);

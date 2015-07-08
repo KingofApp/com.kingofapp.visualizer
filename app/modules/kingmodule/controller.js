@@ -1,4 +1,4 @@
-angular.module('myApp.angmode', ['ngRoute'])
-.controller('AngModuleCtrl', ['$scope', function($scope) {
-  $scope.test = "URLqwdqw";
+angular
+.controller('KingModuleCtrl', ['$scope', function($scope) {
+  $scope.test = "Para KING MODULE";
 }])

@@ -1,99 +1,99 @@
 'use strict';
 
-angular.module('myApp.view2', ['ngRoute'])
-// Decorate the $route service to allow us to alter routes after bootstrap.
-.config(
-  function( $provide, $routeProvider ) {
+angular
+  .module('myApp.view2', ['ngRoute'])
+  .config(addRouteDecorator)
+  .config(setDefaultPaths)
+  .service('LocationServices', locationServices)
+  .controller('View2Ctrl', view2Ctrl)
+  .factory("withLazyModule", withLazyModuleFn);
 
-      // Wire up the $route decorator.
-      $provide.decorator( "$route", routeDecorator );
+function addRouteDecorator( $provide, $routeProvider ) {
 
+  // Wire up the $route decorator.
+  $provide.decorator( "$route", routeDecorator );
 
-      // I augment the $route service - the original delegate ($route) is
-      // returned, but with additional methods.
-      function routeDecorator( $delegate ) {
+  // I augment the $route service - the original delegate ($route) is
+  // returned, but with additional methods.
+  function routeDecorator( $delegate ) {
 
-          // Create a familiar short-hand for the delegate.
-          var $route = $delegate;
+    var $route = $delegate;
 
+    $route.remove        = remove;
+    $route.removeCurrent = removeCurrent;
+    $route.when          = when;
+    $route.otherwise     = otherwise;
 
-          // I remove a defined route at the given path.
-          $route.remove = function( path ) {
+    return( $route );
 
-              // Normalize the path by removing any trailing slash - when
-              // AngularJS sets up a route, it creates an auto-redirect from
-              // your route to the other version (with or without a slash,
-              // depending on what you defined); we need to delete your path
-              // and the auto-redirect path.
-              path = path.replace( /\/$/i, "" );
+    // I remove a defined route at the given path.
+    function remove( path ) {
 
-              // Delete your path and the auto-redirect version.
-              delete( this.routes[ path ] );
-              delete( this.routes[ path + "/" ] );
+      // Normalize the path by removing any trailing slash - when
+      // AngularJS sets up a route, it creates an auto-redirect from
+      // your route to the other version (with or without a slash,
+      // depending on what you defined); we need to delete your path
+      // and the auto-redirect path.
+      path = path.replace( /\/$/i, "" );
 
-              return( this );
+      // Delete your path and the auto-redirect version.
+      delete( this.routes[ path ] );
+      delete( this.routes[ path + "/" ] );
 
-          };
+      return( this );
 
+    };
 
-          // This provides a short-hand to removing the current route without
-          // having to access the current route in the calling context.
-          $route.removeCurrent = function() {
-            console.log(this);
-              return( this.remove( this.current.originalPath ) );
-          };
+    // This provides a short-hand to removing the current route without
+    // having to access the current route in the calling context.
+    function removeCurrent() {
+      return( this.remove( this.current.originalPath ) );
+    };
 
+    // I allow routes to be defined after the application has been
+    // bootstrapped. These go into a shared "routes" collection.
+    function when( path, route ) {
+      $routeProvider.when( path, route );
+      return( this );
+    };
 
-          // I allow routes to be defined after the application has been
-          // bootstrapped. These go into a shared "routes" collection.
-          $route.when = function( path, route ) {
-              $routeProvider.when( path, route );
-              return( this );
-          };
+    function otherwise( route ) {
+      $routeProvider.otherwise( route );
+      return( this );
+    };
+  }
+}
 
-          $route.otherwise = function( route ) {
-              $routeProvider.otherwise( route );
-              return( this );
-          };
+setDefaultPaths.$inject = ['$routeProvider','$controllerProvider', '$provide', '$compileProvider'];
 
-
-          // Return the decorated service.
-          return( $route );
-
-      }
-  })
-.config(['$routeProvider','$controllerProvider', '$provide', '$compileProvider', function($routeProvider,$controllerProvider, $provide, $compileProvider) {
+function setDefaultPaths($routeProvider, $controllerProvider, $provide, $compileProvider) {
   //Default Route
-  $routeProvider.when('/view2', {
-    templateUrl: 'view2/view2.html',
-    controller: 'View2Ctrl',
-    action: "section-view2"
-  })
-  .otherwise({
-    templateUrl: 'view2/view2.html',
-    controller: 'View2Ctrl',
-    action: "section-view2"
-  });
+  $routeProvider
+    .otherwise({
+      templateUrl: 'view2/view2.html',
+      controller : 'View2Ctrl',
+      action     : "section-view2"
+    });
 
   [
-    {name: 'controller', provider: $controllerProvider, method: 'register'},
-    {name: 'service',    provider: $provide,            method: 'service'},
-    {name: 'factory',    provider: $provide,            method: 'factory'},
-    {name: 'value',      provider: $provide,            method: 'value'},
+    {name: 'controller', provider: $controllerProvider, method: 'register'  },
+    {name: 'service',    provider: $provide,            method: 'service'   },
+    {name: 'factory',    provider: $provide,            method: 'factory'   },
+    {name: 'value',      provider: $provide,            method: 'value'     },
     {name: 'directive',  provider: $compileProvider,    method: 'directive '}
   ].forEach(function(row){
-    // Let's keep the older references.
-    angular['_'+row.name] = angular[row.name];
-    // Provider-based controller,service,factory,value,directive, ?filter
-    angular[row.name] = function(name, constructor){
+    angular['_'+row.name] = angular[row.name];         // Let's keep the older references.
+    angular[row.name] = function(name, constructor){   // Provider-based controller,service,factory,value,directive, ?filter
       row.provider[row.method](name, constructor);
       return(this);
     }
   });
-}])
-.service('LocationServices', function($location){
+}
+
+function locationServices($location){
+
   this.getControllerName = function(){
-    var path = $location.$$path.toString().split(/[\/ -]/);
+    var path  = $location.$$path.toString().split(/[\/ -]/);
     var mname = '';
 
     for(var key in path){
@@ -102,10 +102,19 @@ angular.module('myApp.view2', ['ngRoute'])
 
     return mname;
   }
+}
 
-})
-.controller('View2Ctrl', ['$scope','$route','$location','withLazyModule','LocationServices', function($scope,$route, $location,withLazyModule,LocationServices) {
-  console.log("View2Ctrol");
+view2Ctrl.$inject = ['$scope','$route','$location','withLazyModule','LocationServices'];
+
+function view2Ctrl($scope,$route, $location,withLazyModule,LocationServices) {
+  console.log("view2Ctrol");
+
+  withLazyModule().then(
+    function(data) {
+      console.log( "Lazy module loaded.",data);
+      setRoute(data);
+    }
+  );
 
   function setRoute(template){
     $route.when(
@@ -116,13 +125,6 @@ angular.module('myApp.view2', ['ngRoute'])
         }
     ).reload();
   }
-
-  withLazyModule().then(
-    function(data) {
-      console.log( "Lazy module loaded.",data);
-      setRoute(data);
-    }
-  );
 
   // I listen for the route change and store the current route action
   // so that we can see how the routes changes after user interaction.
@@ -135,85 +137,65 @@ angular.module('myApp.view2', ['ngRoute'])
       //console.log('next', next);
       }
   );
-}])
-.factory(
-    "withLazyModule",
-    function( $rootScope, $templateCache, $q, LocationServices ) {
-        var deferred = $q.defer();
-        var promise = null;
-        console.log("Dentro de Lazy module");
-        function loadModule( successCallback, errorCallback ) {
+}
 
-            successCallback = ( successCallback || angular.noop );
-            errorCallback = ( errorCallback || angular.noop );
+function withLazyModuleFn( $rootScope, $templateCache, $q, LocationServices ) {
+    var deferred = $q.defer();
+    var promise = null;
+    function loadModule( successCallback, errorCallback ) {
 
-            // If the module has already been loaded then
-            // simply bind the handlers to the existing promise.
-            // No need to try and load the files again.
-            if ( promise ) {
+      console.log("Dentro de Lazy module");
+        successCallback = ( successCallback || angular.noop );
+        errorCallback = ( errorCallback || angular.noop );
 
-                return(
-                    promise.then( successCallback, errorCallback )
-                );
-
-            }
-
-            promise = deferred.promise;
-
-            // Wire the callbacks into the deferred outcome.
-            promise.then( successCallback, errorCallback );
-
-            // Load the module templates and components.
-            // --
-            // The first dependency here is an HTML file which
-            // is loaded using the text! plugin. This will pass
-            // the value through as an HTML string.
-            // ----------- NOTE ------------
-            // Hacer dinamico
-            // Que ocurre cuando cargas 2 controladores con el mismo nombre
-            // Pruebas con muchos modulos angular
-            // Organizar un poco el codigo y separar en archivos
-            // -----------------------------
-
-            require(
-                [
-                    "components/requirejs/text!modules/"+LocationServices.getControllerName().toLowerCase()+"/index.html",
-                    "modules/"+LocationServices.getControllerName().toLowerCase()+"/controller.js"
-                ],
-                function requireSuccess( templatesHtml ) {
-                    // is expected to be a list of top level
-                    // Script tags.
-                    console.log("requireSuccess");
-
-                    // Module loaded, resolve deferred.
-                    $rootScope.$apply(
-                        function() {
-                            console.log("Module Loaded");
-                            deferred.resolve(templatesHtml);
-
-                        }
-                    );
-
-                },
-                function requireError( error ) {
-
-                    // Module load failed, reject deferred.
-                    $rootScope.$apply(
-                        function() {
-
-                            deferred.reject( error );
-
-                        }
-                    );
-
-                }
-            );
-
-            return( promise );
-
+        // If the module has already been loaded then
+        // simply bind the handlers to the existing promise.
+        // No need to try and load the files again.
+        if ( promise ) {
+          return( promise.then( successCallback, errorCallback ) );
         }
 
-        return( loadModule );
+        promise = deferred.promise;
 
+        // Wire the callbacks into the deferred outcome.
+        promise.then( successCallback, errorCallback );
+
+        return( promise );
+
+        // Load the module templates and components.
+        // --
+        // The first dependency here is an HTML file which
+        // is loaded using the text! plugin. This will pass
+        // the value through as an HTML string.
+        // ----------- NOTE ------------
+        // Hacer dinamico
+        // Que ocurre cuando cargas 2 controladores con el mismo nombre
+        // Pruebas con muchos modulos angular
+        // Organizar un poco el codigo y separar en archivos
+        // -----------------------------
+        var files = [
+          "components/requirejs/text!modules/"+LocationServices.getControllerName().toLowerCase()+"/index.html",
+          "modules/"+LocationServices.getControllerName().toLowerCase()+"/controller.js"
+        ];
+
+        require( files, onRequireSuccess, onRequireError );
+
+        function onRequireSuccess( templatesHtml ) { // Module loaded, resolve deferred.  
+          $rootScope.$apply( success );
+          function success() {
+            console.log("Module Loaded");
+            deferred.resolve(templatesHtml);
+          };
+        }
+        
+        function onRequireError( error ) { // Module load failed, reject deferred.
+          $rootScope.$apply(reject);  
+          function reject(){
+            console.log("Module Not Loaded");
+            deferred.reject( error );
+          }
+        }
     }
-);
+
+    return( loadModule );
+}

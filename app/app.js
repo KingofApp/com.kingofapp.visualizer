@@ -4,12 +4,13 @@
 angular.module('myApp', [
   'ngRoute',
   'king.controller',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version',
-  'myApp.moduleLoader',
-  'myApp.core.structureService',
-  'king.main'
+  'king.loaders.common',
+  //'myApp.view1',
+  //'myApp.view2',
+  //'myApp.version',
+  //'myApp.moduleLoader',
+  'king.core.structureService',
+  //'king.main'
 ]);
 // ]).
 // config(['$routeProvider', function($routeProvider) {

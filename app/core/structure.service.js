@@ -1,5 +1,5 @@
 angular
-  .module('myApp.core.structureService', [])
+  .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
   function structureService(){
@@ -36,7 +36,7 @@ angular
           min: 4,
           max: 200,
           regex: '/\w./',
-        }
+        },
         time: {
           type: 'composed',
           elements: {

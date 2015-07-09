@@ -26,11 +26,14 @@ angular
       ctrl: "modules/angmodule/controller.js",
     };
 
-    var kingmodule = {
-      name: 'King Module',
+    var rssmodule = {
+      name: 'RSS Module',
       type: 'A',
-      view: "modules/kingmodule/index.html",
-      ctrl: "modules/kingmodule/controller.js",
+      view: "modules/rssmodule/index.html",
+      ctrl: "modules/rssmodule/controller.js",
+      scope: {
+        feed: "http://elpais.com/rss/elpais/portada.xml"
+      }
     };
 
     var youtube = {
@@ -78,7 +81,7 @@ angular
           '/y': y,
           '/youtube': youtube,
           '/angmodule': angmodule,
-          '/kingmodule': kingmodule
+          '/rssmodule': rssmodule
         }
       }
     };

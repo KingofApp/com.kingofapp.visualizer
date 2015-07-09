@@ -21,6 +21,7 @@ angular
     };
     var angmodule = {
       name: 'Angular Module',
+      folder: 'angmodule',
       type: 'A',
       view: "modules/angmodule/index.html",
       ctrl: "modules/angmodule/controller.js",
@@ -28,11 +29,12 @@ angular
 
     var rssmodule = {
       name: 'RSS Module',
+      folder: 'rssmodule',
       type: 'A',
       view: "modules/rssmodule/index.html",
       ctrl: "modules/rssmodule/controller.js",
       scope: {
-        feed: "http://elpais.com/rss/elpais/portada.xml"
+        feed: "http://www.hd-adult.com/feed/"
       }
     };
 

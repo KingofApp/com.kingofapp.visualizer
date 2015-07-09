@@ -1,13 +1,12 @@
 (function(){
   'use strict';
-
   angular
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl)
 
-  commonLoaderCtrl.$inject = ['$scope','$route','$location','lazyModule','currentLocationService', 'structureService'];
+  commonLoaderCtrl.$inject = ['$scope','$route','$location','lazyModule', 'structureService', 'moduleScopeService'];
 
-  function commonLoaderCtrl($scope, $route, $location, lazyModule, currentLocationService, structureService) {
+  function commonLoaderCtrl($scope, $route, $location, lazyModule, structureService, moduleScopeService) {
     console.log("commonLoaderCtrl");
 
     $location.$$path = $location.$$path || '/';
@@ -20,6 +19,10 @@
       //When jQuery
       $scope.module = module || $scope.module;
       if(module){
+
+        //Setter of ModuleInfo to moduleScopeService
+        moduleScopeService.setModule(module);
+
         if(module.type=="A"){
           //When Angular
           lazyModule().then(
@@ -27,7 +30,7 @@
               console.log( "Lazy module loaded.",data);
               var route = {
                 template: data,
-                controller : currentLocationService.getControllerName()+'Ctrl'
+                controller : module.folder.substring(0,1).toUpperCase()+module.folder.substring(1)+'Ctrl'
               }
               setRoute(route);
               //$scope.template = $scope.templates[module.type];

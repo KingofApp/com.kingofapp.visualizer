@@ -1,7 +1,10 @@
 angular
-.controller('RssmoduleCtrl', ['$scope','$http', function($scope, $http) {
+.controller('RssmoduleCtrl', ['$scope','$http','moduleScopeService', function($scope, $http, moduleScopeService) {
   $scope.init = function() {
-      $http.get("http://ajax.googleapis.com/ajax/services/feed/load", { params: { "v": "1.0", "q": "http://elpais.com/rss/elpais/portada.xml" } })
+    //Getter of ModuleInfo to moduleScopeService
+    var moduleInfo = moduleScopeService.getModule();
+    console.log("dentro de rssmodule");
+      $http.get("http://ajax.googleapis.com/ajax/services/feed/load", { params: { "v": "1.0", "q": moduleInfo.scope.feed } })
           .success(function(data) {
               $scope.rssTitle = data.responseData.feed.title;
               $scope.rssUrl = data.responseData.feed.feedUrl;

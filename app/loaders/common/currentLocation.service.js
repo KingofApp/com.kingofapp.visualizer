@@ -6,7 +6,7 @@
     .service('currentLocationService', currentLocationService)
 
   function currentLocationService($location){
-
+    return "";
     this.getControllerName = function(){
       var path  = $location.$$path.toString().split(/[\/ -]/);
       var moduleName = '';

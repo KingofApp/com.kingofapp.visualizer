@@ -1,21 +1,16 @@
-(function(){
-	'use strict';
+
 	describe('loaderAngular', function() {
 
-		beforeEach(module('king.loaders.common'));
+		//beforeEach(module('king.loaders.common'));
 
-	    it('should load a Angular module on the first call', function() {
-			/*
-			beforeEach(function(){
-			});
-			*/
-			console.log("Entra aqui");
+		it('should load a Angular module on the first call', function() {
 			browser.get('/app/#/angmodule');
+			expect(element(by.css('p')).getText()).toBe('URLqwdqw');
+		});
 
-	    	//expect(element(by.tagName('p')).getText()).toBe('URLqwdqw');
-    		//console.log(element(by.tagName('p')).getText());
-	    });
+		it('should load a Angular module on the second call', function() {
+			browser.get('/app/#/rssmodule');
+			expect(element(by.css('p')).getText()).toBe('URLqwdqw');
+		});
 
 	});
-
-}());

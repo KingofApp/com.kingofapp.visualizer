@@ -1,19 +1,20 @@
 (function(){
   'use strict';
   angular
-    .module('king.loaders.common.scope', ['ngRoute'])
-    .factory("moduleScopeService",function($rootScope){
-      var data = {
-              module: ''
-          };
+    .module('king.loaders.common')
+    .factory("moduleScopeService", moduleScopeService);
 
-          return {
-              getModule: function () {
-                  return data.module;
-              },
-              setModule: function (module) {
-                  data.module = module;
-              }
-          };
-    });
+  function moduleScopeService($rootScope){
+    var module;
+
+    return {
+      getModule: function() {
+          return module;
+      },
+      setModule: function(localModule) {
+          module = localModule;
+      }
+    };
+  }
+
 }());

@@ -5,9 +5,11 @@
     .module('king.loaders.common')
     .config(setDefaultPaths);
 
-  setDefaultPaths.$inject = ['$routeProvider','$controllerProvider', '$provide', '$compileProvider'];
+  setDefaultPaths.$inject = ['$routeProvider','$controllerProvider', '$provide', '$compileProvider', '$sceProvider'];
 
-  function setDefaultPaths($routeProvider, $controllerProvider, $provide, $compileProvider) {
+  function setDefaultPaths($routeProvider, $controllerProvider, $provide, $compileProvider, $sceProvider) {
+
+    $sceProvider.enabled(false);
 
     console.log("loading routes")
     //Default Route

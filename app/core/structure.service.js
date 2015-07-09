@@ -3,8 +3,8 @@ angular
   .factory('structureService', structureService);
 
   function structureService(){
-    
-    var listeners = [];  
+
+    var listeners = [];
 
     var x = {
       name: 'Module X',
@@ -19,10 +19,23 @@ angular
       view: "modules/y/index.html",
       ctrl: "modules/y/controller.js",
     };
+    var angmodule = {
+      name: 'Angular Module',
+      type: 'A',
+      view: "modules/angmodule/index.html",
+      ctrl: "modules/angmodule/controller.js",
+    };
+
+    var kingmodule = {
+      name: 'King Module',
+      type: 'A',
+      view: "modules/kingmodule/index.html",
+      ctrl: "modules/kingmodule/controller.js",
+    };
 
     var youtube = {
       name: 'youtube',
-      type: 'A',
+      type: '$',
       scope: {
         video: "k1eKW37q8Fo",
         time: {hours: 12, minutes: 7},
@@ -40,30 +53,32 @@ angular
         time: {
           type: 'composed',
           elements: {
-            hours:   { type: number, min: 0, max: 23 },
-            minutes: { type: number, min: 0, max: 59 }
+            hours:   { type: 'number', min: 0, max: 23 },
+            minutes: { type: 'number', min: 0, max: 59 }
           }
         },
         map: {
-          type: custom,
+          type: 'custom',
           view: "modules/youtube/index.html",
           ctrl: "modules/youtube/controller.js",
 
         }
       }
-      
+
     };
 
     var data = {
       '/': {
         name: 'Basic Menu',
-        type: 'A',
+        type: '$',
         view: "modules/menu/index.html",
         ctrl: "modules/menu/controller.js",
         children: {
           '/x': x,
           '/y': y,
-          '/youtube': youtube
+          '/youtube': youtube,
+          '/angmodule': angmodule,
+          '/kingmodule': kingmodule
         }
       }
     };

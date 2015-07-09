@@ -5,7 +5,7 @@ angular
   .factory("lazyModule", lazyModuleFn);
 
 function lazyModuleFn( $rootScope, $templateCache, $q, currentLocationService ) {
-    
+
   return loadModule;
 
   function loadModule( successCallback, errorCallback ) {
@@ -23,18 +23,18 @@ function lazyModuleFn( $rootScope, $templateCache, $q, currentLocationService ) 
 
     return promise;
 
-    function onRequireSuccess( templatesHtml ) { // Module loaded, resolve deferred.  
+    function onRequireSuccess( templatesHtml ) { // Module loaded, resolve deferred.
       $rootScope.$apply( success );
       function success() {
         console.log("Module Loaded");
         deferred.resolve(templatesHtml);
       };
     }
-    
+
     function onRequireError( error ) { // Module load failed, reject deferred.
-      $rootScope.$apply(reject);  
+      $rootScope.$apply(reject);
       function reject(){
-        console.log("Module Not Loaded");
+        console.log("!!!!!Module Not Loaded!!!!!");
         deferred.reject( error );
       }
     }

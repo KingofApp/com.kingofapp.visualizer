@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'king.controller',
   'king.loaders.common',
+  'king.loaders.jquery',
   //'myApp.view1',
   //'myApp.view2',
   //'myApp.version',

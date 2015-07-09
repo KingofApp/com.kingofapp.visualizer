@@ -14,7 +14,6 @@
     };
 
     function link(scope, elm, attr, contrl) {
-
       var $ = function (selector){
         return angular.element(elm).find(selector);
       }
@@ -26,7 +25,6 @@
 
       $http.get(scope.module.ctrl).then(function(response){
         var ctrl = new Function("$", "scope", response.data);
-        console.log('scope', scope);
         ctrl($, scope);
       });
     }

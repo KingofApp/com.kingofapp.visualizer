@@ -13,10 +13,14 @@
     //Default Route
     $routeProvider
       .otherwise({
-        template   : '<div></div>',
+        templateUrl   : 'loaders/common/loaderCommon.view.html',
         controller : 'commonLoaderCtrl',
         action     : "section-view2"
       });
+      // $routeProvider.otherwise({
+      //   templateUrl: 'loaders/common/king.html',
+      //   controller: 'commonLoaderCtrl'
+      // });
 
     [
       {name: 'controller', provider: $controllerProvider, method: 'register'  },

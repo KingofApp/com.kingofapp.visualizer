@@ -24,7 +24,14 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+  <div id="main-king" ng-view></div>
+
+  <hr>
+  <div>Module:</div>
+  {{module}}
+  <hr>
+  <div>Data structure:</div>
+  <pre>{{data}}</pre>
 
   <div>Angular seed app: v<span app-version></span></div>
 
@@ -45,6 +52,7 @@
   <script src="loaders/common/loaderCommon.controller.js"></script>
   <script src="loaders/common/paths.config.js"></script>
   <script src="loaders/common/route.decorator.js"></script>
+  <script src="loaders/jquery/loaderJquery.directive.js"></script>
   <!--script src="view1/view1.js"></script-->
   <!--script src="view1/loader.js"></script-->
   <!--script src="view2/view2.js"></script-->

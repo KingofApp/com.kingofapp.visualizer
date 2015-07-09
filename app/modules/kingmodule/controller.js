@@ -1,4 +1,4 @@
 angular
-.controller('KingModuleCtrl', ['$scope', function($scope) {
+.controller('KingmoduleCtrl', ['$scope', function($scope) {
   $scope.test = "Para KING MODULE";
 }])

@@ -12,6 +12,9 @@
     "angular-resource": "1.4.x",
     "angular-loader": "1.4.x",
     "angular-mocks": "~1.4.x",
-    "html5-boilerplate": "~4.3.0"
+    "html5-boilerplate": "~4.3.0",
+    "angular-scenario": "1.4.x",
+    "protractor": "2.1.x",
+    "mocha": "2.2.x"
   }
 }

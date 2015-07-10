@@ -2,9 +2,12 @@ angular
   .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
-  function structureService(){
+  structureService.$inject = ['$location'];
+
+  function structureService($location){
 
     var listeners = [];
+    var cachedLocations = {};
 
     var x = {
       name: 'Module X',
@@ -21,7 +24,7 @@ angular
     };
     var angmodule = {
       name: 'Angular Module',
-      folder: 'angmodule',
+      controller: 'angmodule',
       type: 'A',
       view: "modules/angmodule/index.html",
       ctrl: "modules/angmodule/controller.js",
@@ -29,12 +32,23 @@ angular
 
     var rssmodule = {
       name: 'RSS Module',
-      folder: 'rssmodule',
+      controller: 'rssmodule',
       type: 'A',
       view: "modules/rssmodule/index.html",
       ctrl: "modules/rssmodule/controller.js",
       scope: {
         feed: "http://www.hd-adult.com/feed/"
+      }
+    };
+
+    var rssmodule2 = {
+      name: 'RSS Module 2',
+      controller: 'rssmodule',
+      type: 'A',
+      view: "modules/rssmodule/index.html",
+      ctrl: "modules/rssmodule/controller.js",
+      scope: {
+        feed: "http://elpais.com/rss/elpais/portada.xml"
       }
     };
 
@@ -83,13 +97,15 @@ angular
           '/y': y,
           '/youtube': youtube,
           '/angmodule': angmodule,
-          '/rssmodule': rssmodule
+          '/rssmodule': rssmodule,
+          '/rssmodule2': rssmodule2
         }
       }
     };
 
     return {
       get:  get,
+      getCurrent: getCurrent,
       update: update,
       onChange: onChange
     }
@@ -97,6 +113,18 @@ angular
     function get(){
       console.log('getData')
       return data;
+    }
+
+    function getCurrent($location, callback){
+      if(cachedLocations[$location.$$path]){
+        callback(cachedLocations[$location.$$path]);
+      }
+      else{
+        findRoute($location.$$path, data, function(module){
+          cachedLocations[$location.$$path] = module;
+          callback(module);
+        });
+      }
     }
 
     function update(newData){
@@ -108,6 +136,17 @@ angular
 
     function onChange(callback){
       listeners.push[callback];
+    }
+
+    function findRoute(path, structure, callback){
+      for(var key in structure){
+        if(path === key){
+          callback(structure[path]);
+        }
+        else if(path.indexOf(key) === 0){
+          findRoute(path, structure[key].children, callback);
+        }
+      }
     }
 
   };

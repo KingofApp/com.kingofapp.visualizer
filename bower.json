@@ -17,6 +17,7 @@
     "html5-boilerplate": "~4.3.0",
     "angular-scenario": "1.4.x",
     "protractor": "2.1.x",
-    "mocha": "2.2.x"
+    "mocha": "2.2.x",
+    "angular-cache": "~4.3.1"
   }
 }

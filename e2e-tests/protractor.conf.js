@@ -11,6 +11,8 @@ exports.config = {
 
   baseUrl: 'http://localhost:8000/app/',
 
+  keepAlive: true,
+
   framework: 'jasmine',
 
   jasmineNodeOpts: {

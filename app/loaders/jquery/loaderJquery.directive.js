@@ -21,11 +21,12 @@
       $http.get(scope.module.view).then(function(response){
         elm.html(response.data);
         $compile(elm.contents())(scope);
-      });
 
-      $http.get(scope.module.ctrl).then(function(response){
-        var ctrl = new Function("$", "scope", response.data);
-        ctrl($, scope);
+        $http.get(scope.module.ctrl).then(function(response){
+          var ctrl = new Function("$", "scope", response.data);
+          ctrl($, scope);
+        });
+
       });
     }
 

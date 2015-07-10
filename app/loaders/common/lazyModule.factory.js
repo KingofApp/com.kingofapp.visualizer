@@ -4,30 +4,28 @@ angular
   .module('king.loaders.common')
   .factory("lazyModule", lazyModuleFn);
 
-function lazyModuleFn( $rootScope, $templateCache, $q, moduleScopeService ) {
+function lazyModuleFn( $rootScope, $templateCache, $location, $q, structureService ) {
 
   return loadModule;
 
   function loadModule( successCallback, errorCallback ) {
 
-    console.log("Dentro de Lazy module");
-    var moduleInfo = moduleScopeService.getModule();
     var deferred = $q.defer();
     var promise  = deferred.promise;
-    var files    = [
-      "components/requirejs/text!modules/"+moduleInfo.folder+"/index.html",
-      "modules/"+moduleInfo.folder+"/controller.js"
-    ];
-  //   require.config({
-  //   paths: {
-  //     "some": "some/v1.0"
-  //   },
-  //   waitSeconds: 0
-  // });
+    console.log("Dentro de Lazy module");
 
-    require( files, onRequireSuccess, onRequireError );
+    structureService.getCurrent($location, loadFiles);
 
     return promise;
+
+    function loadFiles(moduleInfo){
+
+      var files = [
+        "components/requirejs/text!"+moduleInfo.view,
+        moduleInfo.ctrl
+      ];
+      require( files, onRequireSuccess, onRequireError );
+    };
 
     function onRequireSuccess( templatesHtml ) { // Module loaded, resolve deferred.
       $rootScope.$apply( success );
@@ -44,5 +42,6 @@ function lazyModuleFn( $rootScope, $templateCache, $q, moduleScopeService ) {
         deferred.reject( error );
       }
     }
+
   }
 }

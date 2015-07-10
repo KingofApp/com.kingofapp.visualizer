@@ -4,81 +4,46 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl)
 
-  commonLoaderCtrl.$inject = ['$scope','$route','$location','lazyModule', 'structureService', 'moduleScopeService'];
+  commonLoaderCtrl.$inject = ['$scope','$route','$location','lazyModule', 'structureService'];
 
-  function commonLoaderCtrl($scope, $route, $location, lazyModule, structureService, moduleScopeService) {
+  function commonLoaderCtrl($scope, $route, $location, lazyModule, structureService) {
     console.log("commonLoaderCtrl");
 
     $location.$$path = $location.$$path || '/';
 
-    var structure = structureService.get();
     $scope.templates = { $:'loaders/jquery/loaderJquery.view.html',
                          A:'loaders/angular/loaderAngular.view.html' };
-    //registrar ruta
-    findRoute($location.$$path, structure, function(module){
-      //When jQuery
+    //Register Route
+    structureService.getCurrent($location, function(module){
+
       $scope.module = module || $scope.module;
-      if(module){
 
-        //Setter of ModuleInfo to moduleScopeService
-        moduleScopeService.setModule(module);
-
-        if(module.type=="A"){
-          //When Angular
-          lazyModule().then(
-            function(data) {
-              console.log( "Lazy module loaded.",data);
-              var route = {
-                template: data,
-                controller : module.folder.substring(0,1).toUpperCase()+module.folder.substring(1)+'Ctrl'
-              }
-              setRoute(route);
-              //$scope.template = $scope.templates[module.type];
-            }
-          );
-        }else{
-          $scope.template = $scope.templates[module.type];
-        }
+      if(!module){
+          //TODO: Display a 404 error or similar
       }
+      else if( isAngularModule(module.type) ){
 
+        lazyModule().then(registerRoute);
+        function registerRoute(data) {
+          $route.when($location.$$path, {
+            template   : data,
+            controller : module.controller.substring(0,1).toUpperCase()+module.controller.substring(1)+'Ctrl'
+          }).reload();
+        }
 
+      }
+      else if( isJqueryModule(module.type) ){
+        $scope.template = $scope.templates[module.type];
+      }
+      else{
+        //TODO: Display error and blame developer
+      }
     });
 
-    $scope.data = JSON.stringify(structure, null, "    ");
-    //console.log($scope.data);
+    $scope.data = JSON.stringify(structureService.get(), null, "    ");
 
-
-    function setRoute(route){
-      $route.when($location.$$path, route).reload();
-
-      // console.log({
-      //   controller: currentLocationService.getControllerName()+'Ctrl'
-      // });
-    }
-
-    function findRoute(path, structure, callback){
-      for(var key in structure){
-        // console.log(key, path, path.indexOf(key));
-        if(path === key){
-          callback(structure[path]);
-        }
-        else if(path.indexOf(key) === 0){
-          findRoute(path, structure[key].children, callback);
-        }
-        else{
-          // console.log("*null*");
-          callback(null);
-        }
-      }
-    }
-    // I listen for the route change and store the current route action
-    // so that we can see how the routes changes after user interaction.
-    $scope.$on("$routeChangeSuccess", handleRouteChangeSuccessEvent);
-
-    function handleRouteChangeSuccessEvent( next , current) {
-      //console.log("Change Success");
-      $scope.routeAction = ( $route.current.action || null );
-    }
+    function isAngularModule(type){ return type == 'A'; }
+    function isJqueryModule (type){ return type == '$'; }
 
   }
 

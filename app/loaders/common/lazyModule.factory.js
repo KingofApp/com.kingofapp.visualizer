@@ -21,7 +21,7 @@ function lazyModuleFn( $rootScope, $templateCache, $location, $q, structureServi
     function loadFiles(moduleInfo){
 
       var files = [
-        "components/requirejs/text!"+moduleInfo.view,
+        "bower_components/requirejs-text/text!"+moduleInfo.view,
         moduleInfo.ctrl
       ];
       require( files, onRequireSuccess, onRequireError );

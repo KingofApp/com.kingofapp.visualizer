@@ -26,7 +26,6 @@ function lazyModuleFn( $rootScope, $templateCache, $location, $q, structureServi
       ];
       require( files, onRequireSuccess, onRequireError );
     };
-
     function onRequireSuccess( templatesHtml ) { // Module loaded, resolve deferred.
       $rootScope.$apply( success );
       function success() {

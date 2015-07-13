@@ -28,6 +28,19 @@ angular
       type: 'A',
       view: "modules/angmodule/index.html",
       ctrl: "modules/angmodule/controller.js",
+      scope: {
+        custom: "Custom module1"
+      }
+    };
+    var angmodule2 = {
+      name: 'Angular Module 2',
+      controller: 'angmodule',
+      type: 'A',
+      view: "modules/angmodule/index.html",
+      ctrl: "modules/angmodule/controller.js",
+      scope: {
+        custom: "Custom module2"
+      }
     };
 
     var rssmodule = {
@@ -97,6 +110,7 @@ angular
           '/y': y,
           '/youtube': youtube,
           '/angmodule': angmodule,
+          '/angmodule2': angmodule2,
           '/rssmodule': rssmodule,
           '/rssmodule2': rssmodule2
         }

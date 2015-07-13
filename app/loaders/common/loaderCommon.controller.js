@@ -22,15 +22,12 @@
           //TODO: Display a 404 error or similar
       }
       else if( isAngularModule(module.type) ){
-
-        lazyModule().then(registerRoute);
-        function registerRoute(data) {
+        lazyModule().then(function registerRoute(data) {
           $route.when($location.$$path, {
             template   : data,
             controller : module.controller.substring(0,1).toUpperCase()+module.controller.substring(1)+'Ctrl'
           }).reload();
-        }
-
+        });
       }
       else if( isJqueryModule(module.type) ){
         $scope.template = $scope.templates[module.type];

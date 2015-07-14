@@ -1,12 +1,19 @@
 /* app css stylesheet */
-
+body{
+  font-family: Arial, sans-serif;
+}
 div#main-king{
   width: 360px;
   height: 640px;
   margin: 10px;
   border: 3px solid gray;
+  position: relative;
+  overflow: hidden;
 }
-
+div.innerC{
+min-height: 140px;
+border: 1px solid red;
+}
 .full{
   width: 100%;
   height: 100%;
@@ -40,3 +47,108 @@ div#main-king{
   content: "";
   padding: 0;
 }
+
+.border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* statusBar */
+.statusBar{
+  background-color:#000;
+  color:#fff;
+}
+.statusBar p{
+  margin:0;
+}
+/*END statusBar*/
+
+
+/* SIDEMENU */
+span {
+  color: #888888;
+}
+button {
+  width: auto;
+  padding: 7px 22px;
+}
+menu {
+  display: block;
+}
+menu > div {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-transition: -webkit-transform ease 250ms;
+  -moz-transition: -webkit-transform ease 250ms;
+  -ms-transition: -webkit-transform ease 250ms;
+  -o-transition: -webkit-transform ease 250ms;
+  transition: -webkit-transform ease 250ms;
+  -webkit-transition: transform ease 250ms;
+  -moz-transition: transform ease 250ms;
+  -ms-transition: transform ease 250ms;
+  -o-transition: transform ease 250ms;
+  transition: transform ease 250ms;
+}
+menu > div.left {
+  background: #2b303b;
+  left: -250px;
+}
+menu > div.show.left {
+  transform: translate3d(250px, 0, 0);
+  -ms-transform: translate3d(250px, 0, 0);
+  -webkit-transform: translate3d(250px, 0, 0);
+  -o-transform: translate3d(250px, 0, 0);
+  -moz-transform: translate3d(250px, 0, 0);
+}
+menu > div.right {
+  background: #6B1919;
+  right: -250px;
+}
+menu > div.show.right {
+  transform: translate3d(-250px, 0, 0);
+  -ms-transform: translate3d(-250px, 0, 0);
+  -webkit-transform: translate3d(-250px, 0, 0);
+  -o-transform: translate3d(-250px, 0, 0);
+  -moz-transform: translate3d(-250px, 0, 0);
+}
+menu > div > menu-item {
+  display: block;
+  padding: 5px;
+  line-height: 28px;
+}
+menu > div > menu-item > div {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 10px 15px;
+  border-bottom: solid 1px #555;
+  cursor: pointer;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  color: #788195;
+}
+a:hover {
+  color: #ffffff !important;
+}
+a, a:focus, a:hover, a:active {
+  outline: 0 !important;
+  text-decoration: none;
+}
+a:link,
+a:visited,
+a:active {
+    color: #788195;
+}
+/*menu > div > menu-item > div:hover {
+  color: #F0F0F0;
+}*/
+menu > div > menu-item > div > span {
+  float: left;
+  color: inherit;
+}
+/* END SIDEMENU */

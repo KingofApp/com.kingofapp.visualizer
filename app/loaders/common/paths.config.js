@@ -11,7 +11,6 @@
 
     $sceProvider.enabled(false);
 
-    console.log("loading routes")
     //Default Route
     $routeProvider
       .otherwise({
@@ -19,10 +18,6 @@
         controller : 'commonLoaderCtrl',
         action     : "section-view2"
       });
-      // $routeProvider.otherwise({
-      //   templateUrl: 'loaders/common/king.html',
-      //   controller: 'commonLoaderCtrl'
-      // });
 
     [
       {name: 'controller', provider: $controllerProvider, method: 'register'  },

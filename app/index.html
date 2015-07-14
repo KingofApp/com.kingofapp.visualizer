@@ -20,9 +20,12 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div id="main-king" ng-view>
+  <div id="main-king">
+    <div ng-view>
 
+    </div>
   </div>
+
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -39,9 +42,12 @@
   <script src="loaders/common/module.js"></script>
   <script src="loaders/common/lazyModule.factory.js"></script>
   <script src="loaders/common/loaderCommon.controller.js"></script>
+  <script src="loaders/common/loaderMenu.controller.js"></script>
   <script src="loaders/common/paths.config.js"></script>
   <script src="loaders/common/route.decorator.js"></script>
   <script src="loaders/jquery/loaderJquery.directive.js"></script>
+  <script src="loaders/angular/loaderAngular.directive.js"></script>
+
 
 </body>
 </html>

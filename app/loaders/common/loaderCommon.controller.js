@@ -3,15 +3,12 @@
   angular
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl)
+  commonLoaderCtrl.$inject = ['$scope', '$rootScope','$route','$location','lazyModule', 'structureService'];
 
-  commonLoaderCtrl.$inject = ['$scope','$route','$location','lazyModule', 'structureService'];
-
-  function commonLoaderCtrl($scope, $route, $location, lazyModule, structureService) {
-    console.log("commonLoaderCtrl");
-
+  function commonLoaderCtrl($scope, $rootScope, $route, $location, lazyModule, structureService) {
     $location.$$path = $location.$$path || '/';
 
-    $scope.templates = { $:'loaders/jquery/loaderJquery.view.html',
+    var templates = { $:'loaders/jquery/loaderJquery.view.html',
                          A:'loaders/angular/loaderAngular.view.html' };
     //Register Route
     structureService.getCurrent($location, function(module){
@@ -24,13 +21,17 @@
       else if( isAngularModule(module.type) ){
         lazyModule().then(function registerRoute(data) {
           $route.when($location.$$path, {
-            template   : data,
+            // template   : data,
+            templateUrl : 'loaders/angular/loaderAngular.view.html',
             controller : module.controller.substring(0,1).toUpperCase()+module.controller.substring(1)+'Ctrl'
           }).reload();
         });
       }
       else if( isJqueryModule(module.type) ){
-        $scope.template = $scope.templates[module.type];
+        lazyModule().then(function registerRoute(data) {
+          $scope.template = templates[module.type];
+        });
+
       }
       else{
         //TODO: Display error and blame developer

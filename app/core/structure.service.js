@@ -2,9 +2,9 @@ angular
   .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
-  structureService.$inject = ['$location'];
+  //structureService.$inject = ['$location'];
 
-  function structureService($location){
+  function structureService(){
 
     var listeners = [];
     var cachedLocations = {};
@@ -176,10 +176,17 @@ angular
     }
 
     function update(newData){
-      data = newData;
-      angular.forEach(listeners, function(listener){
-        if(listener) listener(newData);
-      });
+      if(newData){
+        data = newData;
+        angular.forEach(listeners, function(listener){
+          if(listener) listener(newData);
+        });
+      }else{
+        return {
+          message: "Structure data should not be null", 
+          error  : true
+        };
+      }
     }
 
     function onChange(callback){

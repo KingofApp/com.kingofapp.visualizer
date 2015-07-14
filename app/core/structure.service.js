@@ -19,6 +19,7 @@ angular
     var y = {
       name: 'Module Y',
       type: '$',
+      menu: 'menu2',
       view: "modules/y/index.html",
       ctrl: "modules/y/controller.js",
     };
@@ -58,6 +59,7 @@ angular
       name: 'RSS Module 2',
       controller: 'rssmodule',
       type: 'A',
+      menu: 'menu2',
       view: "modules/rssmodule/index.html",
       ctrl: "modules/rssmodule/controller.js",
       scope: {
@@ -132,35 +134,42 @@ angular
 
     };
 
+    var menu = {
+      defaultMenu: "menu1",
+      items:{'/x': x,
+      '/y': y,
+      '/youtube': youtube,
+      '/angmodule': angmodule,
+      '/angmodule2': angmodule2,
+      '/rssmodule': rssmodule,
+      '/rssmodule2': rssmodule2}
+    };
+
     var data = {
       '/': {
-        name: 'Basic Menu',
+        name: 'Home',
         type: '$',
-        view: "modules/menu/index.html",
-        ctrl: "modules/menu/controller.js",
-        children: {
-          '/x': x,
-          '/y': y,
-          '/youtube': youtube,
-          '/youtube2': youtube2,
-          '/angmodule': angmodule,
-          '/angmodule2': angmodule2,
-          '/rssmodule': rssmodule,
-          '/rssmodule2': rssmodule2
-        }
+        view: "modules/home/index.html",
+        ctrl: "modules/home/controller.js",
+        children: menu.items
       }
     };
 
     return {
       get:  get,
       getCurrent: getCurrent,
+      getMenu: getMenu,
       update: update,
       onChange: onChange
     }
 
     function get(){
-      console.log('getData')
       return data;
+    }
+
+    function getMenu(){
+      console.log('getMenu')
+      return menu;
     }
 
     function getCurrent($location, callback){
@@ -194,8 +203,12 @@ angular
     }
 
     function findRoute(path, structure, callback){
+      //*** Meter menu como parte de modulo si no esta definido cargar el default
       for(var key in structure){
         if(path === key){
+          if(structure[path].menu==null){
+            structure[path].menu = menu.defaultMenu;
+          }
           callback(structure[path]);
         }
         else if(path.indexOf(key) === 0){

@@ -5,5 +5,6 @@ angular.module('myApp', [
   'ngRoute',
   'king.loaders.common',
   'king.loaders.jquery',
+  'king.loaders.angular',
   'king.core.structureService',
 ]);

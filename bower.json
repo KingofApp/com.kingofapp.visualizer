@@ -9,7 +9,7 @@
     "requirejs": "2.1.x",
     "requirejs-text": "2.0.x",
     "jquery": "2.x",
-    "angular": "1.4.0-rc.1",
+    "angular": "1.4.x",
     "angular-route": "1.4.x",
     "angular-resource": "1.4.x",
     "angular-loader": "1.4.x",

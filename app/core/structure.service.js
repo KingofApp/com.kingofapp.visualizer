@@ -149,24 +149,9 @@ angular
       '/': {
         name: 'Home',
         type: '$',
-<<<<<<< HEAD
         view: "modules/home/index.html",
         ctrl: "modules/home/controller.js",
         children: menu.items
-=======
-        view: "modules/menu/index.html",
-        ctrl: "modules/menu/controller.js",
-        children: {
-          '/x': x,
-          '/y': y,
-          '/youtube': youtube,
-          '/youtube2': youtube2,
-          '/angmodule': angmodule,
-          '/angmodule2': angmodule2,
-          '/rssmodule': rssmodule,
-          '/rssmodule2': rssmodule2
-        }
->>>>>>> origin/dev
       }
     };
 

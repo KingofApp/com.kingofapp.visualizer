@@ -7,19 +7,17 @@ function Menu1Ctrl($scope, $rootScope, structureService) {
 
   console.log("Menu1CTrl loaded");
 
-  $scope = {
-    leftVisible: false,
-    menu       : structureService.getMenu(),
-    showLeft   : showLeftFn,
-    close      : closeFn
-  };
+  $scope.leftVisible = false;
+  $scope.menu        = structureService.getMenu();
+  $scope.showLeft    = showLeftFn;
+  $scope.close       = closeFn;
 
-  function showLeft(e) {
+  function showLeftFn(e) {
     $scope.leftVisible = true;
     e.stopPropagation();
   }
 
-  function close() {
+  function closeFn() {
     $scope.leftVisible = false;
   }
 

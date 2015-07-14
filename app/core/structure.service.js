@@ -100,6 +100,39 @@ angular
       }
 
     };
+    var youtube2 = {
+      name: 'youtube2',
+      type: '$',
+      scope: {
+        video: "L0ReUkIA7F4",
+        time: {hours: 12, minutes: 7},
+        map: 'spain'
+      },
+      view: "modules/youtube/index.html",
+      ctrl: "modules/youtube/controller.js",
+      config: {
+        video: {
+          type: 'text',
+          min: 4,
+          max: 200,
+          regex: '/\w./',
+        },
+        time: {
+          type: 'composed',
+          elements: {
+            hours:   { type: 'number', min: 0, max: 23 },
+            minutes: { type: 'number', min: 0, max: 59 }
+          }
+        },
+        map: {
+          type: 'custom',
+          view: "modules/youtube/index.html",
+          ctrl: "modules/youtube/controller.js",
+
+        }
+      }
+
+    };
 
     var menu = {
       defaultMenu: "menu1",
@@ -116,9 +149,24 @@ angular
       '/': {
         name: 'Home',
         type: '$',
+<<<<<<< HEAD
         view: "modules/home/index.html",
         ctrl: "modules/home/controller.js",
         children: menu.items
+=======
+        view: "modules/menu/index.html",
+        ctrl: "modules/menu/controller.js",
+        children: {
+          '/x': x,
+          '/y': y,
+          '/youtube': youtube,
+          '/youtube2': youtube2,
+          '/angmodule': angmodule,
+          '/angmodule2': angmodule2,
+          '/rssmodule': rssmodule,
+          '/rssmodule2': rssmodule2
+        }
+>>>>>>> origin/dev
       }
     };
 

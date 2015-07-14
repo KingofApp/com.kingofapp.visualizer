@@ -31,6 +31,26 @@
 					expect(list.get(0).getText()).toBe('new dinamic text');
 				});
 
+				it('youtube1', function() {
+					browser.get('/app/#/youtube');
+
+					list = element(by.css('iframe'));
+					expect(list.isPresent()).toBe(true);
+					list.getAttribute("src").then( function(attr){
+						expect(attr).toBe('https://www.youtube.com/embed/k1eKW37q8Fo');
+					});
+				});
+
+				it('youtube2', function() {
+					browser.get('/app/#/youtube2');
+
+					list = element(by.css('iframe'));
+					expect(list.isPresent()).toBe(true);
+					list.getAttribute("src").then( function(attr){
+						expect(attr).toBe('https://www.youtube.com/embed/L0ReUkIA7F4');
+					});
+				});
+
 			});
 
 			describe('should load a AngularJs module ('+i+')' , function() {
@@ -57,6 +77,7 @@
 					list = element.all(by.css('span'));
 					expect(list.get(0).getText()).toBe('Custom module1');
 				});
+
 				it('angmodule2', function() {
 					browser.get('/app/#/angmodule2');
 					browser.wait(function() {
@@ -92,6 +113,7 @@
 					expect(list.count()).toBeGreaterThan(0);
 				});
 				*/
+				
 
 			});
 		}

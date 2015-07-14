@@ -12,7 +12,7 @@ module.exports = function(config){
       {pattern: 'app/bower_components/angular-route/angular-route.js', included: true},
       {pattern: 'app/bower_components/jquery/dist/jquery.js', included: true},
       //{pattern: 'app/bower_components/protractor/lib/runner.js', included: false},
-      'app/loaders/**/*.test.js'
+      'app/loaders/**/*.unit.test.js'
     ],
 
 

@@ -4,7 +4,9 @@ angular
 RssmoduleCtrl.$inject = ['$scope','$http', '$location', 'structureService'];
 
 function RssmoduleCtrl($scope, $http, $location, structureService) {
-  $scope.init = function() {
+  console.log("Dentro de RSSModule");
+  $scope["template"+0]="modules/rssmodule/index.html";
+
 
     structureService.getCurrent( $location, function(moduleInfo){
 
@@ -19,6 +21,4 @@ function RssmoduleCtrl($scope, $http, $location, structureService) {
           console.log("ERROR: " + data);
         });
     });
-
-  };
 }

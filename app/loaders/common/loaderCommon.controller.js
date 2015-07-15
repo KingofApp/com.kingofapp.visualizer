@@ -14,7 +14,12 @@
     structureService.getCurrent($location, function(module){
 
       $scope.module = module || $scope.module;
-
+      var split = $location.$$path.split("/");
+      var moduleTemplate = split[split.length-2];
+      if(!split[split.length-2]){
+        moduleTemplate = split[split.length-1];
+      }
+      //console.log("Split",);
       if(!module){
           //TODO: Display a 404 error or similar
       }
@@ -22,7 +27,7 @@
         lazyModule().then(function registerRoute(data) {
           $route.when($location.$$path, {
             // template   : data,
-            templateUrl : 'loaders/angular/loaderAngular.view.html',
+            templateUrl : 'modules/'+moduleTemplate+'/index.html',
             controller : module.controller.substring(0,1).toUpperCase()+module.controller.substring(1)+'Ctrl'
           }).reload();
         });

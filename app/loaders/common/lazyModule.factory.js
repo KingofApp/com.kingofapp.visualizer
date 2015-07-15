@@ -21,7 +21,7 @@ function lazyModuleFn( $rootScope, $templateCache, $location, $q, structureServi
 
       var files = [
         "bower_components/requirejs-text/text!"+moduleInfo.view,
-        "modules/"+moduleInfo.menu+"/controller.js",
+        // "modules/"+moduleInfo.menu+"/controller.js",
         moduleInfo.ctrl
       ];
       require( files, onRequireSuccess, onRequireError );

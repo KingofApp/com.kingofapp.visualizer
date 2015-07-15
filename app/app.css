@@ -13,6 +13,12 @@ div#main-king{
 div.innerC{
 min-height: 140px;
 border: 1px solid red;
+margin:5px;
+}
+div.innerM{
+  min-height: 140px;
+  border: 1px solid orange;
+  margin:5px;
 }
 .full{
   width: 100%;

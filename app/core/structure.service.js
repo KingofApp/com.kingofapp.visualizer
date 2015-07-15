@@ -33,6 +33,16 @@ angular
         custom: "Custom module1"
       }
     };
+    var menu1 = {
+      name: 'Menu 1 Module',
+      controller: 'menu1',
+      type: 'A',
+      view: "modules/menu1/index.html",
+      ctrl: "modules/menu1/controller.js",
+      scope: {
+        custom: "Custom menu1"
+      }
+    };
     var angmodule2 = {
       name: 'Angular Module 2',
       controller: 'angmodule',
@@ -139,9 +149,10 @@ angular
       items:{'/x': x,
       '/y': y,
       '/youtube': youtube,
-      '/angmodule': angmodule,
+      '/menu1/angmodule': angmodule,
+      '/menu1': menu1,
       '/angmodule2': angmodule2,
-      '/rssmodule': rssmodule,
+      '/menu1/angmodule/rssmodule': rssmodule,
       '/rssmodule2': rssmodule2}
     };
 
@@ -192,7 +203,7 @@ angular
         });
       }else{
         return {
-          message: "Structure data should not be null", 
+          message: "Structure data should not be null",
           error  : true
         };
       }

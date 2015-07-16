@@ -3,24 +3,31 @@
 
 		var list;
 
-		for(var i=0; i<2; i++){
+		for(var i=0; i<1; i++){
 			
 			describe('should load a Jquery module ('+i+')' , function() {
 
 				it('X', function() {
+
 					browser.get('/app/#/x');
+					browser.wait(function() {
+				   		return $('h1').isPresent(); // keeps waiting until this statement resolves to true
+					}, 1000, 'message to log to console if element is not present after that time');
 
 					list = element.all(by.css('h1'));
 					expect(list.get(0).isPresent()).toBe(true);
 					expect(list.get(0).getText()).toBe('Module X');
-
 					list = element.all(by.css('h2'));
 					expect(list.get(0).isPresent()).toBe(true);
 					expect(list.get(0).getText()).toBe('Added by Jquery');
 				});
 
 				it('Y', function() {
+
 					browser.get('/app/#/y');
+					browser.wait(function() {
+				   		return $('h1').isPresent(); // keeps waiting until this statement resolves to true
+					}, 1000, 'message to log to console if element is not present after that time');
 
 					list = element.all(by.css('h1'));
 					expect(list.get(0).isPresent()).toBe(true);
@@ -32,7 +39,11 @@
 				});
 
 				it('youtube1', function() {
+
 					browser.get('/app/#/youtube');
+					browser.wait(function() {
+				   		return $('iframe').isPresent(); // keeps waiting until this statement resolves to true
+					}, 1000, 'message to log to console if element is not present after that time');
 
 					list = element(by.css('iframe'));
 					expect(list.isPresent()).toBe(true);
@@ -42,7 +53,11 @@
 				});
 
 				it('youtube2', function() {
+
 					browser.get('/app/#/youtube2');
+					browser.wait(function() {
+				   		return $('iframe').isPresent(); // keeps waiting until this statement resolves to true
+					}, 1000, 'message to log to console if element is not present after that time');
 
 					list = element(by.css('iframe'));
 					expect(list.isPresent()).toBe(true);
@@ -63,7 +78,7 @@
 					expect($('p').isPresent()).toBe(true);
 
 					list = element.all(by.css('p'));
-					expect(list.get(0).getText()).toBe('URLqwdqw');
+					expect(list.get(0).getText()).toBe('Menu Title');
 				});
 
 

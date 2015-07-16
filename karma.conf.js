@@ -30,9 +30,29 @@ module.exports = function(config){
               'jasmine'
               ],
 
-    browsers : ['Chrome'
+    browsers : ['PhantomJS'
+              // 'Chrome'
               //, 'Firefox'
               ],
+    customLaunchers: {
+      'PhantomJS_custom': {
+        base: 'PhantomJS',
+        options: {
+          windowName: 'my-window',
+          settings: {
+            webSecurityEnabled: false
+          },
+        },
+        flags: ['--load-images=true'],
+        debug: true
+      }
+    },
+
+    phantomjsLauncher: {
+      // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
+      exitOnResourceError: true
+    },
+
 
     plugins : [
             //'karma-ng-scenario',
@@ -40,6 +60,7 @@ module.exports = function(config){
             'karma-firefox-launcher',
             'karma-jasmine',
             //'karma-mocha',
+            'karma-phantomjs-launcher',
             'protractor',
             'karma-junit-reporter'
             ],

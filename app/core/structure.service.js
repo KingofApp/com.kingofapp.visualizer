@@ -170,7 +170,7 @@ angular
     }
 
     function getMenu(){
-      console.log('getMenu')
+      //console.log('getMenu')
       return menu;
     }
 
@@ -188,9 +188,9 @@ angular
 
       function findRoute(path, structure, callback){
         //*** Meter menu como parte de modulo si no esta definido cargar el default
-        console.log(structure)
+        //console.log(structure)
         for(var key in structure){
-          console.log(key);
+          //console.log(key);
           if(path === key){
             if(structure[path].menu==null){
               structure[path].menu = menu.defaultMenu;

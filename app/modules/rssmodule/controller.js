@@ -5,7 +5,9 @@ RssmoduleCtrl.$inject = ['$scope','$http', '$location', 'structureService'];
 
 function RssmoduleCtrl($scope, $http, $location, structureService) {
   console.log("Dentro de RSSModule");
-  $scope["template"+0]="modules/rssmodule/index.html";
+  $scope["template"+1]="modules/rssmodule/index.html";
+  $scope["template"+0]="modules/angmodule/index.html";
+  console.log($scope.$parent);
 
 
     structureService.getCurrent( $location, function(moduleInfo){

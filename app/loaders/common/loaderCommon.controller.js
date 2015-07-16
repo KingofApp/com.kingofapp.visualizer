@@ -27,7 +27,7 @@
         lazyModule().then(function registerRoute(data) {
           $route.when($location.$$path, {
             // template   : data,
-            templateUrl : 'modules/'+moduleTemplate+'/index.html',
+            templateUrl : 'modules/menu1/index.html',
             controller : module.controller.substring(0,1).toUpperCase()+module.controller.substring(1)+'Ctrl'
           }).reload();
         });

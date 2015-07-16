@@ -149,11 +149,11 @@ angular
       items:{'/x': x,
       '/y': y,
       '/youtube': youtube,
-      '/menu1/angmodule': angmodule,
       '/menu1': menu1,
-      '/angmodule2': angmodule2,
+      '/menu1/angmodule': angmodule,
+      '/menu1/angmodule2': angmodule2,
       '/menu1/angmodule/rssmodule': rssmodule,
-      '/rssmodule2': rssmodule2}
+      '/menu1/rssmodule2': rssmodule2}
     };
 
     var data = {
@@ -167,11 +167,12 @@ angular
     };
 
     return {
-      get:  get,
-      getCurrent: getCurrent,
-      getMenu: getMenu,
-      update: update,
-      onChange: onChange
+      get               : get,
+      getCurrent        : getCurrent,
+      getCurrentModules : getCurrentModules,
+      getMenu           : getMenu,
+      update            : update,
+      onChange          : onChange
     }
 
     function get(){
@@ -179,7 +180,6 @@ angular
     }
 
     function getMenu(){
-      console.log('getMenu')
       return menu;
     }
 
@@ -193,6 +193,22 @@ angular
           callback(module);
         });
       }
+    }
+    function getCurrentModules($location, callback){
+        var moduleList = []
+        var path = $location.$$path;
+        var split = path.split("/");
+
+        angular.forEach(split.reverse(), function(value, key) {
+          if(value!=""){
+            var moduleee = findRoute(path, data, function(module){
+                moduleList.push(module);
+            });
+            path=path.replace("/"+value,"");
+          }
+        });
+        // console.log("ModuleLIST",moduleList);
+        callback(moduleList);
     }
 
     function update(newData){

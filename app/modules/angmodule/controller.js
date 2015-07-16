@@ -11,6 +11,7 @@ function loadFunction($scope, structureService, $location){
   $scope.test = "URLqwdqw";
   structureService.getCurrent( $location, function(moduleInfo){
   	  $scope.custom = moduleInfo.scope.custom;
+      $scope.test=moduleInfo.scope.custom;
     });
 
 }

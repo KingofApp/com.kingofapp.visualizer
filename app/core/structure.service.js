@@ -153,7 +153,7 @@ angular
       '/menu1/angmodule': angmodule,
       '/menu1/angmodule2': angmodule2,
       '/menu1/angmodule/rssmodule': rssmodule,
-      '/menu1/rssmodule2': rssmodule2}
+      '/rssmodule2': rssmodule2}
     };
 
     var data = {

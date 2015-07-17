@@ -6,12 +6,26 @@ angular
 loadFunction.$inject = ['$scope', 'structureService', '$location'];
 
 function loadFunction($scope, structureService, $location){
-  $scope["template"+0]="modules/angmodule/index.html";
+ structureService.getCurrent( $location, function(moduleInfo){
+   //OYE QUE MODULO TENGO ANTES DE ESTE? - $scope.{{NOMBREDEMODULO}} = actualmodulo.view
+  //  var split = $location.$$path.split("/");
+   $scope.menu1Template = moduleInfo.view;
+  //  if(split[split.length-1]=='angmodule'){
+  //    console.log("No Cargo");
+  //  }else{
+  //    console.log("Cargo el ultimo");
+  //    //$scope.angmoduleTemplate = moduleInfo.view;
+  //  }
+
+ });
+
   console.log("Dentro de AngModuleCtrl");
-  $scope.test = "URLqwdqw";
+  //** REVISAR LA LLAMADA A GETCURRENT
   structureService.getCurrent( $location, function(moduleInfo){
-  	  $scope.custom = moduleInfo.scope.custom;
-      $scope.test=moduleInfo.scope.custom;
+      $scope.angmodule = {
+        test:"URLqwdqw NO",
+        custom:moduleInfo.scope.custom
+      }
     });
 
 }

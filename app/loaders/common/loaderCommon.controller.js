@@ -28,6 +28,7 @@ console.log("MODULE", module);
           console.log("LOADING",$location.$$path.split("/")[1]);
           $route.when($location.$$path, {
             // template   : data,
+            //** HAY que cargar la info de module no de path.split
             templateUrl : 'modules/'+$location.$$path.split("/")[1]+'/index.html',
             // controller : module.controller.substring(0,1).toUpperCase()+module.controller.substring(1)+'Ctrl'
             controller : module.controller.substring(0,1).toUpperCase()+module.controller.substring(1)+'Ctrl'

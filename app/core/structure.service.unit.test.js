@@ -1,8 +1,11 @@
 (function(){
 	'use strict';
 	describe('structureService', function() {
+		beforeEach(function(){
+		    browser.driver.manage().window().setSize(1124, 850);
+		    browser.ignoreSynchronization = true;
+		});
 		beforeEach(module('king.core.structureService'));
-
 
 		describe('.getCurrent()', function(){
 			
@@ -109,5 +112,8 @@
 		});
 
 
+		afterEach(function() {
+			browser.ignoreSynchronization = false;
+		});
 	});
 }());

@@ -96,7 +96,7 @@
 	grunt.loadNpmTasks('grunt-browser-sync')
 
 	grunt.registerTask('serve', ['karma:continuous:start', 'run:mock_server', 'connect:livereload', 'watch:karma']);
-	grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
+	//grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
 	grunt.registerTask('local-test', ['connect:test',  'protractor:continuous', 'watch:protractor']);
 
 	grunt.registerTask('test', ['karma:unit:start', 'connect:connect', 'run:mock_server', 'protractor:continuous']);

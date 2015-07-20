@@ -2,6 +2,10 @@
 	describe('loaderCommon', function() {
 
 		var list;
+		beforeEach(function(){
+		    browser.driver.manage().window().setSize(1124, 850);
+		    browser.ignoreSynchronization = true;
+		});
 
 		for(var i=0; i<1; i++){
 			
@@ -12,7 +16,7 @@
 					browser.get('/app/#/x');
 					browser.wait(function() {
 				   		return $('h1').isPresent(); // keeps waiting until this statement resolves to true
-					}, 1000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 
 					list = element.all(by.css('h1'));
 					expect(list.get(0).isPresent()).toBe(true);
@@ -27,7 +31,7 @@
 					browser.get('/app/#/y');
 					browser.wait(function() {
 				   		return $('h1').isPresent(); // keeps waiting until this statement resolves to true
-					}, 1000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 
 					list = element.all(by.css('h1'));
 					expect(list.get(0).isPresent()).toBe(true);
@@ -43,7 +47,7 @@
 					browser.get('/app/#/youtube');
 					browser.wait(function() {
 				   		return $('iframe').isPresent(); // keeps waiting until this statement resolves to true
-					}, 1000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 
 					list = element(by.css('iframe'));
 					expect(list.isPresent()).toBe(true);
@@ -57,7 +61,7 @@
 					browser.get('/app/#/youtube2');
 					browser.wait(function() {
 				   		return $('iframe').isPresent(); // keeps waiting until this statement resolves to true
-					}, 1000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 
 					list = element(by.css('iframe'));
 					expect(list.isPresent()).toBe(true);
@@ -74,7 +78,7 @@
 					browser.get('/app/#/angmodule');
 					browser.wait(function() {
 					    return $('p').isPresent(); // keeps waiting until this statement resolves to true
-					}, 1000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 					expect($('p').isPresent()).toBe(true);
 
 					list = element.all(by.css('p'));
@@ -86,7 +90,7 @@
 					browser.get('/app/#/angmodule');
 					browser.wait(function() {
 					    return $('span').isPresent(); // keeps waiting until this statement resolves to true
-					}, 3000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 					expect($('span').isPresent()).toBe(true);
 
 					list = element.all(by.css('span'));
@@ -97,7 +101,7 @@
 					browser.get('/app/#/angmodule2');
 					browser.wait(function() {
 					    return $('span').isPresent(); // keeps waiting until this statement resolves to true
-					}, 3000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 					expect($('span').isPresent()).toBe(true);
 
 					list = element.all(by.css('span'));
@@ -110,7 +114,7 @@
 					browser.get('/app/#/rssmodule2');
 					browser.wait(function() {
 					    return $('.item').isPresent(); // keeps waiting until this statement resolves to true
-					}, 3000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 					expect($('.item').isPresent()).toBe(true);
 
 					list = element.all(by.css('.item'));
@@ -121,7 +125,7 @@
 					browser.get('/app/#/rssmodule');
 					browser.wait(function() {
 					    return $('.item').isPresent(); // keeps waiting until this statement resolves to true
-					}, 3000, 'message to log to console if element is not present after that time');
+					}, 5000, 'message to log to console if element is not present after that time');
 					expect($('.item').isPresent()).toBe(true);
 
 					list = element.all(by.css('.item'));
@@ -132,7 +136,9 @@
 
 			});
 		}
-
+		afterEach(function() {
+			browser.ignoreSynchronization = false;
+		});
 
 	});
 }());

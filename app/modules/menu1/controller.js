@@ -4,11 +4,15 @@ angular
 Menu1Ctrl.$inject = ['$scope','$rootScope', '$location', 'structureService'];
 
 function Menu1Ctrl($scope, $rootScope, $location, structureService) {
-  // structureService.getCurrent( $location, function(moduleInfo){
-  //   $scope.menu1Template = moduleInfo.view;
-  // });
+  //Register upper level modules
+  structureService.getCurrentModules( $location, function(modules){
+    angular.forEach(modules, function(value, key) {
+      if(modules[key+1]){
+        $scope[modules[key+1].controller+'Template'] = value.view;
+      }
+    });
+  });
   console.log("Menu1CTrl loaded");
-  //$scope.menu1Template =
   $scope.leftVisible = false;
   $scope.menu        = structureService.getMenu();
   $scope.showLeft    = showLeftFn;

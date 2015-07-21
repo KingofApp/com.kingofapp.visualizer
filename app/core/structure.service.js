@@ -169,6 +169,7 @@ angular
     return {
       get               : get,
       getCurrent        : getCurrent,
+      getModulefromPath : getModulefromPath,
       getCurrentModules : getCurrentModules,
       getMenu           : getMenu,
       update            : update,
@@ -181,6 +182,18 @@ angular
 
     function getMenu(){
       return menu;
+    }
+
+    function getModulefromPath(path, callback){
+      if(cachedLocations[path]){
+        callback(cachedLocations[path]);
+      }
+      else{
+        findRoute(path, data, function(module){
+          cachedLocations[path] = module;
+          callback(module);
+        });
+      }
     }
 
     function getCurrent($location, callback){

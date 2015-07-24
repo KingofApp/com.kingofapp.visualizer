@@ -146,17 +146,6 @@ angular
 
     var menu = {
       defaultMenu: "menu1",
-<<<<<<< HEAD
-      items:{
-        '/x': x,
-        '/y': y,
-        '/youtube': youtube,
-        '/youtube2': youtube2,
-        '/angmodule': angmodule,
-        '/angmodule2': angmodule2,
-        '/rssmodule': rssmodule,
-        '/rssmodule2': rssmodule2}
-=======
       items:{'/x': x,
       '/y': y,
       '/youtube': youtube,
@@ -165,7 +154,6 @@ angular
       '/menu1/angmodule2': angmodule2,
       '/menu1/angmodule/rssmodule': rssmodule,
       '/rssmodule2': rssmodule2}
->>>>>>> nesting-htmls
     };
 
     var data = {
@@ -193,10 +181,6 @@ angular
     }
 
     function getMenu(){
-<<<<<<< HEAD
-      //console.log('getMenu')
-=======
->>>>>>> nesting-htmls
       return menu;
     }
 
@@ -213,7 +197,6 @@ angular
     }
 
     function getCurrent($location, callback){
-
       if(cachedLocations[$location.$$path]){
         callback(cachedLocations[$location.$$path]);
       }
@@ -223,24 +206,6 @@ angular
           callback(module);
         });
       }
-
-      function findRoute(path, structure, callback){
-        //*** Meter menu como parte de modulo si no esta definido cargar el default
-        //console.log(structure)
-        for(var key in structure){
-          //console.log(key);
-          if(path === key){
-            if(structure[path].menu==null){
-              structure[path].menu = menu.defaultMenu;
-            }
-            callback(structure[path]);
-          }
-          else if(path.indexOf(key) === 0){
-            findRoute(path, structure[key].children, callback);
-          }
-        }
-      }
-
     }
     function getCurrentModules($location, callback){
         var moduleList = []
@@ -260,76 +225,36 @@ angular
     }
 
     function update(newData){
-
-      var verifications = {
-        name: {verification: 'isString', errorMessage: 'name should be a String'},
-        type: {verification: 'isString', errorMessage: 'type should be a String'},
-        view: {verification: 'isString', errorMessage: 'view should be a String'},
-        ctrl: {verification: 'isString', errorMessage: 'ctrl should be a String'}
-      }
-
-      var errors = verifyChildrenModules(newData);
-
-
       if(newData){
-
-        if(!errors.length){ /*UPDATING PROCESS*/
-          data = newData;
-          angular.forEach(listeners, function(listener){
-            if(listener) listener(newData);
-          });
-          return { error: false };
-        }
-        else{
-          return { error: true, message: errors };
-        }
+        data = newData;
+        angular.forEach(listeners, function(listener){
+          if(listener) listener(newData);
+        });
       }else{
-<<<<<<< HEAD
-        return { error: true, message: 'Structure data should be an Object'};
-=======
         return {
           message: "Structure data should not be null",
           error  : true
         };
->>>>>>> nesting-htmls
       }
-
-      function verifyChildrenModules(module){
-
-        var errors = Array(0);
-        angular.forEach(newData, verifyModuleAndChildren, errors);
-        return errors;
-
-        function verifyModuleAndChildren(module, path) {
-          var result = verify(module);
-          if(result.length){
-            this.push({path: path, errors: result});
-          }
-          var childrenVerifications = angular.forEach(module.children, verifyChildrenModules);
-          if  (childrenVerifications) this.push(childrenVerifications);
-        }
-      }
-
-      function verify(module){
-        var errors = Array(0);
-        angular.forEach(verifications, verifySingle, errors);
-
-        return errors;
-
-        function verifySingle(value, key){
-          if (!module[key] || !angular[value.verification](module[key]) ){
-            this.push(value.errorMessage);
-          }
-        }
-
-      }
-
     }
 
     function onChange(callback){
       listeners.push[callback];
     }
 
-
+    function findRoute(path, structure, callback){
+      //*** Meter menu como parte de modulo si no esta definido cargar el default
+      for(var key in structure){
+        if(path === key){
+          if(structure[path].menu==null){
+            structure[path].menu = menu.defaultMenu;
+          }
+          callback(structure[path]);
+        }
+        else if(path.indexOf(key) === 0){
+          findRoute(path, structure[key].children, callback);
+        }
+      }
+    }
 
   };

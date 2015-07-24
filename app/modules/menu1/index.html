@@ -6,5 +6,11 @@
   <menu visible="leftVisible" alignment="left">
     <menu-item ng-repeat="(key, value) in menu.items"><a ng-href="/app/#{{key}}">{{value.name}}</a></menu-item>
   </menu>
-  
+  <div>
+    Content:
+    <div class='innerM'>
+      <div ng-include="menu1Template">
+      </div>
+    </div>
+  </div>
 </div>

@@ -13,19 +13,18 @@ function lazyModuleFn( $rootScope, $templateCache, $location, $q, structureServi
     var deferred = $q.defer();
     var promise  = deferred.promise;
 
-    structureService.getCurrent($location, loadFiles);
+    structureService.getCurrentModules($location, loadFiles);
 
     return promise;
 
-    function loadFiles(moduleInfo){
-
-      var files = [
-        "bower_components/requirejs-text/text!"+moduleInfo.view,
-        "modules/"+moduleInfo.menu+"/controller.js",
-        moduleInfo.ctrl
-      ];
+    function loadFiles(modules){
+      var files = [];
+      angular.forEach(modules, function(value, key) {
+        this.push(value.ctrl);
+      }, files);
       require( files, onRequireSuccess, onRequireError );
     };
+
     function onRequireSuccess( templatesHtml ) { // Module loaded, resolve deferred.
       $rootScope.$apply( success );
       function success() {

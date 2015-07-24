@@ -1,2 +1,9 @@
-<p>{{ test }}</p>
-<span>{{ custom }}</span>
+<div ng-controller='AngmoduleCtrl'>
+<p>{{ angmodule.test }}</p>
+<span>{{ angmodule.custom }}</span>
+<input type='text' name='test' />
+<div class='innerM'>
+  <div ng-include="angmoduleTemplate">
+  </div>
+</div>
+</div>

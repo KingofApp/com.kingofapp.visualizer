@@ -33,6 +33,16 @@ angular
         custom: "Custom module1"
       }
     };
+    var menu1 = {
+      name: 'Menu 1 Module',
+      controller: 'menu1',
+      type: 'A',
+      view: "modules/menu1/index.html",
+      ctrl: "modules/menu1/controller.js",
+      scope: {
+        custom: "Custom menu1"
+      }
+    };
     var angmodule2 = {
       name: 'Angular Module 2',
       controller: 'angmodule',
@@ -136,6 +146,7 @@ angular
 
     var menu = {
       defaultMenu: "menu1",
+<<<<<<< HEAD
       items:{
         '/x': x,
         '/y': y,
@@ -145,6 +156,16 @@ angular
         '/angmodule2': angmodule2,
         '/rssmodule': rssmodule,
         '/rssmodule2': rssmodule2}
+=======
+      items:{'/x': x,
+      '/y': y,
+      '/youtube': youtube,
+      '/menu1': menu1,
+      '/menu1/angmodule': angmodule,
+      '/menu1/angmodule2': angmodule2,
+      '/menu1/angmodule/rssmodule': rssmodule,
+      '/rssmodule2': rssmodule2}
+>>>>>>> nesting-htmls
     };
 
     var data = {
@@ -158,11 +179,13 @@ angular
     };
 
     return {
-      get:  get,
-      getCurrent: getCurrent,
-      getMenu: getMenu,
-      update: update,
-      onChange: onChange
+      get               : get,
+      getCurrent        : getCurrent,
+      getModulefromPath : getModulefromPath,
+      getCurrentModules : getCurrentModules,
+      getMenu           : getMenu,
+      update            : update,
+      onChange          : onChange
     }
 
     function get(){
@@ -170,8 +193,23 @@ angular
     }
 
     function getMenu(){
+<<<<<<< HEAD
       //console.log('getMenu')
+=======
+>>>>>>> nesting-htmls
       return menu;
+    }
+
+    function getModulefromPath(path, callback){
+      if(cachedLocations[path]){
+        callback(cachedLocations[path]);
+      }
+      else{
+        findRoute(path, data, function(module){
+          cachedLocations[path] = module;
+          callback(module);
+        });
+      }
     }
 
     function getCurrent($location, callback){
@@ -204,6 +242,22 @@ angular
       }
 
     }
+    function getCurrentModules($location, callback){
+        var moduleList = []
+        var path = $location.$$path;
+        var split = path.split("/");
+
+        angular.forEach(split.reverse(), function(value, key) {
+          if(value!=""){
+            var moduleee = findRoute(path, data, function(module){
+                moduleList.push(module);
+            });
+            path=path.replace("/"+value,"");
+          }
+        });
+        // console.log("ModuleLIST",moduleList);
+        callback(moduleList);
+    }
 
     function update(newData){
 
@@ -230,7 +284,14 @@ angular
           return { error: true, message: errors };
         }
       }else{
+<<<<<<< HEAD
         return { error: true, message: 'Structure data should be an Object'};
+=======
+        return {
+          message: "Structure data should not be null",
+          error  : true
+        };
+>>>>>>> nesting-htmls
       }
 
       function verifyChildrenModules(module){

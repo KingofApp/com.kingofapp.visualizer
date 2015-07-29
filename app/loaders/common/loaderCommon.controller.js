@@ -21,7 +21,7 @@
         lazyModule().then(function registerRoute(data) {
           structureService.getModulefromPath( "/"+$location.$$path.split("/")[1], function(moduleInfo){
             $route.when($location.$$path, {
-              templateUrl : 'modules/'+moduleInfo.controller+'/index.html'
+              templateUrl : moduleInfo.view
             }).reload();
 
           });

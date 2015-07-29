@@ -7,7 +7,7 @@
 6 verbose unsafe-perm in lifecycle true
 7 info angular-seed@0.0.0 Failed to exec prestart script
 8 verbose stack Error: angular-seed@0.0.0 prestart: `npm install`
-8 verbose stack Exit status 1
+8 verbose stack Exit status 243
 8 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
 8 verbose stack     at EventEmitter.emit (events.js:110:17)
 8 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
@@ -22,7 +22,7 @@
 14 error npm  v2.11.2
 15 error code ELIFECYCLE
 16 error angular-seed@0.0.0 prestart: `npm install`
-16 error Exit status 1
+16 error Exit status 243
 17 error Failed at the angular-seed@0.0.0 prestart script 'npm install'.
 17 error This is most likely a problem with the angular-seed package,
 17 error not with npm itself.

@@ -1,7 +1,7 @@
 <div ng-controller="Menu1Ctrl">
 <!-- <div> -->
   <div class='statusBar'>
-    <p><button ng-click="showLeft($event)">Menu</button>  Title</p>
+    <p><button ng-click="showLeft($event)">Menu</button>  {{title}}</p>
   </div>
   <menu visible="leftVisible" alignment="left">
     <menu-item ng-repeat="(key, value) in menu.items"><a ng-href="/app/#{{key}}">{{value.name}}</a></menu-item>
@@ -9,7 +9,8 @@
   <div>
     Content:
     <div class='innerM'>
-      <div ng-include="menu1Template">
+      <!-- moduleIdentifier + Template -->
+      <div ng-include="angularmenuTemplate">
       </div>
     </div>
   </div>

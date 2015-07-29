@@ -9,162 +9,135 @@ angular
     var listeners = [];
     var cachedLocations = {};
 
-    var x = {
-      name: 'Module X',
-      type: '$',
-      view: "modules/x/index.html",
-      ctrl: "modules/x/controller.js",
-    };
-
-    var y = {
-      name: 'Module Y',
-      type: '$',
-      menu: 'menu2',
-      view: "modules/y/index.html",
-      ctrl: "modules/y/controller.js",
-    };
-    var angmodule = {
-      name: 'Angular Module',
-      controller: 'angmodule',
+    var angularscope = {
+      name: 'Angular Scope Module',
+      identifier: 'angularscope',
       type: 'A',
-      view: "modules/angmodule/index.html",
-      ctrl: "modules/angmodule/controller.js",
+      view: "modules/angular-scope/index.html",
+      ctrl: "modules/angular-scope/controller.js",
       scope: {
-        custom: "Custom module1"
+        custom: ""
       }
     };
-    var menu1 = {
-      name: 'Menu 1 Module',
-      controller: 'menu1',
+
+    var angulardiffscope = {
+      name: 'Angular Different Scope Module',
+      identifier: 'angularscope',
       type: 'A',
-      view: "modules/menu1/index.html",
-      ctrl: "modules/menu1/controller.js",
+      view: "modules/angular-scope/index.html",
+      ctrl: "modules/angular-scope/controller.js",
       scope: {
-        custom: "Custom menu1"
+        custom: ""
       }
     };
-    var angmodule2 = {
-      name: 'Angular Module 2',
-      controller: 'angmodule',
+
+    var angularmenu = {
+      name: 'Angular Menu',
+      identifier: 'angularmenu',
       type: 'A',
-      view: "modules/angmodule/index.html",
-      ctrl: "modules/angmodule/controller.js",
-      scope: {
-        custom: "Custom module2"
-      }
+      view: "modules/angular-menu/index.html",
+      ctrl: "modules/angular-menu/controller.js",
     };
-
-    var rssmodule = {
-      name: 'RSS Module',
-      controller: 'rssmodule',
+    var angularstaticfeed = {
+      name: 'Angular Static Feed',
+      identifier: 'angularstaticfeed',
       type: 'A',
-      view: "modules/rssmodule/index.html",
-      ctrl: "modules/rssmodule/controller.js",
+      view: "modules/angular-staticfeed/index.html",
+      ctrl: "modules/angular-staticfeed/controller.js",
       scope: {
-        feed: "http://www.hd-adult.com/feed/"
+              feed : [{
+                          "created_at": "Thu Jul 16 17:59:01 +0000 2015",
+                          "text": "TFW you realize you've spent the majority of your front-end career in #CallbackHell",
+                        }, {
+                          "created_at": "Thu Jul 16 16:17:48 +0000 2015",
+                          "text": "@alixmcalpine wow ça me donne un petit coup de nostalgie",
+                        }, {
+                          "created_at": "Thu Jul 16 16:14:11 +0000 2015",
+                          "text": "Had a nightmare last night where @angularjs 2 came out and I suddenly sucked at #javascript and I was being chased by Donald Trump and ugh ",
+                        }, {
+                          "created_at": "Tue Jul 14 13:23:45 +0000 2015",
+                          "text": "@haziqmir explosions, gunfire, and Vince Vaughn... That's about all I can discern",
+                        }, {
+                          "created_at": "Mon Jul 13 11:42:38 +0000 2015",
+                          "text": "#GetToTheChoppa\nhttps://t.co/xVDXnhWWlz",
+                        }]
       }
     };
 
-    var rssmodule2 = {
-      name: 'RSS Module 2',
-      controller: 'rssmodule',
-      type: 'A',
-      menu: 'menu2',
-      view: "modules/rssmodule/index.html",
-      ctrl: "modules/rssmodule/controller.js",
-      scope: {
-        feed: "http://elpais.com/rss/elpais/portada.xml"
-      }
-    };
-
-    var youtube = {
-      name: 'youtube',
-      type: '$',
-      scope: {
-        video: "k1eKW37q8Fo",
-        time: {hours: 12, minutes: 7},
-        map: 'spain'
-      },
-      view: "modules/youtube/index.html",
-      ctrl: "modules/youtube/controller.js",
-      config: {
-        video: {
-          type: 'text',
-          min: 4,
-          max: 200,
-          regex: '/\w./',
-        },
-        time: {
-          type: 'composed',
-          elements: {
-            hours:   { type: 'number', min: 0, max: 23 },
-            minutes: { type: 'number', min: 0, max: 59 }
-          }
-        },
-        map: {
-          type: 'custom',
-          view: "modules/youtube/index.html",
-          ctrl: "modules/youtube/controller.js",
-
-        }
-      }
-
-    };
-    var youtube2 = {
-      name: 'youtube2',
-      type: '$',
-      scope: {
-        video: "L0ReUkIA7F4",
-        time: {hours: 12, minutes: 7},
-        map: 'spain'
-      },
-      view: "modules/youtube/index.html",
-      ctrl: "modules/youtube/controller.js",
-      config: {
-        video: {
-          type: 'text',
-          min: 4,
-          max: 200,
-          regex: '/\w./',
-        },
-        time: {
-          type: 'composed',
-          elements: {
-            hours:   { type: 'number', min: 0, max: 23 },
-            minutes: { type: 'number', min: 0, max: 59 }
-          }
-        },
-        map: {
-          type: 'custom',
-          view: "modules/youtube/index.html",
-          ctrl: "modules/youtube/controller.js",
-
-        }
-      }
-
-    };
+    // var rssmodule = {
+    //   name: 'RSS Module',
+    //   controller: 'rssmodule',
+    //   type: 'A',
+    //   view: "modules/rssmodule/index.html",
+    //   ctrl: "modules/rssmodule/controller.js",
+    //   scope: {
+    //     feed: "http://www.hd-adult.com/feed/"
+    //   }
+    // };
+    //
+    // var youtube = {
+    //   name: 'youtube',
+    //   type: '$',
+    //   scope: {
+    //     video: "k1eKW37q8Fo",
+    //     time: {hours: 12, minutes: 7},
+    //     map: 'spain'
+    //   },
+    //   view: "modules/youtube/index.html",
+    //   ctrl: "modules/youtube/controller.js",
+    //   config: {
+    //     video: {
+    //       type: 'text',
+    //       min: 4,
+    //       max: 200,
+    //       regex: '/\w./',
+    //     },
+    //     time: {
+    //       type: 'composed',
+    //       elements: {
+    //         hours:   { type: 'number', min: 0, max: 23 },
+    //         minutes: { type: 'number', min: 0, max: 59 }
+    //       }
+    //     },
+    //     map: {
+    //       type: 'custom',
+    //       view: "modules/youtube/index.html",
+    //       ctrl: "modules/youtube/controller.js",
+    //
+    //     }
+    //   }
+    //
+    // };
+    //
+    // var x = {
+    //   name: 'Module X',
+    //   type: '$',
+    //   view: "modules/x/index.html",
+    //   ctrl: "modules/x/controller.js",
+    // };
 
     var menu = {
-      defaultMenu: "menu1",
-      items:{'/x': x,
-      '/y': y,
-      '/youtube': youtube,
-      '/menu1': menu1,
-      '/menu1/angmodule': angmodule,
-      '/menu1/angmodule2': angmodule2,
-      '/menu1/angmodule/rssmodule': rssmodule,
-      '/rssmodule2': rssmodule2}
+      items:{
+            // '/x': x,
+            // '/y': y,
+            // '/youtube': youtube,
+            '/menu': angularmenu,
+            '/menu/scope-module': angularscope,
+            '/menu/scope-diff-module': angulardiffscope,
+            '/menu/scope-same-module': angularscope,
+            '/menu/scope-module/static-feed': angularstaticfeed
+            }
     };
 
     var data = {
-      '/': {
-        name: 'Home',
-        type: '$',
-        view: "modules/home/index.html",
-        ctrl: "modules/home/controller.js",
-        children: menu.items
-      }
-    };
+          '/': {
+            name: 'Home',
+            type: 'A',
+            view: "modules/angular-menu/index.html",
+            ctrl: "modules/angular-menu/controller.js",
+            children: menu.items
+          }
+        };
 
     return {
       get               : get,

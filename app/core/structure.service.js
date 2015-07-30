@@ -32,14 +32,14 @@ angular
     };
 
     var angularmenu = {
-      name: 'Angular Menu',
+      name: 'Angular Menu Module',
       identifier: 'angularmenu',
       type: 'A',
       view: "modules/angular-menu/index.html",
       ctrl: "modules/angular-menu/controller.js",
     };
     var angularstaticfeed = {
-      name: 'Angular Static Feed',
+      name: 'Angular Static Feed Module',
       identifier: 'angularstaticfeed',
       type: 'A',
       view: "modules/angular-staticfeed/index.html",
@@ -63,6 +63,7 @@ angular
                         }]
       }
     };
+
 
     // var rssmodule = {
     //   name: 'RSS Module',
@@ -118,24 +119,24 @@ angular
 
     var menu = {
       items:{
-            // '/x': x,
-            // '/y': y,
-            // '/youtube': youtube,
-            '/menu': angularmenu,
-            '/menu/scope-module': angularscope,
-            '/menu/scope-diff-module': angulardiffscope,
-            '/menu/scope-same-module': angularscope,
-            '/menu/scope-module/static-feed': angularstaticfeed
+            '/menu'                          : angularmenu,
+            '/scope'                         : angularscope,
+            '/feed'                          : angularstaticfeed,
+            '/menu/scope-module'             : angularscope,
+            '/menu/scope-diff-module'        : angulardiffscope,
+            '/menu/scope-same-module'        : angularscope,
+            '/menu/scope-module/static-feed' : angularstaticfeed,
+            '/menu/level1-feed'              : angularstaticfeed
             }
     };
 
     var data = {
           '/': {
-            name: 'Home',
-            type: 'A',
-            view: "modules/angular-menu/index.html",
-            ctrl: "modules/angular-menu/controller.js",
-            children: menu.items
+            name     : 'Home',
+            type     : 'A',
+            view     : "modules/angular-menu/index.html",
+            ctrl     : "modules/angular-menu/controller.js",
+            children : menu.items
           }
         };
 

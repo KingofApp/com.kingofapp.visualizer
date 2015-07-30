@@ -10,6 +10,11 @@ function Menu1Ctrl($scope, $rootScope, $location, structureService) {
       if(modules[key+1]){
         $scope[modules[key+1].identifier+'Template'] = value.view;
       }
+      if(modules[key].identifier=="angularmenu"){
+        $scope.angularmenu = {
+          custom:modules[key].name
+        };
+      }
     });
   });
 

@@ -10,15 +10,14 @@ function loadFunction($scope, structureService, $location){
       if(modules[key+1]){
         $scope[modules[key+1].identifier+'Template'] = value.view;
       }
+      if(modules[key].identifier=="angularscope"){
+        $scope.angularscope = {
+          custom:modules[key].name
+        };
+      }
     });
   });
 
 
-  //Read module config parameters
-  structureService.getCurrent( $location, function(moduleInfo){
-      $scope.angularscope = {
-        custom:moduleInfo.name
-      }
-    });
 
 }

@@ -72,69 +72,69 @@
 			//
 			// });
 
-			describe('should load a AngularJs module ('+i+')' , function() {
-
-				it('menu1', function() {
-					browser.get('/app/#/menu1');
-					browser.wait(function() {
-					    return $('menu').isPresent(); // keeps waiting until this statement resolves to true
-					}, 5000, 'message to log to console if element is not present after that time');
-					expect($('menu').isPresent()).toBe(true);
-
-					list = element.all(by.css('menu-item a'));
-					expect(list.get(0).getInnerHtml()).toBe('Module X');
-				});
-
-
-				// it('angmodule', function() {
-				// 	browser.get('/app/#/angmodule');
-				// 	browser.wait(function() {
-				// 	    return $('span').isPresent(); // keeps waiting until this statement resolves to true
-				// 	}, 5000, 'message to log to console if element is not present after that time');
-				// 	expect($('span').isPresent()).toBe(true);
-				//
-				// 	list = element.all(by.css('span'));
-				// 	expect(list.get(0).getText()).toBe('Custom module1');
-				// });
-				//
-				// it('angmodule2', function() {
-				// 	browser.get('/app/#/angmodule2');
-				// 	browser.wait(function() {
-				// 	    return $('span').isPresent(); // keeps waiting until this statement resolves to true
-				// 	}, 5000, 'message to log to console if element is not present after that time');
-				// 	expect($('span').isPresent()).toBe(true);
-				//
-				// 	list = element.all(by.css('span'));
-				// 	expect(list.get(0).getText()).toBe('Custom module2');
-				// });
-
-
-				/*
-				it('rssmodule2', function() {
-					browser.get('/app/#/rssmodule2');
-					browser.wait(function() {
-					    return $('.item').isPresent(); // keeps waiting until this statement resolves to true
-					}, 5000, 'message to log to console if element is not present after that time');
-					expect($('.item').isPresent()).toBe(true);
-
-					list = element.all(by.css('.item'));
-					expect(list.count()).toBeGreaterThan(0);
-				});
-				it('rssmodule', function() {
-					//Check for private mode in chrome
-					browser.get('/app/#/rssmodule');
-					browser.wait(function() {
-					    return $('.item').isPresent(); // keeps waiting until this statement resolves to true
-					}, 5000, 'message to log to console if element is not present after that time');
-					expect($('.item').isPresent()).toBe(true);
-
-					list = element.all(by.css('.item'));
-					expect(list.count()).toBeGreaterThan(0);
-				});
-				*/
-
-
-			});
+			// describe('should load a AngularJs module ('+i+')' , function() {
+			//
+			// 	it('should load angular menu', function() {
+			// 		browser.get('/app/#/menu1');
+			// 		browser.wait(function() {
+			// 		    return $('menu').isPresent(); // keeps waiting until this statement resolves to true
+			// 		}, 5000, 'message to log to console if element is not present after that time');
+			// 		expect($('menu').isPresent()).toBe(true);
+			//
+			// 		list = element.all(by.css('p.info'));
+			// 		expect(list.get(0).getInnerHtml()).toBe('Module X');
+			// 	});
+			//
+			//
+			// 	// it('angmodule', function() {
+			// 	// 	browser.get('/app/#/angmodule');
+			// 	// 	browser.wait(function() {
+			// 	// 	    return $('span').isPresent(); // keeps waiting until this statement resolves to true
+			// 	// 	}, 5000, 'message to log to console if element is not present after that time');
+			// 	// 	expect($('span').isPresent()).toBe(true);
+			// 	//
+			// 	// 	list = element.all(by.css('span'));
+			// 	// 	expect(list.get(0).getText()).toBe('Custom module1');
+			// 	// });
+			// 	//
+			// 	// it('angmodule2', function() {
+			// 	// 	browser.get('/app/#/angmodule2');
+			// 	// 	browser.wait(function() {
+			// 	// 	    return $('span').isPresent(); // keeps waiting until this statement resolves to true
+			// 	// 	}, 5000, 'message to log to console if element is not present after that time');
+			// 	// 	expect($('span').isPresent()).toBe(true);
+			// 	//
+			// 	// 	list = element.all(by.css('span'));
+			// 	// 	expect(list.get(0).getText()).toBe('Custom module2');
+			// 	// });
+			//
+			//
+			// 	/*
+			// 	it('rssmodule2', function() {
+			// 		browser.get('/app/#/rssmodule2');
+			// 		browser.wait(function() {
+			// 		    return $('.item').isPresent(); // keeps waiting until this statement resolves to true
+			// 		}, 5000, 'message to log to console if element is not present after that time');
+			// 		expect($('.item').isPresent()).toBe(true);
+			//
+			// 		list = element.all(by.css('.item'));
+			// 		expect(list.count()).toBeGreaterThan(0);
+			// 	});
+			// 	it('rssmodule', function() {
+			// 		//Check for private mode in chrome
+			// 		browser.get('/app/#/rssmodule');
+			// 		browser.wait(function() {
+			// 		    return $('.item').isPresent(); // keeps waiting until this statement resolves to true
+			// 		}, 5000, 'message to log to console if element is not present after that time');
+			// 		expect($('.item').isPresent()).toBe(true);
+			//
+			// 		list = element.all(by.css('.item'));
+			// 		expect(list.count()).toBeGreaterThan(0);
+			// 	});
+			// 	*/
+			//
+			//
+			// });
 		}
 		afterEach(function() {
 			browser.ignoreSynchronization = false;

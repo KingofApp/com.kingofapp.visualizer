@@ -140,7 +140,9 @@
 		function expectFeed() {
 			list = element.all(by.css('.angularstaticfeed > span.info'));
 			expect(list.get(0).getInnerHtml()).toBe('Angular Static Feed Module');
-			//* EXPECT NUMBER OF ELEMENTS
+
+			feedrows = element.all(by.css('.angularstaticfeed > p.item'));
+			expect(feedrows.count()).toEqual(5);
 		}
 		function expectScope() {
 			list = element.all(by.css('.angularscope > span.info'));

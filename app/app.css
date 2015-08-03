@@ -2,6 +2,9 @@
 body{
   font-family: Arial, sans-serif;
 }
+div{
+  height: 100%;
+}
 div#main-king{
   width: 360px;
   height: 640px;
@@ -63,6 +66,7 @@ div.innerM{
 .statusBar{
   background-color:#000;
   color:#fff;
+  height:32px;
 }
 .statusBar p{
   margin:0;

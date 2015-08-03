@@ -16,7 +16,46 @@ angular
       view: "modules/angular-scope/index.html",
       ctrl: "modules/angular-scope/controller.js",
       scope: {
-        custom: ""
+        config: ""
+      }
+    };
+    var text = {
+      name: 'Text Example',
+      identifier: 'text',
+      type: 'A',
+      view: "modules/text/index.html",
+      ctrl: "modules/text/controller.js",
+      scope: {
+        value: "On a dare, Kylie Nicole breaks into neighborhood tough guy Jordan Ash’s house. But when Jordan comes home and busts her hiding in his pantry"
+      }
+    };
+    var embed = {
+      name: 'Embed Example',
+      identifier: 'embed',
+      type: 'A',
+      view: "modules/embed/index.html",
+      ctrl: "modules/embed/controller.js",
+      scope: {
+        url: "http://www.brazzers.com/pornstars/"
+      }
+    };
+    var html = {
+      name: 'Html Example',
+      identifier: 'html',
+      type: 'A',
+      view: "modules/html/index.html",
+      ctrl: "modules/html/controller.js",
+      scope: {
+        value: "<p style='color:#39a9d3;' lang='es-ES'>"+
+                "En Japón hay una censura férrea hacia cierto tipo de porno: no se"+
+                "permite mostrar penetraciones vaginales o anales reales, sino que"+
+                "estas imágenes aparecen pixeladas o bien sólo pueden verse en"+
+                "animaciones. Por lo tanto se inventaron formas, como el bukakke,"+
+                "donde lo pueden mostrar todo.</p>"+
+                "<p style='color:#d36339;' lang='es-ES'>"+
+                "Desde que creó el portal Putalocura, Torbe asegura que los bukkakes son lo"+
+                "que más se descarga de su página. Hasta el día de hoy ha hecho"+
+                "131, y han participado innumerables hombres y 70 chicas.</p>"
       }
     };
 
@@ -27,7 +66,7 @@ angular
       view: "modules/angular-scope/index.html",
       ctrl: "modules/angular-scope/controller.js",
       scope: {
-        custom: ""
+        config: ""
       }
     };
 
@@ -120,6 +159,9 @@ angular
     var menu = {
       items:{
             '/menu'                          : angularmenu,
+            '/menu/text'                     : text,
+            '/menu/html'                     : html,
+            '/menu/embed'                    : embed,
             '/scope'                         : angularscope,
             '/feed'                          : angularstaticfeed,
             '/menu/scope-module'             : angularscope,
@@ -146,6 +188,7 @@ angular
       getModulefromPath : getModulefromPath,
       getCurrentModules : getCurrentModules,
       getMenu           : getMenu,
+      registerModule    : registerModule,
       update            : update,
       onChange          : onChange
     }
@@ -197,7 +240,21 @@ angular
         // console.log("ModuleLIST",moduleList);
         callback(moduleList);
     }
-
+    function registerModule($location, $scope, item){
+      getCurrentModules( $location, function(modules){
+        angular.forEach(modules, function(value, key) {
+          if(modules[key+1]){
+            $scope[modules[key+1].identifier+'Template'] = value.view;
+          }
+          if(modules[key].identifier==item){
+            $scope[item] = {
+              custom      : modules[key].name,
+              modulescope : modules[key].scope
+            };
+          }
+        });
+      });
+    }
     function update(newData){
       if(newData){
         data = newData;

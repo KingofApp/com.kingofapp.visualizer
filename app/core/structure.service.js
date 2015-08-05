@@ -51,6 +51,16 @@ angular
         value: "On a dare, Kylie Nicole breaks into neighborhood tough guy Jordan Ash’s house. But when Jordan comes home and busts her hiding in his pantry"
       }
     };
+    var simpledirective = {
+      name: 'Simple directive',
+      identifier: 'text',
+      type: 'A',
+      view: "modules/simple-directive/index.html",
+      ctrl: "modules/simple-directive/controller.js",
+      scope: {
+        value: "Random text"
+      }
+    };
     var embed = {
       name: 'Embed Example',
       identifier: 'embed',
@@ -181,6 +191,7 @@ angular
     var menu = {
       items:{
             '/menu'                          : angularmenu,
+            '/menu/simple-directive'         : simpledirective,
             '/menu/text'                     : text,
             '/menu/html'                     : html,
             '/menu/embed'                    : embed,

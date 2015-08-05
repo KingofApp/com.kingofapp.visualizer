@@ -24,7 +24,7 @@
       {name: 'service',    provider: $provide,            method: 'service'   },
       {name: 'factory',    provider: $provide,            method: 'factory'   },
       {name: 'value',      provider: $provide,            method: 'value'     },
-      {name: 'directive',  provider: $compileProvider,    method: 'directive '}
+      {name: 'directive',  provider: $compileProvider,    method: 'directive'}
     ].forEach(function(row){
       angular['_'+row.name] = angular[row.name];         // Let's keep the older references.
       angular[row.name] = function(name, constructor){   // Provider-based controller,service,factory,value,directive, ?filter

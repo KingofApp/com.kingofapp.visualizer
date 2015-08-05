@@ -19,6 +19,28 @@ angular
         config: ""
       }
     };
+    var facebookfeed = {
+      name: 'Facebook Feed',
+      identifier: 'facebookfeed',
+      type: 'A',
+      view: "modules/facebook-feed/index.html",
+      ctrl: "modules/facebook-feed/controller.js",
+      scope: {
+        accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
+        pageid      : "laneveraroja"
+      }
+    };
+    var twitterfeed = {
+      name: 'Twitter Feed',
+      identifier: 'twitterfeed',
+      type: 'A',
+      view: "modules/twitter-feed/index.html",
+      ctrl: "modules/twitter-feed/controller.js",
+      scope: {
+        accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
+        pageid      : "laneveraroja"
+      }
+    };
     var text = {
       name: 'Text Example',
       identifier: 'text',
@@ -162,6 +184,8 @@ angular
             '/menu/text'                     : text,
             '/menu/html'                     : html,
             '/menu/embed'                    : embed,
+            '/menu/twitter'                  : twitterfeed,
+            '/menu/facebook'                 : facebookfeed,
             '/scope'                         : angularscope,
             '/feed'                          : angularstaticfeed,
             '/menu/scope-module'             : angularscope,

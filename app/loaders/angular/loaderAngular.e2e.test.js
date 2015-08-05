@@ -14,6 +14,9 @@
 		// /menu/scope-same-module
 		// /menu/scope-module/static-feed
 		// /menu/level1-feed
+		// NOTE: TO-DO
+		// Test for new modules, text, html, embed
+		// Module Facebook, twitter
 
 		describe('for simple modules', function() {
 			it('should load angular menu', function() {

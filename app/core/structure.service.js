@@ -53,12 +53,12 @@ angular
     };
     var simpledirective = {
       name: 'Simple directive',
-      identifier: 'text',
+      identifier: 'simpledirective',
       type: 'A',
       view: "modules/simple-directive/index.html",
       ctrl: "modules/simple-directive/controller.js",
       scope: {
-        value: "Random text"
+        config: ""
       }
     };
     var embed = {

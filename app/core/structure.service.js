@@ -48,7 +48,7 @@ angular
       view: "modules/text/index.html",
       ctrl: "modules/text/controller.js",
       scope: {
-        value: "On a dare, Kylie Nicole breaks into neighborhood tough guy Jordan Ash’s house. But when Jordan comes home and busts her hiding in his pantry"
+        value: "Text phrase"
       }
     };
     var simpledirective = {
@@ -68,7 +68,7 @@ angular
       view: "modules/embed/index.html",
       ctrl: "modules/embed/controller.js",
       scope: {
-        url: "http://www.brazzers.com/pornstars/"
+        url: "http://localhost:8000/app/#/scope"
       }
     };
     var html = {
@@ -191,12 +191,12 @@ angular
     var menu = {
       items:{
             '/menu'                          : angularmenu,
-            '/menu/simple-directive'         : simpledirective,
             '/menu/text'                     : text,
             '/menu/html'                     : html,
             '/menu/embed'                    : embed,
             '/menu/twitter'                  : twitterfeed,
             '/menu/facebook'                 : facebookfeed,
+            '/simple-directive'              : simpledirective,
             '/scope'                         : angularscope,
             '/feed'                          : angularstaticfeed,
             '/menu/scope-module'             : angularscope,

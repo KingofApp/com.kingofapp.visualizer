@@ -1,7 +1,7 @@
 (function(){
 	describe('Angular modules test', function() {
 		beforeEach(function(){
-		    browser.driver.manage().window().setSize(1124, 850);
+		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
     // NOTE: Angular tests
@@ -15,8 +15,7 @@
 		// /menu/scope-module/static-feed
 		// /menu/level1-feed
 		// NOTE: TO-DO
-		// Test for text, html, embed, facebook, twitter -> modules
-		// Test for simple directives -> module
+		// Test in-folder for text, html, embed, facebook, twitter -> modules
 
 		describe('for simple modules', function() {
 			it('should load angular menu', function() {
@@ -46,6 +45,16 @@
 				}, 5000, 'message to log to console if element is not present after that time');
 
 				expectFeed();
+
+			});
+
+			it('should load angular simple directive', function() {
+				browser.get('/app/#/simple-directive');
+				browser.wait(function() {
+						return $('.simpledirective').isPresent(); // keeps waiting until this statement resolves to true
+				}, 5000, 'message to log to console if element is not present after that time');
+
+				expectSimpledirective();
 
 			});
 
@@ -105,6 +114,7 @@
 			});
 		});
 
+
 		describe('for repeated routes', function() {
 			// Varios modulos con repeticiones
 			for(var i=0; i<3; i++){
@@ -133,7 +143,10 @@
 				});
 			}
 		});
-
+		function expectSimpledirective() {
+			expect(element.all(by.css('directivecompile p')).get(0).getInnerHtml()).toBe('P test');
+			expect(element.all(by.css('directive')).get(0).getInnerHtml()).toBe('Element with personal scope');
+		}
 		function expectMenu() {
 			expect($('menu').isPresent()).toBe(true);
 			element(by.css('.statusBar button')).click();

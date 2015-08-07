@@ -36,6 +36,7 @@ angular
           if (scope.autoResize) {
             setHeight();
           }
+
         }
 
         if (!$('#twitter-wjs').length) {
@@ -118,52 +119,5 @@ loadFunction.$inject = ['$http','$scope', 'structureService', '$location'];
 function loadFunction($http, $scope, structureService, $location){
   //Register upper level modules
   structureService.registerModule($location,$scope,"twitterfeed");
-
-        // if (TwitterService.isAuthenticated()) {
-        //     console.log("Time",TwitterService.getHomeTimeline());
-        // } else {
-        //     console.log("else");
-        //     TwitterService.initialize().then(function(result) {
-        //         if(result === true) {
-        //             console.log("Time",TwitterService.getHomeTimeline());
-        //         }else{
-        //           console.log("error");
-        //         }
-        //     });
-        // }
-  //oauth_nonce="d185d0d229ee682f45ed4dc17f8141fc"
-  //oauth_signature="6UjvLuzJfHkurowCkBL75+hfdEE="
-  //oauth_signature_method="HMAC-SHA1"
-  //oauth_timestamp="1438701020"
-  //oauth_token="239347506-z4V2XpKrUSwtu8wg946BhpRvK7AXHqG992FM80Ae"
-  //oauth_version="1.0"'
-
-  // $http.get('https://api.twitter.com/1.1/statuses/user_timeline.json',{  params: {
-  //         count:10,
-  //         page:1,
-  //         screen_name:"fernandolafuent",
-  //         oauth_consumer_key:"vLf0MyC4SC5fhZIANH3dFA",
-  //         oauth_nonce:"d185d0d229ee682f45ed4dc17f8141fc",
-  //         oauth_signature:"6UjvLuzJfHkurowCkBL75+hfdEE=",
-  //         oauth_signature_method:"HMAC-SHA1",
-  //         oauth_timestamp:"1438701020",
-  //         oauth_token:"239347506-z4V2XpKrUSwtu8wg946BhpRvK7AXHqG992FM80Ae",
-  //         oauth_version:"1.0"
-  //     }}
-  //   )
-  //   .success(function(data){
-  //     console.log("DATA",data);
-  //   	$scope.twitterfeed.items = data;
-  //   	$('.feed').fadeIn();
-  //   	$scope.twitterfeed.isEmpty = function (obj) {
-  //   	    for (var i in obj) if (obj.hasOwnProperty(i)) return false;
-  //   	    return true;
-  //   	};
-  //   }).error(function(){
-  //   	$scope.twitterfeed.items = [{
-  //   		"message": "Opps! There was a problem loading the feed!",
-  //   	}];
-  //   	$('.feed').fadeIn();
-  //   });
 
 }

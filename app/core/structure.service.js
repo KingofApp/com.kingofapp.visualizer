@@ -37,8 +37,8 @@ angular
       view: "modules/twitter-feed/index.html",
       ctrl: "modules/twitter-feed/controller.js",
       scope: {
-        accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
-        pageid      : "laneveraroja"
+        widgetid : "628892310084939776",
+        limite : "2"
       }
     };
     var text = {

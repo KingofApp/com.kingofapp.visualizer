@@ -143,6 +143,19 @@
 				});
 			}
 		});
+
+		describe('for multiple files in a module', function() {
+			it('should load angular simple directive', function() {
+				browser.get('/app/#/multiple-files');
+				browser.wait(function() {
+						return $('.multiplefiles').isPresent(); // keeps waiting until this statement resolves to true
+				}, 5000, 'message to log to console if element is not present after that time');
+
+				expectSimpledirective();
+
+			});
+		});
+
 		function expectSimpledirective() {
 			expect(element.all(by.css('directivecompile p')).get(0).getInnerHtml()).toBe('P test');
 			expect(element.all(by.css('directive')).get(0).getInnerHtml()).toBe('Element with personal scope');

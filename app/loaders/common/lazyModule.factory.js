@@ -20,7 +20,9 @@ function lazyModuleFn( $rootScope, $templateCache, $location, $q, structureServi
     function loadFiles(modules){
       var files = [];
       angular.forEach(modules, function(value, key) {
-        this.push(value.ctrl);
+        for(var i=0; i<value.files.length; ++i) {
+          this.push(value.files[i]);
+        }
       }, files);
       require( files, onRequireSuccess, onRequireError );
     };

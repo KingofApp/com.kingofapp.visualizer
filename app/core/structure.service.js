@@ -14,7 +14,9 @@ angular
       identifier: 'angularscope',
       type: 'A',
       view: "modules/angular-scope/index.html",
-      ctrl: "modules/angular-scope/controller.js",
+      files: [
+              "modules/angular-scope/controller.js"
+             ],
       scope: {
         config: ""
       }
@@ -24,7 +26,9 @@ angular
       identifier: 'facebookfeed',
       type: 'A',
       view: "modules/facebook-feed/index.html",
-      ctrl: "modules/facebook-feed/controller.js",
+      files: [
+              "modules/facebook-feed/controller.js"
+             ],
       scope: {
         accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
         pageid      : "laneveraroja"
@@ -35,7 +39,9 @@ angular
       identifier: 'twitterfeed',
       type: 'A',
       view: "modules/twitter-feed/index.html",
-      ctrl: "modules/twitter-feed/controller.js",
+      files: [
+              "modules/twitter-feed/controller.js"
+             ],
       scope: {
         widgetid : "628892310084939776",
         limite : "2"
@@ -46,7 +52,9 @@ angular
       identifier: 'text',
       type: 'A',
       view: "modules/text/index.html",
-      ctrl: "modules/text/controller.js",
+      files: [
+              "modules/text/controller.js"
+             ],
       scope: {
         value: "Text phrase"
       }
@@ -56,17 +64,36 @@ angular
       identifier: 'simpledirective',
       type: 'A',
       view: "modules/simple-directive/index.html",
-      ctrl: "modules/simple-directive/controller.js",
+      files: [
+              "modules/simple-directive/controller.js"
+             ],
       scope: {
         config: ""
       }
     };
+
+    var multiplefiles = {
+      name: 'Multiple files',
+      identifier: 'multiplefiles',
+      type: 'A',
+      view: "modules/multiple-files/index.html",
+      files: [
+               "modules/multiple-files/controller.js",
+               "modules/multiple-files/directive.js"
+             ],
+      scope: {
+        config: ""
+      }
+    };
+
     var embed = {
       name: 'Embed Example',
       identifier: 'embed',
       type: 'A',
       view: "modules/embed/index.html",
-      ctrl: "modules/embed/controller.js",
+      files: [
+              "modules/embed/controller.js"
+             ],
       scope: {
         url: "http://localhost:8000/app/#/scope"
       }
@@ -76,7 +103,9 @@ angular
       identifier: 'html',
       type: 'A',
       view: "modules/html/index.html",
-      ctrl: "modules/html/controller.js",
+      files: [
+              "modules/html/controller.js"
+             ],
       scope: {
         value: "<p style='color:#39a9d3;' lang='es-ES'>"+
                 "En Japón hay una censura férrea hacia cierto tipo de porno: no se"+
@@ -96,7 +125,9 @@ angular
       identifier: 'angularscope',
       type: 'A',
       view: "modules/angular-scope/index.html",
-      ctrl: "modules/angular-scope/controller.js",
+      files: [
+              "modules/angular-scope/controller.js"
+             ],
       scope: {
         config: ""
       }
@@ -107,14 +138,19 @@ angular
       identifier: 'angularmenu',
       type: 'A',
       view: "modules/angular-menu/index.html",
-      ctrl: "modules/angular-menu/controller.js",
+      files: [
+              "modules/angular-menu/controller.js"
+             ]
+      // ctrl: "modules/angular-menu/controller.js",
     };
     var angularstaticfeed = {
       name: 'Angular Static Feed Module',
       identifier: 'angularstaticfeed',
       type: 'A',
       view: "modules/angular-staticfeed/index.html",
-      ctrl: "modules/angular-staticfeed/controller.js",
+      files: [
+              "modules/angular-staticfeed/controller.js"
+             ],
       scope: {
               feed : [{
                           "created_at": "Thu Jul 16 17:59:01 +0000 2015",
@@ -203,6 +239,7 @@ angular
             '/menu/scope-diff-module'        : angulardiffscope,
             '/menu/scope-same-module'        : angularscope,
             '/menu/scope-module/static-feed' : angularstaticfeed,
+            '/multiple-files'           : multiplefiles,
             '/menu/level1-feed'              : angularstaticfeed
             }
     };

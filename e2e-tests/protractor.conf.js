@@ -1,6 +1,8 @@
 exports.config = {
 
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+  //directConnect: true,
+
+  //seleniumAddress: 'http://localhost:4444/wd/hub',
 
   allScriptsTimeout: 11000,
 
@@ -24,7 +26,7 @@ exports.config = {
     //'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
   },
 
-  baseUrl: 'http://localhost:8000/app/',
+  baseUrl: 'http://localhost:9000/app/',
 
   keepAlive: true,
 

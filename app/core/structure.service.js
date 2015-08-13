@@ -59,6 +59,19 @@ angular
         value: "Text phrase"
       }
     };
+    var ads = {
+      name: 'Ads container',
+      identifier: 'ads',
+      type: 'A',
+      view: "modules/ads/index.html",
+      files: [
+              "modules/ads/controller.js"
+             ],
+      scope: {
+        mainsrc: "<h1>Ads Everywhere!</h1>",
+        fixedsrc: "<h3>fixed</h3>"
+      }
+    };
     var simpledirective = {
       name: 'Simple directive',
       identifier: 'simpledirective',
@@ -226,6 +239,9 @@ angular
 
     var menu = {
       items:{
+            '/ads'                           : ads,
+            '/ads/menu'                      : angularmenu,
+            '/ads/menu/angular-scope'        : angularscope,
             '/menu'                          : angularmenu,
             '/menu/text'                     : text,
             '/menu/html'                     : html,
@@ -239,7 +255,7 @@ angular
             '/menu/scope-diff-module'        : angulardiffscope,
             '/menu/scope-same-module'        : angularscope,
             '/menu/scope-module/static-feed' : angularstaticfeed,
-            '/multiple-files'           : multiplefiles,
+            '/multiple-files'                : multiplefiles,
             '/menu/level1-feed'              : angularstaticfeed
             }
     };

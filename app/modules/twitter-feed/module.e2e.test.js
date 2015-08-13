@@ -8,11 +8,11 @@
 		it('should load twitter feed module', function() {
 			browser.get('/app/#/menu/twitter');
 			browser.wait(function() {
-				return $('iframe#twitter-feed').isPresent(); // keeps waiting until this statement resolves to true
+				return $("iframe.twitter-timeline").isPresent(); // keeps waiting until this statement resolves to true
 			}, 5000, 'message1 to log to console if element is not present after that time')
 			.then(function(){
 				browser.wait(function() {
-					browser.switchTo().frame('twitter-feed').then(function(){});
+					browser.switchTo().frame(browser.findElement(by.css("iframe.twitter-timeline"))).then(function(){});
 					return $('html.SandboxRoot').isPresent(); // keeps waiting until this statement resolves to true
 				}, 5000, 'message2 to log to console if element is not present after that time')
 				.then(function(){

@@ -4,18 +4,6 @@
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
-    // NOTE: Angular tests
-		// * angular-scope
-		// * angular-menu
-		// * angular-staticfeed
-		// /menu
-		// /menu/scope-module
-		// /menu/scope-diff-module
-		// /menu/scope-same-module
-		// /menu/scope-module/static-feed
-		// /menu/level1-feed
-		// NOTE: TO-DO
-		// Test in-folder for text, html, embed, facebook, twitter -> modules
 
 		describe('for simple modules', function() {
 			it('should load angular menu', function() {
@@ -156,6 +144,43 @@
 			});
 		});
 
+		describe('for ads module', function() {
+			it('should load ads module', function() {
+				browser.get('/app/#/ads');
+				browser.wait(function() {
+						return $('div.ng-hide').isPresent();
+				}, 6000, 'message to log to console if element is not present after that time');
+
+				expectAds();
+
+			});
+			it('should load menu inside ads module', function() {
+				browser.get('/app/#/ads/menu');
+				browser.wait(function() {
+						return $('div.ng-hide').isPresent();
+				}, 6000, 'message to log to console if element is not present after that time');
+
+				expectAds();
+				expectMenu();
+
+			});
+
+			it('should load angular scope inside menu, inside ads module', function() {
+				browser.get('/app/#/ads/menu/angular-scope');
+				browser.wait(function() {
+						return $('div.ng-hide').isPresent();
+				}, 6000, 'message to log to console if element is not present after that time');
+
+				expectAds();
+				expectMenu();
+				expectScope();
+
+			});
+		});
+		function expectAds() {
+			expect(element.all(by.css('.ads > span.info')).first().getInnerHtml()).toBe('Ads container');
+			expect(element.all(by.css('.bottom-ads > div > h3')).first().getInnerHtml()).toBe('fixed');
+		}
 		function expectSimpledirective() {
 			expect(element.all(by.css('directivecompile p')).get(0).getInnerHtml()).toBe('P test');
 			expect(element.all(by.css('directive')).get(0).getInnerHtml()).toBe('Element with personal scope');

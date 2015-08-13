@@ -41,7 +41,7 @@
       options: {
       	livereload: true
       },
-      
+
       karma: {
         files: ['app/js/**/*.js', 'test/unit/*.js'],
         tasks: ['karma:continuous:run']
@@ -51,9 +51,13 @@
         files: ['app/js/**/*.js', 'test/e2e/*.js'],
         tasks: ['protractor:continuous']
       }
-      
-  	},
 
+  	},
+    exec: {
+      web_driver_update: {
+        command: './node_modules/protractor/bin/webdriver-manager update'
+      }
+    },
   	run: {
 	    mock_server: {
 	      options: {
@@ -93,7 +97,8 @@
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-protractor-runner');
 	grunt.loadNpmTasks('grunt-run');
-	grunt.loadNpmTasks('grunt-browser-sync')
+  grunt.loadNpmTasks('grunt-exec');
+	grunt.loadNpmTasks('grunt-browser-sync');
 
 	grunt.registerTask('serve', ['karma:continuous:start', 'run:mock_server', 'connect:livereload', 'watch:karma']);
 	//grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
@@ -102,6 +107,6 @@
 	grunt.registerTask('test', ['karma:unit:start', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
 
 	grunt.registerTask('unit-test', ['karma:unit:start']);
-	grunt.registerTask('e2e-test', ['connect:connect',  'protractor:continuous']);
+	grunt.registerTask('e2e-test', ['exec:web_driver_update' ,'connect:connect',  'protractor:continuous']);
 
 };

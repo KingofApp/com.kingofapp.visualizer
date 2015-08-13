@@ -12,7 +12,7 @@ exports.config = {
 
   capabilities: {
     // 'browserName': 'phantomjs',
-    'browserName': 'chrome',
+    'browserName': 'firefox',
       /*
      * Can be used to specify the phantomjs binary path.
      * This can generally be ommitted if you installed phantomjs globally.

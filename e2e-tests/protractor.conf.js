@@ -1,4 +1,7 @@
 exports.config = {
+
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+
   allScriptsTimeout: 11000,
 
   specs: [
@@ -28,6 +31,7 @@ exports.config = {
   framework: 'jasmine',
 
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 30000,
+    showColors: false, // Use colors in the command line report.
   }
 };

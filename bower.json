@@ -18,6 +18,8 @@
     "angular-scenario": "1.4.x",
     "protractor": "2.1.x",
     "mocha": "2.2.x",
-    "angular-cache": "~4.3.1"
+    "angular-cache": "~4.3.1",
+    "angulartics": "~0.20.0",
+    "angulartics-google-analytics": "~0.1.1"
   }
 }

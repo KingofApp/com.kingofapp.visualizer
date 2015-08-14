@@ -18,7 +18,6 @@ function Menu1Ctrl($scope, $rootScope, $location, structureService) {
   //Register upper level modules
   structureService.registerModule($location,$scope,"angularmenu");
 
-
   $scope.leftVisible = false;
   $scope.menu        = structureService.getMenu();
   $scope.showLeft    = showLeftFn;

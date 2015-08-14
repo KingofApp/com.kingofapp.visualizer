@@ -11,6 +11,8 @@
 
     var templates = { $:'loaders/jquery/loaderJquery.view.html',
                          A:'loaders/angular/loaderAngular.view.html' };
+    //Load config
+    structureService.loadconfig($rootScope);
     //Register Route
     structureService.getCurrent($location, function(module){
       $scope.module = module || $scope.module;

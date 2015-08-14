@@ -259,16 +259,19 @@ angular
             '/menu/level1-feed'              : angularstaticfeed
             }
     };
+    var config = {
+                    'googleAnalytics' : 'UA-54151479-3'
+                 };
 
     var data = {
-          '/': {
-            name     : 'Home',
-            type     : 'A',
-            view     : "modules/angular-menu/index.html",
-            ctrl     : "modules/angular-menu/controller.js",
-            children : menu.items
-          }
-        };
+                  '/': {
+                    name     : 'Home',
+                    type     : 'A',
+                    view     : "modules/angular-menu/index.html",
+                    ctrl     : "modules/angular-menu/controller.js",
+                    children : menu.items
+                  }
+                };
 
     return {
       get               : get,
@@ -277,6 +280,7 @@ angular
       getCurrentModules : getCurrentModules,
       getMenu           : getMenu,
       registerModule    : registerModule,
+      loadconfig        : loadconfig,
       update            : update,
       onChange          : onChange
     }
@@ -288,7 +292,14 @@ angular
     function getMenu(){
       return menu;
     }
-
+    function loadconfig($rootScope) {
+      $rootScope['config'] = {
+        googleAnalytics      : config.googleAnalytics
+      };
+      $rootScope.$watch('config.googleAnalytics', function(prev,next) {
+             ga('create', $rootScope['config'].googleAnalytics, { 'cookieDomain': 'none' });
+      });
+    }
     function getModulefromPath(path, callback){
       if(cachedLocations[path]){
         callback(cachedLocations[path]);

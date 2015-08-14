@@ -18,12 +18,10 @@
     protractor: {
 	    options: {
 	      configFile: "e2e-tests/protractor.conf.js", // Default config file
-	      // keepAlive: true, // If false, the grunt process stops when the test fails.
-	      noColor: false, // If true, protractor will not use colors in its output.
-	      // debug: true,
-	      args: {
-
-	      }
+        keepAlive: false, // If false, the grunt process stops when the test fails.
+        noColor: true, // If true, protractor will not use colors in its output.
+	      //debug: true,
+	      args: { /* Arguments passed to the command */ }
 	    },
 	    e2e: {
 	    	options: {
@@ -45,8 +43,7 @@
       karma: {
         files: ['app/js/**/*.js', 'test/unit/*.js'],
         tasks: ['karma:continuous:run']
-      }
-      ,
+      },
       protractor: {
         files: ['app/js/**/*.js', 'test/e2e/*.js'],
         tasks: ['protractor:continuous']
@@ -107,6 +104,6 @@
 	grunt.registerTask('test', ['karma:unit:start', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
 
 	grunt.registerTask('unit-test', ['karma:unit:start']);
-	grunt.registerTask('e2e-test', ['exec:web_driver_update' ,'connect:connect',  'protractor:continuous']);
+	grunt.registerTask('e2e-test', ['exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
 
 };

@@ -13,9 +13,9 @@ angular
       name: 'Angular Scope Module',
       identifier: 'angularscope',
       type: 'A',
-      view: "modules/angular-scope/index.html",
+      view: "modules/angularscope/index.html",
       files: [
-              "modules/angular-scope/controller.js"
+              "modules/angularscope/controller.js"
              ],
       scope: {
         config: ""
@@ -25,9 +25,9 @@ angular
       name: 'Facebook Feed',
       identifier: 'facebookfeed',
       type: 'A',
-      view: "modules/facebook-feed/index.html",
+      view: "modules/facebookfeed/index.html",
       files: [
-              "modules/facebook-feed/controller.js"
+              "modules/facebookfeed/controller.js"
              ],
       scope: {
         accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
@@ -38,9 +38,9 @@ angular
       name: 'Twitter Feed',
       identifier: 'twitterfeed',
       type: 'A',
-      view: "modules/twitter-feed/index.html",
+      view: "modules/twitterfeed/index.html",
       files: [
-              "modules/twitter-feed/controller.js"
+              "modules/twitterfeed/controller.js"
              ],
       scope: {
         widgetid : "628892310084939776",
@@ -57,6 +57,19 @@ angular
              ],
       scope: {
         value: "Text phrase"
+      }
+    };
+    var translationtest = {
+      name: 'Translation Test',
+      identifier: 'translationtest',
+      type: 'A',
+      view: "modules/translationtest/index.html",
+      files: [
+              "modules/translationtest/controller.js"
+             ],
+      scope: {
+        name: "Noemal",
+        surname: "Rashid"
       }
     };
     var ads = {
@@ -76,9 +89,9 @@ angular
       name: 'Simple directive',
       identifier: 'simpledirective',
       type: 'A',
-      view: "modules/simple-directive/index.html",
+      view: "modules/simpledirective/index.html",
       files: [
-              "modules/simple-directive/controller.js"
+              "modules/simpledirective/controller.js"
              ],
       scope: {
         config: ""
@@ -89,10 +102,10 @@ angular
       name: 'Multiple files',
       identifier: 'multiplefiles',
       type: 'A',
-      view: "modules/multiple-files/index.html",
+      view: "modules/multiplefiles/index.html",
       files: [
-               "modules/multiple-files/controller.js",
-               "modules/multiple-files/directive.js"
+               "modules/multiplefiles/controller.js",
+               "modules/multiplefiles/directive.js"
              ],
       scope: {
         config: ""
@@ -137,9 +150,9 @@ angular
       name: 'Angular Different Scope Module',
       identifier: 'angularscope',
       type: 'A',
-      view: "modules/angular-scope/index.html",
+      view: "modules/angularscope/index.html",
       files: [
-              "modules/angular-scope/controller.js"
+              "modules/angularscope/controller.js"
              ],
       scope: {
         config: ""
@@ -150,9 +163,9 @@ angular
       name: 'Angular Menu Module',
       identifier: 'angularmenu',
       type: 'A',
-      view: "modules/angular-menu/index.html",
+      view: "modules/angularmenu/index.html",
       files: [
-              "modules/angular-menu/controller.js"
+              "modules/angularmenu/controller.js"
              ]
       // ctrl: "modules/angular-menu/controller.js",
     };
@@ -160,9 +173,9 @@ angular
       name: 'Angular Static Feed Module',
       identifier: 'angularstaticfeed',
       type: 'A',
-      view: "modules/angular-staticfeed/index.html",
+      view: "modules/angularstaticfeed/index.html",
       files: [
-              "modules/angular-staticfeed/controller.js"
+              "modules/angularstaticfeed/controller.js"
              ],
       scope: {
               feed : [{
@@ -243,6 +256,7 @@ angular
             '/ads/menu'                      : angularmenu,
             '/ads/menu/angular-scope'        : angularscope,
             '/menu'                          : angularmenu,
+            '/menu/translation'              : translationtest,
             '/menu/text'                     : text,
             '/menu/html'                     : html,
             '/menu/embed'                    : embed,

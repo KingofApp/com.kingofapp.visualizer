@@ -2,7 +2,8 @@
     <span class="info">{{ ads.custom }}</span>
     <!--Prepared for adds-->
     <div class='main-ads' ng-hide="!ads.showflag">
-      <div translate="ads.message" translate-values="{ custom: ads.modulescope.mainsrc }">
+      <div ng-bind-html="ads.modulescope.mainsrc">
+
       </div>
     </div>
     <div class='bottom-ads' ng-if='ads.modulescope.fixedsrc'>

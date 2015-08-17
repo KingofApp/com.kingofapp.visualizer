@@ -1,0 +1,9 @@
+<div class='translationtest' ng-controller="translationTestCtrl">
+    <span class="info">{{ translationtest.custom }}</span>
+    <p>{{ "translationtest.text1" | translate }}</p>
+    <p>{{ "translationtest.text2" | translate }}</p>
+    <p>{{ "translationtest.text3" | translate }}</p>
+    <p>{{ "translationtest.text4" | translate }}</p>
+    <!--NOTE: Cargar con variable found {{x}} results  -->
+    <a href ng-click="changeState()">Change language</a>
+</div>

@@ -8,6 +8,9 @@
   setDefaultPaths.$inject = ['$routeProvider','$controllerProvider', '$provide', '$compileProvider', '$sceProvider', '$translateProvider'];
 
   function setDefaultPaths($routeProvider, $controllerProvider, $provide, $compileProvider, $sceProvider, $translateProvider) {
+    //NOTE: Movemos lo del translate a otro config con otro archivo
+    //NOTE: Creamos un registerProviders en otro archivo
+    //NOTE: Leer en desde structure service
     $translateProvider.useLoader('$translatePartialLoader', {
       urlTemplate: '/app/modules/{part}/locale/locale-{lang}.json'
     });

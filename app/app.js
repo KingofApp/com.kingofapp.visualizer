@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'angulartics',
   'angulartics.google.analytics',
+  'pascalprecht.translate',
   'king.loaders.common',
   'king.loaders.jquery',
   'king.loaders.angular',

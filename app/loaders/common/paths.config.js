@@ -5,12 +5,14 @@
     .module('king.loaders.common')
     .config(setDefaultPaths);
 
-  setDefaultPaths.$inject = ['$routeProvider','$controllerProvider', '$provide', '$compileProvider', '$sceProvider'];
+  setDefaultPaths.$inject = ['$routeProvider','$controllerProvider', '$provide', '$compileProvider', '$sceProvider', '$translateProvider'];
 
-  function setDefaultPaths($routeProvider, $controllerProvider, $provide, $compileProvider, $sceProvider) {
-
+  function setDefaultPaths($routeProvider, $controllerProvider, $provide, $compileProvider, $sceProvider, $translateProvider) {
+    $translateProvider.useLoader('$translatePartialLoader', {
+      urlTemplate: '/app/modules/{part}/locale/locale-{lang}.json'
+    });
+    $translateProvider.preferredLanguage('en');
     $sceProvider.enabled(false);
-
     //Default Route
     $routeProvider
       .otherwise({

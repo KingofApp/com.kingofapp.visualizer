@@ -15,7 +15,7 @@
 
 	function setStructure(structureService, $routeParams){
 		//recibir el json, decoearlo y update...
-		//http://localhost:8000/app/#/setStructure?json={\n      '\/': {\n        name: 'Home',\n        type: '$',\n        view: \"modules\/home\/index.html\",\n        ctrl: \"modules\/home\/controller.js\",\n        children: menu.items\n      }\n    }
+		//http://localhost:9000/app/#/setStructure?json={\n      '\/': {\n        name: 'Home',\n        type: '$',\n        view: \"modules\/home\/index.html\",\n        ctrl: \"modules\/home\/controller.js\",\n        children: menu.items\n      }\n    }
 		//console.log($routeParams);
 		//var $menu = structureService.getMenu();
 		//$menu.items.push("$routeParams.name": $routeParams.module);

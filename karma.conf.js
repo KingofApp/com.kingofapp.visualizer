@@ -20,7 +20,7 @@ module.exports = function(config){
     autoWatch : true,
 
     proxies: {
-      '/static/': 'http://localhost:8000/app/'
+      '/static/': 'http://localhost:9000/app/'
     },
 
     frameworks: [

@@ -2,7 +2,7 @@
 	describe('Embed Module test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
-		    browser.ignoreSynchronization = false;
+		    browser.ignoreSynchronization = true;
 		});
 
 		it('should load embed module', function() {
@@ -10,19 +10,23 @@
 
 			browser.wait(function() {
 				return $('.embed').isPresent(); // keeps waiting until this statement resolves to true
-			}, 5000, 'message to log to console if element is not present after that time')
+			}, 5000, 'message1 to log to console if element is not present after that time')
 			.then(function(){
-		     //Switch protractor to iframe
-				 browser.waitForAngular();
-				 browser.switchTo().frame('embedtest').then(function(){});
+		     browser.wait(function() {
+ 					browser.switchTo().frame(browser.findElement(by.css("iframe#embedtest"))).then(function(){});
+ 					return $('div#Outer').isPresent(); // keeps waiting until this statement resolves to true
+ 				}, 5000, 'message2 to log to console if element is not present after that time')
+ 				.then(function(){
+				 	expectmodule();
+				 });
 		 });
 
-			expectmodule();
+
 
 		});
 
 		function expectmodule() {
-			expect(element(by.css('.angularscope .info')).getInnerHtml()).toBe('Angular Scope Module');
+			expect(element(by.css('h1 span')).getInnerHtml()).toBe('Lorem Ipsum');
 		}
 
 		afterEach(function() {

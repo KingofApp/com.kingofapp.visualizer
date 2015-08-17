@@ -108,7 +108,7 @@ angular
               "modules/embed/controller.js"
              ],
       scope: {
-        url: "http://localhost:9000/app/#/scope"
+        url: "http://es.lipsum.com"
       }
     };
     var html = {

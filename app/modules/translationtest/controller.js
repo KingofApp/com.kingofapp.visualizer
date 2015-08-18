@@ -12,6 +12,7 @@ function loadFunction($scope, $location, structureService, $translate) {
   $scope.changeState = function() {
       $scope.state = $scope.state === 'en' ? 'es' : 'en';
       $translate.use($scope.state);
+      structureService.setLang($scope.state)
   }
 
 }

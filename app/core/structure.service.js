@@ -7,6 +7,7 @@ angular
   function structureService($translatePartialLoader, $translate){
 
     var listeners = [];
+    var lang;
     var cachedLocations = {};
 
     var angularscope = {
@@ -293,6 +294,8 @@ angular
       getModulefromPath : getModulefromPath,
       getCurrentModules : getCurrentModules,
       getMenu           : getMenu,
+      getLang           : getLang,
+      setLang           : setLang,
       registerModule    : registerModule,
       loadconfig        : loadconfig,
       update            : update,
@@ -302,12 +305,21 @@ angular
     function get(){
       return data;
     }
-
+    function getLang(){
+      if(lang){
+        return lang;
+      }else{
+        return config.lang;
+      }
+    }
+    function setLang(locale){
+      lang=locale;
+    }
     function getMenu(){
       return menu;
     }
     function loadconfig($rootScope) {
-      $translate.use(config.lang);
+      $translate.use(getLang());
       $rootScope['config'] = {
         googleAnalytics      : config.googleAnalytics
       };

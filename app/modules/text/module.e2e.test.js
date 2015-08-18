@@ -7,16 +7,18 @@
 
 		it('should load text module', function() {
 			browser.get('/app/#/menu/text');
-			browser.wait(function() {
-					return $('.text').isPresent(); // keeps waiting until this statement resolves to true
-			}, 5000, 'message to log to console if element is not present after that time');
+			isPresent('.text');
 
 			expectmodule();
 
 		});
-
+		function isPresent(selector) {
+			browser.wait(function() {
+					return $(selector).isPresent();
+			}, 6000, 'Main (' + selector + ') not present');
+		}
 		function expectmodule() {
-			expect(element.all(by.css('.text p')).get(0).getInnerHtml()).toBe('Text phrase');
+			expect(element(by.css('.text p')).getInnerHtml()).toBe('Text phrase');
 		}
 
 		afterEach(function() {

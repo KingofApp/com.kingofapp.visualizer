@@ -2,9 +2,9 @@ angular
   .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
-  //structureService.$inject = ['$location'];
+  structureService.$inject = ['$translatePartialLoader', '$translate'];
 
-  function structureService(){
+  function structureService($translatePartialLoader, $translate){
 
     var listeners = [];
     var cachedLocations = {};
@@ -68,8 +68,7 @@ angular
               "modules/translationtest/controller.js"
              ],
       scope: {
-        name: "Noemal",
-        surname: "Rashid"
+        name: "Noemal"
       }
     };
     var ads = {
@@ -274,7 +273,8 @@ angular
             }
     };
     var config = {
-                    'googleAnalytics' : 'UA-54151479-3'
+                    'googleAnalytics' : 'UA-54151479-3',
+                    'lang'            : 'en'
                  };
 
     var data = {
@@ -307,6 +307,7 @@ angular
       return menu;
     }
     function loadconfig($rootScope) {
+      $translate.use(config.lang);
       $rootScope['config'] = {
         googleAnalytics      : config.googleAnalytics
       };
@@ -364,6 +365,7 @@ angular
               custom      : modules[key].name,
               modulescope : modules[key].scope
             };
+            $translatePartialLoader.addPart(item);
           }
         });
       });

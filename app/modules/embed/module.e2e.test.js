@@ -10,12 +10,12 @@
 
 			browser.wait(function() {
 				return $('.embed').isPresent(); // keeps waiting until this statement resolves to true
-			}, 5000, 'message1 to log to console if element is not present after that time')
+			}, 5000, 'Main (.embed) not present')
 			.then(function(){
 		     browser.wait(function() {
  					browser.switchTo().frame(browser.findElement(by.css("iframe#embedtest"))).then(function(){});
  					return $('div#Outer').isPresent(); // keeps waiting until this statement resolves to true
- 				}, 5000, 'message2 to log to console if element is not present after that time')
+ 				}, 5000, 'Main (div#Outer) not present')
  				.then(function(){
 				 	expectmodule();
 				 });

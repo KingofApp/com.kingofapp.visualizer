@@ -2,5 +2,5 @@
   "translationtest.text1": "Primer texto",
   "translationtest.text2": "Segundo texto",
   "translationtest.text3": "Tercero texto",
-  "translationtest.text4": "Cuarto texto"
+  "translationtest.text4": "Mi nombre es: {{variable}}"
 }

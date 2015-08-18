@@ -7,14 +7,16 @@
 
 		it('should load facebook feed module', function() {
 			browser.get('/app/#/menu/facebook');
-			browser.wait(function() {
-					return $('.facebookfeed ul.feed li').isPresent(); // keeps waiting until this statement resolves to true
-			}, 5000, 'message to log to console if element is not present after that time');
+			isPresent('.facebookfeed ul.feed li');
 
 			expectmodule();
 
 		});
-
+		function isPresent(selector) {
+			browser.wait(function() {
+					return $(selector).isPresent();
+			}, 6000, 'Main (' + selector + ') not present');
+		}
 		function expectmodule() {
 			expect(element.all(by.css('.facebookfeed ul.feed li')).count()).toBeGreaterThan(5);
 		}

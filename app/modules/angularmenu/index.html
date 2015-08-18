@@ -1,7 +1,6 @@
 <div class='angularmenu' ng-controller="Menu1Ctrl">
-<!-- <div> -->
   <div class='statusBar'>
-    <p><button analytics-on analytics-event="Menu Button event" ng-click="showLeft($event)">Menu</button>  {{title}}</p>
+    <p><button analytics-on analytics-event="Menu Button event" ng-click="showLeft($event)">{{ "angularmenu.sidebar" | translate }}</button>  {{title}}</p>
   </div>
   <menu visible="leftVisible" alignment="left">
     <menu-item ng-repeat="(key, value) in menu.items"><a ng-href="/app/#{{key}}">{{value.name}}</a></menu-item>

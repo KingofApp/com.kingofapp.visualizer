@@ -7,18 +7,19 @@
 
 		it('should load html module', function() {
 			browser.get('/app/#/menu/html');
-			browser.wait(function() {
-					return $('.html').isPresent(); // keeps waiting until this statement resolves to true
-			}, 5000, 'message to log to console if element is not present after that time');
+			isPresent('.html');
 
 			expectmodule();
 
 		});
-
+		function isPresent(selector) {
+			browser.wait(function() {
+					return $(selector).isPresent();
+			}, 6000, 'Main (' + selector + ') not present');
+		}
 		function expectmodule() {
-			//Expect color applied?
-			// expect(element.all(by.css('.text p')).get(0).getInnerHtml()).toBe('Text phrase');
-				element.all(by.css('.html > div > p')).first().getAttribute('style').then(function(style) {
+			//Expect color applied
+			element.all(by.css('.html > div > p')).first().getAttribute('style').then(function(style) {
 				var bgColor = style.substr(7, 17);
 				expect(bgColor).toBe('rgb(57, 169, 211)');
 			});

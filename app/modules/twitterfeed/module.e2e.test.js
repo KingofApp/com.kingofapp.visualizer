@@ -1,5 +1,5 @@
 (function(){
-	describe('Twitter Feed Module test', function() {
+	/*describe('Twitter Feed Module test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
@@ -33,5 +33,5 @@
 		afterEach(function() {
 			browser.ignoreSynchronization = false;
 		});
-	});
+	});*/
 }());

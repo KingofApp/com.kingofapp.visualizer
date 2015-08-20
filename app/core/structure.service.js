@@ -22,6 +22,43 @@ angular
         config: ""
       }
     };
+    var firebase = {
+      name: 'Firebase Module',
+      identifier: 'firebase',
+      type: 'A',
+      view: "modules/firebase/index.html",
+      files: [
+              "modules/firebase/controller.js",
+              "modules/firebase/factory.js"
+             ],
+      scope: {
+        src: "https://blinding-heat-1559.firebaseio.com/datatest"
+      },
+      //Online builder testing purpose
+      dependencies: [{
+          mobile : {"firebase": "2.2.4"},
+          src:"https://cdn.firebase.com/js/client/2.2.4/firebase.js"
+        },
+        {
+          mobile : {"angularfire": "1.1.2"},
+          src:"https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"
+        }
+      ]
+    };
+
+    var list = {
+      name: 'List Module',
+      identifier: 'list',
+      type: 'A',
+      view: "modules/list/index.html",
+      files: [
+              "modules/list/controller.js"
+             ],
+      scope: {
+        src: ""
+      }
+    };
+
     var facebookfeed = {
       name: 'Facebook Feed',
       identifier: 'facebookfeed',
@@ -41,8 +78,8 @@ angular
       type: 'A',
       view: "modules/twitterfeed/index.html",
       files: [
-              "modules/twitterfeed/controller.js"
-             ],
+        "modules/twitterfeed/controller.js"
+      ],
       scope: {
         widgetid : "628892310084939776",
         limite : "2"
@@ -54,8 +91,8 @@ angular
       type: 'A',
       view: "modules/text/index.html",
       files: [
-              "modules/text/controller.js"
-             ],
+        "modules/text/controller.js"
+      ],
       scope: {
         value: "Text phrase"
       }
@@ -66,8 +103,8 @@ angular
       type: 'A',
       view: "modules/translationtest/index.html",
       files: [
-              "modules/translationtest/controller.js"
-             ],
+        "modules/translationtest/controller.js"
+      ],
       scope: {
         name: "Noemal"
       }
@@ -78,8 +115,8 @@ angular
       type: 'A',
       view: "modules/ads/index.html",
       files: [
-              "modules/ads/controller.js"
-             ],
+        "modules/ads/controller.js"
+      ],
       scope: {
         mainsrc: "<h1>Ads Everywhere!</h1>",
         fixedsrc: "<h3>fixed</h3>"
@@ -91,8 +128,8 @@ angular
       type: 'A',
       view: "modules/simpledirective/index.html",
       files: [
-              "modules/simpledirective/controller.js"
-             ],
+        "modules/simpledirective/controller.js"
+      ],
       scope: {
         config: ""
       }
@@ -104,9 +141,9 @@ angular
       type: 'A',
       view: "modules/multiplefiles/index.html",
       files: [
-               "modules/multiplefiles/controller.js",
-               "modules/multiplefiles/directive.js"
-             ],
+        "modules/multiplefiles/controller.js",
+        "modules/multiplefiles/directive.js"
+      ],
       scope: {
         config: ""
       }
@@ -118,8 +155,8 @@ angular
       type: 'A',
       view: "modules/embed/index.html",
       files: [
-              "modules/embed/controller.js"
-             ],
+        "modules/embed/controller.js"
+      ],
       scope: {
         url: "http://es.lipsum.com"
       }
@@ -130,8 +167,8 @@ angular
       type: 'A',
       view: "modules/html/index.html",
       files: [
-              "modules/html/controller.js"
-             ],
+        "modules/html/controller.js"
+      ],
       scope: {
         value: "<p style='color:#39a9d3;' lang='es-ES'>"+
                 "En Japón hay una censura férrea hacia cierto tipo de porno: no se"+
@@ -152,8 +189,8 @@ angular
       type: 'A',
       view: "modules/angularscope/index.html",
       files: [
-              "modules/angularscope/controller.js"
-             ],
+        "modules/angularscope/controller.js"
+      ],
       scope: {
         config: ""
       }
@@ -165,8 +202,8 @@ angular
       type: 'A',
       view: "modules/angularmenu/index.html",
       files: [
-              "modules/angularmenu/controller.js"
-             ]
+        "modules/angularmenu/controller.js"
+      ]
       // ctrl: "modules/angular-menu/controller.js",
     };
     var angularstaticfeed = {
@@ -175,8 +212,8 @@ angular
       type: 'A',
       view: "modules/angularstaticfeed/index.html",
       files: [
-              "modules/angularstaticfeed/controller.js"
-             ],
+        "modules/angularstaticfeed/controller.js"
+      ],
       scope: {
               feed : [{
                           "created_at": "Thu Jul 16 17:59:01 +0000 2015",
@@ -270,7 +307,9 @@ angular
             '/menu/scope-same-module'        : angularscope,
             '/menu/scope-module/static-feed' : angularstaticfeed,
             '/multiple-files'                : multiplefiles,
-            '/menu/level1-feed'              : angularstaticfeed
+            '/menu/level1-feed'              : angularstaticfeed,
+            '/fire-connector'                : firebase,
+            '/fire-connector/list'           : list,
             }
     };
     var config = {

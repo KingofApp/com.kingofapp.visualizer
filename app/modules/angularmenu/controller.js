@@ -1,10 +1,5 @@
 angular
   .controller('Menu1Ctrl', Menu1Ctrl)
-  // .filter('nospace', function () {
-  //   return function (value) {
-  //       return (!value) ? '' : value.replace(/ /g, '');
-  //   };
-  // })
   .directive("menu", function() {
     return {
       restrict: "E",

@@ -1,3 +1,4 @@
+// https://angular-translate.github.io/docs/#/guide
 angular
   .controller('translationTestCtrl', loadFunction)
 

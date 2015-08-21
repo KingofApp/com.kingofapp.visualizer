@@ -36,11 +36,11 @@ angular
       },
       //Online builder testing purpose
       dependencies: [{
-          mobile : {"firebase": "2.2.4"},
+          bower : {"firebase": "2.2.4"},
           src:"https://cdn.firebase.com/js/client/2.2.4/firebase.js"
         },
         {
-          mobile : {"angularfire": "1.1.2"},
+          bower : {"angularfire": "1.1.2"},
           src:"https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"
         }
       ]
@@ -292,7 +292,8 @@ angular
             '/ads'                           : ads,
             '/ads/menu'                      : angularmenu,
             '/ads/menu/angular-scope'        : angularscope,
-            '/menu'                          : angularmenu,
+            '/menu/fire-connector'           : firebase,
+            '/menu/fire-connector/list'      : list,
             '/menu/translation'              : translationtest,
             '/menu/text'                     : text,
             '/menu/html'                     : html,
@@ -308,8 +309,7 @@ angular
             '/menu/scope-module/static-feed' : angularstaticfeed,
             '/multiple-files'                : multiplefiles,
             '/menu/level1-feed'              : angularstaticfeed,
-            '/fire-connector'                : firebase,
-            '/fire-connector/list'           : list,
+            '/menu'                          : angularmenu
             }
     };
     var config = {

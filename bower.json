@@ -6,8 +6,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "requirejs": "2.1.x",
-    "requirejs-text": "2.0.x",
     "jquery": "2.x",
     "angular": "1.4.x",
     "angular-route": "1.4.x",
@@ -22,7 +20,8 @@
     "angulartics": "~0.20.0",
     "angulartics-google-analytics": "~0.1.1",
     "angular-translate-loader-partial": "~2.7.2",
-    "angular-translate": "~2.7.2"
+    "angular-translate": "~2.7.2",
+    "oclazyload": "~1.0.4"
   },
   "resolutions": {
     "angular": "1.4.4"

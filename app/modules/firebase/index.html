@@ -1,0 +1,7 @@
+
+  <div ng-controller='firebaseCtrl'>
+    <p class='firebase' ng-if='firebase.data.length'>firebase connected!</p>
+    <p ng-if='!firebase.data.length'>connecting...</p>
+    <div ng-include="firebaseTemplate">
+    </div>
+  </div>

@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'angulartics',
+  'oc.lazyLoad',
   'angulartics.google.analytics',
   'pascalprecht.translate',
   'king.loaders.common',

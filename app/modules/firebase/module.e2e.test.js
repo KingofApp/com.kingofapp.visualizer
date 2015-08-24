@@ -1,11 +1,11 @@
 (function(){
-	describe('Text Module test', function() {
+	describe('Firebase Module test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
 
-		it('should load text module', function() {
+		it('should load firebase module', function() {
 			browser.get('/app/#/menu/fire-connector');
 			isPresent('.firebase');
 

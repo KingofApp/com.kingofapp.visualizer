@@ -36,6 +36,7 @@
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
         '/menu/facebook'                 : facebookfeed(),
+        '/menu/contact'                  : contact(),
         '/simple-directive'              : simpledirective(),
         '/scope'                         : angularscope(),
         '/feed'                          : angularstaticfeed(),
@@ -107,6 +108,20 @@
         scope: {
           accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
           pageid      : "laneveraroja"
+        }
+      };
+    }
+
+    function contact(){
+      return {
+        name: 'Contact',
+        identifier: 'contact',
+        type: 'A',
+        view:    "modules/contact/index.html",
+        files: [ "modules/contact/controller.js" ],
+        scope: {
+          send_address: "theguard@kingofapp.es",
+          mandrill_key: "dFOWcqJzBMB69YQGq3GPSQ"
         }
       };
     }

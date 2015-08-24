@@ -21,7 +21,8 @@
     "angulartics-google-analytics": "~0.1.1",
     "angular-translate-loader-partial": "~2.7.2",
     "angular-translate": "~2.7.2",
-    "oclazyload": "~1.0.4"
+    "oclazyload": "~1.0.4",
+    "lodash": "~3.10.1"
   },
   "resolutions": {
     "angular": "1.4.4"

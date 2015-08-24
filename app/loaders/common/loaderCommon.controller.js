@@ -2,48 +2,24 @@
   'use strict';
   angular
     .module('king.loaders.common')
-    .controller('commonLoaderCtrl', commonLoaderCtrl)
-  commonLoaderCtrl.$inject = ['$scope', '$rootScope','$route','$location', 'structureService','$ocLazyLoad'];
+    .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  function commonLoaderCtrl($scope, $rootScope, $route, $location, structureService, $ocLazyLoad) {
+  commonLoaderCtrl.$inject = ['$scope', '$rootScope','$location', '$ocLazyLoad', 'structureService','angularLoader'];
+
+  function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader) {
     console.log("pasa por el commonLoaderCtrl");
     $location.$$path = $location.$$path || '/';
 
     //Load config
     structureService.loadconfig($rootScope);
     //Register Route
-    structureService.getCurrent($location, function(module){
+    structureService.getModule($location.$$path).then(function(module){
       $scope.module = module || $scope.module;
       if(!module){
           //TODO: Display a 404 error or similar
       }
       else if( isAngularModule(module.type) ){
-
-        structureService.getCurrentModules($location, function loadmodules(modules) {
-          var files = [];
-          var dep = [];
-          angular.forEach(modules, function(value, key) {
-            if(value.dependencies){
-              for(var i=0; i<value.dependencies.length; ++i) {
-                dep.push(value.dependencies[i].src);
-              }
-            }
-            for(var i=0; i<value.files.length; ++i) {
-              this.push(value.files[i]);
-            }
-
-          }, files);
-          structureService.getModulefromPath( "/"+$location.$$path.split("/")[1], function(moduleInfo){
-            $ocLazyLoad.load(dep).then(function() {
-              $scope.lazyLoadParams = [
-                files
-              ];
-              $scope.template=moduleInfo.view;
-            })
-
-          });
-        });
-
+        angularLoader.module($scope);
       }
       else if( isJqueryModule(module.type) ){
         //TODO: Load jquery module from angular

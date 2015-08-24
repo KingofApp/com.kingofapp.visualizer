@@ -1,10 +1,7 @@
 
   <div ng-controller='firebaseCtrl'>
-    <p>firebase..</p>
-    <p>
-      {{datas}}
-    </p>
-    <ul>
-    <li ng-repeat="data in datas">{{ data }}</li>
-    </ul>
+    <p class='firebase' ng-if='firebase.data.length'>firebase connected!</p>
+    <p ng-if='!firebase.data.length'>connecting...</p>
+    <div ng-include="firebaseTemplate">
+    </div>
   </div>

@@ -1,0 +1,14 @@
+<div ng-controller='contactCtrl'>
+  <form name="contactForm">
+    <label>{{'contact.name' | translate}}</label>
+    <input type="text" name='name' ng-model="contact.name" required>
+    <label>{{'contact.email' | translate}}</label>
+    <input type="email" name='email' ng-model="contact.email" required>
+    <label>{{'contact.message' | translate}}</label>
+    <textarea rows="5" name="message" ng-model="contact.message" required>
+    </textarea>
+    <button class='send' ng-click="send()">{{'contact.send' | translate}}</button>
+  </form>
+  <p ng-if="contact.status" class='status'>{{ contact.status }}</p>
+
+</div>

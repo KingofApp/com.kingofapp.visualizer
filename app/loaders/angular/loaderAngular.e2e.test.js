@@ -38,6 +38,22 @@
 
 			});
 
+			it('should load angular simple directive', function() {
+				browser.get('/app/#/simple-directive');
+				isPresent('.simpledirective');
+
+				expectSimpledirective();
+
+			});
+
+			it('should load angular filters', function() {
+				browser.get('/app/#/filters');
+				isPresent('.filters');
+
+				expectFilters();
+
+			});
+
 		});
 
 		describe('for multi-level modules', function() {
@@ -215,6 +231,9 @@
 		function expectSimpledirective() {
 			expect(element(by.css('directivecompile p')).getInnerHtml()).toBe('P test');
 			expect(element(by.css('directive')).getInnerHtml()).toBe('Element with personal scope');
+		}
+		function expectFilters() {
+			expect(element(by.css('.filters span.info')).getInnerHtml()).toBe('Filterstest');
 		}
 		function expectMenu() {
 			expect($('menu').isPresent()).toBe(true);

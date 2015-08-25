@@ -40,6 +40,7 @@
         '/simple-directive'              : simpledirective(),
         '/scope'                         : angularscope(),
         '/feed'                          : angularstaticfeed(),
+        '/filters'                       : filters(),
         '/menu/scope-module'             : angularscope(),
         '/menu/scope-diff-module'        : angulardiffscope(),
         '/menu/scope-same-module'        : angularscope(),
@@ -187,6 +188,19 @@
         type :  'A',
         view :  "modules/simpledirective/index.html",
         files: ["modules/simpledirective/controller.js"],
+        scope: {
+          config: ""
+        }
+      };
+    }
+
+    function filters(){
+      return {
+        name: 'Filters test',
+        identifier: 'filters',
+        type :  'A',
+        view :  "modules/filters/index.html",
+        files: ["modules/filters/controller.js"],
         scope: {
           config: ""
         }

@@ -32,7 +32,13 @@
 	    	options: {
 		    	keepAlive: true
 		    }
-	    }
+	    },
+      cors: {
+        options: {
+          configFile: "e2e-tests/protractor.corsconf.js", // Default config file
+          keepAlive: false, // If false, the grunt process stops when the test fails.
+        }
+      }
 	  },
 
 		watch: {
@@ -104,7 +110,7 @@
 	grunt.registerTask('test', ['karma:unit:start', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
 
 	grunt.registerTask('unit-test', ['karma:unit:start']);
-  grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
+  grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:cors', 'protractor:e2e']);
 	grunt.registerTask('continuous-test', ['exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
 
 };

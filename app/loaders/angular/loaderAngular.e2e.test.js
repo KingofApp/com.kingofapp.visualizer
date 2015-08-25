@@ -188,7 +188,8 @@
 				var EC = protractor.ExpectedConditions;
 				var logoff = element.all(by.cssContainingText('a','Angular Scope Module')).get(0);
 
-				browser.wait(EC.elementToBeClickable(logoff), 10000);
+				browser.wait(EC.elementToBeClickable(logoff), 15000);
+				
 				logoff.click();
 				isPresent('.angularscope > span.info');
 				expectScope();

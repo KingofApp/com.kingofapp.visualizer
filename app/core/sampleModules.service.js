@@ -32,6 +32,7 @@
         '/menu/fire-connector/list'      : list(),
         '/menu/translation'              : translationtest(),
         '/menu/text'                     : text(),
+        '/menu/rss'                      : rss(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
@@ -150,6 +151,19 @@
         files: ["modules/text/controller.js"],
         scope: {
           value: "Text phrase"
+        }
+      };
+    }
+
+    function rss(){
+      return {
+        name: 'RSS',
+        identifier: 'rss',
+        type :  'A',
+        view :  "modules/rss/index.html",
+        files: ["modules/rss/controller.js"],
+        scope: {
+          feed: "http://elpais.com/rss/elpais/portada.xml"
         }
       };
     }

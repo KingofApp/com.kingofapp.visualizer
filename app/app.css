@@ -5,6 +5,9 @@ body{
 div{
   height: 100%;
 }
+div.auto {
+  overflow:auto;
+}
 div#main-king{
   width: 360px;
   height: 640px;

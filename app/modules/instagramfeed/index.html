@@ -1,0 +1,10 @@
+<div class='instagramfeed auto' ng-controller='instagramFeedCtrl'>
+  <h2>Instagram feed</h2>
+    <p ng-hide="isEmpty(instagramfeed.message)">{{instagramfeed.message}}</p>
+		<ul class="feed">
+			<li ng-repeat="item in instagramfeed.items" ng-hide="isEmpty(instagramfeed.message)">
+				<img ng-src='{{item.images.low_resolution.url}}'>
+        <p>{{item.caption.text}}</p>
+			</li>
+		</ul>
+</div>

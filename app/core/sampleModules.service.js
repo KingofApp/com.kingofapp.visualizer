@@ -37,6 +37,7 @@
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
         '/menu/facebook'                 : facebookfeed(),
+        '/menu/instagram'                : instagramfeed(),
         '/menu/contact'                  : contact(),
         '/simple-directive'              : simpledirective(),
         '/scope'                         : angularscope(),
@@ -110,6 +111,19 @@
         scope: {
           accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
           pageid      : "laneveraroja"
+        }
+      };
+    }
+    function instagramfeed(){
+      return {
+        name: 'Instagram Feed',
+        identifier: 'instagramfeed',
+        type : 'A',
+        view :   "modules/instagramfeed/index.html",
+        files: [ "modules/instagramfeed/controller.js" ],
+        scope: {
+          accesstoken : "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
+          userid      : "50417061"
         }
       };
     }

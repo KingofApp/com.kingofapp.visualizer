@@ -186,10 +186,10 @@
 				element(by.css('a.changelanguage')).click();
 				element(by.css('.statusBar button')).click();
 				var EC = protractor.ExpectedConditions;
-				var logoff = element.all(by.cssContainingText('a','Angular Scope Module')).get(0);
-				browser.wait(EC.elementToBeClickable(logoff), 10000);
+				var menuelement = element.all(by.cssContainingText('a','Angular Scope Module')).get(0);
+				browser.wait(EC.elementToBeClickable(menuelement), 10000);
 
-				logoff.click();
+				menuelement.click();
 				isPresent('.angularscope > span.info');
 				expectScope();
 				expectSpanishMenu();

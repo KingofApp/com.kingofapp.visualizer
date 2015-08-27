@@ -33,6 +33,11 @@
         '/menu/translation'              : translationtest(),
         '/menu/text'                     : text(),
         '/menu/rss'                      : rss(),
+        '/polymer-menu'                  : polymermenu("/polymer-menu"),
+        '/polymer-menu/rss'              : rss(),
+        '/polymer-menu/facebook'         : facebookfeed(),
+        '/polymer-menu/html'             : html(),
+        '/polymer-menu/contact'                  : contact(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
@@ -304,6 +309,18 @@
         type :  'A',
         view :  "modules/angularmenu/index.html",
         files: ["modules/angularmenu/controller.js"],
+        scope: {path: path}
+      };
+    }
+
+    function polymermenu(path){
+      return {
+        name: 'Polymer Menu Module',
+        identifier: 'polymermenu',
+        type :  'A',
+        view :  "modules/polymermenu/index.html",
+        files: ["modules/polymermenu/controller.js",
+          "modules/polymermenu/directive.js"],
         scope: {path: path}
       };
     }

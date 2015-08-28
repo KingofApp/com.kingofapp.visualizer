@@ -2,6 +2,9 @@
 body{
   font-family: Arial, sans-serif;
 }
+div.youtubegallery img{
+  width:100%;
+}
 div{
   height: 100%;
 }

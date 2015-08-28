@@ -37,7 +37,8 @@
         '/polymer-menu/rss'              : rss(),
         '/polymer-menu/facebook'         : facebookfeed(),
         '/polymer-menu/html'             : html(),
-        '/polymer-menu/contact'                  : contact(),
+        '/polymer-menu/contact'          : contact(),
+        '/polymer-menu/youtube-gallery'  : youtubegallery(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
@@ -106,6 +107,29 @@
       };
     }
 
+    function youtubegallery() {
+      return {
+        name: 'Youtube Gallery',
+        identifier: 'youtubegallery',
+        type : 'A',
+        view :   "modules/youtubegallery/index.html",
+        files: [ "modules/youtubegallery/controller.js" ],
+        scope: {
+          channelid  : "UCeIt2DJO8UdtUTmJzTfSXiQ",
+          galleryurl : "/app/#/polymer-menu/gallery"
+        },
+        //Online builder testing purpose
+        libs: [{
+          bower : {"xml2json": "1.1.1"},
+          src   : "bower_components/x2js/xml2json.js"
+        },
+        {
+          bower : {"angular-xml": "2.2.1"},
+          src   : "bower_components/angular-xml/angular-xml.js"
+        }]
+      };
+    }
+
     function facebookfeed(){
       return {
         name: 'Facebook Feed',
@@ -119,6 +143,7 @@
         }
       };
     }
+
     function instagramfeed(){
       return {
         name: 'Instagram Feed',

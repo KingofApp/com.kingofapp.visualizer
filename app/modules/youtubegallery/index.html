@@ -1,0 +1,11 @@
+<div class='youtubegallery auto' ng-controller='youtubeGalleryCtrl'>
+  <h2>Gallery</h2>
+  <p ng-hide="isEmpty(youtubegallery.message)">{{youtubegallery.message}}</p>
+  <ul class="feed">
+    <li ng-repeat="item in youtubegallery.items" ng-hide="isEmpty(youtubegallery.message)">
+    <a ng-href="{{youtubegallery.modulescope.galleryurl}}?video={{item.videoId.__text}}"><img ng-src='{{item.group.thumbnail._url}}'></a>
+      <p>{{item.videoId.__text}}</p>
+    </li>
+  </ul>
+
+</div>

@@ -39,6 +39,7 @@
         '/polymer-menu/html'             : html(),
         '/polymer-menu/contact'          : contact(),
         '/polymer-menu/youtube-gallery'  : youtubegallery(),
+        '/polymer-menu/youtube-video'    : youtubevideo(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
@@ -107,6 +108,19 @@
       };
     }
 
+    function youtubevideo(){
+      return {
+        name: 'Youtube Video',
+        identifier: 'youtubevideo',
+        type :  'A',
+        view :  "modules/youtubevideo/index.html",
+        files: ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
+        scope: {
+          videoid: "oHg5SJYRHA0"
+        }
+      };
+    }
+
     function youtubegallery() {
       return {
         name: 'Youtube Gallery',
@@ -116,7 +130,7 @@
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
           channelid  : "UCeIt2DJO8UdtUTmJzTfSXiQ",
-          galleryurl : "/app/#/polymer-menu/gallery"
+          galleryurl : "/app/#/polymer-menu/youtube-video"
         },
         //Online builder testing purpose
         libs: [{

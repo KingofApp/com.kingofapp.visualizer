@@ -1,0 +1,4 @@
+<div class='youtubevideo' ng-controller='youtubevideoCtrl'>
+  <p ng-hide="isEmpty(youtubevideo.message)">{{youtubevideo.message}}</p>
+  <youtube ng-hide="isEmpty(youtubevideo.message)" code="youtubevideo.videoid"></youtube>
+</div>

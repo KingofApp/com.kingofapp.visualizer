@@ -7,7 +7,7 @@ function loadFunction($http, $scope, structureService, $location, x2js, $routePa
   //Register upper level modules
   structureService.registerModule($location,$scope,"youtubegallery");
 
-  console.log("Params", $routeParams.param);
+  console.log("Params", $routeParams.video);
   console.log("Variablita", $location.search().param);
 
   $http.get('https://www.youtube.com/feeds/videos.xml',{  params: {

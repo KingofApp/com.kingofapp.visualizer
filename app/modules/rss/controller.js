@@ -17,6 +17,4 @@ structureService.registerModule($location,$scope,"rss");
       .error(function(data) {
         console.log("ERROR: " + data);
       });
-
-
 }

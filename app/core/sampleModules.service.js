@@ -40,6 +40,7 @@
         '/polymer-menu/contact'          : contact(),
         '/polymer-menu/youtube-gallery'  : youtubegallery(),
         '/polymer-menu/youtube-video'    : youtubevideo(),
+        '/polymer-menu/google-map'       : googlemap(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
@@ -105,6 +106,27 @@
         scope: {
           src: ""
         }
+      };
+    }
+
+    function googlemap(){
+      return {
+        name: 'Map',
+        identifier: 'googlemap',
+        type :  'A',
+        view :  "modules/googlemap/index.html",
+        files: ["modules/googlemap/controller.js", "modules/googlemap/directive.js"],
+        scope: {
+          lat: "oHg5SJYRHA0"
+        },
+        libs: [{
+          bower : {"lodash": "3.10.1"},
+          src:"bower_components/lodash/lodash.js"
+        },
+        {
+          bower : {"angular-google-maps": "2.1.6"},
+          src:"bower_components/angular-google-maps/dist/angular-google-maps.js"
+        }]
       };
     }
 

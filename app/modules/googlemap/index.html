@@ -1,0 +1,20 @@
+<style>
+#map_canvas {
+            position: relative;
+}
+.angular-google-map-container {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+</style>
+<lazy-load></lazy-load>
+<div class='googlemap' ng-controller='googlemapCtrl'>
+  <!-- <p ng-hide="isEmpty(youtubevideo.message)">{{youtubevideo.message}}</p> -->
+  <ui-gmap-google-map center='map.center' zoom='map.zoom' dragging='false'>
+    <ui-gmap-markers models="marker" coords="'self'" icon="'icon'">
+    </ui-gmap-markers>
+  </ui-gmap-google-map>
+</div>

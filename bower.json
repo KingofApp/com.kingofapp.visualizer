@@ -19,6 +19,7 @@
     "angulartics": "~0.20.0",
     "angulartics-google-analytics": "~0.1.1",
     "html5-boilerplate": "~4.3.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.3",
     "jquery": "2.x",
     "lodash": "~3.10.1",
     "mocha": "2.2.x",
@@ -27,8 +28,12 @@
     "paper-item": "PolymerElements/paper-item#~1.0.2",
     "paper-menu": "PolymerElements/paper-menu#~1.1.0",
     "paper-menu-button": "PolymerElements/paper-menu-button#~1.0.3",
+    "polymer": "polymer/polymer#^1.1.0",
     "protractor": "2.1.x",
     "xml2json": "~1.1.1"
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
   "resolutions": {
     "angular": "1.4.4"

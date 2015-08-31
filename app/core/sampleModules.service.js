@@ -358,8 +358,7 @@
         identifier: 'polymermenu',
         type :  'A',
         view :  "modules/polymermenu/index.html",
-        files: ["modules/polymermenu/controller.js",
-          "modules/polymermenu/directive.js"],
+        files: ["modules/polymermenu/controller.js"],
         scope: {path: path}
       };
     }

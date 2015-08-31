@@ -1,15 +1,18 @@
-<div class='polymermenu' ng-controller='polymerMenuCtrl'>
+<div class="polymermenu" ng-controller="polymerMenuCtrl">
 
-    <paper-menu-button vertical-offset='70'>
+    <paper-menu-button vertical-offset="56">
       <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
       <paper-menu class="dropdown-content">
         <template is="dom-repeat" items="{{polymermenu.menu}}">
-          <!-- <paper-item noink><a style='width:100%; height:100%;' href='{{item.k}}'>{{item.v}}</a></paper-item> -->
-          <paper-item noink><a href="{{item.k}}">{{item.v}}</a></paper-item>
+          <paper-item>
+            <a href="{{item.url}}" class="flex">{{item.text}}</a>
+          </paper-item>
         </template>
       </paper-menu>
     </paper-menu-button>
+
     <!-- moduleIdentifier + Template -->
     <div ng-include="polymermenuTemplate">
     </div>
+
 </div>

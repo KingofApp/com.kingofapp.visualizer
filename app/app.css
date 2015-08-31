@@ -160,7 +160,7 @@ menu > div > menu-item > div {
   color: #788195;
 }
 a:hover {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 a, a:focus, a:hover, a:active {
   outline: 0 !important;

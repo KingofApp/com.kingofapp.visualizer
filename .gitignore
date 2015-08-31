@@ -1,10 +1,6 @@
-logs/*
-!.gitkeep
-node_modules/
+*.log
 bower_components/
+logs/*
+node_modules/
 testresults/
 tmp
-.DS_Store
-.idea
-
-npm-debug.*

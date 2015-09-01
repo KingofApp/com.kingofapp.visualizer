@@ -41,6 +41,7 @@
         '/polymer-menu/youtube-gallery'  : youtubegallery(),
         '/polymer-menu/youtube-video'    : youtubevideo(),
         '/polymer-menu/google-map'       : googlemap(),
+        '/polymer-menu/vimeo-video'      : vimeovideo(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
@@ -139,6 +140,21 @@
         files: ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
         scope: {
           videoid: "oHg5SJYRHA0"
+        }
+      };
+    }
+
+    function vimeovideo(){
+      return {
+        name: 'Vimeo Video',
+        identifier: 'vimeovideo',
+        type :  'A',
+        view :  "modules/vimeovideo/index.html",
+        files: ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
+        scope: {
+          videoid: "136882652",
+          height: "250px",
+          width: "100%"
         }
       };
     }

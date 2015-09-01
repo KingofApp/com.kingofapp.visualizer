@@ -1,37 +1,30 @@
-// (function(){
-// 	describe('Embed Module test', function() {
-// 		beforeEach(function(){
-// 		    browser.driver.manage().window().setSize(379, 666);
-// 		    browser.ignoreSynchronization = true;
-// 		});
-//
-// 		it('should load embed module', function() {
-// 			browser.get('/app/#/menu/embed');
-//
-// 			browser.wait(function() {
-// 				return $('.embed').isPresent(); // keeps waiting until this statement resolves to true
-// 			}, 5000, 'Main (.embed) not present')
-// 			.then(function(){
-// 		     browser.wait(function() {
-//  					browser.switchTo().frame(browser.findElement(by.css("iframe#embedtest"))).then(function(){});
-//  					return $('div#Outer').isPresent(); // keeps waiting until this statement resolves to true
-//  				}, 5000, 'Main (div#Outer) not present')
-//  				.then(function(){
-// 				 	expectmodule();
-// 				 });
-// 		 });
-//
-//
-//
-// 		});
-//
-// 		function expectmodule() {
-// 			expect(element(by.css('h1 span')).getInnerHtml()).toBe('Lorem Ipsum');
-// 		}
-//
-// 		afterEach(function() {
-// 			browser.ignoreSynchronization = false;
-// 		});
-//
-// 	});
-// }());
+(function(){
+	describe('Google Map test', function() {
+		beforeEach(function(){
+		    browser.driver.manage().window().setSize(379, 666);
+		    browser.ignoreSynchronization = true;
+		});
+
+		it('should load google map', function() {
+			browser.get('/app/#/polymer-menu/google-map');
+      isPresent('.angular-google-map');
+			expectmodule();
+		});
+
+    function isPresent(selector) {
+      browser.wait(function() {
+          return $(selector).isPresent();
+      }, 6000, 'Main (' + selector + ') not present');
+    }
+
+		function expectmodule() {
+      isPresent('canvas');
+			expect(element.all(by.css('canvas')).count()).toBeGreaterThan(0);
+		}
+
+		afterEach(function() {
+			browser.ignoreSynchronization = false;
+		});
+
+	});
+}());

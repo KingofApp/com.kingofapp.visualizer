@@ -42,6 +42,7 @@
         '/polymer-menu/youtube-video'    : youtubevideo(),
         '/polymer-menu/google-map'       : googlemap(),
         '/polymer-menu/vimeo-video'      : vimeovideo(),
+        '/polymer-menu/soundcloud'       : soundcloud(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
@@ -140,6 +141,20 @@
         files: ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
         scope: {
           videoid: "oHg5SJYRHA0"
+        }
+      };
+    }
+
+    function soundcloud(){
+      return {
+        name: 'Sound Cloud',
+        identifier: 'soundcloud',
+        type :  'A',
+        view :  "modules/soundcloud/index.html",
+        files: ["modules/soundcloud/controller.js", "modules/soundcloud/directive.js"],
+        scope: {
+          client_id: "b23455855ab96a4556cbd0a98397ae8c",
+          track:     "65576692"
         }
       };
     }

@@ -8,6 +8,7 @@
   "dependencies": {
     "angular": "1.4.x",
     "angular-cache": "~4.3.1",
+    "angular-google-maps": "~2.1.6",
     "angular-loader": "1.4.x",
     "angular-mocks": "~1.4.x",
     "angular-resource": "1.4.x",

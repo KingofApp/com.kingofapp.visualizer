@@ -5,11 +5,12 @@ body{
 div.youtubegallery img{
   width:100%;
 }
-div{
+#main-king > div, .template, .template > div{
   height: 100%;
 }
 div.auto {
   overflow:auto;
+  height: 100%;
 }
 div#main-king{
   width: 360px;

@@ -6,7 +6,7 @@ loadFunction.$inject = ['$scope', 'structureService', '$location', '$routeParams
 function loadFunction($scope, structureService, $location, $routeParams){
   //Register upper level modules
   structureService.registerModule($location,$scope,"youtubevideo");
-  console.log("Param", $routeParams);
+
   if($location.search().video){
     $scope.youtubevideo.videoid = $location.search().video;
   }else if($scope.youtubevideo.modulescope.videoid){

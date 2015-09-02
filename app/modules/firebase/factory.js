@@ -1,6 +1,9 @@
 angular.module('factoria', ['firebase'])
   .factory('fireService', ['$firebaseArray', function($firebaseArray){
-    var firebaseRef= new Firebase("https://blinding-heat-1559.firebaseio.com/datatest");
+    var firebaseRef= "";
+    var setFirebaseSource = function(url){
+        firebaseRef= new Firebase(url);
+    };
     var getFirebaseRoot = function(){
         return firebaseRef;
     };
@@ -14,9 +17,10 @@ angular.module('factoria', ['firebase'])
         return $firebaseArray(ref);
     }
     var service = {
-        addData : addData,
-        getData: getData,
-        getFirebaseRoot: getFirebaseRoot
+        setFirebaseSource : setFirebaseSource,
+        addData           : addData,
+        getData           : getData,
+        getFirebaseRoot   : getFirebaseRoot
     };
     return service;
   }]);

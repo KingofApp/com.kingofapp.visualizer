@@ -1,0 +1,11 @@
+<div class='qrgenerator' ng-controller='qrgeneratorCtrl'>
+  <div class='static'>
+    <qrcode ng-show='qrgenerator.modulescope.static' data="qrgenerator.modulescope.static" size='150' ></qrcode>
+  </div>
+  <ul>
+    <li style='height:300px;' class='list' ng-repeat="promocion in qrgenerator.list">
+      {{ promocion.promocion }} :
+      <qrcode ng-show='promocion.valor' data="{{promocion.valor}}" size='150' ></qrcode>
+    </li>
+  </ul>
+</div>

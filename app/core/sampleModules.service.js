@@ -43,6 +43,7 @@
         '/polymer-menu/google-map'       : googlemap(),
         '/polymer-menu/vimeo-video'      : vimeovideo(),
         '/polymer-menu/soundcloud'       : soundcloud(),
+        '/menu/fire-connector/qr'        : qrgenerator(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
@@ -128,6 +129,28 @@
         {
           bower : {"angular-google-maps": "2.1.6"},
           src:"bower_components/angular-google-maps/dist/angular-google-maps.js"
+        }]
+      };
+    }
+
+    function qrgenerator(){
+      return {
+        name: 'QR',
+        identifier: 'qrgenerator',
+        type :  'A',
+        view :  "modules/qrgenerator/index.html",
+        files: ["modules/qrgenerator/controller.js"],
+        scope: {
+          static     : "http://google.es",
+          datasource : "https://blinding-heat-1559.firebaseio.com/ofertas"
+        },
+        libs: [{
+          bower : {"monospaced/angular-qrcode": "6.0.3"},
+          src:"bower_components/angular-qrcode/angular-qrcode.js"
+        },
+        {
+          bower : {"kazuhikoarase/qrcode-generator": "1.0.0"},
+          src:"bower_components/qrcode-generator/js/qrcode.js"
         }]
       };
     }

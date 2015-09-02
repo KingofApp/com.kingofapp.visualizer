@@ -11,6 +11,7 @@
     "angular-google-maps": "~2.1.6",
     "angular-loader": "1.4.x",
     "angular-mocks": "~1.4.x",
+    "angular-qrcode": "monospaced/angular-qrcode#~6.0.3",
     "angular-resource": "1.4.x",
     "angular-route": "1.4.x",
     "angular-scenario": "1.4.x",
@@ -31,6 +32,7 @@
     "paper-menu-button": "PolymerElements/paper-menu-button#~1.0.3",
     "polymer": "polymer/polymer#^1.1.0",
     "protractor": "2.1.x",
+    "qrcode-generator": "kazuhikoarase/qrcode-generator",
     "xml2json": "~1.1.1"
   },
   "devDependencies": {

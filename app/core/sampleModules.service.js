@@ -43,6 +43,7 @@
         '/polymer-menu/google-map'       : googlemap(),
         '/polymer-menu/vimeo-video'      : vimeovideo(),
         '/polymer-menu/soundcloud'       : soundcloud(),
+        '/polymer-menu/pdf'              : pdfviewer(),
         '/menu/fire-connector/qr'        : qrgenerator(),
         '/menu/html'                     : html(),
         '/menu/embed'                    : embed(),
@@ -151,6 +152,27 @@
         {
           bower : {"kazuhikoarase/qrcode-generator": "1.0.0"},
           src:"bower_components/qrcode-generator/js/qrcode.js"
+        }]
+      };
+    }
+
+    function pdfviewer(){
+      return {
+        name: 'Pdf',
+        identifier: 'pdfviewer',
+        type :  'A',
+        view :  "modules/pdfviewer/index.html",
+        files: ["modules/pdfviewer/controller.js"],
+        scope: {
+          value : "https://github.com/akrennmair/ng-pdfviewer/raw/develop/example/test.pdf"
+        },
+        libs: [{
+          bower : {"angular-pdf": "1.1.1"},
+          src   : "modules/pdfviewer/libs/pdfjs-dist/build/pdf.js"
+        },
+        {
+          bower : {"angular-pdf": "1.1.1"},
+          src   : "bower_components/angular-pdf/dist/angular-pdf.js"
         }]
       };
     }

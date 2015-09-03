@@ -16,7 +16,6 @@ function loadFunction($http, $scope, structureService, $location){
         page: '1'
     }})
     .success(function(data){
-      console.log("data:",data.photoset);
     	$scope.flickrfeed.items = data.photoset.photo;
     }).error(function(data, error){
     	$scope.flickrfeed.message = 'Opps! There was a problem loading the feed!';

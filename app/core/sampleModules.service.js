@@ -36,8 +36,7 @@
         '/polymer-menu'                  : polymermenu("/polymer-menu"),
         '/polymer-menu/rss'              : rss(),
         '/polymer-menu/facebook'         : facebookfeed(),
-        '/polymer-menu/html'             : html(),
-        '/polymer-menu/contact'          : contact(),
+        '/menu/contact'                  : contact(),
         '/polymer-menu/youtube-gallery'  : youtubegallery(),
         '/polymer-menu/youtube-video'    : youtubevideo(),
         '/polymer-menu/google-map'       : googlemap(),
@@ -51,7 +50,7 @@
         '/menu/twitter'                  : twitterfeed(),
         '/menu/facebook'                 : facebookfeed(),
         '/menu/instagram'                : instagramfeed(),
-        '/menu/contact'                  : contact(),
+        '/menu/simple-gallery'           : simplegallery(),
         '/simple-directive'              : simpledirective(),
         '/scope'                         : angularscope(),
         '/feed'                          : angularstaticfeed(),
@@ -283,6 +282,21 @@
           accesstoken : "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
           userid      : "50417061"
         }
+      };
+    }
+
+    function simplegallery(){
+      return {
+      name: 'Simple Gallery',
+      identifier: 'simplegallery',
+      type :  'A',
+      view :  "modules/simplegallery/index.html",
+      files: [
+        "modules/simplegallery/controller.js"
+      ],
+      scope: {
+        gallery : ["http://i.imgur.com/cBiVYSx.jpg", "http://i.imgur.com/lIb0zTT.jpg", "http://i.imgur.com/bAFPG8K.jpg"]
+      }
       };
     }
 

@@ -1,0 +1,10 @@
+<div class='flickrfeed auto' ng-controller='flickrFeedCtrl'>
+  <h2>Flickr feed</h2>
+  <p ng-hide="isEmpty(flickrfeed.message)">{{flickrfeed.message}}</p>
+	<ul class="feed">
+		<li ng-repeat="item in flickrfeed.items" ng-hide="isEmpty(flickrfeed.message)">
+			<img ng-src='https://farm{{item.farm}}.staticflickr.com/{{item.server}}/{{item.id}}_{{item.secret}}_n.jpg'>
+      <p>{{item.title}}</p>
+		</li>
+	</ul>
+</div>

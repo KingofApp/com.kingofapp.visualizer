@@ -46,6 +46,7 @@
         '/polymer-menu/pdf'              : pdfviewer(),
         '/menu/fire-connector/qr'        : qrgenerator(),
         '/menu/html'                     : html(),
+        '/menu/flickr'                   : flickrfeed(),
         '/menu/embed'                    : embed(),
         '/menu/twitter'                  : twitterfeed(),
         '/menu/facebook'                 : facebookfeed(),
@@ -252,6 +253,21 @@
         scope: {
           accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
           pageid      : "laneveraroja"
+        }
+      };
+    }
+
+    function flickrfeed(){
+      return {
+        name: 'Flickr Feed',
+        identifier: 'flickrfeed',
+        type : 'A',
+        view :   "modules/flickrfeed/index.html",
+        files: [ "modules/flickrfeed/controller.js" ],
+        scope: {
+          accesstoken : "1d2b22596adb2b99645c52ba2f5d1542",
+          photosetid  : "72157649175711353",
+          results     : "5"
         }
       };
     }

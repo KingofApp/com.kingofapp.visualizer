@@ -266,7 +266,7 @@
         files: [ "modules/wordpressposts/controller.js" ],
         scope: {
           domain : "http://kingofapp.es",
-          postnumber      : 3,
+          postnumber      : 1,
           category      : "Noticias"
         }
       };

@@ -18,7 +18,7 @@
 			}, 15000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.wordpressposts ul.feed li')).count()).toBeGreaterThan(2);
+			expect(element.all(by.css('.wordpressposts ul.feed li')).count()).toBeGreaterThan(0);
 		}
 
 		afterEach(function() {

@@ -13,7 +13,6 @@ function loadFunction($http, $scope, structureService, $location){
           'filter[category_name]'  : $scope.wordpressposts.modulescope.category
     }})
     .success(function(data){
-      $scope.wordpressposts.result = "OK!";
     	$scope.wordpressposts.items = data;
 
     	$scope.wordpressposts.isEmpty = function (obj) {
@@ -21,7 +20,6 @@ function loadFunction($http, $scope, structureService, $location){
     	    return true;
     	};
     }).error(function(){
-      $scope.wordpressposts.result = "Dead";
     	$scope.wordpressposts.items = [{
     		"message": "Opps! There was a problem loading the feed!",
     	}];

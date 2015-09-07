@@ -1,5 +1,5 @@
 (function(){
-	describe('Instagram Feed Module test', function() {
+	describe('Flickr Feed Module test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
@@ -9,10 +9,10 @@
 			// 	console.log('log: ' + require('util').inspect(browserLog));
 			// });
 		});
-		it('should load instagram feed module', function() {
-			browser.get('/app/#/menu/instagram');
+		it('should load flickr feed module', function() {
+			browser.get('/app/#/menu/flickr');
 			browser.debugger();
-			isPresent('.instagramfeed ul.feed li');
+			isPresent('.flickrfeed ul.feed li');
 
 			expectmodule();
 
@@ -23,7 +23,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.instagramfeed ul.feed li')).count()).toBeGreaterThan(3);
+			expect(element.all(by.css('.flickrfeed ul.feed li')).count()).toBeGreaterThan(3);
 		}
 
 		afterEach(function() {

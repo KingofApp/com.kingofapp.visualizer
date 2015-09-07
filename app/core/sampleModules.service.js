@@ -36,6 +36,7 @@
         '/polymer-menu'                  : polymermenu("/polymer-menu"),
         '/polymer-menu/rss'              : rss(),
         '/polymer-menu/facebook'         : facebookfeed(),
+        '/polymer-menu/wordpress'        : wordpressposts(),
         '/menu/contact'                  : contact(),
         '/polymer-menu/youtube-gallery'  : youtubegallery(),
         '/polymer-menu/youtube-video'    : youtubevideo(),
@@ -252,6 +253,21 @@
         scope: {
           accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
           pageid      : "laneveraroja"
+        }
+      };
+    }
+
+    function wordpressposts(){
+      return {
+        name: 'Wordpress Feed',
+        identifier: 'wordpressposts',
+        type : 'A',
+        view :   "modules/wordpressposts/index.html",
+        files: [ "modules/wordpressposts/controller.js" ],
+        scope: {
+          domain : "http://kingofapp.es",
+          postnumber      : 3,
+          category      : "Noticias"
         }
       };
     }

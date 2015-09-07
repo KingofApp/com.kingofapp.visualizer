@@ -1,13 +1,13 @@
 (function(){
-	describe('Facebook Feed Module test', function() {
+	describe('Wordpress Posts test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
 
-		it('should load facebook feed module', function() {
-			browser.get('/app/#/menu/facebook');
-			isPresent('.facebookfeed ul.feed li');
+		it('should load wordpress posts', function() {
+			browser.get('/app/#/polymer-menu/wordpress');
+			isPresent('.wordpressposts ul.feed li');
 
 			expectmodule();
 
@@ -18,7 +18,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.facebookfeed ul.feed li')).count()).toBeGreaterThan(2);
+			expect(element.all(by.css('.wordpressposts ul.feed li')).count()).toBeGreaterThan(2);
 		}
 
 		afterEach(function() {

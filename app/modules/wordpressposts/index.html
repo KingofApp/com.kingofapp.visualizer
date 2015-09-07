@@ -1,0 +1,11 @@
+<div class='wordpressposts auto' ng-controller='wordpresspostsCtrl'>
+  <h2>Wordpress Posts</h2>
+  			<ul class="feed">
+  				<li ng-repeat="item in wordpressposts.items" ng-hide="isEmpty(item.message)">
+            <h2>{{item.title}}</h2>
+            <p>{{item.date}}</p>
+            <div ng-bind-html='item.content'>{{item.message}}</div>
+  				</li>
+  			</ul>
+
+</div>

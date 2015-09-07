@@ -18,6 +18,7 @@
     }
 
 		function expectmodule() {
+			isPresent('p.ready');
 			expect(element(by.css('.track-info a.band')).getInnerHtml()).toBe("Alain Galvan");
 		}
 

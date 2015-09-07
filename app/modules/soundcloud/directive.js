@@ -13,6 +13,7 @@ angular.directive('soundcloud', function ($http) {
             scope.wave = data.waveform_url;
             scope.stream = data.stream_url + '?client_id=' + scope.client_id;
             scope.song = new Audio();
+            scope.ready = "<p class='ready'></p>";
         });
         scope.playing = false;
         scope.play = function () {

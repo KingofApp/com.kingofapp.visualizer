@@ -15,7 +15,7 @@
 		function isPresent(selector) {
 			browser.wait(function() {
 					return $(selector).isPresent();
-			}, 6000, 'Main (' + selector + ') not present');
+			}, 15000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
 			expect(element.all(by.css('.wordpressposts ul.feed li')).count()).toBeGreaterThan(2);

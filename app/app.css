@@ -1,4 +1,7 @@
 /* app css stylesheet */
+  .element {
+    margin: 0 0 2.5em;
+  }
 body{
   font-family: Arial, sans-serif;
 }

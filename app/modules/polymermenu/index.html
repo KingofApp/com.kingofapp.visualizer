@@ -1,6 +1,6 @@
-<div class="polymermenu" ng-controller="polymerMenuCtrl">
+<div class="polymermenu auto" ng-controller="polymerMenuCtrl">
 
-    <paper-menu-button vertical-offset="56">
+    <!-- <paper-menu-button vertical-offset="56">
       <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
       <paper-menu class="dropdown-content">
         <template is="dom-repeat" items="{{polymermenu.menu}}">
@@ -9,7 +9,60 @@
           </paper-item>
         </template>
       </paper-menu>
-    </paper-menu-button>
+    </paper-menu-button> -->
+    <div class="XX">
+      <koa-menu-button vertical-offset="56">
+        <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
+        <koa-menu class="dropdown-content">
+          <!-- <template is="dom-repeat" items="{{polymermenu.menu}}"> -->
+            <koa-item>
+              <a href="{{item.url}}" class="flex">{{item.text}}</a>
+            </koa-item>
+          <!-- </template> -->
+        </koa-menu>
+      </koa-menu-button>
+    </div>
+
+
+
+    <div class="element">
+       <div style="display:inline-block">
+         <span>Inbox</span>
+         <koa-badge label="3"></koa-badge>
+       </div>
+     </div>
+
+     <div class="element">
+       <koa-button raised big>King of App</koa-button>
+     </div>
+
+     <div class="element">
+       <koa-checkbox checked>King of App</koa-checkbox>
+     </div>
+
+     <div class="element">
+       <koa-toggle-button checked></koa-toggle-button>
+     </div>
+
+     <div class="element">
+       <koa-tabs>
+         <koa-tab>KoA 1</koa-tab>
+         <koa-tab>KoA 2</koa-tab>
+         <koa-tab>KoA 3</koa-tab>
+       </koa-tabs>
+     </div>
+
+     <div class="element">
+       <koa-card heading="Cards can have titles" class="pink">
+         <div class="card-content">
+           Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
+         </div>
+         <div class="card-actions">
+           <koa-button>Nay</koa-button>
+           <koa-button>Yay!</koa-button>
+         </div>
+       </koa-card>
+     </div>
 
     <!-- moduleIdentifier + Template -->
     <div ng-include="polymermenuTemplate" class='template'>

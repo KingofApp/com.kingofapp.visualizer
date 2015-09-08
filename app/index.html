@@ -16,12 +16,8 @@
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
   <!-- paper-menu-button elements  -->
-  <link rel="import" href="bower_components/iron-flex-layout/classes/iron-flex-layout.html">
-  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
-  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-  <link rel="import" href="bower_components/paper-item/paper-item.html">
-  <link rel="import" href="bower_components/paper-menu-button/paper-menu-button.html">
-  <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+  <script src="scripts/koa.js"></script>
+  <link rel="import" href="koa-elements/koa-elements.html">
   <!-- END paper-menu-button elements  -->
 
 </head>
@@ -30,7 +26,25 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-
+  <div style="margin-bottom: 2em;">
+    <button onclick="changeTheme();">Change theme</button>
+    <button onclick="changeColor();">Change color</button>
+    <script>
+      function changeTheme() {
+        koa.theme.set(koa.theme.get() === 'ios' ? 'paper' : 'ios');
+      }
+      function changeColor() {
+        var s = document.createElement('style', 'custom-style');
+        var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
+        var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
+        s.textContent = ':root { --default-primary-color: ' + defaultPrimaryColor + '; }';
+        s.textContent += ':root { --accent-color: ' + accentColor + '; }';
+        document.body.appendChild(s);
+        Polymer.updateStyles();
+        s.remove();
+      }
+    </script>
+  </div>
   <div id="main-king"> <!-- ng-controller="setStructure" -->
     <div ng-view>
 

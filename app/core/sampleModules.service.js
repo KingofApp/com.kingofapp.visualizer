@@ -265,9 +265,9 @@
         view :   "modules/wordpressposts/index.html",
         files: [ "modules/wordpressposts/controller.js" ],
         scope: {
-          domain : "http://kingofapp.es",
+          domain : "http://rachelbaker.me",
           postnumber      : 1,
-          category      : "Noticias"
+          category      : ""
         }
       };
     }

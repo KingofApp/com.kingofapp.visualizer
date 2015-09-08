@@ -9,7 +9,7 @@ exports.config = {
   allScriptsTimeout: 30000,
 
   specs: [
-    '../**/*.wp.test.js'
+    '../**/*.e2e.test.js'
   ],
 
   capabilities: {

@@ -1,11 +1,25 @@
 <div class='facebookfeed auto' ng-controller='facebookFeedCtrl'>
   <h2>Facebook feed</h2>
-  			<ul class="feed">
-  				<li ng-repeat="item in facebookfeed.items" ng-hide="isEmpty(item.message)">
-  					<!-- <img ng-src='{{item.picture}}'> -->
-            <paper-item>Paper:{{item.message}}</paper-item>
-            <koa-item raised big>KOA:{{item.message}}</koa-item>
-  				</li>
-  			</ul>
+  <!-- <template is="dom-repeat" id="menu" items="[{first: 'Bob', last: 'Smith'},{first: 'Sally', last: 'Johnson'}]">
+    <div>
+      XX{{item.first}}XX
+    </div>
+  </template> -->
+	<ul class="feed">
+
+    <template is="dom-repeat" items="{{facebookfeed.items}}">
+      <li>
+        <koa-item>{{item.message}}</koa-item>
+      </li>
+    </template>
+		<!-- <li ng-repeat="item in facebookfeed.items" ng-hide="isEmpty(item.message)"> -->
+			<!-- <img ng-src='{{item.picture}}'> -->
+
+
+
+      <!-- <paper-item> {{item.message}} </paper-item> -->
+      <!-- <paper-item>{{item.message}}</paper-item> -->
+		<!-- </li> -->
+	</ul>
 
 </div>

@@ -6,10 +6,11 @@
     </div>
   </template> -->
 	<ul class="feed">
-
+<li><paper-button>Paper:{{nano}}</paper-button></li>
+<li><koa-button>KOA:{{nano}}</koa-button></li>
     <template is="dom-repeat" items="{{facebookfeed.items}}">
       <li>
-        <koa-item>{{item.message}}</koa-item>
+        <koa-button>{{item.message}}</koa-button>
       </li>
     </template>
 		<!-- <li ng-repeat="item in facebookfeed.items" ng-hide="isEmpty(item.message)"> -->

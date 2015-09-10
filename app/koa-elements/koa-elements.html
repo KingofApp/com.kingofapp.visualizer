@@ -20,13 +20,26 @@
       }
     },
 
-    ready: function () {
+    ready: function (){
+      var hasAngularFinished = new RegExp('/{{.*}}/gmi');
+
+      setTimeout(this._afterNap.bind(this), 100);
+        // var angularCheckInterval = setInterval(function(){
+        //   console.log(!hasAngularFinished.test(Polymer.dom(this).innerHTML),Polymer.dom(this).innerHTML);
+        //   if( !hasAngularFinished.test(Polymer.dom(this).innerHTML) ){
+        //       this._afterNap.bind(this);
+        //       clearInterval(angularCheckInterval);
+        //   }
+        // }.bind(this), 1000);
+    },
+
+    _afterNap: function () {
       this._tag = this.is.replace('koa-', '');
       this._originalInnerHTML = Polymer.dom(this).innerHTML;
       this._originalParentNode = Polymer.dom(this.parentNode);
 
       this._originalParentNode.removeChild(this);
-
+      console.log(this._tag, this._originalInnerHTML);
       koa.theme.onChange(this._themeChanged.bind(this));
     },
 

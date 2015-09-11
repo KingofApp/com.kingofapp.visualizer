@@ -1,7 +1,19 @@
 
   <div ng-controller='firebaseCtrl'>
-    <p class='firebase' ng-if='firebase.data.length'>firebase connected!</p>
-    <p ng-if='!firebase.data.length'>connecting...</p>
+    <paper-toast text='Firebase connected!'></paper-toast>
+    <p class='firebase' ng-if='firebase.data.length'>
+      <script>
+        setTimeout(function() {
+          if(document.querySelector("paper-toast")){
+                    document.querySelector("paper-toast").show();
+          }
+        },1);
+      </script>
+    </p>
+    <!-- <p ng-if='!firebase.data.length'>
+      <paper-spinner active></paper-spinner>
+    </p> -->
+
     <div ng-include="firebaseTemplate">
     </div>
   </div>

@@ -5,6 +5,10 @@ loadFunction.$inject = ['$http','$scope', 'structureService', '$location'];
 
 function loadFunction($http, $scope, structureService, $location){
   //Register upper level modules
+  $scope.concat=function(arg1,arg2) {
+    console.log("dentro");
+    return "nano";
+  }
   structureService.registerModule($location,$scope,"flickrfeed");
   $http.jsonp('https://api.flickr.com/services/rest/',{  params: {
         format: 'json',     // Optional.
@@ -16,7 +20,13 @@ function loadFunction($http, $scope, structureService, $location){
         page: '1'
     }})
     .success(function(data){
-    	$scope.flickrfeed.items = data.photoset.photo;
+    	//$scope.flickrfeed.items = data.photoset.photo;
+      var elements = [];
+      angular.forEach( data.photoset.photo, function(item){
+        elements.push({ img :  'https://farm'+item.farm+'.staticflickr.com/'+item.server+'/'+item.id+'_'+item.secret+'.jpg',
+        title : item.title});
+      });
+      $scope.flickrfeed.items = elements;
     }).error(function(data, error){
     	$scope.flickrfeed.message = 'Opps! There was a problem loading the feed!';
 

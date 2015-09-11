@@ -6,7 +6,6 @@ contactCtrl.$inject = ['$scope','$http', '$location', '$filter', 'structureServi
 function contactCtrl($scope, $http, $location, $filter, structureService) {
   //Register upper level modules
   structureService.registerModule($location,$scope,"contact");
-
   $scope.send = function (){
     var req = {
        method: 'POST',

@@ -1,9 +1,9 @@
 
 angular.controller('firebaseCtrl', loadFunction);
 
-loadFunction.$inject = ['$scope', 'structureService', '$location','fireService'];
+loadFunction.$inject = ['$scope', 'structureService', '$location','fireService', '$document'];
 
-function loadFunction($scope, structureService, $location, fireService){
+function loadFunction($scope, structureService, $location, fireService, $document){
   //Register upper level modules
   structureService.registerModule($location,$scope,"firebase");
   //NOTE: Pasar a promesa.

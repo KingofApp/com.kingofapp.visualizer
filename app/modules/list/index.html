@@ -1,6 +1,13 @@
 
-  <div ng-controller='listCtrl'>
-    <ul >
-    <li class='list' ng-repeat="contacts in list.list">{{ contacts.name }} : {{ contacts.phone }}</li>
-    </ul>
-  </div>
+<div ng-controller='listCtrl'>
+  <template is="dom-repeat" items="{{list.list}}">
+    <div>
+      <div class="item">
+        <div class="pad">
+          <div class="primary">{{item.name}}</div>
+          <div class="secondary">{{item.phone}}</div>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>

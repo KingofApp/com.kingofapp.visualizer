@@ -1,14 +1,36 @@
 <div ng-controller='contactCtrl'>
-  <form name="contactForm">
-    <label>{{'contact.name' | translate}}</label>
-    <input type="text" name='name' ng-model="contact.name" required>
-    <label>{{'contact.email' | translate}}</label>
-    <input type="email" name='email' ng-model="contact.email" required>
-    <label>{{'contact.message' | translate}}</label>
-    <textarea rows="5" name="message" ng-model="contact.message" required>
-    </textarea>
-    <button class='send' ng-click="send()">{{'contact.send' | translate}}</button>
-  </form>
-  <p ng-if="contact.status" class='status'>{{ contact.status }}</p>
+  <form name="contactForm" is="iron-form">
+    <!-- <label>{{'contact.name' | translate}}</label> -->
+    <!-- <koa-input type="text" name='name' ng-model="contact.name" required> -->
 
+    <koa-input hidden label="{{'contact.name' | translate}}"></koa-input>
+    <!-- <paper-input bind-polymer value='test' label="{{'contact.name' | translate}}"></paper-input> -->
+
+  <paper-input-container>
+    <label>{{'contact.name' | translate}}</label>
+    <input is="iron-input" ng-model="contact.name"></input>
+  </paper-input-container>
+    <!-- <label>{{'contact.email' | translate}}</label> -->
+
+
+    <!-- <input type="email" name='email' ng-model="contact.email" required> -->
+    <!-- <koa-input label="{{'contact.email' | translate}}"></koa-input> -->
+    <paper-input-container>
+      <label>{{'contact.email' | translate}}</label>
+      <input is="iron-input" ng-model="contact.email"></input>
+    </paper-input-container>
+    <!-- <label>{{'contact.message' | translate}}</label> -->
+    <!-- <textarea rows="5" name="message" ng-model="contact.message" required> -->
+    <!-- <paper-input attributes="value" bind-polymer value="{{nano}}" label="{{'contact.message' | translate}}"></paper-input> -->
+    <paper-input-container>
+      <label>{{'contact.message' | translate}}</label>
+      <input is="iron-input" ng-model="contact.message"></input>
+    </paper-input-container>
+
+    <paper-button raised ng-click="send()">{{'contact.send' | translate}}</paper-button>
+    <p ng-if="contact.status" class='status'>{{ contact.status }}</p>
+
+    <!-- <koa-button bind-polymer raised ng-click="send()" class='send'>{{'contact.send' | translate}}</koa-button> -->
+    <!-- <input type="submit" name="name" ng-click="send()" value="submit"> -->
+  </form>
 </div>

@@ -1,26 +1,8 @@
 <div class='facebookfeed auto' ng-controller='facebookFeedCtrl'>
   <h2>Facebook feed</h2>
-  <!-- <template is="dom-repeat" id="menu" items="[{first: 'Bob', last: 'Smith'},{first: 'Sally', last: 'Johnson'}]">
-    <div>
-      XX{{item.first}}XX
-    </div>
-  </template> -->
-	<ul class="feed">
-<li><paper-button>Paper:{{nano}}</paper-button></li>
-<li><koa-button>KOA:{{nano}}</koa-button></li>
-    <template is="dom-repeat" items="{{facebookfeed.items}}">
-      <li>
-        <koa-button>{{item.message}}</koa-button>
-      </li>
-    </template>
-		<!-- <li ng-repeat="item in facebookfeed.items" ng-hide="isEmpty(item.message)"> -->
-			<!-- <img ng-src='{{item.picture}}'> -->
-
-
-
-      <!-- <paper-item> {{item.message}} </paper-item> -->
-      <!-- <paper-item>{{item.message}}</paper-item> -->
-		<!-- </li> -->
-	</ul>
-
+  <template is="dom-repeat" items="{{facebookfeed.items}}">
+      <paper-card image='{{item.full_picture}}'>
+        <div class="card-content">{{item.message}}</div>
+      </paper-card>
+  </template>
 </div>

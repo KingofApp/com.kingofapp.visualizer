@@ -39,7 +39,7 @@
       this._originalParentNode = Polymer.dom(this.parentNode);
 
       this._originalParentNode.removeChild(this);
-      console.log(this._tag, this._originalInnerHTML);
+      // console.log(this._tag, this._originalInnerHTML);
       koa.theme.onChange(this._themeChanged.bind(this));
     },
 

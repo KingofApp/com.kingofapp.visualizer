@@ -25,8 +25,29 @@
 
     function menu(){
       return {
+        //Menu 2 for real app
+        '/menu2'                         : polymermenu("/menu2"),
+        '/menu2/fire-connector'          : firebase(),
+        '/menu2/rss'                     : rss(),
+        '/menu2/facebook'                : facebookfeed(),
+        '/menu2/twitter'                  : twitterfeed(),
+        '/menu2/contact'                  : contact(),
+        '/menu2/flickr'                   : flickrfeed(),
+
+        // '/menu2/translation'              : translationtest(),
+        // '/menu2/youtube-gallery'  : youtubegallery(),
+        // '/menu2/soundcloud'       : soundcloud(),
+        // '/menu2/simple-gallery'           : simplegallery(),
+        // '/menu2/youtube-video'    : youtubevideo(),
+        // '/menu2/vimeo-video'      : vimeovideo(),
+        // '/menu2/google-map'       : googlemap(),
+        // '/menu2/instagram'             : instagramfeed(),
+        // '/menu2/wordpress'             : wordpressposts(),
+        // '/menu2/embed'                    : embed(),
+        // '/menu2/html'                     : html(),
+        //For testing purposes
         '/ads'                           : ads(),
-        '/ads/menu'                      : angularmenu("/ads/menu/"),
+        '/ads/menu'                      : angularmenu("/ads/menu"),
         '/ads/menu/angular-scope'        : angularscope(),
         '/menu/fire-connector'           : firebase(),
         '/menu/fire-connector/list'      : list(),

@@ -14,9 +14,9 @@
 
   function setTranslatorConfig($translateProvider) {
     $translateProvider.useLoader('$translatePartialLoader', {
-      urlTemplate: '/app/modules/{part}/locale/locale-{lang}.json'
+      urlTemplate: 'modules/{part}/locale/locale-{lang}.json'
     });
-    
+
     $translateProvider.preferredLanguage("en");
 
   }

@@ -1,30 +1,37 @@
 <div class="polymermenu auto" ng-controller="polymerMenuCtrl">
 
-    <!-- <paper-menu-button>
+    <paper-menu-button>
       <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
       <paper-menu class="dropdown-content">
+        <!-- <paper-item> -->
+          <!-- <p><a href="#/menu2">Test</a></p> -->
+        <!-- </paper-item> -->
+        <!-- <paper-item> -->
+          <!-- <p><a href="#/menu2/rss">Test2</a></p> -->
+        <!-- </paper-item> -->
+        <!-- <paper-item> -->
+          <!-- <p><a href="#/menu2/contact">Test3</a></p> -->
+        <!-- </paper-item> -->
         <template is="dom-repeat" items="{{polymermenu.menu}}">
-          <paper-item>
-            <a href="{{item.url}}" class="flex">{{item.text}}</a>
-          </paper-item>
+          <a href="{{item.url}}"><paper-item>
+            <span>{{item.text}}</span>
+          </paper-item></a>
         </template>
       </paper-menu>
-    </paper-menu-button> -->
+    </paper-menu-button>
 
-    <div class="XX">
+    <!-- <div class="XX">
       <koa-menu-button>
         <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
         <koa-menu class="dropdown-content">
-          <!-- <template is="dom-repeat" items="{{polymermenu.menu}}"> -->
             <koa-item>test1</koa-item>
-          <!-- </template> -->
         </koa-menu>
       </koa-menu-button>
-    </div>
+    </div> -->
 
 
 
-    <div class="element">
+    <!-- <div class="element">
        <div style="display:inline-block">
          <span>Inbox</span>
          <koa-badge label="3"></koa-badge>
@@ -61,7 +68,7 @@
            <koa-button>Yay!</koa-button>
          </div>
        </koa-card>
-     </div>
+     </div> -->
 
     <!-- moduleIdentifier + Template -->
     <div ng-include="polymermenuTemplate" class='template'>

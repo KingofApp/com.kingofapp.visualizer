@@ -57,28 +57,6 @@
 
     </div>
   </div>
-  <div style="margin: 10px; border:1px solid orange;">
-    <span>Debug Status:</span><br />
-    <button onclick="changeTheme();">Change theme</button>
-    <button onclick="changeColor();">Change color</button>
-    <script>
-      function changeTheme() {
-        koa.theme.set(koa.theme.get() === 'ios' ? 'paper' : 'ios');
-      }
-      function changeColor() {
-        var s = document.createElement('style', 'custom-style');
-        var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
-        var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
-        s.textContent = ':root { --default-primary-color: ' + defaultPrimaryColor + '; }';
-        s.textContent += ':root { --accent-color: ' + accentColor + '; }';
-        document.body.appendChild(s);
-        Polymer.updateStyles();
-        s.remove();
-      }
-    </script><br />
-    <paper-item>Paper test:{{test}}</paper-item>
-    <koa-button>Koa test:{{test}}</koa-button>
-  </div>
 
 
   <script src="bower_components/lodash/lodash.min.js"></script>
@@ -114,5 +92,10 @@
   <script src="loaders/jquery/loaderJquery.directive.js"></script>
   <script src="loaders/angular/loaderAngular.service.js"></script>
 
+  <script src="modules/polymermenu/script.js"></script>
+
+  <script>
+
+      </script>
 </body>
 </html>

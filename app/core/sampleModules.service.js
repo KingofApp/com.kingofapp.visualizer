@@ -28,11 +28,13 @@
         //Menu 2 for real app
         '/menu2'                         : polymermenu("/menu2"),
         '/menu2/fire-connector'          : firebase(),
+        '/menu2/fire-connector/list'                    : list(),
         '/menu2/rss'                     : rss(),
         '/menu2/facebook'                : facebookfeed(),
-        '/menu2/twitter'                  : twitterfeed(),
-        '/menu2/contact'                  : contact(),
-        '/menu2/flickr'                   : flickrfeed(),
+        '/menu2/twitter'                 : twitterfeed(),
+        '/menu2/contact'                 : contact(),
+        '/menu2/flickr'                  : flickrfeed(),
+        '/menu2/html'                    : html(),
 
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
@@ -480,15 +482,13 @@
         files: ["modules/html/controller.js"],
         scope: {
           value: "<p style='color:#39a9d3;' lang='es-ES'>"+
-                  "En Japón hay una censura férrea hacia cierto tipo de porno: no se"+
-                  "permite mostrar penetraciones vaginales o anales reales, sino que"+
-                  "estas imágenes aparecen pixeladas o bien sólo pueden verse en"+
-                  "animaciones. Por lo tanto se inventaron formas, como el bukakke,"+
-                  "donde lo pueden mostrar todo.</p>"+
+                  "Ut tortor mauris, ultrices quis "+
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus, leo ut auctor ultrices, erat arcu tincidunt sapien,"+
+                  "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eget ipsum euismod, posuere odio"+
+                  "</p>"+
                   "<p style='color:#d36339;' lang='es-ES'>"+
-                  "Desde que creó el portal Putalocura, Torbe asegura que los bukkakes son lo"+
-                  "que más se descarga de su página. Hasta el día de hoy ha hecho"+
-                  "131, y han participado innumerables hombres y 70 chicas.</p>"
+                  "Other color text"+
+                  "</p>"
         }
       };
     }

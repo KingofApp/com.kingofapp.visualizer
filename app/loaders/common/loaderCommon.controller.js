@@ -9,11 +9,10 @@
   function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader) {
     console.log("pasa por el commonLoaderCtrl");
     $location.$$path = $location.$$path || '/';
-$rootScope.test='Variable';
-setTimeout(function() {
-  $rootScope.test='Variableasdsdsa';
-  console.log("Cambia");
-},2000);
+    // $rootScope.test='Variable';
+    // setTimeout(function() {
+    //   $rootScope.test='Variableasdsdsa';
+    // },2000);
     //Load config
     structureService.loadconfig($rootScope);
     //Register Route

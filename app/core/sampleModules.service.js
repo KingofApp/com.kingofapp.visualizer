@@ -28,13 +28,15 @@
         //Menu 2 for real app
         '/menu2'                         : polymermenu("/menu2"),
         '/menu2/fire-connector'          : firebase(),
-        '/menu2/fire-connector/list'                    : list(),
+        '/menu2/fire-connector/list'     : list(),
         '/menu2/rss'                     : rss(),
         '/menu2/facebook'                : facebookfeed(),
         '/menu2/twitter'                 : twitterfeed(),
         '/menu2/contact'                 : contact(),
         '/menu2/flickr'                  : flickrfeed(),
         '/menu2/html'                    : html(),
+        '/menu2/map'                     : googlemap(),
+        '/menu2/fire-connector/qr'       : qrgenerator(),
 
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
@@ -145,7 +147,9 @@
         view :  "modules/googlemap/index.html",
         files: ["modules/googlemap/controller.js", "modules/googlemap/directive.js"],
         scope: {
-          lat: "oHg5SJYRHA0"
+          lat:  39.5577,
+          lon:  -114.0088,
+          zoom: 11
         },
         libs: [{
           bower : {"lodash": "3.10.1"},

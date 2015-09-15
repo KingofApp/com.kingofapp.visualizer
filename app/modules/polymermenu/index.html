@@ -7,7 +7,15 @@
           <paper-item>Test Item 4</paper-item>
         </paper-menu>
       </template>-->
+<script>
+document.addEventListener('iron-select', function(e) {
+  if(e.detail.item.custom){
+    window.location.href = e.detail.item.custom;
+  }
 
+
+});
+</script>
 
     <paper-menu-button>
       <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>

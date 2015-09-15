@@ -37,6 +37,7 @@
         '/menu2/html'                    : html(),
         '/menu2/map'                     : googlemap(),
         '/menu2/fire-connector/qr'       : qrgenerator(),
+        '/menu2/vimeovideo'              : vimeovideo(),
 
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),

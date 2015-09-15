@@ -1,15 +1,19 @@
 <link rel="stylesheet" href="modules/soundcloud/style.css">
-<div class="album-art" ng-style="{'background-image': 'url('+albumArt+')'}"></div>
-<div class="wave" ng-style="{'background-image': 'url('+wave+')'}"></div>
-<div class="details" style="position: absolute; bottom: 0;">
-  <div class="track-info">
-    <a ng-href="{{trackUrl}}"><h1>{{title}}</h1></a>
-    <a ng-href="{{bandUrl}}" class='band'>{{band}}</a>
-  </div>
-    <a class="play" ng-click="play()">
-    {{playing ? "Stop" : "Play"}}
-    </a>
-</div>
-<div ng-bind-html='ready'>
 
+<!-- <div class="album-art" ng-style="{'background-image': 'url('+albumArt+')'}"></div> -->
+<!-- <div class="wave" ng-style="{'background-image': 'url('+wave+')'}"></div> -->
+<paper-card class='fancy'>
+  <img src="{{albumArt}}">
+  <div class="card-content">
+    <a class="play" ng-click="play()">
+
+    <iron-icon icon='av:{{playing ? "stop" : "play-arrow"}}'></iron-icon>
+
+    </a>
+    <div class="big">{{band}}</div>
+    <div class="medium">{{title}}</div>
+  </div>
+
+</paper-card>
+<div ng-bind-html='ready'>
 </div>

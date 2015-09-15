@@ -40,6 +40,7 @@
         '/menu2/vimeovideo'              : vimeovideo(),
         '/menu2/youtubevideo'            : youtubevideo(),
         '/menu2/youtubegallery'          : youtubegallery(),
+        '/menu2/soundcloud'              : soundcloud(),
 
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
@@ -259,7 +260,7 @@
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
           channelid  : "UCeIt2DJO8UdtUTmJzTfSXiQ",
-          galleryurl : "/app/#/polymer-menu/youtube-video"
+          galleryurl : "/app/#/menu2/youtubevideo"
         },
         //Online builder testing purpose
         libs: [{

@@ -41,7 +41,7 @@
         '/menu2/youtubevideo'            : youtubevideo(),
         '/menu2/youtubegallery'          : youtubegallery(),
         '/menu2/soundcloud'              : soundcloud(),
-
+        '/menu2/translation'             : translationtest(),
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
         // '/menu2/soundcloud'       : soundcloud(),

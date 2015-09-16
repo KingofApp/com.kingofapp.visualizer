@@ -29,14 +29,20 @@ function contactCtrl($scope, $http, $location, $filter, structureService) {
          ]
        }}
     };
-
     if($scope.contactForm.$valid){
       $http(req)
       .success(function(data) {
-        $scope.contact.status = data[0].status;
+        if(data[0].status=='sent'){
+          $scope.contact.status = $filter('translate')('contact.message.sent');
+        }else{
+          $scope.contact.status = $filter('translate')('contact.message.warning') + data[0].status;
+        }
+        document.querySelector("paper-toast").show();
       })
       .error(function(data) {
-        console.log("ERROR: " + data);
+        console.log("ERROR: ", data.message);
+        $scope.contact.status = $filter('translate')('contact.message.rejected');
+        document.querySelector("paper-toast").show();
       });
     }
   }

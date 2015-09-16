@@ -1,4 +1,5 @@
 <div ng-controller='rssCtrl'>
+  <paper-item ng-hide="isEmpty(rss.message)">{{rss.message}}</paper-item>
   <template is="dom-repeat" items="{{entries}}">
       <paper-card heading='{{item.title}}' class="pink">
       

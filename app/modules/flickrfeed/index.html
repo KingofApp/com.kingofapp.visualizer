@@ -1,6 +1,5 @@
 <div class='flickrfeed auto' ng-controller='flickrFeedCtrl'>
-  <h2>Flickr feed</h2>
-  <p ng-hide="isEmpty(flickrfeed.message)">{{flickrfeed.message}}</p>
+  <paper-item ng-hide="isEmpty(flickrfeed.message)">{{flickrfeed.message}}</paper-item>
   <template is="dom-repeat" items="{{flickrfeed.items}}">
       <paper-card image='{{item.img}}'>
         <div class="card-content">{{item.title}}</div>

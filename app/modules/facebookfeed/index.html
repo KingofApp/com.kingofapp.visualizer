@@ -1,5 +1,5 @@
 <div class='facebookfeed auto' ng-controller='facebookFeedCtrl'>
-  <h2>Facebook feed</h2>
+  <paper-item ng-hide="isEmpty(facebookfeed.message)">{{facebookfeed.message}}</paper-item>
   <template is="dom-repeat" items="{{facebookfeed.items}}">
       <paper-card image='{{item.full_picture}}'>
         <div class="card-content">{{item.message}}</div>

@@ -1,9 +1,9 @@
 angular
 .controller('rssCtrl', rssCtrl);
 
-rssCtrl.$inject = ['$scope','$http', '$location', 'structureService'];
+rssCtrl.$inject = ['$scope','$http', '$location', 'structureService', '$filter'];
 
-function rssCtrl($scope, $http, $location, structureService) {
+function rssCtrl($scope, $http, $location, structureService, $filter) {
   //Register upper level modules
 structureService.registerModule($location,$scope,"rss");
 
@@ -15,6 +15,6 @@ structureService.registerModule($location,$scope,"rss");
         $scope.entries    = data.responseData.feed.entries;
       })
       .error(function(data) {
-        console.log("ERROR: " + data);
+        $scope.rss.message = $filter('translate')('rss.feed.error');
       });
 }

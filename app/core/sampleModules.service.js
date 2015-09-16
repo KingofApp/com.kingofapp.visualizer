@@ -43,6 +43,7 @@
         '/menu2/soundcloud'              : soundcloud(),
         '/menu2/translation'             : translationtest(),
         '/menu2/simple-gallery'          : simplegallery(),
+        '/menu2/instagram'               : instagramfeed(),
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
         // '/menu2/soundcloud'       : soundcloud(),

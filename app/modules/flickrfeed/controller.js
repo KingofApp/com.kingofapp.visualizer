@@ -1,9 +1,9 @@
 angular
   .controller('flickrFeedCtrl', loadFunction);
 
-loadFunction.$inject = ['$http','$scope', 'structureService', '$location'];
+loadFunction.$inject = ['$http','$scope', 'structureService', '$filter', '$location'];
 
-function loadFunction($http, $scope, structureService, $location){
+function loadFunction($http, $scope, structureService, $filter, $location){
   //Register upper level modules
   $scope.concat=function(arg1,arg2) {
     console.log("dentro");
@@ -28,7 +28,7 @@ function loadFunction($http, $scope, structureService, $location){
       });
       $scope.flickrfeed.items = elements;
     }).error(function(data, error){
-    	$scope.flickrfeed.message = 'Opps! There was a problem loading the feed!';
+    	$scope.flickrfeed.message = $filter('translate')('flickrfeed.feed.error');
 
     });
 }

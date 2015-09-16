@@ -2,6 +2,9 @@
   .element {
     margin: 0 0 2.5em;
   }
+html,body,#main-king {
+  height:100%;
+}
 body{
   font-family: Arial, sans-serif;
 }

@@ -2,16 +2,29 @@
 
   <paper-card heading="Client Id" class="pink">
     <div class="card-content">
-      <qrcode ng-show='qrgenerator.modulescope.static' data="{{qrgenerator.modulescope.static}}" size='150' ></qrcode>
+      <!-- <qrcode ng-show='qrgenerator.modulescope.static' data="{{qrgenerator.modulescope.static}}" size='150' ></qrcode> -->
+      <qr-code data="{{qrgenerator.modulescope.static}}"></qr-code>
     </div>
   </paper-card>
+  <template is="dom-repeat" items="{{qrgenerator.list}}">
+      <paper-card heading="{{item.promocion}}">
+        <div class="card-content"><qr-code data="{{item.valor}}"></qr-code></div>
+      </paper-card>
+  </template>
+  <!-- <paper-card ng-repeat="promocion in qrgenerator.list">
+    <div class="card-content">
+      <span>{{promocion.promocion}}</span>
+      <qr-code data="{{promocion.valor}}"></qr-code>
+    </div>
+  </paper-card> -->
 
-  <div ng-repeat="promocion in qrgenerator.list" class="list">
+  <!-- <div ng-repeat="promocion in qrgenerator.list" class="list">
     <div class="card-content">
       {{promocion.promocion}}
     </div>
     <div class="card-content">
-      <qrcode ng-show='promocion.valor' data="{{promocion.valor}}" size='150' ></qrcode>
+
+      <qr-code data="{{promocion.valor}}"></qr-code>
     </div>
-  </div>
+  </div> -->
 </div>

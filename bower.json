@@ -34,6 +34,7 @@
     "paper-tabs": "polymerelements/paper-tabs#~1.0.2",
     "polymer": "polymer/polymer#^1.1.0",
     "protractor": "2.1.x",
+    "qr-code": "webcomponent-qr-code#~0.1.8",
     "qrcode-generator": "kazuhikoarase/qrcode-generator",
     "xml2json": "~1.1.1"
   },

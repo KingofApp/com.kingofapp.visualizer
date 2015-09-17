@@ -1,0 +1,111 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="koa-app">
+  <template>
+    <content></content>
+  </template>
+  <script>
+    Polymer({
+      is: 'koa-app',
+
+      properties: {
+        theme: {
+          type: String,
+          observer: '_themeChanged',
+          notify: true
+        },
+
+        koaTree: {
+          type: Array,
+          value: []
+        },
+
+        _themesPath: {
+          type: String,
+          value: window.location.origin + '/app/themes/'
+        },
+
+        _importedThemes: {
+          type: Object,
+          value: {}
+        }
+      },
+
+      ready: function () {
+        this._createKoaTree();
+      },
+
+      _createKoaTree: function () {
+        this._processElement(this);
+        this.koaTree.pop();
+      },
+
+      _processElement: function (element) {
+        if (element.children.length) {
+          var children = Polymer.dom(element).children;
+
+          for (var i = 0; i < children.length; i++) {
+            this._processElement(children[i]);
+          }
+        }
+
+        if (element.tagName) {
+          var isKoaElement = element.tagName.toLowerCase().search('koa-') === 0;
+
+          if (isKoaElement) {
+            this.koaTree.push({
+              original: element,
+              tag: element.tagName.toLowerCase().replace('koa-', ''),
+              actual: element
+            });
+          }
+        }
+      },
+
+      _createThemeElement: function (tag, element) {
+        var newElementName = this.theme + '-' + tag;
+        var newElement = document.createElement(newElementName);
+
+        for (var i = 0; i < element.attributes.length; i++) {
+          var attribute = element.attributes[i];
+          newElement.setAttribute(attribute.nodeName, attribute.nodeValue);
+        }
+
+        Polymer.dom(newElement).innerHTML = Polymer.dom(element).innerHTML;
+
+        return newElement;
+      },
+
+      _renderThemeElement: function (element) {
+        var parentNode = Polymer.dom(element.actual).parentNode;
+        var newElement = this._createThemeElement(element.tag, element.original);
+
+        parentNode.replaceChild(newElement, element.actual);
+        element.actual = newElement;
+      },
+
+      _renderThemeElements: function () {
+        this.koaTree.forEach(function(elementObject) {
+          this._renderThemeElement(elementObject);
+        }, this);
+      },
+
+      _getThemePath: function () {
+        return this._themesPath + this.theme + '-elements.html';
+      },
+
+      _themeChanged: function () {
+        var isNotThemeImported = typeof this._importedThemes[this.theme] === 'undefined';
+
+        if (isNotThemeImported) {
+          this.importHref(this._getThemePath(), function(e) {
+            this._renderThemeElements();
+            this._importedThemes[this.theme] = null;
+          });
+        } else {
+          this._renderThemeElements();
+        }
+      }
+    });
+  </script>
+</dom-module>

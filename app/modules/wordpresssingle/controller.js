@@ -6,9 +6,18 @@ loadFunction.$inject = ['$http','$scope', 'structureService', '$location'];
 function loadFunction($http, $scope, structureService, $location){
   //Register upper level modules
   structureService.registerModule($location,$scope,"wordpressposts");
+  var id = "";
+  if($location.search().id){
+    // $scope.youtubevideo.videoid = $location.search().id;
+    id = "/" + $location.search().id;
+    console.log($scope.wordpressposts.modulescope.domain+'/wp-json/posts'+id);
 
-  //http://kingofapp.es/wp-json/posts?filter[posts_per_page]=3&filter[category_name]=Noticias&filter[order]=DESC
-  $http.get($scope.wordpressposts.modulescope.domain+'/wp-json/posts',{  params: {
+  }else{
+    console.log($scope.wordpressposts.modulescope.domain+'/wp-json/posts'+id);
+  }
+
+
+  $http.get($scope.wordpressposts.modulescope.domain+'/wp-json/posts'+id,{  params: {
           'filter[posts_per_page]' : $scope.wordpressposts.modulescope.postnumber,
           'filter[category_name]'  : $scope.wordpressposts.modulescope.category
     }})
@@ -24,12 +33,11 @@ function loadFunction($http, $scope, structureService, $location){
       });
       $scope.wordpressposts.items = elements;
     }).error(function(){
-      //NOTE: CAMBIAR  POR LO DE FACEBOOK
     	$scope.wordpressposts.items = [{
     		"message": "Opps! There was a problem loading the feed!",
     	}];
     });
     function htmlToPlaintext(text) {
-      return  text ? String(text).replace(/(<[^>]+>)|(&#\d{4};)/gm, '') : '';
+      return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
     }
 }

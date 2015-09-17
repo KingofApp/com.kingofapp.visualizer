@@ -20,8 +20,8 @@
   <!-- <script src="scripts/koa.js"></script>
   <link rel="import" href="koa-elements/koa-elements.html">
   <link rel="import" href="bower_components/iron-form/iron-form.html"> -->
-
-  <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="elements/koa-app/koa-app.html">
+  <!-- <link rel="import" href="bower_components/paper-toast/paper-toast.html">
 
   <link rel="import" href="bower_components/paper-badge/paper-badge.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
@@ -47,7 +47,7 @@
 <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="bower_components/iron-icons/av-icons.html">
-<link rel="import" href="bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="bower_components/neon-animation/neon-animation.html"> -->
   <!-- <link rel="import" href="koa-elements/dom_patch.html"> -->
   <!-- END paper-menu-button elements  -->
 </head>
@@ -57,11 +57,41 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
   <div id="main-king"> <!-- ng-controller="setStructure" -->
-    <div ng-view>
+    <koa-app>
+      <div ng-view>
 
-    </div>
+      </div>
+      <koa-card>
+        <div class="card-content">Brethren, I do not count myself to have apprehended; but one thing I do, forgetting those things which are behind and reaching forward to those things which are ahead-Philippians 3:13 NKJV</div>
+      </koa-card>
+      <koa-tabs>
+        <koa-tab>test1</koa-tab>
+        <koa-tab>test2</koa-tab>
+        <koa-tab>test3</koa-tab>
+      </koa-tabs>
+    </koa-app>
   </div>
-
+  <div style="margin-bottom: 2em;">
+    <button onclick="changeTheme()">Change theme</button>
+    <button onclick="changeColor()">Change color</button>
+  </div>
+    <script>
+      function changeTheme() {
+        var koaApp = document.querySelector('koa-app');
+        koaApp.theme = koaApp.theme === 'paper' ? 'ios' : 'paper';
+      }
+      function changeColor() {
+        var s = document.createElement('style', 'custom-style');
+        var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
+        var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
+        s.textContent = ':root { --default-primary-color: ' + defaultPrimaryColor + '; }';
+        s.textContent += ':root { --accent-color: ' + accentColor + '; }';
+        document.body.appendChild(s);
+        Polymer.updateStyles();
+        s.remove();
+      }
+      changeTheme();
+    </script>
 
   <script src="bower_components/lodash/lodash.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>

@@ -1,5 +1,69 @@
 <div class='simplegallery' ng-controller='simplegalleryCtrl'>
-  <p class="item" ng-repeat="img in simplegallery.modulescope.gallery">
+<style is="custom-style">
+  neon-animatable {
+    color: white;
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+    @apply(--paper-font-display4);
+  }
+  neon-animatable:nth-child(1) {
+    background: #f44336;
+  }
+  neon-animatable:nth-child(2) {
+    background: #2196f3;
+  }
+  neon-animatable:nth-child(3) {
+    background: #ff9800;
+  }
+  neon-animatable:nth-child(4) {
+    background: #4caf50;
+  }
+  neon-animatable:nth-child(5) {
+    background: #9c27b0;
+  }
+</style>
+  <template is='dom-bind'>
+
+    <div class="toolbar">
+      <button on-click="_onPrevClick">&lt;&lt;</button>
+      <button on-click="_onNextClick">&gt;&gt;</button>
+    </div>
+
+    <neon-animated-pages style='min-height:300px;' id="pages" class="flex" selected="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
+      <!-- <neon-animatable ng-repeat="img in simplegallery.modulescope.gallery">1</neon-animatable> -->
+    <!-- <template is="dom-repeat" items="{{simplegallery.modulescope.gallery}}">
+      <neon-animatable>1</neon-animatable>
+    </template> -->
+      <neon-animatable>1</neon-animatable>
+      <neon-animatable>2</neon-animatable>
+      <neon-animatable>3</neon-animatable>
+
+    </neon-animated-pages>
+
+  </template>
+
+  <script>
+  // setTimeout(function() {
+    set();
+  function set(){
+    var scope = document.querySelector('template[is="dom-bind"]');
+    scope.selected = 0;
+    scope._onPrevClick = function() {
+      // console.log("BOOM");
+      this.entryAnimation = 'slide-from-left-animation';
+      this.exitAnimation = 'slide-right-animation';
+      this.selected = this.selected === 0 ? 2 : (this.selected - 1);
+    }
+    scope._onNextClick = function() {
+      this.entryAnimation = 'slide-from-right-animation';
+      this.exitAnimation = 'slide-left-animation';
+      this.selected = this.selected === 2 ? 0 : (this.selected + 1);
+    }
+  }
+
+  </script>
+
+  <!-- <p class="item" ng-repeat="img in simplegallery.modulescope.gallery">
     <img width='100%' ng-src='{{ img }}'>
-  </p>
+  </p> -->
 </div>

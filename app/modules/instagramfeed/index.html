@@ -1,8 +1,8 @@
 <div class='instagramfeed auto' ng-controller='instagramFeedCtrl'>
-  <paper-item ng-hide="isEmpty(instagramfeed.message)">{{instagramfeed.message}}</paper-item>
+  <koa-item ng-hide="isEmpty(instagramfeed.message)">{{instagramfeed.message}}</koa-item>
   <template is="dom-repeat" items="{{instagramfeed.items}}">
-      <paper-card image='{{item.images.standard_resolution.url}}'>
+      <koa-card image='{{item.images.standard_resolution.url}}'>
         <div class="card-content">{{item.caption.text}}</div>
-      </paper-card>
+      </koa-card>
   </template>
 </div>

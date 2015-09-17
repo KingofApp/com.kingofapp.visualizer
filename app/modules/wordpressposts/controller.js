@@ -15,7 +15,7 @@ function loadFunction($http, $scope, structureService, $location){
     .success(function(data){
       var elements = [];
       angular.forEach( data, function(item){
-        elements.push({ url :  "/app/#"+$location.path()+"?id="+item.ID,
+        elements.push({ url :  $scope.wordpressposts.modulescope.galleryurl+"?id="+item.ID,
           title   : item.title,
           excerpt : htmlToPlaintext(item.excerpt),
           content : item.content,

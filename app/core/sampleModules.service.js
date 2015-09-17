@@ -46,6 +46,7 @@
         '/menu2/instagram'               : instagramfeed(),
         '/menu2/embed'                   : embed(),
         '/menu2/wordpressposts'          : wordpressposts(),
+        '/menu2/wordpresssingle'         : wordpresssingle(),
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
         // '/menu2/soundcloud'       : soundcloud(),
@@ -301,8 +302,23 @@
         files: [ "modules/wordpressposts/controller.js" ],
         scope: {
           domain : "http://rachelbaker.me",
-          postnumber      : 1,
-          category      : ""
+          postnumber      : 3,
+          category      : "",
+          galleryurl : "/app/#/menu2/wordpresssingle"
+        }
+      };
+    }
+    function wordpresssingle(){
+      return {
+        name: 'Wordpress Single',
+        identifier: 'wordpresssingle',
+        type : 'A',
+        view :   "modules/wordpresssingle/index.html",
+        files: [ "modules/wordpresssingle/controller.js" ],
+        scope: {
+          domain : "http://rachelbaker.me",
+          type   : "pages",
+          id     : 1626
         }
       };
     }

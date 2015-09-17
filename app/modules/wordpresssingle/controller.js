@@ -1,41 +1,28 @@
 angular
-  .controller('wordpresspostsCtrl', loadFunction);
+  .controller('wordpresssingleCtrl', loadFunction);
 
 loadFunction.$inject = ['$http','$scope', 'structureService', '$location'];
 
 function loadFunction($http, $scope, structureService, $location){
   //Register upper level modules
-  structureService.registerModule($location,$scope,"wordpressposts");
+  structureService.registerModule($location,$scope,"wordpresssingle");
   var id = "";
+  var type = $scope.wordpresssingle.modulescope.type;
   if($location.search().id){
-    // $scope.youtubevideo.videoid = $location.search().id;
-    id = "/" + $location.search().id;
-    console.log($scope.wordpressposts.modulescope.domain+'/wp-json/posts'+id);
-
+    id = $location.search().id;
+    type = "posts";
+  }else if($scope.wordpresssingle.modulescope.id){
+    id = $scope.wordpresssingle.modulescope.id;
   }else{
-    console.log($scope.wordpressposts.modulescope.domain+'/wp-json/posts'+id);
+    $scope.wordpresssingle.message = "Error, video not found";
   }
 
 
-  $http.get($scope.wordpressposts.modulescope.domain+'/wp-json/posts'+id,{  params: {
-          'filter[posts_per_page]' : $scope.wordpressposts.modulescope.postnumber,
-          'filter[category_name]'  : $scope.wordpressposts.modulescope.category
-    }})
+  $http.get($scope.wordpresssingle.modulescope.domain+'/wp-json/'+type+'/'+id)
     .success(function(data){
-      var elements = [];
-      angular.forEach( data, function(item){
-        elements.push({ url :  "/app/#"+$location.path()+"?id="+item.ID,
-          title   : item.title,
-          excerpt : htmlToPlaintext(item.excerpt),
-          content : item.content,
-          date    : item.date,
-        });
-      });
-      $scope.wordpressposts.items = elements;
+      $scope.wordpresssingle.item = data;
     }).error(function(){
-    	$scope.wordpressposts.items = [{
-    		"message": "Opps! There was a problem loading the feed!",
-    	}];
+    	$scope.wordpresssingle.message = "Opps! There was a problem loading the feed!";
     });
     function htmlToPlaintext(text) {
       return  text ? String(text).replace(/<[^>]+>/gm, '') : '';

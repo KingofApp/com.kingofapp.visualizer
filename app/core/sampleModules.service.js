@@ -122,7 +122,8 @@
         view :  "modules/firebase/index.html",
         files: ["modules/firebase/controller.js", "modules/firebase/factory.js" ],
         scope: {
-          src: "https://blinding-heat-1559.firebaseio.com/datatest"
+          src   : "https://blinding-heat-1559.firebaseio.com/datatest",
+          debug : true
         },
         //Online builder testing purpose
         libs: [{

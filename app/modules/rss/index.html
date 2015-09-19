@@ -1,8 +1,9 @@
 <div ng-controller='rssCtrl'>
-    <ul class="rss list">
-        <li ng-repeat="entry in entries" class="item">
-            <b>{{entry.title}}</b><br>
-            <span ng-bind-html="entry.contentSnippet"></span>
-        </li>
-    </ul>
+  <paper-item ng-hide="isEmpty(rss.message)">{{rss.message}}</paper-item>
+  <template is="dom-repeat" items="{{entries}}">
+      <paper-card heading='{{item.title}}' class="pink">
+      
+        <div class="card-content">{{item.contentSnippet}}</div>
+      </paper-card>
+  </template>
 </div>

@@ -1,12 +1,10 @@
 <div class='wordpressposts auto' ng-controller='wordpresspostsCtrl'>
-  <h2>Wordpress Posts</h2>
   {{wordpressposts.result}}
-  			<ul class="feed">
-  				<li ng-repeat="item in wordpressposts.items" ng-hide="isEmpty(item.message)">
-            <h2>{{item.title}}</h2>
-            <p>{{item.date}}</p>
-            <div ng-bind-html='item.content'>{{item.message}}</div>
-  				</li>
-  			</ul>
-
+  <template is="dom-repeat" items="{{wordpressposts.items}}">
+    <a href='{{item.url}}'>
+      <paper-card heading='{{item.title}}'>
+        <div class='card-content'>{{item.excerpt}}</div>
+      </paper-card>
+    </a>
+  </template>
 </div>

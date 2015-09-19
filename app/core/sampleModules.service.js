@@ -25,8 +25,43 @@
 
     function menu(){
       return {
+        //Menu 2 for real app
+        '/menu2'                         : polymermenu("/menu2"),
+        '/menu2/fire-connector'          : firebase(),
+        '/menu2/fire-connector/list'     : list(),
+        '/menu2/rss'                     : rss(),
+        '/menu2/facebook'                : facebookfeed(),
+        '/menu2/twitter'                 : twitterfeed(),
+        '/menu2/contact'                 : contact(),
+        '/menu2/flickr'                  : flickrfeed(),
+        '/menu2/html'                    : html(),
+        '/menu2/map'                     : googlemap(),
+        '/menu2/fire-connector/qr'       : qrgenerator(),
+        '/menu2/vimeovideo'              : vimeovideo(),
+        '/menu2/youtubevideo'            : youtubevideo(),
+        '/menu2/youtubegallery'          : youtubegallery(),
+        '/menu2/soundcloud'              : soundcloud(),
+        '/menu2/translation'             : translationtest(),
+        '/menu2/simple-gallery'          : simplegallery(),
+        '/menu2/instagram'               : instagramfeed(),
+        '/menu2/embed'                   : embed(),
+        '/menu2/wordpressposts'      : wordpressposts(),
+        '/menu2/ads/wordpresssingle'         : wordpresssingle(),
+        '/menu2/ads'                     : ads(),
+        // '/menu2/translation'              : translationtest(),
+        // '/menu2/youtube-gallery'  : youtubegallery(),
+        // '/menu2/soundcloud'       : soundcloud(),
+        // '/menu2/simple-gallery'           : simplegallery(),
+        // '/menu2/youtube-video'    : youtubevideo(),
+        // '/menu2/vimeo-video'      : vimeovideo(),
+        // '/menu2/google-map'       : googlemap(),
+        // '/menu2/instagram'             : instagramfeed(),
+        // '/menu2/wordpress'             : wordpressposts(),
+        // '/menu2/embed'                    : embed(),
+        // '/menu2/html'                     : html(),
+        //For testing purposes
         '/ads'                           : ads(),
-        '/ads/menu'                      : angularmenu("/ads/menu/"),
+        '/ads/menu'                      : angularmenu("/ads/menu"),
         '/ads/menu/angular-scope'        : angularscope(),
         '/menu/fire-connector'           : firebase(),
         '/menu/fire-connector/list'      : list(),
@@ -87,7 +122,8 @@
         view :  "modules/firebase/index.html",
         files: ["modules/firebase/controller.js", "modules/firebase/factory.js" ],
         scope: {
-          src: "https://blinding-heat-1559.firebaseio.com/datatest"
+          src   : "https://blinding-heat-1559.firebaseio.com/datatest",
+          debug : true
         },
         //Online builder testing purpose
         libs: [{
@@ -122,7 +158,9 @@
         view :  "modules/googlemap/index.html",
         files: ["modules/googlemap/controller.js", "modules/googlemap/directive.js"],
         scope: {
-          lat: "oHg5SJYRHA0"
+          lat:  39.5577,
+          lon:  -114.0088,
+          zoom: 11
         },
         libs: [{
           bower : {"lodash": "3.10.1"},
@@ -229,7 +267,7 @@
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
           channelid  : "UCeIt2DJO8UdtUTmJzTfSXiQ",
-          galleryurl : "/app/#/polymer-menu/youtube-video"
+          galleryurl : "/app/#/menu2/youtubevideo"
         },
         //Online builder testing purpose
         libs: [{
@@ -266,8 +304,23 @@
         files: [ "modules/wordpressposts/controller.js" ],
         scope: {
           domain : "http://rachelbaker.me",
-          postnumber      : 1,
-          category      : ""
+          postnumber      : 3,
+          category      : "",
+          galleryurl : "/app/#/menu2/wordpresssingle"
+        }
+      };
+    }
+    function wordpresssingle(){
+      return {
+        name: 'Wordpress Single',
+        identifier: 'wordpresssingle',
+        type : 'A',
+        view :   "modules/wordpresssingle/index.html",
+        files: [ "modules/wordpresssingle/controller.js" ],
+        scope: {
+          domain : "http://rachelbaker.me",
+          type   : "pages",
+          id     : 1626
         }
       };
     }
@@ -391,8 +444,8 @@
         view :  "modules/ads/index.html",
         files: ["modules/ads/controller.js"],
         scope: {
-          mainsrc: "<h1>Ads Everywhere!</h1>",
-          fixedsrc: "<h3>fixed</h3>"
+          mainsrc: "<img src='https://thechive.files.wordpress.com/2013/01/tumblr_m4p3ff1gq01qg39ewo1_500.gif'>",
+          fixedsrc: "<img src='http://info.fletchersjewelers.com/Portals/145216/images/Bottom%20Banner_Diamond%20Cheat%20Sheet.jpg'/>"
         }
       };
     }
@@ -459,15 +512,13 @@
         files: ["modules/html/controller.js"],
         scope: {
           value: "<p style='color:#39a9d3;' lang='es-ES'>"+
-                  "En Japón hay una censura férrea hacia cierto tipo de porno: no se"+
-                  "permite mostrar penetraciones vaginales o anales reales, sino que"+
-                  "estas imágenes aparecen pixeladas o bien sólo pueden verse en"+
-                  "animaciones. Por lo tanto se inventaron formas, como el bukakke,"+
-                  "donde lo pueden mostrar todo.</p>"+
+                  "Ut tortor mauris, ultrices quis "+
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus, leo ut auctor ultrices, erat arcu tincidunt sapien,"+
+                  "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eget ipsum euismod, posuere odio"+
+                  "</p>"+
                   "<p style='color:#d36339;' lang='es-ES'>"+
-                  "Desde que creó el portal Putalocura, Torbe asegura que los bukkakes son lo"+
-                  "que más se descarga de su página. Hasta el día de hoy ha hecho"+
-                  "131, y han participado innumerables hombres y 70 chicas.</p>"
+                  "Other color text"+
+                  "</p>"
         }
       };
     }

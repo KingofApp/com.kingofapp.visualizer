@@ -1,4 +1,15 @@
 /* app css stylesheet */
+  .element {
+    margin: 0 0 2.5em;
+  }
+  .card-content img{
+
+    width:100%;
+  }
+
+html,body,#main-king {
+  height:100%;
+}
 body{
   font-family: Arial, sans-serif;
 }
@@ -12,14 +23,17 @@ div.auto {
   overflow:auto;
   height: 100%;
 }
-div#main-king{
+paper-card{
+  margin:5px;
+}
+/*div#main-king{
   width: 360px;
   height: 640px;
   margin: 10px;
   border: 3px solid gray;
   position: relative;
   overflow: hidden;
-}
+}*/
 div.main-ads {
   height:100%;
   width:100%;
@@ -30,6 +44,7 @@ div.bottom-ads {
   height: auto;
   position:absolute;
   bottom:0px;
+  z-index:999;
 }
 div.innerC{
 min-height: 140px;
@@ -38,8 +53,9 @@ margin:5px;
 }
 div.innerM{
   min-height: 140px;
-  border: 1px solid orange;
-  margin:5px;
+  /*border: 1px solid orange;*/
+  /*margin:5px;*/
+  padding:5px;
 }
 .full{
   width: 100%;
@@ -180,3 +196,54 @@ menu > div > menu-item > div > span {
   color: inherit;
 }
 /* END SIDEMENU */
+
+.item {
+  @apply(--layout-horizontal);
+  margin: 16px 16px 0 16px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid #ddd;
+}
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-color: #DDD;
+}
+.pad {
+  padding: 0 16px;
+  @apply(--layout-flex);
+  @apply(--layout-vertical);
+}
+.primary {
+  font-size: 16px;
+  font-weight: bold;
+}
+.secondary {
+  font-size: 14px;
+}
+.dim {
+  color: gray;
+}
+
+
+    .short {
+      padding-top: 12px;
+      height: 216px;
+    }
+    h4 {
+      margin-left: 24px;
+    }
+    .avatar {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #ccc;
+    }
+    .green {
+     background-color: #81C784;
+    }

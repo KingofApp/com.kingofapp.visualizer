@@ -1,10 +1,8 @@
 <div class='instagramfeed auto' ng-controller='instagramFeedCtrl'>
-  <h2>Instagram feed</h2>
-  <p ng-hide="isEmpty(instagramfeed.message)">{{instagramfeed.message}}</p>
-	<ul class="feed">
-		<li ng-repeat="item in instagramfeed.items" ng-hide="isEmpty(instagramfeed.message)">
-			<img ng-src='{{item.images.low_resolution.url}}'>
-      <p>{{item.caption.text}}</p>
-		</li>
-	</ul>
+  <paper-item ng-hide="isEmpty(instagramfeed.message)">{{instagramfeed.message}}</paper-item>
+  <template is="dom-repeat" items="{{instagramfeed.items}}">
+      <paper-card image='{{item.images.standard_resolution.url}}'>
+        <div class="card-content">{{item.caption.text}}</div>
+      </paper-card>
+  </template>
 </div>

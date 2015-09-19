@@ -13,15 +13,23 @@ function loadFunction($http, $scope, structureService, $location){
           'filter[category_name]'  : $scope.wordpressposts.modulescope.category
     }})
     .success(function(data){
-    	$scope.wordpressposts.items = data;
-
-    	$scope.wordpressposts.isEmpty = function (obj) {
-    	    for (var i in obj) if (obj.hasOwnProperty(i)) return false;
-    	    return true;
-    	};
+      var elements = [];
+      angular.forEach( data, function(item){
+        elements.push({ url :  $scope.wordpressposts.modulescope.galleryurl+"?id="+item.ID,
+          title   : item.title,
+          excerpt : htmlToPlaintext(item.excerpt),
+          content : item.content,
+          date    : item.date,
+        });
+      });
+      $scope.wordpressposts.items = elements;
     }).error(function(){
+      //NOTE: CAMBIAR  POR LO DE FACEBOOK
     	$scope.wordpressposts.items = [{
     		"message": "Opps! There was a problem loading the feed!",
     	}];
     });
+    function htmlToPlaintext(text) {
+      return  text ? String(text).replace(/(<[^>]+>)|(&#\d{4};)/gm, '') : '';
+    }
 }

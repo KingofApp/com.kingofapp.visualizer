@@ -7,5 +7,4 @@ function loadFunction($scope, structureService, $location, fireService){
   //Register upper level modules
   structureService.registerModule($location,$scope,"list");
   $scope.list.list = fireService.getData();
-
 }

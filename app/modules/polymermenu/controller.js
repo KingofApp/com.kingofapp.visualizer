@@ -12,7 +12,7 @@ function loadFunction($scope, structureService, $location) {
   angular.forEach(structureService.getChildren($scope.polymermenu.modulescope.path), function(value, key) {
     this.push({
       text: value.name,
-      url: '/app/#' + key,
+      url: '#' + key,
     });
   }, menu);
 

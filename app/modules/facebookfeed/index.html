@@ -1,10 +1,8 @@
 <div class='facebookfeed auto' ng-controller='facebookFeedCtrl'>
-  <h2>Facebook feed</h2>
-  			<ul class="feed">
-  				<li ng-repeat="item in facebookfeed.items" ng-hide="isEmpty(item.message)">
-  					<img ng-src='{{item.picture}}'>
-            <p>{{item.message}}</p>
-  				</li>
-  			</ul>
-
+  <paper-item ng-hide="isEmpty(facebookfeed.message)">{{facebookfeed.message}}</paper-item>
+  <template is="dom-repeat" items="{{facebookfeed.items}}">
+      <paper-card image='{{item.full_picture}}'>
+        <div class="card-content">{{item.message}}</div>
+      </paper-card>
+  </template>
 </div>

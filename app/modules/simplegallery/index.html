@@ -1,5 +1,35 @@
 <div class='simplegallery' ng-controller='simplegalleryCtrl'>
-  <p class="item" ng-repeat="img in simplegallery.modulescope.gallery">
-    <img width='100%' ng-src='{{ img }}'>
-  </p>
+  <template id='images' is='dom-bind'>
+    <div class="toolbar">
+      <button on-click="_onPrevClick">&lt;&lt;</button>
+      <button on-click="_onNextClick">&gt;&gt;</button>
+    </div>
+
+    <neon-animated-pages style='min-height:300px;' id="pages" class="flex">
+    <template is="dom-repeat" items='[[elements]]'>
+      <neon-animatable><paper-card image='{{item}}'></paper-card></neon-animatable>
+    </template>
+    </neon-animated-pages>
+  </template>
+
+  <div poly-scripts scripts="scripts"></div>
+  <script>
+  set();
+  function set(){
+    var scope = document.querySelector('template[is="dom-bind"]');
+    var scope2 = document.querySelector('neon-animated-pages');
+    scope2.selected = 0;
+    scope._onPrevClick = function() {
+      scope2.entryAnimation = 'slide-from-left-animation';
+      scope2.exitAnimation = 'slide-right-animation';
+      scope2.selected = scope2.selected === 0 ? 2 : (scope2.selected - 1);
+    }
+    scope._onNextClick = function() {
+      scope2.entryAnimation = 'slide-from-right-animation';
+      scope2.exitAnimation = 'slide-left-animation';
+      scope2.selected = scope2.selected === 2 ? 0 : (scope2.selected + 1);
+    }
+  }
+
+  </script>
 </div>

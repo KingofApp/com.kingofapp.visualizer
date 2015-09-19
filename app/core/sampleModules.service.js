@@ -45,8 +45,9 @@
         '/menu2/simple-gallery'          : simplegallery(),
         '/menu2/instagram'               : instagramfeed(),
         '/menu2/embed'                   : embed(),
-        '/menu2/wordpressposts'          : wordpressposts(),
-        '/menu2/wordpresssingle'         : wordpresssingle(),
+        '/menu2/wordpressposts'      : wordpressposts(),
+        '/menu2/ads/wordpresssingle'         : wordpresssingle(),
+        '/menu2/ads'                     : ads(),
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
         // '/menu2/soundcloud'       : soundcloud(),
@@ -442,8 +443,8 @@
         view :  "modules/ads/index.html",
         files: ["modules/ads/controller.js"],
         scope: {
-          mainsrc: "<h1>Ads Everywhere!</h1>",
-          fixedsrc: "<h3>fixed</h3>"
+          mainsrc: "<img src='https://thechive.files.wordpress.com/2013/01/tumblr_m4p3ff1gq01qg39ewo1_500.gif'>",
+          fixedsrc: "<img src='http://info.fletchersjewelers.com/Portals/145216/images/Bottom%20Banner_Diamond%20Cheat%20Sheet.jpg'/>"
         }
       };
     }

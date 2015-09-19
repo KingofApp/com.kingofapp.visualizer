@@ -1,9 +1,7 @@
 <div class='ads' ng-controller="AdsCtrl">
-    <span class="info">{{ ads.custom }}</span>
     <!--Prepared for adds-->
-    <div class='main-ads' ng-hide="!ads.showflag">
+    <div class='main-ads'  ng-if='ads.modulescope.mainsrc' ng-hide="!ads.showflag">
       <div ng-bind-html="ads.modulescope.mainsrc">
-
       </div>
     </div>
     <div class='bottom-ads' ng-if='ads.modulescope.fixedsrc'>

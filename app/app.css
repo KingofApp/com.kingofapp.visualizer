@@ -2,6 +2,11 @@
   .element {
     margin: 0 0 2.5em;
   }
+  .card-content img{
+
+    width:100%;
+  }
+
 html,body,#main-king {
   height:100%;
 }
@@ -39,6 +44,7 @@ div.bottom-ads {
   height: auto;
   position:absolute;
   bottom:0px;
+  z-index:999;
 }
 div.innerC{
 min-height: 140px;

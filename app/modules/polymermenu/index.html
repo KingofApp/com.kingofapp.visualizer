@@ -9,6 +9,7 @@
       </template>-->
 <script>
 document.addEventListener('iron-select', function(e) {
+  console.log("Dentro");
   if(e.detail.item.custom){
     window.location.href = e.detail.item.custom;
   }

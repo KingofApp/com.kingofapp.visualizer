@@ -109,9 +109,7 @@ div.innerM{
 
 
 /* SIDEMENU */
-span {
-  color: #888888;
-}
+
 button {
   width: auto;
   padding: 7px 22px;
@@ -186,7 +184,7 @@ a, a:focus, a:hover, a:active {
 a:link,
 a:visited,
 a:active {
-    color: #788195;
+    color: inherit;
 }
 /*menu > div > menu-item > div:hover {
   color: #F0F0F0;

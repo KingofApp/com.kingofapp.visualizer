@@ -26,91 +26,28 @@
     function menu(){
       return {
         //Menu 2 for real app
-        '/menu2'                         : polymermenu("/menu2"),
-        '/menu2/fire-connector'          : firebase(),
-        '/menu2/fire-connector/list'     : list(),
-        '/menu2/rss'                     : rss(),
-        '/menu2/facebook'                : facebookfeed(),
-        '/menu2/twitter'                 : twitterfeed(),
-        '/menu2/contact'                 : contact(),
-        '/menu2/flickr'                  : flickrfeed(),
-        '/menu2/html'                    : html(),
-        '/menu2/map'                     : googlemap(),
-        '/menu2/fire-connector/qr'       : qrgenerator(),
-        '/menu2/vimeovideo'              : vimeovideo(),
-        '/menu2/youtubevideo'            : youtubevideo(),
-        '/menu2/youtubegallery'          : youtubegallery(),
-        '/menu2/soundcloud'              : soundcloud(),
-        '/menu2/translation'             : translationtest(),
-        '/menu2/simple-gallery'          : simplegallery(),
-        '/menu2/instagram'               : instagramfeed(),
-        '/menu2/embed'                   : embed(),
-        '/menu2/wordpressposts'      : wordpressposts(),
-        '/menu2/ads/wordpresssingle'         : wordpresssingle(),
-        '/menu2/ads'                     : ads(),
-        // '/menu2/translation'              : translationtest(),
-        // '/menu2/youtube-gallery'  : youtubegallery(),
-        // '/menu2/soundcloud'       : soundcloud(),
-        // '/menu2/simple-gallery'           : simplegallery(),
-        // '/menu2/youtube-video'    : youtubevideo(),
-        // '/menu2/vimeo-video'      : vimeovideo(),
-        // '/menu2/google-map'       : googlemap(),
-        // '/menu2/instagram'             : instagramfeed(),
-        // '/menu2/wordpress'             : wordpressposts(),
-        // '/menu2/embed'                    : embed(),
-        // '/menu2/html'                     : html(),
-        //For testing purposes
-        '/ads'                           : ads(),
-        '/ads/menu'                      : angularmenu("/ads/menu"),
-        '/ads/menu/angular-scope'        : angularscope(),
-        '/menu/fire-connector'           : firebase(),
-        '/menu/fire-connector/list'      : list(),
-        '/menu/translation'              : translationtest(),
-        '/menu/text'                     : text(),
-        '/menu/rss'                      : rss(),
-        '/polymer-menu'                  : polymermenu("/polymer-menu"),
-        '/polymer-menu/rss'              : rss(),
-        '/polymer-menu/facebook'         : facebookfeed(),
-        '/polymer-menu/wordpress'        : wordpressposts(),
-        '/menu/contact'                  : contact(),
-        '/polymer-menu/youtube-gallery'  : youtubegallery(),
-        '/polymer-menu/youtube-video'    : youtubevideo(),
-        '/polymer-menu/google-map'       : googlemap(),
-        '/polymer-menu/vimeo-video'      : vimeovideo(),
-        '/polymer-menu/soundcloud'       : soundcloud(),
-        '/polymer-menu/pdf'              : pdfviewer(),
-        '/menu/fire-connector/qr'        : qrgenerator(),
-        '/menu/html'                     : html(),
-        '/menu/flickr'                   : flickrfeed(),
-        '/menu/embed'                    : embed(),
-        '/menu/twitter'                  : twitterfeed(),
-        '/menu/facebook'                 : facebookfeed(),
-        '/menu/instagram'                : instagramfeed(),
-        '/menu/simple-gallery'           : simplegallery(),
-        '/simple-directive'              : simpledirective(),
-        '/scope'                         : angularscope(),
-        '/feed'                          : angularstaticfeed(),
-        '/filters'                       : filters(),
-        '/menu/scope-module'             : angularscope(),
-        '/menu/scope-diff-module'        : angulardiffscope(),
-        '/menu/scope-same-module'        : angularscope(),
-        '/menu/scope-module/static-feed' : angularstaticfeed(),
-        '/multiple-files'                : multiplefiles(),
-        '/menu/level1-feed'              : angularstaticfeed(),
-        '/menu'                          : angularmenu('/menu')
-      };
-    }
-
-    function angularscope(){
-      return {
-        name: 'Angular Scope Module',
-        identifier: 'angularscope',
-        type :  'A',
-        view :  "modules/angularscope/index.html",
-        files: ["modules/angularscope/controller.js"],
-        scope: {
-          config: ""
-        }
+        '/menu'                         : polymermenu("/menu"),
+        '/menu/home'          : homepage(),
+        '/menu/connector'          : firebase(),
+        '/menu/connector/list'     : list(),
+        '/menu/rss'                     : rss(),
+        '/menu/social'                : facebookfeed(),
+        '/menu/twitter'                 : twitterfeed(),
+        '/menu/contact'                 : contact(),
+        '/menu/flickr'                  : flickrfeed(),
+        '/menu/html'                    : html(),
+        '/menu/map'                     : googlemap(),
+        '/menu/connector/promotions'       : qrgenerator(),
+        '/menu/vimeovideo'              : vimeovideo(),
+        '/menu/youtubevideo'            : youtubevideo(),
+        '/menu/youtubegallery'          : youtubegallery(),
+        '/menu/soundcloud'              : soundcloud(),
+        '/menu/translation'             : translationtest(),
+        '/menu/restaurant'          : simplegallery(),
+        '/menu/instagram'               : instagramfeed(),
+        '/menu/wordpressposts'          : wordpressposts(),
+        '/menu/ads/single'     : wordpresssingle(),
+        '/menu/ads'                     : ads()
       };
     }
 
@@ -123,7 +60,7 @@
         files: ["modules/firebase/controller.js", "modules/firebase/factory.js" ],
         scope: {
           src   : "https://blinding-heat-1559.firebaseio.com/datatest",
-          debug : true
+          debug : false // Shows/hides toast connection alert
         },
         //Online builder testing purpose
         libs: [{
@@ -150,9 +87,32 @@
       };
     }
 
+    function homepage(){
+      return {
+        name: 'Home',
+        identifier: 'homepage',
+        type :  'A',
+        view :  "modules/homepage/index.html",
+        files: [ "modules/homepage/controller.js" ],
+        scope: {
+          sections: [{ name : "Restaurant", class : "green", url : "#/menu/restaurant"},
+            { name : "Promotions", class : "purple", url : "#/menu/connector/promotions"},
+            { name : "Social", class : "blue", url : "#/menu/social"},
+            { name : "Find us", class : "red", url : "#/menu/map"}
+          ],
+          featured: {title : "Latest News",
+            domain      : "http://rachelbaker.me",
+            postnumber  : 3,
+            category    : "",
+            galleryurl : "#/menu/ads/single"
+          }
+        }
+      };
+    }
+
     function googlemap(){
       return {
-        name: 'Map',
+        name: 'Find us',
         identifier: 'googlemap',
         type :  'A',
         view :  "modules/googlemap/index.html",
@@ -267,7 +227,7 @@
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
           channelid  : "UCeIt2DJO8UdtUTmJzTfSXiQ",
-          galleryurl : "/app/#/menu2/youtubevideo"
+          galleryurl : "#/menu2/youtubevideo"
         },
         //Online builder testing purpose
         libs: [{
@@ -306,7 +266,7 @@
           domain : "http://rachelbaker.me",
           postnumber      : 3,
           category      : "",
-          galleryurl : "/app/#/menu2/wordpresssingle"
+          galleryurl : "#/menu2/wordpresssingle"
         }
       };
     }
@@ -356,7 +316,7 @@
 
     function simplegallery(){
       return {
-      name: 'Simple Gallery',
+      name: 'Restaurant',
       identifier: 'simplegallery',
       type :  'A',
       view :  "modules/simplegallery/index.html",
@@ -393,19 +353,6 @@
         scope: {
           widgetid : "628892310084939776",
           limite : "2"
-        }
-      };
-    }
-
-    function text(){
-      return {
-        name: 'Text Example',
-        identifier: 'text',
-        type :  'A',
-        view :  "modules/text/index.html",
-        files: ["modules/text/controller.js"],
-        scope: {
-          value: "Text phrase"
         }
       };
     }
@@ -450,59 +397,6 @@
       };
     }
 
-    function simpledirective(){
-      return {
-        name: 'Simple directive',
-        identifier: 'simpledirective',
-        type :  'A',
-        view :  "modules/simpledirective/index.html",
-        files: ["modules/simpledirective/controller.js"],
-        scope: {
-          config: ""
-        }
-      };
-    }
-
-    function filters(){
-      return {
-        name: 'Filters test',
-        identifier: 'filters',
-        type :  'A',
-        view :  "modules/filters/index.html",
-        files: ["modules/filters/controller.js"],
-        scope: {
-          config: ""
-        }
-      };
-    }
-
-    function multiplefiles(){
-      return {
-        name: 'Multiple files',
-        identifier: 'multiplefiles',
-        type :  'A',
-        view :  "modules/multiplefiles/index.html",
-        files: ["modules/multiplefiles/controller.js", "modules/multiplefiles/directive.js"
-        ],
-        scope: {
-          config: ""
-        }
-      };
-    }
-
-    function embed(){
-      return {
-        name: 'Embed Example',
-        identifier: 'embed',
-        type :  'A',
-        view :  "modules/embed/index.html",
-        files: ["modules/embed/controller.js"],
-        scope: {
-          url: "http://es.lipsum.com"
-        }
-      };
-    }
-
     function html(){
       return {
         name: 'Html Example',
@@ -523,30 +417,6 @@
       };
     }
 
-    function angulardiffscope(){
-      return {
-        name: 'Angular Different Scope Module',
-        identifier: 'angularscope',
-        type : 'A',
-        view :  "modules/angularscope/index.html",
-        files: ["modules/angularscope/controller.js"],
-        scope: {
-          config: ""
-        }
-      };
-    }
-
-    function angularmenu(path){
-      return {
-        name: 'Angular Menu Module',
-        identifier: 'angularmenu',
-        type :  'A',
-        view :  "modules/angularmenu/index.html",
-        files: ["modules/angularmenu/controller.js"],
-        scope: {path: path}
-      };
-    }
-
     function polymermenu(path){
       return {
         name: 'Polymer Menu Module',
@@ -557,95 +427,5 @@
         scope: {path: path}
       };
     }
-
-    function angularstaticfeed(){
-      return {
-      name: 'Angular Static Feed Module',
-      identifier: 'angularstaticfeed',
-      type :  'A',
-      view :  "modules/angularstaticfeed/index.html",
-      files: [
-        "modules/angularstaticfeed/controller.js"
-      ],
-      scope: {
-        feed : [{
-          "created_at": "Thu Jul 16 17:59:01 +0000 2015",
-          "text": "TFW you realize you've spent the majority of your front-end career in #CallbackHell",
-        }, {
-          "created_at": "Thu Jul 16 16:17:48 +0000 2015",
-          "text": "@alixmcalpine wow ça me donne un petit coup de nostalgie",
-        }, {
-          "created_at": "Thu Jul 16 16:14:11 +0000 2015",
-          "text": "Had a nightmare last night where @angularjs 2 came out and I suddenly sucked at #javascript and I was being chased by Donald Trump and ugh ",
-        }, {
-          "created_at": "Tue Jul 14 13:23:45 +0000 2015",
-          "text": "@haziqmir explosions, gunfire, and Vince Vaughn... That's about all I can discern",
-        }, {
-          "created_at": "Mon Jul 13 11:42:38 +0000 2015",
-          "text": "#GetToTheChoppa\nhttps://t.co/xVDXnhWWlz",
-        }]
-      }
-      };
-    }
-
-
-    // function rssmodule(){
-    //return {
-    //   name: 'RSS Module',
-    //   controller: 'rssmodule',
-    //   type :  'A',
-    //   view :  "modules/rssmodule/index.html",
-    //   ctrl: "modules/rssmodule/controller.js",
-    //   scope: {
-    //     feed: "http://www.hd-adult.com/feed/"
-    //   }
-      // };
-    //}
-    //
-    // function youtube(){
-    //return {
-    //   name: 'youtube',
-    //   type: '$',
-    //   scope: {
-    //     video: "k1eKW37q8Fo",
-    //     time: {hours: 12, minutes: 7},
-    //     map: 'spain'
-    //   },
-     //   view :  "modules/youtube/index.html",
-    //   ctrl: "modules/youtube/controller.js",
-    //   config: {
-    //     video: {
-    //       type: 'text',
-    //       min: 4,
-    //       max: 200,
-    //       regex: '/\w./',
-    //     },
-    //     time: {
-    //       type: 'composed',
-    //       elements: {
-    //         hours:   { type: 'number', min: 0, max: 23 },
-    //         minutes: { type: 'number', min: 0, max: 59 }
-    //       }
-    //     },
-    //     map: {
-    //       type :  'custom',
-    //       view :  "modules/youtube/index.html",
-    //       ctrl: "modules/youtube/controller.js",
-    //
-    //     }
-    //   }
-    //
-      // };
-    //}
-    //
-    // function x(){
-    //return {
-    //   name: 'Module X',
-    //   type :  '$',
-    //   view :  "modules/x/index.html",
-    //   ctrl: "modules/x/controller.js",
-      // };
-    //}
-
   }
 }());

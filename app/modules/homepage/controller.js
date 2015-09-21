@@ -11,14 +11,22 @@ function loadFunction($http, $scope, structureService, $location){
           'filter[category_name]'  : $scope.homepage.modulescope.featured.category
     }})
     .success(function(data){
+      console.log("DATA",data);
+
       var elements = [];
       angular.forEach( data, function(item){
+        var featured = "";
+        if(item.featured_image){
+          featured=item.featured_image.source;
+        }else{
+          featured = imgFromHtml(item.content);
+        }
         elements.push({ url :  $scope.homepage.modulescope.featured.galleryurl+"?id="+item.ID,
           title    : item.title,
           excerpt  : htmlToPlaintext(item.excerpt),
           content  : item.content,
           date     : item.date,
-          featured : imgFromHtml(item.content)
+          featured : featured
         });
       });
       // $scope.homepage.items = elements;

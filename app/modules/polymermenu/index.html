@@ -9,35 +9,22 @@
       </template>-->
 <script>
 document.addEventListener('iron-select', function(e) {
-  console.log("Dentro");
   if(e.detail.item.custom){
     window.location.href = e.detail.item.custom;
   }
-
-
 });
 </script>
-
+<paper-toolbar class='{{toolbar.class}}'>
     <paper-menu-button>
       <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
       <paper-menu class="dropdown-content" >
-        <!-- <paper-item> -->
-          <!-- <p><a href="#/menu2">Test</a></p> -->
-        <!-- </paper-item> -->
-        <!-- <paper-item> -->
-          <!-- <p><a href="#/menu2/rss">Test2</a></p> -->
-        <!-- </paper-item> -->
-        <!-- <paper-item> -->
-          <!-- <p><a href="#/menu2/contact">Test3</a></p> -->
-        <!-- </paper-item> -->
         <template is="dom-repeat" items="{{polymermenu.menu}}">
-          <!-- <a href="{{item.url}}"> -->
             <paper-item custom='{{item.url}}'><span class='clickable'>{{item.text}}</span></paper-item>
-        <!-- </a> -->
         </template>
       </paper-menu>
     </paper-menu-button>
-
+    <span class="title">{{toolbar.title}}</span>
+</paper-toolbar>
   <!-- </template> -->
     <!-- <polymer-slidenav speed=".2s">
   		<slidenav-toggler>

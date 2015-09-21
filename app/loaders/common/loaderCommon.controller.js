@@ -32,7 +32,6 @@
   function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader) {
     console.log("pasa por el commonLoaderCtrl");
     $location.$$path = $location.$$path || '/';
-    // $rootScope.test='Variable';
     // setTimeout(function() {
     //   $rootScope.test='Variableasdsdsa';
     // },2000);
@@ -40,6 +39,9 @@
     structureService.loadconfig($rootScope);
     //Register Route
     structureService.getModule($location.$$path).then(function(module){
+      $rootScope.toolbar = { title : module.name,
+        class : module.headclass
+      };
       $scope.module = module || $scope.module;
       if(!module){
           //TODO: Display a 404 error or similar

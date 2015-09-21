@@ -29,25 +29,25 @@
         '/menu'                         : polymermenu("/menu"),
         '/menu/home'          : homepage(),
         '/menu/connector'          : firebase(),
-        '/menu/connector/list'     : list(),
-        '/menu/rss'                     : rss(),
+        // '/menu/connector/list'     : list(),
+        // '/menu/rss'                     : rss(),
         '/menu/social'                : grouplist(),
         '/menu/facebook'                : facebookfeed(),
         '/menu/twitter'                 : twitterfeed(),
-        '/menu/contact'                 : contact(),
         '/menu/flickr'                  : flickrfeed(),
         '/menu/html'                    : html(),
         '/menu/map'                     : googlemap(),
         '/menu/connector/promotions'       : qrgenerator(),
-        '/menu/vimeovideo'              : vimeovideo(),
+        // '/menu/vimeovideo'              : vimeovideo(),
         '/menu/youtubevideo'            : youtubevideo(),
         '/menu/youtubegallery'          : youtubegallery(),
-        '/menu/soundcloud'              : soundcloud(),
-        '/menu/translation'             : translationtest(),
+        // '/menu/soundcloud'              : soundcloud(),
+        // '/menu/translation'             : translationtest(),
         '/menu/restaurant'          : simplegallery(),
         '/menu/instagram'               : instagramfeed(),
-        '/menu/wordpressposts'          : wordpressposts(),
+        // '/menu/wordpressposts'          : wordpressposts(),
         '/menu/ads/single'     : wordpresssingle(),
+        '/menu/contact'                 : contact(),
         '/menu/ads'                     : ads()
       };
     }
@@ -57,6 +57,7 @@
         name: 'Firebase Module',
         identifier: 'firebase',
         type :  'A',
+        hidden: true,
         view :  "modules/firebase/index.html",
         files: ["modules/firebase/controller.js", "modules/firebase/factory.js" ],
         scope: {
@@ -75,36 +76,24 @@
       };
     }
 
-    function list(){
-      return {
-        name: 'List Module',
-        identifier: 'list',
-        type :  'A',
-        view :  "modules/list/index.html",
-        files: [ "modules/list/controller.js" ],
-        scope: {
-          src: ""
-        }
-      };
-    }
-
     function homepage(){
       return {
         name: 'Home',
         identifier: 'homepage',
         type :  'A',
+        headclass : 'pink',
         view :  "modules/homepage/index.html",
         files: [ "modules/homepage/controller.js" ],
         scope: {
-          sections: [{ name : "Restaurant", icon: "food", class : "green", url : "#/menu/restaurant"},
+          sections: [{ name : "The Restaurant", icon: "food", class : "green", url : "#/menu/restaurant"},
             { name : "Promotions", icon: "tvmovies", class : "purple", url : "#/menu/connector/promotions"},
             { name : "Social", icon: "profile", class : "blue", url : "#/menu/social"},
             { name : "Find us", icon: "geography", class : "red", url : "#/menu/map"}
           ],
           featured: {title : "Latest News",
-            domain      : "http://rachelbaker.me",
+            domain      : "http://www.oemenlinea.com.mx",
             postnumber  : 3,
-            category    : "",
+            category    : "sociedad",
             galleryurl : "#/menu/ads/single"
           }
         }
@@ -115,6 +104,7 @@
         name: 'Social',
         identifier: 'grouplist',
         type :  'A',
+        headclass : 'blue',
         view :  "modules/grouplist/index.html",
         files: [ "modules/grouplist/controller.js" ],
         scope: {
@@ -133,6 +123,7 @@
         name: 'Find us',
         identifier: 'googlemap',
         type :  'A',
+        headclass : 'red',
         view :  "modules/googlemap/index.html",
         files: ["modules/googlemap/controller.js", "modules/googlemap/directive.js"],
         scope: {
@@ -153,9 +144,10 @@
 
     function qrgenerator(){
       return {
-        name: 'QR',
+        name: 'Promotions',
         identifier: 'qrgenerator',
         type :  'A',
+        headclass : 'purple',
         view :  "modules/qrgenerator/index.html",
         files: ["modules/qrgenerator/controller.js"],
         scope: {
@@ -173,65 +165,17 @@
       };
     }
 
-    function pdfviewer(){
-      return {
-        name: 'Pdf',
-        identifier: 'pdfviewer',
-        type :  'A',
-        view :  "modules/pdfviewer/index.html",
-        files: ["modules/pdfviewer/controller.js"],
-        scope: {
-          value : "https://github.com/akrennmair/ng-pdfviewer/raw/develop/example/test.pdf"
-        },
-        libs: [{
-          bower : {"angular-pdf": "1.1.1"},
-          src   : "modules/pdfviewer/libs/pdfjs-dist/build/pdf.js"
-        },
-        {
-          bower : {"angular-pdf": "1.1.1"},
-          src   : "bower_components/angular-pdf/dist/angular-pdf.js"
-        }]
-      };
-    }
-
     function youtubevideo(){
       return {
         name: 'Youtube Video',
         identifier: 'youtubevideo',
         type :  'A',
+        headclass : 'blue',
+        hidden: true,
         view :  "modules/youtubevideo/index.html",
         files: ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
         scope: {
           videoid: "oHg5SJYRHA0"
-        }
-      };
-    }
-
-    function soundcloud(){
-      return {
-        name: 'Sound Cloud',
-        identifier: 'soundcloud',
-        type :  'A',
-        view :  "modules/soundcloud/index.html",
-        files: ["modules/soundcloud/controller.js", "modules/soundcloud/directive.js"],
-        scope: {
-          client_id: "b23455855ab96a4556cbd0a98397ae8c",
-          track:     "65576692"
-        }
-      };
-    }
-
-    function vimeovideo(){
-      return {
-        name: 'Vimeo Video',
-        identifier: 'vimeovideo',
-        type :  'A',
-        view :  "modules/vimeovideo/index.html",
-        files: ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
-        scope: {
-          videoid: "136882652",
-          height: "250px",
-          width: "100%"
         }
       };
     }
@@ -241,6 +185,8 @@
         name: 'Youtube Gallery',
         identifier: 'youtubegallery',
         type : 'A',
+        headclass : 'blue',
+        hidden: true,
         view :   "modules/youtubegallery/index.html",
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
@@ -264,6 +210,8 @@
         name: 'Facebook Feed',
         identifier: 'facebookfeed',
         type : 'A',
+        headclass : 'blue',
+        hidden: true,
         view :   "modules/facebookfeed/index.html",
         files: [ "modules/facebookfeed/controller.js" ],
         scope: {
@@ -273,30 +221,17 @@
       };
     }
 
-    function wordpressposts(){
-      return {
-        name: 'Wordpress Feed',
-        identifier: 'wordpressposts',
-        type : 'A',
-        view :   "modules/wordpressposts/index.html",
-        files: [ "modules/wordpressposts/controller.js" ],
-        scope: {
-          domain : "http://rachelbaker.me",
-          postnumber      : 3,
-          category      : "",
-          galleryurl : "#/menu2/wordpresssingle"
-        }
-      };
-    }
     function wordpresssingle(){
       return {
         name: 'Wordpress Single',
         identifier: 'wordpresssingle',
         type : 'A',
+        headclass : 'grey',
+        hidden: true,
         view :   "modules/wordpresssingle/index.html",
         files: [ "modules/wordpresssingle/controller.js" ],
         scope: {
-          domain : "http://rachelbaker.me",
+          domain : "http://www.oemenlinea.com.mx/",
           type   : "pages",
           id     : 1626
         }
@@ -308,6 +243,8 @@
         name: 'Flickr Feed',
         identifier: 'flickrfeed',
         type : 'A',
+        headclass : 'blue',
+        hidden: true,
         view :   "modules/flickrfeed/index.html",
         files: [ "modules/flickrfeed/controller.js" ],
         scope: {
@@ -323,6 +260,8 @@
         name: 'Instagram Feed',
         identifier: 'instagramfeed',
         type : 'A',
+        headclass : 'blue',
+        hidden: true,
         view :   "modules/instagramfeed/index.html",
         files: [ "modules/instagramfeed/controller.js" ],
         scope: {
@@ -337,6 +276,7 @@
       name: 'Restaurant',
       identifier: 'simplegallery',
       type :  'A',
+      headclass : 'green',
       view :  "modules/simplegallery/index.html",
       files: [
         "modules/simplegallery/controller.js"
@@ -366,6 +306,8 @@
         name: 'Twitter Feed',
         identifier: 'twitterfeed',
         type : 'A',
+        headclass : 'blue',
+        hidden: true,
         view :  "modules/twitterfeed/index.html",
         files: ["modules/twitterfeed/controller.js"],
         scope: {
@@ -375,62 +317,31 @@
       };
     }
 
-    function rss(){
-      return {
-        name: 'RSS',
-        identifier: 'rss',
-        type :  'A',
-        view :  "modules/rss/index.html",
-        files: ["modules/rss/controller.js"],
-        scope: {
-          feed: "http://elpais.com/rss/elpais/portada.xml"
-        }
-      };
-    }
-
-    function translationtest(){
-      return {
-        name: 'Translation Test',
-        identifier: 'translationtest',
-        type :  'A',
-        view :  "modules/translationtest/index.html",
-        files: ["modules/translationtest/controller.js"],
-        scope: {
-          name: "Noemal"
-        }
-      };
-    }
-
     function ads(){
       return {
         name: 'Ads container',
         identifier: 'ads',
         type :  'A',
+        hidden: true,
         view :  "modules/ads/index.html",
         files: ["modules/ads/controller.js"],
         scope: {
           mainsrc: "<img src='https://thechive.files.wordpress.com/2013/01/tumblr_m4p3ff1gq01qg39ewo1_500.gif'>",
-          fixedsrc: "<img src='http://info.fletchersjewelers.com/Portals/145216/images/Bottom%20Banner_Diamond%20Cheat%20Sheet.jpg'/>"
+          // fixedsrc: "<img src='http://info.fletchersjewelers.com/Portals/145216/images/Bottom%20Banner_Diamond%20Cheat%20Sheet.jpg'/>"
         }
       };
     }
 
     function html(){
       return {
-        name: 'Html Example',
+        name: 'Events',
         identifier: 'html',
         type :  'A',
+        headclass : 'yellow',
         view :  "modules/html/index.html",
         files: ["modules/html/controller.js"],
         scope: {
-          value: "<p style='color:#39a9d3;' lang='es-ES'>"+
-                  "Ut tortor mauris, ultrices quis "+
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus, leo ut auctor ultrices, erat arcu tincidunt sapien,"+
-                  "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eget ipsum euismod, posuere odio"+
-                  "</p>"+
-                  "<p style='color:#d36339;' lang='es-ES'>"+
-                  "Other color text"+
-                  "</p>"
+          value: '<div class="calendarpgtext"> <h1 style="text-align: center;">Private Events</h1> <h3 class="blackline" style="text-align: center;height: 1px;     width: 100%;     border-bottom: solid 1px #000;     margin-bottom: 20px;">Have your next event at The Restaurant!</h3> <div style=" height: 1px; width: 100%; border-bottom: solid 1px #000; margin-bottom: 20px; "></div><img src="http://www.martinibistro.com/wp-content/uploads/2014/03/2.jpg" style="width:100%;"> <ul> <li>Private Room: up to 75 guests.</li> </ul> <ul> <li>Main Restaurant Space: up to 150 guests.</li> </ul> <ul> <li>Area for band and dance floor.</li> </ul> <ul> <li>Semi Private Standing Bar/ Hors D’oeuvre area for up to 30 guests.</li> </ul> <ul> <li>Semi Private Seating Area for up to 30 guests.</li> </ul> <ul> <li>Menus tailored for every occasion and budget.</li> </ul> <ul> <li>Birthday Celebrations, Business Functions, Fundraisers, Holiday Parties, Showers, Christenings, Confirmations, Bar Mitzvahs, Rehearsal Dinners, Repasts.</li> </ul> <ul> <li>Contact Us at 973-376-4444 for more information.</li> </ul> <div></div> <div class="mailinglist"></div></div>'
         }
       };
     }
@@ -440,6 +351,7 @@
         name: 'Polymer Menu Module',
         identifier: 'polymermenu',
         type :  'A',
+        hidden: true,
         view :  "modules/polymermenu/index.html",
         files: ["modules/polymermenu/controller.js"],
         scope: {path: path}

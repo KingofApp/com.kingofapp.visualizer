@@ -225,23 +225,53 @@ menu > div > menu-item > div > span {
 .dim {
   color: gray;
 }
+.short {
+  padding-top: 12px;
+  height: 216px;
+}
+h4 {
+  margin-left: 24px;
+}
+.avatar {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ccc;
+}
+.green {
+ background-color: #81C784;
+}
 
+paper-toolbar.green {
+  background-color:#1de9b6;
+  color:#616161;
+}
+paper-toolbar.grey {
+  background-color:#999;
+}
+paper-toolbar.blue {
+  background-color:#03A9F4;
+}
+paper-toolbar.yellow {
+  background-color:#ffeb3b;
+  color:#616161;
+}
+paper-toolbar.purple {
+  background-color:#7e57c2;
+}
+paper-toolbar.red {
+  background-color:#ff5252;
+}
+paper-toolbar.pink {
+  background-color:#e91e63;
+}
 
-    .short {
-      padding-top: 12px;
-      height: 216px;
-    }
-    h4 {
-      margin-left: 24px;
-    }
-    .avatar {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: #ccc;
-    }
-    .green {
-     background-color: #81C784;
-    }
+.pink div.title-text{
+  color:#e91e63 !important;
+}
+
+.toolbar-tools.paper-toolbar > paper-menu-button + .title {
+    margin-left: 0;
+}

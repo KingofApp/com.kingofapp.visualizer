@@ -12,7 +12,7 @@
     //Default Route
     $routeProvider
       .when('/', {
-        redirectTo: '/menu2'
+        redirectTo: '/menu/home'
       })
       .otherwise({
         templateUrl   : 'loaders/common/loaderCommon.view.html',

@@ -56,19 +56,19 @@
     </template>
   </div>
   <div ng-repeat="item in homepage.modulescope.sections" class="category-item {{item.class}}">
-    <div class="tile">
+    <a href='{{item.url}}'><div class="tile">
       <div class='sections' style='height:220px;'>
         <iron-icon icon='svg-category-icons:{{item.icon}}'></iron-icon>
 
       </div>
       <div class="cat-name theme-bg">
         <div>
-          <a href='{{item.url}}'><span>{{item.name}}</span>
+          <span>{{item.name}}</span>
           <iron-icon icon='icons:arrow-forward'></iron-icon>
-        </a>
+
         </div>
       </div>
-    </div>
+    </div></a>
   </div>
   <div>
 

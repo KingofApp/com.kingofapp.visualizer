@@ -1,0 +1,68 @@
+<div class='grouplist' ng-controller='grouplistCtrl'>
+  <div poly-scripts scripts="scripts"></div>
+  <style is='custom-style'>
+  .list {
+    padding-top: 12px;
+    background-color: white;
+    display: inline-block;
+    width: 100%;
+    margin: 12px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  }
+  .imga{
+    padding:10px;
+  }
+  .avatar {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #ccc;
+      color:#fff;
+    }
+    .avatar.facebook {
+      background: #4C67A1;
+    }
+    .avatar.twitter {
+      background: #55ACEE;
+    }
+    .avatar.youtube {
+      background:#CC181E;
+    }
+    .avatar.flickr {
+      background:#1F1F21;
+    }
+    .avatar.instagram {
+      background:#004879;
+    }
+
+    div.layout{
+      width:100%;
+    }
+    paper-icon-item > #contentIcon > div iron-icon{
+      width:36px;
+      height:36px;
+    }
+
+  </style>
+  <div class="layout wrap inline center-center">
+
+  <div class="list">
+    <template id='grouplist' is='dom-bind'>
+        <template is="dom-repeat" items='[[items]]'>
+        <paper-icon-item>
+          <div class$='{{item.class}}' item-icon>
+              <iron-icon icon$='{{item.icon}}'></iron-icon>
+          </div>
+          <div class="flex">{{item.name}}</div>
+          <a class='imga' href='{{item.url}}'>
+            <iron-icon icon='icons:arrow-forward'></iron-icon>
+          </a>
+        </paper-icon-item>
+      </template>
+    </template>
+  </div>
+</div>
+
+</div>

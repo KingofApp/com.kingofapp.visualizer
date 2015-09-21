@@ -31,7 +31,8 @@
         '/menu/connector'          : firebase(),
         '/menu/connector/list'     : list(),
         '/menu/rss'                     : rss(),
-        '/menu/social'                : facebookfeed(),
+        '/menu/social'                : grouplist(),
+        '/menu/facebook'                : facebookfeed(),
         '/menu/twitter'                 : twitterfeed(),
         '/menu/contact'                 : contact(),
         '/menu/flickr'                  : flickrfeed(),
@@ -106,6 +107,23 @@
             category    : "",
             galleryurl : "#/menu/ads/single"
           }
+        }
+      };
+    }
+    function grouplist(){
+      return {
+        name: 'Social',
+        identifier: 'grouplist',
+        type :  'A',
+        view :  "modules/grouplist/index.html",
+        files: [ "modules/grouplist/controller.js" ],
+        scope: {
+          sections: [{ name : "Facebook", icon:'svg-social-icons:facebook', class : "avatar facebook", url : "#/menu/facebook"},
+            { name : "Twitter", icon:'svg-social-icons:twitter', class : "avatar twitter", url : "#/menu/twitter"},
+            { name : "Instagram", icon:'svg-social-icons:instagram', class : "avatar instagram", url : "#/menu/instagram"},
+            { name : "Youtube", icon:'svg-social-icons:youtube', class : "avatar youtube", url : "#/menu/youtube"},
+            { name : "Flickr", icon:'svg-social-icons:flickr', class : "avatar flickr", url : "#/menu/flickr"}
+          ]
         }
       };
     }

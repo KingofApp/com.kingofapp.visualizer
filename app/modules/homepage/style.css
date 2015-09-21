@@ -40,6 +40,11 @@ width: 100%;
     vertical-align: top;
     width: 50%;
     height: 224px;
+    overflow:hidden;
+}
+.feat-item .card-content {
+  height: 44px;
+  overflow: hidden;
 }
 .feat-item {
     position: relative;

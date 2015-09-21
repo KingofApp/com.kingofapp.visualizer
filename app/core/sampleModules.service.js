@@ -95,10 +95,10 @@
         view :  "modules/homepage/index.html",
         files: [ "modules/homepage/controller.js" ],
         scope: {
-          sections: [{ name : "Restaurant", class : "green", url : "#/menu/restaurant"},
-            { name : "Promotions", class : "purple", url : "#/menu/connector/promotions"},
-            { name : "Social", class : "blue", url : "#/menu/social"},
-            { name : "Find us", class : "red", url : "#/menu/map"}
+          sections: [{ name : "Restaurant", icon: "food", class : "green", url : "#/menu/restaurant"},
+            { name : "Promotions", icon: "tvmovies", class : "purple", url : "#/menu/connector/promotions"},
+            { name : "Social", icon: "profile", class : "blue", url : "#/menu/social"},
+            { name : "Find us", icon: "geography", class : "red", url : "#/menu/map"}
           ],
           featured: {title : "Latest News",
             domain      : "http://rachelbaker.me",

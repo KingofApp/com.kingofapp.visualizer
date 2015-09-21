@@ -37,7 +37,7 @@ function loadFunction($http, $scope, structureService, $location){
       urls = [],
       rex = /<img[^>]+src="([^">]+)"/;
       m = rex.exec( html )
-      var featured = 'http://placehold.it/350x150';
+      var featured = 'http://placehold.it/400x350';
       if(m){
         featured=m[1];
       }

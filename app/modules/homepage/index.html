@@ -57,11 +57,9 @@
   </div>
   <div ng-repeat="item in homepage.modulescope.sections" class="category-item {{item.class}}">
     <div class="tile">
-      <div>
-        <div>
-          <div class="category-bg-wrapper">
-          </div>
-        </div>
+      <div class='sections' style='height:220px;'>
+        <iron-icon icon='svg-category-icons:{{item.icon}}'></iron-icon>
+
       </div>
       <div class="cat-name theme-bg">
         <div>
@@ -72,4 +70,9 @@
       </div>
     </div>
   </div>
+  <div>
+
+
+  </div>
+
 </div>

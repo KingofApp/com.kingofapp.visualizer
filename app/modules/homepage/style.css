@@ -4,7 +4,7 @@
 }
 .toolbar{
   position: absolute;
-  z-index: 999;
+  z-index: 11;
   width:100%;
   top:40%;
 }
@@ -25,7 +25,7 @@
 bottom: 0;
 width: 100%;
 }
-.category-item iron-icon.iron-icon-0{
+.cat-name iron-icon.iron-icon-0{
   display: inline-block;
   vertical-align: middle;
   background-repeat: no-repeat;
@@ -90,4 +90,9 @@ align-items: center;
 .grey .theme-bg {
     background-color: #999;
     color: #fff;
+}
+.sections iron-icon {
+  position: absolute !important;
+  height: 100%;
+  width: 100%;
 }

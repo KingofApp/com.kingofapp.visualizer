@@ -282,7 +282,9 @@
         "modules/simplegallery/controller.js"
       ],
       scope: {
-        gallery : ["http://i.imgur.com/cBiVYSx.jpg", "http://i.imgur.com/lIb0zTT.jpg", "http://i.imgur.com/bAFPG8K.jpg"]
+        gallery : ["http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
+          "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
+          "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"]
       }
       };
     }

@@ -1,10 +1,10 @@
 <div class='simplegallery' ng-controller='simplegalleryCtrl'>
+  <link rel="stylesheet" href="modules/simplegallery/style.css">
   <template id='images' is='dom-bind'>
     <div class="toolbar">
-      <button on-click="_onPrevClick">&lt;&lt;</button>
-      <button on-click="_onNextClick">&gt;&gt;</button>
+      <paper-button class='left' on-click="_onPrevClick"><iron-icon icon='icons:chevron-left'></iron-icon></paper-button>
+      <paper-button class='right' on-click="_onNextClick"><iron-icon icon='icons:chevron-right'></iron-icon></paper-button>
     </div>
-
     <neon-animated-pages style='min-height:300px;' id="pages" class="flex">
     <template is="dom-repeat" items='[[elements]]'>
       <neon-animatable><paper-card image='{{item}}'></paper-card></neon-animatable>

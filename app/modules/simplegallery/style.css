@@ -1,0 +1,18 @@
+.toolbar{
+  position: absolute;
+  z-index: 11;
+  width:100%;
+  top:40%;
+}
+.toolbar paper-button iron-icon{
+  width:90px;
+  height:90px;
+  color:#1de9b6;
+}
+.toolbar .left{
+
+}
+.toolbar .right{
+  position:absolute;
+  right:0;
+}

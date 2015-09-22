@@ -12,7 +12,10 @@ function loadFunction($http, $scope, structureService, $location){
     }})
     .success(function(data){
       var elements = [];
-      angular.forEach( data, function(item){
+      var chetos = ['http://www.martinibistro.com/wp-content/uploads/2014/03/steak.jpg',
+        'http://www.martinibistro.com/wp-content/uploads/2014/03/sushi.jpg',
+        'http://www.martinibistro.com/wp-content/uploads/2014/03/3.jpg']
+      angular.forEach( data, function(item, index){
         var featured = "";
         if(item.featured_image){
           featured=item.featured_image.source;
@@ -24,7 +27,8 @@ function loadFunction($http, $scope, structureService, $location){
           excerpt  : htmlToPlaintext(item.excerpt),
           content  : item.content,
           date     : item.date,
-          featured : featured
+          // featured : featured
+          featured : chetos[index]
         });
       });
       // $scope.homepage.items = elements;

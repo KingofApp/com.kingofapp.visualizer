@@ -32,23 +32,24 @@
   function commonLoaderCtrl($scope, $rootScope, $http, $location, $ocLazyLoad, structureService, angularLoader) {
     console.log("pasa por el commonLoaderCtrl");
 
-    // $http.get('https://gist.githubusercontent.com/flafuente/cbb505b29adb850bcce1/raw',{  params: {}})
+    // $http.get('http://koa.pepocivs.com/test.txt',{  params: {}})
     //   .success(function(data){
     //     var test = data.split('\n')
     //     angular.forEach( test, function(item, index){
     //       console.log(item);
     //
-    //         if($rootScope.pushcache){
+    //         if($rootScope.pushcache && item!=""){
     //           console.log("IndexOF",$rootScope.pushcache.indexOf(item));
     //           if($rootScope.pushcache.indexOf(item) == -1){
     //             console.log("Editado", item);
     //             $rootScope.pushcache.push(item);
     //             console.log("TOtal2",$rootScope.pushcache);
+    //             // koa.pushit(item);
     //           }
     //         }else if(item!=""){
     //             console.log("Nuevo",item);
     //             $rootScope.pushcache=[item];
-    //
+    //             // koa.pushit(item);
     //         }
     //
     //

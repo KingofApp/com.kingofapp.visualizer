@@ -12,6 +12,8 @@ function loadFunction($scope, structureService, $location, fireService){
     fireService.setFirebaseSource($scope.qrgenerator.modulescope.datasource);
     $scope.qrgenerator.list = fireService.getData();
   }
-
+//TODO:
+//Hacer bonito con paper-item
+//Popup para mostrar Qr.
 
 }

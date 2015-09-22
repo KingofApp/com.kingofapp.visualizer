@@ -1,30 +1,41 @@
 <div class='qrgenerator' ng-controller='qrgeneratorCtrl'>
-
-  <paper-card heading="Client Id" class="pink">
+  <script>
+    function clickHandler(e) {
+      var button = e.target;
+      while (!button.hasAttribute('data-dialog') && button !== document.body) {
+        button = button.parentElement;
+      }
+      if (!button.hasAttribute('data-dialog')) {
+        return;
+      }
+      var id = button.getAttribute('data-dialog');
+      var dialog = document.getElementById(id);
+      if (dialog) {
+        dialog.open();
+      }
+    }
+  </script>
+  <paper-card heading="Client Id" ng-if='qrgenerator.modulescope.static' class="pink">
     <div class="card-content">
-      <!-- <qrcode ng-show='qrgenerator.modulescope.static' data="{{qrgenerator.modulescope.static}}" size='150' ></qrcode> -->
       <qr-code data="{{qrgenerator.modulescope.static}}"></qr-code>
     </div>
   </paper-card>
-  <template is="dom-repeat" items="{{qrgenerator.list}}">
-      <paper-card heading="{{item.promocion}}">
-        <div class="card-content"><qr-code data="{{item.valor}}"></qr-code></div>
-      </paper-card>
-  </template>
-  <!-- <paper-card ng-repeat="promocion in qrgenerator.list">
-    <div class="card-content">
-      <span>{{promocion.promocion}}</span>
-      <qr-code data="{{promocion.valor}}"></qr-code>
-    </div>
-  </paper-card> -->
-
-  <!-- <div ng-repeat="promocion in qrgenerator.list" class="list">
-    <div class="card-content">
-      {{promocion.promocion}}
-    </div>
-    <div class="card-content">
-
-      <qr-code data="{{promocion.valor}}"></qr-code>
-    </div>
-  </div> -->
+  <div class="list" role="list" onclick="clickHandler(event)">
+    <template is="dom-repeat" items="{{qrgenerator.list}}">
+        <paper-icon-item>
+            <div style$="{{item.style}}" class='avatar' item-icon></div>
+          <paper-item-body two-line>
+            <div>{{item.promocion}}</div>
+            <div secondary>{{item.description}}</div>
+          </paper-item-body>
+          <paper-icon-button data-dialog$="{{item.id}}" icon="arrow-forward" alt="Open promotion"></paper-icon-button>
+        </paper-icon-item>
+        <paper-dialog id="{{item.id}}" modal>
+          <qr-code modulesize='6' data="{{item.valor}}"></qr-code>
+          <div class="buttons">
+            <paper-button dialog-confirm autofocus>Close me</paper-button>
+          </div>
+        </paper-dialog>
+    </template>
+  </div>
 </div>

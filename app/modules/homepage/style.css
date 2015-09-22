@@ -6,7 +6,7 @@
   position: absolute;
   z-index: 11;
   width:100%;
-  top:40%;
+  top:25%;
 }
 .toolbar paper-button iron-icon{
   width:90px;

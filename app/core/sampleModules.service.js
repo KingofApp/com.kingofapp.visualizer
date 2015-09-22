@@ -36,17 +36,17 @@
         '/menu/twitter'                 : twitterfeed(),
         '/menu/flickr'                  : flickrfeed(),
         '/menu/html'                    : html(),
-        '/menu/map'                     : googlemap(),
         '/menu/connector/promotions'       : qrgenerator(),
         // '/menu/vimeovideo'              : vimeovideo(),
         '/menu/youtubevideo'            : youtubevideo(),
-        '/menu/youtubegallery'          : youtubegallery(),
+        '/menu/youtube'          : youtubegallery(),
         // '/menu/soundcloud'              : soundcloud(),
         // '/menu/translation'             : translationtest(),
         '/menu/restaurant'          : simplegallery(),
         '/menu/instagram'               : instagramfeed(),
         // '/menu/wordpressposts'          : wordpressposts(),
         '/menu/ads/single'     : wordpresssingle(),
+        '/menu/map'                     : googlemap(),
         '/menu/contact'                 : contact(),
         '/menu/ads'                     : ads()
       };
@@ -151,7 +151,7 @@
         view :  "modules/qrgenerator/index.html",
         files: ["modules/qrgenerator/controller.js"],
         scope: {
-          static     : "http://google.es",
+          // static     : "",
           datasource : "https://blinding-heat-1559.firebaseio.com/ofertas"
         },
         libs: [{
@@ -190,8 +190,8 @@
         view :   "modules/youtubegallery/index.html",
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
-          channelid  : "UCeIt2DJO8UdtUTmJzTfSXiQ",
-          galleryurl : "#/menu2/youtubevideo"
+          channelid  : "UC-LE7UowYotavwgFWKfN-nQ",
+          galleryurl : "#/menu/youtubevideo"
         },
         //Online builder testing purpose
         libs: [{
@@ -249,7 +249,7 @@
         files: [ "modules/flickrfeed/controller.js" ],
         scope: {
           accesstoken : "1d2b22596adb2b99645c52ba2f5d1542",
-          photosetid  : "72157649175711353",
+          photosetid  : "72157624524513507",
           results     : "5"
         }
       };
@@ -266,7 +266,7 @@
         files: [ "modules/instagramfeed/controller.js" ],
         scope: {
           accesstoken : "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
-          userid      : "50417061"
+          userid      : "946745786"
         }
       };
     }
@@ -314,7 +314,7 @@
         files: ["modules/twitterfeed/controller.js"],
         scope: {
           widgetid : "628892310084939776",
-          limite : "2"
+          limite : "4"
         }
       };
     }
@@ -328,8 +328,8 @@
         view :  "modules/ads/index.html",
         files: ["modules/ads/controller.js"],
         scope: {
-          mainsrc: "<img src='https://thechive.files.wordpress.com/2013/01/tumblr_m4p3ff1gq01qg39ewo1_500.gif'>",
-          // fixedsrc: "<img src='http://info.fletchersjewelers.com/Portals/145216/images/Bottom%20Banner_Diamond%20Cheat%20Sheet.jpg'/>"
+          mainsrc: "<img style='width:100%;' src='http://photos1.blogger.com/blogger/2778/1924/1600/superannouncement10.jpg'>",
+          fixedsrc: "<img src='http://www.healthjobsweb.com/images/health-jobs-web-logo.gif'/>"
         }
       };
     }

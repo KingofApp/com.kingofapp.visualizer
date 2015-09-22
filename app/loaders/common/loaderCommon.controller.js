@@ -27,10 +27,38 @@
         };
     });
 
-  commonLoaderCtrl.$inject = ['$scope', '$rootScope','$location', '$ocLazyLoad', 'structureService','angularLoader'];
+  commonLoaderCtrl.$inject = ['$scope', '$rootScope', '$http','$location', '$ocLazyLoad', 'structureService','angularLoader'];
 
-  function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader) {
+  function commonLoaderCtrl($scope, $rootScope, $http, $location, $ocLazyLoad, structureService, angularLoader) {
     console.log("pasa por el commonLoaderCtrl");
+
+    // $http.get('https://gist.githubusercontent.com/flafuente/cbb505b29adb850bcce1/raw',{  params: {}})
+    //   .success(function(data){
+    //     var test = data.split('\n')
+    //     angular.forEach( test, function(item, index){
+    //       console.log(item);
+    //
+    //         if($rootScope.pushcache){
+    //           console.log("IndexOF",$rootScope.pushcache.indexOf(item));
+    //           if($rootScope.pushcache.indexOf(item) == -1){
+    //             console.log("Editado", item);
+    //             $rootScope.pushcache.push(item);
+    //             console.log("TOtal2",$rootScope.pushcache);
+    //           }
+    //         }else if(item!=""){
+    //             console.log("Nuevo",item);
+    //             $rootScope.pushcache=[item];
+    //
+    //         }
+    //
+    //
+    //     });
+    //   }).error(function(){
+    //     // $scope.facebookfeed.message = $filter('translate')('facebookfeed.feed.error');
+    //   });
+
+
+
     $location.$$path = $location.$$path || '/';
     // setTimeout(function() {
     //   $rootScope.test='Variableasdsdsa';

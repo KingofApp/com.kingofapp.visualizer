@@ -12,7 +12,6 @@ function loadFunction($http, $scope, structureService, $location, x2js, $routePa
       }}
     ).success(function(data){
       var json = x2js.xml2json( x2js.parseXmlString(data) );
-      console.log("JSON", json.feed.entry);
       var elements = [];
       angular.forEach( json.feed.entry, function(item){
         elements.push({ link :  $scope.youtubegallery.modulescope.galleryurl+'?video='+item.videoId.__text,

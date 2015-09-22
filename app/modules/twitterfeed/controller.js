@@ -13,6 +13,7 @@ angular
         element
           .attr('id', 'twitter-feed')
           .attr("width", "100%" || attrs.width)
+          .attr("height", "100%" || attrs.height)
           .attr('data-chrome', 'noheader transparent')
           .attr('data-widget-id', attrs.twitterTimeline)
           .addClass('twitter-timeline');
@@ -24,18 +25,20 @@ angular
             body.append($('<link/>', { rel: 'stylesheet', href: scope.cssUrl, type: 'text/css' }));
           }
 
-          function setHeight() {
-            if (body.find('.stream').length == 0) {
-              setTimeout(setHeight, 100);
-            } else {
-              body.find('.stream').addClass('stream-new').removeClass('stream').css('height', 'auto');
-              $('.twitter-timeline').css('height', (body.height() + 20) + 'px');
-            }
-          }
-
-          if (scope.autoResize) {
-            setHeight();
-          }
+          // function setHeight() {
+          //   if (body.find('.stream').length == 0) {
+          //     setTimeout(setHeight, 100);
+          //   } else {
+          //     body.find('.stream').addClass('stream-new').removeClass('stream').css('height', 'auto');
+          //     // $('.twitter-timeline').css('height', (body.height() + 20) + 'px');
+          //     $('.twitter-timeline').css('height', '100%');
+          //
+          //   }
+          // }
+          //
+          // if (scope.autoResize) {
+          //   setHeight();
+          // }
 
         }
 

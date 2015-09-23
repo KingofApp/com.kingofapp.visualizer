@@ -1,17 +1,21 @@
+neon-animated-pages {
+  min-height:390px !important;
+}
+
 .header.paper-card{
-  height:160px;
+  height:250px;
   overflow:hidden;
 }
 .toolbar{
   position: absolute;
   z-index: 11;
   width:100%;
-  top:25%;
+  top:35%;
 }
 .toolbar paper-button iron-icon{
   width:90px;
   height:90px;
-  color:#e91e63;
+  color:#FE9723;
 }
 .toolbar .left{
 
@@ -69,10 +73,10 @@ align-items: center;
     color: #616161;
 }
 .blue {
-    background-color: #84ffff;
+    background-color: #0687CD;
 }
 .blue .theme-bg {
-    background-color: #03A9F4;
+    background-color: #046295;
     color: #fff;
 }
 .red {
@@ -83,17 +87,33 @@ align-items: center;
     color: #fff;
 }
 .purple {
-    background-color: #b388ff;
+    background-color: #9E5463;
 }
 .purple .theme-bg {
-    background-color: #7e57c2;
+    background-color: #854753;
     color: #fff;
 }
-.grey {
-    background-color: #f5f5f5;
+.orange {
+    background-color: #FD782A;
 }
-.grey .theme-bg {
-    background-color: #999;
+.orange .theme-bg {
+    background-color: #FD782A;
+    color: #fff;
+}
+
+.grey1 {
+    background-color: #C5C3B1;
+}
+.grey1 .theme-bg {
+    background-color: #757257;
+    color: #fff;
+}
+
+.red1 {
+    background-color: #E77C56;
+}
+.red1 .theme-bg {
+    background-color: #b34219;
     color: #fff;
 }
 .sections iron-icon {

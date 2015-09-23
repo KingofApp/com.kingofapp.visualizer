@@ -19,7 +19,7 @@
     function config(){
       return {
         'googleAnalytics' : 'UA-54151479-3',
-        'lang'            : 'en'
+        'lang'            : 'es'
       };
     }
 
@@ -28,25 +28,26 @@
         //Menu 2 for real app
         '/menu'                         : polymermenu("/menu"),
         '/menu/home'          : homepage(),
-        '/menu/connector'          : firebase(),
+        // '/menu/connector'          : firebase(),
         // '/menu/connector/list'     : list(),
         // '/menu/rss'                     : rss(),
         '/menu/social'                : grouplist(),
+        '/menu/social2'                : grouplist2(),
         '/menu/facebook'                : facebookfeed(),
         '/menu/twitter'                 : twitterfeed(),
         '/menu/flickr'                  : flickrfeed(),
-        '/menu/html'                    : html(),
-        '/menu/connector/promotions'       : qrgenerator(),
+        // '/menu/html'                    : html(),
+        // '/menu/connector/promotions'       : qrgenerator(),
         // '/menu/vimeovideo'              : vimeovideo(),
         '/menu/youtubevideo'            : youtubevideo(),
         '/menu/youtube'          : youtubegallery(),
         // '/menu/soundcloud'              : soundcloud(),
         // '/menu/translation'             : translationtest(),
-        '/menu/restaurant'          : simplegallery(),
+        // '/menu/restaurant'          : simplegallery(),
         '/menu/instagram'               : instagramfeed(),
         // '/menu/wordpressposts'          : wordpressposts(),
         '/menu/ads/single'     : wordpresssingle(),
-        '/menu/map'                     : googlemap(),
+        // '/menu/map'                     : googlemap(),
         '/menu/contact'                 : contact(),
         '/menu/ads'                     : ads()
       };
@@ -78,22 +79,22 @@
 
     function homepage(){
       return {
-        name: 'Home',
+        name: 'Inicio',
         identifier: 'homepage',
         type :  'A',
-        headclass : 'pink',
+        headclass : 'orange',
         view :  "modules/homepage/index.html",
         files: [ "modules/homepage/controller.js" ],
         scope: {
-          sections: [{ name : "The Restaurant", icon: "food", class : "green", url : "#/menu/restaurant"},
-            { name : "Promotions", icon: "tvmovies", class : "purple", url : "#/menu/connector/promotions"},
-            { name : "Social", icon: "profile", class : "blue", url : "#/menu/social"},
-            { name : "Find us", icon: "geography", class : "red", url : "#/menu/map"}
+          sections: [{ name : "Social", icon: "food", class : "blue", url : "#/menu/social"},
+            { name : "Inspiración", icon: "tvmovies", class : "purple", url : "#/menu/social2"},
+            { name : "Blog", icon: "profile", class : "grey1", url : "#/menu/social"},
+            { name : "Contact", icon: "geography", class : "red1", url : "#/menu/contact"}
           ],
-          featured: {title : "Latest News",
-            domain      : "http://www.oemenlinea.com.mx",
+          featured: {title : "Últimas noticias",
+            domain      : "http://www.ateneupopular.com",
             postnumber  : 3,
-            category    : "sociedad",
+            category    : "",
             galleryurl : "#/menu/ads/single"
           }
         }
@@ -109,8 +110,21 @@
         files: [ "modules/grouplist/controller.js" ],
         scope: {
           sections: [{ name : "Facebook", icon:'svg-social-icons:facebook', class : "avatar facebook", url : "#/menu/facebook"},
-            { name : "Twitter", icon:'svg-social-icons:twitter', class : "avatar twitter", url : "#/menu/twitter"},
-            { name : "Instagram", icon:'svg-social-icons:instagram', class : "avatar instagram", url : "#/menu/instagram"},
+            { name : "Twitter", icon:'svg-social-icons:twitter', class : "avatar twitter", url : "#/menu/twitter"}
+          ]
+        }
+      };
+    }
+    function grouplist2(){
+      return {
+        name: 'Inspiración',
+        identifier: 'grouplist',
+        type :  'A',
+        headclass : 'purple',
+        view :  "modules/grouplist/index.html",
+        files: [ "modules/grouplist/controller.js" ],
+        scope: {
+          sections: [{ name : "Instagram", icon:'svg-social-icons:instagram', class : "avatar instagram", url : "#/menu/instagram"},
             { name : "Youtube", icon:'svg-social-icons:youtube', class : "avatar youtube", url : "#/menu/youtube"},
             { name : "Flickr", icon:'svg-social-icons:flickr', class : "avatar flickr", url : "#/menu/flickr"}
           ]
@@ -170,7 +184,7 @@
         name: 'Youtube Video',
         identifier: 'youtubevideo',
         type :  'A',
-        headclass : 'blue',
+        headclass : 'purple',
         hidden: true,
         view :  "modules/youtubevideo/index.html",
         files: ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
@@ -185,12 +199,12 @@
         name: 'Youtube Gallery',
         identifier: 'youtubegallery',
         type : 'A',
-        headclass : 'blue',
+        headclass : 'purple',
         hidden: true,
         view :   "modules/youtubegallery/index.html",
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
-          channelid  : "UC-LE7UowYotavwgFWKfN-nQ",
+          channelid  : "UC9kxpA_FHEsXX1xWMb-Egow",
           galleryurl : "#/menu/youtubevideo"
         },
         //Online builder testing purpose
@@ -207,7 +221,7 @@
 
     function facebookfeed(){
       return {
-        name: 'Facebook Feed',
+        name: 'Facebook',
         identifier: 'facebookfeed',
         type : 'A',
         headclass : 'blue',
@@ -216,7 +230,7 @@
         files: [ "modules/facebookfeed/controller.js" ],
         scope: {
           accesstoken : "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
-          pageid      : "laneveraroja"
+          pageid      : "ateneupopulardesign"
         }
       };
     }
@@ -231,25 +245,24 @@
         view :   "modules/wordpresssingle/index.html",
         files: [ "modules/wordpresssingle/controller.js" ],
         scope: {
-          domain : "http://www.oemenlinea.com.mx/",
-          type   : "pages",
-          id     : 1626
+          domain : "http://www.ateneupopular.com",
+          type   : "pages"
         }
       };
     }
 
     function flickrfeed(){
       return {
-        name: 'Flickr Feed',
+        name: 'Flickr',
         identifier: 'flickrfeed',
         type : 'A',
-        headclass : 'blue',
+        headclass : 'purple',
         hidden: true,
         view :   "modules/flickrfeed/index.html",
         files: [ "modules/flickrfeed/controller.js" ],
         scope: {
           accesstoken : "1d2b22596adb2b99645c52ba2f5d1542",
-          photosetid  : "72157624524513507",
+          photosetid  : "72157627618052228",
           results     : "5"
         }
       };
@@ -257,16 +270,16 @@
 
     function instagramfeed(){
       return {
-        name: 'Instagram Feed',
+        name: 'Instagram',
         identifier: 'instagramfeed',
         type : 'A',
-        headclass : 'blue',
+        headclass : 'purple',
         hidden: true,
         view :   "modules/instagramfeed/index.html",
         files: [ "modules/instagramfeed/controller.js" ],
         scope: {
           accesstoken : "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
-          userid      : "946745786"
+          userid      : "154695"
         }
       };
     }
@@ -291,9 +304,10 @@
 
     function contact(){
       return {
-        name: 'Contact',
+        name: 'Contacta',
         identifier: 'contact',
         type: 'A',
+        headclass : 'red',
         view:    "modules/contact/index.html",
         files: [ "modules/contact/controller.js" ],
         scope: {

@@ -249,27 +249,35 @@ paper-toolbar.green {
   color:#616161;
 }
 paper-toolbar.grey {
-  background-color:#999;
+  background-color:#757257;
 }
 paper-toolbar.blue {
-  background-color:#03A9F4;
+  background-color:#046295;
 }
 paper-toolbar.yellow {
   background-color:#ffeb3b;
   color:#616161;
 }
 paper-toolbar.purple {
-  background-color:#7e57c2;
+  background-color:#854753;
 }
 paper-toolbar.red {
-  background-color:#ff5252;
+  background-color:#b34219;
 }
 paper-toolbar.pink {
   background-color:#e91e63;
 }
+paper-toolbar.orange {
+  background-color:#FECB08;
+  color:#000;
+}
+
 
 .pink div.title-text{
   color:#e91e63 !important;
+}
+.orange div.title-text{
+  color:#fecb08 !important;
 }
 
 .toolbar-tools.paper-toolbar > paper-menu-button + .title {
@@ -302,7 +310,15 @@ section paper-item paper-item-body{
   padding:10px;
   margin:0;
 }
-
+div > div > paper-item.paper-item-0 {
+  min-height:0px;
+}
 /*.youtubevideo paper-card paper-material{
 
 }*/
+.paper-card-0 .header.paper-card img.paper-card {
+    background-color: #000;
+}
+paper-toolbar > div > paper-item > img, paper-toolbar > div > paper-item {
+  height:100%;
+}

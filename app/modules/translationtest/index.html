@@ -1,9 +1,8 @@
 <div class='translationtest' ng-controller="translationTestCtrl">
-    <paper-card>
-    <p class='text1'>{{ "translationtest.text1" | translate }}</p>
-    <p class='text2' translate>translationtest.text2</p>
-    <p class='text3' translate>{{ "translationtest.text3" }}</p>
-    <p class='text4' translate="translationtest.text4" translate-values='{ variable: translationtest.modulescope.name}'> </p>
-    <paper-button ng-click="changeState()">Change language</paper-button>
-  </paper-card>
+<div style='width:150px; margin:0 auto;'>
+    <p><span class='text1' translate="translationtest.actuallang"></span>
+      <span class='text4' translate="translationtest.lang"> </span></p>
+
+    <paper-button ng-click="changeState()" translate="translationtest.changelang"></paper-button>
+</div>
 </div>

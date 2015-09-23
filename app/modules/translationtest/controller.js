@@ -8,7 +8,7 @@ function loadFunction($scope, $location, structureService, $translate) {
 
   //Register upper level modules
   structureService.registerModule($location,$scope,"translationtest");
-  $scope.state = 'en';
+  $scope.state = 'es';
 
   $scope.changeState = function() {
       $scope.state = $scope.state === 'en' ? 'es' : 'en';

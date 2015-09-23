@@ -1,9 +1,9 @@
 angular
   .controller('homepageCtrl', loadFunction);
 
-loadFunction.$inject = ['$http', '$scope', 'structureService', '$location'];
+loadFunction.$inject = ['$http', '$scope', 'structureService', '$location', '$filter'];
 
-function loadFunction($http, $scope, structureService, $location){
+function loadFunction($http, $scope, structureService, $location, $filter){
   //Register upper level modules
   structureService.registerModule($location,$scope,"homepage");
   $http.get($scope.homepage.modulescope.featured.domain+'/wp-json/posts',{  params: {
@@ -27,6 +27,7 @@ function loadFunction($http, $scope, structureService, $location){
           excerpt  : htmlToPlaintext(item.excerpt),
           content  : item.content,
           date     : item.date,
+          lang     : {readmore : $filter('translate')('homepage.readmore')},
           featured : featured
           // featured : chetos[index]
         });

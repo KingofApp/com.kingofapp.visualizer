@@ -276,8 +276,10 @@ paper-toolbar.orange {
 .pink div.title-text{
   color:#e91e63 !important;
 }
-.orange div.title-text{
-  color:#fecb08 !important;
+.orange h2.title-text{
+  color:#FF7300 !important;
+  margin-bottom:0px;
+  padding-bottom:0px;
 }
 
 .toolbar-tools.paper-toolbar > paper-menu-button + .title {

@@ -1,7 +1,7 @@
 <div class='wordpresssingle auto' ng-controller='wordpresssingleCtrl'>
   <paper-item>{{wordpresssingle.message}}</paper-item>
-  <paper-card class='orange' heading='{{wordpresssingle.item.title}}' image='{{wordpresssingle.item.featured_image.source}}'>
-    <img>
+  <paper-card class='orange' image='{{wordpresssingle.item.featured_image.source}}'>
+    <h2 class="title-text card-content paper-card">{{wordpresssingle.item.title}}</h2>
     <div class='card-content' ng-bind-html='wordpresssingle.item.content'></div>
   </paper-card>
 </div>

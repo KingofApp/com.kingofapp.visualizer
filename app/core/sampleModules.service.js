@@ -45,10 +45,11 @@
         // '/menu/translation'             : translationtest(),
         // '/menu/restaurant'          : simplegallery(),
         '/menu/instagram'               : instagramfeed(),
-        // '/menu/wordpressposts'          : wordpressposts(),
+        '/menu/blog'          : wordpressposts(),
         '/menu/ads/single'     : wordpresssingle(),
         // '/menu/map'                     : googlemap(),
         '/menu/contact'                 : contact(),
+        '/menu/idioma'                 : translationtest(),
         '/menu/ads'                     : ads()
       };
     }
@@ -88,7 +89,7 @@
         scope: {
           sections: [{ name : "Social", icon: "food", class : "blue", url : "#/menu/social"},
             { name : "Inspiración", icon: "tvmovies", class : "purple", url : "#/menu/social2"},
-            { name : "Blog", icon: "profile", class : "grey1", url : "#/menu/social"},
+            { name : "Blog", icon: "profile", class : "grey1", url : "#/menu/blog"},
             { name : "Contact", icon: "geography", class : "red1", url : "#/menu/contact"}
           ],
           featured: {title : "Últimas noticias",
@@ -100,6 +101,38 @@
         }
       };
     }
+
+    function wordpressposts(){
+      return {
+        name: 'Blog',
+        identifier: 'wordpressposts',
+        type : 'A',
+        headclass : 'grey',
+        view :   "modules/wordpressposts/index.html",
+        files: [ "modules/wordpressposts/controller.js" ],
+        scope: {
+          domain : "http://www.ateneupopular.com",
+          postnumber      : 5,
+          category      : "",
+          galleryurl : "#/menu/ads/single"
+        }
+      };
+    }
+
+    function translationtest(){
+      return {
+        name: 'Idioma',
+        identifier: 'translationtest',
+        type :  'A',
+        headclass : 'orange',
+        view :  "modules/translationtest/index.html",
+        files: ["modules/translationtest/controller.js"],
+        scope: {
+          name: "Noemal"
+        }
+      };
+    }
+
     function grouplist(){
       return {
         name: 'Social',
@@ -129,53 +162,6 @@
             { name : "Flickr", icon:'svg-social-icons:flickr', class : "avatar flickr", url : "#/menu/flickr"}
           ]
         }
-      };
-    }
-
-    function googlemap(){
-      return {
-        name: 'Find us',
-        identifier: 'googlemap',
-        type :  'A',
-        headclass : 'red',
-        view :  "modules/googlemap/index.html",
-        files: ["modules/googlemap/controller.js", "modules/googlemap/directive.js"],
-        scope: {
-          lat:  39.5577,
-          lon:  -114.0088,
-          zoom: 11
-        },
-        libs: [{
-          bower : {"lodash": "3.10.1"},
-          src:"bower_components/lodash/lodash.js"
-        },
-        {
-          bower : {"angular-google-maps": "2.1.6"},
-          src:"bower_components/angular-google-maps/dist/angular-google-maps.js"
-        }]
-      };
-    }
-
-    function qrgenerator(){
-      return {
-        name: 'Promotions',
-        identifier: 'qrgenerator',
-        type :  'A',
-        headclass : 'purple',
-        view :  "modules/qrgenerator/index.html",
-        files: ["modules/qrgenerator/controller.js"],
-        scope: {
-          // static     : "",
-          datasource : "https://blinding-heat-1559.firebaseio.com/ofertas"
-        },
-        libs: [{
-          bower : {"monospaced/angular-qrcode": "6.0.3"},
-          src:"bower_components/angular-qrcode/angular-qrcode.js"
-        },
-        {
-          bower : {"kazuhikoarase/qrcode-generator": "1.0.0"},
-          src:"bower_components/qrcode-generator/js/qrcode.js"
-        }]
       };
     }
 
@@ -237,7 +223,7 @@
 
     function wordpresssingle(){
       return {
-        name: 'Wordpress Single',
+        name: 'Blog',
         identifier: 'wordpresssingle',
         type : 'A',
         headclass : 'grey',
@@ -342,8 +328,8 @@
         view :  "modules/ads/index.html",
         files: ["modules/ads/controller.js"],
         scope: {
-          mainsrc: "<img style='width:100%;' src='http://photos1.blogger.com/blogger/2778/1924/1600/superannouncement10.jpg'>",
-          fixedsrc: "<img src='http://www.healthjobsweb.com/images/health-jobs-web-logo.gif'/>"
+          // mainsrc: "<img style='width:100%;' src='http://photos1.blogger.com/blogger/2778/1924/1600/superannouncement10.jpg'>",
+          fixedsrc: "<img style='width:100%;' src='http://wiki.lws-hosting.com/lib/exe/fetch.php/banner%20fotolia.jpg'/>"
         }
       };
     }

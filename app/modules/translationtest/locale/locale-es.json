@@ -1,6 +1,5 @@
 {
-  "translationtest.text1": "Primer texto",
-  "translationtest.text2": "Segundo texto",
-  "translationtest.text3": "Tercero texto",
-  "translationtest.text4": "Mi nombre es: {{variable}}"
+  "translationtest.actuallang": "Idioma actual:",
+  "translationtest.lang": "Español",
+  "translationtest.changelang": "Cambiar"
 }

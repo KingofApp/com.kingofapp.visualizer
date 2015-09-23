@@ -30,7 +30,7 @@
       </div>
       <div class="cat-name theme-bg">
         <div>
-          <span>{{homepage.modulescope.featured.title}}</span>
+          <span translate='homepage.latestnews'></span>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
               <span>{{item.title}}</span>
             </div>
             <div class="card-actions">
-              <paper-button><a href='{{item.url}}'>Leer más</a></paper-button>
+              <paper-button><a href='{{item.url}}'>{{item.lang.readmore}}</a></paper-button>
             </div>
           </paper-card></neon-animatable>
       </template>

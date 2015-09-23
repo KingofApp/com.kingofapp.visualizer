@@ -57,8 +57,9 @@
   </div>
   <div ng-repeat="item in homepage.modulescope.sections" class="category-item {{item.class}}">
     <a href='{{item.url}}'><div class="tile">
-      <div class='sections' style='height:220px;'>
-        <iron-icon icon='svg-category-icons:{{item.icon}}'></iron-icon>
+      <div class='sections'>
+        <!-- <iron-icon icon='svg-category-icons:{{item.icon}}'></iron-icon> -->
+        <img style='max-width:100%; max-height:80%;' src='{{item.icon}}'>
 
       </div>
       <div class="cat-name theme-bg">

@@ -49,7 +49,7 @@
         '/menu/ads/single'     : wordpresssingle(),
         // '/menu/map'                     : googlemap(),
         '/menu/contact'                 : contact(),
-        '/menu/idioma'                 : translationtest(),
+        // '/menu/idioma'                 : translationtest(),
         '/menu/ads'                     : ads()
       };
     }
@@ -87,10 +87,10 @@
         view :  "modules/homepage/index.html",
         files: [ "modules/homepage/controller.js" ],
         scope: {
-          sections: [{ name : "Social", icon: "food", class : "blue", url : "#/menu/social"},
-            { name : "Inspiración", icon: "tvmovies", class : "purple", url : "#/menu/social2"},
-            { name : "Blog", icon: "profile", class : "grey1", url : "#/menu/blog"},
-            { name : "Contact", icon: "geography", class : "red1", url : "#/menu/contact"}
+          sections: [{ name : "Social", icon: "social.jpg", class : "blue", url : "#/menu/social"},
+            { name : "Inspiración", icon: "fire.jpg", class : "purple", url : "#/menu/social2"},
+            { name : "Blog", icon: "blog.jpg", class : "grey1", url : "#/menu/blog"},
+            { name : "Contact", icon: "contact.jpg", class : "red1", url : "#/menu/contact"}
           ],
           featured: {title : "Últimas noticias",
             domain      : "http://www.ateneupopular.com",
@@ -119,19 +119,19 @@
       };
     }
 
-    function translationtest(){
-      return {
-        name: 'Idioma',
-        identifier: 'translationtest',
-        type :  'A',
-        headclass : 'orange',
-        view :  "modules/translationtest/index.html",
-        files: ["modules/translationtest/controller.js"],
-        scope: {
-          name: "Noemal"
-        }
-      };
-    }
+    // function translationtest(){
+    //   return {
+    //     name: 'Idioma',
+    //     identifier: 'translationtest',
+    //     type :  'A',
+    //     headclass : 'orange',
+    //     view :  "modules/translationtest/index.html",
+    //     files: ["modules/translationtest/controller.js"],
+    //     scope: {
+    //       name: "Noemal"
+    //     }
+    //   };
+    // }
 
     function grouplist(){
       return {

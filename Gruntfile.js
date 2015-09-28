@@ -73,7 +73,7 @@
 
 	connect: {
 		options: {
-			port: 9000,
+			port: 9001,
 			hostname: 'localhost'
 		},
 		livereload: {
@@ -89,7 +89,7 @@
 			}
 		},
 		connect: {
-			port: 9000,
+			port: 9001,
       		base: 'tasks'
 		}
 	}

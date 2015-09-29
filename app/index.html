@@ -22,6 +22,51 @@
 <body>
   <div id="main-king"> <!-- ng-controller="setStructure" -->
     <div ng-view></div>
+
+    <div id="buttons">
+      <button onclick="changeTheme()">Change theme</button>
+      <button onclick="changeColor()">Change color</button>
+
+      <style>
+        #buttons {
+          text-align: center;
+          padding: 10px;
+          background-color: #afafaf;
+          position: fixed;
+          z-index: 99;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 25px !important;
+        }
+        #buttons button {
+          background-color: white;
+          border: none;
+          border-radius: 2px;
+          font-size: .8em;
+          padding: .4em .8em;
+        }
+      </style>
+
+      <script>
+        function changeTheme() {
+          koaApp.theme = koaApp.theme === 'paper' ? 'ios' : 'paper';
+        }
+
+        function changeColor() {
+          var s = document.createElement('style', 'custom-style');
+          var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
+          var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
+          s.textContent = ':root {\n';
+          s.textContent += '--default-primary-color: ' + defaultPrimaryColor + ';';
+          s.textContent += '\n--accent-color: ' + accentColor + ';';
+          s.textContent += '\n}';
+          document.body.appendChild(s);
+          Polymer.updateStyles();
+          s.remove();
+        }
+      </script>
+    </div>
   </div>
 
   <script src="bower_components/lodash/lodash.min.js"></script>

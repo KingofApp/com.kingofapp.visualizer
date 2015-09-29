@@ -1,17 +1,61 @@
 <div ng-controller="abdonrdCtrl">
 
-  <p>{{text.modulescope.value}}</p>
+<style is="custom-style">
+  neon-animatable {
+    background-color: #999;
+    padding: 10px;
+    height: 30px;
+  }
+</style>
+<template is="dom-bind">
+  <div class="toolbar">
+    <button on-click="_onPrevClick">&lt;&lt;</button>
+    <button on-click="_onNextClick">&gt;&gt;</button>
+  </div>
 
-  <koa-button raised big>King of App</koa-button>
-
+  <neon-animated-pages id="pages" class="flex" selected="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
+    <neon-animatable>1</neon-animatable>
+    <neon-animatable>2</neon-animatable>
+    <neon-animatable>3</neon-animatable>
+  </neon-animated-pages>
   <br><br><br>
+</template>
+
+<script>
+  var scope = document.querySelector('template[is="dom-bind"]');
+  scope.selected = 0;
+  scope._onPrevClick = function() {
+    this.entryAnimation = 'slide-from-left-animation';
+    this.exitAnimation = 'slide-right-animation';
+    this.selected = this.selected === 0 ? 4 : (this.selected - 1);
+  }
+  scope._onNextClick = function() {
+    this.entryAnimation = 'slide-from-right-animation';
+    this.exitAnimation = 'slide-left-animation';
+    this.selected = this.selected === 4 ? 0 : (this.selected + 1);
+  }
+</script>
+
 
   <koa-toolbar>
     <koa-icon-button icon="menu" on-tap="menuAction"></koa-icon-button>
     <div class="title">Home</div>
   </koa-toolbar>
 
-  <br><br><br>
+  <koa-tabs>
+    <koa-tab>KoA 1</koa-tab>
+    <koa-tab>KoA 2</koa-tab>
+    <koa-tab>KoA 3</koa-tab>
+  </koa-tabs>
+
+  <koa-card heading="Card Title" image="{{image}}" ng-repeat="image in abdonrd.modulescope.images track by $index">
+    <div class="card-content">Some content</div>
+    <div class="card-actions">
+      <koa-button>Some action</koa-button>
+    </div>
+  </koa-card>
+
+  <koa-button raised big>King of App</koa-button>
 
   <koa-card heading="Card Title">
     <div class="card-content">Some content</div>
@@ -20,15 +64,9 @@
     </div>
   </koa-card>
 
-  <br><br><br>
-
   <koa-checkbox checked>King of App</koa-checkbox>
 
-  <br><br><br>
-
   <koa-input label="Label"></koa-input>
-
-  <br><br><br>
 
   <koa-menu-button>
     <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
@@ -39,19 +77,7 @@
     </koa-menu>
   </koa-menu-button>
 
-  <br><br><br>
-
   <koa-textarea label="Textarea"></koa-textarea>
-
-  <br><br><br>
-
-  <koa-tabs>
-    <koa-tab>KoA 1</koa-tab>
-    <koa-tab>KoA 2</koa-tab>
-    <koa-tab>KoA 3</koa-tab>
-  </koa-tabs>
-
-  <br><br><br>
 
   <koa-toggle-button checked></koa-toggle-button>
 

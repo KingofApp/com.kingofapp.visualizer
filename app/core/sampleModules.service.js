@@ -104,33 +104,40 @@
       };
     }
 
-    function abdonrd(){
+    function abdonrd() {
       return {
         name: 'Text Example',
-        identifier: 'text',
-        type :  'A',
-        view :  "modules/abdonrd/index.html",
+        identifier: 'abdonrd',
+        type: 'A',
+        view: "modules/abdonrd/index.html",
         files: ["modules/abdonrd/controller.js"],
         scope: {
-          value: "Text phrase"
+          value: "Text phrase",
+          images: [
+            "http://placehold.it/350x150",
+            "http://placehold.it/350x150"
+          ]
         }
       };
     }
-    function simplegallery(){
+
+    function simplegallery() {
       return {
-      name: 'Restaurant',
-      identifier: 'simplegallery',
-      type :  'A',
-      headclass : 'green',
-      view :  "modules/simplegallery/index.html",
-      files: [
-        "modules/simplegallery/controller.js"
-      ],
-      scope: {
-        gallery : ["http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
-          "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
-          "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"]
-      }
+        name: 'Restaurant',
+        identifier: 'simplegallery',
+        type: 'A',
+        headclass: 'green',
+        view: "modules/simplegallery/index.html",
+        files: [
+          "modules/simplegallery/controller.js"
+        ],
+        scope: {
+          gallery: [
+            "http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
+            "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
+            "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"
+          ]
+        }
       };
     }
 

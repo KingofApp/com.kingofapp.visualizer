@@ -116,8 +116,11 @@
 
   <script>
     var koaApp = document.querySelector('#koaApp');
-    // koaApp.createTree();
-    // koaApp.theme = 'paper';
+
+    setTimeout(function() {
+      koaApp.createTree();
+      koaApp.theme = 'paper';
+    }, 1000);
   </script>
 </body>
 </html>

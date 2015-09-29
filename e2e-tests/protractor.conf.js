@@ -1,7 +1,6 @@
 var jasmineReporters = require('jasmine-reporters');
 
 exports.config = {
-
   //directConnect: true,
 
   //seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -15,7 +14,8 @@ exports.config = {
   capabilities: {
     // 'browserName': 'phantomjs',
     'browserName': 'chrome'
-      /*
+
+    /*
      * Can be used to specify the phantomjs binary path.
      * This can generally be ommitted if you installed phantomjs globally.
      */
@@ -30,7 +30,7 @@ exports.config = {
 
   baseUrl: 'http://localhost:9000/app/',
 
-  //keepAlive: true,
+  // keepAlive: true,
 
   framework: 'jasmine2',
 
@@ -38,7 +38,7 @@ exports.config = {
     jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
       consolidateAll: true,
       savePath: 'testresults',
-        filePrefix: 'xmloutput'
+      filePrefix: 'xmloutput'
 
     }));
   },

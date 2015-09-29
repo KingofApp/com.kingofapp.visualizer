@@ -1,39 +1,65 @@
-module.exports = function(config){
+'use strict';
+
+module.exports = function(config) {
   config.set({
+    basePath: './',
 
-    basePath : './',
-
-    files : [
-      {pattern: 'app/bower_components/angular/angular.js', included: true},
-      {pattern: 'app/bower_components/angular-loader/angular-loader.js', included: true},
-      {pattern: 'app/bower_components/angular-scenario/angular-scenario.js', included: false},
-      {pattern: 'app/bower_components/angular-mocks/angular-mocks.js', included: true},
-      {pattern: 'app/bower_components/angular-resource/angular-resource.js', included: true},
-      {pattern: 'app/bower_components/angular-route/angular-route.js', included: true},
-      {pattern: 'app/bower_components/jquery/dist/jquery.js', included: true},
-      //{pattern: 'app/bower_components/protractor/lib/runner.js', included: false},
+    files: [
+      {
+        pattern: 'app/bower_components/angular/angular.js',
+        included: true
+      },
+      {
+        pattern: 'app/bower_components/angular-loader/angular-loader.js',
+        included: true
+      },
+      {
+        pattern: 'app/bower_components/angular-scenario/angular-scenario.js',
+        included: false
+      },
+      {
+        pattern: 'app/bower_components/angular-mocks/angular-mocks.js',
+        included: true
+      },
+      {
+        pattern: 'app/bower_components/angular-resource/angular-resource.js',
+        included: true
+      },
+      {
+        pattern: 'app/bower_components/angular-route/angular-route.js',
+        included: true
+      },
+      {
+        pattern: 'app/bower_components/jquery/dist/jquery.js',
+        included: true
+      },
+      // {
+      //   pattern: 'app/bower_components/protractor/lib/runner.js',
+      //   included: false
+      // },
       'app/core/structure.service.js',
       'app/**/*.unit.test.js'
     ],
 
-
-    autoWatch : true,
+    autoWatch: true,
 
     proxies: {
       '/static/': 'http://localhost:9001/app/'
     },
 
     frameworks: [
-              //'protactor',
-              //'ng-scenario',
-              //'mocha'
-              'jasmine'
-              ],
+      //'protactor',
+      //'ng-scenario',
+      //'mocha'
+      'jasmine'
+    ],
 
-    browsers : [//'PhantomJS'
-               'Chrome'
-              //, 'Firefox'
-              ],
+    browsers: [
+      //'PhantomJS'
+      'Chrome'
+      //, 'Firefox'
+    ],
+
     customLaunchers: {
       'PhantomJS_custom': {
         base: 'PhantomJS',
@@ -53,22 +79,22 @@ module.exports = function(config){
       exitOnResourceError: true
     },
 
+    plugins: [
+      //'karma-ng-scenario',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-jasmine',
+      //'karma-mocha',
+      'karma-phantomjs-launcher',
+      'protractor',
+      'karma-junit-reporter'
+    ],
 
-    plugins : [
-            //'karma-ng-scenario',
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-            'karma-jasmine',
-            //'karma-mocha',
-            'karma-phantomjs-launcher',
-            'protractor',
-            'karma-junit-reporter'
-            ],
-
-    junitReporter : {
+    junitReporter: {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
     },
+
     //exclude: ['app/bower_components/angular-mocks/ngAnimateMock.js']
   });
 };

@@ -1,3 +1,58 @@
 <div ng-controller="abdonrdCtrl">
+
   <p>{{text.modulescope.value}}</p>
+
+  <koa-button raised big>King of App</koa-button>
+
+  <br><br><br>
+
+  <koa-toolbar>
+    <koa-icon-button icon="menu" on-tap="menuAction"></koa-icon-button>
+    <div class="title">Home</div>
+  </koa-toolbar>
+
+  <br><br><br>
+
+  <koa-card heading="Card Title">
+    <div class="card-content">Some content</div>
+    <div class="card-actions">
+      <koa-button>Some action</koa-button>
+    </div>
+  </koa-card>
+
+  <br><br><br>
+
+  <koa-checkbox checked>King of App</koa-checkbox>
+
+  <br><br><br>
+
+  <koa-input label="Label"></koa-input>
+
+  <br><br><br>
+
+  <koa-menu-button>
+    <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
+    <koa-menu class="dropdown-content">
+      <koa-item>Share</koa-item>
+      <koa-item>Settings</koa-item>
+      <koa-item>Help</koa-item>
+    </koa-menu>
+  </koa-menu-button>
+
+  <br><br><br>
+
+  <koa-textarea label="Textarea"></koa-textarea>
+
+  <br><br><br>
+
+  <koa-tabs>
+    <koa-tab>KoA 1</koa-tab>
+    <koa-tab>KoA 2</koa-tab>
+    <koa-tab>KoA 3</koa-tab>
+  </koa-tabs>
+
+  <br><br><br>
+
+  <koa-toggle-button checked></koa-toggle-button>
+
 </div>

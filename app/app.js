@@ -7,7 +7,6 @@ angular.module('myApp', [
   'oc.lazyLoad',
   'angulartics.google.analytics',
   'pascalprecht.translate',
-  'eee-c.angularBindPolymer',
   'king.loaders.common',
   'king.loaders.jquery',
   'king.loaders.angular',

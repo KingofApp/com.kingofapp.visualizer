@@ -15,7 +15,7 @@
           notify: true
         },
 
-        koaTree: {
+        tree: {
           type: Array,
           value: []
         },
@@ -31,18 +31,16 @@
         }
       },
 
-      ready: function () {
-        this._createKoaTree();
-      },
-
-      _createKoaTree: function () {
-        this._processElement(this);
-        this.koaTree.pop();
+      createTree: function () {
+        this.tree = new Array(0);
+        this._processElement(this.children[0]);
       },
 
       _processElement: function (element) {
-        if (element.children.length) {
-          var children = Polymer.dom(element).children;
+        var hasChildren = element.children.length > 0;
+
+        if (hasChildren) {
+          var children = element.children;
 
           for (var i = 0; i < children.length; i++) {
             this._processElement(children[i]);
@@ -53,7 +51,7 @@
           var isKoaElement = element.tagName.toLowerCase().search('koa-') === 0;
 
           if (isKoaElement) {
-            this.koaTree.push({
+            this.tree.push({
               original: element,
               tag: element.tagName.toLowerCase().replace('koa-', ''),
               actual: element
@@ -71,7 +69,12 @@
           newElement.setAttribute(attribute.nodeName, attribute.nodeValue);
         }
 
-        Polymer.dom(newElement).innerHTML = Polymer.dom(element).innerHTML;
+        // Polymer.dom(newElement).innerHTML = Polymer.dom(element).innerHTML;
+
+        var originalChildNodes = Polymer.dom(element).cloneNode(true).childNodes;
+        for (var i = 0; i < originalChildNodes.length; i++) {
+          Polymer.dom(newElement).appendChild(originalChildNodes[i]);
+        }
 
         return newElement;
       },
@@ -85,7 +88,7 @@
       },
 
       _renderThemeElements: function () {
-        this.koaTree.forEach(function(elementObject) {
+        this.tree.forEach(function(elementObject) {
           this._renderThemeElement(elementObject);
         }, this);
       },

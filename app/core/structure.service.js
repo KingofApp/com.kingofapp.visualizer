@@ -15,8 +15,7 @@ angular
 
     return {
       get               : get,
-      setMenu           : setMenu,
-      getMenu           : getMenu,
+      set               : set,
       getLang           : getLang,
       setLang           : setLang,
       getModule         : getModule,
@@ -29,13 +28,9 @@ angular
     };
 
 
-    function setMenu(newMenu){
+    function set(newData){
       cachedLocations = {};
-      data.paths = newMenu;
-    }
-
-    function getMenu(){
-      return data.paths;
+      data = newData;
     }
 
     function get(){
@@ -44,7 +39,7 @@ angular
 
     function getLang(){
       if(lang) return lang;
-      else     return data.config.lang;
+      else     return data.config.lang[0];
     }
 
     function setLang(locale){
@@ -53,7 +48,7 @@ angular
 
     function getChildren(menuPath){
       var menu = {};
-      angular.forEach(data.paths, function(data, path){
+      angular.forEach(data.modules, function(data, path){
         if(path.indexOf(menuPath) === 0){
           menu[path] = data;
         }
@@ -75,7 +70,7 @@ angular
         deferred.resolve(cachedLocations[path]);
       }
       else{
-        findRoute(path, data.paths, function(module){
+        findRoute(path, data.modules, function(module){
           cachedLocations[path] = module;
           deferred.resolve(cachedLocations[path]);
         });
@@ -90,7 +85,7 @@ angular
 
         angular.forEach(split.reverse(), function(value, key) {
           if(value!==""){
-            var module = findRoute(path, data.paths, function(module){
+            var module = findRoute(path, data.modules, function(module){
                 moduleList.push(module);
             });
             path=path.replace("/"+value,"");
@@ -134,6 +129,8 @@ angular
     }
 
     function findRoute(path, structure, callback){
+      // console.log("Path", path);
+      // console.log("Structure", structure);
       if(structure[path]){
         callback(structure[path]);
       }

@@ -33,11 +33,13 @@
     console.log("pasa por el commonLoaderCtrl");
     $location.$$path = $location.$$path || '/';
     $rootScope.$watch('menu', function (newValue, oldValue) {
-      if(structureService.getMenu() != newValue){
-        structureService.setMenu(newValue);
-        console.log("Seteo y cambio a /menu", newValue);
-        window.location = "#/menu";
-        // $location.path("menu");
+      if(structureService.get() != newValue && newValue != undefined){
+          structureService.set(newValue);
+          setTimeout(function() {
+            $scope.$apply(function() {
+              $location.path("menu");
+            });
+          },100);
       }
     });
 
@@ -45,7 +47,6 @@
     structureService.loadconfig($rootScope);
     //Register Route
     structureService.getModule($location.$$path).then(function(module){
-      console.log("Module",module);
       $scope.module = module || $scope.module;
       if(!module){
           //TODO: Display a 404 error or similar

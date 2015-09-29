@@ -6,13 +6,12 @@
     .factory('sampleModules', sampleModules);
 
   function sampleModules(){
-
     return data();
 
     function data(){
       return {
         config : config(),
-        paths  : menu()
+        modules  : menu()
       };
     }
 
@@ -26,28 +25,29 @@
     function menu(){
       return {
         //Menu 2 for real app
-        '/menu2'                         : polymermenu("/menu2"),
-        '/menu2/fire-connector'          : firebase(),
-        '/menu2/fire-connector/list'     : list(),
-        '/menu2/rss'                     : rss(),
-        '/menu2/facebook'                : facebookfeed(),
-        '/menu2/twitter'                 : twitterfeed(),
-        '/menu2/contact'                 : contact(),
-        '/menu2/flickr'                  : flickrfeed(),
-        '/menu2/html'                    : html(),
-        '/menu2/map'                     : googlemap(),
-        '/menu2/fire-connector/qr'       : qrgenerator(),
-        '/menu2/vimeovideo'              : vimeovideo(),
-        '/menu2/youtubevideo'            : youtubevideo(),
-        '/menu2/youtubegallery'          : youtubegallery(),
-        '/menu2/soundcloud'              : soundcloud(),
-        '/menu2/translation'             : translationtest(),
-        '/menu2/simple-gallery'          : simplegallery(),
-        '/menu2/instagram'               : instagramfeed(),
-        '/menu2/embed'                   : embed(),
-        '/menu2/wordpressposts'      : wordpressposts(),
-        '/menu2/ads/wordpresssingle'         : wordpresssingle(),
-        '/menu2/ads'                     : ads(),
+        '/'                                 : {},
+        // '/menu'                          : polymermenu("/menu"),
+        // '/menu2/fire-connector'          : firebase(),
+        // '/menu2/fire-connector/list'     : list(),
+        // '/menu2/rss'                     : rss(),
+        // '/menu/facebook'                 : facebookfeed(),
+        // '/menu2/twitter'                 : twitterfeed(),
+        // '/menu/contact'                  : contact(),
+        // '/menu2/flickr'                  : flickrfeed(),
+        // '/menu2/html'                    : html(),
+        // '/menu2/map'                     : googlemap(),
+        // '/menu2/fire-connector/qr'       : qrgenerator(),
+        // '/menu2/vimeovideo'              : vimeovideo(),
+        // '/menu2/youtubevideo'            : youtubevideo(),
+        // '/menu2/youtubegallery'          : youtubegallery(),
+        // '/menu2/soundcloud'              : soundcloud(),
+        // '/menu2/translation'             : translationtest(),
+        // '/menu2/simple-gallery'          : simplegallery(),
+        // '/menu2/instagram'               : instagramfeed(),
+        // '/menu2/embed'                   : embed(),
+        // '/menu2/wordpressposts'      : wordpressposts(),
+        // '/menu2/ads/wordpresssingle'         : wordpresssingle(),
+        // '/menu2/ads'                     : ads(),
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
         // '/menu2/soundcloud'       : soundcloud(),
@@ -60,44 +60,44 @@
         // '/menu2/embed'                    : embed(),
         // '/menu2/html'                     : html(),
         //For testing purposes
-        '/ads'                           : ads(),
-        '/ads/menu'                      : angularmenu("/ads/menu"),
-        '/ads/menu/angular-scope'        : angularscope(),
-        '/menu/fire-connector'           : firebase(),
-        '/menu/fire-connector/list'      : list(),
-        '/menu/translation'              : translationtest(),
-        '/menu/text'                     : text(),
-        '/menu/rss'                      : rss(),
-        '/polymer-menu'                  : polymermenu("/polymer-menu"),
-        '/polymer-menu/rss'              : rss(),
-        '/polymer-menu/facebook'         : facebookfeed(),
-        '/polymer-menu/wordpress'        : wordpressposts(),
-        '/menu/contact'                  : contact(),
-        '/polymer-menu/youtube-gallery'  : youtubegallery(),
-        '/polymer-menu/youtube-video'    : youtubevideo(),
-        '/polymer-menu/google-map'       : googlemap(),
-        '/polymer-menu/vimeo-video'      : vimeovideo(),
-        '/polymer-menu/soundcloud'       : soundcloud(),
-        '/polymer-menu/pdf'              : pdfviewer(),
-        '/menu/fire-connector/qr'        : qrgenerator(),
-        '/menu/html'                     : html(),
-        '/menu/flickr'                   : flickrfeed(),
-        '/menu/embed'                    : embed(),
-        '/menu/twitter'                  : twitterfeed(),
-        '/menu/facebook'                 : facebookfeed(),
-        '/menu/instagram'                : instagramfeed(),
-        '/menu/simple-gallery'           : simplegallery(),
-        '/simple-directive'              : simpledirective(),
-        '/scope'                         : angularscope(),
-        '/feed'                          : angularstaticfeed(),
-        '/filters'                       : filters(),
-        '/menu/scope-module'             : angularscope(),
-        '/menu/scope-diff-module'        : angulardiffscope(),
-        '/menu/scope-same-module'        : angularscope(),
-        '/menu/scope-module/static-feed' : angularstaticfeed(),
-        '/multiple-files'                : multiplefiles(),
-        '/menu/level1-feed'              : angularstaticfeed(),
-        '/menu'                          : angularmenu('/menu')
+        // '/ads'                           : ads(),
+        // '/ads/menu'                      : angularmenu("/ads/menu"),
+        // '/ads/menu/angular-scope'        : angularscope(),
+        // '/menu/fire-connector'           : firebase(),
+        // '/menu/fire-connector/list'      : list(),
+        // '/menu/translation'              : translationtest(),
+        // '/menu/text'                     : text(),
+        // '/menu/rss'                      : rss(),
+        // '/polymer-menu'                  : polymermenu("/polymer-menu"),
+        // '/polymer-menu/rss'              : rss(),
+        // '/polymer-menu/facebook'         : facebookfeed(),
+        // '/polymer-menu/wordpress'        : wordpressposts(),
+        // '/menu/contact'                  : contact(),
+        // '/polymer-menu/youtube-gallery'  : youtubegallery(),
+        // '/polymer-menu/youtube-video'    : youtubevideo(),
+        // '/polymer-menu/google-map'       : googlemap(),
+        // '/polymer-menu/vimeo-video'      : vimeovideo(),
+        // '/polymer-menu/soundcloud'       : soundcloud(),
+        // '/polymer-menu/pdf'              : pdfviewer(),
+        // '/menu/fire-connector/qr'        : qrgenerator(),
+        // '/menu/html'                     : html(),
+        // '/menu/flickr'                   : flickrfeed(),
+        // '/menu/embed'                    : embed(),
+        // '/menu/twitter'                  : twitterfeed(),
+        // '/menu/facebook'                 : facebookfeed(),
+        // '/menu/instagram'                : instagramfeed(),
+        // '/menu/simple-gallery'           : simplegallery(),
+        // '/simple-directive'              : simpledirective(),
+        // '/scope'                         : angularscope(),
+        // '/feed'                          : angularstaticfeed(),
+        // '/filters'                       : filters(),
+        // '/menu/scope-module'             : angularscope(),
+        // '/menu/scope-diff-module'        : angulardiffscope(),
+        // '/menu/scope-same-module'        : angularscope(),
+        // '/menu/scope-module/static-feed' : angularstaticfeed(),
+        // '/multiple-files'                : multiplefiles(),
+        // '/menu/level1-feed'              : angularstaticfeed(),
+        // '/menu'                          : angularmenu('/menu')
       };
     }
 
@@ -106,6 +106,7 @@
         name: 'Angular Scope Module',
         identifier: 'angularscope',
         type :  'A',
+        hidden: true,
         view :  "modules/angularscope/index.html",
         files: ["modules/angularscope/controller.js"],
         scope: {
@@ -119,6 +120,7 @@
         name: 'Firebase Module',
         identifier: 'firebase',
         type :  'A',
+        hidden: true,
         view :  "modules/firebase/index.html",
         files: ["modules/firebase/controller.js", "modules/firebase/factory.js" ],
         scope: {
@@ -142,6 +144,7 @@
         name: 'List Module',
         identifier: 'list',
         type :  'A',
+        hidden: true,
         view :  "modules/list/index.html",
         files: [ "modules/list/controller.js" ],
         scope: {
@@ -155,6 +158,7 @@
         name: 'Map',
         identifier: 'googlemap',
         type :  'A',
+        hidden: true,
         view :  "modules/googlemap/index.html",
         files: ["modules/googlemap/controller.js", "modules/googlemap/directive.js"],
         scope: {
@@ -178,6 +182,7 @@
         name: 'QR',
         identifier: 'qrgenerator',
         type :  'A',
+        hidden: true,
         view :  "modules/qrgenerator/index.html",
         files: ["modules/qrgenerator/controller.js"],
         scope: {
@@ -200,6 +205,7 @@
         name: 'Pdf',
         identifier: 'pdfviewer',
         type :  'A',
+        hidden: true,
         view :  "modules/pdfviewer/index.html",
         files: ["modules/pdfviewer/controller.js"],
         scope: {
@@ -221,6 +227,7 @@
         name: 'Youtube Video',
         identifier: 'youtubevideo',
         type :  'A',
+        hidden: true,
         view :  "modules/youtubevideo/index.html",
         files: ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
         scope: {
@@ -234,6 +241,7 @@
         name: 'Sound Cloud',
         identifier: 'soundcloud',
         type :  'A',
+        hidden: true,
         view :  "modules/soundcloud/index.html",
         files: ["modules/soundcloud/controller.js", "modules/soundcloud/directive.js"],
         scope: {
@@ -248,6 +256,7 @@
         name: 'Vimeo Video',
         identifier: 'vimeovideo',
         type :  'A',
+        hidden: true,
         view :  "modules/vimeovideo/index.html",
         files: ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
         scope: {
@@ -359,6 +368,7 @@
       name: 'Simple Gallery',
       identifier: 'simplegallery',
       type :  'A',
+      hidden: true,
       view :  "modules/simplegallery/index.html",
       files: [
         "modules/simplegallery/controller.js"
@@ -402,6 +412,7 @@
         name: 'Text Example',
         identifier: 'text',
         type :  'A',
+        hidden: true,
         view :  "modules/text/index.html",
         files: ["modules/text/controller.js"],
         scope: {
@@ -415,6 +426,7 @@
         name: 'RSS',
         identifier: 'rss',
         type :  'A',
+        hidden: true,
         view :  "modules/rss/index.html",
         files: ["modules/rss/controller.js"],
         scope: {
@@ -428,6 +440,7 @@
         name: 'Translation Test',
         identifier: 'translationtest',
         type :  'A',
+        hidden: true,
         view :  "modules/translationtest/index.html",
         files: ["modules/translationtest/controller.js"],
         scope: {
@@ -441,6 +454,7 @@
         name: 'Ads container',
         identifier: 'ads',
         type :  'A',
+        hidden: true,
         view :  "modules/ads/index.html",
         files: ["modules/ads/controller.js"],
         scope: {
@@ -455,6 +469,7 @@
         name: 'Simple directive',
         identifier: 'simpledirective',
         type :  'A',
+        hidden: true,
         view :  "modules/simpledirective/index.html",
         files: ["modules/simpledirective/controller.js"],
         scope: {
@@ -468,6 +483,7 @@
         name: 'Filters test',
         identifier: 'filters',
         type :  'A',
+        hidden: true,
         view :  "modules/filters/index.html",
         files: ["modules/filters/controller.js"],
         scope: {
@@ -481,6 +497,7 @@
         name: 'Multiple files',
         identifier: 'multiplefiles',
         type :  'A',
+        hidden: true,
         view :  "modules/multiplefiles/index.html",
         files: ["modules/multiplefiles/controller.js", "modules/multiplefiles/directive.js"
         ],
@@ -495,6 +512,7 @@
         name: 'Embed Example',
         identifier: 'embed',
         type :  'A',
+        hidden: true,
         view :  "modules/embed/index.html",
         files: ["modules/embed/controller.js"],
         scope: {
@@ -508,6 +526,7 @@
         name: 'Html Example',
         identifier: 'html',
         type :  'A',
+        hidden: true,
         view :  "modules/html/index.html",
         files: ["modules/html/controller.js"],
         scope: {
@@ -541,6 +560,7 @@
         name: 'Angular Menu Module',
         identifier: 'angularmenu',
         type :  'A',
+        hidden: true,
         view :  "modules/angularmenu/index.html",
         files: ["modules/angularmenu/controller.js"],
         scope: {path: path}
@@ -552,6 +572,7 @@
         name: 'Polymer Menu Module',
         identifier: 'polymermenu',
         type :  'A',
+        hidden: true,
         view :  "modules/polymermenu/index.html",
         files: ["modules/polymermenu/controller.js"],
         scope: {path: path}
@@ -563,6 +584,7 @@
       name: 'Angular Static Feed Module',
       identifier: 'angularstaticfeed',
       type :  'A',
+      hidden: true,
       view :  "modules/angularstaticfeed/index.html",
       files: [
         "modules/angularstaticfeed/controller.js"
@@ -594,6 +616,7 @@
     //   name: 'RSS Module',
     //   controller: 'rssmodule',
     //   type :  'A',
+    //  hidden: true,
     //   view :  "modules/rssmodule/index.html",
     //   ctrl: "modules/rssmodule/controller.js",
     //   scope: {

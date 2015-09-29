@@ -24,6 +24,8 @@
 
     function menu(){
       return {
+        '/abdonrd'                       : abdonrd(),
+
         //Menu 2 for real app
         '/'                                 : {},
         // '/menu'                          : polymermenu("/menu"),
@@ -98,6 +100,19 @@
         // '/multiple-files'                : multiplefiles(),
         // '/menu/level1-feed'              : angularstaticfeed(),
         // '/menu'                          : angularmenu('/menu')
+      };
+    }
+
+    function abdonrd(){
+      return {
+        name: 'Text Example',
+        identifier: 'text',
+        type :  'A',
+        view :  "modules/abdonrd/index.html",
+        files: ["modules/abdonrd/controller.js"],
+        scope: {
+          value: "Text phrase"
+        }
       };
     }
 

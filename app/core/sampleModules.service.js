@@ -25,6 +25,7 @@
     function menu(){
       return {
         '/abdonrd'                       : abdonrd(),
+        '/gallery'                       : simplegallery(),
 
         //Menu 2 for real app
         '/'                                 : {},
@@ -113,6 +114,23 @@
         scope: {
           value: "Text phrase"
         }
+      };
+    }
+    function simplegallery(){
+      return {
+      name: 'Restaurant',
+      identifier: 'simplegallery',
+      type :  'A',
+      headclass : 'green',
+      view :  "modules/simplegallery/index.html",
+      files: [
+        "modules/simplegallery/controller.js"
+      ],
+      scope: {
+        gallery : ["http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
+          "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
+          "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"]
+      }
       };
     }
 
@@ -375,22 +393,6 @@
           accesstoken : "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
           userid      : "50417061"
         }
-      };
-    }
-
-    function simplegallery(){
-      return {
-      name: 'Simple Gallery',
-      identifier: 'simplegallery',
-      type :  'A',
-      hidden: true,
-      view :  "modules/simplegallery/index.html",
-      files: [
-        "modules/simplegallery/controller.js"
-      ],
-      scope: {
-        gallery : ["http://i.imgur.com/cBiVYSx.jpg", "http://i.imgur.com/lIb0zTT.jpg", "http://i.imgur.com/bAFPG8K.jpg"]
-      }
       };
     }
 

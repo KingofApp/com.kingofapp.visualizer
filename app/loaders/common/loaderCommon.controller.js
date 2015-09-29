@@ -32,14 +32,20 @@
   function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader) {
     console.log("pasa por el commonLoaderCtrl");
     $location.$$path = $location.$$path || '/';
-    // $rootScope.test='Variable';
-    // setTimeout(function() {
-    //   $rootScope.test='Variableasdsdsa';
-    // },2000);
+    $rootScope.$watch('menu', function (newValue, oldValue) {
+      if(structureService.getMenu() != newValue){
+        structureService.setMenu(newValue);
+        console.log("Seteo y cambio a /menu", newValue);
+        window.location = "#/menu";
+        // $location.path("menu");
+      }
+    });
+
     //Load config
     structureService.loadconfig($rootScope);
     //Register Route
     structureService.getModule($location.$$path).then(function(module){
+      console.log("Module",module);
       $scope.module = module || $scope.module;
       if(!module){
           //TODO: Display a 404 error or similar

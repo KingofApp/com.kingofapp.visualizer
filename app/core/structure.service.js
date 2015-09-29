@@ -15,6 +15,8 @@ angular
 
     return {
       get               : get,
+      setMenu           : setMenu,
+      getMenu           : getMenu,
       getLang           : getLang,
       setLang           : setLang,
       getModule         : getModule,
@@ -25,6 +27,16 @@ angular
       update            : update,
       onChange          : onChange
     };
+
+
+    function setMenu(newMenu){
+      cachedLocations = {};
+      data.paths = newMenu;
+    }
+
+    function getMenu(){
+      return data.paths;
+    }
 
     function get(){
       return data;

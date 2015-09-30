@@ -7,14 +7,6 @@
   registerProviders.$inject = ['$controllerProvider', '$provide', '$compileProvider', '$filterProvider'];
 
   function registerProviders($controllerProvider, $provide, $compileProvider, $filterProvider) {
-
-
-    // $loadOnDemandProvider.config([
-    //             {
-    //                 name: 'demand',
-    //                 script: 'modules/firebase/factory.js'
-    //             }
-    //         ]);
     [
       {name: 'controller', provider: $controllerProvider, method: 'register'  },
       {name: 'service',    provider: $provide,            method: 'service'   },

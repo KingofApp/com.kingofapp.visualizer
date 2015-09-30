@@ -1,10 +1,9 @@
 <div class='facebookfeed auto' ng-controller='facebookFeedCtrl'>
   <paper-item ng-hide="isEmpty(facebookfeed.message)">{{facebookfeed.message}}</paper-item>
-
   <koa-card heading="Card Title" image="{{item.full_picture}}" ng-repeat="item in facebookfeed.items track by $index">
     <div class="card-content">{{item.message}}</div>
     <div class="card-actions">
-      <koa-button>Some action</koa-button>
+      <koa-button raised>Some action</koa-button>
     </div>
   </koa-card>
 </div>

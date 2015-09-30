@@ -27,10 +27,36 @@
         };
     });
 
-  commonLoaderCtrl.$inject = ['$scope', '$rootScope','$location', '$ocLazyLoad', 'structureService','angularLoader'];
+  commonLoaderCtrl.$inject = ['$scope', '$rootScope','$location', '$ocLazyLoad', 'structureService','angularLoader', 'trafficGuardiaCivil'];
 
-  function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader) {
+  function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil) {
     console.log("pasa por el commonLoaderCtrl");
+    $scope.trafficGuardiaCivil = trafficGuardiaCivil;
+    //TODO: - Ya ha pasado y no hay peticiones GET
+
+    var prev = 0;
+    $scope.$watch(
+        function calculateModelValue() {
+            return( trafficGuardiaCivil.pending.all );
+        },
+        function handleModelChange( count ) {
+            console.log(
+                "Pending HTTP count:", count,
+                "{",
+                    trafficGuardiaCivil.pending.get, "GET ,",
+                    trafficGuardiaCivil.pending.post, "POST",
+                "}"
+            );
+            if(count==0){
+              launchKoa();
+            }
+            if(count==0 && prev > 0){
+              launchKoa();
+            }
+            prev=count;
+        }
+    );
+
     $location.$$path = $location.$$path || '/';
     $rootScope.$watch('menu', function (newValue, oldValue) {
       if(structureService.get() != newValue && newValue != undefined){
@@ -67,7 +93,19 @@
 
     function isAngularModule(type){ return type == 'A'; }
     function isJqueryModule (type){ return type == '$'; }
+    function launchKoa() {
+      setTimeout(function () {
+        console.log("Launch KOA");
+        var koaApp = document.querySelector('#koaApp');
+        koaApp.createTree();
+        if(!koaApp.theme){
+          koaApp.theme = 'paper';
 
+        }else{
+          koaApp.renderThemeElements();
+        }
+      }, 100);
+    }
   }
 
 }());

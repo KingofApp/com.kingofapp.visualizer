@@ -29,15 +29,15 @@
 
         //Menu 2 for real app
         '/'                                 : {},
-        // '/menu'                          : polymermenu("/menu"),
+        '/menu'                          : polymermenu("/menu"),
         // '/menu2/fire-connector'          : firebase(),
         // '/menu2/fire-connector/list'     : list(),
         // '/menu2/rss'                     : rss(),
-        '/facebook'                 : facebookfeed(),
+        '/menu/facebook'                 : facebookfeed(),
         // '/menu2/twitter'                 : twitterfeed(),
         // '/menu/contact'                  : contact(),
         // '/menu2/flickr'                  : flickrfeed(),
-        // '/menu2/html'                    : html(),
+        '/menu/html'                    : html(),
         // '/menu2/map'                     : googlemap(),
         // '/menu2/fire-connector/qr'       : qrgenerator(),
         // '/menu2/vimeovideo'              : vimeovideo(),

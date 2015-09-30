@@ -1,42 +1,4 @@
 <div ng-controller="abdonrdCtrl">
-
-<style is="custom-style">
-  neon-animatable {
-    background-color: #999;
-    padding: 10px;
-    height: 30px;
-  }
-</style>
-<template is="dom-bind">
-  <div class="toolbar">
-    <button on-click="_onPrevClick">&lt;&lt;</button>
-    <button on-click="_onNextClick">&gt;&gt;</button>
-  </div>
-
-  <neon-animated-pages id="pages" class="flex" selected="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
-    <neon-animatable>1</neon-animatable>
-    <neon-animatable>2</neon-animatable>
-    <neon-animatable>3</neon-animatable>
-  </neon-animated-pages>
-  <br><br><br>
-</template>
-
-<script>
-  var scope = document.querySelector('template[is="dom-bind"]');
-  scope.selected = 0;
-  scope._onPrevClick = function() {
-    this.entryAnimation = 'slide-from-left-animation';
-    this.exitAnimation = 'slide-right-animation';
-    this.selected = this.selected === 0 ? 4 : (this.selected - 1);
-  }
-  scope._onNextClick = function() {
-    this.entryAnimation = 'slide-from-right-animation';
-    this.exitAnimation = 'slide-left-animation';
-    this.selected = this.selected === 4 ? 0 : (this.selected + 1);
-  }
-</script>
-
-
   <koa-toolbar>
     <koa-icon-button icon="menu" on-tap="menuAction"></koa-icon-button>
     <div class="title">Home</div>

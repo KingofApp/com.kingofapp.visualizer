@@ -33,7 +33,7 @@
         // '/menu2/fire-connector'          : firebase(),
         // '/menu2/fire-connector/list'     : list(),
         // '/menu2/rss'                     : rss(),
-        // '/menu/facebook'                 : facebookfeed(),
+        '/facebook'                 : facebookfeed(),
         // '/menu2/twitter'                 : twitterfeed(),
         // '/menu/contact'                  : contact(),
         // '/menu2/flickr'                  : flickrfeed(),

@@ -1,118 +1,33 @@
 <div class="polymermenu auto" ng-controller="polymerMenuCtrl">
-  <!--   <template is="dom-bind">
-        <koa-menu on-iron-select="handleSelect" on-iron-deselect="handleDeselect">
-          <koa-item>Test Item 1</koa-item>
-          <koa-item>Test Item 2</koa-item>
-          <koa-item>Test Item 3</koa-item>
-          <koa-item>Test Item 4</koa-item>
-        </koa-menu>
-      </template>-->
-<script>
-document.addEventListener('iron-select', function(e) {
-  console.log("ENTRO",e);
-  if(e.detail.item.custom){
-    window.location.href = e.detail.item.custom;
+
+  <koa-menu-button>
+    <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
+    <koa-menu class="dropdown-content">
+      <template is="dom-repeat" items="{{polymermenu.menu}}">
+        <koa-item link>
+          <a href="{{item.url}}">{{item.text}}</a>
+        </koa-item>
+      </template>
+    </koa-menu>
+  </koa-menu-button>
+
+  <!-- TODO: Add in the paper-item
+
+  :host([link]) {
+    padding: 0;
   }
+  :host([link]) ::content a {
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+    @apply(--layout-flex);
+    min-height: var(--paper-item-min-height, 48px);
+    padding: 0px 16px;
+    color: inherit;
+    text-decoration: none;
+  } -->
 
-
-});
-</script>
-
-    <koa-menu-button>
-      <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
-      <koa-menu class="dropdown-content" >
-        <!-- <koa-item> -->
-          <!-- <p><a href="#/menu2">Test</a></p> -->
-        <!-- </koa-item> -->
-        <!-- <koa-item> -->
-          <!-- <p><a href="#/menu2/rss">Test2</a></p> -->
-        <!-- </koa-item> -->
-        <!-- <koa-item> -->
-          <!-- <p><a href="#/menu2/contact">Test3</a></p> -->
-        <!-- </koa-item> -->
-        <template is="dom-repeat" items="{{polymermenu.menu}}">
-          <!-- <a href="{{item.url}}"> -->
-            <koa-item custom='{{item.url}}'><span class='clickable'>{{item.text}}</span></koa-item>
-        <!-- </a> -->
-        </template>
-      </koa-menu>
-    </koa-menu-button>
-<!-- {{datos}} -->
-  <!-- </template> -->
-    <!-- <polymer-slidenav speed=".2s">
-  		<slidenav-toggler>
-      	<div class="sl-toggle">
-  			<svg width="30" height="30" id="icoOpen2">
-  					<path d="M0,5 40,5" stroke="#333" stroke-width="6"></path>
-  					<path d="M0,15 40,15" stroke="#333" stroke-width="6"></path>
-  					<path d="M0,25 40,25" stroke="#333" stroke-width="6"></path>
-  			</svg>
-      	</div>
-  		</slidenav-toggler>
-  		<slidenav-menu>
-  			<ul class="sl-menu">
-  				<li>Home</li>
-  				<li>Articles</li>
-  				<li>Maps</li>
-  				<li>About us</li>
-  				<li>News</li>
-  				<li>Portfolio</li>
-  				<li>Contacts</li>
-  			</ul>
-  		</slidenav-menu>
-    </polymer-slidenav> -->
-    <!-- <div class="XX">
-      <koa-menu-button>
-        <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
-        <koa-menu class="dropdown-content">
-            <koa-item>test1</koa-item>
-        </koa-menu>
-      </koa-menu-button>
-    </div> -->
-
-
-
-    <!-- <div class="element">
-       <div style="display:inline-block">
-         <span>Inbox</span>
-         <koa-badge label="3"></koa-badge>
-       </div>
-     </div>
-
-     <div class="element">
-       <koa-button raised big>King of App</koa-button>
-     </div>
-
-     <div class="element">
-       <koa-checkbox checked>King of App</koa-checkbox>
-     </div>
-
-     <div class="element">
-       <koa-toggle-button checked></koa-toggle-button>
-     </div>
-
-     <div class="element">
-       <koa-tabs>
-         <koa-tab>KoA 1</koa-tab>
-         <koa-tab>KoA 2</koa-tab>
-         <koa-tab>KoA 3</koa-tab>
-       </koa-tabs>
-     </div>
-
-     <div class="element">
-       <koa-card heading="Cards can have titles" class="pink">
-         <div class="card-content">
-           Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
-         </div>
-         <div class="card-actions">
-           <koa-button>Nay</koa-button>
-           <koa-button>Yay!</koa-button>
-         </div>
-       </koa-card>
-     </div> -->
-
-    <!-- moduleIdentifier + Template -->
-    <div ng-include="polymermenuTemplate" class='template'>
-    </div>
+  <!-- moduleIdentifier + Template -->
+  <div ng-include="polymermenuTemplate" class='template'>
+  </div>
 
 </div>

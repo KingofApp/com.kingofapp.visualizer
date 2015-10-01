@@ -34,10 +34,9 @@
     console.log('pasa por el commonLoaderCtrl');
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
 
-    //TODO: Change state to boolean
     var prev = 0;
-    var state = 0;
-
+    var state = false;
+    var redirected = false;
     $scope.$watch(
       function calculateModelValue() {
         return (trafficGuardiaCivil.pending.all);
@@ -51,26 +50,29 @@
           trafficGuardiaCivil.pending.post, 'POST',
           '}'
         );
-        setTimeout(function() {
-          if (count === 0 && state === 0) {
+        if($location.$$path != "/"){
+          setTimeout(function() {
+            if (count === 0 && !state) {
+              launchKoa();
+            }
+          }, 100);
+          if (count === 0 && prev > 0) {
             launchKoa();
           }
-        }, 100);
-        if (count === 0 && prev > 0) {
-          launchKoa();
+          if (count > 0) {
+            state = true;
+          }
+          prev = count;
         }
-        if (count > 0) {
-          state = 1;
-        }
-        prev = count;
       }
     );
 
     $location.$$path = $location.$$path || '/';
 
     $rootScope.$watch('menu', function(newValue, oldValue) {
-      if (structureService.get() != newValue && newValue !== undefined) {
+      if (structureService.get() != newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
+        redirected=true;
         setTimeout(function() {
           $scope.$apply(function() {
             $location.path('menu');

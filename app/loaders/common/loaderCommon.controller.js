@@ -35,6 +35,7 @@
     //TODO: - Ya ha pasado y no hay peticiones GET
 
     var prev = 0;
+    var state = 0;
     $scope.$watch(
         function calculateModelValue() {
             return( trafficGuardiaCivil.pending.all );
@@ -47,11 +48,16 @@
                     trafficGuardiaCivil.pending.post, "POST",
                 "}"
             );
-            if(count==0){
-              // launchKoa();
-            }
+            setTimeout(function () {
+              if(count==0 && state == 0){
+                launchKoa();
+              }
+            }, 10);
             if(count==0 && prev > 0){
               launchKoa();
+            }
+            if (count>0) {
+              state=1;
             }
             prev=count;
         }

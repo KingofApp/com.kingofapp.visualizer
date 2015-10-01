@@ -1,14 +1,15 @@
 <div class="polymermenu auto" ng-controller="polymerMenuCtrl">
   <!--   <template is="dom-bind">
-        <paper-menu on-iron-select="handleSelect" on-iron-deselect="handleDeselect">
-          <paper-item>Test Item 1</paper-item>
-          <paper-item>Test Item 2</paper-item>
-          <paper-item>Test Item 3</paper-item>
-          <paper-item>Test Item 4</paper-item>
-        </paper-menu>
+        <koa-menu on-iron-select="handleSelect" on-iron-deselect="handleDeselect">
+          <koa-item>Test Item 1</koa-item>
+          <koa-item>Test Item 2</koa-item>
+          <koa-item>Test Item 3</koa-item>
+          <koa-item>Test Item 4</koa-item>
+        </koa-menu>
       </template>-->
 <script>
 document.addEventListener('iron-select', function(e) {
+  console.log("ENTRO",e);
   if(e.detail.item.custom){
     window.location.href = e.detail.item.custom;
   }
@@ -17,25 +18,25 @@ document.addEventListener('iron-select', function(e) {
 });
 </script>
 
-    <paper-menu-button>
-      <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
-      <paper-menu class="dropdown-content" >
-        <!-- <paper-item> -->
+    <koa-menu-button>
+      <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
+      <koa-menu class="dropdown-content" >
+        <!-- <koa-item> -->
           <!-- <p><a href="#/menu2">Test</a></p> -->
-        <!-- </paper-item> -->
-        <!-- <paper-item> -->
+        <!-- </koa-item> -->
+        <!-- <koa-item> -->
           <!-- <p><a href="#/menu2/rss">Test2</a></p> -->
-        <!-- </paper-item> -->
-        <!-- <paper-item> -->
+        <!-- </koa-item> -->
+        <!-- <koa-item> -->
           <!-- <p><a href="#/menu2/contact">Test3</a></p> -->
-        <!-- </paper-item> -->
+        <!-- </koa-item> -->
         <template is="dom-repeat" items="{{polymermenu.menu}}">
           <!-- <a href="{{item.url}}"> -->
-            <paper-item custom='{{item.url}}'><span class='clickable'>{{item.text}}</span></paper-item>
+            <koa-item custom='{{item.url}}'><span class='clickable'>{{item.text}}</span></koa-item>
         <!-- </a> -->
         </template>
-      </paper-menu>
-    </paper-menu-button>
+      </koa-menu>
+    </koa-menu-button>
 <!-- {{datos}} -->
   <!-- </template> -->
     <!-- <polymer-slidenav speed=".2s">

@@ -36,6 +36,7 @@
 
     var prev = 0;
     var state = false;
+    var prevent = false;
     var redirected = false;
     $scope.$watch(
       function calculateModelValue() {
@@ -69,18 +70,29 @@
 
     $location.$$path = $location.$$path || '/';
 
-    $rootScope.$watch('menu', function(newValue, oldValue) {
+    $rootScope.$watch('appData', function(newValue, oldValue) {
       if (structureService.get() != newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
         redirected=true;
         setTimeout(function() {
           $scope.$apply(function() {
-            $location.path('menu');
+            $location.path('/menu');
           });
         }, 100);
       }
     });
-
+    $rootScope.$watch('appColor', function(newValue, oldValue) {
+      // console.log("---Old",oldValue);
+      // console.log("---New",newValue);
+      console.log("Prevent es", prevent);
+      // TODO: SE REPITE MIL VECES LOS LOGS
+      if (oldValue != newValue) {
+        prevent = true;
+        console.log("Prevent es", prevent);
+        console.log("COLOR1", newValue);
+        setColor(newValue)
+      }
+    });
     //Load config
     structureService.loadconfig($rootScope);
 
@@ -107,7 +119,16 @@
     function isJqueryModule(type) {
       return type === '$';
     }
-
+    function setColor(color) {
+      //Set colors
+      var s = document.createElement('style', 'custom-style');
+      s.textContent = ':root {\n';
+      s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ";";
+      s.textContent += '\n}';
+      document.body.appendChild(s);
+      Polymer.updateStyles();
+      s.remove();
+    }
     function launchKoa() {
       setTimeout(function() {
         console.log('Launch KOA');
@@ -118,6 +139,7 @@
         } else {
           koaApp.renderThemeElements();
         }
+        setColor($rootScope.appData.config.colors);
       }, 100);
     }
   }

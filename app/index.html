@@ -49,8 +49,14 @@
       var $rootScope = $body.injector().get('$rootScope');
       console.log("Recieved",event);
       $rootScope.$apply(function () {
-        $rootScope.menu = event.data;
+        if(event.data.modules){
+          $rootScope.appData = event.data;
+        }else if(event.data.color){
+          console.log("Color",event.data.color);
+          $rootScope.appColor = event.data.color;
+        }
       });
+
     });
 	</script>
 
@@ -101,16 +107,16 @@
       }
 
       function changeColor() {
-        var s = document.createElement('style', 'custom-style');
-        var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
-        var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
-        s.textContent = ':root {\n';
-        s.textContent += '--default-primary-color: ' + defaultPrimaryColor + ';';
-        s.textContent += '\n--accent-color: ' + accentColor + ';';
-        s.textContent += '\n}';
-        document.body.appendChild(s);
-        Polymer.updateStyles();
-        s.remove();
+        // var s = document.createElement('style', 'custom-style');
+        // var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
+        // var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
+        // s.textContent = ':root {\n';
+        // s.textContent += '--default-primary-color: ' + defaultPrimaryColor + ';';
+        // s.textContent += '\n--accent-color: ' + accentColor + ';';
+        // s.textContent += '\n}';
+        // document.body.appendChild(s);
+        // Polymer.updateStyles();
+        // s.remove();
       }
     </script>
   </div>

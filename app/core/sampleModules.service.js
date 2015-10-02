@@ -24,17 +24,20 @@
 
     function menu(){
       return {
+        '/abdonrd'                       : abdonrd(),
+        '/gallery'                       : simplegallery(),
+
         //Menu 2 for real app
         '/'                                 : {},
-        // '/menu'                          : polymermenu("/menu"),
+        '/menu'                          : polymermenu("/menu"),
         // '/menu2/fire-connector'          : firebase(),
         // '/menu2/fire-connector/list'     : list(),
         // '/menu2/rss'                     : rss(),
-        // '/menu/facebook'                 : facebookfeed(),
+        '/menu/facebook'                 : facebookfeed(),
         // '/menu2/twitter'                 : twitterfeed(),
         // '/menu/contact'                  : contact(),
         // '/menu2/flickr'                  : flickrfeed(),
-        // '/menu2/html'                    : html(),
+        '/menu/html'                    : html(),
         // '/menu2/map'                     : googlemap(),
         // '/menu2/fire-connector/qr'       : qrgenerator(),
         // '/menu2/vimeovideo'              : vimeovideo(),
@@ -98,6 +101,43 @@
         // '/multiple-files'                : multiplefiles(),
         // '/menu/level1-feed'              : angularstaticfeed(),
         // '/menu'                          : angularmenu('/menu')
+      };
+    }
+
+    function abdonrd() {
+      return {
+        name: 'Text Example',
+        identifier: 'abdonrd',
+        type: 'A',
+        view: "modules/abdonrd/index.html",
+        files: ["modules/abdonrd/controller.js"],
+        scope: {
+          value: "Text phrase",
+          images: [
+            "http://placehold.it/350x150",
+            "http://placehold.it/350x150"
+          ]
+        }
+      };
+    }
+
+    function simplegallery() {
+      return {
+        name: 'Restaurant',
+        identifier: 'simplegallery',
+        type: 'A',
+        headclass: 'green',
+        view: "modules/simplegallery/index.html",
+        files: [
+          "modules/simplegallery/controller.js"
+        ],
+        scope: {
+          gallery: [
+            "http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
+            "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
+            "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"
+          ]
+        }
       };
     }
 
@@ -360,22 +400,6 @@
           accesstoken : "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
           userid      : "50417061"
         }
-      };
-    }
-
-    function simplegallery(){
-      return {
-      name: 'Simple Gallery',
-      identifier: 'simplegallery',
-      type :  'A',
-      hidden: true,
-      view :  "modules/simplegallery/index.html",
-      files: [
-        "modules/simplegallery/controller.js"
-      ],
-      scope: {
-        gallery : ["http://i.imgur.com/cBiVYSx.jpg", "http://i.imgur.com/lIb0zTT.jpg", "http://i.imgur.com/bAFPG8K.jpg"]
-      }
       };
     }
 

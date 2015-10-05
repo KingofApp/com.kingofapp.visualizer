@@ -144,6 +144,8 @@
         if (!koaApp.theme) {
           if($rootScope.appData){
             setTheme($rootScope.appData.config.theme);
+          }else{
+            setTheme('paper');
           }
         } else {
           koaApp.renderThemeElements();

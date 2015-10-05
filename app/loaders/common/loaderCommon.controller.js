@@ -76,21 +76,23 @@
         redirected=true;
         setTimeout(function() {
           $scope.$apply(function() {
-            $location.path('/menu');
+            $location.path(newValue.config.index);
           });
         }, 100);
       }
     });
     $rootScope.$watch('appColor', function(newValue, oldValue) {
-      // console.log("---Old",oldValue);
-      // console.log("---New",newValue);
-      console.log("Prevent es", prevent);
       // TODO: SE REPITE MIL VECES LOS LOGS
       if (oldValue != newValue) {
         prevent = true;
-        console.log("Prevent es", prevent);
-        console.log("COLOR1", newValue);
-        setColor(newValue)
+        setColor(newValue);
+      }
+    });
+    $rootScope.$watch('appTheme', function(newValue, oldValue) {
+      // TODO: SE REPITE MIL VECES LOS LOGS
+      if (oldValue != newValue) {
+        console.log("Theme",newValue);
+        setTheme(newValue);
       }
     });
     //Load config
@@ -129,17 +131,27 @@
       Polymer.updateStyles();
       s.remove();
     }
+    function setTheme(theme) {
+      //Set Theme
+      koaApp.theme = theme;
+    }
+
     function launchKoa() {
       setTimeout(function() {
         console.log('Launch KOA');
         var koaApp = document.querySelector('#koaApp');
         koaApp.createTree();
         if (!koaApp.theme) {
-          koaApp.theme = 'paper';
+          if($rootScope.appData){
+            setTheme($rootScope.appData.config.theme);
+          }
         } else {
           koaApp.renderThemeElements();
         }
-        setColor($rootScope.appData.config.colors);
+        if($rootScope.appData){
+          setColor($rootScope.appData.config.colors);
+        }
+
       }, 100);
     }
   }

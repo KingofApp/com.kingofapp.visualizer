@@ -30,20 +30,24 @@
         //Menu 2 for real app
         '/'                                 : {},
         '/menu'                          : polymermenu("/menu"),
-        // '/menu2/fire-connector'          : firebase(),
-        // '/menu2/fire-connector/list'     : list(),
+        '/menu/home'                          : homepage(),
+        '/menu/grouplist'                          : grouplist(),
+        '/menu/fire-connector'          : firebase(),
+        '/menu/fire-connector/list'     : list(),
         // '/menu2/rss'                     : rss(),
         '/menu/facebook'                 : facebookfeed(),
         // '/menu2/twitter'                 : twitterfeed(),
         // '/menu/contact'                  : contact(),
         // '/menu2/flickr'                  : flickrfeed(),
         '/menu/html'                    : html(),
+        '/menu/blog'          : wordpressposts(),
+        '/menu/single'     : wordpresssingle(),
         // '/menu2/map'                     : googlemap(),
         // '/menu2/fire-connector/qr'       : qrgenerator(),
         // '/menu2/vimeovideo'              : vimeovideo(),
         // '/menu2/youtubevideo'            : youtubevideo(),
         // '/menu2/youtubegallery'          : youtubegallery(),
-        // '/menu2/soundcloud'              : soundcloud(),
+        '/menu/soundcloud'              : soundcloud(),
         // '/menu2/translation'             : translationtest(),
         // '/menu2/simple-gallery'          : simplegallery(),
         // '/menu2/instagram'               : instagramfeed(),
@@ -54,7 +58,7 @@
         // '/menu2/translation'              : translationtest(),
         // '/menu2/youtube-gallery'  : youtubegallery(),
         // '/menu2/soundcloud'       : soundcloud(),
-        // '/menu2/simple-gallery'           : simplegallery(),
+        '/menu/simple-gallery'           : simplegallery(),
         // '/menu2/youtube-video'    : youtubevideo(),
         // '/menu2/vimeo-video'      : vimeovideo(),
         // '/menu2/google-map'       : googlemap(),
@@ -123,7 +127,7 @@
 
     function simplegallery() {
       return {
-        name: 'Restaurant',
+        name: 'Simple Gallery',
         identifier: 'simplegallery',
         type: 'A',
         headclass: 'green',
@@ -136,6 +140,46 @@
             "http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
             "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
             "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"
+          ]
+        }
+      };
+    }
+
+    function homepage(){
+      return {
+        name: 'Home',
+        identifier: 'homepage',
+        type :  'A',
+        headclass : 'orange',
+        view :  "modules/homepage/index.html",
+        files: [ "modules/homepage/controller.js" ],
+        scope: {
+          sections: [{ name : "Social", icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300", class : "blue", url : "#/menu/social"},
+            { name : "Inspiración", icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300", class : "purple", url : "#/menu/social2"},
+            { name : "Blog", icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300", class : "grey1", url : "#/menu/blog"},
+            { name : "Contact", icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300", class : "red1", url : "#/menu/contact"}
+          ],
+          featured: {title : "Últimas noticias",
+            domain      : "http://www.ateneupopular.com",
+            postnumber  : 3,
+            category    : "",
+            galleryurl : "#/menu/ads/single"
+          }
+        }
+      };
+    }
+
+    function grouplist(){
+      return {
+        name: 'Group List',
+        identifier: 'grouplist',
+        type :  'A',
+        headclass : 'blue',
+        view :  "modules/grouplist/index.html",
+        files: [ "modules/grouplist/controller.js" ],
+        scope: {
+          sections: [{ name : "Facebook", icon:'svg-social-icons:facebook', class : "avatar facebook", url : "#/menu/facebook"},
+            { name : "Twitter", icon:'svg-social-icons:twitter', class : "avatar twitter", url : "#/menu/twitter"}
           ]
         }
       };
@@ -165,7 +209,7 @@
         files: ["modules/firebase/controller.js", "modules/firebase/factory.js" ],
         scope: {
           src   : "https://blinding-heat-1559.firebaseio.com/datatest",
-          debug : true
+          debug : false
         },
         //Online builder testing purpose
         libs: [{
@@ -184,7 +228,6 @@
         name: 'List Module',
         identifier: 'list',
         type :  'A',
-        hidden: true,
         view :  "modules/list/index.html",
         files: [ "modules/list/controller.js" ],
         scope: {
@@ -222,7 +265,6 @@
         name: 'QR',
         identifier: 'qrgenerator',
         type :  'A',
-        hidden: true,
         view :  "modules/qrgenerator/index.html",
         files: ["modules/qrgenerator/controller.js"],
         scope: {
@@ -281,7 +323,6 @@
         name: 'Sound Cloud',
         identifier: 'soundcloud',
         type :  'A',
-        hidden: true,
         view :  "modules/soundcloud/index.html",
         files: ["modules/soundcloud/controller.js", "modules/soundcloud/directive.js"],
         scope: {
@@ -316,7 +357,7 @@
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
           channelid  : "UCeIt2DJO8UdtUTmJzTfSXiQ",
-          galleryurl : "/app/#/menu2/youtubevideo"
+          galleryurl : "/app/#/menu/youtubevideo"
         },
         //Online builder testing purpose
         libs: [{
@@ -355,7 +396,7 @@
           domain : "http://rachelbaker.me",
           postnumber      : 3,
           category      : "",
-          galleryurl : "/app/#/menu2/wordpresssingle"
+          galleryurl : "/app/#/menu/single"
         }
       };
     }
@@ -364,6 +405,7 @@
         name: 'Wordpress Single',
         identifier: 'wordpresssingle',
         type : 'A',
+        hidden: true,
         view :   "modules/wordpresssingle/index.html",
         files: [ "modules/wordpresssingle/controller.js" ],
         scope: {

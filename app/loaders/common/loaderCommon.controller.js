@@ -100,6 +100,9 @@
 
     //Register Route
     structureService.getModule($location.$$path).then(function(module) {
+      $rootScope.toolbar = {
+        title : module.name
+      };
       $scope.module = module || $scope.module;
       if (!module) {
         //TODO: Display a 404 error or similar
@@ -123,6 +126,7 @@
     }
     function setColor(color) {
       //Set colors
+      // console.log("Color");
       var s = document.createElement('style', 'custom-style');
       s.textContent = ':root {\n';
       s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ";";
@@ -143,6 +147,7 @@
         koaApp.createTree();
         if (!koaApp.theme) {
           if($rootScope.appData){
+            setTheme('koa');
             setTheme($rootScope.appData.config.theme);
           }else{
             setTheme('paper');
@@ -150,9 +155,12 @@
         } else {
           koaApp.renderThemeElements();
         }
-        if($rootScope.appData){
-          setColor($rootScope.appData.config.colors);
-        }
+        setTimeout(function () {
+          if($rootScope.appData){
+            setColor($rootScope.appData.config.colors);
+          }
+        }, 500);
+
 
       }, 100);
     }

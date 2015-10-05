@@ -1,16 +1,17 @@
 <div class="polymermenu auto" ng-controller="polymerMenuCtrl">
-
-  <koa-menu-button>
-    <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
-    <koa-menu class="dropdown-content">
-      <template is="dom-repeat" items="{{polymermenu.menu}}">
-        <koa-item link>
-          <a href="{{item.url}}">{{item.text}}</a>
-        </koa-item>
-      </template>
-    </koa-menu>
-  </koa-menu-button>
-
+  <koa-toolbar>
+    <koa-menu-button>
+      <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
+      <koa-menu class="dropdown-content">
+        <template is="dom-repeat" items="{{polymermenu.menu}}">
+          <koa-item link>
+            <a href="{{item.url}}">{{item.text}}</a>
+          </koa-item>
+        </template>
+      </koa-menu>
+    </koa-menu-button>
+    <span class="title">{{toolbar.title}}</span>
+  </koa-toolbar>
   <!-- moduleIdentifier + Template -->
   <div ng-include="polymermenuTemplate" class='template'>
   </div>

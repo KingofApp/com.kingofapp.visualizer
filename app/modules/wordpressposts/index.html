@@ -1,10 +1,14 @@
 <div class='wordpressposts auto' ng-controller='wordpresspostsCtrl'>
   {{wordpressposts.result}}
-  <template is="dom-repeat" items="{{wordpressposts.items}}">
+  <div poly-scripts scripts="scripts"></div>
+  <template id='wordpressposts' is='dom-bind'>
+  <template is="dom-repeat" items="[[items]]">
     <a href='{{item.url}}'>
-      <paper-card heading='{{item.title}}'>
+      <paper-card class='orange' image='{{item.featured}}'>
+        <h2 class="title-text card-content paper-card">{{item.title}}</h2>
         <div class='card-content'>{{item.excerpt}}</div>
       </paper-card>
     </a>
+  </template>
   </template>
 </div>

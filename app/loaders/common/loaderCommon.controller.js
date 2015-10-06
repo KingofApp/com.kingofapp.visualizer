@@ -135,32 +135,46 @@
       Polymer.updateStyles();
       s.remove();
     }
-    function setTheme(theme) {
-      //Set Theme
-      koaApp.theme = theme;
+
+    function setTheme(theme, cb) {
+      koaApp.setTheme(theme, cb);
+    }
+
+    function addEvents() {
+      console.info('Adding ng-click events...');
+
+      var $scope = angular.element(document.querySelector('.contact')).scope();
+
+      $('[ng-click]').click(function() {
+        var functionName = $(this).attr('ng-click').replace('()', '');
+        $scope[functionName]();
+      });
     }
 
     function launchKoa() {
       setTimeout(function() {
-        console.log('Launch KOA');
+
+        console.info('Changing koa-elements to theme-elements...');
         var koaApp = document.querySelector('#koaApp');
+
         koaApp.createTree();
+
         if (!koaApp.theme) {
-          if($rootScope.appData){
+          if ($rootScope.appData) {
             setTheme('koa');
-            setTheme($rootScope.appData.config.theme);
-          }else{
-            setTheme('paper');
+            setTheme($rootScope.appData.config.theme, addEvents);
+          } else {
+            setTheme('paper', addEvents);
           }
         } else {
-          koaApp.renderThemeElements();
+          koaApp.renderThemeElements(addEvents);
         }
+
         setTimeout(function () {
-          if($rootScope.appData){
+          if ($rootScope.appData) {
             setColor($rootScope.appData.config.colors);
           }
         }, 500);
-
 
       }, 100);
     }

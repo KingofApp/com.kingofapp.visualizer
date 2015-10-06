@@ -10,9 +10,7 @@
 
       properties: {
         theme: {
-          type: String,
-          observer: '_themeChanged',
-          notify: true
+          type: String
         },
 
         tree: {
@@ -35,9 +33,32 @@
         this.tree = new Array(0);
         this._processElement(this.children[0]);
       },
-      renderThemeElements: function () {
-        this._renderThemeElements();
+
+      setTheme: function (theme, cb) {
+        this.theme = theme;
+
+        var isNotThemeImported = typeof this._importedThemes[this.theme] === 'undefined';
+
+        if (isNotThemeImported) {
+          this.importHref(this._getThemePath(), function(e) {
+            this.renderThemeElements(cb);
+            this._importedThemes[this.theme] = null;
+          });
+        } else {
+          this.renderThemeElements(cb);
+        }
       },
+
+      renderThemeElements: function (cb) {
+        this.tree.forEach(function(elementObject) {
+          this._renderThemeElement(elementObject);
+        }, this);
+
+        if (cb) {
+          cb();
+        }
+      },
+
       _processElement: function (element) {
         var hasChildren = element.children.length > 0;
 
@@ -89,27 +110,8 @@
         element.actual = newElement;
       },
 
-      _renderThemeElements: function () {
-        this.tree.forEach(function(elementObject) {
-          this._renderThemeElement(elementObject);
-        }, this);
-      },
-
       _getThemePath: function () {
         return this._themesPath + this.theme + '-theme.html';
-      },
-
-      _themeChanged: function () {
-        var isNotThemeImported = typeof this._importedThemes[this.theme] === 'undefined';
-
-        if (isNotThemeImported) {
-          this.importHref(this._getThemePath(), function(e) {
-            this._renderThemeElements();
-            this._importedThemes[this.theme] = null;
-          });
-        } else {
-          this._renderThemeElements();
-        }
       }
     });
   </script>

@@ -37,7 +37,7 @@
         // '/menu2/rss'                     : rss(),
         '/menu/facebook'                 : facebookfeed(),
         // '/menu2/twitter'                 : twitterfeed(),
-        // '/menu/contact'                  : contact(),
+        '/menu/contact'                  : contact(),
         // '/menu2/flickr'                  : flickrfeed(),
         '/menu/html'                    : html(),
         '/menu/blog'          : wordpressposts(),

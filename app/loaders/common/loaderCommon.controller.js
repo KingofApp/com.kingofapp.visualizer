@@ -103,6 +103,7 @@
       $rootScope.toolbar = {
         title : module.name
       };
+      $rootScope.current = module.identifier;
       $scope.module = module || $scope.module;
       if (!module) {
         //TODO: Display a 404 error or similar
@@ -141,7 +142,7 @@
     }
 
     function addEvents() {
-      var $scope = angular.element(document.querySelector('.contact')).scope();
+      var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
 
       console.info('Adding ng-click...');
       $('[ng-click]').click(function() {

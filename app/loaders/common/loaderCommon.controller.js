@@ -141,13 +141,23 @@
     }
 
     function addEvents() {
-      console.info('Adding ng-click events...');
-
       var $scope = angular.element(document.querySelector('.contact')).scope();
 
+      console.info('Adding ng-click...');
       $('[ng-click]').click(function() {
         var functionName = $(this).attr('ng-click').replace('()', '');
         $scope[functionName]();
+      });
+
+      console.info('Adding ng-model...');
+      $('[ng-model]').each(function () {
+        var parent = $(this);
+
+        $(this.inputElement).bind('input', function() {
+          var model = parent.attr('ng-model').split('.');
+
+          $scope[model[0]][model[1]] = $(this).val();
+        });
       });
     }
 

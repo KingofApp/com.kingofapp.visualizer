@@ -9,7 +9,7 @@ function contactCtrl($scope, $http, $location, $filter, structureService) {
 
   $scope.send = function() {
     console.log('contact sent!');
-    console.log($scope.contact.message);
+    console.log($scope.contact);
 
     var req = {
       method: 'POST',

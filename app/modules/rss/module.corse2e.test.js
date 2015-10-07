@@ -7,7 +7,7 @@
 
 		it('should load rss module', function() {
 			browser.get('/app/#/menu/rss');
-			isPresent('ul.rss li');
+			isPresent('.rss paper-card');
 
 			expectmodule();
 
@@ -18,7 +18,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('ul.rss li')).count()).toBeGreaterThan(2);
+			expect(element.all(by.css('.rss paper-card')).count()).toBeGreaterThan(2);
 		}
 
 		afterEach(function() {

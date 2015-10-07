@@ -6,7 +6,7 @@
 		});
 
 		it('should load pdf viewer', function() {
-			browser.get('/app/#/polymer-menu/pdf');
+			browser.get('/app/#/menu/pdf');
 			isPresent('p.ready');
 
 			expectmodule();

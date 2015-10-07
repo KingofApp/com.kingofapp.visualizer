@@ -34,8 +34,7 @@
         '/menu/grouplist'                          : grouplist(),
         '/menu/fire-connector'          : firebase(),
         '/menu/fire-connector/list'     : list(),
-        // '/menu2/rss'                     : rss(),
-        '/menu/facebook'                 : facebookfeed(),
+        // '/menu/facebook'                 : facebookfeed(),
         // '/menu2/twitter'                 : twitterfeed(),
         '/menu/contact'                  : contact(),
         // '/menu2/flickr'                  : flickrfeed(),
@@ -106,6 +105,11 @@
         '/multiple-files'                : multiplefiles(),
         '/menu/level1-feed'              : angularstaticfeed(),
         '/menu/translation'              : translationtest(),
+        '/menu/flickr'                   : flickrfeed(),
+        '/menu/instagram'                : instagramfeed(),
+        '/menu/youtube-gallery'          : youtubegallery(),
+        '/menu/rss'                      : rss(),
+        '/menu/pdf'              : pdfviewer()
         // '/menu'                          : angularmenu('/menu')
       };
     }

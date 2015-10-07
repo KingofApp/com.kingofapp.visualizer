@@ -1,19 +1,25 @@
-<div class="polymermenu auto" ng-controller="polymerMenuCtrl">
-  <koa-toolbar>
-    <koa-menu-button>
-      <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
-      <koa-menu class="dropdown-content">
+<div class="polymermenu" ng-controller="polymerMenuCtrl">
+
+  <koa-drawer-panel>
+
+    <koa-header-panel drawer>
+      <koa-menu>
         <template is="dom-repeat" items="{{polymermenu.menu}}">
-          <koa-item link>
-            <a href="{{item.url}}">{{item.text}}</a>
-          </koa-item>
+          <a href="{{item.url}}">{{item.text}}</a>
         </template>
       </koa-menu>
-    </koa-menu-button>
-    <span class="title">{{toolbar.title}}</span>
-  </koa-toolbar>
-  <!-- moduleIdentifier + Template -->
-  <div ng-include="polymermenuTemplate" class='template'>
-  </div>
+    </koa-header-panel>
+
+    <koa-header-panel main>
+      <koa-toolbar>
+        <koa-icon-button icon="menu" paper-drawer-toggle></koa-icon-button>
+        <div>{{toolbar.title}}</div>
+      </koa-toolbar>
+
+      <!-- moduleIdentifier + Template -->
+      <div ng-include="polymermenuTemplate" class="template"></div>
+    </koa-header-panel>
+
+  </koa-drawer-panel>
 
 </div>

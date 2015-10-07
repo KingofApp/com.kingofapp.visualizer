@@ -1,25 +1,28 @@
-<div class='homepage' ng-controller='homepageCtrl'>
+<div class="homepage" ng-controller="homepageCtrl">
+
   <link rel="stylesheet" href="modules/homepage/style.css">
   <div poly-scripts scripts="scripts"></div>
-  <script>
-  set();
-  function set(){
-    var scope = document.querySelector('template[is="dom-bind"]');
-    var scope2 = document.querySelector('neon-animated-pages');
-    scope2.selected = 0;
-    scope._onPrevClick = function() {
-      scope2.entryAnimation = 'slide-from-left-animation';
-      scope2.exitAnimation = 'slide-right-animation';
-      scope2.selected = scope2.selected === 0 ? 2 : (scope2.selected - 1);
-    }
-    scope._onNextClick = function() {
-      scope2.entryAnimation = 'slide-from-right-animation';
-      scope2.exitAnimation = 'slide-left-animation';
-      scope2.selected = scope2.selected === 2 ? 0 : (scope2.selected + 1);
-    }
-  }
 
+  <script>
+    set();
+
+    function set() {
+      var scope = document.querySelector('template[is="dom-bind"]');
+      var scope2 = document.querySelector('neon-animated-pages');
+      scope2.selected = 0;
+      scope._onPrevClick = function() {
+        scope2.entryAnimation = 'slide-from-left-animation';
+        scope2.exitAnimation = 'slide-right-animation';
+        scope2.selected = scope2.selected === 0 ? 2 : (scope2.selected - 1);
+      }
+      scope._onNextClick = function() {
+        scope2.entryAnimation = 'slide-from-right-animation';
+        scope2.exitAnimation = 'slide-left-animation';
+        scope2.selected = scope2.selected === 2 ? 0 : (scope2.selected + 1);
+      }
+    }
   </script>
+
   <div class="feat-item orange">
     <div class="tile">
       <div>
@@ -34,47 +37,47 @@
         </div>
       </div>
     </div>
-    <template id='homepage' is='dom-bind'>
+    <template id="homepage" is="dom-bind">
       <div class="toolbar">
-        <koa-button class='left' on-click="_onPrevClick"><iron-icon icon='icons:chevron-left'></iron-icon></koa-button>
-        <koa-button class='right' on-click="_onNextClick"><iron-icon icon='icons:chevron-right'></iron-icon></koa-button>
+        <koa-button class="left" on-click="_onPrevClick">
+          <iron-icon icon="chevron-left"></iron-icon>
+        </koa-button>
+        <koa-button class="right" on-click="_onNextClick">
+          <iron-icon icon="chevron-right"></iron-icon>
+        </koa-button>
       </div>
 
-      <neon-animated-pages style='min-height:300px;' id="pages" class="flex">
-      <template is="dom-repeat" items='[[items]]'>
-        <neon-animatable>
-          <koa-card image="{{item.featured}}">
-            <div class="card-content">
-              <span>{{item.title}}</span>
-              <img src='{{item.featured}}' />
-            </div>
-            <div class="card-actions">
-              <koa-button><a href='{{item.url}}'>{{item.lang.readmore}}</a></koa-button>
-            </div>
-          </koa-card></neon-animatable>
-      </template>
+      <neon-animated-pages style="min-height:300px;" id="pages" class="flex">
+        <template is="dom-repeat" items="[[items]]">
+          <neon-animatable>
+            <koa-card image="{{item.featured}}">
+              <div class="card-content">
+                <span>{{item.title}}</span>
+                <img src="{{item.featured}}" />
+              </div>
+              <div class="card-actions">
+                <koa-button><a href="{{item.url}}">{{item.lang.readmore}}</a></koa-button>
+              </div>
+            </koa-card>
+          </neon-animatable>
+        </template>
       </neon-animated-pages>
     </template>
   </div>
   <div ng-repeat="item in homepage.modulescope.sections" class="category-item {{item.class}}">
-    <a href='{{item.url}}'><div class="tile">
-      <div class='sections'>
-        <!-- <iron-icon icon='svg-category-icons:{{item.icon}}'></iron-icon> -->
-        <img style='max-width:100%; max-height:80%;' src='{{item.icon}}'>
-
-      </div>
-      <div class="cat-name theme-bg">
-        <div>
-          <span>{{item.name}}</span>
-          <iron-icon icon='icons:arrow-forward'></iron-icon>
-
+    <a href="{{item.url}}">
+      <div class="tile">
+        <div class="sections">
+          <!-- <iron-icon icon="svg-category-{{item.icon}}"></iron-icon> -->
+          <!-- <img style="max-width:100%; max-height:80%;" src="{{item.icon}}"> -->
+        </div>
+        <div class="cat-name theme-bg">
+          <div>
+            <span>{{item.name}}</span>
+            <iron-icon icon="arrow-forward"></iron-icon>
+          </div>
         </div>
       </div>
-    </div></a>
+    </a>
   </div>
-  <div>
-
-
-  </div>
-
 </div>

@@ -164,27 +164,17 @@
 				expectEnglishTexts();
 
 			});
-			it('should load spanish translation', function() {
+			it('should load and keep spanish translation', function() {
 				browser.get('/app/#/menu/translation');
 				isPresent('paper-button');
+				//:TODO PENDING
 				element(by.css('paper-button')).click();
-
+				browser.get('/app/#/menu');
+				isPresent('paper-menu-button');
+				browser.get('/app/#/menu/translation');
+				isPresent('paper-button');
 				expectSpanishTexts();
 
-			});
-			it('should keep spanish translation', function() {
-				browser.get('/app/#/menu/translation');
-				isPresent('div.translationtest');
-				element(by.css('a.changelanguage')).click();
-				element(by.css('.statusBar button')).click();
-				var EC = protractor.ExpectedConditions;
-				var menuelement = element.all(by.cssContainingText('a','Angular Scope Module')).get(0);
-				browser.wait(EC.elementToBeClickable(menuelement), 10000);
-
-				menuelement.click();
-				isPresent('.angularscope > span.info');
-				expectScope();
-				expectSpanishMenu();
 			});
 
 		});

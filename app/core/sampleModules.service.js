@@ -36,7 +36,6 @@
         '/menu/fire-connector/list'     : list(),
         // '/menu/facebook'                 : facebookfeed(),
         // '/menu2/twitter'                 : twitterfeed(),
-        '/menu/contact'                  : contact(),
         // '/menu2/flickr'                  : flickrfeed(),
         '/menu/html'                    : html(),
         '/menu/blog'          : wordpressposts(),
@@ -109,7 +108,9 @@
         '/menu/instagram'                : instagramfeed(),
         '/menu/youtube-gallery'          : youtubegallery(),
         '/menu/rss'                      : rss(),
-        '/menu/pdf'              : pdfviewer()
+        '/menu/pdf'                      : pdfviewer(),
+        '/menu/contact'                  : contact(),
+        '/menu/facebook'                 : facebookfeed(),
         // '/menu'                          : angularmenu('/menu')
       };
     }
@@ -462,7 +463,8 @@
         files: [ "modules/contact/controller.js" ],
         scope: {
           send_address: "theguard@kingofapp.es",
-          mandrill_key: "dFOWcqJzBMB69YQGq3GPSQ"
+          mandrill_key: "dFOWcqJzBMB69YQGq3GPSQ",
+          debug: true
         }
       };
     }

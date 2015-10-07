@@ -7,7 +7,7 @@
 
 		it('should load facebook feed module', function() {
 			browser.get('/app/#/menu/facebook');
-			isPresent('.facebookfeed ul.feed li');
+			isPresent('.facebookfeed paper-card img');
 
 			expectmodule();
 
@@ -18,7 +18,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.facebookfeed ul.feed li')).count()).toBeGreaterThan(2);
+			expect(element.all(by.css('.facebookfeed paper-card img')).count()).toBeGreaterThan(2);
 		}
 
 		afterEach(function() {

@@ -38,6 +38,7 @@
     var state = false;
     var prevent = false;
     var redirected = false;
+    var finished = false;
     $scope.$watch(
       function calculateModelValue() {
         return (trafficGuardiaCivil.pending.all);
@@ -53,12 +54,14 @@
         );
         if($location.$$path != "/"){
           setTimeout(function() {
-            if (count === 0 && !state) {
+            if (count === 0 && !state && !finished) {
               launchKoa();
+              finished=true;
             }
           }, 100);
-          if (count === 0 && prev > 0) {
+          if (count === 0 && prev > 0 && !finished) {
             launchKoa();
+            finished=true;
           }
           if (count > 0) {
             state = true;

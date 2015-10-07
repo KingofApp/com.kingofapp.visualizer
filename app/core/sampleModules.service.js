@@ -66,10 +66,7 @@
         // '/menu2/wordpress'             : wordpressposts(),
         // '/menu2/embed'                    : embed(),
         // '/menu2/html'                     : html(),
-        //For testing purposes
-        // '/ads'                           : ads(),
-        // '/ads/menu'                      : angularmenu("/ads/menu"),
-        // '/ads/menu/angular-scope'        : angularscope(),
+
         // '/menu/fire-connector'           : firebase(),
         // '/menu/fire-connector/list'      : list(),
         // '/menu/translation'              : translationtest(),
@@ -94,16 +91,21 @@
         // '/menu/facebook'                 : facebookfeed(),
         // '/menu/instagram'                : instagramfeed(),
         // '/menu/simple-gallery'           : simplegallery(),
-        // '/simple-directive'              : simpledirective(),
-        // '/scope'                         : angularscope(),
-        // '/feed'                          : angularstaticfeed(),
-        // '/filters'                       : filters(),
-        // '/menu/scope-module'             : angularscope(),
-        // '/menu/scope-diff-module'        : angulardiffscope(),
-        // '/menu/scope-same-module'        : angularscope(),
-        // '/menu/scope-module/static-feed' : angularstaticfeed(),
-        // '/multiple-files'                : multiplefiles(),
-        // '/menu/level1-feed'              : angularstaticfeed(),
+        //For testing purposes
+        '/ads'                           : ads(),
+        '/ads/menu'                      : polymermenu("/menu"),
+        '/ads/menu/angular-scope'        : angularscope(),
+        '/simple-directive'              : simpledirective(),
+        '/scope'                         : angularscope(),
+        '/feed'                          : angularstaticfeed(),
+        '/filters'                       : filters(),
+        '/menu/scope-module'             : angularscope(),
+        '/menu/scope-diff-module'        : angulardiffscope(),
+        '/menu/scope-same-module'        : angularscope(),
+        '/menu/scope-module/static-feed' : angularstaticfeed(),
+        '/multiple-files'                : multiplefiles(),
+        '/menu/level1-feed'              : angularstaticfeed(),
+        '/menu/translation'              : translationtest(),
         // '/menu'                          : angularmenu('/menu')
       };
     }
@@ -524,8 +526,8 @@
         view :  "modules/ads/index.html",
         files: ["modules/ads/controller.js"],
         scope: {
-          mainsrc: "<img src='https://thechive.files.wordpress.com/2013/01/tumblr_m4p3ff1gq01qg39ewo1_500.gif'>",
-          fixedsrc: "<img src='http://info.fletchersjewelers.com/Portals/145216/images/Bottom%20Banner_Diamond%20Cheat%20Sheet.jpg'/>"
+          mainsrc: "<h1>Ads Everywhere!</h1>",
+          fixedsrc: "<h3>fixed</h3>"
         }
       };
     }

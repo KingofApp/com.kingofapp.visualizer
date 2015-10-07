@@ -34,28 +34,28 @@
         this._processElement(this.children[0]);
       },
 
-      setTheme: function (theme, cb) {
+      setTheme: function (theme, callback) {
         this.theme = theme;
 
         var isNotThemeImported = typeof this._importedThemes[this.theme] === 'undefined';
 
         if (isNotThemeImported) {
           this.importHref(this._getThemePath(), function(e) {
-            this.renderThemeElements(cb);
+            this.renderThemeElements(callback);
             this._importedThemes[this.theme] = null;
           });
         } else {
-          this.renderThemeElements(cb);
+          this.renderThemeElements(callback);
         }
       },
 
-      renderThemeElements: function (cb) {
+      renderThemeElements: function (callback) {
         this.tree.forEach(function(elementObject) {
           this._renderThemeElement(elementObject);
         }, this);
 
-        if (cb) {
-          cb();
+        if (callback) {
+          setTimeout(callback, 0);
         }
       },
 

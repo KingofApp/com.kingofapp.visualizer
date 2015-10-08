@@ -2,13 +2,13 @@
 
   <koa-drawer-panel>
 
-    <koa-header-panel drawer>
+    <div drawer>
       <koa-menu>
         <template is="dom-repeat" items="{{polymermenu.menu}}">
           <a href="{{item.url}}">{{item.text}}</a>
         </template>
       </koa-menu>
-    </koa-header-panel>
+    </div>
 
     <koa-header-panel main>
       <koa-toolbar>

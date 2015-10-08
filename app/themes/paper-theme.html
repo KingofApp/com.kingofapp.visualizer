@@ -31,8 +31,8 @@
 <link rel="import" href="../bower_components/iron-iconset/iron-iconset.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 
-<link rel="import" href="../bower_components/neon-animation/neon-animatable.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animatable.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animations.html">
 
 
@@ -57,5 +57,103 @@
     line-height: 24px;
     min-height: 48px;
     padding: 0 16px;
+  }
+
+  .homepage neon-animated-pages {
+    min-height: 390px !important;
+  }
+  .homepage .header.paper-card {
+    height: 250px;
+    overflow: hidden;
+  }
+  .homepage .buttons {
+    position: absolute;
+    z-index: 11;
+    width: 100%;
+    top: 35%;
+  }
+  .homepage .buttons iron-icon {
+    width: 90px;
+    height: 90px;
+    color: #FE9723;
+  }
+  .homepage .buttons .left {}
+  .homepage .buttons .right {
+    position: absolute;
+    right: 0;
+  }
+  .homepage .category-item .tile {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .homepage .category-item {
+    position: relative;
+    float: left;
+    vertical-align: top;
+    width: 50%;
+    height: 224px;
+    overflow: hidden;
+  }
+  .homepage .feat-item .card-content {
+    height: 44px;
+    overflow: hidden;
+  }
+  .homepage .feat-item {
+    position: relative;
+    float: left;
+    vertical-align: top;
+    width: 100%;
+    background-color: #FD782A;
+  }
+  .homepage .cat-name {
+    height: 38px;
+    padding: 16px 16px 0px 16px;
+    font-size: 17px;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  .homepage .green {
+    background-color: #b9f6ca;
+  }
+  .homepage .green .theme-bg {
+    background-color: #1de9b6;
+    color: #616161;
+  }
+  .homepage .blue {
+    background-color: #0687CD;
+  }
+  .homepage .blue .theme-bg {
+    background-color: #046295;
+    color: #fff;
+  }
+  .homepage .red {
+    background-color: #ff8a80;
+  }
+  .homepage .red .theme-bg {
+    background-color: #ff5252;
+    color: #fff;
+  }
+  .homepage .purple {
+    background-color: #9E5463;
+  }
+  .homepage .purple .theme-bg {
+    background-color: #854753;
+    color: #fff;
+  }
+  .homepage .grey1 {
+    background-color: #C5C3B1;
+  }
+  .homepage .grey1 .theme-bg {
+    background-color: #757257;
+    color: #fff;
+  }
+  .homepage .red1 {
+    background-color: #E77C56;
+  }
+  .homepage .red1 .theme-bg {
+    background-color: #b34219;
+    color: #fff;
   }
 </style>

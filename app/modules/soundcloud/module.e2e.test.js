@@ -6,8 +6,8 @@
 		});
 
 		it('should load soundcloud', function() {
-			browser.get('/app/#/polymer-menu/soundcloud');
-      isPresent('soundcloud .details');
+			browser.get('/app/#/menu/soundcloud');
+      isPresent('soundcloud paper-card');
 			expectmodule();
 		});
 
@@ -19,7 +19,7 @@
 
 		function expectmodule() {
 			isPresent('p.ready');
-			expect(element(by.css('.track-info a.band')).getInnerHtml()).toBe("Alain Galvan");
+			expect(element(by.css('.big')).getInnerHtml()).toBe("Alain Galvan");
 		}
 
 		afterEach(function() {

@@ -1,12 +1,12 @@
 (function(){
-	describe('Wordpress Posts test', function() {
+	describe('Wordpress Single Post test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
 		it('should load wordpress posts', function() {
-			browser.get('/app/#/polymer-menu/wordpress');
-			isPresent('.wordpressposts ul.feed li');
+			browser.get('/app/#/menu/wordpresssingle');
+			isPresent('.wordpresssingle paper-card div.card-content p');
 
 			expectmodule();
 
@@ -17,7 +17,7 @@
 			}, 20000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.wordpressposts ul.feed li')).count()).toBeGreaterThan(0);
+			expect(element(by.css('.wordpresssingle paper-card h2.title-text')).getInnerHtml()).toBe('About');
 		}
 
 		afterEach(function() {

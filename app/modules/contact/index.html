@@ -21,32 +21,5 @@
     <koa-button raised ng-click="send()">{{'contact.send' | translate}}</koa-button>
   </form>
   <p class='status' ng-if='contact.status && contact.modulescope.debug'>{{contact.status}}</p>
-  <!-- <form name="contactForm" is="iron-form">
-
-    <paper-input-container>
-      <label>{{'contact.name' | translate}}</label>
-      <input is="iron-input" ng-model="contact.name" required name="name"></input>
-      <paper-item ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">{{'contact.error.name' | translate}}</paper-item>
-    </paper-input-container>
-
-    <paper-input-container>
-      <label>{{'contact.email' | translate}}</label>
-      <input is="iron-input" type="email" required ng-model="contact.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+"></input>
-      <paper-item ng-show="contactForm.email.$invalid && !contactForm.email.$pristine && contactForm.email.$error.pattern " class="help-block">{{'contact.error.email' | translate}}</paper-item>
-    </paper-input-container>
-
-    <paper-input-container>
-      <label>{{'contact.message' | translate}}</label>
-      <input is="iron-input" required ng-model="contact.message" name="message"></input>
-      <paper-item ng-show="contactForm.message.$invalid && !contactForm.message.$pristine" class="help-block">{{'contact.error.message' | translate}}</paper-item>
-    </paper-input-container>
-
-    <paper-button raised ng-click="send()">{{'contact.send' | translate}}</paper-button>
-    <br /><br />
-  </form>
-
-  <paper-toast text="{{ contact.status }}"></paper-toast>
-
-  <p class="contactsent" ng-if="contact.status"></p> -->
 
 </div>

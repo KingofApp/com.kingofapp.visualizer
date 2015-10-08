@@ -58,7 +58,8 @@
               launchKoa();
               finished = true;
             }
-          }, 100);
+          }, 400);
+          //Launch if there were Petitions
           if (count === 0 && prev > 0 && !finished) {
             launchKoa();
             finished = true;

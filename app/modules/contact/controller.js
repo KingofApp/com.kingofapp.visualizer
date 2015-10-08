@@ -32,7 +32,6 @@ function contactCtrl($scope, $http, $location, $filter, structureService) {
         }
       }
     };
-console.log($scope.contact.modulescope);
     // if ($scope.contactForm.$valid) {
       $http(req)
         .success(function(data) {

@@ -7,7 +7,7 @@
 
 		it('should load html module', function() {
 			browser.get('/app/#/menu/html');
-			isPresent('.html');
+			isPresent('.html paper-card div p');
 
 			expectmodule();
 
@@ -19,7 +19,7 @@
 		}
 		function expectmodule() {
 			//Expect color applied
-			element.all(by.css('.html > div > p')).first().getAttribute('style').then(function(style) {
+			element.all(by.css('.html paper-card div p')).first().getAttribute('style').then(function(style) {
 				var bgColor = style.substr(7, 17);
 				expect(bgColor).toBe('rgb(57, 169, 211)');
 			});

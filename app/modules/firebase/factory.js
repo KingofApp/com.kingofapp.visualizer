@@ -14,6 +14,7 @@ angular.module('factoria', ['firebase'])
     };
     var getData = function(callback){
         var ref = getFirebaseRoot();
+        koaRender();
         return $firebaseArray(ref);
     }
     var service = {

@@ -6,7 +6,7 @@
 		});
 
 		it('should load vimeo video', function() {
-			browser.get('/app/#/polymer-menu/vimeo-video');
+			browser.get('/app/#/menu/vimeo-video');
 
 			browser.wait(function() {
 				return $('.vimeovideo').isPresent(); // keeps waiting until this statement resolves to true

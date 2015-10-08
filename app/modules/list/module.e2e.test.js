@@ -7,7 +7,7 @@
 
 		it('should load list module', function() {
 			browser.get('/app/#/menu/fire-connector/list');
-			isPresent('.list');
+			isPresent('div.item');
 
 			expectmodule();
 
@@ -18,7 +18,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('li.list')).count()).toBeGreaterThan(2);
+			expect(element.all(by.css('div.item')).count()).toBeGreaterThan(2);
 		}
 
 		afterEach(function() {

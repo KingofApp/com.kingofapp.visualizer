@@ -6,7 +6,7 @@
 		});
 
 		it('should load polymer menu', function() {
-			browser.get('/app/#/polymer-menu');
+			browser.get('/app/#/menu');
 			isPresent('iron-icon');
 
 			element(by.css('iron-icon')).click();
@@ -15,7 +15,7 @@
 			browser.wait(EC.elementToBeClickable(menuelement), 10000);
 
 			menuelement.click();
-			isPresent('.facebookfeed ul.feed li');
+			isPresent('.facebookfeed paper-card img');
 
 			expectmodule();
 
@@ -26,7 +26,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.facebookfeed ul.feed li')).count()).toBeGreaterThan(5);
+			expect(element.all(by.css('.facebookfeed paper-card img')).count()).toBeGreaterThan(5);
 		}
 
 		afterEach(function() {

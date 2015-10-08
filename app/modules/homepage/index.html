@@ -1,75 +1,42 @@
 <div class="homepage" ng-controller="homepageCtrl">
 
-  <link rel="stylesheet" href="modules/homepage/style.css">
-  <div poly-scripts scripts="scripts"></div>
-
-  <script>
-    set();
-
-    function set() {
-      var scope = document.querySelector('template[is="dom-bind"]');
-      var scope2 = document.querySelector('neon-animated-pages');
-      scope2.selected = 0;
-      scope._onPrevClick = function() {
-        scope2.entryAnimation = 'slide-from-left-animation';
-        scope2.exitAnimation = 'slide-right-animation';
-        scope2.selected = scope2.selected === 0 ? 2 : (scope2.selected - 1);
-      }
-      scope._onNextClick = function() {
-        scope2.entryAnimation = 'slide-from-right-animation';
-        scope2.exitAnimation = 'slide-left-animation';
-        scope2.selected = scope2.selected === 2 ? 0 : (scope2.selected + 1);
-      }
-    }
-  </script>
-
-  <div class="feat-item orange">
+  <div class="feat-item">
     <div class="tile">
-      <div>
-        <div>
-          <div class="category-bg-wrapper">
-          </div>
-        </div>
-      </div>
       <div class="cat-name theme-bg">
-        <div>
-          <span translate='homepage.latestnews'></span>
-        </div>
+        <span>{{'homepage.latestnews' | translate}}</span>
       </div>
     </div>
-    <template id="homepage" is="dom-bind">
-      <div class="toolbar">
-        <koa-button class="left" on-click="_onPrevClick">
-          <iron-icon icon="chevron-left"></iron-icon>
-        </koa-button>
-        <koa-button class="right" on-click="_onNextClick">
-          <iron-icon icon="chevron-right"></iron-icon>
-        </koa-button>
-      </div>
 
-      <neon-animated-pages style="min-height:300px;" id="pages" class="flex">
-        <template is="dom-repeat" items="[[items]]">
-          <neon-animatable>
-            <koa-card image="{{item.featured}}">
-              <div class="card-content">
-                <span>{{item.title}}</span>
-                <img src="{{item.featured}}" />
-              </div>
-              <div class="card-actions">
-                <koa-button><a href="{{item.url}}">{{item.lang.readmore}}</a></koa-button>
-              </div>
-            </koa-card>
-          </neon-animatable>
-        </template>
-      </neon-animated-pages>
-    </template>
+    <div class="buttons">
+      <koa-button class="left" onclick="_onPrevClick()">
+        <iron-icon icon="chevron-left"></iron-icon>
+      </koa-button>
+      <koa-button class="right" onclick="_onNextClick()">
+        <iron-icon icon="chevron-right"></iron-icon>
+      </koa-button>
+    </div>
+
+    <neon-animated-pages selected="0">
+      <neon-animatable ng-repeat="item in homepage.items">
+        <paper-card image="{{item.featured}}">
+          <div class="card-content">
+            <span>{{item.title}}</span>
+          </div>
+          <div class="card-actions">
+            <koa-button>
+              <a href="{{item.url}}">{{item.lang.readmore}}</a>
+            </koa-button>
+          </div>
+        </paper-card>
+      </neon-animatable>
+    </neon-animated-pages>
   </div>
-  <div ng-repeat="item in homepage.modulescope.sections" class="category-item {{item.class}}">
+
+  <div class="category-item {{item.class}}" ng-repeat="item in homepage.modulescope.sections">
     <a href="{{item.url}}">
       <div class="tile">
         <div class="sections">
-          <!-- <iron-icon icon="svg-category-{{item.icon}}"></iron-icon> -->
-          <!-- <img style="max-width:100%; max-height:80%;" src="{{item.icon}}"> -->
+          <img ng-src="{{item.icon}}" style="max-width:100%">
         </div>
         <div class="cat-name theme-bg">
           <div>
@@ -80,4 +47,22 @@
       </div>
     </a>
   </div>
+
+  <script>
+    function _onPrevClick() {
+      var animatedPages = document.querySelector('neon-animated-pages');
+      var selectedPage = parseInt(animatedPages.selected);
+      animatedPages.entryAnimation = 'slide-from-left-animation';
+      animatedPages.exitAnimation = 'slide-right-animation';
+      animatedPages.selected = selectedPage === 2 ? 0 : (selectedPage - 1);
+    }
+
+    function _onNextClick() {
+      var animatedPages = document.querySelector('neon-animated-pages');
+      var selectedPage = parseInt(animatedPages.selected);
+      animatedPages.entryAnimation = 'slide-from-right-animation';
+      animatedPages.exitAnimation = 'slide-left-animation';
+      animatedPages.selected = selectedPage === 2 ? 0 : (selectedPage + 1);
+    }
+  </script>
 </div>

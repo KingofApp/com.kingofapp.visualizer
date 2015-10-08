@@ -149,6 +149,10 @@
     function addEvents() {
       var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
 
+      var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
+      var parent = document.querySelector('[main]')
+      Polymer.dom(parent).appendChild(polymermenuTemplate);
+
       console.info('Adding ng-click...');
       $('[ng-click]').click(function() {
         var functionName = $(this).attr('ng-click').replace('()', '');

@@ -7,11 +7,12 @@
 
 		it('should load polymer menu', function() {
 			browser.get('/app/#/menu');
-			isPresent('iron-icon');
+			isPresent('paper-icon-button');
 
-			element(by.css('iron-icon')).click();
+			element(by.css('paper-icon-button')).click();
+			isPresent('paper-menu .selectable-content a');
 			var EC = protractor.ExpectedConditions;
-			var menuelement = element.all(by.cssContainingText('a','Facebook Feed')).get(0);
+			var menuelement = element.all(by.cssContainingText('.selectable-content a','Facebook Feed')).get(0);
 			browser.wait(EC.elementToBeClickable(menuelement), 10000);
 
 			menuelement.click();

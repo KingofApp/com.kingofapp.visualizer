@@ -18,7 +18,7 @@
 
     <neon-animated-pages selected="0">
       <neon-animatable ng-repeat="item in homepage.items">
-        <paper-card image="{{item.featured}}">
+        <koa-card image="{{item.featured}}">
           <div class="card-content">
             <span>{{item.title}}</span>
           </div>
@@ -27,7 +27,7 @@
               <a href="{{item.url}}">{{item.lang.readmore}}</a>
             </koa-button>
           </div>
-        </paper-card>
+        </koa-card>
       </neon-animatable>
     </neon-animated-pages>
   </div>

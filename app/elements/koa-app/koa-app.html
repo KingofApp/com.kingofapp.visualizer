@@ -75,39 +75,38 @@
 
           if (isKoaElement) {
             this.tree.push({
-              original: element,
               tag: element.tagName.toLowerCase().replace('koa-', ''),
-              actual: element
+              attributes: element.attributes,
+              childNodes: element.childNodes,
+              actualElement: element
             });
           }
         }
       },
 
-      _createThemeElement: function (tag, element) {
+      _createThemeElement: function (tag, attributes, childNodes, element) {
         var newElementName = this.theme + '-' + tag;
         var newElement = document.createElement(newElementName);
 
-        for (var i = 0; i < element.attributes.length; i++) {
-          var attribute = element.attributes[i];
-          newElement.setAttribute(attribute.nodeName, attribute.nodeValue);
+        for (var i = 0; i < attributes.length; i++) {
+          var attribute = attributes[i];
+          Polymer.dom(newElement).setAttribute(attribute.nodeName, attribute.nodeValue);
         }
 
-        // Polymer.dom(newElement).innerHTML = Polymer.dom(element).innerHTML;
-
-        var originalChildNodes = Polymer.dom(element).cloneNode(true).childNodes;
-        for (var i = 0; i < originalChildNodes.length; i++) {
-          Polymer.dom(newElement).appendChild(originalChildNodes[i]);
+        for (var i = 0; i < childNodes.length; i++) {
+          var clonedChildNode = Polymer.dom(childNodes[i]).cloneNode(true);
+          Polymer.dom(newElement).appendChild(clonedChildNode);
         }
 
         return newElement;
       },
 
-      _renderThemeElement: function (element) {
-        var parentNode = Polymer.dom(element.actual).parentNode;
-        var newElement = this._createThemeElement(element.tag, element.original);
+      _renderThemeElement: function (treeElement) {
+        var parentNode = Polymer.dom(treeElement.actualElement).parentNode;
+        var newElement = this._createThemeElement(treeElement.tag, treeElement.attributes, treeElement.childNodes);
 
-        parentNode.replaceChild(newElement, element.actual);
-        element.actual = newElement;
+        Polymer.dom(parentNode).replaceChild(newElement, treeElement.actualElement);
+        treeElement.actualElement = newElement;
       },
 
       _getThemePath: function () {

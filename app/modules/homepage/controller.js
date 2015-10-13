@@ -37,6 +37,7 @@ function loadFunction($http, $scope, $rootScope, structureService, $location, $f
             // featured : chetos[index]
         });
       });
+      console.log("Items",elements);
       $scope.homepage.items = elements;
     }).error(function() {
       //NOTE: CAMBIAR  POR LO DE FACEBOOK

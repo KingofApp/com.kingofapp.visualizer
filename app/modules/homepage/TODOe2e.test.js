@@ -4,7 +4,12 @@
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
-
+		// Entro, compruebo el cambio slider, veo que carga otro
+		// Clicko en el Read More
+		// Valido que carga el contenido
+		// Pincho en el menu y vuelvo para el home
+		// compruebo el cambio de slider.
+		//
 		it('should load text module', function() {
 			browser.get('/app/#/menu/text');
 			isPresent('.text');

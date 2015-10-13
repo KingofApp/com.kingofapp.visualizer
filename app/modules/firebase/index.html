@@ -1,7 +1,7 @@
-<div ng-controller="firebaseCtrl">
+<div class='firebase' ng-controller="firebaseCtrl">
 
   <koa-toast ng-if="firebase.modulescope.debug" text="Firebase connected!"></koa-toast>
-
+<p class="firebasestatus" ng-if="firebase.data.length && firebase.modulescope.debug">firebase connected!</p>
   <p class="firebase" ng-if="firebase.data.length">
     <script>
       setTimeout(function() {

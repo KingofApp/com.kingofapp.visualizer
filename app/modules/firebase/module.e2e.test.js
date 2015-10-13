@@ -1,14 +1,13 @@
 (function(){
-	describe('Text Module test', function() {
+	describe('Firebase Module test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
 
-		it('should load text module', function() {
-			browser.get('/app/#/menu/text');
-			isPresent('.text');
-
+		it('should load firebase module', function() {
+			browser.get('/app/#/menu/fire-connector');
+			isPresent('.firebasestatus');
 			expectmodule();
 
 		});
@@ -18,7 +17,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element(by.css('.text p')).getInnerHtml()).toBe('Text phrase');
+			expect(element(by.css('.firebasestatus')).getInnerHtml()).toBe('firebase connected!');
 		}
 
 		afterEach(function() {

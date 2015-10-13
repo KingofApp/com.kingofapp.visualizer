@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp" class="no-js">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,6 +60,17 @@
         }
       });
 
+    });
+    angular.element(document).ready(function () {
+        $.get('core/structure.json', function (data) {
+            angular.module('myApp').run( function run($rootScope) {
+                $rootScope.appJsonStructure = data;
+            });
+            angular.bootstrap(document, ['myApp']);
+        }).fail(function() {
+          console.log("Default loading from samplemodules");
+          angular.bootstrap(document, ['myApp']);
+        });
     });
 	</script>
 

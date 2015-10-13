@@ -1,0 +1,129 @@
+/*{
+
+   "config": {
+
+      "googleAnalytics": "UA-54151479-3",
+
+      "lang": [
+
+         "en"
+
+      ]
+
+   },
+
+   "modules": {
+
+      "/": {},
+
+      "/menu": {
+
+         "name": "Polymer Menu Module",
+
+         "identifier": "polymermenu",
+
+         "type": "A",
+
+         "hidden": true,
+
+         "view": "modules/polymermenu/index.html",
+
+         "files": [
+
+            "modules/polymermenu/controller.js"
+
+         ],
+
+         "scope": {
+
+            "path": "/menu"
+
+         }
+
+      },
+
+      "/menu/home": {
+
+         "name": "Home",
+
+         "identifier": "homepage",
+
+         "type": "A",
+
+         "headclass": "orange",
+
+         "view": "modules/homepage/index.html",
+
+         "files": [
+
+            "modules/homepage/controller.js"
+
+         ],
+
+         "scope": {
+
+            "sections": [
+
+               {
+
+                  "name": "Social",
+
+                  "icon": "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300",
+
+                  "url": "#/menu/social"
+
+               },
+
+               {
+
+                  "name": "Inspiración",
+
+                  "icon": "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300",
+
+                  "url": "#/menu/social2"
+
+               },
+
+               {
+
+                  "name": "Blog",
+
+                  "icon": "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300",
+
+                  "url": "#/menu/blog"
+
+               },
+
+               {
+
+                  "name": "Contact",
+
+                  "icon": "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300",
+
+                  "url": "#/menu/contact"
+
+               }
+
+            ],
+
+            "featured": {
+
+               "title": "Últimas noticias",
+
+               "domain": "http://www.ateneupopular.com",
+
+               "postnumber": 3,
+
+               "category": "",
+
+               "galleryurl": "#/menu/ads/single"
+
+            }
+
+         }
+
+      }
+
+   }
+
+}*/

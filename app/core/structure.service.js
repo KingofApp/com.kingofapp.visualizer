@@ -4,14 +4,18 @@ angular
   .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
-  structureService.$inject = ['$q','$translatePartialLoader', '$translate', 'sampleModules'];
+  structureService.$inject = ['$q','$translatePartialLoader', '$translate', 'sampleModules', '$rootScope'];
 
-  function structureService($q, $translatePartialLoader, $translate, sampleModules){
+  function structureService($q, $translatePartialLoader, $translate, sampleModules, $rootScope){
 
     var listeners = [];
     var lang;
     var cachedLocations = {};
     var data = sampleModules;
+    if($rootScope.appJsonStructure){
+      data = $rootScope.appJsonStructure;
+    }
+
 
     return {
       get               : get,

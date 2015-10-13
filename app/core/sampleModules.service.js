@@ -135,7 +135,9 @@
         headclass: 'green',
         view: "modules/simplegallery/index.html",
         files: [
-          "modules/simplegallery/controller.js"
+          "modules/simplegallery/controller.js",
+          "modules/simplegallery/swiper/js/swiper.min.js",
+          "modules/simplegallery/swiper/css/swiper.min.css"
         ],
         scope: {
           gallery: [

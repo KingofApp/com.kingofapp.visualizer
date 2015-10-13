@@ -32,8 +32,9 @@
 
   function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil) {
     console.log('pasa por el commonLoaderCtrl');
-    $scope.trafficGuardiaCivil = trafficGuardiaCivil;
 
+    $scope.trafficGuardiaCivil = trafficGuardiaCivil;
+    $rootScope.koaLaunched = false;
     var prev = 0;
     var state = false;
     var prevent = false;
@@ -189,7 +190,7 @@
             setColor($rootScope.appData.config.colors);
           }
         }, 500);
-
+        $rootScope.koaLaunched = true;
       }, 100);
     }
   }

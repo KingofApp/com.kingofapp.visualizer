@@ -54,7 +54,7 @@
       var selectedPage = parseInt(animatedPages.selected);
       animatedPages.entryAnimation = 'slide-from-left-animation';
       animatedPages.exitAnimation = 'slide-right-animation';
-      animatedPages.selected = selectedPage === 2 ? 0 : (selectedPage - 1);
+      animatedPages.selected = selectedPage === 0 ? 2 : (selectedPage - 1);
     }
 
     function _onNextClick() {

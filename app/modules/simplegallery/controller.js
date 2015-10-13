@@ -1,10 +1,17 @@
 angular
   .controller('simplegalleryCtrl', staticFeedCtrl);
 
-staticFeedCtrl.$inject = ['$scope', '$http', '$location', 'structureService'];
+staticFeedCtrl.$inject = ['$scope', '$rootScope', '$http', '$location', 'structureService'];
 
-function staticFeedCtrl($scope, $http, $location, structureService) {
+function staticFeedCtrl($scope, $rootScope, $http, $location, structureService) {
   //Register upper level modules
   structureService.registerModule($location, $scope, 'simplegallery');
-  $scope.scripts = ['images.elements=' + JSON.stringify($scope.simplegallery.modulescope.gallery) + ';'];
+
+  $rootScope.$on("koaLaunched",function() {
+    console.log("Goo");
+    var swiper = new Swiper('.swiper-container', {
+      pagination: '.swiper-pagination',
+      paginationClickable: true
+    });
+  });
 }

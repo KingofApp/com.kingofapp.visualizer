@@ -34,7 +34,6 @@
     console.log('pasa por el commonLoaderCtrl');
 
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
-    $rootScope.koaLaunched = false;
     var prev = 0;
     var state = false;
     var prevent = false;
@@ -165,6 +164,7 @@
           $scope[model[0]][model[1]] = $(this).val();
         });
       });
+      $rootScope.$broadcast("koaLaunched");
     }
 
     function launchKoa() {
@@ -191,7 +191,6 @@
             setColor($rootScope.appData.config.colors);
           }
         }, 500);
-        $rootScope.koaLaunched = true;
       }, 100);
     }
   }

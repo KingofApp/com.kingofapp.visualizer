@@ -61,17 +61,11 @@ function loadFunction($http, $scope, $rootScope, structureService, $location, $f
     return featured;
   }
 
-  $rootScope.$watch('koaLaunched', function(newValue, oldValue) {
-    console.log(newValue, oldValue);
-    if (newValue !== oldValue) {
-      if (newValue === true) {
-        console.log('wsdasdads');
-          var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true
-          });
-
-      }
-    }
+$rootScope.$on("koaLaunched",function() {
+  console.log("Goo");
+  var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true
   });
+});
 }

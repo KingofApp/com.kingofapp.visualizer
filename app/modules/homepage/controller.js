@@ -1,9 +1,9 @@
 angular
   .controller('homepageCtrl', loadFunction);
 
-loadFunction.$inject = ['$http', '$scope', 'structureService', '$location', '$filter'];
+loadFunction.$inject = ['$http', '$scope', '$rootScope', 'structureService', '$location', '$filter'];
 
-function loadFunction($http, $scope, structureService, $location, $filter) {
+function loadFunction($http, $scope, $rootScope, structureService, $location, $filter) {
   //Register upper level modules
   structureService.registerModule($location, $scope, "homepage");
   $http.get($scope.homepage.modulescope.featured.domain + '/wp-json/posts', {
@@ -60,4 +60,18 @@ function loadFunction($http, $scope, structureService, $location, $filter) {
     }
     return featured;
   }
+
+  $rootScope.$watch('koaLaunched', function(newValue, oldValue) {
+    console.log(newValue, oldValue);
+    if (newValue !== oldValue) {
+      if (newValue === true) {
+        console.log('wsdasdads');
+          var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+          });
+
+      }
+    }
+  });
 }

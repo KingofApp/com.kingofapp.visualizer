@@ -53,16 +53,16 @@
           trafficGuardiaCivil.pending.post, 'POST',
           '}'
         );
-        if($location.$$path != "/"){
+        if ($location.$$path != "/") {
           setTimeout(function() {
             if (count === 0 && !state && !finished) {
               launchKoa();
-              finished=true;
+              finished = true;
             }
           }, 100);
           if (count === 0 && prev > 0 && !finished) {
             launchKoa();
-            finished=true;
+            finished = true;
           }
           if (count > 0) {
             state = true;
@@ -77,7 +77,7 @@
     $rootScope.$watch('appData', function(newValue, oldValue) {
       if (structureService.get() != newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
-        redirected=true;
+        redirected = true;
         setTimeout(function() {
           $scope.$apply(function() {
             $location.path(newValue.config.index);
@@ -95,7 +95,7 @@
     $rootScope.$watch('appTheme', function(newValue, oldValue) {
       // TODO: SE REPITE MIL VECES LOS LOGS
       if (oldValue != newValue) {
-        console.log("Theme",newValue);
+        console.log("Theme", newValue);
         setTheme(newValue);
       }
     });
@@ -105,7 +105,7 @@
     //Register Route
     structureService.getModule($location.$$path).then(function(module) {
       $rootScope.toolbar = {
-        title : module.name
+        title: module.name
       };
       $rootScope.current = module.identifier;
       $scope.module = module || $scope.module;
@@ -129,6 +129,7 @@
     function isJqueryModule(type) {
       return type === '$';
     }
+
     function setColor(color) {
       //Set colors
       // console.log("Color");
@@ -155,7 +156,7 @@
       });
 
       console.info('Adding ng-model...');
-      $('[ng-model]').each(function () {
+      $('[ng-model]').each(function() {
         var parent = $(this);
 
         $(this.inputElement).bind('input', function() {
@@ -185,7 +186,7 @@
           koaApp.renderThemeElements(addEvents);
         }
 
-        setTimeout(function () {
+        setTimeout(function() {
           if ($rootScope.appData) {
             setColor($rootScope.appData.config.colors);
           }

@@ -7,29 +7,41 @@
       </div>
     </div>
 
-    <div class="buttons">
-      <koa-button class="left" onclick="_onPrevClick()">
-        <iron-icon icon="chevron-left"></iron-icon>
-      </koa-button>
-      <koa-button class="right" onclick="_onNextClick()">
-        <iron-icon icon="chevron-right"></iron-icon>
-      </koa-button>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
 
-    <neon-animated-pages selected="0">
-      <neon-animatable ng-repeat="item in homepage.items">
-        <koa-card image="{{item.featured}}">
-          <div class="card-content">
-            <span>{{item.title}}</span>
-          </div>
-          <div class="card-actions">
-            <koa-button>
-              <a href="{{item.url}}">{{item.lang.readmore}}</a>
-            </koa-button>
-          </div>
-        </koa-card>
-      </neon-animatable>
-    </neon-animated-pages>
+    <!-- Demo styles -->
+    <style>
+      .swiper-container {
+        width: 100%;
+        height: 400px;
+      }
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+    </style>
+
   </div>
 
   <div class="category-item {{item.class}}" ng-repeat="item in homepage.modulescope.sections">
@@ -47,22 +59,4 @@
       </div>
     </a>
   </div>
-
-  <script>
-    function _onPrevClick() {
-      var animatedPages = document.querySelector('neon-animated-pages');
-      var selectedPage = parseInt(animatedPages.selected);
-      animatedPages.entryAnimation = 'slide-from-left-animation';
-      animatedPages.exitAnimation = 'slide-right-animation';
-      animatedPages.selected = selectedPage === 0 ? 2 : (selectedPage - 1);
-    }
-
-    function _onNextClick() {
-      var animatedPages = document.querySelector('neon-animated-pages');
-      var selectedPage = parseInt(animatedPages.selected);
-      animatedPages.entryAnimation = 'slide-from-right-animation';
-      animatedPages.exitAnimation = 'slide-left-animation';
-      animatedPages.selected = selectedPage === 2 ? 0 : (selectedPage + 1);
-    }
-  </script>
 </div>

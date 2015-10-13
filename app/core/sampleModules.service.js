@@ -154,7 +154,7 @@
         type :  'A',
         headclass : 'orange',
         view :  "modules/homepage/index.html",
-        files: [ "modules/homepage/controller.js" ],
+        files: [ "modules/homepage/controller.js", "modules/homepage/swiper/js/swiper.min.js", "modules/homepage/swiper/css/swiper.min.css" ],
         scope: {
           sections: [{ name : "Social", icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300", class : "blue", url : "#/menu/social"},
             { name : "Inspiración", icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300", class : "purple", url : "#/menu/social2"},

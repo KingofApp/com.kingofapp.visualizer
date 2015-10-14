@@ -31,7 +31,7 @@ exports.config = {
     //'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
   },
 
-  baseUrl: 'http://localhost:9000/app/',
+  baseUrl: 'http://localhost:9001/app/',
 
   //keepAlive: true,
 

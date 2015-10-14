@@ -16,14 +16,14 @@
 		function isPresent(selector) {
 			browser.wait(function() {
 					return $(selector).isPresent();
-			}, 6000, 'Main (' + selector + ') not present');
+			}, 9000, 'Main (' + selector + ') not present');
 		}
 		function expectstatic() {
-			expect(element(by.css('.static qrcode canvas')).isPresent()).toBe(true);
+			expect(element(by.css('.static qr-code')).isPresent()).toBe(true);
 		}
 		function expectdynamic() {
-			isPresent('ul li.list');
-			expect(element.all(by.css('ul li.list')).count()).toBeGreaterThan(1);
+			isPresent('paper-card.dynamic');
+			expect(element.all(by.css('paper-card.dynamic qr-code')).count()).toBeGreaterThan(1);
 		}
 
 		afterEach(function() {

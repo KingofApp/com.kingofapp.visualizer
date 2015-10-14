@@ -58,7 +58,8 @@
               launchKoa();
               finished = true;
             }
-          }, 100);
+          }, 400);
+          //Launch if there were Petitions
           if (count === 0 && prev > 0 && !finished) {
             launchKoa();
             finished = true;
@@ -147,6 +148,10 @@
 
     function addEvents() {
       var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
+
+      var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
+      var parent = document.querySelector('[main]')
+      Polymer.dom(parent).appendChild(polymermenuTemplate);
 
       console.info('Adding ng-click...');
       $('[ng-click]').click(function() {

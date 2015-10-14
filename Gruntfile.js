@@ -112,5 +112,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('unit-test', ['karma:unit:start']);
   grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:cors', 'protractor:e2e']);
+  // grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
   grunt.registerTask('continuous-test', ['exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
 };

@@ -6,7 +6,7 @@
 		});
 
 		it('should load google map', function() {
-			browser.get('/app/#/polymer-menu/google-map');
+			browser.get('/app/#/menu/google-map');
       isPresent('.angular-google-map');
 			expectmodule();
 		});

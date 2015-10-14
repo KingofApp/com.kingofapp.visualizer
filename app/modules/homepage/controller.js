@@ -14,9 +14,6 @@ function loadFunction($http, $scope, $rootScope, structureService, $location, $f
     })
     .success(function(data) {
       var elements = [];
-      // var chetos = ['http://www.martinibistro.com/wp-content/uploads/2014/03/steak.jpg',
-      //   'http://www.martinibistro.com/wp-content/uploads/2014/03/sushi.jpg',
-      //   'http://www.martinibistro.com/wp-content/uploads/2014/03/3.jpg']
       angular.forEach(data, function(item, index) {
         var featured = "";
         if (item.featured_image) {
@@ -39,7 +36,6 @@ function loadFunction($http, $scope, $rootScope, structureService, $location, $f
       });
       $scope.homepage.items = elements;
     }).error(function() {
-      //NOTE: CAMBIAR  POR LO DE FACEBOOK
       $scope.homepage.featured.items = [{
         "message": "Opps! There was a problem loading the feed!",
       }];
@@ -62,6 +58,7 @@ function loadFunction($http, $scope, $rootScope, structureService, $location, $f
   }
 
 $rootScope.$on("koaLaunched",function() {
+  //NOTE: Runs multiple times??
   console.log("Goo");
   var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',

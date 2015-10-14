@@ -9,6 +9,7 @@ exports.config = {
 
   specs: [
     '../**/*.e2e.test.js'
+    // '../**/TODOe2e.test.js'
   ],
 
   capabilities: {
@@ -28,7 +29,7 @@ exports.config = {
     //'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
   },
 
-  baseUrl: 'http://localhost:9000/app/',
+  baseUrl: 'http://localhost:9001/app/',
 
   // keepAlive: true,
 

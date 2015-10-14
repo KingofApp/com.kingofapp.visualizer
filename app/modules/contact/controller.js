@@ -32,8 +32,7 @@ function contactCtrl($scope, $http, $location, $filter, structureService) {
         }
       }
     };
-
-    if ($scope.contactForm.$valid) {
+    // if ($scope.contactForm.$valid) {
       $http(req)
         .success(function(data) {
           if (data[0].status == 'sent') {
@@ -41,13 +40,18 @@ function contactCtrl($scope, $http, $location, $filter, structureService) {
           } else {
             $scope.contact.status = $filter('translate')('contact.message.warning') + data[0].status;
           }
-          document.querySelector("paper-toast").show();
+          if(!$scope.contact.modulescope.debug){
+            document.querySelector("paper-toast").show();
+          }
+
         })
         .error(function(data) {
           console.log("ERROR: ", data.message);
           $scope.contact.status = $filter('translate')('contact.message.rejected');
-          document.querySelector("paper-toast").show();
+          if(!$scope.contact.modulescope.debug){
+            document.querySelector("paper-toast").show();
+          }
         });
-    }
+    // }
   }
 }

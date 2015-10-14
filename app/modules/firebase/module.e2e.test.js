@@ -7,8 +7,7 @@
 
 		it('should load firebase module', function() {
 			browser.get('/app/#/menu/fire-connector');
-			isPresent('.firebase');
-
+			isPresent('.firebasestatus');
 			expectmodule();
 
 		});
@@ -18,7 +17,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element(by.css('.firebase')).getInnerHtml()).toBe('firebase connected!');
+			expect(element(by.css('.firebasestatus')).getInnerHtml()).toBe('firebase connected!');
 		}
 
 		afterEach(function() {

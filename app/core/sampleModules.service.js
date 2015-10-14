@@ -25,72 +25,10 @@
     function menu(){
       return {
         '/abdonrd'                       : abdonrd(),
-        '/gallery'                       : simplegallery(),
 
         //Menu 2 for real app
         '/'                                 : {},
         '/menu'                          : polymermenu("/menu"),
-        '/menu/home'                          : homepage(),
-        '/menu/grouplist'                          : grouplist(),
-        '/menu/fire-connector'          : firebase(),
-        '/menu/fire-connector/list'     : list(),
-        // '/menu2/rss'                     : rss(),
-        '/menu/facebook'                 : facebookfeed(),
-        // '/menu2/twitter'                 : twitterfeed(),
-        '/menu/contact'                  : contact(),
-        // '/menu2/flickr'                  : flickrfeed(),
-        '/menu/html'                    : html(),
-        '/menu/blog'          : wordpressposts(),
-        '/menu/single'     : wordpresssingle(),
-        // '/menu2/map'                     : googlemap(),
-        // '/menu2/fire-connector/qr'       : qrgenerator(),
-        // '/menu2/vimeovideo'              : vimeovideo(),
-        // '/menu2/youtubevideo'            : youtubevideo(),
-        // '/menu2/youtubegallery'          : youtubegallery(),
-        '/menu/soundcloud'              : soundcloud(),
-        // '/menu2/translation'             : translationtest(),
-        // '/menu2/simple-gallery'          : simplegallery(),
-        // '/menu2/instagram'               : instagramfeed(),
-        // '/menu2/embed'                   : embed(),
-        // '/menu2/wordpressposts'      : wordpressposts(),
-        // '/menu2/ads/wordpresssingle'         : wordpresssingle(),
-        // '/menu2/ads'                     : ads(),
-        // '/menu2/translation'              : translationtest(),
-        // '/menu2/youtube-gallery'  : youtubegallery(),
-        // '/menu2/soundcloud'       : soundcloud(),
-        '/menu/simple-gallery'           : simplegallery(),
-        // '/menu2/youtube-video'    : youtubevideo(),
-        // '/menu2/vimeo-video'      : vimeovideo(),
-        // '/menu2/google-map'       : googlemap(),
-        // '/menu2/instagram'             : instagramfeed(),
-        // '/menu2/wordpress'             : wordpressposts(),
-        // '/menu2/embed'                    : embed(),
-        // '/menu2/html'                     : html(),
-
-        // '/menu/fire-connector'           : firebase(),
-        // '/menu/fire-connector/list'      : list(),
-        // '/menu/translation'              : translationtest(),
-        // '/menu/text'                     : text(),
-        // '/menu/rss'                      : rss(),
-        // '/polymer-menu'                  : polymermenu("/polymer-menu"),
-        // '/polymer-menu/rss'              : rss(),
-        // '/polymer-menu/facebook'         : facebookfeed(),
-        // '/polymer-menu/wordpress'        : wordpressposts(),
-        // '/menu/contact'                  : contact(),
-        // '/polymer-menu/youtube-gallery'  : youtubegallery(),
-        // '/polymer-menu/youtube-video'    : youtubevideo(),
-        // '/polymer-menu/google-map'       : googlemap(),
-        // '/polymer-menu/vimeo-video'      : vimeovideo(),
-        // '/polymer-menu/soundcloud'       : soundcloud(),
-        // '/polymer-menu/pdf'              : pdfviewer(),
-        // '/menu/fire-connector/qr'        : qrgenerator(),
-        // '/menu/html'                     : html(),
-        // '/menu/flickr'                   : flickrfeed(),
-        // '/menu/embed'                    : embed(),
-        // '/menu/twitter'                  : twitterfeed(),
-        // '/menu/facebook'                 : facebookfeed(),
-        // '/menu/instagram'                : instagramfeed(),
-        // '/menu/simple-gallery'           : simplegallery(),
         //For testing purposes
         '/ads'                           : ads(),
         '/ads/menu'                      : polymermenu("/menu"),
@@ -104,8 +42,28 @@
         '/menu/scope-same-module'        : angularscope(),
         '/menu/scope-module/static-feed' : angularstaticfeed(),
         '/multiple-files'                : multiplefiles(),
+        '/menu/home'                          : homepage(),
         '/menu/level1-feed'              : angularstaticfeed(),
         '/menu/translation'              : translationtest(),
+        '/menu/flickr'                   : flickrfeed(),
+        '/menu/instagram'                : instagramfeed(),
+        '/menu/youtube-gallery'          : youtubegallery(),
+        '/menu/rss'                      : rss(),
+        '/menu/pdf'                      : pdfviewer(),
+        '/menu/contact'                  : contact(),
+        '/menu/facebook'                 : facebookfeed(),
+        '/menu/google-map'               : googlemap(),
+        '/menu/html'                     : html(),
+        '/menu/fire-connector/qr'        : qrgenerator(),
+        '/menu/fire-connector/list'      : list(),
+        '/menu/wordpress'                : wordpressposts(),
+        '/menu/wordpresssingle'          : wordpresssingle(),
+        '/menu/vimeo-video'              : vimeovideo(),
+        '/menu/soundcloud'              : soundcloud(),
+
+        '/menu/fire-connector'           : firebase(),
+        '/menu/simple-gallery'           : simplegallery(),
+        '/menu/grouplist'                          : grouplist(),
         // '/menu'                          : angularmenu('/menu')
       };
     }
@@ -164,10 +122,10 @@
             { name : "Contact", icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300", class : "red1", url : "#/menu/contact"}
           ],
           featured: {title : "Últimas noticias",
-            domain      : "http://www.ateneupopular.com",
+            domain      : "http://rachelbaker.me",
             postnumber  : 3,
             category    : "",
-            galleryurl : "#/menu/ads/single"
+            galleryurl : "#/menu/wordpresssingle"
           }
         }
       };
@@ -213,7 +171,7 @@
         files: ["modules/firebase/controller.js", "modules/firebase/factory.js" ],
         scope: {
           src   : "https://blinding-heat-1559.firebaseio.com/datatest",
-          debug : false
+          debug : true
         },
         //Online builder testing purpose
         libs: [{
@@ -458,7 +416,8 @@
         files: [ "modules/contact/controller.js" ],
         scope: {
           send_address: "theguard@kingofapp.es",
-          mandrill_key: "dFOWcqJzBMB69YQGq3GPSQ"
+          mandrill_key: "dFOWcqJzBMB69YQGq3GPSQ",
+          debug: true
         }
       };
     }

@@ -8,7 +8,7 @@
 		describe('for simple modules', function() {
 			it('should load angular menu', function() {
 				browser.get('/app/#/menu');
-				isPresent('#topBar');
+				isPresent('paper-toolbar');
 
 				expectMenu();
 
@@ -51,7 +51,7 @@
 		describe('for multi-level modules', function() {
 			it('should load angular scope inside angular menu', function() {
 				browser.get('/app/#/menu/scope-module');
-				isPresent('.angularscope');
+				isPresent('paper-toolbar');
 
 				expectMenu();
 				expectScope();
@@ -59,7 +59,7 @@
 			});
 			it('should load angular feed inside angular menu', function() {
 				browser.get('/app/#/menu/level1-feed');
-				isPresent('.angularstaticfeed');
+				isPresent('paper-toolbar');
 
 				expectMenu();
 				expectFeed();
@@ -67,7 +67,7 @@
 			});
 			it('should load a different angular scope inside angular menu', function() {
 				browser.get('/app/#/menu/scope-diff-module');
-				isPresent('.angularscope');
+				isPresent('paper-toolbar');
 
 				expectMenu();
 				expectDiffScope();
@@ -75,7 +75,7 @@
 			});
 			it('should load angular scope inside angular menu with different route', function() {
 				browser.get('/app/#/menu/scope-same-module');
-				isPresent('.angularscope');
+				isPresent('paper-toolbar');
 
 				expectMenu();
 				expectScope();
@@ -83,7 +83,7 @@
 			});
 			it('should load angular feed inside angular scope inside angular menu', function() {
 				browser.get('/app/#/menu/scope-module/static-feed');
-				isPresent('.angularstaticfeed');
+				isPresent('paper-toolbar');
 
 				expectMenu();
 				expectScope();
@@ -167,13 +167,21 @@
 			it('should load and keep spanish translation', function() {
 				browser.get('/app/#/menu/translation');
 				isPresent('paper-button');
-				//:TODO PENDING
+
 				element(by.css('paper-button')).click();
 				browser.get('/app/#/menu');
-				isPresent('paper-menu-button');
+				isPresent('paper-icon-button');
 				browser.get('/app/#/menu/translation');
 				isPresent('paper-button');
 				expectSpanishTexts();
+
+				element(by.css('paper-button')).click();
+				element(by.css('paper-button')).click();
+				browser.get('/app/#/menu');
+				isPresent('paper-icon-button');
+				browser.get('/app/#/menu/translation');
+				isPresent('paper-button');
+				expectEnglishTexts();
 
 			});
 
@@ -184,14 +192,6 @@
 					return $(selector).isPresent();
 			}, 6000, 'Main (' + selector + ') not present');
 		}
-		// function expectSpanishMenu() {
-		// 	isPresent('div.statusBar p button');
-		// 	expect(element(by.css('.statusBar p button')).getInnerHtml()).toBe('Lateral');
-		// }
-		// function expectEnglishMenu() {
-		// 	isPresent('div.statusBar p button');
-		// 	expect(element(by.css('.statusBar p button')).getInnerHtml()).toBe('Sidebar');
-		// }
 		function expectEnglishTexts() {
 			expect(element(by.css('p.text1')).getInnerHtml()).toBe('First text');
 			expect(element(by.css('p.text2')).getInnerHtml()).toBe('Second text');
@@ -217,8 +217,8 @@
 			expect(element(by.css('.filters span.info')).getInnerHtml()).toBe('Filterstest');
 		}
 		function expectMenu() {
-			isPresent('paper-menu-button');
-			expect($('paper-menu-button').isPresent()).toBe(true);
+			isPresent('paper-icon-button');
+			expect($('paper-icon-button').isPresent()).toBe(true);
 			element(by.css('paper-icon-button')).click();
 			// expect(element(by.css('#topBar > span.title')).getInnerHtml()).toBe('Polymer Menu Module');
 		}

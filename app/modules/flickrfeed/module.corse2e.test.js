@@ -12,7 +12,7 @@
 		it('should load flickr feed module', function() {
 			browser.get('/app/#/menu/flickr');
 			browser.debugger();
-			isPresent('.flickrfeed ul.feed li');
+			isPresent('.flickrfeed paper-card img');
 
 			expectmodule();
 
@@ -23,7 +23,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.flickrfeed ul.feed li')).count()).toBeGreaterThan(3);
+			expect(element.all(by.css('.flickrfeed paper-card img')).count()).toBeGreaterThan(3);
 		}
 
 		afterEach(function() {

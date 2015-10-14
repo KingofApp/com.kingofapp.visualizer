@@ -7,7 +7,7 @@
 
 		it('should load simple gallery', function() {
 			browser.get('/app/#/menu/simple-gallery');
-			isPresent('.simplegallery p.item');
+			isPresent('.simplegallery .swiper-slide');
 
 			expectmodule();
 
@@ -18,7 +18,13 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.simplegallery p.item')).count()).toBeGreaterThan(2);
+			var slider = element(by.css('div.swiper-wrapper'));
+			browser.actions().dragAndDrop(
+					slider,
+					{x:-800, y:0}
+			).perform();
+			expect(element.all(by.css('.swiper-slide')).first().isDisplayed()).toBe(false);
+			expect(element.all(by.css('.swiper-slide')).count()).toBe(3);
 		}
 
 		afterEach(function() {

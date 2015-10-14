@@ -1,13 +1,13 @@
 (function(){
-	describe('Text Module test', function() {
+	describe('Group list test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
 
-		it('should load text module', function() {
-			browser.get('/app/#/menu/text');
-			isPresent('.text');
+		it('should load group list module', function() {
+			browser.get('/app/#/menu/grouplist');
+			isPresent('paper-icon-item');
 
 			expectmodule();
 
@@ -18,7 +18,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element(by.css('.text p')).getInnerHtml()).toBe('Text phrase');
+			expect(element.all(by.css('paper-icon-item')).count()).toBeGreaterThan(1);
 		}
 
 		afterEach(function() {

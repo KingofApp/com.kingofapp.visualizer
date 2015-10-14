@@ -5,8 +5,8 @@
 		    browser.ignoreSynchronization = true;
 		});
 		it('should load wordpress posts', function() {
-			browser.get('/app/#/polymer-menu/wordpress');
-			isPresent('.wordpressposts ul.feed li');
+			browser.get('/app/#/menu/wordpress');
+			isPresent('.wordpressposts paper-card');
 
 			expectmodule();
 
@@ -17,7 +17,7 @@
 			}, 20000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.wordpressposts ul.feed li')).count()).toBeGreaterThan(0);
+			expect(element.all(by.css('.wordpressposts paper-card')).count()).toBeGreaterThan(1);
 		}
 
 		afterEach(function() {

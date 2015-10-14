@@ -7,7 +7,7 @@
 
 		it('should load contact module', function() {
 			browser.get('/app/#/menu/contact');
-			isPresent('form');
+			isPresent('paper-input');
 
 			expectmodule();
 
@@ -19,14 +19,14 @@
 		}
 		function expectmodule() {
 			//Fill in inputs
-			element(by.model('contact.name')).sendKeys('Mi nombre');
-			element(by.model('contact.email')).sendKeys('test@test.com');
-			element(by.model('contact.message')).sendKeys('test');
+			element(by.css('input[name="name"]')).sendKeys('Mi nombre');
+			element(by.css('input[name="email"]')).sendKeys('test@test.com');
+			element(by.css('input[name="message"]')).sendKeys('test');
 			//Click to send
-			element(by.css('.send')).click()
+			element(by.css('form paper-button')).click()
 			//Wait for status to appear
 			isPresent('p.status');
-			expect(element(by.css('p.status')).getInnerHtml()).toBe('sent');
+			expect(element(by.css('p.status')).getInnerHtml()).toBe('Message sent.');
 		}
 
 		afterEach(function() {

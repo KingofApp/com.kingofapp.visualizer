@@ -12,7 +12,7 @@
 		it('should load instagram feed module', function() {
 			browser.get('/app/#/menu/instagram');
 			browser.debugger();
-			isPresent('.instagramfeed ul.feed li');
+			isPresent('.instagramfeed paper-card');
 
 			expectmodule();
 
@@ -23,7 +23,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.instagramfeed ul.feed li')).count()).toBeGreaterThan(3);
+			expect(element.all(by.css('.instagramfeed paper-card img')).count()).toBeGreaterThan(3);
 		}
 
 		afterEach(function() {

@@ -1,8 +1,8 @@
 <div class='flickrfeed auto' ng-controller='flickrFeedCtrl'>
-  <paper-item ng-hide="isEmpty(flickrfeed.message)">{{flickrfeed.message}}</paper-item>
-  <template is="dom-repeat" items="{{flickrfeed.items}}">
-      <paper-card image='{{item.img}}'>
-        <div class="card-content">{{item.title}}</div>
-      </paper-card>
-  </template>
+  <koa-item ng-hide="isEmpty(flickrfeed.message)">{{flickrfeed.message}}</koa-item>
+  <div ng-repeat="item in flickrfeed.items">
+    <koa-card image='{{item.img}}'>
+      <div class="card-content">{{item.title}}</div>
+    </koa-card>
+  </div>
 </div>

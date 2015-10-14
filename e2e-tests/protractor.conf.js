@@ -9,6 +9,7 @@ exports.config = {
 
   specs: [
     '../**/*.e2e.test.js'
+    // '../**/TODOe2e.test.js'
   ],
 
   capabilities: {

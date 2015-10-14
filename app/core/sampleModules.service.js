@@ -42,6 +42,7 @@
         '/menu/scope-same-module'        : angularscope(),
         '/menu/scope-module/static-feed' : angularstaticfeed(),
         '/multiple-files'                : multiplefiles(),
+        '/menu/home'                          : homepage(),
         '/menu/level1-feed'              : angularstaticfeed(),
         '/menu/translation'              : translationtest(),
         '/menu/flickr'                   : flickrfeed(),
@@ -62,7 +63,6 @@
 
         '/menu/fire-connector'           : firebase(),
         '/menu/simple-gallery'           : simplegallery(),
-        '/menu/home'                          : homepage(),
         '/menu/grouplist'                          : grouplist(),
         // '/menu'                          : angularmenu('/menu')
       };
@@ -122,10 +122,10 @@
             { name : "Contact", icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300", class : "red1", url : "#/menu/contact"}
           ],
           featured: {title : "Últimas noticias",
-            domain      : "http://www.ateneupopular.com",
+            domain      : "http://rachelbaker.me",
             postnumber  : 3,
             category    : "",
-            galleryurl : "#/menu/ads/single"
+            galleryurl : "#/menu/wordpresssingle"
           }
         }
       };

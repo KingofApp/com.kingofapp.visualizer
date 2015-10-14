@@ -14,8 +14,8 @@
 			var EC = protractor.ExpectedConditions;
 			var menuelement = element.all(by.cssContainingText('.selectable-content a','Facebook Feed')).get(0);
 			browser.wait(EC.elementToBeClickable(menuelement), 10000);
-
 			menuelement.click();
+
 			isPresent('.facebookfeed paper-card img');
 
 			expectmodule();

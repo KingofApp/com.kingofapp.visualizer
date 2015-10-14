@@ -175,6 +175,14 @@
 				isPresent('paper-button');
 				expectSpanishTexts();
 
+				element(by.css('paper-button')).click();
+				element(by.css('paper-button')).click();
+				browser.get('/app/#/menu');
+				isPresent('paper-icon-button');
+				browser.get('/app/#/menu/translation');
+				isPresent('paper-button');
+				expectEnglishTexts();
+
 			});
 
 		});

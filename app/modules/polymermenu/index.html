@@ -4,10 +4,8 @@
 
     <div drawer>
       <koa-menu>
-        <template is="dom-repeat" items="{{polymermenu.menu}}">
-          <a href="{{item.url}}">{{item.text}}</a>
-        </template>
-      </koa-menu>
+         <a ng-repeat="item in polymermenu.menu" href="{{item.url}}">{{item.text}}</a>
+     </koa-menu>
     </div>
 
     <koa-header-panel main>

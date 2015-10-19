@@ -11,9 +11,9 @@
     $sceProvider.enabled(false);
     //Default Route
     $routeProvider
-      // .when('/', {
-      //   redirectTo: '/menu'
-      // })
+      .when('/', {
+        redirectTo: '/home'
+      })
       .otherwise({
         templateUrl   : 'loaders/common/loaderCommon.view.html',
         controller : 'commonLoaderCtrl',

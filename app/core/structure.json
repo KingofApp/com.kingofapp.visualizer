@@ -8,7 +8,9 @@
 
          "en"
 
-      ]
+      ],
+
+      "index": "/menu"
 
    },
 
@@ -41,7 +43,16 @@
          }
 
       },
-
+      "/menu/html":{
+        "name": "Html Example",
+        "identifier": "html",
+        "type" :  "A",
+        "view" :  "modules/html/index.html",
+        "files": ["modules/html/controller.js"],
+        "scope": {
+          "value": "<p style='color:#39a9d3;' lang='es-ES'> Ut tortor mauris, ultrices quis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus, leo ut auctor ultrices, erat arcu tincidunt sapien, Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eget ipsum euismod, posuere odio </p> <p style='color:#d36339;' lang='es-ES'> Other color text</p>"
+        }
+      },
       "/menu/home": {
 
          "name": "Home",
@@ -56,7 +67,9 @@
 
          "files": [
 
-            "modules/homepage/controller.js"
+            "modules/homepage/controller.js",
+            "modules/homepage/swiper/js/swiper.min.js",
+            "modules/homepage/swiper/css/swiper.min.css"
 
          ],
 

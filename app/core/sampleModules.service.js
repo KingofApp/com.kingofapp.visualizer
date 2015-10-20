@@ -18,7 +18,8 @@
     function config(){
       return {
         'googleAnalytics' : 'UA-54151479-3',
-        'lang'            : ['en']
+        'lang'            : ['en'],
+        'index'           : '/menu'
       };
     }
 

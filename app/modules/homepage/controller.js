@@ -59,7 +59,6 @@ function loadFunction($http, $scope, $rootScope, structureService, $location, $f
 
 $rootScope.$on("koaLaunched",function() {
   //NOTE: Runs multiple times??
-  console.log("Goo");
   var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
     paginationClickable: true

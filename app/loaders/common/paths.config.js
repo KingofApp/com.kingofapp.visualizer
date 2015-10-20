@@ -3,17 +3,13 @@
 
   angular
     .module('king.loaders.common')
-    .config(setDefaultPaths)
+    .config(setDefaultPaths);
   setDefaultPaths.$inject = ['$routeProvider', '$sceProvider'];
 
   function setDefaultPaths($routeProvider, $sceProvider) {
-
     $sceProvider.enabled(false);
     //Default Route
     $routeProvider
-      .when('/', {
-        redirectTo: '/home'
-      })
       .otherwise({
         templateUrl   : 'loaders/common/loaderCommon.view.html',
         controller : 'commonLoaderCtrl',

@@ -8,17 +8,12 @@ function loadFunction($q, $scope, structureService, $location) {
   //Register upper level modules
   structureService.registerModule($location, $scope, 'polymermenu');
 
-  // TODO: Simplifie polymer data loading
-
-
   $q.all({
         menu: getMenu()
       })
       .then(function(data){
         setMenu(data.menu);
   });
-
-
 
   function getMenu(){
     var menu = new Array(0);

@@ -35,6 +35,7 @@ angular
     function set(newData){
       cachedLocations = {};
       data = newData;
+      $rootScope.$broadcast("menuUpdated");
     }
 
     function get(){

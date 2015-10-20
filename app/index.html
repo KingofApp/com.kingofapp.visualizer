@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp" class="no-js">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,41 +43,13 @@
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    function koaRender() {
-      setTimeout(function () {
-        var koaApp = document.querySelector('#koaApp');
-        koaApp.createTree();
-          koaApp.renderThemeElements();
-      }, 2000);
-    }
-    window.addEventListener('message', function(event) {
-      var $body = angular.element(document.body);
-      var $rootScope = $body.injector().get('$rootScope');
-      console.log("Recieved",event);
-      $rootScope.$apply(function () {
-        if(event.data.modules){
-          $rootScope.appData = event.data;
-        }else if(event.data.color){
-          console.log("Color",event.data.color);
-          $rootScope.appColor = event.data.color;
-        }else if(event.data.theme){
-          console.log("Theme",event.data.theme);
-          $rootScope.appTheme = event.data.theme;
-        }
-      });
-
-    });
-    angular.element(document).ready(function () {
-        $.get('core/structure.json', function (data) {
-            angular.module('myApp').run( function run($rootScope) {
-                $rootScope.appJsonStructure = data;
-            });
-            angular.bootstrap(document, ['myApp']);
-        }).fail(function() {
-          console.log("Default loading from samplemodules");
-          angular.bootstrap(document, ['myApp']);
-        });
-    });
+    // function koaRender() {
+    //   setTimeout(function () {
+    //     var koaApp = document.querySelector('#koaApp');
+    //     koaApp.createTree();
+    //       koaApp.renderThemeElements();
+    //   }, 2000);
+    // }
 	</script>
 
   <script src="app.js"></script>
@@ -87,6 +59,7 @@
 
   <script src="loaders/common/module.js"></script>
   <script src="loaders/common/loaderCommon.controller.js"></script>
+  <script src="loaders/common/loaderCommon.directive.js"></script>
   <script src="loaders/common/loaderMenu.controller.js"></script>
   <script src="loaders/common/paths.config.js"></script>
   <script src="loaders/common/httpInterceptor.js"></script>
@@ -95,7 +68,9 @@
   <script src="loaders/common/route.decorator.js"></script>
   <script src="loaders/jquery/loaderJquery.directive.js"></script>
   <script src="loaders/angular/loaderAngular.service.js"></script>
-  <script src="pushipNotifications.js"></script>
+  <script src="js/listener.push.js"></script>
+  <script src="js/listener.builder.js"></script>
+  <script src="js/bootstrap.app.js"></script>
   <div id="buttons">
     <button onclick="changeTheme()">Change theme</button>
     <button onclick="changeColor()">Change color</button>

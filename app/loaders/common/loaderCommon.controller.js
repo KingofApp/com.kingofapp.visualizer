@@ -28,11 +28,13 @@
       };
     });
 
-  commonLoaderCtrl.$inject = ['$scope', '$rootScope', '$location', '$ocLazyLoad', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
+  commonLoaderCtrl.$inject = ['$scope', '$rootScope', '$route', '$location', '$ocLazyLoad', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
 
-  function commonLoaderCtrl($scope, $rootScope, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil) {
+  function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('pasa por el commonLoaderCtrl');
-
+    if ($location.$$path === "/") {
+      $location.path(redirectUrl);
+    }
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
     var prev = 0;
     var state = false;
@@ -80,7 +82,12 @@
         redirected = true;
         setTimeout(function() {
           $scope.$apply(function() {
-            $location.path(newValue.config.index);
+            if(newValue.config.index === $location.path()){
+              $route.reload();
+            }else{
+              $location.path(newValue.config.index);
+            }
+
           });
         }, 100);
       }
@@ -151,6 +158,7 @@
 
       var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
       var parent = document.querySelector('[main]')
+      //TODO: Console error Uncaught TypeError: Cannot read property '_lightParent' of null
       Polymer.dom(parent).appendChild(polymermenuTemplate);
 
       console.info('Adding ng-click...');

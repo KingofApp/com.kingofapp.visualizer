@@ -7,6 +7,7 @@
 
 		it('should load qr generator', function() {
 			browser.get('/app/#/menu/qr');
+			isPresent('paper-card');
 			isPresent('.qrgenerator');
 
 			expectstatic();

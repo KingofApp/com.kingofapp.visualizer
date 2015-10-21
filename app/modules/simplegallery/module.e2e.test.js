@@ -7,6 +7,7 @@
 
 		it('should load simple gallery', function() {
 			browser.get('/app/#/menu/simple-gallery');
+			isPresent('paper-card');
 			isPresent('.simplegallery .swiper-slide');
 
 			expectmodule();

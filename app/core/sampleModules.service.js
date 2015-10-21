@@ -55,7 +55,7 @@
         '/menu/facebook'                 : facebookfeed(),
         '/menu/google-map'               : googlemap(),
         '/menu/html'                     : html(),
-        '/menu/fire-connector/qr'        : qrgenerator(),
+        '/menu/qr'        : qrgenerator(),
         '/menu/fire-connector/list'      : list(),
         '/menu/wordpress'                : wordpressposts(),
         '/menu/wordpresssingle'          : wordpresssingle(),

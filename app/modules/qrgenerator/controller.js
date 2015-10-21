@@ -7,11 +7,11 @@ function loadFunction($scope, structureService, $location, fireService){
   //Register upper level modules
   structureService.registerModule($location,$scope,"qrgenerator");
 
-  if($scope.qrgenerator.modulescope.datasource){
-    //NOTE: Pasar a promesa
-    fireService.setFirebaseSource($scope.qrgenerator.modulescope.datasource);
-    $scope.qrgenerator.list = fireService.getData();
-  }
+  // if($scope.qrgenerator.modulescope.datasource){
+  //   //NOTE: Pasar a promesa
+  //   fireService.setFirebaseSource($scope.qrgenerator.modulescope.datasource);
+  //   $scope.qrgenerator.list = fireService.getData();
+  // }
 
 
 }

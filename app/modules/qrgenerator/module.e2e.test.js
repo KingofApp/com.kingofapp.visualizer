@@ -6,11 +6,11 @@
 		});
 
 		it('should load qr generator', function() {
-			browser.get('/app/#/menu/fire-connector/qr');
+			browser.get('/app/#/menu/qr');
 			isPresent('.qrgenerator');
 
 			expectstatic();
-			expectdynamic();
+			// expectdynamic();
 
 		});
 		function isPresent(selector) {

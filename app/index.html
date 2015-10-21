@@ -42,13 +42,14 @@
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    // function koaRender() {
-    //   setTimeout(function () {
-    //     var koaApp = document.querySelector('#koaApp');
-    //     koaApp.createTree();
-    //       koaApp.renderThemeElements();
-    //   }, 2000);
-    // }
+    //Called from Firebase module to re-render new objects
+    function koaRender() {
+      setTimeout(function () {
+        var koaApp = document.querySelector('#koaApp');
+        koaApp.createTree();
+          koaApp.renderThemeElements();
+      }, 2000);
+    }
 	</script>
 
   <script src="app.js"></script>

@@ -60,6 +60,9 @@ module.exports = function(grunt) {
     exec: {
       web_driver_update: {
         command: './node_modules/protractor/bin/webdriver-manager update'
+      },
+      server: {
+        command: 'http-server -a localhost -p 9001 -c-1'
       }
     },
     run: {
@@ -97,11 +100,13 @@ module.exports = function(grunt) {
     copy: {
       bower_components_koa:{
         files: [{
-           expand: true,
-          //  cwd: 'app/',
-           src:  'app/bower_components_koa/**',
-           dest: 'app/bower_components'
-         }]
+             expand: true,
+             dest: 'app/bower_components',
+             cwd: 'app/bower_components_koa/',
+             src: '**'
+           }
+       ]
+
       }
    }
   });
@@ -122,9 +127,10 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['karma:unit:start', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
 
   grunt.registerTask('unit-test', ['karma:unit:start']);
-  grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:cors', 'protractor:e2e']);
+  grunt.registerTask('e2e-test',        ['copy','exec:web_driver_update' ,'connect:connect', 'protractor:cors', 'protractor:e2e']);
   // grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
-  grunt.registerTask('continuous-test', ['exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
+  grunt.registerTask('continuous-test', ['copy','exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
 
+  grunt.registerTask('start', ['copy','exec:server'])
   grunt.registerTask('dist', ['copy'])
 };

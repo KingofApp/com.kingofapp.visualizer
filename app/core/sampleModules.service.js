@@ -359,7 +359,7 @@
           domain : "http://rachelbaker.me",
           postnumber      : 3,
           category      : "",
-          galleryurl : "/app/#/menu/single"
+          galleryurl : "/app/#/menu/wordpresssingle"
         }
       };
     }

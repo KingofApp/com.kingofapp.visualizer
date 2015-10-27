@@ -6,9 +6,11 @@ angular.element(document).ready(function () {
           })
           .constant( 'redirectUrl', data.config.index );
         angular.bootstrap(document, ['myApp']);
+        console.log("Bootstrapd  ng-app");
     }).fail(function() {
       console.log("Default loading from samplemodules");
-      angular.module('myApp').constant( 'redirectUrl', '/menu' );
+      angular.module('myApp').constant( 'redirectUrl', '' );
       angular.bootstrap(document, ['myApp']);
+      console.log("Bootstrapd  ng-app");
     });
 });

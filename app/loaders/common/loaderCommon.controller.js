@@ -9,7 +9,7 @@
 
   function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('pasa por el commonLoaderCtrl');
-    if ($location.$$path === "/") {
+    if (redirectUrl !== "" && ($location.$$path === "/" || $location.$$path === "")) {
       $location.path(redirectUrl);
     }
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
@@ -178,6 +178,7 @@
 
         setTimeout(function() {
           if ($rootScope.appData) {
+            console.log("Set Color de ",$rootScope.appData.config.colors);
             setColor($rootScope.appData.config.colors);
           }
         }, 500);

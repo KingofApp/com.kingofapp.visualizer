@@ -4,3 +4,4 @@ logs/*
 node_modules/
 testresults/
 tmp
+app/core/structure.json

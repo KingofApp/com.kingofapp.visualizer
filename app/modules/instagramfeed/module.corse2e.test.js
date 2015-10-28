@@ -20,7 +20,7 @@
 		function isPresent(selector) {
 			browser.wait(function() {
 					return $(selector).isPresent();
-			}, 6000, 'Main (' + selector + ') not present');
+			}, 18000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
 			expect(element.all(by.css('.instagramfeed paper-card img')).count()).toBeGreaterThan(3);

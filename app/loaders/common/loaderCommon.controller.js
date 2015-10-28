@@ -9,6 +9,7 @@
 
   function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('pasa por el commonLoaderCtrl');
+    console.log("El location es",$location.$$path);
     if (redirectUrl !== "" && ($location.$$path === "/" || $location.$$path === "")) {
       $location.path(redirectUrl);
     }
@@ -74,6 +75,17 @@
       if (oldValue != newValue) {
         prevent = true;
         setColor(newValue);
+      }
+    });
+    $rootScope.$watch('appModules', function(newValue, oldValue) {
+      // TODO: SE REPITE MIL VECES LOS LOGS
+      if (oldValue != newValue && newValue) {
+        structureService.setModules(newValue.modules);
+        setTimeout(function() {
+          $scope.$apply(function() {
+            $location.path(newValue.index);
+          });
+        }, 100);
       }
     });
     $rootScope.$watch('appTheme', function(newValue, oldValue) {

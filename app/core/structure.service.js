@@ -20,6 +20,7 @@ angular
     return {
       get               : get,
       set               : set,
+      setModules        : setModules,
       getLang           : getLang,
       setLang           : setLang,
       getModule         : getModule,
@@ -35,6 +36,12 @@ angular
     function set(newData){
       cachedLocations = {};
       data = newData;
+      $rootScope.$broadcast("menuUpdated");
+    }
+
+    function setModules(newData){
+      cachedLocations = {};
+      data.modules = newData;
       $rootScope.$broadcast("menuUpdated");
     }
 

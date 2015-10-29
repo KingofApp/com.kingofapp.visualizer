@@ -184,10 +184,10 @@
           }
         } else {
           koaApp.renderThemeElements(addEvents);
-          console.log("toggle theme");
-          var actual = koaApp.theme;
-          setTheme('koa');
-          setTheme(actual);
+          // console.log("toggle theme");
+          // var actual = koaApp.theme;
+          // setTheme('koa');
+          // setTheme(actual);
         }
 
         setTimeout(function() {

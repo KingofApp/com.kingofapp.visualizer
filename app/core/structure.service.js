@@ -21,6 +21,7 @@ angular
       get               : get,
       set               : set,
       setModules        : setModules,
+      setColors         : setColors,
       getLang           : getLang,
       setLang           : setLang,
       getModule         : getModule,
@@ -42,7 +43,12 @@ angular
     function setModules(newData){
       cachedLocations = {};
       data.modules = newData;
-      $rootScope.$broadcast("menuUpdated");
+    }
+    function setColors(newData){
+      cachedLocations = {};
+      console.log("Config antes", data.config);
+      data.config.colors = newData;
+      console.log("Config despues", data.config);
     }
 
     function get(){

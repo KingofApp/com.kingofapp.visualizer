@@ -9,7 +9,6 @@
 
   function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('pasa por el commonLoaderCtrl');
-    console.log("El location es",$location.$$path);
     if (redirectUrl !== "" && ($location.$$path === "/" || $location.$$path === "")) {
       $location.path(redirectUrl);
     }
@@ -127,8 +126,7 @@
     }
 
     function setColor(color) {
-      //Set colors
-      // console.log("Color");
+      structureService.setColors(color);
       var s = document.createElement('style', 'custom-style');
       s.textContent = ':root {\n';
       s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ";";
@@ -186,11 +184,16 @@
           }
         } else {
           koaApp.renderThemeElements(addEvents);
+          console.log("toggle theme");
+          var actual = koaApp.theme;
+          setTheme('koa');
+          setTheme(actual);
         }
 
         setTimeout(function() {
           if ($rootScope.appData) {
             console.log("Set Color de ",$rootScope.appData.config.colors);
+            //TODO: GUARDAR EN LA ESTRUCTURA
             setColor($rootScope.appData.config.colors);
           }
         }, 500);

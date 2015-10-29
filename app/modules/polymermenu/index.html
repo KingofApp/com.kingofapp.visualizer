@@ -2,11 +2,11 @@
 
   <koa-drawer-panel>
 
-    <div drawer>
+    <koa-scroll-header-panel drawer fixed>
       <koa-menu>
-         <a ng-repeat="item in polymermenu.menu" href="{{item.url}}">{{item.text}}</a>
-     </koa-menu>
-    </div>
+        <a ng-repeat="item in polymermenu.menu" href="{{item.url}}">{{item.text}}</a>
+      </koa-menu>
+    </koa-scroll-header-panel>
 
     <koa-header-panel main>
       <koa-toolbar>
@@ -18,6 +18,7 @@
     </koa-header-panel>
 
   </koa-drawer-panel>
+
   <div ng-include="polymermenuTemplate" class="template"></div>
 
 </div>

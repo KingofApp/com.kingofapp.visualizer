@@ -103,14 +103,15 @@
       if (oldValue != newValue) {
         console.log("Theme", newValue);
         setTheme(newValue);
-        if(!$rootScope.reloaded){
+
+        if (!$rootScope.reloaded) {
           $rootScope.reloaded = true;
           setTimeout(function() {
             $scope.$apply(function() {
-                $route.reload();
+              $route.reload();
             });
           }, 100);
-        }else{
+        } else {
           $rootScope.reloaded = false;
         }
       }
@@ -168,7 +169,7 @@
       var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
 
       var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
-      if(polymermenuTemplate){
+      if (polymermenuTemplate) {
         var parent = document.querySelector('[main]')
         Polymer.dom(parent).appendChild(polymermenuTemplate);
       }
@@ -191,17 +192,6 @@
       });
 
       $rootScope.$broadcast("koaLaunched");
-      //Remove duplicated classes
-        koaApp.tree.forEach(function(item) {
-          var classes = $(item.actualElement.localName).attr("class");
-          $(item.actualElement.localName).removeClass(classes);
-          $(item.actualElement.localName).addClass(classes);
-        });
-        if ($rootScope.appData) {
-          console.log("Set Color de ",$rootScope.appData.config.colors);
-          setColor($rootScope.appData.config.colors);
-        }
-
     }
 
     function launchKoa() {
@@ -214,7 +204,6 @@
 
         if (!koaApp.theme) {
           if ($rootScope.appData) {
-            // setTheme('koa');
             setTheme($rootScope.appData.config.theme, addEvents);
           } else {
             setTheme('paper', addEvents);

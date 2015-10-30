@@ -89,6 +89,15 @@
 
         for (var i = 0; i < childNodes.length; i++) {
           var clonedChildNode = Polymer.dom(childNodes[i]).cloneNode(true);
+
+          // Remove the Polymer classes, because they will added next line
+          var classList = clonedChildNode.classList;
+          if (classList) {
+            if (classList.contains('x-scope')) {
+              classList.remove('x-scope', clonedChildNode.tagName.toLowerCase() + '-0');
+            }
+          }
+
           Polymer.dom(newElement).appendChild(clonedChildNode);
         }
 

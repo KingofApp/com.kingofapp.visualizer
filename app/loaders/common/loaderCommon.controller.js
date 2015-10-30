@@ -157,9 +157,10 @@
       var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
 
       var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
-      var parent = document.querySelector('[main]')
-      //TODO: Console error Uncaught TypeError: Cannot read property '_lightParent' of null
-      Polymer.dom(parent).appendChild(polymermenuTemplate);
+      if (polymermenuTemplate) {
+        var parent = document.querySelector('[main]');
+        Polymer.dom(parent).appendChild(polymermenuTemplate);
+      }
 
       console.info('Adding ng-click...');
       $('[ng-click]').click(function() {

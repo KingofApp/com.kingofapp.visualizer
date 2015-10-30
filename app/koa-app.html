@@ -16,18 +16,12 @@
         tree: {
           type: Array,
           value: []
-        },
-
-        _themesPath: {
-          type: String,
-          value: 'themes/'
-        },
-
-        _importedThemes: {
-          type: Object,
-          value: {}
         }
       },
+
+      themesPath: 'themes/',
+
+      importedThemes: {},
 
       createTree: function () {
         this.tree = new Array(0);
@@ -37,12 +31,12 @@
       setTheme: function (theme, callback) {
         this.theme = theme;
 
-        var isNotThemeImported = typeof this._importedThemes[this.theme] === 'undefined';
+        var isNotThemeImported = typeof this.importedThemes[this.theme] === 'undefined';
 
         if (isNotThemeImported) {
           this.importHref(this._getThemePath(), function(e) {
             this.renderThemeElements(callback);
-            this._importedThemes[this.theme] = null;
+            this.importedThemes[this.theme] = null;
           });
         } else {
           this.renderThemeElements(callback);
@@ -110,7 +104,7 @@
       },
 
       _getThemePath: function () {
-        return this._themesPath + 'koa-' + this.theme + '-theme/koa-' + this.theme + '-theme.html';
+        return this.themesPath + 'koa-' + this.theme + '-theme/koa-' + this.theme + '-theme.html';
       }
     });
   </script>

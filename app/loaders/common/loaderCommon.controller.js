@@ -8,16 +8,20 @@
   commonLoaderCtrl.$inject = ['$scope', '$rootScope', '$route', '$location', '$ocLazyLoad', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
 
   function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
-    console.log('pasa por el commonLoaderCtrl');
-    if (redirectUrl !== "" && ($location.$$path === "/" || $location.$$path === "")) {
+    console.log('Pasa por el commonLoaderCtrl');
+
+    if (redirectUrl !== '' && ($location.$$path === '/' || $location.$$path === '')) {
       $location.path(redirectUrl);
     }
+
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
+
     var prev = 0;
     var state = false;
     var prevent = false;
     var redirected = false;
     var finished = false;
+
     $scope.$watch(
       function calculateModelValue() {
         return (trafficGuardiaCivil.pending.all);
@@ -31,21 +35,25 @@
           trafficGuardiaCivil.pending.post, 'POST',
           '}'
         );
-        if ($location.$$path != "/") {
+
+        if ($location.$$path != '/') {
           setTimeout(function() {
             if (count === 0 && !state && !finished) {
               launchKoa();
               finished = true;
             }
           }, 400);
+
           //Launch if there were Petitions
           if (count === 0 && prev > 0 && !finished) {
             launchKoa();
             finished = true;
           }
+
           if (count > 0) {
             state = true;
           }
+
           prev = count;
         }
       }
@@ -59,9 +67,9 @@
         redirected = true;
         setTimeout(function() {
           $scope.$apply(function() {
-            if(newValue.config.index === $location.path()){
+            if (newValue.config.index === $location.path()) {
               $route.reload();
-            }else{
+            } else {
               $location.path(newValue.config.index);
             }
 
@@ -69,6 +77,7 @@
         }, 100);
       }
     });
+
     $rootScope.$watch('appColor', function(newValue, oldValue) {
       // TODO: SE REPITE MIL VECES LOS LOGS
       if (oldValue != newValue) {
@@ -76,6 +85,7 @@
         setColor(newValue);
       }
     });
+
     $rootScope.$watch('appModules', function(newValue, oldValue) {
       // TODO: SE REPITE MIL VECES LOS LOGS
       if (oldValue != newValue && newValue) {
@@ -87,6 +97,7 @@
         }, 100);
       }
     });
+
     $rootScope.$watch('appTheme', function(newValue, oldValue) {
       // TODO: SE REPITE MIL VECES LOS LOGS
       if (oldValue != newValue) {
@@ -94,6 +105,7 @@
         setTheme(newValue);
       }
     });
+
     //Load config
     structureService.loadconfig($rootScope);
 
@@ -104,6 +116,7 @@
       };
       $rootScope.current = module.identifier;
       $scope.module = module || $scope.module;
+
       if (!module) {
         //TODO: Display a 404 error or similar
       } else if (isAngularModule(module.type)) {
@@ -129,7 +142,7 @@
       structureService.setColors(color);
       var s = document.createElement('style', 'custom-style');
       s.textContent = ':root {\n';
-      s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ";";
+      s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ';';
       s.textContent += '\n}';
       document.body.appendChild(s);
       Polymer.updateStyles();
@@ -164,7 +177,8 @@
           $scope[model[0]][model[1]] = $(this).val();
         });
       });
-      $rootScope.$broadcast("koaLaunched");
+
+      $rootScope.$broadcast('koaLaunched');
     }
 
     function launchKoa() {
@@ -192,8 +206,8 @@
 
         setTimeout(function() {
           if ($rootScope.appData) {
-            console.log("Set Color de ",$rootScope.appData.config.colors);
-            //TODO: GUARDAR EN LA ESTRUCTURA
+            console.log('Set Color de ', $rootScope.appData.config.colors);
+            // TODO: GUARDAR EN LA ESTRUCTURA
             setColor($rootScope.appData.config.colors);
           }
         }, 500);

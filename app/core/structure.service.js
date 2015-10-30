@@ -46,9 +46,7 @@ angular
     }
     function setColors(newData){
       cachedLocations = {};
-      console.log("Config antes", data.config);
       data.config.colors = newData;
-      console.log("Config despues", data.config);
     }
 
     function get(){

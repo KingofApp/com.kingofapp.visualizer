@@ -10,7 +10,7 @@ function loadFunction($scope, structureService, $location, $routeParams){
       latitude  : $scope.googlemap.modulescope.lat,
       longitude : $scope.googlemap.modulescope.lon
     },
-    zoom : 11
+    zoom : $scope.googlemap.modulescope.zoom
   };
   $scope.marker = [{
         id: 1,

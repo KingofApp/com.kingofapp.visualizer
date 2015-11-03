@@ -15,10 +15,10 @@
 		function isPresent(selector) {
 			browser.wait(function() {
 					return $(selector).isPresent();
-			}, 6000, 'Main (' + selector + ') not present');
+			}, 18000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element(by.css('span.pagecount')).getInnerHtml()).toBe('15');
+			expect(element(by.css('span.pagecount')).getInnerHtml()).toBe('1');
 		}
 
 		afterEach(function() {

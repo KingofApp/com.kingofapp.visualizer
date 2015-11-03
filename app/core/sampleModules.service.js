@@ -254,7 +254,8 @@
         view :  "modules/pdfviewer/index.html",
         files: ["modules/pdfviewer/controller.js"],
         scope: {
-          value : "https://github.com/akrennmair/ng-pdfviewer/raw/develop/example/test.pdf"
+          value : "http://www.cbu.edu.zm/downloads/pdf-sample.pdf",
+          debug : true
         },
         libs: [{
           bower : {"angular-pdf": "1.1.1"},

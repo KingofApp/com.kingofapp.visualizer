@@ -23,6 +23,8 @@ function loadFunction($scope, structureService, $location){
 
   $scope.onLoad = function() {
     $scope.loading = '';
-    $scope.ready = '<p class="ready">Ready!</p>';
+    if($scope.pdfviewer.modulescope.debug){
+      $scope.ready = '<p class="ready">Ready!</p>';
+    }
   }
 }

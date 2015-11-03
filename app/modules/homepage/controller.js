@@ -22,7 +22,7 @@ function loadFunction($http, $scope, $rootScope, structureService, $location, $f
           featured = imgFromHtml(item.content);
         }
         elements.push({
-          url: $scope.homepage.modulescope.featured.galleryurl + "?id=" + item.ID,
+          url: $scope.homepage.modulescope.featured.singleurl + "?id=" + item.ID,
           title: item.title,
           excerpt: htmlToPlaintext(item.excerpt),
           content: item.content,

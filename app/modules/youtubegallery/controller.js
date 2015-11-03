@@ -15,7 +15,7 @@ function loadFunction($http, $scope, structureService, $location, x2js, $routePa
       console.log("JSON", json.feed.entry);
       var elements = [];
       angular.forEach( json.feed.entry, function(item){
-        elements.push({ link :  $scope.youtubegallery.modulescope.galleryurl+'?video='+item.videoId.__text,
+        elements.push({ link :  $scope.youtubegallery.modulescope.singleurl+'?video='+item.videoId.__text,
           title : item.title,
           img   : item.group.thumbnail._url
         });

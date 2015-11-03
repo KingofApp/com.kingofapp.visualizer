@@ -21,7 +21,7 @@ function loadFunction($http, $scope, structureService, $location, $sce){
         }else{
           featured = imgFromHtml(item.content);
         }
-        elements.push({ url :  $scope.wordpressposts.modulescope.galleryurl+"?id="+item.ID,
+        elements.push({ url :  $scope.wordpressposts.modulescope.singleurl+"?id="+item.ID,
           title    : item.title,
           excerpt  : $sce.trustAsHtml(htmlToPlaintext(item.excerpt)),
           content  : item.content,

@@ -141,9 +141,7 @@
         view :  "modules/grouplist/index.html",
         files: [ "modules/grouplist/controller.js" ],
         scope: {
-          sections: [{ name : "Facebook", icon:'svg-social-icons:facebook', class : "avatar facebook", url : "#/menu/facebook"},
-            { name : "Twitter", icon:'svg-social-icons:twitter', class : "avatar twitter", url : "#/menu/twitter"}
-          ]
+          sections: ["#/menu/facebook", "#/menu/flickr"]
         }
       };
     }

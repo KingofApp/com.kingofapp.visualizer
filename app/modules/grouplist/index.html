@@ -1,12 +1,11 @@
 <div class='grouplist' ng-controller='grouplistCtrl'>
   <div class="layout wrap inline center-center">
-
     <div class="list">
-      <koa-icon-item ng-repeat='item in grouplist.modulescope.sections'>
-        <div class='{{item.class}}' item-icon>
-            <iron-icon icon='{{item.icon}}'></iron-icon>
+      <koa-icon-item ng-repeat='item in grouplist.modulescope.newsections'>
+        <div item-icon>
+            <iron-icon icon=''></iron-icon>
         </div>
-        <div class="flex">{{item.name}}</div>
+        <div class="flex">{{ item.name }}</div>
         <a class='imga' href='{{item.url}}'>
           <iron-icon icon='icons:arrow-forward'></iron-icon>
         </a>

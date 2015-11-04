@@ -126,7 +126,7 @@
             domain      : "http://rachelbaker.me",
             postnumber  : 3,
             category    : "",
-            galleryurl : "#/menu/wordpresssingle"
+            singleurl : "#/menu/wordpresssingle"
           }
         }
       };
@@ -321,7 +321,7 @@
         files: [ "modules/youtubegallery/controller.js" ],
         scope: {
           channelid  : "UCeIt2DJO8UdtUTmJzTfSXiQ",
-          galleryurl : "/app/#/menu/youtubevideo"
+          singleurl : "/app/#/menu/youtubevideo"
         },
         //Online builder testing purpose
         libs: [{
@@ -360,7 +360,7 @@
           domain : "http://rachelbaker.me",
           postnumber      : 3,
           category      : "",
-          galleryurl : "/app/#/menu/wordpresssingle"
+          singleurl : "/app/#/menu/wordpresssingle"
         }
       };
     }

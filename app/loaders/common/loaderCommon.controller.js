@@ -9,7 +9,7 @@
 
   function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('Pasa por el commonLoaderCtrl');
-
+    $rootScope.showTransition=true;
     if (redirectUrl !== '' && ($location.$$path === '/' || $location.$$path === '')) {
       $location.path(redirectUrl);
     }
@@ -58,12 +58,9 @@
         }
       }
     );
-    $scope.$on('koaLaunched', function(event, args) {
-      console.log("Koa Launched");
-    });
     $location.$$path = $location.$$path || '/';
 
-    $rootScope.$watch('appData', function(newValue, oldValue) {
+    $scope.$watch('appData', function(newValue, oldValue) {
       if (structureService.get() != newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
         redirected = true;
@@ -80,24 +77,21 @@
       }
     });
 
-    $rootScope.$watch('appColor', function(newValue, oldValue) {
-      // TODO: SE REPITE MIL VECES LOS LOGS
+    $scope.$watch('appColor', function(newValue, oldValue) {
       if (oldValue != newValue) {
         prevent = true;
         setColor(newValue);
       }
     });
 
-    $rootScope.$watch('appModules', function(newValue, oldValue) {
-      // TODO: SE REPITE MIL VECES LOS LOGS
+    $scope.$watch('appModules', function(newValue, oldValue) {
       if (oldValue != newValue && newValue) {
         structureService.setModules(newValue.modules);
         $location.path(newValue.index);
       }
     });
 
-    $rootScope.$watch('appTheme', function(newValue, oldValue) {
-      // TODO: SE REPITE MIL VECES LOS LOGS
+    $scope.$watch('appTheme', function(newValue, oldValue) {
       if (oldValue != newValue) {
         console.log("Theme", newValue);
         setTheme(newValue);
@@ -108,6 +102,15 @@
         }, 200);
       }
 
+    });
+    $scope.$on("$routeChangeStart", function (event, next, current) {
+      if (next) {
+        $rootScope.showTransition=true;
+      }
+    });
+    $scope.$on('koaLaunched', function(event, args) {
+      console.log("Koa Launched");
+      $rootScope.$apply(function ( ) { $rootScope.showTransition=false; });
     });
 
     //Load config

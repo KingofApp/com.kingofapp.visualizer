@@ -22,6 +22,10 @@
   <div id="main-king"> <!-- ng-controller="setStructure" -->
     <koa-app id="koaApp">
       <div id="koaAppContent">
+        <div id='transitionloader' ng-if='showTransition'>
+          <!-- <koa-spinner active></koa-spinner> -->
+          <img src="http://agrussell.com/img/spinner.gif" alt="" />
+        </div>
         <div ng-view></div>
       </div>
     </koa-app>

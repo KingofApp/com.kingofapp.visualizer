@@ -15,7 +15,7 @@
 		function isPresent(selector) {
 			browser.wait(function() {
 					return $(selector).isPresent();
-			}, 18000, 'Main (' + selector + ') not present');
+			}, 30000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
 			expect(element(by.css('span.pagecount')).getInnerHtml()).toBe('1');

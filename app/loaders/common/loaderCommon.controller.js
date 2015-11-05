@@ -9,7 +9,9 @@
 
   function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('Pasa por el commonLoaderCtrl');
-    $rootScope.showTransition=true;
+
+    $rootScope.showTransition = true;
+
     if (redirectUrl !== '' && ($location.$$path === '/' || $location.$$path === '')) {
       $location.path(redirectUrl);
     }
@@ -36,7 +38,7 @@
           '}'
         );
 
-        if ($location.$$path != '/') {
+        if ($location.$$path !== '/') {
           setTimeout(function() {
             if (count === 0 && !state && !finished) {
               launchKoa();
@@ -58,10 +60,11 @@
         }
       }
     );
+
     $location.$$path = $location.$$path || '/';
 
     $scope.$watch('appData', function(newValue, oldValue) {
-      if (structureService.get() != newValue && newValue !== undefined && !redirected) {
+      if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
         redirected = true;
         setTimeout(function() {
@@ -78,39 +81,43 @@
     });
 
     $scope.$watch('appColor', function(newValue, oldValue) {
-      if (oldValue != newValue) {
+      if (oldValue !== newValue) {
         prevent = true;
         setColor(newValue);
       }
     });
 
     $scope.$watch('appModules', function(newValue, oldValue) {
-      if (oldValue != newValue && newValue) {
+      if (oldValue !== newValue && newValue) {
         structureService.setModules(newValue.modules);
         $location.path(newValue.index);
       }
     });
 
     $scope.$watch('appTheme', function(newValue, oldValue) {
-      if (oldValue != newValue) {
-        console.log("Theme", newValue);
+      if (oldValue !== newValue) {
+        console.log('Theme', newValue);
         setTheme(newValue);
         setTimeout(function() {
           $scope.$apply(function() {
-              $route.reload();
+            $route.reload();
           });
         }, 200);
       }
-
     });
-    $scope.$on("$routeChangeStart", function (event, next, current) {
+
+    $scope.$on('$routeChangeStart', function(event, next, current) {
       if (next) {
-        $rootScope.showTransition=true;
+        $rootScope.showTransition = true;
       }
     });
+
     $scope.$on('koaLaunched', function(event, args) {
-      console.log("Koa Launched");
-      $rootScope.$apply(function ( ) { $rootScope.showTransition=false; });
+      console.log('Koa Launched');
+
+      $rootScope.$apply(function() {
+        $rootScope.showTransition = false;
+      });
     });
 
     //Load config
@@ -126,8 +133,8 @@
 
       if (!module.type) {
         //TODO: Display a 404 error or similar
-        if(redirectUrl==="" && $location.$$path!=="/"){
-          $location.path("/404");
+        if (redirectUrl === '' && $location.$$path !== '/') {
+          $location.path('/404');
         }
       } else if (isAngularModule(module.type)) {
         angularLoader.module($scope);
@@ -168,7 +175,7 @@
       var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
 
       if (polymermenuTemplate) {
-        var parent = document.querySelector('[main]')
+        var parent = document.querySelector('[main]');
         Polymer.dom(parent).appendChild(polymermenuTemplate);
       }
 
@@ -184,19 +191,17 @@
 
         $(this.inputElement).bind('input', function() {
           var model = parent.attr('ng-model').split('.');
-
           $scope[model[0]][model[1]] = $(this).val();
         });
       });
 
+      if ($rootScope.appData) {
+        console.log('Set Color de ', $rootScope.appData.config.colors);
+        //TODO: GUARDAR EN LA ESTRUCTURA
+        setColor($rootScope.appData.config.colors);
+      }
 
-        if ($rootScope.appData) {
-          console.log("Set Color de ",$rootScope.appData.config.colors);
-          //TODO: GUARDAR EN LA ESTRUCTURA
-          setColor($rootScope.appData.config.colors);
-        }
-        $rootScope.$broadcast("koaLaunched");
-
+      $rootScope.$broadcast('koaLaunched');
     }
 
     function launchKoa() {

@@ -10,6 +10,8 @@
   function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('Pasa por el commonLoaderCtrl');
 
+    var koaApp = document.querySelector('#koaApp');
+
     $rootScope.showTransition = true;
 
     if (redirectUrl !== '' && ($location.$$path === '/' || $location.$$path === '')) {
@@ -208,7 +210,6 @@
       setTimeout(function() {
 
         console.info('Changing koa-elements to theme-elements...');
-        var koaApp = document.querySelector('#koaApp');
 
         koaApp.createTree();
 
@@ -221,6 +222,7 @@
         } else {
           koaApp.renderThemeElements(addEvents);
         }
+
       }, 100);
     }
   }

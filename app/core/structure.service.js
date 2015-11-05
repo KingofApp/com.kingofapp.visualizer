@@ -11,11 +11,11 @@ angular
     var listeners = [];
     var lang;
     var cachedLocations = {};
-    var data = sampleModules;
+    var data = {};
     if($rootScope.appJsonStructure){
-      data = $rootScope.appJsonStructure;
+      set($rootScope.appJsonStructure);
     }
-
+    set(sampleModules);
 
     return {
       get               : get,
@@ -37,12 +37,15 @@ angular
     function set(newData){
       cachedLocations = {};
       data = newData;
+      //Add static_404 to structure
+      data.modules['/404']=error404();
       $rootScope.$broadcast("menuUpdated");
     }
 
     function setModules(newData){
       cachedLocations = {};
       data.modules = newData;
+      data.modules['/404']=error404();
     }
     function setColors(newData){
       cachedLocations = {};
@@ -142,6 +145,18 @@ angular
 
     function onChange(callback){
       listeners.push[callback];
+    }
+
+    function error404(){
+      return {
+        name: '404 Not found',
+        identifier: 'static_404',
+        type : 'A',
+        hidden: true,
+        view :   "modules/static_404/index.html",
+        files: [ "modules/static_404/controller.js" ],
+        scope: { }
+      };
     }
 
     function findRoute(path, structure, callback){

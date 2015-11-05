@@ -58,7 +58,9 @@
         }
       }
     );
-
+    $scope.$on('koaLaunched', function(event, args) {
+      console.log("Koa Launched");
+    });
     $location.$$path = $location.$$path || '/';
 
     $rootScope.$watch('appData', function(newValue, oldValue) {
@@ -90,11 +92,7 @@
       // TODO: SE REPITE MIL VECES LOS LOGS
       if (oldValue != newValue && newValue) {
         structureService.setModules(newValue.modules);
-        setTimeout(function() {
-          $scope.$apply(function() {
-            $location.path(newValue.index);
-          });
-        }, 100);
+        $location.path(newValue.index);
       }
     });
 
@@ -123,8 +121,11 @@
       $rootScope.current = module.identifier;
       $scope.module = module || $scope.module;
 
-      if (!module) {
+      if (!module.type) {
         //TODO: Display a 404 error or similar
+        if(redirectUrl==="" && $location.$$path!=="/"){
+          $location.path("/404");
+        }
       } else if (isAngularModule(module.type)) {
         angularLoader.module($scope);
       } else if (isJqueryModule(module.type)) {
@@ -185,18 +186,13 @@
         });
       });
 
-      $rootScope.$broadcast("koaLaunched");
-      //Remove duplicated classes
-        koaApp.tree.forEach(function(item) {
-          var classes = $(item.actualElement.localName).attr("class");
-          $(item.actualElement.localName).removeClass(classes);
-          $(item.actualElement.localName).addClass(classes);
-        });
+
         if ($rootScope.appData) {
           console.log("Set Color de ",$rootScope.appData.config.colors);
           //TODO: GUARDAR EN LA ESTRUCTURA
           setColor($rootScope.appData.config.colors);
         }
+        $rootScope.$broadcast("koaLaunched");
 
     }
 

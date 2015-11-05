@@ -43,7 +43,7 @@
         '/menu/scope-same-module'        : angularscope(),
         '/menu/scope-module/static-feed' : angularstaticfeed(),
         '/multiple-files'                : multiplefiles(),
-        '/menu/home'                          : homepage(),
+        '/menu/home'                     : homepage(),
         '/menu/level1-feed'              : angularstaticfeed(),
         '/menu/translation'              : translationtest(),
         '/menu/flickr'                   : flickrfeed(),
@@ -55,16 +55,15 @@
         '/menu/facebook'                 : facebookfeed(),
         '/menu/google-map'               : googlemap(),
         '/menu/html'                     : html(),
-        '/menu/qr'        : qrgenerator(),
+        '/menu/qr'                       : qrgenerator(),
         '/menu/fire-connector/list'      : list(),
         '/menu/wordpress'                : wordpressposts(),
         '/menu/wordpresssingle'          : wordpresssingle(),
         '/menu/vimeo-video'              : vimeovideo(),
-        '/menu/soundcloud'              : soundcloud(),
-
+        '/menu/soundcloud'               : soundcloud(),
         '/menu/fire-connector'           : firebase(),
         '/menu/simple-gallery'           : simplegallery(),
-        '/menu/grouplist'                          : grouplist(),
+        '/menu/grouplist'                : grouplist(),
         // '/menu'                          : angularmenu('/menu')
       };
     }
@@ -606,6 +605,18 @@
         files: ["modules/polymermenu/controller.js"],
         scope: {path: path}
       };
+    }
+
+    function static_404(){
+      return {
+        name: '404 Not found',
+        identifier: 'static_404',
+        type : 'A',
+        hidden: true,
+        view :   "modules/static_404/index.html",
+        files: [ "modules/static_404/controller.js" ],
+        scope: { }
+      }
     }
 
     function angularstaticfeed(){

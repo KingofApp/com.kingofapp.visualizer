@@ -13,6 +13,7 @@
 			isPresent('paper-menu .selectable-content a');
 			var EC = protractor.ExpectedConditions;
 			var menuelement = element.all(by.cssContainingText('.selectable-content a','Facebook Feed')).get(0);
+			isPresent('#mainContainer');
 			browser.wait(EC.elementToBeClickable(menuelement), 10000);
 			menuelement.click();
 

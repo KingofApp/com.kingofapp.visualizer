@@ -152,7 +152,11 @@ angular
         name: '404 Not found',
         identifier: 'static_404',
         type : 'A',
-        hidden: true,
+        showOn : {
+          menu : false,
+          market : false,
+          dragDrop : false
+        },
         view :   "modules/static_404/index.html",
         files: [ "modules/static_404/controller.js" ],
         scope: { }

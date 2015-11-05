@@ -19,7 +19,7 @@ function loadFunction($q, $scope, structureService, $location) {
     var menu = new Array(0);
       angular.forEach(structureService.getChildren($scope.polymermenu.modulescope.path), function(value, key) {
         structureService.getModule(key).then(function(module) {
-          if (!module.hidden) {
+          if (module.showOn && module.showOn.menu) {
             menu.push({
               text: value.name,
               url: '#' + key,

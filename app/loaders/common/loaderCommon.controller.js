@@ -199,7 +199,6 @@
 
       if ($rootScope.appData) {
         console.log('Set Color de ', $rootScope.appData.config.colors);
-        //TODO: GUARDAR EN LA ESTRUCTURA
         setColor($rootScope.appData.config.colors);
       }
 

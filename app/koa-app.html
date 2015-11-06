@@ -92,12 +92,10 @@
 
           // Remove the Polymer classes, because they will added next line
           var classList = clonedChildNode.classList;
-          if (classList) {
-            if (classList.contains('x-scope')) {
-              classList.remove('x-scope');
-              var classToRemove = (new RegExp('(' + clonedChildNode.tagName.toLowerCase() + '-)(\\d)')).exec(clonedChildNode.className)[0];
-              classList.remove(classToRemove);
-            }
+          if (classList && classList.contains('x-scope')) {
+            classList.remove('x-scope');
+            var classToRemove = (new RegExp('(' + clonedChildNode.tagName.toLowerCase() + '-)(\\d)')).exec(clonedChildNode.className)[0];
+            classList.remove(classToRemove);
           }
 
           Polymer.dom(newElement).appendChild(clonedChildNode);

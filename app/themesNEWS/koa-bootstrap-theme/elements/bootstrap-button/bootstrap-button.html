@@ -1,0 +1,84 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bootstrap.html">
+
+<dom-module id="bootstrap-button">
+  <template>
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-button',
+
+      properties: {
+        /**
+         * Options are `default`, `primary`, `success`, `info`, `warning` and
+         * `danger`. Default is `default`.
+         */
+        type: {
+          type: String,
+          value: 'default'
+        },
+
+        /**
+         * Options are `large`, `small` and `extra-small`. Default is ``.
+         */
+        size: {
+          type: String,
+          value: ''
+        },
+
+        active: {
+          type: Boolean,
+          value: false,
+          observer: '_activeChanged'
+        },
+
+        disabled: {
+          type: Boolean,
+          value: false,
+          observer: '_disabledChanged'
+        }
+      },
+
+      hostAttributes: {
+        role: 'button',
+        tabindex: '0'
+      },
+
+      created: function() {
+        this.classList.add('btn');
+      },
+
+      ready: function() {
+        this._addClasses();
+      },
+
+      _activeChanged: function(newValue, oldValue) {
+        this.toggleClass('active', newValue);
+      },
+
+      _disabledChanged: function(newValue, oldValue) {
+        this.toggleClass('disabled', newValue);
+      },
+
+      _addClasses: function () {
+        this.classList.add('btn-' + this.type);
+
+        if (this.size === 'large') {
+          this.classList.add('btn-lg');
+        } else if (this.size === 'small') {
+          this.classList.add('btn-sm');
+        } else if (this.size === 'extra-small') {
+          this.classList.add('btn-xs');
+        }
+      }
+    });
+  </script>
+</dom-module>

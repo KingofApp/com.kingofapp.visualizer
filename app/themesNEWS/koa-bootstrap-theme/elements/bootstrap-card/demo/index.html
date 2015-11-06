@@ -1,0 +1,68 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>bootstrap-card demo</title>
+
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../bootstrap-button/bootstrap-button.html">
+    <link rel="import" href="../bootstrap-card.html">
+
+    <style is="custom-style">
+      #cards {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      bootstrap-card {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cards">
+      <bootstrap-card>
+        <div class="card-content">
+          <div>Cards are a convenient means of displaying content composed of different types of objects.
+            <br><br>
+            <b>Hurray!</b>
+          </div>
+        </div>
+      </bootstrap-card>
+
+      <bootstrap-card heading="Some cards only have titles"></bootstrap-card>
+
+      <bootstrap-card heading="Title">
+        <div class="card-content">
+          Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
+        </div>
+        <div class="card-actions">
+          <bootstrap-button>No</bootstrap-button>
+          <bootstrap-button>Yes</bootstrap-button>
+        </div>
+      </bootstrap-card>
+
+      <bootstrap-card heading="Titles and images!" image="http://placehold.it/350x150">
+        <div class="card-content">
+          Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
+        </div>
+        <div class="card-actions">
+          <bootstrap-button>No</bootstrap-button>
+          <bootstrap-button>Yes</bootstrap-button>
+        </div>
+      </bootstrap-card>
+    </div>
+  </body>
+</html>

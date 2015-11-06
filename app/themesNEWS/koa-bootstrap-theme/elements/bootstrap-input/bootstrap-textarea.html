@@ -1,0 +1,55 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bootstrap.html">
+
+<dom-module id="bootstrap-textarea">
+  <template>
+    <div class="form-group">
+      <label hidden$="[[!label]]">[[label]]</label>
+      <textarea class="form-control" name$="[[name]]"
+                                     value="{{value}}"
+                                     disabled$="[[disabled]]"
+                                     placeholder$="[[placeholder]]"
+                                     rows="[[rows]]">{{value}}</textarea>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-textarea',
+
+      properties: {
+        label: {
+          type: String
+        },
+
+        name: {
+          type: String
+        },
+
+        value: {
+          type: String,
+          notify: true
+        },
+
+        disabled: {
+          type: Boolean,
+          value: false
+        },
+
+        placeholder: {
+          type: String
+        },
+
+        rows: {
+          type: Number
+        }
+      }
+    });
+  </script>
+</dom-module>

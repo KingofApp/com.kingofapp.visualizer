@@ -1,0 +1,310 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>bootstrap-menu-button demo</title>
+
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../bootstrap-button/bootstrap-button.html">
+    <link rel="import" href="../bootstrap-menu-button.html">
+
+    <style>
+      .horizontal-section div {
+        margin-bottom: 30px;
+        display: block;
+      }
+      .horizontal-section div:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Single button</h4>
+        <div class="horizontal-section">
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button class="dropdown-toggle">
+                Default <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button class="dropdown-toggle" type="primary">
+                Primary <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button class="dropdown-toggle" type="success">
+                Success <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button class="dropdown-toggle" type="info">
+                Info <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button class="dropdown-toggle" type="warning">
+                Warning <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button class="dropdown-toggle" type="danger">
+                Danger <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Split button</h4>
+        <div class="horizontal-section">
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button>Default</bootstrap-button>
+              <bootstrap-button class="dropdown-toggle">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button type="primary">Primary</bootstrap-button>
+              <bootstrap-button type="primary" class="dropdown-toggle">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button type="success">Success</bootstrap-button>
+              <bootstrap-button type="success" class="dropdown-toggle">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button type="info">Info</bootstrap-button>
+              <bootstrap-button type="info" class="dropdown-toggle">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button type="warning">Warning</bootstrap-button>
+              <bootstrap-button type="warning" class="dropdown-toggle">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button type="danger">Danger</bootstrap-button>
+              <bootstrap-button type="danger" class="dropdown-toggle">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Sizes</h4>
+        <div class="horizontal-section">
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button size="large" class="dropdown-toggle">
+                Large button <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button size="small" class="dropdown-toggle">
+                Small button <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button>
+              <bootstrap-button size="extra-small" class="dropdown-toggle">
+                Extra small button <span class="caret">
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Dropup variation</h4>
+        <div class="horizontal-section">
+          <div>
+            <bootstrap-menu-button dropup>
+              <bootstrap-button>Dropup</bootstrap-button>
+              <bootstrap-button class="dropdown-toggle">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+          <div>
+            <bootstrap-menu-button dropup>
+              <bootstrap-button type="primary">Right dropup</bootstrap-button>
+              <bootstrap-button type="primary" class="dropdown-toggle">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </bootstrap-button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </bootstrap-menu-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

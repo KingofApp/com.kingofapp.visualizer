@@ -1,0 +1,121 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>bootstrap-icon-button demo</title>
+
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../bootstrap-icons/bootstrap-icons.html">
+    <link rel="import" href="../bootstrap-icon-button.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        min-width: 100px;
+      }
+
+      bootstrap-icon-button {
+        margin-left: 30px;
+        display: block;
+        text-align: center;
+      }
+
+      bootstrap-icon-button.blue {
+        color: var(--paper-light-blue-500);
+      }
+
+      bootstrap-icon-button.red {
+        color: var(--paper-red-500);
+      }
+
+      bootstrap-icon-button.orange {
+        color: var(--paper-orange-500);
+      }
+
+      bootstrap-icon-button.green {
+        color: var(--paper-green-500);
+      }
+
+      bootstrap-icon-button.huge {
+        margin-left: 0px;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body onclick="clickAction(event);" unresolved>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Enabled</h4>
+        <div class="horizontal-section">
+          <bootstrap-icon-button icon="menu" alt="menu" title="menu"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="favorite" alt="heart" title="heart"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="arrow-back" alt="arrow-back" title="arrow-back"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="arrow-forward" alt="arrow-forward" title="arrow-forward"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="clear" alt="clear" title="clear"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="polymer" alt="polymer" title="polymer"></bootstrap-icon-button>
+          <bootstrap-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat" title="octocat"></bootstrap-icon-button>
+        </div>
+      </div>
+
+      <div>
+        <h4>Disabled</h4>
+        <div class="horizontal-section">
+          <bootstrap-icon-button icon="menu" alt="menu" disabled></bootstrap-icon-button>
+          <bootstrap-icon-button icon="favorite" alt="heart" disabled></bootstrap-icon-button>
+          <bootstrap-icon-button icon="arrow-back" alt="arrow-back" disabled></bootstrap-icon-button>
+          <bootstrap-icon-button icon="arrow-forward" alt="arrow-forward" disabled></bootstrap-icon-button>
+          <bootstrap-icon-button icon="clear" alt="clear" disabled></bootstrap-icon-button>
+          <bootstrap-icon-button icon="polymer" alt="polymer" disabled></bootstrap-icon-button>
+          <bootstrap-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat" disabled></bootstrap-icon-button>
+        </div>
+      </div>
+
+      <div>
+        <h4>Color</h4>
+        <div class="horizontal-section">
+          <bootstrap-icon-button icon="menu" alt="menu" class="blue"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="favorite" alt="heart" class="red"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="arrow-back" alt="arrow-back" class="orange"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="arrow-forward" alt="arrow-forward" class="green"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="clear" alt="clear" class="blue"></bootstrap-icon-button>
+          <bootstrap-icon-button icon="polymer" alt="polymer" class="red"></bootstrap-icon-button>
+          <bootstrap-icon-button class="blue" src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat"></bootstrap-icon-button>
+        </div>
+      </div>
+
+      <div>
+        <h4>Size</h4>
+        <div class="horizontal-section">
+          <bootstrap-icon-button icon="favorite" alt="heart" class="huge"></bootstrap-icon-button>
+          <br><br><br>
+          <bootstrap-icon-button icon="polymer" alt="polymer" class="huge"></bootstrap-icon-button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function clickAction(e) {
+        var t = e.target;
+        if (t.localName === 'bootstrap-icon-button') {
+          if (t.hasAttribute('disabled')) {
+            console.error('should not be able to click disabled button', t);
+          } else {
+            console.log('click', t);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

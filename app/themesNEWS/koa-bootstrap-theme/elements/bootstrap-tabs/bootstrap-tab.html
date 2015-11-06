@@ -1,0 +1,64 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-behaviors/iron-button-state.html">
+<link rel="import" href="../../bower_components/iron-behaviors/iron-control-state.html">
+<link rel="import" href="../bootstrap.html">
+
+<dom-module id="bootstrap-tab">
+  <template>
+    <style>
+      :host {
+        border-radius: 4px 4px 0 0;
+        border: 1px solid transparent;
+        display: block;
+        float: left;
+        line-height: 1.42857143;
+        margin-bottom: -1px;
+        margin-right: 2px;
+        padding: 10px 15px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      :host(:focus) {
+        outline: none;
+        background-color: #eee;
+      }
+
+      :host([active]),
+      :host(.iron-selected) {
+        color: #555;
+        cursor: default;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+      }
+    </style>
+
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-tab',
+
+      behaviors: [
+        Polymer.IronControlState,
+        Polymer.IronButtonState
+      ],
+
+      hostAttributes: {
+        role: 'tab'
+      },
+
+      created: function() {
+        this.setAttribute('role', 'presentation');
+      }
+    });
+  </script>
+</dom-module>

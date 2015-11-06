@@ -1,0 +1,70 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bootstrap.html">
+
+<dom-module id="bootstrap-spinner">
+  <template>
+    <style>
+      :host {
+        visibility: hidden;
+      }
+
+      :host([active]) {
+        -webkit-animation: spin 1000ms infinite linear;
+        animation: spin 1000ms infinite linear;
+        visibility: visible;
+      }
+
+      span {
+        font-size: var(--bootstrap-spinner-size, 1em);
+      }
+
+      @-webkit-keyframes spin {
+        to { -webkit-transform: rotate(360deg) }
+      }
+
+      @keyframes spin {
+        to { -webkit-transform: rotate(360deg) }
+      }
+    </style>
+
+    <span class="glyphicon glyphicon-repeat"></span>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-spinner',
+
+      properties: {
+        active: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+          observer: '_activeChanged'
+        }
+      },
+
+      hostAttributes: {
+        'aria-hidden': true
+      },
+
+      _activeChanged: function(active, old) {
+        this._setAriaHidden(!active);
+      },
+
+      _setAriaHidden: function(hidden) {
+        var attr = 'aria-hidden';
+        if (hidden) {
+          this.setAttribute(attr, 'true');
+        } else {
+          this.removeAttribute(attr);
+        }
+      }
+    });
+  </script>
+</dom-module>

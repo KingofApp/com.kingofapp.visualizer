@@ -1,26 +1,29 @@
 (function(){
 	describe('Polymer menu test', function() {
 		beforeEach(function(){
-		    browser.driver.manage().window().setSize(379, 666);
+		    browser.driver.manage().window().setSize(479, 866);
 		    browser.ignoreSynchronization = true;
 		});
 
-		it('should load polymer menu', function() {
+		it('should open polymer menu', function() {
 			browser.get('/app/#/menu');
 			isPresent('paper-icon-button');
-
 			element(by.css('paper-icon-button')).click();
+		});
+
+		it('should click polymer menu', function() {
 			isPresent('paper-menu .selectable-content a');
 			var EC = protractor.ExpectedConditions;
-			var menuelement = element.all(by.cssContainingText('.selectable-content a','Facebook Feed')).get(0);
+			var menuelement = element(by.cssContainingText('.selectable-content a','Facebook Feed'));
+			// element.all(by.cssContainingText('.selectable-content a','Facebook Feed')).get(0);
 			isPresent('#mainContainer');
 			browser.wait(EC.elementToBeClickable(menuelement), 10000);
 			menuelement.click();
+		});
 
+		it('should load facebook after polymer menu', function() {
 			isPresent('.facebookfeed paper-card img');
-
 			expectmodule();
-
 		});
 		function isPresent(selector) {
 			browser.wait(function() {

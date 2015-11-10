@@ -30,10 +30,7 @@
     "qr-code": "webcomponent-qr-code#~0.1.8",
     "qrcode-generator": "kazuhikoarase/qrcode-generator",
     "xml2json": "~1.1.1",
-    "polymer": "Polymer/polymer#^1.1.0",
-    "iron-elements": "PolymerElements/iron-elements#^1.0.0",
-    "paper-elements": "PolymerElements/paper-elements#^1.0.0",
-    "ios-elements": "KingofApp/ios-elements#^0.3.0"
+    "polymer": "Polymer/polymer#^1.1.0"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"

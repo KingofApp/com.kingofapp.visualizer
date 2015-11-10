@@ -16,11 +16,11 @@ angular
       set($rootScope.appJsonStructure);
     }
     set(sampleModules);
-
     return {
       get               : get,
       set               : set,
       setModules        : setModules,
+      setLoader         : setLoader,
       setColors         : setColors,
       getLang           : getLang,
       setLang           : setLang,
@@ -39,9 +39,18 @@ angular
       data = newData;
       //Add static_404 to structure
       data.modules['/404']=error404();
+      setLoader(data.config.loader);
       $rootScope.$broadcast("menuUpdated");
     }
+    function setLoader(src) {
+      if(src){
+        $rootScope.loader=src;
+      }else{
+        //Default Loader
+        $rootScope.loader="resources/loader.gif";
+      }
 
+    }
     function setModules(newData){
       cachedLocations = {};
       data.modules = newData;

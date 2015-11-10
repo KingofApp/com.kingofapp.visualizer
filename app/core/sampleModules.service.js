@@ -19,7 +19,8 @@
       return {
         'googleAnalytics': 'UA-54151479-3',
         'lang': ['en'],
-        'index': '/menu'
+        'index': '/menu',
+        'loader': 'http://rs421.pbsrc.com/albums/pp291/nin10dogirl/pikachu.gif~c200'
       };
     }
 

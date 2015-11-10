@@ -9,7 +9,6 @@
 
   function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('Pasa por el commonLoaderCtrl');
-
     var koaApp = document.querySelector('#koaApp');
 
     $rootScope.showTransition = true;

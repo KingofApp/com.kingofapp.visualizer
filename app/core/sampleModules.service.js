@@ -713,7 +713,7 @@
         identifier: 'polymermenu',
         type: 'A',
         showOn: {
-          menu: true,
+          menu: false,
           market: true,
           dragDrop: true
         },

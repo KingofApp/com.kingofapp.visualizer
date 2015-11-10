@@ -109,6 +109,10 @@
         }
       }
 
+      function changeThemeTo(theme) {
+        koaApp.setTheme(theme);
+      }
+
       function changeColor() {
         var s = document.createElement('style', 'custom-style');
         var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);

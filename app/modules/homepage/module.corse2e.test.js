@@ -18,9 +18,9 @@
 
 		it('should load homepage again', function() {
 			element(by.css('paper-icon-button')).click();
-			isPresent('paper-menu .selectable-content a');
+			isPresent('paper-menu .selectable-content a.Home');
 			var EC = protractor.ExpectedConditions;
-			var menuelement = element.all(by.cssContainingText('.selectable-content a','Home')).get(0);
+			var menuelement = element(by.css('a.Home'));
 			isPresent('#mainContainer');
 			browser.wait(EC.elementToBeClickable(menuelement), 10000);
 			menuelement.click();

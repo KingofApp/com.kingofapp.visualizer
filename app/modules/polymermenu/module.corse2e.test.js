@@ -12,10 +12,9 @@
 		});
 
 		it('should click polymer menu', function() {
-			isPresent('paper-menu .selectable-content a');
+			isPresent('paper-menu .selectable-content a.Facebook-Feed');
 			var EC = protractor.ExpectedConditions;
-			var menuelement = element(by.cssContainingText('.selectable-content a','Facebook Feed'));
-			// element.all(by.cssContainingText('.selectable-content a','Facebook Feed')).get(0);
+			var menuelement = element(by.css('a.Facebook-Feed'));
 			isPresent('#mainContainer');
 			browser.wait(EC.elementToBeClickable(menuelement), 10000);
 			menuelement.click();

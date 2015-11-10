@@ -96,19 +96,7 @@ module.exports = function(grunt) {
         port: 9001,
         base: 'tasks'
       }
-    },
-    copy: {
-      bower_components_koa:{
-        files: [{
-             expand: true,
-             dest: 'app/bower_components',
-             cwd: 'app/bower_components_koa/',
-             src: '**'
-           }
-       ]
-
-      }
-   }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -127,10 +115,10 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['karma:unit:start', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
 
   grunt.registerTask('unit-test', ['karma:unit:start']);
-  grunt.registerTask('e2e-test',        ['copy','exec:web_driver_update' ,'connect:connect', 'protractor:cors', 'protractor:e2e']);
+  grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:cors', 'protractor:e2e']);
   // grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
-  grunt.registerTask('continuous-test', ['copy','exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
+  grunt.registerTask('continuous-test', ['exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
 
-  grunt.registerTask('start', ['copy','exec:server'])
-  grunt.registerTask('dist', ['copy'])
+  grunt.registerTask('start', ['exec:server'])
+  grunt.registerTask('dist', [])
 };

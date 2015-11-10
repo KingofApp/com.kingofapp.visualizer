@@ -1,0 +1,60 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-menu-behavior/iron-menubar-behavior.html">
+<link rel="import" href="../bootstrap.html">
+<link rel="import" href="bootstrap-tab.html">
+
+<dom-module id="bootstrap-tabs">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-tabs',
+
+      behaviors: [
+        Polymer.IronMenubarBehavior
+      ],
+
+      properties: {
+        selected: {
+          type: String,
+          notify: true
+        },
+
+        selectable: {
+          type: String,
+          value: 'bootstrap-tab'
+        }
+      },
+
+      hostAttributes: {
+        role: 'tablist'
+      },
+
+      listeners: {
+        'iron-select': '_onIronSelect'
+      },
+
+      _onIronSelect: function(event) {
+        this._previousTab = event.detail.item;
+      },
+
+      created: function() {
+        this.classList.add('nav', 'nav-tabs');
+      }
+    });
+  </script>
+</dom-module>

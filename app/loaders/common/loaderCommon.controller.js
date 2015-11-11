@@ -5,12 +5,11 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$rootScope', '$route', '$location', '$ocLazyLoad', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
+  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', '$ocLazyLoad', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
 
-  function commonLoaderCtrl($scope, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
+  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('Pasa por el commonLoaderCtrl');
     var koaApp = document.querySelector('#koaApp');
-
     $rootScope.showTransition = true;
 
     if (redirectUrl !== '' && ($location.$$path === '/' || $location.$$path === '')) {
@@ -115,7 +114,6 @@
 
     $scope.$on('koaLaunched', function(event, args) {
       console.log('Koa Launched');
-
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
       });

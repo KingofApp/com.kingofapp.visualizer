@@ -12,5 +12,6 @@ angular.element(document).ready(function () {
       angular.module('myApp').constant( 'redirectUrl', '' );
       angular.bootstrap(document, ['myApp']);
       console.log("Bootstrapd  ng-app");
+      window.parent.postMessage('bootstrapped-app','*');
     });
 });

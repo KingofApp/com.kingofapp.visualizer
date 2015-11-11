@@ -20,7 +20,6 @@ function loadFunction($q, $scope, structureService, $location) {
     var trExp = /[\/\s]+/gi;
       angular.forEach(structureService.getChildren($scope.polymermenu.modulescope.path), function(value, key) {
         structureService.getModule(key).then(function(module) {
-          console.log("MenuModule",module);
           if (module.showOn && module.showOn.menu) {
           var slug = value.name.replace(trExp, '-');
             menu.push({

@@ -27,6 +27,7 @@ angular
       getModule         : getModule,
       getCurrentModules : getCurrentModules,
       getChildren       : getChildren,
+      validateScope     : validateScope,
       registerModule    : registerModule,
       loadconfig        : loadconfig,
       update            : update,
@@ -122,11 +123,25 @@ angular
         // console.log("ModuleLIST",moduleList);
         callback(moduleList);
     }
+
+    function validateScope(module) {
+      var empty = true;
+      angular.forEach(module.scope, function(value, key) {
+        if(value && value !== ""){
+          empty = false;
+        }
+      });
+      if(empty){
+          return "resources/missing.html";
+      }
+      return module.view;
+    }
+
     function registerModule($location, $scope, item){
       getCurrentModules( $location, function(modules){
         angular.forEach(modules, function(value, key) {
           if(modules[key+1]){
-            $scope[modules[key+1].identifier+'Template'] = value.view;
+            $scope[modules[key+1].identifier+'Template'] = validateScope(modules[key]);
           }
           if(modules[key].identifier==item){
             $scope[item] = {

@@ -30,7 +30,7 @@
             'dependencies': $ocLazyLoad.load(dependencies.libs)
           }).then(function(data){
             scope.lazyLoadParams = [dependencies.files];
-            scope.template = data.rootModule.view;
+            scope.template = structureService.validateScope(data.rootModule);
             defer.resolve();
           }).catch(defer.reject);
 

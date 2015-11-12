@@ -127,6 +127,9 @@
       $rootScope.toolbar = {
         title: module.name
       };
+      if($rootScope.missing){
+        $rootScope.showTransition = false;
+      }
       $rootScope.current = module.identifier;
       $scope.module = module || $scope.module;
 

@@ -48,6 +48,7 @@
         '/menu/pdf': pdfviewer(),
         '/menu/home': homepage(),
         '/menu/facebook': facebookfeed(),
+        '/facebook': facebookfeed(),
         '/menu/level1-feed': angularstaticfeed(),
         '/menu/translation': translationtest(),
         '/menu/flickr': flickrfeed(),

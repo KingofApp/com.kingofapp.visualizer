@@ -183,7 +183,7 @@ angular
         },
         view :   "modules/static_404/index.html",
         files: [ "modules/static_404/controller.js" ],
-        scope: { }
+        scope: { config : 'x' }
       };
     }
 

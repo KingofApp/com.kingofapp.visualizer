@@ -182,7 +182,7 @@
         view: "modules/angularscope/index.html",
         files: ["modules/angularscope/controller.js"],
         scope: {
-          config: ""
+          config: "x"
         }
       };
     }
@@ -226,7 +226,7 @@
         view: "modules/list/index.html",
         files: ["modules/list/controller.js"],
         scope: {
-          src: ""
+          src: "x"
         }
       };
     }
@@ -300,7 +300,7 @@
         view: "modules/pdfviewer/index.html",
         files: ["modules/pdfviewer/controller.js"],
         scope: {
-          value: "http://www.cbu.edu.zm/downloads/pdf-sample.pdf",
+          value: "modules/pdfviewer/pdf-sample.pdf",
           debug: true
         },
         libs: [{
@@ -594,7 +594,7 @@
         view: "modules/simpledirective/index.html",
         files: ["modules/simpledirective/controller.js"],
         scope: {
-          config: ""
+          config: "x"
         }
       };
     }
@@ -612,7 +612,7 @@
         view: "modules/filters/index.html",
         files: ["modules/filters/controller.js"],
         scope: {
-          config: ""
+          config: "x"
         }
       };
     }
@@ -630,7 +630,7 @@
         view: "modules/multiplefiles/index.html",
         files: ["modules/multiplefiles/controller.js", "modules/multiplefiles/directive.js"],
         scope: {
-          config: ""
+          config: "x"
         }
       };
     }
@@ -686,7 +686,7 @@
         view: "modules/angularscope/index.html",
         files: ["modules/angularscope/controller.js"],
         scope: {
-          config: ""
+          config: "x"
         }
       };
     }

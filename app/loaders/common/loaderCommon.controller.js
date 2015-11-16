@@ -90,7 +90,11 @@
     $scope.$watch('appModules', function(newValue, oldValue) {
       if (oldValue !== newValue && newValue) {
         structureService.setModules(newValue.modules);
-        $location.path(newValue.index);
+        if (newValue.index === $location.path()) {
+          $route.reload();
+        } else {
+          $location.path(newValue.index);
+        }
       }
     });
 

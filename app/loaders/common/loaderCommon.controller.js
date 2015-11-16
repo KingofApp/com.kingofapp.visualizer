@@ -66,10 +66,10 @@
     $scope.$watch('appData', function(newValue, oldValue) {
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
-        setTheme(newValue.themes.android.name);
         redirected = true;
         setTimeout(function() {
           $scope.$apply(function() {
+            setTheme(newValue.themes.android.name);
             if (newValue.config.index === $location.path()) {
               $route.reload();
             } else {

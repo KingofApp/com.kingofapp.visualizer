@@ -7,14 +7,14 @@ function loadFunction($scope, structureService, $location, $routeParams){
   //Register upper level modules
   structureService.registerModule($location,$scope,"googlemap");
   $scope.map = {center: {
-      latitude  : $scope.googlemap.modulescope.lat,
-      longitude : $scope.googlemap.modulescope.lon
+      latitude  : parseInt($scope.googlemap.modulescope.lat, 10),
+      longitude : parseInt($scope.googlemap.modulescope.lon, 10)
     },
-    zoom : $scope.googlemap.modulescope.zoom
+    zoom : parseInt($scope.googlemap.modulescope.zoom, 10)
   };
   $scope.marker = [{
         id: 1,
-        latitude  :  $scope.googlemap.modulescope.lat,
-        longitude : $scope.googlemap.modulescope.lon
+        latitude  :  parseInt($scope.googlemap.modulescope.lat, 10),
+        longitude :  parseInt($scope.googlemap.modulescope.lon, 10)
       }]
 }

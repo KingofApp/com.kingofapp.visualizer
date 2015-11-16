@@ -69,6 +69,7 @@
         redirected = true;
         setTimeout(function() {
           $scope.$apply(function() {
+            //Causing first load to not render KOA
             setTheme(newValue.themes.android.name);
             if (newValue.config.index === $location.path()) {
               $route.reload();

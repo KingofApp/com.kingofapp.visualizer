@@ -54,6 +54,7 @@
         '/menu/flickr': flickrfeed(),
         '/menu/instagram': instagramfeed(),
         '/menu/youtube-gallery': youtubegallery(),
+        '/menu/youtubevideo': youtubevideo(),
         '/menu/contact': contact(),
         '/menu/google-map': googlemap(),
         '/menu/html': html(),
@@ -378,20 +379,11 @@
         files: ["modules/youtubegallery/controller.js"],
         scope: {
           channelid: "UCeIt2DJO8UdtUTmJzTfSXiQ",
+          token:'AIzaSyBQ3w6f5mFXyOK5sWC2oXzYcjLbN8IHRjg',
           singleurl: "/app/#/menu/youtubevideo"
         },
         //Online builder testing purpose
-        libs: [{
-          bower: {
-            "xml2json": "1.1.1"
-          },
-          src: "bower_components/x2js/xml2json.js"
-        }, {
-          bower: {
-            "angular-xml": "2.2.1"
-          },
-          src: "bower_components/angular-xml/angular-xml.js"
-        }]
+        libs: []
       };
     }
 

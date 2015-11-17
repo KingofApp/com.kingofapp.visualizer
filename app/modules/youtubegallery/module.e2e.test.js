@@ -18,7 +18,7 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element.all(by.css('.youtubegallery paper-card img')).count()).toBeGreaterThan(5);
+			expect(element.all(by.css('.youtubegallery paper-card img')).count()).toBeGreaterThan(3);
 		}
 
 		afterEach(function() {

@@ -13,6 +13,6 @@ function loadFunction($scope, $location, structureService, $timeout) {
      {
        $scope.ads.showflag = false;
      });
-   }, 2000);
+   }, 3000);
 
 }

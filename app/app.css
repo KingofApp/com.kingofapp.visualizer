@@ -38,7 +38,9 @@ paper-card {
 div.main-ads {
   height: 100%;
   width: 100%;
-  background.color: blue;
+  background-color: #fff;
+  z-index: 9999;
+position: absolute;
 }
 div.bottom-ads {
   width: 100%;

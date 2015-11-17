@@ -244,9 +244,9 @@
         view: "modules/googlemap/index.html",
         files: ["modules/googlemap/controller.js", "modules/googlemap/directive.js"],
         scope: {
-          lat: 39.5577,
-          lon: -114.0088,
-          zoom: 11
+          lat: "39.8847281",
+          lon: "4.2540999",
+          zoom: "10"
         },
         libs: [{
           bower: {

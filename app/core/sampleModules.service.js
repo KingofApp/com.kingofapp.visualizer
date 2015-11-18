@@ -301,20 +301,10 @@
         view: "modules/pdfviewer/index.html",
         files: ["modules/pdfviewer/controller.js"],
         scope: {
-          value: "modules/pdfviewer/pdf-sample.pdf",
+          value: "http://kingofapp.es/wp-content/uploads/2015/11/wwwhatsnew.pdf",
           debug: true
         },
-        libs: [{
-          bower: {
-            "angular-pdf": "1.1.1"
-          },
-          src: "modules/pdfviewer/libs/pdfjs-dist/build/pdf.js"
-        }, {
-          bower: {
-            "angular-pdf": "1.1.1"
-          },
-          src: "bower_components/angular-pdf/dist/angular-pdf.js"
-        }]
+        libs: []
       };
     }
 

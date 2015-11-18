@@ -7,7 +7,7 @@ function rssCtrl($scope, $http, $location, structureService, $filter) {
   //Register upper level modules
 structureService.registerModule($location,$scope,"rss");
 
-    $http.get("http://ajax.googleapis.com/ajax/services/feed/load", { params: { "v": "1.0", "q": $scope.rss.modulescope.feed } })
+    $http.jsonp("http://ajax.googleapis.com/ajax/services/feed/load", { params: { "v": "1.0", "q": $scope.rss.modulescope.feed, "callback" :"JSON_CALLBACK" } })
       .success(function(data) {
         $scope.rssTitle   = data.responseData.feed.title;
         $scope.rssUrl     = data.responseData.feed.feedUrl;

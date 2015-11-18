@@ -29,9 +29,8 @@ function loadFunction($http, $scope, structureService, $location, $sce){
           featured : featured
         });
       });
-      $scope.scripts = ["wordpressposts.items="+JSON.stringify(elements)+";"];
+      $scope.wordpressposts.items = elements;
     }).error(function(){
-      //NOTE: CAMBIAR  POR LO DE FACEBOOK
     	$scope.wordpressposts.items = [{
     		"message": "Opps! There was a problem loading the feed!",
     	}];

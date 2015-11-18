@@ -370,7 +370,7 @@
         scope: {
           channelid: "UCeIt2DJO8UdtUTmJzTfSXiQ",
           token:'AIzaSyBQ3w6f5mFXyOK5sWC2oXzYcjLbN8IHRjg',
-          singleurl: "/app/#/menu/youtubevideo"
+          singleurl: "/menu/youtubevideo"
         },
         //Online builder testing purpose
         libs: []
@@ -407,7 +407,7 @@
           domain: "http://rachelbaker.me",
           postnumber: 3,
           category: "",
-          singleurl: "/app/#/menu/wordpresssingle"
+          singleurl: "/menu/wordpresssingle"
         }
       };
     }

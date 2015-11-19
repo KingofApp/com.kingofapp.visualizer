@@ -353,9 +353,7 @@
         view: "modules/vimeovideo/index.html",
         files: ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
         scope: {
-          videoid: "136882652",
-          height: "250px",
-          width: "100%"
+          videoid: "136882652"
         }
       };
     }

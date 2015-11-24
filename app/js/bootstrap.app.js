@@ -1,5 +1,5 @@
 angular.element(document).ready(function () {
-    $.get('core/structure.json', function (data) {
+    $.getJSON('core/structure.json', function (data) {
         angular
           .module('myApp').run( function run($rootScope) {
               $rootScope.appJsonStructure = data;

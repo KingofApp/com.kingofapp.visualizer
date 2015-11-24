@@ -14,8 +14,9 @@ angular
     var data = {};
     if($rootScope.appJsonStructure){
       set($rootScope.appJsonStructure);
+    }else{
+      set(sampleModules);
     }
-    set(sampleModules);
     return {
       get               : get,
       set               : set,

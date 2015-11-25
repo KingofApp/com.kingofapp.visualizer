@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(grunt) {
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.initConfig({
     karma: {
       options: {
@@ -74,7 +75,6 @@ module.exports = function(grunt) {
         // args: ['app/mockApi/apiserver.js']
       }
     },
-
     connect: {
       options: {
         port: 9001,
@@ -96,17 +96,56 @@ module.exports = function(grunt) {
         port: 9001,
         base: 'tasks'
       }
-    }
+    },
+
+    clean: ["dist", ".tmp"],
+
+    copy: {
+        main: {
+            expand: true,
+            cwd: 'app/',
+            src: ['**', '!bower_components/**', '!**/*.js', '!**/*.css'],
+            dest: 'dist/'
+        }
+    },
+
+    rev: {
+        files: {
+            src: ['dist/**/*.{js,css}', '!dist/js/shims/**']
+        }
+    },
+
+    uglify: {
+      options: {
+        report: 'min',
+         mangle: false
+      }
+    },
+
+    useminPrepare: {
+      html: 'app/index.html'
+    },
+
+    usemin: {
+      html: ['dist/index.html']
+    },
+
+    css_import: {
+        files: {
+          'app/css/delete_imports.css': ['app/css/delete.css'],
+        },
+    },
+
   });
 
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-protractor-runner');
-  grunt.loadNpmTasks('grunt-run');
+  // grunt.loadNpmTasks('grunt-contrib-watch');
+  // grunt.loadNpmTasks('grunt-contrib-connect');
+  // grunt.loadNpmTasks('grunt-karma');
+  // grunt.loadNpmTasks('grunt-protractor-runner');
+  // grunt.loadNpmTasks('grunt-run');
   grunt.loadNpmTasks('grunt-exec');
-  grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-copy');
+  // grunt.loadNpmTasks('grunt-browser-sync');
+  // grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('serve', ['karma:continuous:start', 'run:mock_server', 'connect:livereload', 'watch:karma']);
   //grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
@@ -120,5 +159,7 @@ module.exports = function(grunt) {
   grunt.registerTask('continuous-test', ['exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
 
   grunt.registerTask('start', ['exec:server'])
-  grunt.registerTask('dist', [])
+// TODO Minifica modulos y lo jode y jode themes tambien
+  grunt.registerTask('dist', ['clean', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);
+  grunt.registerTask('js', ['uglify']);
 };

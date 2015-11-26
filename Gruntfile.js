@@ -104,14 +104,14 @@ module.exports = function(grunt) {
         main: {
             expand: true,
             cwd: 'app/',
-            src: ['**', '!bower_components/**', '!**/*.js', '!**/*.css'],
+            src: ['**', '!**/*.js', '!**/*.css', 'modules/**', 'bower_components/**', 'themes/**'],
             dest: 'dist/'
         }
     },
 
     rev: {
         files: {
-            src: ['dist/**/*.{js,css}', '!dist/js/shims/**']
+            src: ['dist/**/*.{js,css}', '!dist/js/shims/**', '!dist/modules/**', '!dist/bower_components/**', '!dist/themes/**']
         }
     },
 
@@ -159,7 +159,6 @@ module.exports = function(grunt) {
   grunt.registerTask('continuous-test', ['exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
 
   grunt.registerTask('start', ['exec:server'])
-// TODO Minifica modulos y lo jode y jode themes tambien
   grunt.registerTask('dist', ['clean', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);
   grunt.registerTask('js', ['uglify']);
 };

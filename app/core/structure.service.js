@@ -79,7 +79,7 @@ angular
     function getChildren(menuPath){
       var menu = {};
       angular.forEach(data.modules, function(data, path){
-        if(path.indexOf(menuPath) === 0){
+        if(path.indexOf(menuPath) === 0 || path.replace(/((\/)(\bads)((\-?)(\w+)?))/gmi,"").indexOf(menuPath) === 0){
           menu[path] = data;
         }
       });

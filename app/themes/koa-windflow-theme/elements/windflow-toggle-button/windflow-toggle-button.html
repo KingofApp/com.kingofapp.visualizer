@@ -1,0 +1,148 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-behaviors/iron-button-state.html">
+<link rel="import" href="../../bower_components/iron-behaviors/iron-control-state.html">
+<link rel="import" href="../../bower_components/iron-checked-element-behavior/iron-checked-element-behavior.html">
+
+<!--
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|--------
+`--toggle-button-unchecked-bar-color` | Slider color when the input is not checked | `#000000`
+`--toggle-button-unchecked-button-color` | Button color when the input is not checked | `--windflow-grey-50`
+`--toggle-button-checked-bar-color` | Slider button color when the input is checked | `--default-primary-color`
+`--toggle-button-checked-button-color` | Button color when the input is checked | `--default-primary-color`
+`--toggle-button-unchecked-bar` | Mixin applied to the slider when the input is not checked | `{}`
+`--toggle-button-unchecked-button` | Mixin applied to the slider button when the input is not checked | `{}`
+`--toggle-button-checked-bar` | Mixin applied to the slider when the input is checked | `{}`
+`--toggle-button-checked-button` | Mixin applied to the slider button when the input is checked | `{}`
+`--toggle-button-label-color` | Label color | `--primary-text-color`
+-->
+
+<dom-module id="windflow-toggle-button">
+  <template>
+    <style>
+      @font-face {
+        font-family: 'MullerBold';
+        src: url("../fonts/Muller/Muller-ExtraBold-DEMO.otf"); 
+      }
+      :host {
+        display: inline-block;
+        white-space: nowrap;
+        cursor: pointer;
+        font-family: "MullerBold";
+        font-size: 12px;
+      }
+      :host(:focus) {
+        outline: none;
+      }
+      .hidden {
+        display: none;
+      }
+      #toggleContainer {
+        display: inline-block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        vertical-align: middle;
+        background-color: transparent;
+      }
+      #toggleButton {
+        position: relative;
+        box-sizing: border-box;
+        height: 100%;
+        width: 20px;
+        border-radius: 50%;
+        background-color: #FFF;
+        pointer-events: none;
+        position: relative;
+        left: 0%;
+      }
+      #toggleBar {
+        position: absolute;
+        top: 7px;
+        left: 5px;
+        width: 25px;
+        height: 5px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+      }
+      /* label */
+      #toggleLabel {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: var(--windflow-toggle-button-label-spacing, 20px);
+        white-space: normal;
+        pointer-events: none;
+      }
+      #toggleLabel[hidden] {
+        display: none;
+      }
+      :host([active]) #toggleButton {
+          -webkit-transition: all 140ms;
+          transition: all 140ms;
+          background-color: #5f89fb;
+          left: 15px;
+      }
+      :host([active]) #toggleBar {
+          -webkit-transition: all 140ms;
+          transition: all 140ms;
+          background-color: rgba(255, 255, 255, 0.3);
+      }
+      :host(:not([active])) #toggleButton {
+          -webkit-transition: all 140ms;
+          transition: all 140ms;
+          background-color: #FFF;
+      }
+      :host(:not([active])) #toggleBar {
+          -webkit-transition: all 140ms;
+          transition: all 140ms;
+          background-color: rgba(0, 0, 0, 0.3);
+      }
+      /* disabled state */
+      :host([disabled]) {
+          pointer-events: none;
+          color: #949393;
+      }
+      :host([disabled]) #toggleButton {
+          background-color: #949393;
+      }
+      :host([disabled]) #toggleBar {
+          background-color: #B2B2B2;
+      }
+      :host([disabled][active]) #toggleButton {
+          background-color: #949393;
+          left: 15px;
+      }
+      :host([disabled]) #toggleLabel  {
+          color: #949393;
+      }
+    </style>
+
+    <div id="toggleContainer">
+      <div id="toggleBar" class="toggle-bar"></div>
+      <div id="toggleButton" class="toggle-button"></div>
+    </div>
+
+    <div id="toggleLabel"><content></content></div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'windflow-toggle-button',
+
+      hostAttributes: {
+        role: 'button',
+        tabindex: 0
+      },
+
+      behaviors: [
+        Polymer.IronButtonState,
+        Polymer.IronControlState,
+        Polymer.IronCheckedElementBehavior
+      ]
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,80 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-overlay-behavior/iron-overlay-behavior.html">
+
+<!--
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|--------
+`--dialog-background-color` | Dialog background color | `--primary-background-color`
+`--dialog-color` | Dialog foreground color | `--primary-text-color`
+`--dialog` | Mixin applied to the dialog | `{}`
+`--dialog-title` | Mixin applied to the title (`<h2>`) element | `{}`
+`--dialog-button-color` | Button area foreground color | `--default-primary-color`
+-->
+
+<dom-module id="windflow-dialog">
+  <template>
+    <style>
+        @font-face {
+          font-family: 'MullerBold';
+          src: url("../fonts/Muller/Muller-ExtraBold-DEMO.otf"); }
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url("../fonts/Helvetica/HelveticaNeueLTStd-Lt.otf"); }
+        
+        :host {
+            background-color: #C5CAE9;
+            color: #000;
+            -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+            -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5); 
+            padding: 6px;
+            max-width: 90%;
+            max-height: 90%;
+            position: fixed;
+        }
+        #title {
+            font-family: "MullerBold";
+            font-size: 14px; 
+        }
+        #content {
+            font-family: "HelveticaNeue";
+            font-size: 12px; 
+        }
+    </style>
+    <div id="dialog">
+        <h2 id="title">{{title}}</h2>
+        <div id="content">
+            <content></content>
+        </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'windflow-dialog',
+
+      hostAttributes: {
+        'role': 'dialog',
+        tabindex: -1
+      },
+
+      behaviors: [
+        Polymer.IronOverlayBehavior
+      ],
+        
+      properties: {
+        title: {
+          type: String
+        }
+      },
+    
+      openDialog: function() {
+          dialog.toggle();
+      }
+    });
+      
+    
+  </script>
+</dom-module>

@@ -1,0 +1,78 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<!--
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|--------
+`--spinner-color` | Color of the spinner | `--google-blue-500`
+-->
+
+<dom-module id="windflow-spinner">
+  <template>
+    <style>
+        :host #spinner {
+            border-style: solid;
+            border-radius: 50%;
+            border-color: #FFF #FFF #FFF transparent;
+            border-width: 2px;
+            height: 24px;
+            width: 24px;
+            animation:spin 1s linear infinite;
+            display: none;
+        }
+        @keyframes spin {
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        :host([active]) #spinner {
+            display: block;
+        }
+        :host([big]) #spinner {
+            border-width: 2px;
+            height: 48px;
+            width: 48px;
+        }
+    </style>
+
+    <div id="spinner"></div>
+  </template>
+  <script>
+    Polymer({
+      is: 'windflow-spinner',
+
+      properties: {
+        /**
+         * Displays the spinner.
+         */
+        active: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+
+        /**
+         * Alternative text content for accessibility support.
+         * If alt is present, it will add an aria-label whose content matches
+         * alt when active.
+         * If alt is not present, it will default to 'loading' as the alt value.
+         */
+        alt: {
+          type: String,
+          value: 'loading'
+        },
+          
+        big: {
+            type: Boolean,
+            value: false,
+            reflectToAttribute: true
+        }
+      },
+
+      reset: function() {
+
+      }
+    });
+  </script>
+</dom-module>

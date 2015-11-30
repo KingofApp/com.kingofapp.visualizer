@@ -29,29 +29,29 @@ Custom property | Description | Default
       :host #primaryProgress, :host #secondaryProgress {
         height: 4px;
         width: 0%;
-        max-width: 100%; 
+        max-width: 100%;
       }
       :host .dark {
-        background-color: #3F51B5; 
+        background-color: #3F51B5;
       }
       :host .light {
-        background-color: #C5CAE9; 
+        background-color: #C5CAE9;
       }
       :host .primary {
         background-color: #448AFF;
       }
     </style>
 
-    
+
 
     <div id="progress_bar">
         <div id="secondaryProgress"></div>
         <div id="primaryProgress"></div>
     </div>
-    
+
   </template>
   <script src="../jquery/jquery-2.1.4.min.js"></script>
-  <script>  
+  <script>
     // Choosing bar color:
     var element = $(this);
     var background;
@@ -74,9 +74,9 @@ Custom property | Description | Default
         default:
             newClass = "primary";
     }
-    console.log(newClass);
-    console.log($(this).find("#primaryProgress"));
-      
+    // console.log(newClass);
+    // console.log($(this).find("#primaryProgress"));
+
     Polymer({
       is: 'windflow-progress',
 

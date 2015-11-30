@@ -222,7 +222,7 @@
           if ($rootScope.appData) {
             setTheme($rootScope.appData.config.theme, addEvents);
           } else {
-            setTheme('windflow', addEvents);
+            setTheme('paper', addEvents);
           }
         } else {
           koaApp.renderThemeElements(addEvents);

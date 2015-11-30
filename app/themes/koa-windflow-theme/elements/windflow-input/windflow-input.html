@@ -1,8 +1,8 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/windflow-input/windflow-input-behavior.html">
+<!-- <link rel="import" href="../../../../bower_components/windflow-input/windflow-input-behavior.html">
 <link rel="import" href="../../../../bower_components/windflow-input/windflow-input-char-counter.html">
 <link rel="import" href="../../../../bower_components/windflow-input/windflow-input-container.html">
-<link rel="import" href="../../../../bower_components/windflow-input/windflow-input-error.html">
+<link rel="import" href="../../../../bower_components/windflow-input/windflow-input-error.html"> -->
 
 <!--
 ### Styling
@@ -31,7 +31,7 @@ Custom property | Description | Default
         @font-face {
           font-family: 'MullerBold';
           src: url("../fonts/Muller/Muller-ExtraBold-DEMO.otf"); }
-        
+
         :host {
             --windflow-input-container: {
                 background-color: #c5cae9;
@@ -39,12 +39,12 @@ Custom property | Description | Default
             --windflow-input-container-input: {
                 color: black;
                 font-family: "MullerBold";
-                font-size: 14px; 
+                font-size: 14px;
                 padding-left: 7px;
             };
             --windflow-input-container-label: {
                 padding-left: 7px;
-                
+
             };
             --windflow-input-container-underline: {
                 background: rgba(0, 0, 0, 0.5);
@@ -63,7 +63,7 @@ Custom property | Description | Default
         input:-ms-input-placeholder {
             color: var(--windflow-input-container-color, rgba(0, 0, 0, 0.3));
         }
-        
+
     </style>
       <windflow-input-container no-label-float="true" disabled$="[[disabled]]" invalid="[[invalid]]">
           <input is="iron-input" id="input" type="{{type}}" placeholder="{{label}}"></input>

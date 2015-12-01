@@ -57,8 +57,21 @@
     "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + sed(/sourceMappingURL=angular-loader.min.js.map/,'sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map','app/bower_components/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
   },
   "dependencies": {
+    "bin-version-check": "^2.1.0",
+    "chalk": "^1.1.1",
+    "clean-css": "^3.4.8",
+    "dargs": "^4.0.1",
+    "findup-sync": "^0.3.0",
+    "globule": "^0.2.0",
     "grunt-cli": "^0.1.13",
     "grunt-exec": "^0.4.6",
-    "matchdep": "^1.0.0"
+    "grunt-usemin": "^3.1.1",
+    "matchdep": "^1.0.0",
+    "maxmin": "^2.0.0",
+    "onetime": "^1.0.0",
+    "resolve": "^1.1.6",
+    "rimraf": "^2.4.4",
+    "stack-trace": "0.0.9",
+    "tmp": "0.0.28"
   }
 }

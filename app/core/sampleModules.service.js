@@ -11,16 +11,32 @@
     function data() {
       return {
         config: config(),
-        modules: menu()
+        modules: menu(),
+        services: services()
       };
     }
 
     function config() {
       return {
-        'googleAnalytics': 'UA-54151479-3',
         'lang': ['en'],
         'index': '/menu',
         'loader': ''
+      };
+    }
+
+    function services() {
+      return {
+        'googleAnalytics': {
+          'config':{
+              'trackingID':'UA-54151479-3'
+          }
+        },
+        'pushIp': {
+          'config':{
+              'PushipAppId':'Lc1oSo20j3DMQs8',
+              'GCMCode':'341724041512'
+          }
+        }
       };
     }
 

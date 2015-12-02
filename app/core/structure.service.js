@@ -4,14 +4,14 @@ angular
   .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
-  structureService.$inject = ['$q','$translatePartialLoader', '$translate', 'sampleModules', '$rootScope'];
+  structureService.$inject = ['$q', '$injector','$translatePartialLoader', '$translate', 'sampleModules', '$rootScope'];
 
-  function structureService($q, $translatePartialLoader, $translate, sampleModules, $rootScope){
-
+  function structureService($q, $injector, $translatePartialLoader, $translate, sampleModules, $rootScope){
     var listeners = [];
     var lang;
     var cachedLocations = {};
     var data = {};
+    var services = [];
     if($rootScope.appJsonStructure){
       set($rootScope.appJsonStructure);
     }else{
@@ -30,17 +30,31 @@ angular
       getChildren       : getChildren,
       validateScope     : validateScope,
       registerModule    : registerModule,
+      registerServices   : registerServices,
       loadconfig        : loadconfig,
       update            : update,
       onChange          : onChange
     };
+    function registerServices() {
+      angular.forEach(data.services, function(data, key){
+        // console.log("Data!!",data);
+        // console.log("KEy!!!",key);
+        services[key] = $injector.get(key);
+        services[key].load(data.config);
+      });
 
+
+    }
 
     function set(newData){
       cachedLocations = {};
       data = newData;
       //Add static_404 to structure
-      data.modules['/404']=error404();
+      data.modules['/404'] = error404();
+
+      // Register services
+      registerServices();
+
       setLoader(data.config.loader);
       $rootScope.$broadcast("menuUpdated");
     }

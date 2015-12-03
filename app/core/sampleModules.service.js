@@ -11,16 +11,32 @@
     function data() {
       return {
         config: config(),
-        modules: menu()
+        modules: menu(),
+        services: services()
       };
     }
 
     function config() {
       return {
-        'googleAnalytics': 'UA-54151479-3',
         'lang': ['en'],
         'index': '/menu',
         'loader': ''
+      };
+    }
+
+    function services() {
+      return {
+        'googleAnalytics': {
+          'config':{
+              'trackingId':'UA-54151479-3'
+          }
+        },
+        'pushIp': {
+          'config':{
+              'PushipAppId':'Lc1oSo20j3DMQs8',
+              'GCMCode':'341724041512'
+          }
+        }
       };
     }
 
@@ -699,6 +715,43 @@
           market: true,
           dragDrop: true
         },
+        libs: [
+          {
+            bower: {
+              "polymer": "polymer/polymer#^1.0.0"
+            }
+          },
+          {
+            bower: {
+              "paper-drawer-panel": "PolymerElements/paper-drawer-panel#^1.0.0"
+            }
+          },
+          {
+            bower: {
+              "paper-header-panel": "PolymerElements/paper-header-panel#^1.0.0"
+            }
+          },
+          {
+            bower: {
+              "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.0"
+            }
+          },
+          {
+            bower: {
+              "paper-menu": "PolymerElements/paper-menu#^1.0.0"
+            }
+          },
+          {
+            bower: {
+              "paper-scroll-header-panel": "PolymerElements/paper-scroll-header-panel#^1.0.0"
+            }
+          },
+          {
+            bower: {
+              "paper-toolbar": "PolymerElements/paper-toolbar#^1.0.0"
+            }
+          }
+        ],
         view: "modules/polymermenu/index.html",
         files: ["modules/polymermenu/controller.js"],
         scope: {

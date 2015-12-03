@@ -16,8 +16,7 @@
 
   <link rel="import" href="koa-app.html">
 
-  <script src="bower_components/qrjs/qr.js"></script>
-  <link rel="import" href="bower_components/qr-code/src/qr-code.html">
+  <script src="cordova.js"></script>
 </head>
 <body>
   <div id="main-king"> <!-- ng-controller="setStructure" -->
@@ -43,8 +42,12 @@
   <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angulartics/src/angulartics.js"></script>
-  <script src="bower_components/angulartics-google-analytics/lib/angulartics-google-analytics.js"></script>
-
+  <script src="bower_components/angulartics/src/angulartics-ga-cordova.js"></script>
+<script>
+document.addEventListener("deviceready", function(){
+  console.log("READY OSTIA");
+}, false);
+</script>
   <script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -83,31 +86,11 @@
   <script src="js/listener.push.js"></script>
   <script src="js/listener.builder.js"></script>
   <script src="js/bootstrap.app.js"></script>
-  <!-- <div id="buttons">
-    <button onclick="changeTheme()">Change theme</button>
-    <button onclick="changeColor()">Change color</button>
+  
+  <!-- Services  -->
+  <script src="services/googleanalytics/service.js"></script>
+  <script src="services/puship/service.js"></script>
 
-    <style>
-      #buttons {
-        text-align: center;
-        padding: 10px;
-        background-color: #afafaf;
-        position: fixed;
-        z-index: 99;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 25px !important;
-      }
-      #buttons button {
-        background-color: white;
-        border: none;
-        border-radius: 2px;
-        font-size: .8em;
-        padding: .4em .8em;
-      }
-    </style>
-  </div> -->
     <script>
       function changeTheme() {
         if (koaApp.theme === 'paper') {

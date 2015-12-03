@@ -719,44 +719,37 @@
           {
             bower: {
               "polymer": "polymer/polymer#^1.0.0"
-            },
-            src: "bower_components/polymer/polymer.html"
+            }
           },
           {
             bower: {
               "paper-drawer-panel": "PolymerElements/paper-drawer-panel#^1.0.0"
-            },
-            src: "bower_components/paper-drawer-panel/paper-drawer-panel.html"
+            }
           },
           {
             bower: {
               "paper-header-panel": "PolymerElements/paper-header-panel#^1.0.0"
-            },
-            src: "bower_components/paper-header-panel/paper-header-panel.html"
+            }
           },
           {
             bower: {
               "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.0"
-            },
-            src: "bower_components/paper-icon-button/paper-icon-button.html"
+            }
           },
           {
             bower: {
               "paper-menu": "PolymerElements/paper-menu#^1.0.0"
-            },
-            src: "bower_components/paper-menu/paper-menu.html"
+            }
           },
           {
             bower: {
               "paper-scroll-header-panel": "PolymerElements/paper-scroll-header-panel#^1.0.0"
-            },
-            src: "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
+            }
           },
           {
             bower: {
               "paper-toolbar": "PolymerElements/paper-toolbar#^1.0.0"
-            },
-            src: "bower_components/paper-toolbar/paper-toolbar.html"
+            }
           }
         ],
         view: "modules/polymermenu/index.html",

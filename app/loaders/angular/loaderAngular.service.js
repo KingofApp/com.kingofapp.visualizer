@@ -22,12 +22,7 @@
         };
 
         angular.forEach(modules, function(value, key) {
-          value.libs.forEach(function(lib) {
-            if (lib.src) {
-              this.libs.push(lib.src);
-            }
-          }, this);
-
+          this.libs = this.libs.concat(_.pluck(value.libs, 'src')).filter(function(n){ return n != undefined });
           this.files = this.files.concat(value.files);
         }, dependencies);
 

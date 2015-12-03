@@ -1,44 +1,45 @@
-(function(){
+(function() {
   'user strict';
 
   angular
     .module('king.loaders.angular', ['ngRoute'])
     .factory('angularLoader', angularLoader);
 
-    angularLoader.$inject = ['$q', '$location', '$ocLazyLoad', 'structureService'];
-    function angularLoader($q, $location, $ocLazyLoad, structureService){
-      return {
-        module: dynamicLoad
-      }
+  angularLoader.$inject = ['$q', '$location', '$ocLazyLoad', 'structureService'];
 
-      function dynamicLoad(scope){
-        var defer = $q.defer();
+  function angularLoader($q, $location, $ocLazyLoad, structureService) {
+    return {
+      module: dynamicLoad
+    };
 
-        structureService.getCurrentModules($location, function loadmodules(modules) {
-          var dependencies = {
-            files: new Array(0),
-            libs : new Array(0)
-          };
+    function dynamicLoad(scope) {
+      var defer = $q.defer();
 
-          angular.forEach(modules, function(value, key) {
-            this.libs  = this.libs.concat(_.pluck(value.libs, 'src'));
-            this.files = this.files.concat(value.files);
-          }, dependencies);
+      structureService.getCurrentModules($location, function loadmodules(modules) {
+        var dependencies = {
+          files: new Array(0),
+          libs: new Array(0)
+        };
 
-          $q.all({
-            'rootModule'  : structureService.getModule( "/"+$location.$$path.split("/")[1]),
-            'dependencies': $ocLazyLoad.load(dependencies.libs)
-          }).then(function(data){
-            scope.lazyLoadParams = [dependencies.files];
-            scope.template = structureService.validateScope(data.rootModule);
-            defer.resolve();
-          }).catch(defer.reject);
+        angular.forEach(modules, function(value, key) {
+          this.libs = this.libs.concat(_.pluck(value.libs, 'src'));
 
-        });
+          this.files = this.files.concat(value.files);
+        }, dependencies);
 
-        return defer.promise;
-      }
+        $q.all({
+          'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
+          'dependencies': $ocLazyLoad.load(dependencies.libs)
+        }).then(function(data) {
+          scope.lazyLoadParams = [dependencies.files];
+          scope.template = structureService.validateScope(data.rootModule);
+          defer.resolve();
+        }).catch(defer.reject);
 
+      });
 
+      return defer.promise;
     }
-}() );
+  }
+
+}());

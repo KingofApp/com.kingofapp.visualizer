@@ -102,10 +102,10 @@ angular
 
     function loadconfig($rootScope) {
       $translate.use(getLang());
-      $rootScope.config = { googleAnalytics: data.config.googleAnalytics };
-      $rootScope.$watch('data.config.googleAnalytics', function(prev,next) {
-        ga('create', $rootScope.config.googleAnalytics, { 'cookieDomain': 'none' });
-      });
+      // $rootScope.config = { googleAnalytics: data.config.googleAnalytics };
+      // $rootScope.$watch('data.config.googleAnalytics', function(prev,next) {
+      //   ga('create', $rootScope.config.googleAnalytics, { 'cookieDomain': 'none' });
+      // });
     }
 
     function getModule(path, callback){

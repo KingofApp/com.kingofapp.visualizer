@@ -1,18 +1,19 @@
 angular
-  .module('king.core.structureService')
+  .module('king.services.googleanalytics',[])
   .factory('googleAnalytics', loadFunction);
 
-// loadFunction.$inject = ['$http','$scope', 'structureService', '$filter', '$location'];
 
 function loadFunction(){
-  var trackingID = "";
+  var trackingId = "";
   console.log("WENT THROUGH GOOGLE ANALYTICS");
   return {
     load : load
   };
   function load(config) {
-    trackingID = config.trackingID;
-    console.log("CONFIG CARGADO",trackingID);
+    trackingId = config.trackingId;
+    console.log("CONFIG CARGADO",trackingId);
+
+    // googleAnalyticsCordova.trackingId = trackingId;
   }
 
 }

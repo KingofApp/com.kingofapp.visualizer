@@ -28,7 +28,7 @@
       return {
         'googleAnalytics': {
           'config':{
-              'trackingID':'UA-54151479-3'
+              'trackingId':'UA-54151479-3'
           }
         },
         'pushIp': {

@@ -13,15 +13,13 @@ function loadFunction(){
   function load(config) {
     PushipAppId = config.PushipAppId;
     GCMCode = config.GCMCode;
-    console.log("CONFIG CARGADO",GCMCode ,PushipAppId);
     document.addEventListener("deviceready", function(){
-      console.log("Device Ready");
       var Puship = window.plugins.puship;
       Puship.EnableLog = true;
       Puship.PushipAppId = PushipAppId; // From Puship.com application id
 
       if (Puship.Common.GetCurrentOs()==Puship.OS.ANDROID){
-        var GCMCode = GCMCode; // From Google Cloud Messaging - Proyect Number
+        // var GCMCode = GCMCode; // From Google Cloud Messaging - Proyect Number
         Puship.GCM.Register(GCMCode,
         {
           successCallback: function (pushipresult){

@@ -8,6 +8,8 @@
 
   function setDefaultPaths($routeProvider, $sceProvider) {
     $sceProvider.enabled(false);
+    // $analyticsProvider.firstPageview(true);
+    // googleAnalyticsCordovaProvider.trackingId = "UA-54151479-2";
     //Default Route
     $routeProvider
       .otherwise({

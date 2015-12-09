@@ -85,13 +85,10 @@ angular.module('angulartics.google.analytics.cordova', ['angulartics'])
 }])
 
 .run(['googleAnalyticsCordova','configService', function (googleAnalyticsCordova,configService) {
-  var tracking = "X";
-
   if(configService.services && configService.services.googleanalytics){
-    tracking = configService.services.googleanalytics.scope.trackId;
     console.log("Loading Analytics config ...");
+    googleAnalyticsCordova.init(configService.services.googleanalytics.scope.trackId);
   }
-  googleAnalyticsCordova.init(tracking);
 }]);
 
 })(angular);

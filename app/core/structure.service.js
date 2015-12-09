@@ -39,8 +39,8 @@ angular
       angular.forEach(data.services, function(data, key){
         // console.log("Data!!",data);
         // console.log("KEy!!!",key);
-        services[key] = $injector.get(key);
-        services[key].load(data.config);
+        // services[key] = $injector.get(key);
+        // services[key].load(data.config);
       });
 
 
@@ -53,7 +53,7 @@ angular
       data.modules['/404'] = error404();
 
       // Register services
-      registerServices();
+      // registerServices();
 
       setLoader(data.config.loader);
       $rootScope.$broadcast("menuUpdated");

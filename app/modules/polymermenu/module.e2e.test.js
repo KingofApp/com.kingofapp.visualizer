@@ -8,6 +8,9 @@
 		it('should open polymer menu', function() {
 			browser.get('/app/#/menu');
 			isPresent('paper-icon-button');
+			var EC = protractor.ExpectedConditions;
+			var menuelement = element(by.css('paper-icon-button'));
+			browser.wait(EC.elementToBeClickable(menuelement), 10000);
 			element(by.css('paper-icon-button')).click();
 		});
 

@@ -22,7 +22,7 @@
   <div id="main-king"> <!-- ng-controller="setStructure" -->
     <koa-app id="koaApp">
       <div id="koaAppContent">
-        <div id='transitionloader' ng-if='showTransition'>
+        <div id='transitionloader' ng-if='showTransition && transitionOn'>
           <!-- <koa-spinner active></koa-spinner> -->
           <img ng-src="{{loader}}" alt="" />
         </div>
@@ -42,12 +42,6 @@
   <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angulartics/src/angulartics.js"></script>
-  <script src="bower_components/angulartics/src/angulartics-ga-cordova.js"></script>
-<script>
-document.addEventListener("deviceready", function(){
-  console.log("READY OSTIA");
-}, false);
-</script>
   <script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -72,6 +66,7 @@ document.addEventListener("deviceready", function(){
   <script src="core/sampleModules.service.js"></script>
 
   <script src="loaders/common/module.js"></script>
+  <script src="loaders/common/services.provider.js"></script>
   <script src="loaders/common/loaderCommon.controller.js"></script>
   <script src="loaders/common/loaderCommon.directive.js"></script>
   <script src="loaders/common/loaderMenu.controller.js"></script>
@@ -83,13 +78,8 @@ document.addEventListener("deviceready", function(){
   <script src="loaders/common/route.decorator.js"></script>
   <script src="loaders/jquery/loaderJquery.directive.js"></script>
   <script src="loaders/angular/loaderAngular.service.js"></script>
-  <script src="js/listener.push.js"></script>
   <script src="js/listener.builder.js"></script>
   <script src="js/bootstrap.app.js"></script>
-  
-  <!-- Services  -->
-  <script src="services/googleanalytics/service.js"></script>
-  <script src="services/puship/service.js"></script>
 
     <script>
       function changeTheme() {
@@ -129,5 +119,8 @@ document.addEventListener("deviceready", function(){
     // }, 3000);
   </script>
   <!-- endbuild -->
+  <!-- Services  -->
+  <script src="services/googleanalytics/service.js"></script>
+  <script src="services/puship/service.js"></script>
 </body>
 </html>

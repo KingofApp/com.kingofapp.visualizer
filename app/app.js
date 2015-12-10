@@ -8,7 +8,6 @@ angular.module('myApp', [
   'angulartics.google.analytics.cordova',
   'pascalprecht.translate',
   'king.loaders.common',
-  'king.services.googleanalytics',
   'king.services.puship',
   'king.loaders.jquery',
   'king.loaders.angular',

@@ -12,10 +12,12 @@ angular
     var cachedLocations = {};
     var data = {};
     var services = [];
+    $rootScope.transitionOn = true;
     if($rootScope.appJsonStructure){
       set($rootScope.appJsonStructure);
     }else{
       set(sampleModules);
+      $rootScope.transitionOn = false;
     }
     return {
       get               : get,
@@ -39,8 +41,8 @@ angular
       angular.forEach(data.services, function(data, key){
         // console.log("Data!!",data);
         // console.log("KEy!!!",key);
-        services[key] = $injector.get(key);
-        services[key].load(data.config);
+        // services[key] = $injector.get(key);
+        // services[key].load(data.config);
       });
 
 
@@ -53,7 +55,7 @@ angular
       data.modules['/404'] = error404();
 
       // Register services
-      registerServices();
+      // registerServices();
 
       setLoader(data.config.loader);
       $rootScope.$broadcast("menuUpdated");

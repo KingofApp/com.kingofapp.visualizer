@@ -34,8 +34,6 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
   "resolutions": {
-    "angular": "1.4.x",
-    "qrcode-generator": "e932466e74",
-    "polymer": "^1.1.0"
+    "angular": "1.4.x"
   }
 }

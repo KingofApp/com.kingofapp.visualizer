@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         command: './node_modules/protractor/bin/webdriver-manager update'
       },
       server: {
-        command: 'http-server -a localhost -p 9001 -c-1'
+        command: 'serve -p 9001'
       }
     },
     run: {

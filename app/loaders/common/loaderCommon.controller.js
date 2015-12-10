@@ -121,6 +121,9 @@
     $scope.$on('koaLaunched', function(event, args) {
       console.log('Koa Launched');
       $rootScope.$apply(function() {
+        // TODO - Fixer to force android render
+        document.body.scrollTop = 1;
+        document.body.scrollTop = 0;
         $rootScope.showTransition = false;
       });
     });

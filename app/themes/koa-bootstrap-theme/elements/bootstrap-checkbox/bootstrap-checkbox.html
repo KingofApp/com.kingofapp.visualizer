@@ -1,0 +1,61 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bootstrap.html">
+
+<dom-module id="bootstrap-checkbox">
+  <template>
+    <label>
+      <input type="checkbox" value="{{value}}" checked="{{checked}}" disabled="{{disabled}}"> <content></content>
+    </label>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-checkbox',
+
+      properties: {
+        value: {
+          type: String
+        },
+
+        checked: {
+          type: Boolean,
+          value: false
+        },
+
+        disabled: {
+          type: Boolean,
+          value: false,
+          observer: '_disabledChange'
+        },
+
+        inline: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      hostAttributes: {
+        role: 'checkbox'
+      },
+
+      ready: function() {
+        if (!this.inline) {
+          this.classList.add('checkbox');
+        } else {
+          var label = this.querySelector('label');
+          label.classList.add('checkbox-inline');
+        }
+      },
+
+      _disabledChange: function (newValue, oldValue) {
+        this.toggleClass('disabled', newValue);
+      }
+    });
+  </script>
+</dom-module>

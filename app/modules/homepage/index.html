@@ -1,0 +1,43 @@
+<div class="homepage" ng-controller="homepageCtrl">
+
+  <div class="feat-item">
+    <div class="tile">
+      <div class="cat-name theme-bg">
+        <span>{{'homepage.latestnews' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" ng-repeat="item in homepage.items">
+          <koa-card image="{{item.featured}}">
+            <div class="card-content">
+              <span>{{item.title}}</span>
+            </div>
+            <div class="card-actions">
+              <a href="{{item.url}}">
+                <koa-button>{{item.lang.readmore}}</koa-button>
+              </a>
+            </div>
+          </koa-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-item {{item.class}}" ng-repeat="item in homepage.modulescope.sections">
+    <a href="{{item.url}}">
+      <div class="tile">
+        <div class="sections">
+          <img ng-src="{{item.icon}}" style="max-width:100%">
+        </div>
+        <div class="cat-name theme-bg">
+          <div>
+            <span>{{item.name}}</span>
+            <iron-icon icon="arrow-forward"></iron-icon>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

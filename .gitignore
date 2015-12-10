@@ -1,5 +1,9 @@
-**/.DS_Store
-nbproject
-manifest.mf
-build.xml
-
+*.log
+bower_components/
+logs/*
+node_modules/
+testresults/
+tmp
+dist
+app/core/structure.json
+.tmp

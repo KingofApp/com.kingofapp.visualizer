@@ -1,0 +1,105 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bootstrap.html">
+
+<dom-module id="bootstrap-toolbar">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      ::content bootstrap-icon-button[icon=menu] {
+        padding: 4px 9px;
+      }
+
+      ::content bootstrap-item {
+        display: block;
+      }
+
+      ::content bootstrap-item a {
+        color: #777;
+        display: block;
+        line-height: 20px;
+        padding: 10px 15px;
+        position: relative;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
+      }
+
+      ::content bootstrap-item a:hover,
+      ::content bootstrap-item a:focus {
+        background-color: transparent;
+        color: #333;
+        text-decoration: none;
+      }
+
+      ::content bootstrap-item.active a,
+      ::content bootstrap-item.active a:hover,
+      ::content bootstrap-item.active a:focus {
+        color: #555;
+        background-color: #e7e7e7;
+      }
+
+      ::content bootstrap-item.disabled a,
+      ::content bootstrap-item.disabled a:hover,
+      ::content bootstrap-item.disabled a:focus {
+        color: #ccc;
+        background-color: transparent;
+      }
+    </style>
+
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <content select=":not(bootstrap-menu)"></content>
+      </div>
+
+      <div class="collapse navbar-collapse" id="collapse-menu">
+        <content select="bootstrap-menu"></content>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-toolbar',
+
+      hostAttributes: {
+        'role': 'toolbar'
+      },
+
+      created: function() {
+        this.classList.add('navbar', 'navbar-default');
+      },
+
+      ready: function() {
+        var icon = this.querySelector('bootstrap-icon-button[icon=menu]')
+        if (icon) {
+          icon.dataset.toggle = 'collapse';
+          icon.dataset.target = '#collapse-menu';
+          icon.setAttribute('aria-expanded', false);
+          icon.classList.add('navbar-toggle');
+        }
+      },
+
+      attached: function() {
+        var menu = this.querySelector('bootstrap-menu');
+
+        if (menu) {
+          menu.classList.remove('list-group');
+          menu.classList.add('nav', 'navbar-nav');
+
+          var items = this.querySelectorAll('bootstrap-item');
+          for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            item.classList.remove('list-group-item');
+          }
+        }
+      }
+    });
+  </script>
+</dom-module>

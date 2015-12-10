@@ -1,0 +1,6 @@
+<div class="rss" ng-controller="rssCtrl">
+  <koa-item ng-hide="isEmpty(rss.message)">{{rss.message}}</koa-item>
+  <koa-card heading="{{item.title}}" class="pink" ng-repeat="item in entries track by $index">
+    <div class="card-content">{{item.contentSnippet}}</div>
+  </koa-card>
+</div>

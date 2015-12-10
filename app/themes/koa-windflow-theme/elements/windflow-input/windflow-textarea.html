@@ -1,0 +1,159 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
+<!-- <link rel="import" href="../../../../bower_components/windflow-input/windflow-input-behavior.html">
+<link rel="import" href="../../../../bower_components/windflow-input/windflow-input-char-counter.html">
+<link rel="import" href="../../../../bower_components/windflow-input/windflow-input-container.html">
+<link rel="import" href="../../../../bower_components/windflow-input/windflow-input-error.html">
+<link rel="import" href="../../../../bower_components/windflow-input/windflow-input-behavior.html"> -->
+
+<!--
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|--------
+`--input-container-color` | Label and underline color when the input is not focused | `--secondary-text-color`
+`--input-container-focus-color` | Label and underline color when the input is focused | `--default-primary-color`
+`--input-container-invalid-color` | Label and underline color when the input is is invalid | `--google-red-500`
+`--input-container-input-color` | Input foreground color | `--primary-text-color`
+`--input-container` | Mixin applied to the container | `{}`
+`--input-container-disabled` | Mixin applied to the container when it's disabled | `{}`
+`--input-container-label` | Mixin applied to the label | `{}`
+`--input-container-label-focus` | Mixin applied to the label when the input is focused | `{}`
+`--input-container-input` | Mixin applied to the input | `{}`
+`--input-container-underline` | Mixin applied to the underline | `{}`
+`--input-container-underline-focus` | Mixin applied to the underline when the input is focued | `{}`
+`--input-container-underline-disabled` | Mixin applied to the underline when the input is disabled | `{}`
+-->
+
+<dom-module id="windflow-textarea">
+  <template>
+    <style>
+        @font-face {
+          font-family: 'MullerBold';
+          src: url("../fonts/Muller/Muller-ExtraBold-DEMO.otf"); }
+
+        :host {
+            --windflow-input-container: {
+                background-color: #c5cae9;
+            };
+            --windflow-input-container-input: {
+                color: black;
+                font-family: "MullerBold";
+                font-size: 14px;
+                padding-left: 7px;
+            };
+            --windflow-input-container-label {
+                padding-left: 7px;
+
+            };
+            --windflow-input-container-underline: {
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+            };
+        }
+        input::-webkit-input-placeholder {
+            color: var(--windflow-input-container-color, rgba(0, 0, 0, 0.3));
+        }
+        input:-moz-placeholder {
+            color: var(--windflow-input-container-color, rgba(0, 0, 0, 0.3));
+        }
+        input::-moz-placeholder {
+            color: var(--windflow-input-container-color, rgba(0, 0, 0, 0.3));
+        }
+        input:-ms-input-placeholder {
+            color: var(--windflow-input-container-color, rgba(0, 0, 0, 0.3));
+        }
+
+    </style>
+
+    <windflow-input-container no-label-float="true" disabled$="[[disabled]]" invalid="[[invalid]]">
+
+      <label hidden$="[[!label]]">[[label]]</label>
+
+      <iron-autogrow-textarea id="input" class="windflow-input-input"
+        bind-value="{{value}}"
+        disabled$="[[disabled]]"
+        autocomplete$="[[autocomplete]]"
+        autofocus$="[[autofocus]]"
+        inputmode$="[[inputmode]]"
+        name$="[[name]]"
+        placeholder$="[[placeholder]]"
+        readonly$="[[readonly]]"
+        required$="[[required]]"
+        maxlength$="[[maxlength]]"
+        autocapitalize$="[[autocapitalize]]"
+        rows$="[[rows]]"
+        max-rows$="[[maxRows]]"
+        on-change="_onChange"></iron-autogrow-textarea>
+
+      <template is="dom-if" if="[[errorMessage]]">
+        <windflow-input-error>[[errorMessage]]</windflow-input-error>
+      </template>
+
+      <template is="dom-if" if="[[charCounter]]">
+        <windflow-input-char-counter></windflow-input-char-counter>
+      </template>
+
+    </windflow-input-container>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'windflow-textarea',
+
+      behaviors: [
+        Polymer.windflowInputBehavior
+      ],
+
+      properties: {
+        _ariaLabelledBy: {
+          observer: '_ariaLabelledByChanged',
+          type: String
+        },
+
+        _ariaDescribedBy: {
+          observer: '_ariaDescribedByChanged',
+          type: String
+        },
+        /**
+         * The label for this input. Bind this to `<windflow-input-container>`'s `label` property.
+         */
+        label: {
+          type: String
+        },
+
+        /**
+         * The initial number of rows.
+         */
+        rows: {
+          type: Number,
+          value: 1
+        },
+
+        /**
+         * The maximum number of rows this element can grow to until it scrolls.
+         * 0 means no maximum.
+         */
+        maxRows: {
+         type: Number,
+         value: 0
+        }
+      },
+
+      _ariaLabelledByChanged: function(ariaLabelledBy) {
+        this.$.input.textarea.setAttribute('aria-labelledby', ariaLabelledBy);
+      },
+
+      _ariaDescribedByChanged: function(ariaDescribedBy) {
+        this.$.input.textarea.setAttribute('aria-describedby', ariaDescribedBy);
+      },
+
+      /**
+       * Returns a reference to the input element.
+       */
+      get inputElement() {
+        return this.$.input;
+      }
+    });
+  </script>
+</dom-module>

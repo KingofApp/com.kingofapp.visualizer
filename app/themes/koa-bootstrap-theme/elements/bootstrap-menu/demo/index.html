@@ -1,0 +1,62 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>bootstrap-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../bootstrap-item/bootstrap-item.html">
+    <link rel="import" href="../bootstrap-menu.html">
+
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <bootstrap-menu>
+            <bootstrap-item>Inbox</bootstrap-item>
+            <bootstrap-item>Starred</bootstrap-item>
+            <bootstrap-item>Sent mail</bootstrap-item>
+            <bootstrap-item>Drafts</bootstrap-item>
+          </bootstrap-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <bootstrap-menu selected="0">
+            <bootstrap-item>Inbox</bootstrap-item>
+            <bootstrap-item disabled>Starred</bootstrap-item>
+            <bootstrap-item>Sent mail</bootstrap-item>
+            <bootstrap-item>Drafts</bootstrap-item>
+          </bootstrap-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <bootstrap-menu multi>
+            <bootstrap-item>Bold</bootstrap-item>
+            <bootstrap-item>Italic</bootstrap-item>
+            <bootstrap-item>Underline</bootstrap-item>
+            <bootstrap-item>Strikethrough</bootstrap-item>
+          </bootstrap-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

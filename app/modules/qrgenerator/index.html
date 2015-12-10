@@ -1,0 +1,30 @@
+<div class='qrgenerator' ng-controller='qrgeneratorCtrl'>
+
+  <koa-card heading="Client Id" class="pink static">
+    <div class="card-content">
+      <!-- <qrcode ng-show='qrgenerator.modulescope.static' data="{{qrgenerator.modulescope.static}}" size='150' ></qrcode> -->
+      <qr-code data="{{qrgenerator.modulescope.static}}"></qr-code>
+    </div>
+  </koa-card>
+  <!-- <template is="dom-repeat" items="{{qrgenerator.list}}">
+      <koa-card class='dynamic' heading="{{item.promocion}}">
+        <div class="card-content"><qr-code data="{{item.valor}}"></qr-code></div>
+      </koa-card>
+  </template> -->
+  <!-- <paper-card ng-repeat="promocion in qrgenerator.list">
+    <div class="card-content">
+      <span>{{promocion.promocion}}</span>
+      <qr-code data="{{promocion.valor}}"></qr-code>
+    </div>
+  </paper-card> -->
+
+  <!-- <div ng-repeat="promocion in qrgenerator.list" class="list">
+    <div class="card-content">
+      {{promocion.promocion}}
+    </div>
+    <div class="card-content">
+
+      <qr-code data="{{promocion.valor}}"></qr-code>
+    </div>
+  </div> -->
+</div>

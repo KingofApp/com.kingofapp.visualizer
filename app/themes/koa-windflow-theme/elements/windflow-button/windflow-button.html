@@ -1,0 +1,117 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-button-state.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-control-state.html">
+
+<!--
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|--------
+`--button` | Mixin applied to the button | `{}`
+`--button-disabled` | Mixin applied to the disabled button. Note that you can also use the `koa-button[disabled]` selector | `{}`
+`--button-keyboard-focus` | Mixin applied to a button after it's been focused using the keyboard | `{}`
+`--button-link-keyboard-focus` | Mixin applied to a link button after it's been focused using the keyboard | `{}`
+`--button-big-keyboard-focus` | Mixin applied to a big button after it's been focused using the keyboard | `{}`
+-->
+
+<dom-module id="windflow-button">
+  <template>
+    <style>
+        @font-face {
+          font-family: 'MullerThin';
+          src: url("../fonts/Muller/Muller-Thin-DEMO.otf"); }
+        @font-face {
+          font-family: 'MullerBold';
+          src: url("../fonts/Muller/Muller-ExtraBold-DEMO.otf"); }
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url("../fonts/Helvetica/HelveticaNeueLTStd-Lt.otf"); }
+        :host {
+            font-family: "MullerBold";
+            font-size: 12px;
+            padding: 10px 19px;
+            text-decoration: none;
+            border: 2px solid transparent; 
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            color: #000;
+        }
+        :host([raised]) {
+            border-color: #000;
+        }
+        :host([raised].keyboard-focus) {
+            background-color: #448AFF;
+            color: #FFF;
+        }
+        :host(:not([raised]).keyboard-focus) {
+            color: #448AFF;
+        }
+        :host([active]),
+        :host([pressed]) {
+            color: #448AFF;
+            background-color: #FFF;
+            border-color: transparent;
+        }
+        :host([raised][pressed]),
+        :host([raised][active]),
+        :host([dialog][pressed]),
+        :host([dialog][active]) {
+            background-color: #448AFF;
+            color: #FFF;
+            border-color: transparent;
+        }
+        :host([disabled]) {
+            color: #949393;
+            border-color: transparent;
+        }
+        :host([raised][disabled]) {
+            background-color: #E5E5E5;
+        }
+        :host(:not([active]):not([pressed])[dialog]) {
+            background-color: #E5E5E5;
+            color: #FFF;
+            border-color: transparent;
+        }
+    </style>
+
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'windflow-button',
+
+      hostAttributes: {
+        role: 'button',
+        tabindex: 0
+      },
+
+      behaviors: [
+        Polymer.IronButtonState,
+        Polymer.IronControlState
+      ],
+
+      properties: {
+          /**
+           * If true, the button should be styled with a shadow.
+           */
+          raised: {
+            type: Boolean,
+            reflectToAttribute: true,
+            value: false,
+            observer: '_calculateElevation'
+          },
+          
+          dialog: {
+            type: Boolean,
+            reflectToAttribute: true,
+            value: false
+          }
+      }
+    });
+  </script>
+</dom-module>

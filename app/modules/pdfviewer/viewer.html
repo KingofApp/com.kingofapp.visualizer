@@ -1,0 +1,26 @@
+<style>
+.rotate0 {-webkit-transform: rotate(0deg); transform: rotate(0deg); }
+.rotate90 {-webkit-transform: rotate(90deg); transform: rotate(90deg); }
+.rotate180 {-webkit-transform: rotate(180deg); transform: rotate(180deg); }
+.rotate270 {-webkit-transform: rotate(270deg); transform: rotate(270deg); }
+</style>
+<nav ng-class="getNavStyle(scroll)">
+  <button ng-click="goPrevious()"><</span></button>
+  <button ng-click="goNext()">></span></button>
+
+  <button ng-click="zoomIn()">+</span></button>
+  <button ng-click="zoomOut()">-</span></button>
+
+  <button ng-click="rotate()">90º</span></button>
+
+  <p><span>Page: </span>
+  <span class='pagenum'>{{pageNum}}</span>
+   / <span class='pagecount'>{{pageCount}}</span>
+  </p>
+
+</nav>
+
+<hr>
+<div ng-bind-html="ready"></div>
+{{loading}}
+<canvas id="pdf" class="rotate0"></canvas>

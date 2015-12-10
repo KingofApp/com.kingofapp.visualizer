@@ -1,0 +1,157 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-button-state.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-control-state.html">
+<link rel="import" href="../../../../bower_components/iron-form-element-behavior/iron-form-element-behavior.html">
+<link rel="import" href="../windflow-item/windflow-item.html">
+<link rel="import" href="../windflow-input/windflow-input.html">
+<link rel="import" href="../windflow-menu/windflow-menu.html">
+
+<!--
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|--------
+`--dropdown-menu` | A mixin that is applied to the element host | `{}`
+`--dropdown-menu-disabled` | A mixin that is applied to the element host when disabled | `{}`
+`--dropdown-menu-button` | A mixin that is applied to the internal menu button | `{}`
+`--dropdown-menu-input` | A mixin that is applied to the internal windflow input | `{}`
+`--dropdown-menu-icon` | A mixin that is applied to the internal icon | `{}`
+-->
+
+<dom-module id="windflow-dropdown-menu">
+    <template>
+        <style>
+            @font-face {
+                font-family: 'HelveticaNeue';
+                src: url("../fonts/Helvetica/HelveticaNeueLTStd-Lt.otf"); 
+            }
+        /* Write your styles here */
+            :host {
+                --windflow-input-container-input: {
+                    font-family: 'HelveticaNeue';
+                };
+                --dropdown-menu: {
+                    font-family: 'MullerBold';
+                };
+                --dropdown-menu-disabled: {
+                    
+                };
+                --dropdown-menu-button: {
+                    
+                };
+                --dropdown-menu-input: {
+                    font-family: 'HelveticaNeue';
+                };
+                --dropdown-menu-icon: {
+                    background: url(./dropdown-arrow.png) no-repeat right;
+                };
+            }
+            
+            :host windflow-menu {
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+            }
+            
+            :host([opened]) windflow-menu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            :host([disabled]) windflow-menu {
+                @apply(--dropdown-menu-disabled);
+            }
+            
+            :host windflow-input {
+                @apply(--dropdown-menu-icon);
+                @apply(--dropdown-menu-input);
+                --windflow-input-container-input: {
+                    color: black;
+                    font-family: "HelveticaNeue";
+                    font-size: 14px; 
+                    padding-left: 7px;
+                    background: url(../windflow-dropdown-menu/dropdown-arrow.png) no-repeat right;
+                };
+                --windflow-input-container-label: {
+                    padding-left: 7px;
+                };
+            }
+        </style>
+
+    <div id="windflow_dropdown">
+        <windflow-input label="{{label}}" id="input" on-tap="open" disabled={{disabled}}>
+        </windflow-input>
+        <windflow-menu>
+            <content></content>
+        </windflow-menu>
+    </div>
+    </template>
+    <script src="../jquery/jquery-2.1.4.min.js"></script>
+    <script>
+        // Change the class for the new selected element.
+        $("windflow-item").click(function() {
+            var option = $(this).text();
+            option = option.trim();
+            $(this).closest("#windflow_dropdown").find("input").val(option);
+            return option;
+        });
+        Polymer({
+            is: 'windflow-dropdown-menu',
+
+            behaviors: [
+                Polymer.IronControlState,
+                Polymer.IronButtonState,
+                Polymer.IronFormElementBehavior
+            ],
+
+            properties: {
+                /**
+                * The label for the dropdown.
+                */
+                label: {
+                    type: String
+                },
+
+                /**
+                * True if the dropdown is open. Otherwise, false.
+                */
+                opened: {
+                    type: Boolean,
+                    notify: true,
+                    value: false,
+                    reflectToAttribute: true,
+                },
+                
+                placeholder: {
+                    type: String
+                }
+
+            },
+            
+            listeners: {
+                'tap': 'toggle',
+            },
+
+            /**
+            * Show the dropdown content.
+            */
+            open: function() {
+                
+            },
+
+            /**
+            * Hide the dropdown content.
+            */
+            close: function() {
+
+            },
+            
+            toggle: function() {
+                if(!this.disabled) {
+                    this.opened = !this.opened; 
+                }
+            }
+        });
+    </script>
+</dom-module>

@@ -1,0 +1,257 @@
+/* app css stylesheet */
+
+.element {
+  margin: 0 0 2.5em;
+}
+.card-content img {
+  width: 100%;
+}
+html, body, #main-king {
+  height: 100%;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+div.youtubegallery img {
+  width: 100%;
+}
+#main-king > div, .template, .template > div {
+  height: 100%;
+}
+div.auto {
+  overflow: auto;
+  height: 100%;
+}
+paper-card {
+  margin: 5px;
+}
+
+/*div#main-king{
+  width: 360px;
+  height: 640px;
+  margin: 10px;
+  border: 3px solid gray;
+  position: relative;
+  overflow: hidden;
+}*/
+
+div.main-ads {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  z-index: 9999;
+position: absolute;
+}
+div.bottom-ads {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0px;
+  z-index: 999;
+}
+div.innerC {
+  min-height: 140px;
+  border: 1px solid red;
+  margin: 5px;
+}
+div.innerM {
+  min-height: 140px;
+  /*border: 1px solid orange;*/
+  /*margin:5px;*/
+  padding: 5px;
+}
+.full {
+  width: 100%;
+  height: 100%;
+}
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+.menu:before {
+  content: "[";
+}
+.menu:after {
+  content: "]";
+}
+.menu > li {
+  display: inline;
+}
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+.border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* statusBar */
+
+.statusBar {
+  background-color: #000;
+  color: #fff;
+  height: 32px;
+}
+.statusBar p {
+  margin: 0;
+}
+
+/*END statusBar*/
+
+
+/* SIDEMENU */
+
+span {
+  color: #888888;
+}
+button {
+  width: auto;
+  padding: 7px 22px;
+}
+menu {
+  display: block;
+}
+menu > div {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-transition: -webkit-transform ease 250ms;
+  -moz-transition: -webkit-transform ease 250ms;
+  -ms-transition: -webkit-transform ease 250ms;
+  -o-transition: -webkit-transform ease 250ms;
+  transition: -webkit-transform ease 250ms;
+  -webkit-transition: transform ease 250ms;
+  -moz-transition: transform ease 250ms;
+  -ms-transition: transform ease 250ms;
+  -o-transition: transform ease 250ms;
+  transition: transform ease 250ms;
+}
+menu > div.left {
+  background: #2b303b;
+  left: -250px;
+}
+menu > div.show.left {
+  transform: translate3d(250px, 0, 0);
+  -ms-transform: translate3d(250px, 0, 0);
+  -webkit-transform: translate3d(250px, 0, 0);
+  -o-transform: translate3d(250px, 0, 0);
+  -moz-transform: translate3d(250px, 0, 0);
+}
+menu > div.right {
+  background: #6B1919;
+  right: -250px;
+}
+menu > div.show.right {
+  transform: translate3d(-250px, 0, 0);
+  -ms-transform: translate3d(-250px, 0, 0);
+  -webkit-transform: translate3d(-250px, 0, 0);
+  -o-transform: translate3d(-250px, 0, 0);
+  -moz-transform: translate3d(-250px, 0, 0);
+}
+menu > div > menu-item {
+  display: block;
+  padding: 5px;
+  line-height: 28px;
+}
+menu > div > menu-item > div {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 10px 15px;
+  border-bottom: solid 1px #555;
+  cursor: pointer;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  color: #788195;
+}
+a:hover {
+  color: #ffffff;
+}
+a, a:focus, a:hover, a:active {
+  outline: 0 !important;
+  text-decoration: none;
+}
+a:link, a:visited, a:active {
+  color: #788195;
+}
+
+/*menu > div > menu-item > div:hover {
+  color: #F0F0F0;
+}*/
+
+menu > div > menu-item > div > span {
+  float: left;
+  color: inherit;
+}
+
+/* END SIDEMENU */
+
+.item {
+  @apply(--layout-horizontal);
+  margin: 16px 16px 0 16px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid #ddd;
+}
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-color: #DDD;
+}
+.pad {
+  padding: 0 16px;
+  @apply(--layout-flex);
+  @apply(--layout-vertical);
+}
+.primary {
+  font-size: 16px;
+  font-weight: bold;
+}
+.secondary {
+  font-size: 14px;
+}
+.dim {
+  color: gray;
+}
+.short {
+  padding-top: 12px;
+  height: 216px;
+}
+h4 {
+  margin-left: 24px;
+}
+.avatar {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ccc;
+}
+.green {
+  background-color: #81C784;
+}
+
+#transitionloader{
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  position: absolute;
+  background-color: #fff;
+  text-align: center;
+  padding-top: 40%;
+}

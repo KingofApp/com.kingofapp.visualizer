@@ -1,0 +1,49 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>bootstrap-radio-button demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../bootstrap-radio-button.html">
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Default (stacked)</h4>
+        <div class="horizontal-section">
+          <bootstrap-radio-button name="optionsRadios1" value="">Option one is this</bootstrap-radio-button>
+          <bootstrap-radio-button name="optionsRadios1" value="" checked>Option two is checked</bootstrap-radio-button>
+          <bootstrap-radio-button name="optionsRadios1" value="" disabled>Option three is disabled</bootstrap-radio-button>
+        </div>
+      </div>
+      <div>
+        <h4>Inline</h4>
+        <div class="horizontal-section">
+          <bootstrap-radio-button name="optionsRadios2" value="" inline>1</bootstrap-radio-button>
+          <bootstrap-radio-button name="optionsRadios2" value="" inline>2</bootstrap-radio-button>
+          <bootstrap-radio-button name="optionsRadios2" value="" inline>3</bootstrap-radio-button>
+        </div>
+      </div>
+      <div>
+        <h4>Without label text</h4>
+        <div class="horizontal-section">
+          <bootstrap-radio-button name="optionsRadios3" value=""></bootstrap-radio-button>
+          <bootstrap-radio-button name="optionsRadios3" value=""></bootstrap-radio-button>
+          <bootstrap-radio-button name="optionsRadios3" value=""></bootstrap-radio-button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<div class='angularmenu' ng-controller="Menu1Ctrl">
+  <div class='statusBar'>
+    <p><button analytics-on analytics-event="Menu Button event" ng-click="showLeft($event)">{{ "angularmenu.sidebar" | translate }}</button>  {{title}}</p>
+  </div>
+  <menu visible="leftVisible" alignment="left">
+    <menu-item ng-repeat="(key, value) in menu"><a ng-href="#{{key}}">{{value.name}}</a></menu-item>
+  </menu>
+    <div class='innerM auto'>
+      <!-- moduleIdentifier + Template -->
+      <div ng-include="angularmenuTemplate">
+      </div>
+    </div>
+</div>

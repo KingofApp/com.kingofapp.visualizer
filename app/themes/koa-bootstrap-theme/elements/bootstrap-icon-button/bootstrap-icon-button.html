@@ -1,0 +1,104 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-button-state.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-control-state.html">
+<link rel="import" href="../bootstrap.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="bootstrap-icon-button">
+  <template strip-whitespace>
+    <style>
+      :host {
+        display: inline-block;
+        box-sizing: content-box;
+        position: relative;
+        padding: 8px;
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+
+        width: 24px;
+
+        @apply(--bootstrap-icon-button);
+      }
+
+      :host([disabled]) {
+        color: var(--bootstrap-icon-button-disabled-text, --disabled-text-color);
+        pointer-events: none;
+        cursor: auto;
+
+        @apply(--bootstrap-icon-button-disabled);
+      }
+
+      iron-icon {
+        --iron-icon-width: 100%;
+        --iron-icon-height: 100%;
+      }
+    </style>
+
+    <iron-icon id="icon" src="[[src]]" icon="[[icon]]" alt$="[[alt]]"></iron-icon>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-icon-button',
+
+      behaviors: [
+        Polymer.IronButtonState,
+        Polymer.IronControlState
+      ],
+
+      hostAttributes: {
+        role: 'button',
+        tabindex: '0'
+      },
+
+      properties: {
+        /**
+         * The URL of an image for the icon. If the src property is specified,
+         * the icon property should not be.
+         */
+        src: {
+          type: String
+        },
+
+        /**
+         * Specifies the icon name or index in the set of icons available in
+         * the icon's icon set. If the icon property is specified,
+         * the src property should not be.
+         */
+        icon: {
+          type: String
+        },
+
+        /**
+         * Specifies the alternate text for the button, for accessibility.
+         */
+        alt: {
+          type: String,
+          observer: "_altChanged"
+        }
+      },
+
+      _altChanged: function(newValue, oldValue) {
+        var label = this.getAttribute('aria-label');
+
+        // Don't stomp over a user-set aria-label.
+        if (!label || oldValue == label) {
+          this.setAttribute('aria-label', newValue);
+        }
+      }
+    });
+  </script>
+</dom-module>

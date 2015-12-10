@@ -1,0 +1,12 @@
+{
+  "contact.send": "Send",
+  "contact.message": "Message",
+  "contact.name": "Name",
+  "contact.email": "Email",
+  "contact.error.name" : "You name is required.",
+  "contact.error.email" : "Invalid email.",
+  "contact.error.message" : "Message is required.",
+  "contact.message.sent" : "Message sent.",
+  "contact.message.warning" : "Warning: ",
+  "contact.message.rejected" : "Error sending form, please check the fields and try again."
+}

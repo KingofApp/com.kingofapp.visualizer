@@ -1,0 +1,12 @@
+{
+  "contact.send": "Enviar",
+  "contact.message": "Mensaje",
+  "contact.name": "Nombre",
+  "contact.email": "Correo electrónico",
+  "contact.error.name" : "El nombre es obligatorio.",
+  "contact.error.email" : "El email es incorrecto.",
+  "contact.error.message" : "El mensaje es obligatorio.",
+  "contact.message.sent" : "Mensaje enviado.",
+  "contact.message.warning" : "Aviso: ",
+  "contact.message.rejected" : "Error al enviar formulario, porfavor comprueba los campos y vuelve a intentarlo."
+}

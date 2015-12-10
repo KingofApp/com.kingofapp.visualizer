@@ -1,0 +1,54 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>bootstrap-badge demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../bootstrap-button/bootstrap-button.html">
+    <link rel="import" href="../bootstrap-badge.html">
+
+    <style>
+      .horizontal-section div {
+        margin-bottom: 30px;
+        display: block;
+      }
+      .horizontal-section div:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Badges</h4>
+        <div class="horizontal-section">
+          <div>
+            <a href="#">Inbox <bootstrap-badge>42</bootstrap-badge></a>
+          </div>
+          <div>
+            <bootstrap-button type="primary">Messages <bootstrap-badge>4</bootstrap-badge></bootstrap-button>
+          </div>
+          <div>
+            <ul class="nav nav-pills" role="tablist">
+              <li role="presentation" class="active"><a href="#">Home <bootstrap-badge>42</bootstrap-badge></a></li>
+              <li role="presentation"><a href="#">Profile</a></li>
+              <li role="presentation"><a href="#">Messages <bootstrap-badge>3</bootstrap-badge></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-button-state.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-control-state.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<!--
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|--------
+`--tab` | Mixin applied to the tab | `{}`
+`--tab-content` | Mixin applied to the tab content | `{}`
+`--tab-content-unselected` | Mixin applied to the tab content when the tab is not selected | `{}`
+-->
+
+<dom-module id="windflow-tab">
+  <template>
+    <style>
+      @font-face {
+        font-family: 'MullerBold';
+        src: url("../fonts/Muller/Muller-ExtraBold-DEMO.otf"); 
+      }
+        
+    :host {
+      @apply(--layout-inline);
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
+      @apply(--layout-flex);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      @apply(--windflow-tab);
+      margin: 0;
+    }
+    :host(:focus) {
+      outline: none;
+    }
+    :host([link]) {
+      padding: 0;
+    }
+    .tab-content {
+      height: 100%;
+      background-color: #3F51B5;
+      color: #FFF;
+      font-family: 'MullerBold';
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      transition: opacity 0.1s cubic-bezier(0.4, 0.0, 1, 1);
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+      @apply(--layout-flex-auto);
+      @apply(--windflow-tab-content);
+      padding: 0 24px 0 24px;
+      border-width: 0 0 2px 0;
+      border-style: solid;
+      border-color: transparent;
+    }
+    :host(:focus) .tab-content {
+      opacity: 1;
+      font-weight: 700;
+    }
+    :host([aria-selected="true"]) .tab-content {        
+      background-color: #448AFF;
+      border-color: #FFF;
+    }
+    :host([disabled]) .tab-content {        
+      color: #949393;
+    }
+    .tab-content > ::content > a {
+      height: 100%;
+      /* flex */
+      -ms-flex: 1 1 0.000000001px;
+      -webkit-flex: 1;
+      flex: 1;
+      -webkit-flex-basis: 0.000000001px;
+      flex-basis: 0.000000001px;
+    }
+    </style>
+
+    <div class="tab-content">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'windflow-tab',
+
+      hostAttributes: {
+        role: 'tab'
+      },
+
+      behaviors: [
+        Polymer.IronButtonState,
+        Polymer.IronControlState
+      ],
+    hostAttributes: {
+      role: 'tab'
+    },
+    listeners: {
+      down: '_updateNoink'
+    },
+    ready: function() {
+    },
+    attached: function() {
+      this._updateNoink();
+    },
+    get _parentNoink () {
+      var parent = Polymer.dom(this).parentNode;
+      return !!parent && !!parent.noink;
+    },
+    _updateNoink: function() {
+      this.noink = !!this.noink || !!this._parentNoink;
+    }
+    });
+  </script>
+</dom-module>

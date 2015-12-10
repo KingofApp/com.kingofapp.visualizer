@@ -1,0 +1,8 @@
+<div class='wordpressposts auto' ng-controller='wordpresspostsCtrl'>
+    <a ng-repeat='item in wordpressposts.items' href='#{{item.url}}'>
+      <koa-card class='orange' image='{{item.featured}}'>
+        <h2 class="title-text card-content paper-card">{{item.title | cleanHex}}</h2>
+        <div class='card-content'>{{item.excerpt}}</div>
+      </koa-card>
+    </a>
+</div>

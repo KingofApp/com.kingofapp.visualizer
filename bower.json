@@ -1,0 +1,39 @@
+{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.1.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular-cache": "~4.3.1",
+    "angular-google-maps": "~2.1.6",
+    "angular-loader": "1.4.x",
+    "angular-mocks": "~1.4.x",
+    "angular-pdf": "~1.1.1",
+    "angular-qrcode": "monospaced/angular-qrcode#~6.0.3",
+    "angular-resource": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-scenario": "1.4.x",
+    "angular-translate-loader-partial": "~2.7.2",
+    "angular-translate": "~2.7.2",
+    "angular-xml": "~2.2.1",
+    "angular": "1.4.x",
+    "angulartics-google-analytics": "~0.1.1",
+    "angulartics": "~0.20.0",
+    "html5-boilerplate": "~4.3.0",
+    "jquery": "2.x",
+    "lodash": "~3.10.1",
+    "mocha": "2.2.x",
+    "oclazyload": "~1.0.4",
+    "protractor": "2.1.x",
+    "xml2json": "~1.1.1",
+    "polymer": "Polymer/polymer#^1.1.0"
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "resolutions": {
+    "angular": "1.4.x"
+  }
+}

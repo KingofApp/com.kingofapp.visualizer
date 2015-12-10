@@ -1,0 +1,11 @@
+<div class='angularscope' ng-controller='angularScopeCtrl'>
+<span class="info">{{ angularscope.custom }}</span>
+<p>Enter your name: <input type="text" ng-model="yourName"></input></p>
+<p class='result'>Hello {{yourName}}</p>
+
+<div class='innerM'>
+  <!-- moduleIdentifier + Template -->
+  <div ng-include="angularscopeTemplate">
+  </div>
+</div>
+</div>

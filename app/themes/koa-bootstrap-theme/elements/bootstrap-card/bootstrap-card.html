@@ -1,0 +1,62 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bootstrap.html">
+
+<dom-module id="bootstrap-card">
+  <template>
+    <style>
+      :host {
+        background-color: white;
+        border-radius: 12px;
+        border: 1px solid #e5e5e5;
+        display: inline-block;
+        margin-bottom: 12px;
+        position: relative;
+      }
+
+      img {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        width: 100%
+      }
+
+      h4 {
+        font-size: 24px;
+        margin: 0;
+        padding: 20px;
+      }
+
+      :host ::content .card-content,
+      :host ::content .card-actions {
+        padding: 20px;
+      }
+    </style>
+
+    <img hidden$="[[!image]]" src="[[image]]">
+    <h4 hidden$="[[!heading]]">[[heading]]</h4>
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bootstrap-card',
+
+      properties: {
+        heading: {
+          type: String,
+          value: ''
+        },
+
+        image: {
+          type: String,
+          value: ''
+        }
+      }
+    });
+  </script>
+</dom-module>

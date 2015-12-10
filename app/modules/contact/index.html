@@ -1,0 +1,25 @@
+<div ng-controller="contactCtrl" class="contact">
+
+  <form is="iron-form" id="contactForm" method="post" action="/">
+    <koa-input name="name"
+               label="{{'contact.name' | translate}}"
+               error-message="{{'contact.error.name' | translate}}"
+               ng-model="contact.name"
+               required></koa-input>
+    <koa-input name="email"
+               type="email"
+               label="{{'contact.email' | translate}}"
+               error-message="{{'contact.error.email' | translate}}"
+               ng-model="contact.email"
+               auto-validate
+               required></koa-input>
+    <koa-input name="message"
+               label="{{'contact.message' | translate}}"
+               error-message="{{'contact.error.message' | translate}}"
+               ng-model="contact.message"
+               required></koa-input>
+    <koa-button raised ng-click="send()">{{'contact.send' | translate}}</koa-button>
+  </form>
+  <p class='status' ng-if='contact.status && contact.modulescope.debug'>{{contact.status}}</p>
+
+</div>

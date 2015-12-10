@@ -190,13 +190,13 @@
         Polymer.dom(parent).appendChild(polymermenuTemplate);
       }
 
-      console.info('Adding ng-click...');
+      // console.info('Adding ng-click...');
       $('[ng-click]').click(function() {
         var functionName = $(this).attr('ng-click').replace('()', '');
         $scope[functionName]();
       });
 
-      console.info('Adding ng-model...');
+      // console.info('Adding ng-model...');
       $('[ng-model]').each(function() {
         var parent = $(this);
 
@@ -217,7 +217,7 @@
     function launchKoa() {
       setTimeout(function() {
 
-        console.info('Changing koa-elements to theme-elements...');
+        // console.info('Changing koa-elements to theme-elements...');
 
         koaApp.createTree();
 

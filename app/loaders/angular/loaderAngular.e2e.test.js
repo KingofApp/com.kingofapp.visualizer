@@ -8,7 +8,7 @@
 		describe('for simple modules', function() {
 			it('should load angular menu', function() {
 				browser.get('/app/#/menu');
-				isPresent('paper-toolbar');
+				isClickable('paper-toolbar');
 
 				expectMenu();
 
@@ -51,7 +51,7 @@
 		describe('for multi-level modules', function() {
 			it('should load angular scope inside angular menu', function() {
 				browser.get('/app/#/menu/scope-module');
-				isPresent('paper-toolbar');
+				// isClickable('paper-toolbar');
 
 				expectMenu();
 				expectScope();
@@ -59,7 +59,7 @@
 			});
 			it('should load angular feed inside angular menu', function() {
 				browser.get('/app/#/menu/level1-feed');
-				isPresent('paper-toolbar');
+				// isClickable('paper-toolbar');
 
 				expectMenu();
 				expectFeed();
@@ -67,7 +67,7 @@
 			});
 			it('should load a different angular scope inside angular menu', function() {
 				browser.get('/app/#/menu/scope-diff-module');
-				isPresent('paper-toolbar');
+				// isClickable('paper-toolbar');
 
 				expectMenu();
 				expectDiffScope();
@@ -75,7 +75,7 @@
 			});
 			it('should load angular scope inside angular menu with different route', function() {
 				browser.get('/app/#/menu/scope-same-module');
-				isPresent('paper-toolbar');
+				// isClickable('paper-toolbar');
 
 				expectMenu();
 				expectScope();
@@ -83,7 +83,7 @@
 			});
 			it('should load angular feed inside angular scope inside angular menu', function() {
 				browser.get('/app/#/menu/scope-module/static-feed');
-				isPresent('paper-toolbar');
+				// isClickable('paper-toolbar');
 
 				expectMenu();
 				expectScope();
@@ -192,6 +192,11 @@
 					return $(selector).isPresent();
 			}, 6000, 'Main (' + selector + ') not present');
 		}
+		function isClickable(selector) {
+			var EC = protractor.ExpectedConditions;
+			var menuelement = element(by.css(selector));
+			browser.wait(EC.elementToBeClickable(menuelement), 10000);
+		}
 		function expectEnglishTexts() {
 			expect(element(by.css('p.text1')).getInnerHtml()).toBe('First text');
 			expect(element(by.css('p.text2')).getInnerHtml()).toBe('Second text');
@@ -217,9 +222,11 @@
 			expect(element(by.css('.filters span.info')).getInnerHtml()).toBe('Filterstest');
 		}
 		function expectMenu() {
-			isPresent('paper-icon-button');
-			expect($('paper-icon-button').isPresent()).toBe(true);
-			element(by.css('paper-icon-button')).click();
+			// isPresent('paper-icon-button');
+			var EC = protractor.ExpectedConditions;
+			var menuelement = element(by.css('paper-icon-button'));
+			browser.wait(EC.elementToBeClickable(menuelement), 10000);
+			menuelement.click();
 			// expect(element(by.css('#topBar > span.title')).getInnerHtml()).toBe('Polymer Menu Module');
 		}
 		function expectFeed() {

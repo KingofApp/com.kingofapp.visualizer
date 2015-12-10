@@ -22,7 +22,7 @@
   <div id="main-king"> <!-- ng-controller="setStructure" -->
     <koa-app id="koaApp">
       <div id="koaAppContent">
-        <div id='transitionloader' ng-if='showTransition'>
+        <div id='transitionloader' ng-if='showTransition && transitionOn'>
           <!-- <koa-spinner active></koa-spinner> -->
           <img ng-src="{{loader}}" alt="" />
         </div>

@@ -12,10 +12,12 @@ angular
     var cachedLocations = {};
     var data = {};
     var services = [];
+    $rootScope.transitionOn = true;
     if($rootScope.appJsonStructure){
       set($rootScope.appJsonStructure);
     }else{
       set(sampleModules);
+      $rootScope.transitionOn = false;
     }
     return {
       get               : get,

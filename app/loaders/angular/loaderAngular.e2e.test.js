@@ -223,10 +223,10 @@
 		}
 		function expectMenu() {
 			// isPresent('paper-icon-button');
-			var EC = protractor.ExpectedConditions;
-			var menuelement = element(by.css('paper-icon-button'));
-			browser.wait(EC.elementToBeClickable(menuelement), 10000);
-			menuelement.click();
+			// var EC = protractor.ExpectedConditions;
+			// var menuelement = element(by.css('paper-icon-button'));
+			// browser.wait(EC.elementToBeClickable(menuelement), 10000);
+			// menuelement.click();
 			// expect(element(by.css('#topBar > span.title')).getInnerHtml()).toBe('Polymer Menu Module');
 		}
 		function expectFeed() {

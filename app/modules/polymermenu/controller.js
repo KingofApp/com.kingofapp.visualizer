@@ -1,4 +1,5 @@
 'use strict';
+
 angular
   .controller('polymerMenuCtrl', loadFunction);
 
@@ -9,32 +10,30 @@ function loadFunction($q, $scope, structureService, $location) {
   structureService.registerModule($location, $scope, 'polymermenu');
 
   $q.all({
-        menu: getMenu()
-      })
-      .then(function(data){
-        setMenu(data.menu);
+    menu: getMenu()
+  }).then(function(data) {
+    setMenu(data.menu);
   });
 
-  function getMenu(){
+  function getMenu() {
     var menu = new Array(0);
     var trExp = /[\/\s]+/gi;
-      angular.forEach(structureService.getChildren($scope.polymermenu.modulescope.path), function(value, key) {
-        structureService.getModule(key).then(function(module) {
-          if (module.showOn && module.showOn.menu) {
+    angular.forEach(structureService.getChildren($scope.polymermenu.modulescope.path), function(value, key) {
+      structureService.getModule(key).then(function(module) {
+        if (module.showOn && module.showOn.menu) {
           var slug = value.name.replace(trExp, '-');
-            menu.push({
-              text: value.name,
-              url: '#' + key,
-              class: slug
-            });
-          }
-        });
+          menu.push({
+            text: value.name,
+            url: '#' + key,
+            class: slug
+          });
+        }
+      });
     });
     return menu;
   }
 
-  function setMenu(menu){
+  function setMenu(menu) {
     $scope.polymermenu.menu = menu;
   }
-
 }

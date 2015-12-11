@@ -4,6 +4,6 @@ logs/*
 node_modules/
 testresults/
 tmp
-dist/
+/dist
 app/core/structure.json
 .tmp

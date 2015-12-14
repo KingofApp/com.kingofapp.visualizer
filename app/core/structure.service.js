@@ -56,7 +56,7 @@ angular
 
       // Register services
       // registerServices();
-
+      setColors(data.config.colors);
       setLoader(data.config.loader);
       $rootScope.$broadcast("menuUpdated");
     }
@@ -67,16 +67,22 @@ angular
         //Default Loader
         $rootScope.loader="resources/loader.gif";
       }
-
     }
     function setModules(newData){
       cachedLocations = {};
       data.modules = newData;
       data.modules['/404']=error404();
     }
-    function setColors(newData){
+    function setColors(color){
       cachedLocations = {};
-      data.config.colors = newData;
+      data.config.colors = color;
+      var s = document.createElement('style', 'custom-style');
+      s.textContent = ':root {\n';
+      s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ';';
+      s.textContent += '\n}';
+      document.body.appendChild(s);
+      Polymer.updateStyles();
+      s.remove();
     }
 
     function get(){

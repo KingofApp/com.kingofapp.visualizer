@@ -85,7 +85,7 @@
     $scope.$watch('appColor', function(newValue, oldValue) {
       if (oldValue !== newValue) {
         prevent = true;
-        setColor(newValue);
+        structureService.setColors(newValue);
       }
     });
 
@@ -166,17 +166,6 @@
       return type === '$';
     }
 
-    function setColor(color) {
-      structureService.setColors(color);
-      var s = document.createElement('style', 'custom-style');
-      s.textContent = ':root {\n';
-      s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ';';
-      s.textContent += '\n}';
-      document.body.appendChild(s);
-      Polymer.updateStyles();
-      s.remove();
-    }
-
     function setTheme(theme, cb) {
       koaApp.setTheme(theme, cb);
     }
@@ -208,7 +197,7 @@
 
       if ($rootScope.appData) {
         console.log('Set Color de ', $rootScope.appData.config.colors);
-        setColor($rootScope.appData.config.colors);
+        structureService.setColors($rootScope.appData.config.colors);
       }
 
       $rootScope.$broadcast('koaLaunched');

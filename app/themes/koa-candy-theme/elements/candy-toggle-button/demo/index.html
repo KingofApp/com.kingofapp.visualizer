@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>candy-toggle-button demo</title>
+
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../candy-toggle-button.html">
+
+    <style is="custom-style">
+      candy-toggle-button {
+        margin-bottom: 40px;
+        display: block;
+      }
+
+      candy-toggle-button:last-child {
+        margin-bottom: 0;
+      }
+
+      candy-toggle-button.blue {
+        --toggle-button-checked-bar-color:  var(--paper-light-blue-500);
+        --toggle-button-checked-button-color:  var(--paper-light-blue-500);
+        --toggle-button-unchecked-bar-color:  var(--paper-light-blue-900);
+        --toggle-button-unchecked-button-color:  var(--paper-light-blue-900);
+      }
+
+      candy-toggle-button.red {
+        --toggle-button-checked-bar-color:  var(--paper-red-500);
+        --toggle-button-checked-button-color:  var(--paper-red-500);
+        --toggle-button-unchecked-bar-color:  var(--paper-red-900);
+        --toggle-button-unchecked-button-color:  var(--paper-red-900);
+      }
+
+      candy-toggle-button.green {
+        --toggle-button-checked-bar-color:  var(--paper-green-500);
+        --toggle-button-checked-button-color:  var(--paper-green-500);
+        --toggle-button-unchecked-bar-color:  var(--paper-green-900);
+        --toggle-button-unchecked-button-color:  var(--paper-green-900);
+      }
+
+      candy-toggle-button.orange {
+        --toggle-button-checked-bar-color:  var(--paper-orange-500);
+        --toggle-button-checked-button-color:  var(--paper-orange-500);
+        --toggle-button-unchecked-bar-color:  var(--paper-orange-900);
+        --toggle-button-unchecked-button-color:  var(--paper-orange-900);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Enabled</h4>
+        <div class="horizontal-section">
+          <candy-toggle-button>Oxygen</candy-toggle-button>
+          <candy-toggle-button>Carbon</candy-toggle-button>
+          <candy-toggle-button checked>Hydrogen</candy-toggle-button>
+          <candy-toggle-button checked>Nitrogen</candy-toggle-button>
+          <candy-toggle-button checked>Calcium</candy-toggle-button>
+        </div>
+      </div>
+
+      <div>
+        <h4>Disabled</h4>
+        <div class="horizontal-section">
+          <candy-toggle-button disabled>Oxygen</candy-toggle-button>
+          <candy-toggle-button disabled>Carbon</candy-toggle-button>
+          <candy-toggle-button checked disabled>Hydrogen</candy-toggle-button>
+          <candy-toggle-button checked disabled>Nitrogen</candy-toggle-button>
+          <candy-toggle-button checked disabled>Calcium</candy-toggle-button>
+        </div>
+      </div>
+
+      <div>
+        <h4>Color</h4>
+        <div class="horizontal-section">
+          <candy-toggle-button class="blue">Oxygen</candy-toggle-button>
+          <candy-toggle-button class="red">Carbon</candy-toggle-button>
+          <candy-toggle-button checked class="orange">Hydrogen</candy-toggle-button>
+          <candy-toggle-button checked class="green">Nitrogen</candy-toggle-button>
+          <candy-toggle-button checked class="blue">Calcium</candy-toggle-button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

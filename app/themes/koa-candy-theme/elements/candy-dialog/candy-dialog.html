@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/koa-behaviors/koa-dialog-behavior.html">
+<link rel="import" href="../candy-styles/default-theme.html">
+
+<dom-module id="candy-dialog">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        background: var(--dialog-background-color, --primary-background-color);
+        color: var(--dialog-color, --primary-text-color);
+        display: block;
+
+        @apply(--dialog);
+      }
+
+      :host > ::content h2 {
+        position: relative;
+
+        @apply(--dialog-title);
+      }
+
+      :host > ::content .buttons {
+        color: var(--dialog-button-color, --default-primary-color);
+        position: relative;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'candy-dialog',
+
+      behaviors: [
+        Polymer.IronOverlayBehavior
+      ]
+    });
+  </script>
+</dom-module>

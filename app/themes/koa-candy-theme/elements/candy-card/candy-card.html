@@ -1,0 +1,75 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/koa-behaviors/koa-card-behavior.html">
+
+<dom-module id="candy-card">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: inline-block;
+        position: relative;
+
+        @apply(--card);
+      }
+
+      /* IE 10 support for HTML5 hidden attr */
+      [hidden] {
+        display: none !important;
+      }
+
+      .header {
+        position: relative;
+        overflow: hidden;
+
+        @apply(--card-header);
+      }
+
+      .header iron-image {
+        width: 100%;
+        --iron-image-width: 100%;
+        pointer-events: none;
+
+        @apply(--card-header-image);
+      }
+
+      .header .title-text {
+        color: var(--card-header-color, #000);
+
+        @apply(--card-header-text);
+      }
+
+      :host ::content .card-content {
+        position:relative;
+
+        @apply(--card-content);
+      }
+
+      :host ::content .card-actions {
+        position:relative;
+
+        @apply(--card-actions);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="header">
+      <iron-image hidden$="[[!image]]" src="[[image]]" preload$="[[preloadImage]]" fade$="[[fadeImage]]"></iron-image>
+      <div hidden$="[[!heading]]" class="title-text">[[heading]]</div>
+    </div>
+
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'candy-card',
+
+      behaviors: [
+        Polymer.KoaCardBehavior
+      ]
+    });
+  </script>
+</dom-module>

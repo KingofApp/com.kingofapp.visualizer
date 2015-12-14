@@ -1,0 +1,68 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/koa-behaviors/koa-button-behavior.html">
+
+<dom-module id="candy-button">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        min-width: 5.14em;
+        margin: 0 0.29em;
+        background: transparent;
+        text-align: center;
+        font: inherit;
+        text-transform: uppercase;
+        outline-width: 0;
+        border-radius: 3px;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+        padding: 0.7em 0.57em;
+
+        @apply(--button);
+      }
+
+      :host([disabled]) {
+        background: #eaeaea;
+        color: #a8a8a8;
+        cursor: auto;
+        pointer-events: none;
+
+        @apply(--button-disabled);
+      }
+
+      :host(.keyboard-focus) {
+        @apply(--button-keyboard-focus);
+      }
+
+      :host([big].keyboard-focus) {
+        @apply(--button-keyboard-focus);
+      }
+
+      :host([link].keyboard-focus) {
+        @apply(--button-keyboard-focus);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'candy-button',
+
+      behaviors: [
+        Polymer.KoaButtonBehavior
+      ]
+    });
+  </script>
+</dom-module>

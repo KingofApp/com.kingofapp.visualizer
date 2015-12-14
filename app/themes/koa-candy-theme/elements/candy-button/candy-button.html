@@ -1,10 +1,13 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-button-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-behaviors/paper-button-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-material/paper-material.html">
 
 <dom-module id="candy-button">
   <template>
     <!-- write your styles here -->
-    <style>
+    <style include="paper-material">
       :host {
         display: inline-block;
         position: relative;
@@ -37,16 +40,27 @@
         @apply(--button-disabled);
       }
 
-      :host(.keyboard-focus) {
+      :host([big]) {
+        font-size: 1.2em;
+      }
+
+      :host(:not([big]):not([link]).keyboard-focus) {
+        font-weight: bold;
         @apply(--button-keyboard-focus);
       }
 
       :host([big].keyboard-focus) {
+        font-weight: bold;
         @apply(--button-keyboard-focus);
       }
 
       :host([link].keyboard-focus) {
+        font-weight: bold;
         @apply(--button-keyboard-focus);
+      }
+
+      :host > ::content * {
+        text-transform: inherit;
       }
     </style>
     <!-- end styles -->
@@ -61,8 +75,29 @@
       is: 'candy-button',
 
       behaviors: [
-        Polymer.KoaButtonBehavior
-      ]
+        Polymer.KoaButtonBehavior,
+        Polymer.PaperButtonBehavior
+      ],
+
+      properties: {
+        /**
+         * If true, the button should be styled with a shadow.
+         */
+        raised: {
+          type: Boolean,
+          reflectToAttribute: true,
+          value: false,
+          observer: '_calculateElevation'
+        }
+      },
+
+      _calculateElevation: function() {
+        if (this.link) {
+          this._setElevation(0);
+        } else {
+          Polymer.PaperButtonBehaviorImpl._calculateElevation.apply(this);
+        }
+      }
     });
   </script>
 </dom-module>

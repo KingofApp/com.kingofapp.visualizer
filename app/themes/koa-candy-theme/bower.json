@@ -31,6 +31,8 @@
     "iron-image": "PolymerElements/iron-image#^1.0.0",
     "iron-input": "PolymerElements/iron-input#^1.0.0",
     "koa-behaviors": "KingofApp/koa-behaviors#^0.4.0",
+    "paper-behaviors": "PolymerElements/paper-behaviors#^1.0.0",
+    "paper-material": "PolymerElements/paper-material#^1.0.0",
     "paper-styles": "PolymerElements/paper-styles#^1.0.0"
   },
   "devDependencies": {

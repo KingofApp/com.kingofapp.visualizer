@@ -9,117 +9,64 @@
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
-    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../oblique-styles/default-theme.html">
     <link rel="import" href="../oblique-icon-button.html">
 
-    <style is="custom-style">
+    <style is="custom-style" include="demo-pages-shared-styles">
       .horizontal-section {
-        min-width: 100px;
-        background-color: #b5e1f8;
+        text-align: center;
+        background-color: var(--light-primary-color);
       }
 
       oblique-icon-button {
-        margin-left: 30px;
-        display: block;
-        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      oblique-icon-button.pink {
+        color: var(--paper-pink-500);
+      }
+
+      oblique-icon-button.pink:hover {
+        background-color: var(--paper-pink-500);
+        color: white;
       }
 
       oblique-icon-button.blue {
-        color: var(--paper-light-blue-500);
+        background-color: var(--paper-light-blue-500);
+        color: white;
+        border-radius: 3px;
+        padding: 2px;
       }
 
-      oblique-icon-button.red {
-        color: var(--paper-red-500);
-      }
-
-      oblique-icon-button.orange {
-        color: var(--paper-orange-500);
-      }
-
-      oblique-icon-button.green {
-        color: var(--paper-green-500);
-      }
-
-      oblique-icon-button.huge {
-        margin-left: 0px;
-        width: 116px;
-        height: 116px;
+      oblique-icon-button.giant {
+        width: 100px;
+        height: 100px;
       }
     </style>
   </head>
-  <body onclick="clickAction(event);">
-    <div class="horizontal-section-container">
-      <div>
-        <h4>Enabled</h4>
-        <div class="horizontal-section">
-          <oblique-icon-button icon="menu" alt="menu" title="menu"></oblique-icon-button>
-          <oblique-icon-button icon="favorite" alt="heart" title="heart"></oblique-icon-button>
-          <oblique-icon-button icon="arrow-back" alt="arrow-back" title="arrow-back"></oblique-icon-button>
-          <oblique-icon-button icon="arrow-forward" alt="arrow-forward" title="arrow-forward"></oblique-icon-button>
-          <oblique-icon-button icon="clear" alt="clear" title="clear"></oblique-icon-button>
-          <oblique-icon-button icon="polymer" alt="polymer" title="polymer"></oblique-icon-button>
-          <oblique-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat" title="octocat"></oblique-icon-button>
-        </div>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Buttons can use iron-icons or external images, and can be disabled</h3>
+      <div class="horizontal-section">
+        <oblique-icon-button icon="favorite" title="heart"></oblique-icon-button>
+        <oblique-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat" title="octocat"></oblique-icon-button>
+        <oblique-icon-button disabled icon="reply" title="reply"></oblique-icon-button>
       </div>
 
-      <div>
-        <h4>Disabled</h4>
-        <div class="horizontal-section">
-          <oblique-icon-button icon="menu" alt="menu" disabled></oblique-icon-button>
-          <oblique-icon-button icon="favorite" alt="heart" disabled></oblique-icon-button>
-          <oblique-icon-button icon="arrow-back" alt="arrow-back" disabled></oblique-icon-button>
-          <oblique-icon-button icon="arrow-forward" alt="arrow-forward" disabled></oblique-icon-button>
-          <oblique-icon-button icon="clear" alt="clear" disabled></oblique-icon-button>
-          <oblique-icon-button icon="polymer" alt="polymer" disabled></oblique-icon-button>
-          <oblique-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat" disabled></oblique-icon-button>
-        </div>
+      <h3>Buttons can be styled using regular CSS and custom properties</h3>
+      <div class="horizontal-section">
+        <oblique-icon-button icon="favorite" title="heart" class="pink"></oblique-icon-button>
+        <oblique-icon-button icon="flight-takeoff" title="take off" class="blue"></oblique-icon-button>
       </div>
 
-      <div>
-        <h4>Color</h4>
-        <div class="horizontal-section">
-          <oblique-icon-button icon="menu" alt="menu" class="blue"></oblique-icon-button>
-          <oblique-icon-button icon="favorite" alt="heart" class="red"></oblique-icon-button>
-          <oblique-icon-button icon="arrow-back" alt="arrow-back" class="orange"></oblique-icon-button>
-          <oblique-icon-button icon="arrow-forward" alt="arrow-forward" class="green"></oblique-icon-button>
-          <oblique-icon-button icon="clear" alt="clear" class="blue"></oblique-icon-button>
-          <oblique-icon-button icon="polymer" alt="polymer" class="red"></oblique-icon-button>
-          <oblique-icon-button class="blue" src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat"></oblique-icon-button>
-        </div>
-      </div>
-
-      <div>
-        <h4>Size</h4>
-        <div class="horizontal-section">
-          <oblique-icon-button icon="favorite" alt="heart" class="huge"></oblique-icon-button>
-          <br><br><br>
-          <oblique-icon-button icon="polymer" alt="polymer" class="huge"></oblique-icon-button>
-        </div>
-      </div>
-
-      <div>
-        <h4>Noink</h4>
-        <div class="horizontal-section">
-          <oblique-icon-button noink icon="favorite" alt="heart"></oblique-icon-button>
-          <br><br><br>
-          <oblique-icon-button noink icon="polymer" alt="polymer"></oblique-icon-button>
-        </div>
+      <h3>Buttons can be resized</h3>
+      <div class="horizontal-section">
+        <oblique-icon-button icon="alarm-on" title="wake up" class="giant"></oblique-icon-button>
       </div>
     </div>
-
-    <script>
-      function clickAction(e) {
-        var t = e.target;
-        if (t.localName === 'oblique-icon-button') {
-          if (t.hasAttribute('disabled')) {
-            console.error('should not be able to click disabled button', t);
-          } else {
-            console.log('click', t);
-          }
-        }
-      }
-    </script>
   </body>
 </html>

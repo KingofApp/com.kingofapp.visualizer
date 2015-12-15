@@ -1,4 +1,5 @@
 <div class="polymermenu" ng-controller="polymerMenuCtrl">
+
   <style>
     #drawer paper-menu a {
       text-decoration: none;
@@ -25,6 +26,7 @@
       z-index: 2;
     }
   </style>
+
   <paper-drawer-panel>
     <paper-scroll-header-panel drawer fixed>
       <paper-menu>
@@ -38,8 +40,10 @@
         <div>{{toolbar.title}}</div>
       </paper-toolbar>
 
-      <!-- moduleIdentifier + Template -->
-      <div ng-include="polymermenuTemplate" class="template"></div>
+      <div class="content">
+        <!-- moduleIdentifier + Template - Needs embracing div -->
+        <div ng-include="polymermenuTemplate" class="template"></div>
+      </div>
     </paper-header-panel>
   </paper-drawer-panel>
 

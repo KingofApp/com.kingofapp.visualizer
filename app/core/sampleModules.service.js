@@ -20,7 +20,19 @@
       return {
         'lang': ['en'],
         'index': '/menu',
-        'loader': ''
+        'loader': '',
+        "colors" : {
+            "--default-primary-color" : "#ffffff",
+            "--dark-primary-color" : "#222222",
+            "--light-primary-color" : "#ececec",
+            "--text-primary-color" : "#000000",
+            "--accent-color" : "#b43322",
+            "--primary-background-color" : "#ffffff",
+            "--primary-text-color" : "#212121",
+            "--secondary-text-color" : "#727272",
+            "--disabled-text-color" : "#333532",
+            "--divider-color" : "#ececec"
+        }
       };
     }
 

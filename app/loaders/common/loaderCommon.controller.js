@@ -5,9 +5,9 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', '$ocLazyLoad', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
+  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
 
-  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
+  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('Pasa por el commonLoaderCtrl');
     var koaApp = document.querySelector('#koaApp');
     $rootScope.showTransition = true;
@@ -171,30 +171,7 @@
     }
 
     function addEvents() {
-      var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
-      var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
-
-      if (polymermenuTemplate) {
-        var parent = document.querySelector('[main]');
-        Polymer.dom(parent).appendChild(polymermenuTemplate);
-      }
-
-      // console.info('Adding ng-click...');
-      $('[ng-click]').click(function() {
-        var functionName = $(this).attr('ng-click').replace('()', '');
-        $scope[functionName]();
-      });
-
-      // console.info('Adding ng-model...');
-      $('[ng-model]').each(function() {
-        var parent = $(this);
-
-        $(this.inputElement).bind('input', function() {
-          var model = parent.attr('ng-model').split('.');
-          $scope[model[0]][model[1]] = $(this).val();
-        });
-      });
-
+      
       if ($rootScope.appData) {
         console.log('Set Color de ', $rootScope.appData.config.colors);
         structureService.setColors($rootScope.appData.config.colors);

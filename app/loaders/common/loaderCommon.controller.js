@@ -209,7 +209,7 @@
           if ($rootScope.appData) {
             setTheme($rootScope.appData.config.theme, addEvents);
           } else {
-            setTheme('paper', addEvents);
+            setTheme('oblique', addEvents);
           }
         } else {
           koaApp.renderThemeElements(addEvents);

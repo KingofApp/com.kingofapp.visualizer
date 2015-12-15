@@ -5,9 +5,9 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', '$ocLazyLoad', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
+  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
 
-  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
+  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
     console.log('Pasa por el commonLoaderCtrl');
     var koaApp = document.querySelector('#koaApp');
     $rootScope.showTransition = true;
@@ -172,12 +172,6 @@
 
     function addEvents() {
       var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
-      var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
-
-      if (polymermenuTemplate) {
-        var parent = document.querySelector('[main]');
-        Polymer.dom(parent).appendChild(polymermenuTemplate);
-      }
 
       // console.info('Adding ng-click...');
       $('[ng-click]').click(function() {

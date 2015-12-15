@@ -1,5 +1,6 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-checkbox-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-behaviors/paper-checked-element-behavior.html">
 <link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-checkbox">
@@ -29,6 +30,29 @@
         min-width: var(--calculated-checkbox-size);
         vertical-align: middle;
         background-color: var(--checkbox-unchecked-background-color, transparent);
+      }
+
+      #ink {
+        position: absolute;
+        /* Center the ripple in the checkbox by negative offsetting it by
+         * (inkWidth - rippleWidth) / 2 */
+
+        top: calc(0px - (2.66 * var(--calculated-checkbox-size) - var(--calculated-checkbox-size)) / 2);
+        left: calc(0px - (2.66 * var(--calculated-checkbox-size) - var(--calculated-checkbox-size)) / 2);
+        width: calc(2.66 * var(--calculated-checkbox-size));
+        height: calc(2.66 * var(--calculated-checkbox-size));
+        color: var(--checkbox-unchecked-ink-color, --primary-text-color);
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      :host-context([dir="rtl"]) #ink {
+        right: calc(0px - (2.66 * var(--calculated-checkbox-size) - var(--calculated-checkbox-size)) / 2);
+        left: auto;
+      }
+
+      #ink[checked] {
+        color: var(--checkbox-checked-ink-color, --default-primary-color);
       }
 
       #checkbox {
@@ -132,7 +156,7 @@
 
       /* invalid state */
       #checkbox.invalid:not(.checked) {
-        border-color: var(--checkbox-error-color, --google-red-500);
+        border-color: var(--checkbox-error-color, #db4437);
       }
     </style>
     <!-- end styles -->
@@ -153,8 +177,15 @@
       is: 'candy-checkbox',
 
       behaviors: [
-        Polymer.KoaCheckboxBehavior
-      ]
+        Polymer.KoaCheckboxBehavior,
+        Polymer.PaperCheckedElementBehavior
+      ],
+
+      // create ripple inside the checkboxContainer
+      _createRipple: function() {
+        this._rippleContainer = this.$.checkboxContainer;
+        return Polymer.PaperInkyFocusBehaviorImpl._createRipple.call(this);
+      }
     });
   </script>
 </dom-module>

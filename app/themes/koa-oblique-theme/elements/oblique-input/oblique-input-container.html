@@ -1,0 +1,179 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/koa-behaviors/koa-input-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+
+<dom-module id="oblique-input-container">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+        padding: 8px 0;
+        font-family: 'PT Sans', sans-serif;
+        font-weight: bold;
+        color: var(--input-container-color, --accent-color);
+        padding: 10px 10px 0;
+        background-color: var(--input-background-color, --light-primary-color);
+        margin: 5px 0;
+
+        @apply(--input-container);
+      }
+
+      :host[inline] {
+        display: inline-block;
+      }
+
+      :host([disabled]) {
+        opacity: 0.33;
+        pointer-events: none;
+
+        @apply(--input-container-disabled);
+      }
+
+      .underline {
+        position: relative;
+      }
+
+      .focused-line {
+        @apply(--layout-fit);
+
+        background: var(--input-container-focus-color, --default-primary-color);
+        height: 2px;
+          -webkit-transform: scale3d(0, 1, 1);
+        transform: scale3d(0, 1, 1);
+          -webkit-transform-origin: center center;
+        transform-origin: center center;
+
+        @apply(--input-container-underline-focus);
+      }
+
+      .underline.is-highlighted .focused-line {
+          -webkit-transform: none;
+        transform: none;
+      }
+
+      .underline.is-invalid .focused-line {
+        background: var(--input-container-invalid-color, #db4437);
+          -webkit-transform: none;
+        transform: none;
+      }
+
+      .unfocused-line {
+        @apply(--layout-fit);
+
+        background: transparent;
+        height: 1px;
+
+        @apply(--input-container-underline);
+      }
+
+      :host([disabled]) .unfocused-line {
+        background: transparent;
+        border-bottom: 1px dashed;
+        border-color: var(--input-container-color, --secondary-text-color);
+
+        @apply(--input-container-underline-disabled);
+      }
+
+      ::content label {
+        color: var(--input-container-color, --secondary-text-color);
+        font: inherit;
+
+        @apply(--input-container-label);
+      }
+
+      .input-content {
+        @apply(--layout-horizontal);
+        @apply(--layout-end);
+
+        position: relative;
+      }
+
+      .input-container {
+        @apply(--layout-flex);
+        @apply(--layout-relative);
+      }
+
+      .input-content ::content input,
+      .input-content ::content textarea,
+      .input-content ::content iron-autogrow-textarea {
+          -webkit-appearance: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        color: var(--input-container-input-color, --primary-text-color);
+        outline: none;
+        padding: 0;
+        position: relative; /* to make a stacking context */
+        text-align: inherit;
+        width: 100%;
+
+        @apply(--input-container-input);
+      }
+
+      ::content [prefix] {
+        @apply(--input-prefix);
+      }
+
+      ::content [suffix] {
+        @apply(--input-suffix);
+      }
+
+      /* Firefox sets a min-width on the input, which can cause layout issues */
+      .input-content ::content input {
+        min-width: 0;
+      }
+
+      .input-content ::content textarea {
+        resize: none;
+      }
+
+      .add-on-content {
+        position: relative;
+      }
+
+      .add-on-content.is-invalid ::content * {
+        color: var(--input-container-invalid-color, #db4437);
+      }
+
+      .add-on-content.is-highlighted ::content * {
+        color: var(--input-container-focus-color, --default-primary-color);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <content select="label"></content>
+
+    <div class="input-content">
+      <content select="[prefix]" id="prefix"></content>
+
+      <div class="input-container" id="inputContainer">
+        <content select=":not(label):not([add-on]):not([prefix]):not([suffix])"></content>
+      </div>
+
+      <content select="[suffix]"></content>
+    </div>
+
+    <div class$="[[_computeUnderlineClass(focused, invalid)]]">
+      <div class="unfocused-line"></div>
+      <div class="focused-line"></div>
+    </div>
+
+    <div class$="[[_computeAddOnContentClass(focused, invalid)]]">
+      <content id="addOnContent" select="[add-on]"></content>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-input-container',
+
+      behaviors: [
+        Polymer.KoaInputContainerBehavior
+      ]
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>oblique-input demo</title>
+
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../bower_components/iron-icon/iron-icon.html">
+    <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../../bower_components/paper-styles/shadow.html">
+    <link rel="import" href="../../oblique-icon-button/oblique-icon-button.html">
+    <link rel="import" href="../oblique-input.html">
+    <link rel="import" href="../oblique-textarea.html">
+
+    <style is="custom-style">
+      body {
+        padding: 40px;
+      }
+
+      oblique-input.short {
+        width: auto;
+      }
+
+      oblique-icon-button {
+        color: var(--paper-red-300);
+        width: 23px; /* 15px + 2*4px for padding */
+        height: 23px;
+        padding: 0px 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical center-justified layout">
+      <h4>Text input</h4>
+      <div class="vertical-section">
+        <oblique-input label="label"></oblique-input>
+
+        <oblique-input label="password" type="password"></oblique-input>
+
+        <oblique-input label="disabled" disabled></oblique-input>
+      </div>
+
+      <h4>Text area</h4>
+      <div class="vertical-section">
+        <oblique-textarea label="textarea label"></oblique-textarea>
+      </div>
+
+      <h4>Validation</h4>
+      <div class="vertical-section">
+        <oblique-input label="input validates on blur (required, auto-validate)" required auto-validate error-message="needs some text!"></oblique-input>
+
+        <oblique-input label="only type letters (auto-validate)" auto-validate pattern="[a-zA-Z]*" error-message="letters only!"></oblique-input>
+
+        <oblique-input id="inputForValidation" required label="only type letters (no auto validate)" pattern="[a-zA-Z]*" error-message="letters only, required input!"></oblique-input>
+        <br>
+        <button onclick="validate()">Validate!</button>
+      </div>
+
+      <h4>Character counter</h4>
+      <div class="vertical-section">
+        <oblique-input label="label" char-counter></oblique-input>
+
+        <oblique-input label="at most 10 letters" char-counter auto-validate pattern="[a-zA-Z]*" maxlength="10" error-message="letters only!"></oblique-input>
+
+        <oblique-textarea label="textarea" char-counter></oblique-textarea>
+
+        <oblique-textarea label="textarea with maxlength" maxlength="10" char-counter></oblique-textarea>
+
+        <oblique-textarea label="text area with rows and max-rows" rows="3" max-rows="4"></oblique-textarea>
+      </div>
+
+      <h4>Prefixes and Suffixes</h4>
+      <div class="vertical-section">
+        <oblique-input class="short" label="total" type="number">
+          <div prefix>$</div>
+        </oblique-input>
+
+        <oblique-input class="short" label="username">
+          <div suffix>@email.com</div>
+        </oblique-input>
+
+        <oblique-input class="short" label="icons and buttons" id="inputWithButton">
+          <iron-icon icon="search" prefix></iron-icon>
+          <oblique-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" title="clear"></oblique-icon-button>
+        </oblique-input>
+      </div>
+    </div>
+
+    <script>
+      function validate() {
+        document.getElementById('inputForValidation').validate();
+      }
+
+      function clearInput() {
+        document.getElementById('inputWithButton').value = '';
+      }
+    </script>
+  </body>
+</html>

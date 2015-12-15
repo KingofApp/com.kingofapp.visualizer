@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>oblique-badge demo</title>
+
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../oblique-icon-button/oblique-icon-button.html">
+    <link rel="import" href="../oblique-badge.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        min-width: 120px;
+      }
+
+      .with-badge {
+        display: inline-block;
+        margin-bottom: 30px;
+        overflow: hidden;
+      }
+
+      .red {
+        --badge-background: var(--paper-red-300);
+      }
+      .orange {
+        --badge-background: var(--paper-amber-300);
+      }
+      .green {
+        --badge-background: var(--paper-green-300);
+      }
+
+      oblique-icon-button {
+        background-color: #ddd;
+        padding: 3px;
+        border-radius: 3px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .with-badge > oblique-badge {
+        --badge-margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Badging direct sibling</h4>
+        <div class="horizontal-section">
+          <div class="with-badge" tabindex="0">
+            <span>Oxygen</span>
+            <oblique-badge label="8"></oblique-badge>
+          </div>
+          <br>
+          <div class="with-badge" tabindex="0">
+            <span>Carbon</span>
+            <oblique-badge label="6"></oblique-badge>
+          </div>
+          <br>
+          <div class="with-badge" tabindex="0">
+            <span>Hydrogen</span>
+            <oblique-badge label="1"></oblique-badge>
+          </div>
+          <br>
+          <div class="with-badge" tabindex="0">
+            <span>Nitrogen</span>
+            <oblique-badge label="7"></oblique-badge>
+          </div>
+          <br>
+          <div class="with-badge" tabindex="0">
+            <span>Calcium</span>
+            <oblique-badge label="20"></oblique-badge>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Badging element by id</h4>
+        <div class="horizontal-section">
+          <oblique-icon-button id="heart" icon="favorite" alt="heart"></oblique-icon-button>
+          <oblique-badge class="red" for="heart" label="♣︎"></oblique-badge>
+
+          <oblique-icon-button id="back" icon="arrow-back" alt="go back"></oblique-icon-button>
+          <oblique-badge class="orange" for="back" label="♥︎"></oblique-badge>
+
+          <oblique-icon-button id="fwd" icon="arrow-forward" alt="go forward"></oblique-icon-button>
+          <oblique-badge class="green" for="fwd" label="♦︎"></oblique-badge>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

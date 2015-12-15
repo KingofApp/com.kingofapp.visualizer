@@ -1,0 +1,62 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../bower_components/koa-behaviors/koa-submenu-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+<link rel="import" href="oblique-menu-shared-styles.html">
+
+<dom-module id="oblique-submenu">
+  <template>
+    <!-- write your styles here -->
+    <style include="oblique-menu-shared-styles"></style>
+    <style>
+    .selectable-content > ::content > .iron-selected {
+      font-weight: bold;
+      outline: 0;
+      @apply(--oblique-menu-selected-item);
+    }
+    :host([disabled]) {
+      display: block;
+      background-color: var(--disabled-text-color, #a2a8aa);
+      outline: 0;
+      @apply(--oblique-item-disabled);
+    }
+    .selectable-content > ::content > *:focus {
+      position: relative;
+      outline: 0;
+      @apply(--oblique-menu-focused-item);
+    }
+    .selectable-content > ::content > *:focus:after {
+      @apply(--layout-fit);
+      background: currentColor;
+      opacity: var(--dark-divider-opacity);
+      outline: 0;
+      content: '';
+      @apply(--oblique-menu-focused-item-after);
+    }
+    .selectable-content > ::content > *[colored]:focus:after {
+      opacity: 0.26;
+      outline: 0;
+    }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="selectable-content" on-tap="_onTap">
+      <content id="trigger" select=".menu-trigger"></content>
+    </div>
+    <iron-collapse id="collapse" opened="{{opened}}">
+      <content select=".menu-content"></content>
+    </iron-collapse>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-submenu',
+
+      behaviors: [
+        Polymer.KoaSubmenuBehavior
+      ]
+    });
+  </script>
+</dom-module>

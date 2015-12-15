@@ -1,0 +1,76 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/koa-behaviors/koa-item-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+
+<dom-module id="oblique-item">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        cursor: pointer;
+        display: block;
+        min-height: var(--item-min-height, 48px);
+        padding: 10px;
+        background-color: rgba(22,134,200,0.95);
+
+        @apply(--item);
+      }
+      :host(.iron-selected) {
+        font-weight: var(--item-selected-weight, bold);
+
+        @apply(--item-selected);
+      }
+      :host([disabled]) {
+        outline: 0;
+        color: var(--item-disabled-color, --disabled-text-color);
+
+        @apply(--item-disabled);
+      }
+      :host(:focus) {
+        position: relative;
+        outline: 0;
+        background: #617d8b;
+        
+        @apply(--item-focused);
+      }
+
+      :host(:focus):before {
+        @apply(--layout-fit);
+
+        content: '';
+        pointer-events: none;
+
+        @apply(--item-focused-before);
+      }
+
+      div.conten {
+        list-style: none;
+        font-size: 18px;
+        letter-spacing: 1px;
+        font-family: 'Pacifico', sans-serif;
+        height: 50px;
+        line-height: 50px;
+        color: var(--text-primary-color, #ffffff);
+        }
+
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="conten">
+      <content></content>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-item',
+
+      behaviors: [
+        Polymer.KoaItemBehavior
+      ]
+    });
+  </script>
+</dom-module>

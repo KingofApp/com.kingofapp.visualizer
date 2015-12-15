@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>oblique-checkbox demo</title>
+
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../oblique-checkbox.html">
+
+    <style is="custom-style">
+      oblique-checkbox {
+        display: block;
+        margin-bottom: 40px;
+      }
+
+      oblique-checkbox.blue {
+        --checkbox-checked-color: var(--paper-light-blue-500);
+        --checkbox-unchecked-color: var(--paper-light-blue-900);
+      }
+
+      oblique-checkbox.red {
+        --checkbox-checked-color: var(--paper-red-500);
+        --checkbox-unchecked-color: var(--paper-red-900);
+      }
+
+      oblique-checkbox.green {
+        --checkbox-checked-color: var(--paper-green-500);
+        --checkbox-unchecked-color: var(--paper-green-900);
+      }
+
+      oblique-checkbox.orange {
+        --checkbox-checked-color: var(--paper-orange-500);
+        --checkbox-unchecked-color: var(--paper-orange-900);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Enabled</h4>
+        <div class="horizontal-section">
+          <oblique-checkbox>Oxygen</oblique-checkbox>
+          <oblique-checkbox>Carbon</oblique-checkbox>
+          <oblique-checkbox checked>Hydrogen</oblique-checkbox>
+          <oblique-checkbox checked>Nitrogen</oblique-checkbox>
+          <oblique-checkbox checked>Calcium</oblique-checkbox>
+        </div>
+      </div>
+      <div>
+        <h4>Disabled</h4>
+        <div class="horizontal-section">
+          <oblique-checkbox disabled>Oxygen</oblique-checkbox>
+          <oblique-checkbox disabled>Carbon</oblique-checkbox>
+          <oblique-checkbox checked disabled>Hydrogen</oblique-checkbox>
+          <oblique-checkbox checked disabled>Nitrogen</oblique-checkbox>
+          <oblique-checkbox checked disabled>Calcium</oblique-checkbox>
+        </div>
+      </div>
+      <div>
+        <h4>Color</h4>
+        <div class="horizontal-section">
+          <oblique-checkbox class="blue" checked aria-label="Hurray for oxygen">Oxygen</oblique-checkbox>
+          <oblique-checkbox class="red" checked>Carbon</oblique-checkbox>
+          <oblique-checkbox class="orange" checked>Hydrogen</oblique-checkbox>
+          <oblique-checkbox class="green" checked>Nitrogen</oblique-checkbox>
+          <oblique-checkbox class="blue" checked>Calcium</oblique-checkbox>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

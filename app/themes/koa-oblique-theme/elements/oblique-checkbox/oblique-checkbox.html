@@ -1,0 +1,153 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/koa-behaviors/koa-checkbox-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<dom-module id="oblique-checkbox">
+  <template>
+    <!-- write your styles here -->
+    <style>
+    :host {
+      display: inline-block;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    :host(:focus) {
+      outline: none;
+    }
+    .hidden {
+      display: none;
+    }
+    #checkbox {
+      display: inline-block;
+      position: relative;
+      width: 25px;
+      height: 25px;
+      min-width: 20px;
+      vertical-align: middle;
+      background-color: var(--checkbox-unchecked-background-color, transparent);
+      border: 3px solid var(--checkbox-unchecked-color, --dark-primary-color);
+      display: inline-block;
+      pointer-events: none;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    #checkmark {
+        color: white;
+        font-size: 24px;
+        margin-bottom: 3px;
+        margin-top: -3px;
+    }
+    /* label */
+    #checkboxLabel {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: var(--paper-checkbox-label-spacing, 8px);
+      white-space: normal;
+      pointer-events: none;
+      color: #2da3dd;
+    }
+    #checkboxLabel[hidden] {
+      display: none;
+    }
+    :host([active]) #checkbox {
+        background-color: #2da3dd;
+        border-color: #2da3dd;
+    }
+    :host(:not([active])) #checkmark {
+        display: none;
+    }
+    /* disabled state */
+    :host([disabled]) {
+        pointer-events: none;
+        color: #fff;
+    }
+    :host([disabled]) #checkbox {
+        border-color: #efefef;
+    }
+    :host([disabled][active]) #checkbox {
+        background-color: #efefef;
+        border-color: #efefef;
+    }
+    :host([disabled]) #checkboxLabel  {
+        color: #efefef;
+    }
+    
+    i.check {
+      position: relative;
+      top: -3px;
+      left: -3px;
+    }
+
+    #checkbox.checked {
+      background-color: var(--checkbox-checked-color, --default-primary-color);
+      border-color: var(--checkbox-checked-color, --default-primary-color);
+    }
+
+    #checkmark {
+      border-color: var(--checkbox-checkmark-color, white);
+      position: absolute;
+    }
+
+    /* label */
+    #checkboxLabel {
+      color: var(--checkbox-label-color, --primary-text-color);
+      display: inline-block;
+      padding-left: var(--checkbox-label-spacing, 8px);
+      pointer-events: none;
+      position: relative;
+    }
+
+    :host-context([dir="rtl"]) #checkboxLabel {
+      padding-right: var(--checkbox-label-spacing, 8px);
+      padding-left: 0;
+    }
+
+    #checkboxLabel[hidden] {
+      display: none;
+    }
+
+    :host([disabled]) {
+      pointer-events: none;
+    }
+
+    :host([disabled]) #checkbox {
+      border-color: var(--checkbox-unchecked-color, --disabled-text-color);
+    }
+
+    :host([disabled][checked]) #checkbox {
+      background-color: var(--checkbox-unchecked-color, --disabled-text-color);
+    }
+
+    :host([disabled]) #checkboxLabel  {
+
+    }
+
+    #checkbox.invalid:not(.checked) {
+      border-color: var(--checkbox-error-color, #db4437);
+    }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div id="checkbox" class$="[[_computeCheckboxClass(checked, invalid)]]">
+      <div id="checkmark" class$="[[_computeCheckmarkClass(checked)]]"><i class="check fa fa-check"></i></div>
+    </div>
+
+    <div id="checkboxLabel"><content></content></div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-checkbox',
+
+      behaviors: [
+        Polymer.KoaCheckboxBehavior
+      ]
+    });
+  </script>
+</dom-module>

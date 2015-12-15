@@ -1,0 +1,100 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/koa-behaviors/koa-button-behavior.html">
+
+<dom-module id="oblique-button">
+  <template>
+    <!-- write your styles here -->
+    <style>
+    :host {
+        cursor: pointer;
+        display: inline-block;
+        background-color: var(--accent-color, #607d8b);
+        font-size: 14px;
+        max-width: 250px;
+        min-width: 180px;
+        height: 45px;
+        font-family: 'PT Sans Caption', sans-serif;
+        font-weight: bold;
+        text-align: center;
+        line-height: 45px;
+        color: var(--text-primary-color, #ffffff);
+        position: relative;
+        overflow: hidden;
+        color: var(--text-primary-color, #ffffff);
+        text-decoration: none;
+        text-transform: uppercase;
+
+        @apply(--button);
+      }
+
+
+      .tri  {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              display: block;
+              width: 0;
+              border-right: 0 solid transparent;
+              border-left: 260px solid transparent;
+              border-bottom: 13px solid #fff;
+            }
+
+    :host(:not[link]) {
+      background-color: var(--text-primary-color, #ffffff);
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      color: var(--secondary-text-color, #727272);
+    }
+    :host([link]) {
+      color: #fff;
+      text-decoration: underline;
+      outline: 0;
+    }
+    :host([active]),
+    :host([pressed]) {
+      background-color: var(--dark-primary-color, #1a86c8);
+      border-color: #adadad;
+      outline: 0;
+      color: var(--text-primary-color, #ffffff) !important;
+    }
+
+    :host([disabled]) {
+      background-color: #e0e0e0;
+
+      @apply(--button-disabled);
+    }
+    :host([focused]) {
+      color: #fff;
+      outline: 0;
+    }
+
+    :host(.keyboard-focus) {
+      @apply(--button-keyboard-focus);
+    }
+
+    :host([big].keyboard-focus) {
+      @apply(--button-keyboard-focus);
+    }
+
+    :host([link].keyboard-focus) {
+      @apply(--button-keyboard-focus);
+    }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <content></content>
+    <div class="tri"></div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-button',
+
+      behaviors: [
+        Polymer.KoaButtonBehavior
+      ]
+    });
+  </script>
+</dom-module>

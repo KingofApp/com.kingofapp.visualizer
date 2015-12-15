@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>oblique-header-panel demo</title>
+
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../../bower_components/paper-styles/shadow.html">
+    <link rel="import" href="../oblique-header-panel.html">
+
+    <style is="custom-style">
+      body {
+        padding: 40px;
+      }
+
+      oblique-header-panel {
+        float: left;
+        width: 240px;
+        height: 240px;
+        margin: 12px;
+        @apply(--shadow-elevation-2dp);
+      }
+
+      .oblique-header {
+        height: 60px;
+        font-size: 16px;
+        line-height: 60px;
+        padding: 0 10px;
+        color: white;
+        transition: height 0.2s;
+      }
+
+      .content {
+        height: 2000px;
+      }
+
+      .blue .oblique-header {
+        background-color: var(--paper-light-blue-500);
+      }
+
+      .orange .oblique-header {
+        background-color: var(--paper-amber-500);
+      }
+
+      /* TODO: replace these with background: linear-gradient(white, var(...))
+       when custom properties allow it */
+
+      .blue .content {
+        background: linear-gradient(white, #b3e5fc);
+      }
+
+      .orange .content {
+        background: linear-gradient(white, #ffecb3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout wrap inline center-center">
+      <oblique-header-panel class="blue">
+        <div class="oblique-header">standard</div>
+        <div class="content"></div>
+      </oblique-header-panel>
+
+      <oblique-header-panel mode="scroll" class="orange">
+        <div class="oblique-header">scroll</div>
+        <div class="content"></div>
+      </oblique-header-panel>
+    </div>
+  </body>
+</html>

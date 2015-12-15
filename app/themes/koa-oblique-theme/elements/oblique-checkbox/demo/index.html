@@ -9,68 +9,54 @@
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
     <link rel="import" href="../oblique-checkbox.html">
 
-    <style is="custom-style">
-      oblique-checkbox {
-        display: block;
-        margin-bottom: 40px;
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 550px;
       }
 
-      oblique-checkbox.blue {
-        --checkbox-checked-color: var(--paper-light-blue-500);
-        --checkbox-unchecked-color: var(--paper-light-blue-900);
+      .horizontal-section {
+        text-align: center;
+      }
+
+      oblique-checkbox {
+        margin-right: 24px;
       }
 
       oblique-checkbox.red {
         --checkbox-checked-color: var(--paper-red-500);
+        --checkbox-checked-ink-color: var(--paper-red-500);
         --checkbox-unchecked-color: var(--paper-red-900);
+        --checkbox-unchecked-ink-color: var(--paper-red-900);
+        --checkbox-label-color: var(--paper-red-500);
       }
 
       oblique-checkbox.green {
         --checkbox-checked-color: var(--paper-green-500);
+        --checkbox-checked-ink-color: var(--paper-green-500);
         --checkbox-unchecked-color: var(--paper-green-900);
-      }
-
-      oblique-checkbox.orange {
-        --checkbox-checked-color: var(--paper-orange-500);
-        --checkbox-unchecked-color: var(--paper-orange-900);
+        --checkbox-unchecked-ink-color: var(--paper-green-900);
+        --checkbox-label-color: var(--paper-green-500);
       }
     </style>
   </head>
   <body>
-    <div class="horizontal-section-container">
-      <div>
-        <h4>Enabled</h4>
-        <div class="horizontal-section">
-          <oblique-checkbox>Oxygen</oblique-checkbox>
-          <oblique-checkbox>Carbon</oblique-checkbox>
-          <oblique-checkbox checked>Hydrogen</oblique-checkbox>
-          <oblique-checkbox checked>Nitrogen</oblique-checkbox>
-          <oblique-checkbox checked>Calcium</oblique-checkbox>
-        </div>
+    <div class="vertical-section-container centered">
+      <h3>Checkboxes can be checked or unchecked, or disabled entirely</h3>
+      <div class="horizontal-section">
+        <oblique-checkbox>Checkbox</oblique-checkbox>
+        <oblique-checkbox checked>Checkbox</oblique-checkbox>
+        <oblique-checkbox disabled>Disabled</oblique-checkbox>
       </div>
-      <div>
-        <h4>Disabled</h4>
-        <div class="horizontal-section">
-          <oblique-checkbox disabled>Oxygen</oblique-checkbox>
-          <oblique-checkbox disabled>Carbon</oblique-checkbox>
-          <oblique-checkbox checked disabled>Hydrogen</oblique-checkbox>
-          <oblique-checkbox checked disabled>Nitrogen</oblique-checkbox>
-          <oblique-checkbox checked disabled>Calcium</oblique-checkbox>
-        </div>
-      </div>
-      <div>
-        <h4>Color</h4>
-        <div class="horizontal-section">
-          <oblique-checkbox class="blue" checked aria-label="Hurray for oxygen">Oxygen</oblique-checkbox>
-          <oblique-checkbox class="red" checked>Carbon</oblique-checkbox>
-          <oblique-checkbox class="orange" checked>Hydrogen</oblique-checkbox>
-          <oblique-checkbox class="green" checked>Nitrogen</oblique-checkbox>
-          <oblique-checkbox class="blue" checked>Calcium</oblique-checkbox>
-        </div>
+
+      <h3>Checkboxes can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <oblique-checkbox class="red">Checkbox</oblique-checkbox>
+        <oblique-checkbox checked class="green">Checkbox</oblique-checkbox>
       </div>
     </div>
   </body>

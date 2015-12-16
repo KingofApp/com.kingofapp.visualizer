@@ -1,6 +1,6 @@
 <div class="facebookfeed auto" ng-controller="facebookFeedCtrl">
 
-  <koa-item ng-hide="isEmpty(facebookfeed.message)">{{facebookfeed.message}}</koa-item>
+  <koa-item ng-if="facebookfeed.message">{{facebookfeed.message}}</koa-item>
 
   <koa-card image="{{item.full_picture}}" ng-repeat="item in facebookfeed.items">
     <div class="card-content">{{item.message}}</div>

@@ -1,8 +1,8 @@
 <div class='youtubevideo' ng-controller='youtubevideoCtrl'>
   <paper-card class="pink">
     <div class="card-content">
-      <p ng-hide="isEmpty(youtubevideo.message)">{{youtubevideo.message}}</p>
-      <youtube ng-hide="isEmpty(youtubevideo.message)" code="youtubevideo.videoid"></youtube>
+      <p ng-if="youtubevideo.message">{{youtubevideo.message}}</p>
+      <youtube code="youtubevideo.videoid"></youtube>
     </div>
   </paper-card>
 </div>

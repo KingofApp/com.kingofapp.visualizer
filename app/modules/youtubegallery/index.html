@@ -1,5 +1,5 @@
 <div class='youtubegallery auto' ng-controller='youtubeGalleryCtrl'>
-  <p ng-hide="isEmpty(youtubegallery.message)">{{youtubegallery.message}}</p>
+  <p ng-if="youtubegallery.message">{{youtubegallery.message}}</p>
   <!-- <template is="dom-repeat" items="{{youtubegallery.items}}"> -->
       <a ng-repeat='item in youtubegallery.items' href="#{{item.link}}">
         <koa-card image='{{item.img}}'>

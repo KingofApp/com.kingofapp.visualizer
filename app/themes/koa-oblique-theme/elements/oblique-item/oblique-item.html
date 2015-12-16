@@ -8,30 +8,50 @@
     <!-- write your styles here -->
     <style>
       :host {
-        cursor: pointer;
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+
+        -webkit-font-smoothing: antialiased;
+        background-color: rgba(22,134,200,0.95);
+        color: #ffffff;
         display: block;
+        font-family: 'Pacifico', sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 24px;
         min-height: var(--item-min-height, 48px);
         padding: 10px;
-        background-color: rgba(22,134,200,0.95);
+        position: relative;
+
+        /**
+         * This seemingly unnecessary height attribute is needed for an IE 11
+         * bug where flexbox elements are not vertically aligned if the height
+         * property is not specified, even when min-height is present.
+         */
+        height: 1px;
 
         @apply(--item);
       }
+
       :host(.iron-selected) {
         font-weight: var(--item-selected-weight, bold);
 
         @apply(--item-selected);
       }
+
       :host([disabled]) {
         outline: 0;
         color: var(--item-disabled-color, --disabled-text-color);
 
         @apply(--item-disabled);
       }
+
       :host(:focus) {
         position: relative;
         outline: 0;
         background: #617d8b;
-        
+
         @apply(--item-focused);
       }
 
@@ -43,24 +63,11 @@
 
         @apply(--item-focused-before);
       }
-
-      div.conten {
-        list-style: none;
-        font-size: 18px;
-        letter-spacing: 1px;
-        font-family: 'Pacifico', sans-serif;
-        height: 50px;
-        line-height: 50px;
-        color: var(--text-primary-color, #ffffff);
-        }
-
     </style>
     <!-- end styles -->
 
     <!-- write your template here -->
-    <div class="conten">
-      <content></content>
-    </div>
+    <content></content>
     <!-- end template -->
   </template>
 

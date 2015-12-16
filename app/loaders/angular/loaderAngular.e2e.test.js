@@ -2,7 +2,7 @@
 	describe('Angular modules test', function() {
 		beforeEach(function(){
 		    browser.driver.manage().window().setSize(379, 666);
-		    browser.ignoreSynchronization = false;
+		    browser.ignoreSynchronization = true;
 		});
 
 		describe('for simple modules', function() {

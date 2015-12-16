@@ -1,0 +1,313 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-slider-behavior.html">
+<link rel="import" href="../oblique-input/oblique-input.html">
+<link rel="import" href="../oblique-progress/oblique-progress.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+
+<dom-module id="oblique-slider">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        @apply(--layout);
+        @apply(--layout-justified);
+        @apply(--layout-center);
+
+        width: 200px;
+        cursor: default;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        --progress-active-color: var(--slider-active-color, #3367d6);
+        --progress-secondary-color: var(--slider-secondary-color, #7baaf7);
+        --progress-disabled-active-color: var(--slider-disabled-active-color, #9e9e9e);
+        --progress-disabled-secondary-color: var(--slider-disabled-secondary-color, #e0e0e0);
+      }
+
+      :host(:focus) {
+        outline: none;
+      }
+
+      #sliderContainer {
+        height: calc(30px + var(--slider-height, 10px));
+        margin-left: calc(15px + var(--slider-height, 10px)/2);
+        margin-right: calc(15px + var(--slider-height, 10px)/2);
+        position: relative;
+        width: 100%;
+      }
+
+      #sliderContainer:focus {
+        outline: 0;
+      }
+
+      #sliderContainer.editable {
+        margin-bottom: 12px;
+        margin-top: 12px;
+      }
+
+      .bar-container {
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .ring > .bar-container {
+        left: calc(5px + var(--slider-height, 10px)/2);
+        transition: left 0.18s ease, width 0.18s ease;
+      }
+
+      .ring.expand.dragging > .bar-container {
+        transition: none;
+      }
+
+      .ring.expand:not(.pin) > .bar-container {
+        left: calc(15px + var(--slider-height, 10px)/2);
+      }
+
+      #sliderBar {
+        background-color: var(--slider-bar-color, transparent);
+        padding: 15px 0;
+        width: 100%;
+
+        --progress-height: var(--slider-height, 10px);
+      }
+
+      .ring #sliderBar {
+        margin-left: calc(-5px - var(--slider-height, 10px)/2);
+        width: calc(100% + 5px + var(--slider-height, 10px)/2);
+      }
+      .ring.expand:not(.pin) #sliderBar {
+        margin-left: calc(-15px - var(--slider-height, 10px)/2);
+        width: calc(100% + 15px + var(--slider-height, 10px)/2);
+      }
+
+      .slider-markers {
+        @apply(--layout-horizontal);
+
+        box-sizing: border-box;
+        height: var(--slider-height, 10px);
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        right: -1px;
+        top: calc(14px + var(--slider-height, 10px)/2);
+      }
+
+      .slider-marker {
+        @apply(--layout-flex);
+      }
+
+      .slider-markers::after,
+      .slider-marker::after {
+        background-color: black;
+        border-radius: 50%;
+        content: '';
+        display: block;
+        height: 2px;
+        margin-left: -1px;
+        width: 2px;
+      }
+
+      #sliderKnob {
+        height: calc(30px + var(--slider-height, 10px));
+        left: 0;
+        margin-left: calc(-15px - var(--slider-height, 10px)/2);
+        position: absolute;
+        top: 0;
+        width: calc(30px + var(--slider-height, 10px));
+      }
+
+      .transiting > #sliderKnob {
+        transition: left 0.08s ease;
+      }
+
+      #sliderKnob:focus {
+        outline: none;
+      }
+
+      #sliderKnob.dragging {
+        transition: none;
+      }
+
+      .snaps > #sliderKnob.dragging {
+          transition: -webkit-transform 0.08s ease;
+        transition: transform 0.08s ease;
+      }
+
+      #sliderKnobInner {
+        background-color: var(--slider-knob-color, #3367d6);
+        border-radius: 50%;
+          -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        height: calc(100% - 20px);
+        margin: 10px;
+        transition-duration: 0.1s;
+        transition-property: margin, height, width, background-color, border;
+        transition-timing-function: ease;
+        width: calc(100% - 20px);
+      }
+
+      .expand:not(.pin) > #sliderKnob > #sliderKnobInner {
+        height: 100%;
+        margin: 0;
+        width: 100%;
+          -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+
+      .ring > #sliderKnob > #sliderKnobInner {
+        background-color: var(--slider-knob-start-color, transparent);
+        border: 2px solid var(--slider-knob-start-border-color, #c8c8c8);
+      }
+
+      #sliderKnobInner::before {
+        background-color: var(--slider-pin-color, #3367d6);
+      }
+
+      .pin > #sliderKnob > #sliderKnobInner::before {
+        border-radius: 50% 50% 50% 0;
+        content: '';
+        height: 26px;
+        left: 50%;
+        margin-left: -13px;
+        position: absolute;
+        top: 0;
+          -webkit-transform: rotate(-45deg) scale(0) translate(0);
+        transform: rotate(-45deg) scale(0) translate(0);
+        width: 26px;
+      }
+
+      #sliderKnobInner::before,
+      #sliderKnobInner::after {
+          transition: -webkit-transform .2s ease, background-color .18s ease;
+        transition: transform .2s ease, background-color .18s ease;
+      }
+
+      .pin.ring > #sliderKnob > #sliderKnobInner::before {
+        background-color: var(--slider-pin-start-color, #c8c8c8);
+      }
+
+      .pin.expand > #sliderKnob > #sliderKnobInner::before {
+          -webkit-transform: rotate(-45deg) scale(1) translate(17px, -17px);
+        transform: rotate(-45deg) scale(1) translate(17px, -17px);
+      }
+
+      .pin > #sliderKnob > #sliderKnobInner::after {
+        content: attr(value);
+        color: var(--slider-font-color, #fff);
+        font-size: 10px;
+        height: 26px;
+        left: 50%;
+        margin-left: -16px;
+        position: absolute;
+        text-align: center;
+          -webkit-transform: scale(0) translate(0);
+        transform: scale(0) translate(0);
+        top: 0;
+        width: 32px;
+      }
+
+      .pin.expand > #sliderKnob > #sliderKnobInner::after {
+        -webkit-transform: scale(1) translate(0, -17px);
+        transform: scale(1) translate(0, -17px);
+      }
+
+      .slider-input {
+        width: 50px;
+        overflow: hidden;
+
+        --paper-input-container-input: {
+          text-align: center;
+        };
+      }
+
+      #sliderContainer.disabled {
+        pointer-events: none;
+      }
+
+      .disabled > #sliderKnob {
+        top: 2px;
+        margin-left: calc(-13px - var(--slider-height, 10px)/2);
+        width: calc(26px + var(--slider-height, 10px));
+        height: calc(26px + var(--slider-height, 10px));
+      }
+
+      .disabled > #sliderKnob > #sliderKnobInner {
+        background-color: var(--slider-disabled-knob-color, #9e9e9e);
+      }
+
+      .disabled.ring > #sliderKnob > #sliderKnobInner {
+        background-color: transparent;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div id="sliderContainer" class$="[[_getClassNames(disabled, pin, snaps, immediateValue, min, expand, dragging, transiting, editable)]]">
+      <div class="bar-container">
+        <oblique-progress
+          disabled$="[[disabled]]"
+          id="sliderBar"
+          aria-hidden="true"
+          min="[[min]]"
+          max="[[max]]"
+          step="[[step]]"
+          value="[[immediateValue]]"
+          secondary-progress="[[secondaryProgress]]"
+          on-down="_bardown"
+          on-up="_resetKnob"
+          on-track="_onTrack">
+        </oblique-progress>
+      </div>
+
+      <template is="dom-if" if="[[snaps]]">
+        <div class="slider-markers">
+          <template is="dom-repeat" items="[[markers]]">
+            <div class="slider-marker"></div>
+          </template>
+        </div>
+      </template>
+
+      <div id="sliderKnob"
+        on-down="_knobdown"
+        on-up="_resetKnob"
+        on-track="_onTrack"
+        on-transitionend="_knobTransitionEnd">
+          <div id="sliderKnobInner" value$="[[immediateValue]]"></div>
+      </div>
+    </div>
+
+    <template is="dom-if" if="[[editable]]">
+      <oblique-input
+        id="input"
+        type="number"
+        step="[[step]]"
+        min="[[min]]"
+        max="[[max]]"
+        class="slider-input"
+        disabled$="[[disabled]]"
+        value="[[immediateValue]]"
+        on-change="_changeValue"
+        on-keydown="_inputKeyDown">
+      </oblique-input>
+    </template>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-slider',
+
+      behaviors: [
+        Polymer.KoaSliderBehavior
+      ]
+    });
+  </script>
+</dom-module>

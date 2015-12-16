@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>oblique-tabs demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../oblique-toolbar/oblique-toolbar.html">
+    <link rel="import" href="../oblique-tabs.html">
+
+    <style is="custom-style">
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 24px;
+        color: #333;
+      }
+
+      oblique-tabs, oblique-toolbar {
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      oblique-toolbar oblique-tabs {
+        box-shadow: none;
+      }
+
+      oblique-tabs[align-bottom] {
+        box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      h3 {
+        font-size: 16px;
+        font-weight: 400;
+        padding-top: 20px;
+      }
+
+      .link {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-center);
+      }
+
+      .flex {
+        @apply(--layout-flex);
+      }
+
+      .self-end {
+        @apply(--layout-self-end);
+      }
+    </style>
+  </head>
+  <body>
+    <h3>A. Standar</h3>
+
+    <oblique-tabs selected="0">
+      <oblique-tab>ITEM ONE</oblique-tab>
+      <oblique-tab>ITEM TWO</oblique-tab>
+      <oblique-tab>ITEM THREE</oblique-tab>
+    </oblique-tabs>
+
+    <h3>B. Scrollable Tabs</h3>
+
+    <oblique-tabs id="scrollableTabs" selected="0" scrollable>
+      <oblique-tab>NUMBER ONE ITEM</oblique-tab>
+      <oblique-tab>ITEM TWO</oblique-tab>
+      <oblique-tab>THE THIRD ITEM</oblique-tab>
+      <oblique-tab>THE ITEM FOUR</oblique-tab>
+      <oblique-tab>FIFTH</oblique-tab>
+      <oblique-tab>THE SIXTH TAB</oblique-tab>
+      <oblique-tab>NUMBER SEVEN</oblique-tab>
+      <oblique-tab>EIGHT</oblique-tab>
+      <oblique-tab>NUMBER NINE</oblique-tab>
+      <oblique-tab>THE TENTH</oblique-tab>
+      <oblique-tab>THE ITEM ELEVEN</oblique-tab>
+      <oblique-tab>TWELFTH ITEM</oblique-tab>
+    </oblique-tabs>
+
+    <h3>C. Scrollable tabs within right-to-left region</h3>
+
+    <div dir="rtl">
+      <oblique-tabs selected="0" scrollable>
+        <oblique-tab>NUMBER ONE ITEM</oblique-tab>
+        <oblique-tab>ITEM TWO</oblique-tab>
+        <oblique-tab>THE THIRD ITEM</oblique-tab>
+        <oblique-tab>THE ITEM FOUR</oblique-tab>
+        <oblique-tab>FIFTH</oblique-tab>
+        <oblique-tab>THE SIXTH TAB</oblique-tab>
+        <oblique-tab>NUMBER SEVEN</oblique-tab>
+        <oblique-tab>EIGHT</oblique-tab>
+        <oblique-tab>NUMBER NINE</oblique-tab>
+        <oblique-tab>THE TENTH</oblique-tab>
+        <oblique-tab>THE ITEM ELEVEN</oblique-tab>
+        <oblique-tab>TWELFTH ITEM</oblique-tab>
+      </oblique-tabs>
+    </div>
+
+    <h3>D. Link Tabs</h3>
+
+    <oblique-tabs selected="0">
+      <oblique-tab link><a href="#item1" class="link">ITEM ONE</a></oblique-tab>
+      <oblique-tab link><a href="#item2" class="link">ITEM TWO</a></oblique-tab>
+      <oblique-tab link><a href="#item3" class="link">ITEM THREE</a></oblique-tab>
+    </oblique-tabs>
+
+    <h3>E. Tabs in Toolbar</h3>
+
+    <oblique-toolbar class="tall">
+      <oblique-tabs selected="0" class="bottom self-end" style="width: 300px;">
+        <oblique-tab>ITEM ONE</oblique-tab>
+        <oblique-tab>ITEM TWO</oblique-tab>
+      </oblique-tabs>
+      <div class="bottom flex"></div>
+    </oblique-toolbar>
+
+    <h3>F. Bound Selection</h3>
+
+    <template is="dom-bind">
+      <h2>Current Tab: <span>[[selected]]</span></h2>
+      <oblique-tabs selected="{{selected}}">
+        <oblique-tab>ITEM ONE</oblique-tab>
+        <oblique-tab>ITEM TWO</oblique-tab>
+        <oblique-tab>ITEM THREE</oblique-tab>
+      </oblique-tabs>
+    </template>
+  </body>
+</html>

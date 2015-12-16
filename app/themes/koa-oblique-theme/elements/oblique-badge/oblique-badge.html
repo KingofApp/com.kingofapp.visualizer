@@ -1,0 +1,63 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-badge-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+
+<dom-module id="oblique-badge">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+        position: absolute;
+        outline: none;
+      }
+
+      iron-icon {
+        --iron-icon-width: 12px;
+        --iron-icon-height: 12px;
+      }
+
+      .badge {
+        @apply(--layout);
+        @apply(--layout-center-center);
+
+        background-color: var(--badge-background, --accent-color);
+        border-radius: 50%;
+        color: var(--badge-text-color, white);
+        font-family: 'Pacifico';
+        font-size: 13px;
+        font-weight: normal;
+        height: var(--badge-height, 20px);
+        margin-bottom: var(--badge-margin-bottom, 0px);
+        margin-left: var(--badge-margin-left, 0px);
+        opacity: var(--badge-opacity, 1.0);
+        width: var(--badge-width, 20px);
+
+        @apply(--badge);
+      }
+
+      .badge span {
+        height: inherit;
+        line-height: 1.2em;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="badge">
+      <iron-icon hidden$="{{!_computeIsIconBadge(icon)}}" icon="{{icon}}"></iron-icon>
+      <span id="badge-text" hidden$="{{_computeIsIconBadge(icon)}}">{{label}}</span>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-badge',
+
+      behaviors: [
+        Polymer.KoaBadgeBehavior
+      ]
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>oblique-button demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-icon/iron-icon.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../oblique-button.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 650px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      oblique-button {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      oblique-button.custom:hover {
+        background-color: var(--paper-indigo-100);
+      }
+
+      oblique-button.pink {
+        color: var(--paper-pink-a200);
+      }
+
+      oblique-button.indigo {
+        background-color: var(--paper-indigo-500);
+        color: white;
+      }
+
+      oblique-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+
+      oblique-button.green[active] {
+        background-color: var(--paper-red-500);
+      }
+
+      oblique-button.disabled {
+        color: white;
+      }
+
+      iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Buttons can be standar, big, link, toggleable, or disabled</h3>
+      <div class="horizontal-section">
+        <oblique-button>standar</oblique-button>
+        <oblique-button big>big</oblique-button>
+        <oblique-button link>link</oblique-button>
+        <oblique-button toggles>toggles</oblique-button>
+        <oblique-button disabled>disabled</oblique-button>
+      </div>
+
+      <h3>Buttons can have icons</h3>
+      <div class="horizontal-section">
+        <oblique-button><iron-icon icon="check"></iron-icon>standar</oblique-button>
+        <oblique-button big><iron-icon icon="file-download"></iron-icon>big</oblique-button>
+        <oblique-button link><iron-icon icon="file-download"></iron-icon>link</oblique-button>
+        <oblique-button toggles><iron-icon icon="favorite"></iron-icon>toggles</oblique-button>
+        <oblique-button disabled><iron-icon icon="block"></iron-icon>disabled</oblique-button>
+      </div>
+
+      <h3>Buttons can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <oblique-button class="custom pink">standar</oblique-button>
+        <oblique-button big class="custom indigo">big</oblique-button>
+        <oblique-button link class="custom">link</oblique-button>
+        <oblique-button toggles class="custom green">toggles</oblique-button>
+        <oblique-button disabled class="custom disabled">disabled</oblique-button>
+      </div>
+    </div>
+  </body>
+</html>

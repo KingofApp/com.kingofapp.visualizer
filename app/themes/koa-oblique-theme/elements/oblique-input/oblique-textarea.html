@@ -1,0 +1,59 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-textarea-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+<link rel="import" href="oblique-input-char-counter.html">
+<link rel="import" href="oblique-input-container.html">
+<link rel="import" href="oblique-input-error.html">
+
+<dom-module id="oblique-textarea">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <oblique-input-container auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]" class="input-container">
+      <label hidden$="[[!label]]">[[label]]</label>
+
+      <iron-autogrow-textarea id="input"
+        bind-value="{{value}}"
+        disabled$="[[disabled]]"
+        autocomplete$="[[autocomplete]]"
+        autofocus$="[[autofocus]]"
+        inputmode$="[[inputmode]]"
+        name$="[[name]]"
+        placeholder$="[[placeholder]]"
+        readonly$="[[readonly]]"
+        required$="[[required]]"
+        maxlength$="[[maxlength]]"
+        autocapitalize$="[[autocapitalize]]"
+        rows$="[[rows]]"
+        max-rows$="[[maxRows]]"
+        on-change="_onChange"></iron-autogrow-textarea>
+
+      <template is="dom-if" if="[[errorMessage]]">
+        <oblique-input-error>[[errorMessage]]</oblique-input-error>
+      </template>
+
+      <template is="dom-if" if="[[charCounter]]">
+        <oblique-input-char-counter></oblique-input-char-counter>
+      </template>
+    </oblique-input-container>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-textarea',
+
+      behaviors: [
+        Polymer.KoaTextareaBehavior
+      ]
+    });
+  </script>
+</dom-module>

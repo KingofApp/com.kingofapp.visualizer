@@ -1,0 +1,95 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-header-panel-behavior.html">
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+
+<dom-module id="oblique-header-panel">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+        padding: 30px;
+        box-sizing: border-box;
+        background-color: rgba(55,163,220, .4);
+        @apply(--layout-vertical);
+
+        font-family: 'Pacifico';
+        text-transform: capitalize;
+        font-size: 22px;
+        text-align: center;
+        position: relative;
+        height: 100%;
+      }
+        .tri  {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                display: block;
+                width: 0;
+                border-right: 0 solid transparent;
+                border-left: 394px solid transparent;
+                border-bottom: 10px solid #fff;
+              }
+
+      #mainContainer {
+        @apply(--layout-flex);
+
+        position: relative;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #mainPanel {
+        @apply(--layout-vertical);
+        @apply(--layout-flex);
+
+        position: relative;
+        min-height: 0;
+      }
+
+      :host([mode=scroll]) #mainContainer {
+        overflow: visible;
+
+        @apply(--paper-header-panel-scroll-container);
+      }
+
+      :host([mode=scroll]) {
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      :host([mode=standard]) #mainContainer {
+        @apply(--paper-header-panel-standard-container);
+      }
+
+
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <content id="headerContent" select="bootstrap-toolbar, .bootstrap-header"></content>
+
+    <div class="title">
+      <div id="mainContainer">
+        <content id="mainContent" select="*"></content>
+        <div class="tri"></div>
+      </div>
+    </div>
+
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-header-panel',
+
+      behaviors: [
+        Polymer.KoaHeaderPanelBehavior
+      ]
+    });
+  </script>
+</dom-module>

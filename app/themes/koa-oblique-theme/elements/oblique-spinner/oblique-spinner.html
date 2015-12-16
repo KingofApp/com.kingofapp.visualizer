@@ -1,0 +1,94 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-spinner-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+
+<dom-module id="oblique-spinner">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      .wheel {
+        background-color: rgba(0,0,0,0);
+        border: 5px solid #30a3dc;
+        opacity: .9;
+        border-top: 5px solid rgba(0,0,0,0);
+        border-left: 5px solid rgba(0,0,0,0);
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+        -moz-animation: spin 1.2s infinite linear;
+        -webkit-animation: spin 1.2s infinite linear;
+      }
+
+      .wheelB {
+        background-color: rgba(0,0,0,0);
+        border: 5px solid #30a3dc;
+        opacity: .9;
+        border-top: 5px solid rgba(0,0,0,0);
+        border-left: 5px solid rgba(0,0,0,0);
+        border-radius: 100%;
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        position: relative;
+        top: -50px;
+        -moz-animation: spinoff 1s infinite linear;
+        -webkit-animation: spinoff 1s infinite linear;
+      }
+
+      @-moz-keyframes spin {
+        0% {
+          -moz-transform: rotate(0deg);
+        }
+        100% {
+          -moz-transform: rotate(360deg);
+        };
+      }
+
+      @-moz-keyframes spinoff {
+        0% {
+          -moz-transform: rotate(0deg);
+        }
+        100% {
+          -moz-transform: rotate(-360deg);
+        };
+      }
+
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        };
+      }
+
+      @-webkit-keyframes spinoff {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(-360deg);
+        };
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div id="spinnerContainer" class-name="[[__computeContainerClasses(active, __coolingDown)]]">
+      <div class="wheel"></div>
+      <div class="wheelB"></div>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-spinner',
+
+      behaviors: [
+        Polymer.KoaSpinnerBehavior
+      ]
+    });
+  </script>
+</dom-module>

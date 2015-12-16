@@ -1,0 +1,179 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-toolbar-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+
+<dom-module id="oblique-toolbar">
+  <template>
+    <!-- write your styles here -->
+    <style>
+    :host {
+       font-family: 'Pacifico';
+       display: block;
+       position: relative;
+       box-sizing: border-box;
+       -moz-box-sizing: border-box;
+       height: var(--oblique-toolbar-height, 64px);
+       background-color: var(--toolbar-background, --default-primary-color);
+       color: var(--toolbar-color, --text-primary-color);
+
+       @apply(--oblique-toolbar);
+     }
+     :host(.animate) {
+       /* transition */
+       transition: height 0.18s ease-in;
+     }
+     :host(.medium-tall) {
+       height: calc(var(--oblique-toolbar-height, 64px) * 2);
+       @apply(--oblique-toolbar-medium);
+     }
+     :host(.tall) {
+       height: calc(var(--oblique-toolbar-height, 64px) * 3);
+       @apply(--oblique-toolbar-tall);
+     }
+     .toolbar-tools {
+       position: relative;
+       height: var(--oblique-toolbar-height, 64px);
+       padding: 0 16px;
+       pointer-events: none;
+       @apply(--layout-horizontal);
+       @apply(--layout-center);
+     }
+     #topBar {
+       position: relative;
+     }
+     /* middle bar */
+     #middleBar {
+       position: absolute;
+       top: 0;
+       right: 0;
+       left: 0;
+     }
+     :host(.tall) #middleBar,
+     :host(.medium-tall) #middleBar {
+       -webkit-transform: translateY(100%);
+       transform: translateY(100%);
+     }
+     /* bottom bar */
+     #bottomBar {
+       position: absolute;
+       right: 0;
+       bottom: 0;
+       left: 0;
+     }
+     /*
+      * make elements (e.g. buttons) respond to mouse/touch events
+      *
+      * `.toolbar-tools` disables touch events so multiple toolbars can stack and not
+      * absorb events. All children must have pointer events re-enabled to work as
+      * expected.
+      */
+     .toolbar-tools > ::content > *:not([disabled]) {
+       pointer-events: auto;
+     }
+     .toolbar-tools > ::content .title {
+       @apply(--oblique-font-common-base);
+       white-space: nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       font-size: 20px;
+       font-weight: 400;
+       line-height: 1;
+       pointer-events: none;
+       @apply(--layout-flex);
+       @apply(--oblique-toolbar-title);
+     }
+     /**
+      * TODO: Refactor these selectors
+      * Work in progress.
+      */
+     .toolbar-tools > ::content oblique-icon-button[icon=menu] {
+       margin-right: 24px;
+     }
+     .toolbar-tools > ::content > .title,
+     .toolbar-tools > ::content[select=".middle"] > .title,
+     .toolbar-tools > ::content[select=".bottom"] > .title {
+       margin-left: 56px;
+     }
+     .toolbar-tools > ::content > oblique-icon-button + .title,
+     .toolbar-tools > ::content[select=".middle"] oblique-icon-button + .title,
+     .toolbar-tools > ::content[select=".bottom"] oblique-icon-button + .title {
+       margin-left: 0;
+     }
+     .toolbar-tools > ::content > .fit {
+       position: absolute;
+       top: auto;
+       right: 0;
+       bottom: 0;
+       left: 0;
+       width: auto;
+       margin: 0;
+     }
+     /* TODO(noms): Until we have a better solution for classes that don't use
+      * /deep/ create our own.
+      */
+     .start-justified {
+       @apply(--layout-start-justified);
+     }
+     .center-justified {
+       @apply(--layout-center-justified);
+     }
+     .end-justified {
+       @apply(--layout-end-justified);
+     }
+     .around-justified {
+       @apply(--layout-around-justified);
+     }
+     .justified {
+       @apply(--layout-justified);
+     }
+
+      /*
+       * TODO: Where should media query breakpoints live so they can be shared between elements?
+       */
+      @media (max-width: 639px) {
+        :host {
+          height: var(--toolbar-sm-height, 56px);
+        }
+
+        :host(.medium-tall) {
+          height: calc(var(--toolbar-sm-height, 56px) * 2);
+        }
+
+        :host(.tall) {
+          height: calc(var(--toolbar-sm-height, 56px) * 3);
+        }
+
+        .toolbar-tools {
+          height: var(--toolbar-sm-height, 56px);
+        }
+      }
+
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div id="topBar" class$="toolbar-tools [[_computeBarExtraClasses(justify)]]">
+      <content select=":not(.middle):not(.bottom)"></content>
+    </div>
+
+    <div id="middleBar" class$="toolbar-tools [[_computeBarExtraClasses(middleJustify)]]">
+      <content select=".middle"></content>
+    </div>
+
+    <div id="bottomBar" class$="toolbar-tools [[_computeBarExtraClasses(bottomJustify)]]">
+      <content select=".bottom"></content>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-toolbar',
+
+      behaviors: [
+        Polymer.KoaToolbarBehavior
+      ]
+    });
+  </script>
+</dom-module>

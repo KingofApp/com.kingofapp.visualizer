@@ -6,7 +6,7 @@
   <template>
     <!-- write your styles here -->
     <style>
-    .wheel {
+      .wheel {
         background-color: rgba(0,0,0,0);
         border: 5px solid #30a3dc;
         opacity: .9;
@@ -18,9 +18,9 @@
         margin: 0 auto;
         -moz-animation: spin 1.2s infinite linear;
         -webkit-animation: spin 1.2s infinite linear;
-    }
+      }
 
-    .wheelB {
+      .wheelB {
         background-color: rgba(0,0,0,0);
         border: 5px solid #30a3dc;
         opacity: .9;
@@ -34,54 +34,50 @@
         top: -50px;
         -moz-animation: spinoff 1s infinite linear;
         -webkit-animation: spinoff 1s infinite linear;
-    }
+      }
 
-    @-moz-keyframes spin {
+      @-moz-keyframes spin {
         0% {
-            -moz-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
         }
-
         100% {
-            -moz-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
         };
-    }
+      }
 
-    @-moz-keyframes spinoff {
+      @-moz-keyframes spinoff {
         0% {
-            -moz-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
         }
-
         100% {
-            -moz-transform: rotate(-360deg);
+          -moz-transform: rotate(-360deg);
         };
-    }
+      }
 
-    @-webkit-keyframes spin {
+      @-webkit-keyframes spin {
         0% {
-            -webkit-transform: rotate(0deg);
+          -webkit-transform: rotate(0deg);
         }
-
         100% {
-            -webkit-transform: rotate(360deg);
+          -webkit-transform: rotate(360deg);
         };
-    }
+      }
 
-    @-webkit-keyframes spinoff {
+      @-webkit-keyframes spinoff {
         0% {
-            -webkit-transform: rotate(0deg);
+          -webkit-transform: rotate(0deg);
         }
-
         100% {
-            -webkit-transform: rotate(-360deg);
+          -webkit-transform: rotate(-360deg);
         };
-    }
+      }
     </style>
     <!-- end styles -->
 
     <!-- write your template here -->
     <div id="spinnerContainer" class-name="[[__spinnerContainerClassName]]">
-     <div class="wheel"></div>
-     <div class="wheelB"></div>
+      <div class="wheel"></div>
+      <div class="wheelB"></div>
     </div>
     <!-- end template -->
   </template>

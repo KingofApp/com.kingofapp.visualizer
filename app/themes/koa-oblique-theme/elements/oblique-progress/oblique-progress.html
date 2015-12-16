@@ -9,22 +9,17 @@
     <style>
       :host {
         display: block;
-        width: 80%;
-        height: 10px;
-        margin: 0 auto;
-        background-color: #e0e0e0;
+        position: relative;
         overflow: hidden;
-
       }
 
       #progressContainer {
         position: relative;
-
       }
 
       #progressContainer,
       .indeterminate::after {
-        height: var(--progress-height, 4px);
+        height: var(--progress-height, 10px);
       }
 
       #primaryProgress,
@@ -68,8 +63,7 @@
       }
 
       #primaryProgress {
-        height: 10px;
-        background-color: var(--dark-primary-color, #1a86c8);
+        background-color: var(--progress-active-color, #1a86c8);
       }
 
       #secondaryProgress {

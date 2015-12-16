@@ -15,18 +15,12 @@
 
     <style is="custom-style">
       .list {
-        padding-top: 12px;
+        @apply(--shadow-elevation-2dp);
+
         background-color: white;
         display: inline-block;
-        width: 240px;
-        height: 228px;
         margin: 12px;
-        @apply(--shadow-elevation-2dp);
-      }
-
-      .short {
-        padding-top: 12px;
-        height: 216px;
+        width: 240px;
       }
 
       h4 {
@@ -38,7 +32,7 @@
     <div class="container">
       <div>
         <h4>Single line items</h4>
-        <div class="list short" role="listbox">
+        <div class="list" role="listbox">
           <oblique-item>Inbox</oblique-item>
           <oblique-item>Starred</oblique-item>
           <oblique-item>Sent mail</oblique-item>

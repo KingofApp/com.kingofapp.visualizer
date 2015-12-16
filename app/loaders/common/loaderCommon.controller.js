@@ -168,6 +168,7 @@
 
     function setTheme(theme, cb) {
       koaApp.setTheme(theme, cb);
+      structureService.setColors(null);
     }
 
     function addEvents() {

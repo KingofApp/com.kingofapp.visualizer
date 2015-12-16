@@ -54,9 +54,7 @@ angular
       //Add static_404 to structure
       data.modules['/404'] = error404();
 
-      // Register services
-      // registerServices();
-      setColors(data.config.colors);
+      // setColors(data.config.colors);
       setLoader(data.config.loader);
       $rootScope.$broadcast("menuUpdated");
     }
@@ -75,7 +73,10 @@ angular
     }
     function setColors(color){
       cachedLocations = {};
-      data.config.colors = color;
+      if(color === null){
+        color = data.config.colors;
+      }
+      // data.config.colors = color;
       var s = document.createElement('style', 'custom-style');
       s.textContent = ':root {\n';
       s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ';';

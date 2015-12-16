@@ -9,70 +9,54 @@
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
     <link rel="import" href="../oblique-radio-button.html">
 
-    <style is="custom-style">
-      oblique-radio-button {
-        display: block;
-        margin-bottom: 40px;
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 630px;
       }
 
-      oblique-radio-button.blue {
-        --radio-button-checked-color: var(--paper-light-blue-500);
-        --radio-button-unchecked-color: var(--paper-light-blue-900);
+      .horizontal-section {
+        text-align: center;
+      }
+
+      oblique-radio-button {
+        margin-right: 24px;
       }
 
       oblique-radio-button.red {
         --radio-button-checked-color: var(--paper-red-500);
+        --radio-button-checked-ink-color: var(--paper-red-500);
         --radio-button-unchecked-color: var(--paper-red-900);
+        --radio-button-unchecked-ink-color: var(--paper-red-900);
+        --radio-button-label-color: var(--paper-red-500);
       }
 
       oblique-radio-button.green {
         --radio-button-checked-color: var(--paper-green-500);
+        --radio-button-checked-ink-color: var(--paper-green-500);
         --radio-button-unchecked-color: var(--paper-green-900);
-      }
-
-      oblique-radio-button.orange {
-        --radio-button-checked-color: var(--paper-orange-500);
-        --radio-button-unchecked-color: var(--paper-orange-900);
+        --radio-button-unchecked-ink-color: var(--paper-green-900);
+        --radio-button-label-color: var(--paper-green-500);
       }
     </style>
   </head>
   <body>
-    <div class="horizontal-section-container">
-      <div>
-        <h4>Enabled</h4>
-        <div class="horizontal-section">
-          <oblique-radio-button>Oxygen</oblique-radio-button>
-          <oblique-radio-button>Carbon</oblique-radio-button>
-          <oblique-radio-button checked>Hydrogen</oblique-radio-button>
-          <oblique-radio-button checked>Nitrogen</oblique-radio-button>
-          <oblique-radio-button checked>Calcium</oblique-radio-button>
-        </div>
+    <div class="vertical-section-container centered">
+      <h3>Radio buttons can be checked or unchecked, or disabled entirely</h3>
+      <div class="horizontal-section">
+        <oblique-radio-button>Radio button</oblique-radio-button>
+        <oblique-radio-button checked>Radio button</oblique-radio-button>
+        <oblique-radio-button disabled>Disabled</oblique-radio-button>
       </div>
 
-      <div>
-        <h4>Disabled</h4>
-        <div class="horizontal-section">
-          <oblique-radio-button disabled>Oxygen</oblique-radio-button>
-          <oblique-radio-button disabled>Carbon</oblique-radio-button>
-          <oblique-radio-button checked disabled>Hydrogen</oblique-radio-button>
-          <oblique-radio-button checked disabled>Nitrogen</oblique-radio-button>
-          <oblique-radio-button checked disabled>Calcium</oblique-radio-button>
-        </div>
-      </div>
-
-      <div>
-        <h4>Color</h4>
-        <div class="horizontal-section">
-          <oblique-radio-button class="blue" checked>Oxygen</oblique-radio-button>
-          <oblique-radio-button class="red" checked>Carbon</oblique-radio-button>
-          <oblique-radio-button class="orange" checked>Hydrogen</oblique-radio-button>
-          <oblique-radio-button class="green" checked>Nitrogen</oblique-radio-button>
-          <oblique-radio-button class="blue" checked>Calcium</oblique-radio-button>
-        </div>
+      <h3>Radio buttons can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <oblique-radio-button class="red">Radio button</oblique-radio-button>
+        <oblique-radio-button checked class="green">Radio button</oblique-radio-button>
       </div>
     </div>
   </body>

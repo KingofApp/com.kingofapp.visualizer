@@ -33,9 +33,9 @@
       }
 
       #sliderContainer {
-        height: calc(30px + var(--slider-height, 2px));
-        margin-left: calc(15px + var(--slider-height, 2px)/2);
-        margin-right: calc(15px + var(--slider-height, 2px)/2);
+        height: calc(30px + var(--slider-height, 10px));
+        margin-left: calc(15px + var(--slider-height, 10px)/2);
+        margin-right: calc(15px + var(--slider-height, 10px)/2);
         position: relative;
         width: 100%;
       }
@@ -59,7 +59,7 @@
       }
 
       .ring > .bar-container {
-        left: calc(5px + var(--slider-height, 2px)/2);
+        left: calc(5px + var(--slider-height, 10px)/2);
         transition: left 0.18s ease, width 0.18s ease;
       }
 
@@ -68,7 +68,7 @@
       }
 
       .ring.expand:not(.pin) > .bar-container {
-        left: calc(15px + var(--slider-height, 2px)/2);
+        left: calc(15px + var(--slider-height, 10px)/2);
       }
 
       #sliderBar {
@@ -76,28 +76,28 @@
         padding: 15px 0;
         width: 100%;
 
-        --progress-height: var(--slider-height, 2px);
+        --progress-height: var(--slider-height, 10px);
       }
 
       .ring #sliderBar {
-        margin-left: calc(-5px - var(--slider-height, 2px)/2);
-        width: calc(100% + 5px + var(--slider-height, 2px)/2);
+        margin-left: calc(-5px - var(--slider-height, 10px)/2);
+        width: calc(100% + 5px + var(--slider-height, 10px)/2);
       }
       .ring.expand:not(.pin) #sliderBar {
-        margin-left: calc(-15px - var(--slider-height, 2px)/2);
-        width: calc(100% + 15px + var(--slider-height, 2px)/2);
+        margin-left: calc(-15px - var(--slider-height, 10px)/2);
+        width: calc(100% + 15px + var(--slider-height, 10px)/2);
       }
 
       .slider-markers {
         @apply(--layout-horizontal);
 
         box-sizing: border-box;
-        height: var(--slider-height, 2px);
+        height: var(--slider-height, 10px);
         left: 0;
         pointer-events: none;
         position: absolute;
         right: -1px;
-        top: calc(14px + var(--slider-height,2px)/2);
+        top: calc(14px + var(--slider-height, 10px)/2);
       }
 
       .slider-marker {
@@ -116,12 +116,12 @@
       }
 
       #sliderKnob {
-        height: calc(30px + var(--slider-height, 2px));
+        height: calc(30px + var(--slider-height, 10px));
         left: 0;
-        margin-left: calc(-15px - var(--slider-height, 2px)/2);
+        margin-left: calc(-15px - var(--slider-height, 10px)/2);
         position: absolute;
         top: 0;
-        width: calc(30px + var(--slider-height, 2px));
+        width: calc(30px + var(--slider-height, 10px));
       }
 
       .transiting > #sliderKnob {
@@ -146,12 +146,12 @@
         border-radius: 50%;
           -moz-box-sizing: border-box;
         box-sizing: border-box;
-        height: calc(100% - 10px);
-        margin: 8.2px;
+        height: calc(100% - 20px);
+        margin: 10px;
         transition-duration: 0.1s;
         transition-property: margin, height, width, background-color, border;
         transition-timing-function: ease;
-        width: calc(100% - 10px);
+        width: calc(100% - 20px);
       }
 
       .expand:not(.pin) > #sliderKnob > #sliderKnobInner {
@@ -234,9 +234,9 @@
 
       .disabled > #sliderKnob {
         top: 2px;
-        margin-left: calc(-13px - var(--slider-height, 2px)/2);
-        width: calc(26px + var(--slider-height, 2px));
-        height: calc(26px + var(--slider-height, 2px));
+        margin-left: calc(-13px - var(--slider-height, 10px)/2);
+        width: calc(26px + var(--slider-height, 10px));
+        height: calc(26px + var(--slider-height, 10px));
       }
 
       .disabled > #sliderKnob > #sliderKnobInner {

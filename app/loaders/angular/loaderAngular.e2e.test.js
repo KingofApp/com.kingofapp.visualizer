@@ -4,7 +4,7 @@
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
-
+    browser.get('/app/#/test');
 		describe('for simple modules', function() {
 			it('should load angular menu', function() {
 				browser.get('/app/#/menu');

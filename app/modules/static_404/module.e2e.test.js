@@ -4,13 +4,19 @@
 		    browser.driver.manage().window().setSize(379, 666);
 		    browser.ignoreSynchronization = true;
 		});
+		var EC = protractor.ExpectedConditions;
 
 		it('should load not found', function() {
 			browser.get('/app/#/menuldfs');
 			isPresent('.static_404 paper-item');
+			// element(by.css('.static_404 a')).click();
 
 			expectmodule();
-			element(by.css('.static_404 a')).click();
+			var aelement = element(by.css('a.return'));
+			browser.wait(EC.elementToBeClickable(aelement), 10000);
+			aelement.click();
+		});
+		it('should load menu after not found', function() {
 			expectMenu();
 		});
 		function isPresent(selector) {
@@ -19,13 +25,10 @@
 			}, 6000, 'Main (' + selector + ') not present');
 		}
 		function expectmodule() {
-			expect(element(by.css('.static_404 a')).getInnerHtml()).toBe('Click here to return');
+			expect(element(by.css('paper-item')).getText()).toBe('Resource not found!');
 		}
 		function expectMenu() {
-			isPresent('paper-icon-button');
-			expect($('paper-icon-button').isPresent()).toBe(true);
-			element(by.css('paper-icon-button')).click();
-			// expect(element(by.css('#topBar > span.title')).getInnerHtml()).toBe('Polymer Menu Module');
+			expect(element(by.css('#topBar div')).getText()).toBe('Polymer Menu Module');
 		}
 
 		afterEach(function() {

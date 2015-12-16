@@ -6,96 +6,109 @@
   <template>
     <!-- write your styles here -->
     <style>
-    :host {
-            display: inline-block;
-            white-space: nowrap;
-            cursor: pointer;
-          }
-          :host(:focus) {
-            outline: none;
-          }
-          #radioContainer {
-            display: inline-block;
-            position: relative;
-            width: 21px;
-            height: 21px;
-            vertical-align: middle;
-          }
-          #offRadio {
-            position: absolute;
-            box-sizing: content-box;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            width: 17px;
-            height: 17px;
-            border-radius: 50%;
-            border: solid 3px;
-            background-color: var(--radio-button-unchecked-background-color, transparent);
-            border-color: var(--radio-button-unchecked-color, --primary-text-color);
-            transition: border-color 0.28s;
-          }
-          #onRadio {
-            position: absolute;
-            box-sizing: content-box;
-            top: 6px;
-            left: 6px;
-            right: 5px;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background-color: var(--radio-button-checked-color, --default-primary-color);
-            -webkit-transform: scale(0);
-            transform: scale(0);
-            transition: -webkit-transform ease 0.28s;
-            transition: transform ease 0.28s;
-          }
-          :host([active]) #offRadio {
-            border-color: var(--radio-button-checked-color, --default-primary-color);
-          }
-          :host([active]) #onRadio {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-          }
-          :host([checked]) #offRadio {
-            border-color: var(--radio-button-checked-color, --default-primary-color);
-          }
-          #radioLabel {
-            font-size: 14px;
-            position: relative;
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: var(--radio-button-label-spacing, 8px);
-            margin-top: 4px;
-            white-space: normal;
-            pointer-events: none;
-            color: var(--radio-button-label-color, --primary-text-color);
-          }
-          #radioLabel[hidden] {
-            display: none;
-          }
-          /* disabled state */
-          :host([disabled]) {
-            pointer-events: none;
-            border-color: #efefef;
-          }
-          :host([disabled]) #onRadio {
-            background-color: var(--radio-button-unchecked-color, #efefef);
-            opacity: 0.5;
-          }
-          :host([disabled]) #offRadio {
-            border-color: var(--radio-button-unchecked-color, #efefef);
-            opacity: 0.5;
-          }
-          :host([disabled][active]) #offRadio {
-            border-color: var(--radio-button-unchecked-color, #efefef);
-            opacity: 0.5;
-          }
-          :host([disabled]) #radioLabel {
-            /* slightly darker than the button, so that it's readable */{
-            opacity: 0.65;
-          }
+      :host {
+        display: inline-block;
+        white-space: nowrap;
+        cursor: pointer;
+      }
 
+      :host(:focus) {
+        outline: none;
+      }
+
+      #radioContainer {
+        display: inline-block;
+        position: relative;
+        width: 21px;
+        height: 21px;
+        vertical-align: middle;
+      }
+
+      #offRadio {
+        position: absolute;
+        box-sizing: content-box;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        border: solid 3px;
+        background-color: var(--radio-button-unchecked-background-color, transparent);
+        border-color: var(--radio-button-unchecked-color, --primary-text-color);
+        transition: border-color 0.28s;
+      }
+
+      #onRadio {
+        position: absolute;
+        box-sizing: content-box;
+        top: 6px;
+        left: 6px;
+        right: 5px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background-color: var(--radio-button-checked-color, --default-primary-color);
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        transition: -webkit-transform ease 0.28s;
+        transition: transform ease 0.28s;
+      }
+
+      :host([active]) #offRadio {
+        border-color: var(--radio-button-checked-color, --default-primary-color);
+      }
+
+      :host([active]) #onRadio {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+
+      :host([checked]) #offRadio {
+        border-color: var(--radio-button-checked-color, --default-primary-color);
+      }
+
+      #radioLabel {
+        font-size: 14px;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: var(--radio-button-label-spacing, 8px);
+        margin-top: 4px;
+        white-space: normal;
+        pointer-events: none;
+        color: var(--radio-button-label-color, --primary-text-color);
+      }
+
+      #radioLabel[hidden] {
+        display: none;
+      }
+
+      /* disabled state */
+      :host([disabled]) {
+        pointer-events: none;
+        border-color: #efefef;
+      }
+
+      :host([disabled]) #onRadio {
+        background-color: var(--radio-button-unchecked-color, #efefef);
+        opacity: 0.5;
+      }
+
+      :host([disabled]) #offRadio {
+        border-color: var(--radio-button-unchecked-color, #efefef);
+        opacity: 0.5;
+      }
+
+      :host([disabled][active]) #offRadio {
+        border-color: var(--radio-button-unchecked-color, #efefef);
+        opacity: 0.5;
+      }
+
+      :host([disabled]) #radioLabel {
+        /* slightly darker than the button, so that it's readable */{
+        opacity: 0.65;
+      }
     </style>
     <!-- end styles -->
 

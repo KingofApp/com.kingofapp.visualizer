@@ -54,7 +54,7 @@
 
     function menu() {
       return {
-        '/abdonrd': abdonrd(),
+        '/menu/abdonrd': abdonrd(),
 
         //Menu 2 for real app
         '/': {},
@@ -101,7 +101,7 @@
 
     function abdonrd() {
       return {
-        name: 'Text Example',
+        name: 'abdonrd',
         identifier: 'abdonrd',
         type: 'A',
         view: 'modules/abdonrd/index.html',

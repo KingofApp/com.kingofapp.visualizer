@@ -9,6 +9,14 @@ paper-card {
   width: 100%;
 }
 
+paper-card + paper-card {
+  margin-top: 15px;
+}
+
+.module {
+  padding: 10px;
+}
+
 /* Conctact module */
 
 .contact form {

@@ -3,6 +3,26 @@ Copyright (c) 2015 Team King of App. All rights reserved.
 This code may only be used under the MIT license.
 */
 
+/* General styles */
+
+paper-card {
+  width: 100%;
+}
+
+/* Conctact module */
+
+.contact form {
+  margin: 15px;
+}
+
+.contact form paper-button {
+  float: right;
+  margin-top: 15px;
+}
+
+
+/* Other styles */
+
 .homepage .header.paper-card {
   height: 250px;
   overflow: hidden;

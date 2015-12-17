@@ -21,17 +21,17 @@
         'lang': ['en'],
         'index': '/menu',
         'loader': '',
-        "colors" : {
-            "--default-primary-color" : "#ffffff",
-            "--dark-primary-color" : "#222222",
-            "--light-primary-color" : "#ececec",
-            "--text-primary-color" : "#000000",
-            "--accent-color" : "#b43322",
-            "--primary-background-color" : "#ffffff",
-            "--primary-text-color" : "#212121",
-            "--secondary-text-color" : "#727272",
-            "--disabled-text-color" : "#333532",
-            "--divider-color" : "#ececec"
+        'colors': {
+          '--default-primary-color': '#3f51b5',
+          '--dark-primary-color': '#303f9f',
+          '--light-primary-color': '#c5cae9',
+          '--text-primary-color': '#ffffff',
+          '--accent-color': '#ff4081',
+          '--primary-background-color': '#ffffff',
+          '--primary-text-color': '#212121',
+          '--secondary-text-color': '#757575',
+          '--disabled-text-color': '#bdbdbd',
+          '--divider-color': '#e0e0e0'
         }
       };
     }
@@ -39,14 +39,14 @@
     function services() {
       return {
         'googleAnalytics': {
-          'config':{
-              'trackingId':'UA-54151479-3'
+          'config': {
+            'trackingId': 'UA-54151479-3'
           }
         },
         'pushIp': {
-          'config':{
-              'PushipAppId':'Lc1oSo20j3DMQs8',
-              'GCMCode':'341724041512'
+          'config': {
+            'PushipAppId': 'Lc1oSo20j3DMQs8',
+            'GCMCode': '341724041512'
           }
         }
       };
@@ -58,10 +58,10 @@
 
         //Menu 2 for real app
         '/': {},
-        '/menu': polymermenu("/menu"),
+        '/menu': polymermenu('/menu'),
         //For testing purposes
         '/ads': ads(),
-        '/ads/menu': polymermenu("/menu"),
+        '/ads/menu': polymermenu('/menu'),
         '/ads/menu/angular-scope': angularscope(),
         '/simple-directive': simpledirective(),
         '/scope': angularscope(),
@@ -104,13 +104,13 @@
         name: 'Text Example',
         identifier: 'abdonrd',
         type: 'A',
-        view: "modules/abdonrd/index.html",
-        files: ["modules/abdonrd/controller.js"],
+        view: 'modules/abdonrd/index.html',
+        files: ['modules/abdonrd/controller.js'],
         scope: {
-          value: "Text phrase",
+          value: 'Text phrase',
           images: [
-            "http://placehold.it/350x150",
-            "http://placehold.it/350x150"
+            'http://placehold.it/350x150',
+            'http://placehold.it/350x150'
           ]
         }
       };
@@ -122,17 +122,17 @@
         identifier: 'simplegallery',
         type: 'A',
         headclass: 'green',
-        view: "modules/simplegallery/index.html",
+        view: 'modules/simplegallery/index.html',
         files: [
-          "modules/simplegallery/controller.js",
-          "modules/simplegallery/swiper/js/swiper.min.js",
-          "modules/simplegallery/swiper/css/swiper.min.css"
+          'modules/simplegallery/controller.js',
+          'modules/simplegallery/swiper/js/swiper.min.js',
+          'modules/simplegallery/swiper/css/swiper.min.css'
         ],
         scope: {
           gallery: [
-            "http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
-            "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
-            "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"
+            'http://www.palaisnamaskar.com/media/113359/Breakfast.jpg',
+            'http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg',
+            'http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg'
           ]
         }
       };
@@ -144,41 +144,41 @@
         identifier: 'homepage',
         type: 'A',
         headclass: 'orange',
-        view: "modules/homepage/index.html",
+        view: 'modules/homepage/index.html',
         showOn: {
           menu: true,
           market: true,
           dragDrop: true
         },
-        files: ["modules/homepage/controller.js", "modules/homepage/swiper/js/swiper.min.js", "modules/homepage/swiper/css/swiper.min.css"],
+        files: ['modules/homepage/controller.js', 'modules/homepage/swiper/js/swiper.min.js', 'modules/homepage/swiper/css/swiper.min.css'],
         scope: {
           sections: [{
-            name: "Social",
-            icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300",
-            class: "blue",
-            url: "#/menu/social"
+            name: 'Social',
+            icon: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300',
+            class: 'blue',
+            url: '#/menu/social'
           }, {
-            name: "Inspiración",
-            icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300",
-            class: "purple",
-            url: "#/menu/social2"
+            name: 'Inspiración',
+            icon: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300',
+            class: 'purple',
+            url: '#/menu/social2'
           }, {
-            name: "Blog",
-            icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300",
-            class: "grey1",
-            url: "#/menu/blog"
+            name: 'Blog',
+            icon: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300',
+            class: 'grey1',
+            url: '#/menu/blog'
           }, {
-            name: "Contact",
-            icon: "https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300",
-            class: "red1",
-            url: "#/menu/contact"
+            name: 'Contact',
+            icon: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Dummy%20container&w=300&h=300',
+            class: 'red1',
+            url: '#/menu/contact'
           }],
           featured: {
-            title: "Últimas noticias",
-            domain: "http://rachelbaker.me",
+            title: 'Últimas noticias',
+            domain: 'http://rachelbaker.me',
             postnumber: 3,
-            category: "",
-            singleurl: "#/menu/wordpresssingle"
+            category: '',
+            singleurl: '#/menu/wordpresssingle'
           }
         }
       };
@@ -190,10 +190,10 @@
         identifier: 'grouplist',
         type: 'A',
         headclass: 'blue',
-        view: "modules/grouplist/index.html",
-        files: ["modules/grouplist/controller.js"],
+        view: 'modules/grouplist/index.html',
+        files: ['modules/grouplist/controller.js'],
         scope: {
-          sections: ["#/menu/facebook", "#/menu/flickr"]
+          sections: ['#/menu/facebook', '#/menu/flickr']
         }
       };
     }
@@ -208,10 +208,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/angularscope/index.html",
-        files: ["modules/angularscope/controller.js"],
+        view: 'modules/angularscope/index.html',
+        files: ['modules/angularscope/controller.js'],
         scope: {
-          config: "x"
+          config: 'x'
         }
       };
     }
@@ -226,23 +226,23 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/firebase/index.html",
-        files: ["modules/firebase/controller.js", "modules/firebase/factory.js"],
+        view: 'modules/firebase/index.html',
+        files: ['modules/firebase/controller.js', 'modules/firebase/factory.js'],
         scope: {
-          src: "https://blinding-heat-1559.firebaseio.com/datatest",
+          src: 'https://blinding-heat-1559.firebaseio.com/datatest',
           debug: true
         },
         //Online builder testing purpose
         libs: [{
           bower: {
-            "firebase": "2.2.4"
+            'firebase': '2.2.4'
           },
-          src: "https://cdn.firebase.com/js/client/2.2.4/firebase.js"
+          src: 'https://cdn.firebase.com/js/client/2.2.4/firebase.js'
         }, {
           bower: {
-            "angularfire": "1.1.2"
+            'angularfire': '1.1.2'
           },
-          src: "https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"
+          src: 'https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js'
         }]
       };
     }
@@ -252,10 +252,10 @@
         name: 'List Module',
         identifier: 'list',
         type: 'A',
-        view: "modules/list/index.html",
-        files: ["modules/list/controller.js"],
+        view: 'modules/list/index.html',
+        files: ['modules/list/controller.js'],
         scope: {
-          src: "x"
+          src: 'x'
         }
       };
     }
@@ -270,23 +270,23 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/googlemap/index.html",
-        files: ["modules/googlemap/controller.js", "modules/googlemap/directive.js"],
+        view: 'modules/googlemap/index.html',
+        files: ['modules/googlemap/controller.js', 'modules/googlemap/directive.js'],
         scope: {
-          lat: "39.8847281",
-          lon: "4.2540999",
-          zoom: "10"
+          lat: '39.8847281',
+          lon: '4.2540999',
+          zoom: '10'
         },
         libs: [{
           bower: {
-            "lodash": "3.10.1"
+            'lodash': '3.10.1'
           },
-          src: "bower_components/lodash/lodash.js"
+          src: 'bower_components/lodash/lodash.js'
         }, {
           bower: {
-            "angular-google-maps": "2.1.6"
+            'angular-google-maps': '2.1.6'
           },
-          src: "bower_components/angular-google-maps/dist/angular-google-maps.js"
+          src: 'bower_components/angular-google-maps/dist/angular-google-maps.js'
         }]
       };
     }
@@ -296,22 +296,22 @@
         name: 'QR',
         identifier: 'qrgenerator',
         type: 'A',
-        view: "modules/qrgenerator/index.html",
-        files: ["modules/qrgenerator/controller.js"],
+        view: 'modules/qrgenerator/index.html',
+        files: ['modules/qrgenerator/controller.js'],
         scope: {
-          static: "http://google.es",
-          datasource: "https://blinding-heat-1559.firebaseio.com/ofertas"
+          static: 'http://google.es',
+          datasource: 'https://blinding-heat-1559.firebaseio.com/ofertas'
         },
         libs: [{
           bower: {
-            "monospaced/angular-qrcode": "6.0.3"
+            'monospaced/angular-qrcode': '6.0.3'
           },
-          src: "bower_components/angular-qrcode/angular-qrcode.js"
+          src: 'bower_components/angular-qrcode/angular-qrcode.js'
         }, {
           bower: {
-            "kazuhikoarase/qrcode-generator": "1.0.0"
+            'kazuhikoarase/qrcode-generator': '1.0.0'
           },
-          src: "bower_components/qrcode-generator/js/qrcode.js"
+          src: 'bower_components/qrcode-generator/js/qrcode.js'
         }]
       };
     }
@@ -326,10 +326,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/pdfviewer/index.html",
-        files: ["modules/pdfviewer/controller.js"],
+        view: 'modules/pdfviewer/index.html',
+        files: ['modules/pdfviewer/controller.js'],
         scope: {
-          value: "http://kingofapp.es/wp-content/uploads/2015/11/wwwhatsnew.pdf",
+          value: 'http://kingofapp.es/wp-content/uploads/2015/11/wwwhatsnew.pdf',
           debug: true
         },
         libs: []
@@ -346,10 +346,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/youtubevideo/index.html",
-        files: ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
+        view: 'modules/youtubevideo/index.html',
+        files: ['modules/youtubevideo/controller.js', 'modules/youtubevideo/directive.js'],
         scope: {
-          videoid: "oHg5SJYRHA0"
+          videoid: 'oHg5SJYRHA0'
         }
       };
     }
@@ -359,11 +359,11 @@
         name: 'Sound Cloud',
         identifier: 'soundcloud',
         type: 'A',
-        view: "modules/soundcloud/index.html",
-        files: ["modules/soundcloud/controller.js", "modules/soundcloud/directive.js"],
+        view: 'modules/soundcloud/index.html',
+        files: ['modules/soundcloud/controller.js', 'modules/soundcloud/directive.js'],
         scope: {
-          client_id: "b23455855ab96a4556cbd0a98397ae8c",
-          track: "65576692"
+          client_id: 'b23455855ab96a4556cbd0a98397ae8c',
+          track: '65576692'
         }
       };
     }
@@ -378,10 +378,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/vimeovideo/index.html",
-        files: ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
+        view: 'modules/vimeovideo/index.html',
+        files: ['modules/vimeovideo/controller.js', 'modules/vimeovideo/directive.js'],
         scope: {
-          videoid: "136882652"
+          videoid: '136882652'
         }
       };
     }
@@ -391,12 +391,12 @@
         name: 'Youtube Gallery',
         identifier: 'youtubegallery',
         type: 'A',
-        view: "modules/youtubegallery/index.html",
-        files: ["modules/youtubegallery/controller.js"],
+        view: 'modules/youtubegallery/index.html',
+        files: ['modules/youtubegallery/controller.js'],
         scope: {
-          channelid: "UCeIt2DJO8UdtUTmJzTfSXiQ",
-          token:'AIzaSyBQ3w6f5mFXyOK5sWC2oXzYcjLbN8IHRjg',
-          singleurl: "/menu/youtubevideo"
+          channelid: 'UCeIt2DJO8UdtUTmJzTfSXiQ',
+          token: 'AIzaSyBQ3w6f5mFXyOK5sWC2oXzYcjLbN8IHRjg',
+          singleurl: '/menu/youtubevideo'
         },
         //Online builder testing purpose
         libs: []
@@ -413,11 +413,11 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/facebookfeed/index.html",
-        files: ["modules/facebookfeed/controller.js"],
+        view: 'modules/facebookfeed/index.html',
+        files: ['modules/facebookfeed/controller.js'],
         scope: {
-          accesstoken: "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
-          pageid: "laneveraroja"
+          accesstoken: '583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k',
+          pageid: 'laneveraroja'
         }
       };
     }
@@ -427,13 +427,13 @@
         name: 'Wordpress Feed',
         identifier: 'wordpressposts',
         type: 'A',
-        view: "modules/wordpressposts/index.html",
-        files: ["modules/wordpressposts/controller.js"],
+        view: 'modules/wordpressposts/index.html',
+        files: ['modules/wordpressposts/controller.js'],
         scope: {
-          domain: "http://rachelbaker.me",
+          domain: 'http://rachelbaker.me',
           postnumber: 3,
-          category: "",
-          singleurl: "/menu/wordpresssingle"
+          category: '',
+          singleurl: '/menu/wordpresssingle'
         }
       };
     }
@@ -448,11 +448,11 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/wordpresssingle/index.html",
-        files: ["modules/wordpresssingle/controller.js"],
+        view: 'modules/wordpresssingle/index.html',
+        files: ['modules/wordpresssingle/controller.js'],
         scope: {
-          domain: "http://rachelbaker.me",
-          type: "pages",
+          domain: 'http://rachelbaker.me',
+          type: 'pages',
           id: 1626
         }
       };
@@ -463,12 +463,12 @@
         name: 'Flickr Feed',
         identifier: 'flickrfeed',
         type: 'A',
-        view: "modules/flickrfeed/index.html",
-        files: ["modules/flickrfeed/controller.js"],
+        view: 'modules/flickrfeed/index.html',
+        files: ['modules/flickrfeed/controller.js'],
         scope: {
-          accesstoken: "1d2b22596adb2b99645c52ba2f5d1542",
-          photosetid: "72157649175711353",
-          results: "5"
+          accesstoken: '1d2b22596adb2b99645c52ba2f5d1542',
+          photosetid: '72157649175711353',
+          results: '5'
         }
       };
     }
@@ -478,11 +478,11 @@
         name: 'Instagram Feed',
         identifier: 'instagramfeed',
         type: 'A',
-        view: "modules/instagramfeed/index.html",
-        files: ["modules/instagramfeed/controller.js"],
+        view: 'modules/instagramfeed/index.html',
+        files: ['modules/instagramfeed/controller.js'],
         scope: {
-          accesstoken: "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
-          userid: "50417061"
+          accesstoken: '45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b',
+          userid: '50417061'
         }
       };
     }
@@ -492,11 +492,11 @@
         name: 'Contact',
         identifier: 'contact',
         type: 'A',
-        view: "modules/contact/index.html",
-        files: ["modules/contact/controller.js"],
+        view: 'modules/contact/index.html',
+        files: ['modules/contact/controller.js'],
         scope: {
-          send_address: "theguard@kingofapp.es",
-          mandrill_key: "dFOWcqJzBMB69YQGq3GPSQ",
+          send_address: 'theguard@kingofapp.es',
+          mandrill_key: 'dFOWcqJzBMB69YQGq3GPSQ',
           debug: true
         }
       };
@@ -507,11 +507,11 @@
         name: 'Twitter Feed',
         identifier: 'twitterfeed',
         type: 'A',
-        view: "modules/twitterfeed/index.html",
-        files: ["modules/twitterfeed/controller.js"],
+        view: 'modules/twitterfeed/index.html',
+        files: ['modules/twitterfeed/controller.js'],
         scope: {
-          widgetid: "628892310084939776",
-          limite: "2"
+          widgetid: '628892310084939776',
+          limite: '2'
         }
       };
     }
@@ -526,10 +526,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/text/index.html",
-        files: ["modules/text/controller.js"],
+        view: 'modules/text/index.html',
+        files: ['modules/text/controller.js'],
         scope: {
-          value: "Text phrase"
+          value: 'Text phrase'
         }
       };
     }
@@ -544,10 +544,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/rss/index.html",
-        files: ["modules/rss/controller.js"],
+        view: 'modules/rss/index.html',
+        files: ['modules/rss/controller.js'],
         scope: {
-          feed: "http://elpais.com/rss/elpais/portada.xml"
+          feed: 'http://elpais.com/rss/elpais/portada.xml'
         }
       };
     }
@@ -562,10 +562,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/translationtest/index.html",
-        files: ["modules/translationtest/controller.js"],
+        view: 'modules/translationtest/index.html',
+        files: ['modules/translationtest/controller.js'],
         scope: {
-          name: "Noemal"
+          name: 'Noemal'
         }
       };
     }
@@ -580,11 +580,11 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/ads/index.html",
-        files: ["modules/ads/controller.js"],
+        view: 'modules/ads/index.html',
+        files: ['modules/ads/controller.js'],
         scope: {
-          mainsrc: "<h1>Ads Everywhere!</h1>",
-          fixedsrc: "<h3>fixed</h3>"
+          mainsrc: '<h1>Ads Everywhere!</h1>',
+          fixedsrc: '<h3>fixed</h3>'
         }
       };
     }
@@ -599,10 +599,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/simpledirective/index.html",
-        files: ["modules/simpledirective/controller.js"],
+        view: 'modules/simpledirective/index.html',
+        files: ['modules/simpledirective/controller.js'],
         scope: {
-          config: "x"
+          config: 'x'
         }
       };
     }
@@ -617,10 +617,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/filters/index.html",
-        files: ["modules/filters/controller.js"],
+        view: 'modules/filters/index.html',
+        files: ['modules/filters/controller.js'],
         scope: {
-          config: "x"
+          config: 'x'
         }
       };
     }
@@ -635,10 +635,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/multiplefiles/index.html",
-        files: ["modules/multiplefiles/controller.js", "modules/multiplefiles/directive.js"],
+        view: 'modules/multiplefiles/index.html',
+        files: ['modules/multiplefiles/controller.js', 'modules/multiplefiles/directive.js'],
         scope: {
-          config: "x"
+          config: 'x'
         }
       };
     }
@@ -653,10 +653,10 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/embed/index.html",
-        files: ["modules/embed/controller.js"],
+        view: 'modules/embed/index.html',
+        files: ['modules/embed/controller.js'],
         scope: {
-          url: "http://es.lipsum.com"
+          url: 'http://es.lipsum.com'
         }
       };
     }
@@ -671,17 +671,17 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/html/index.html",
-        files: ["modules/html/controller.js"],
+        view: 'modules/html/index.html',
+        files: ['modules/html/controller.js'],
         scope: {
-          value: "<p style='color:#39a9d3;' lang='es-ES'>" +
-            "Ut tortor mauris, ultrices quis " +
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus, leo ut auctor ultrices, erat arcu tincidunt sapien," +
-            "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eget ipsum euismod, posuere odio" +
-            "</p>" +
-            "<p style='color:#d36339;' lang='es-ES'>" +
-            "Other color text" +
-            "</p>"
+          value: '<p style="color:#39a9d3" lang="es-ES">' +
+            'Ut tortor mauris, ultrices quis ' +
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus, leo ut auctor ultrices, erat arcu tincidunt sapien,' +
+            'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eget ipsum euismod, posuere odio' +
+            '</p>' +
+            '<p style="color:#d36339" lang="es-ES">' +
+            'Other color text' +
+            '</p>'
         }
       };
     }
@@ -691,10 +691,10 @@
         name: 'Angular Different Scope Module',
         identifier: 'angularscope',
         type: 'A',
-        view: "modules/angularscope/index.html",
-        files: ["modules/angularscope/controller.js"],
+        view: 'modules/angularscope/index.html',
+        files: ['modules/angularscope/controller.js'],
         scope: {
-          config: "x"
+          config: 'x'
         }
       };
     }
@@ -709,8 +709,8 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/angularmenu/index.html",
-        files: ["modules/angularmenu/controller.js"],
+        view: 'modules/angularmenu/index.html',
+        files: ['modules/angularmenu/controller.js'],
         scope: {
           path: path
         }
@@ -727,52 +727,44 @@
           market: true,
           dragDrop: true
         },
-        libs: [
-          {
-            bower: {
-              "polymer": "polymer/polymer#^1.0.0"
-            },
-            src: "bower_components/polymer/polymer.html"
+        libs: [{
+          bower: {
+            'polymer': 'polymer/polymer#^1.0.0'
           },
-          {
-            bower: {
-              "paper-drawer-panel": "PolymerElements/paper-drawer-panel#^1.0.0"
-            },
-            src: "bower_components/paper-drawer-panel/paper-drawer-panel.html"
+          src: 'bower_components/polymer/polymer.html'
+        }, {
+          bower: {
+            'paper-drawer-panel': 'PolymerElements/paper-drawer-panel#^1.0.0'
           },
-          {
-            bower: {
-              "paper-header-panel": "PolymerElements/paper-header-panel#^1.0.0"
-            },
-            src: "bower_components/paper-header-panel/paper-header-panel.html"
+          src: 'bower_components/paper-drawer-panel/paper-drawer-panel.html'
+        }, {
+          bower: {
+            'paper-header-panel': 'PolymerElements/paper-header-panel#^1.0.0'
           },
-          {
-            bower: {
-              "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.0"
-            },
-            src: "bower_components/paper-icon-button/paper-icon-button.html"
+          src: 'bower_components/paper-header-panel/paper-header-panel.html'
+        }, {
+          bower: {
+            'paper-icon-button': 'PolymerElements/paper-icon-button#^1.0.0'
           },
-          {
-            bower: {
-              "paper-menu": "PolymerElements/paper-menu#^1.0.0"
-            },
-            src: "bower_components/paper-menu/paper-menu.html"
+          src: 'bower_components/paper-icon-button/paper-icon-button.html'
+        }, {
+          bower: {
+            'paper-menu': 'PolymerElements/paper-menu#^1.0.0'
           },
-          {
-            bower: {
-              "paper-scroll-header-panel": "PolymerElements/paper-scroll-header-panel#^1.0.0"
-            },
-            src: "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
+          src: 'bower_components/paper-menu/paper-menu.html'
+        }, {
+          bower: {
+            'paper-scroll-header-panel': 'PolymerElements/paper-scroll-header-panel#^1.0.0'
           },
-          {
-            bower: {
-              "paper-toolbar": "PolymerElements/paper-toolbar#^1.0.0"
-            },
-            src: "bower_components/paper-toolbar/paper-toolbar.html"
-          }
-        ],
-        view: "modules/polymermenu/index.html",
-        files: ["modules/polymermenu/controller.js"],
+          src: 'bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html'
+        }, {
+          bower: {
+            'paper-toolbar': 'PolymerElements/paper-toolbar#^1.0.0'
+          },
+          src: 'bower_components/paper-toolbar/paper-toolbar.html'
+        }],
+        view: 'modules/polymermenu/index.html',
+        files: ['modules/polymermenu/controller.js'],
         scope: {
           path: path
         }
@@ -789,26 +781,26 @@
           market: true,
           dragDrop: true
         },
-        view: "modules/angularstaticfeed/index.html",
+        view: 'modules/angularstaticfeed/index.html',
         files: [
-          "modules/angularstaticfeed/controller.js"
+          'modules/angularstaticfeed/controller.js'
         ],
         scope: {
           feed: [{
-            "created_at": "Thu Jul 16 17:59:01 +0000 2015",
-            "text": "TFW you realize you've spent the majority of your front-end career in #CallbackHell",
+            'created_at': 'Thu Jul 16 17:59:01 +0000 2015',
+            'text': 'TFW you realize you´ve spent the majority of your front-end career in #CallbackHell',
           }, {
-            "created_at": "Thu Jul 16 16:17:48 +0000 2015",
-            "text": "@alixmcalpine wow ça me donne un petit coup de nostalgie",
+            'created_at': 'Thu Jul 16 16:17:48 +0000 2015',
+            'text': '@alixmcalpine wow ça me donne un petit coup de nostalgie',
           }, {
-            "created_at": "Thu Jul 16 16:14:11 +0000 2015",
-            "text": "Had a nightmare last night where @angularjs 2 came out and I suddenly sucked at #javascript and I was being chased by Donald Trump and ugh ",
+            'created_at': 'Thu Jul 16 16:14:11 +0000 2015',
+            'text': 'Had a nightmare last night where @angularjs 2 came out and I suddenly sucked at #javascript and I was being chased by Donald Trump and ugh ',
           }, {
-            "created_at": "Tue Jul 14 13:23:45 +0000 2015",
-            "text": "@haziqmir explosions, gunfire, and Vince Vaughn... That's about all I can discern",
+            'created_at': 'Tue Jul 14 13:23:45 +0000 2015',
+            'text': '@haziqmir explosions, gunfire, and Vince Vaughn... That´s about all I can discern',
           }, {
-            "created_at": "Mon Jul 13 11:42:38 +0000 2015",
-            "text": "#GetToTheChoppa\nhttps://t.co/xVDXnhWWlz",
+            'created_at': 'Mon Jul 13 11:42:38 +0000 2015',
+            'text': '#GetToTheChoppa\nhttps://t.co/xVDXnhWWlz',
           }]
         }
       };
@@ -825,10 +817,10 @@
     //   market : true,
     //   dragDrop : true
     // },
-    //   view :  "modules/rssmodule/index.html",
-    //   ctrl: "modules/rssmodule/controller.js",
+    //   view :  'modules/rssmodule/index.html',
+    //   ctrl: 'modules/rssmodule/controller.js',
     //   scope: {
-    //     feed: "http://www.hd-adult.com/feed/"
+    //     feed: 'http://www.hd-adult.com/feed/'
     //   }
     // };
     //}
@@ -838,12 +830,12 @@
     //   name: 'youtube',
     //   type: '$',
     //   scope: {
-    //     video: "k1eKW37q8Fo",
+    //     video: 'k1eKW37q8Fo',
     //     time: {hours: 12, minutes: 7},
     //     map: 'spain'
     //   },
-    //   view :  "modules/youtube/index.html",
-    //   ctrl: "modules/youtube/controller.js",
+    //   view :  'modules/youtube/index.html',
+    //   ctrl: 'modules/youtube/controller.js',
     //   config: {
     //     video: {
     //       type: 'text',
@@ -860,8 +852,8 @@
     //     },
     //     map: {
     //       type :  'custom',
-    //       view :  "modules/youtube/index.html",
-    //       ctrl: "modules/youtube/controller.js",
+    //       view :  'modules/youtube/index.html',
+    //       ctrl: 'modules/youtube/controller.js',
     //
     //     }
     //   }
@@ -873,8 +865,8 @@
     //return {
     //   name: 'Module X',
     //   type :  '$',
-    //   view :  "modules/x/index.html",
-    //   ctrl: "modules/x/controller.js",
+    //   view :  'modules/x/index.html',
+    //   ctrl: 'modules/x/controller.js',
     // };
     //}
 

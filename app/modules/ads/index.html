@@ -1,15 +1,15 @@
-<div class='ads' ng-controller="AdsCtrl">
-    <!--Prepared for adds-->
-    <div class='main-ads'  ng-if='ads.modulescope.mainsrc' ng-hide="!ads.showflag">
-      <div ng-bind-html="ads.modulescope.mainsrc">
-      </div>
-    </div>
-    <div class='bottom-ads' ng-if='ads.modulescope.fixedsrc'>
-      <div ng-bind-html="ads.modulescope.fixedsrc">
-      </div>
-    </div>
-      <!-- moduleIdentifier + Template -->
-      <div ng-include="adsTemplate">
-      </div>
+<div ng-controller="AdsCtrl" class="module ads">
+
+  <!--Prepared for adds-->
+  <div class="main-ads" ng-if="ads.modulescope.mainsrc" ng-hide="!ads.showflag">
+    <div ng-bind-html="ads.modulescope.mainsrc"></div>
+  </div>
+
+  <div class="bottom-ads" ng-if="ads.modulescope.fixedsrc">
+    <div ng-bind-html="ads.modulescope.fixedsrc"></div>
+  </div>
+
+  <!-- moduleIdentifier + Template -->
+  <div ng-include="adsTemplate"></div>
 
 </div>

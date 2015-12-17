@@ -1,15 +1,16 @@
-<div class='grouplist' ng-controller='grouplistCtrl'>
-  <div class="layout wrap inline center-center">
-    <div class="list">
-      <koa-icon-item ng-repeat='item in grouplist.modulescope.newsections'>
-        <div item-icon>
-            <iron-icon icon=''></iron-icon>
-        </div>
-        <div class="flex">{{ item.name }}</div>
-        <a class='imga' href='#{{item.url}}'>
-          <iron-icon icon='icons:arrow-forward'></iron-icon>
-        </a>
-      </koa-icon-item>
-    </div>
-  </div>
+<div class="module grouplist" ng-controller="grouplistCtrl">
+
+  <!-- TODO: koa-icon-item & koa-item-body only works in koa-paper-theme -->
+
+  <koa-icon-item ng-repeat="item in grouplist.modulescope.newsections">
+    <iron-icon icon="" item-icon></iron-icon>
+    <koa-item-body two-line>
+      <div>{{item.name}}</div>
+      <div secondary>{{item.name}}</div>
+    </koa-item-body>
+    <a href="#{{item.url}}">
+      <koa-icon-button icon="arrow-forward"></koa-icon-button>
+    </a>
+  </koa-icon-item>
+
 </div>

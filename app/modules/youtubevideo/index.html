@@ -1,8 +1,10 @@
-<div class='youtubevideo' ng-controller='youtubevideoCtrl'>
-  <paper-card class="pink">
+<div ng-controller="youtubevideoCtrl" class="module youtubevideo">
+
+  <koa-card>
     <div class="card-content">
       <p ng-if="youtubevideo.message">{{youtubevideo.message}}</p>
       <youtube code="youtubevideo.videoid"></youtube>
     </div>
-  </paper-card>
+  </koa-card>
+
 </div>

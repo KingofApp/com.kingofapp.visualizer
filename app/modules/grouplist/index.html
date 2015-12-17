@@ -1,16 +1,18 @@
 <div class="module grouplist" ng-controller="grouplistCtrl">
 
-  <!-- TODO: koa-icon-item & koa-item-body only works in koa-paper-theme -->
+  <!-- TODO: koa-item, koa-icon-item and koa-item-body only works in koa-paper-theme -->
 
-  <koa-icon-item ng-repeat="item in grouplist.modulescope.newsections">
-    <iron-icon icon="" item-icon></iron-icon>
-    <koa-item-body two-line>
-      <div>{{item.name}}</div>
-      <div secondary>{{item.name}}</div>
-    </koa-item-body>
-    <a href="#{{item.url}}">
-      <koa-icon-button icon="arrow-forward"></koa-icon-button>
-    </a>
-  </koa-icon-item>
+  <koa-item>
+    <koa-icon-item ng-repeat="item in grouplist.modulescope.newsections">
+      <iron-icon icon="" item-icon></iron-icon>
+      <koa-item-body two-line>
+        <div>{{item.name}}</div>
+        <div secondary>{{item.name}}</div>
+      </koa-item-body>
+      <a href="#{{item.url}}">
+        <koa-icon-button icon="arrow-forward"></koa-icon-button>
+      </a>
+    </koa-icon-item>
+  </koa-item>
 
 </div>

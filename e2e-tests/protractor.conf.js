@@ -8,7 +8,7 @@ exports.config = {
   allScriptsTimeout: 30000,
 
   specs: [
-    '../**/*.e2e.test.js'
+    '../**/loaderAngular.e2e.test.js'
     // '../**/TODOe2e.test.js'
   ],
 

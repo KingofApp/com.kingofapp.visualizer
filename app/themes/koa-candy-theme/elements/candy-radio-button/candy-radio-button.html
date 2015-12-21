@@ -1,5 +1,6 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-radio-button-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-behaviors/paper-checked-element-behavior.html">
 <link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-radio-button">
@@ -22,6 +23,26 @@
         width: 16px;
         height: 16px;
         vertical-align: middle;
+      }
+
+      #ink {
+        position: absolute;
+        top: -16px;
+        left: -16px;
+        width: 48px;
+        height: 48px;
+        color: var(--radio-button-unchecked-ink-color, --primary-text-color);
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      :host-context([dir="rtl"]) #ink {
+        right: -15px;
+        left: auto;
+      }
+
+      #ink[checked] {
+        color: var(--radio-button-checked-ink-color, --default-primary-color);
       }
 
       #offRadio {
@@ -120,8 +141,15 @@
       is: 'candy-radio-button',
 
       behaviors: [
-        Polymer.KoaRadioButtonBehavior
-      ]
+        Polymer.KoaRadioButtonBehavior,
+        Polymer.PaperCheckedElementBehavior
+      ],
+
+      // create the element ripple inside the `radioContainer`
+      _createRipple: function() {
+        this._rippleContainer = this.$.radioContainer;
+        return Polymer.PaperInkyFocusBehaviorImpl._createRipple.call(this);
+      }
     });
   </script>
 </dom-module>

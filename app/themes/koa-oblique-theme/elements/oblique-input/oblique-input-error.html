@@ -8,14 +8,13 @@
     <style>
       :host {
         color: var(--input-container-invalid-color, #db4437);
-        display: inline-block;
-        left: 0;
-        position: absolute;
-        right: 0;
+        display: none;
         visibility: hidden;
       }
 
       :host([invalid]) {
+        display: inline-block;
+        padding-top: 5px;
         visibility: visible;
       }
     </style>

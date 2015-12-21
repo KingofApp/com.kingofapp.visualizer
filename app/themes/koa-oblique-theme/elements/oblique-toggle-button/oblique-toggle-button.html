@@ -14,12 +14,15 @@
         font-weight: bold;
         font-size: 13px;
       }
+
       :host(:focus) {
         outline: none;
       }
+
       .hidden {
         display: none;
       }
+
       #toggleContainer {
         display: inline-block;
         position: relative;
@@ -28,6 +31,7 @@
         vertical-align: sub;
         background-color: transparent;
       }
+
       #toggleButton {
         background-color: var(--toggle-button-unchecked-button-color, #ffffff);
         border-radius: 50%;
@@ -45,10 +49,12 @@
 
         @apply(--toggle-button-unchecked-button);
       }
+
       .toggle-button.dragging {
           -webkit-transition: none;
         transition: none;
       }
+
       #toggleBar {
         background-color: var(--toggle-button-unchecked-bar-color, rgba(0, 0, 0, 0.3));
         border-radius: 8px;
@@ -72,49 +78,60 @@
         white-space: normal;
         pointer-events: none;
       }
+
       #toggleLabel[hidden] {
         display: none;
       }
+
       :host([presed]) #toggleButton {
         height: 30px;
       }
+
       :host([active]) #toggleButton {
           -webkit-transition: all 140ms;
           transition: all 140ms;
           background-color: #5f89fb;
           left: 20px;
       }
+
       :host([active]) #toggleBar {
           -webkit-transition: all 140ms;
           transition: all .14s;
           background-color: #b6e1f8;
       }
+
       :host(:not([active])) #toggleButton {
           -webkit-transition: all 140ms;
           transition: all 140ms;
           background-color: #1b86c8;
       }
+
       :host(:not([active])) #toggleBar {
           -webkit-transition: all 140ms;
           transition: all 140ms;
           background-color: rgba(0, 0, 0, 0.3);
       }
+
       /* disabled state */
       :host([disabled]) {
           pointer-events: none;
           color: #efefef;
       }
+
       :host([disabled]) #toggleButton {
           background-color: #efefef;
           opacity: 1;
       }
+
       :host([disabled]) #toggleBar {
           background-color: #d3d3d3;
       }
+
       :host([disabled][active]) #toggleButton {
           background-color: #efefef;
           left: 20px;
       }
+
       :host([disabled]) #toggleLabel  {
           color: #efefef;
       }
@@ -152,7 +169,7 @@
       .toggle-label {
         color: var(--toggle-button-label-color, --primary-text-color);
         display: inline-block;
-        margin-left: 10px;
+        padding-left: var(--toggle-button-label-spacing, 8px);
         pointer-events: none;
         position: relative;
         top: -2px;

@@ -1,6 +1,6 @@
-<div class="youtubegallery auto" ng-controller="youtubeGalleryCtrl">
+<div ng-controller="youtubeGalleryCtrl" class="module youtubegallery">
 
-  <p ng-if="youtubegallery.message">{{youtubegallery.message}}</p>
+  <koa-item ng-if="youtubegallery.message">{{youtubegallery.message}}</koa-item>
 
   <a href="#{{item.link}}" ng-repeat="item in youtubegallery.items">
     <koa-card image="{{item.img}}">

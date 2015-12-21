@@ -9,12 +9,20 @@
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
+    <link rel="import" href="../../../../../bower_components/neon-animation/neon-animations.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
     <link rel="import" href="../../oblique-button/oblique-button.html">
+    <link rel="import" href="../../oblique-dropdown-menu/oblique-dropdown-menu.html">
+    <link rel="import" href="../../oblique-item/oblique-item.html">
+    <link rel="import" href="../../oblique-menu/oblique-menu.html">
     <link rel="import" href="../oblique-dialog.html">
 
     <style is="custom-style">
+      section {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+
       section > oblique-button {
         background-color: var(--google-grey-300);
         padding: 5px;
@@ -49,6 +57,7 @@
       <oblique-button data-dialog="dialog">plain dialog</oblique-button>
       <oblique-button data-dialog="actions">dialog with actions</oblique-button>
       <oblique-button data-dialog="modal">modal dialog</oblique-button>
+      <oblique-button data-dialog="dropdown">dialog with dropdown</oblique-button>
       <oblique-button data-dialog="nested">dialog with nested dialog</oblique-button>
 
       <oblique-dialog id="dialog">
@@ -71,6 +80,24 @@
         <div class="buttons">
           <oblique-button dialog-confirm autofocus>Tap me to close</oblique-button>
         </div>
+      </oblique-dialog>
+
+      <oblique-dialog id="dropdown">
+        <h2>Dialog Title</h2>
+        <oblique-dropdown-menu label="Value">
+          <oblique-menu class="dropdown-content">
+            <oblique-item>1</oblique-item>
+            <oblique-item>2</oblique-item>
+            <oblique-item>3</oblique-item>
+            <oblique-item>4</oblique-item>
+            <oblique-item>5</oblique-item>
+            <oblique-item>6</oblique-item>
+            <oblique-item>7</oblique-item>
+            <oblique-item>8</oblique-item>
+            <oblique-item>9</oblique-item>
+            <oblique-item>10</oblique-item>
+          </oblique-menu>
+        </oblique-dropdown-menu>
       </oblique-dialog>
 
       <oblique-dialog id="nested">
@@ -100,6 +127,15 @@
       <oblique-dialog id="position" class="size-position">
         <h2>Custom Size &amp; Position</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </oblique-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Transitions</h4>
+      <oblique-button data-dialog="animated">transitions</oblique-button>
+      <oblique-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </oblique-dialog>
     </section>
 

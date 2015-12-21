@@ -35,6 +35,7 @@
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
     "iron-icons": "PolymerElements/iron-icons#^1.0.0",
+    "neon-animation": "PolymerElements/neon-animation#^1.0.0",
     "paper-styles": "PolymerElements/paper-styles#^1.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   }

@@ -1,6 +1,8 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-item-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-styles/color.html">
+<link rel="import" href="../../../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-item">
@@ -10,12 +12,9 @@
       :host {
         @apply(--layout-horizontal);
         @apply(--layout-center);
+        @apply(--paper-font-subhead);
 
-        -webkit-font-smoothing: antialiased;
         display: block;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
         min-height: var(--item-min-height, 48px);
         padding: 0px 16px;
         position: relative;
@@ -51,7 +50,7 @@
 
         background: currentColor;
         content: '';
-        opacity: 0.12;
+        opacity: var(--dark-divider-opacity);
         pointer-events: none;
 
         @apply(--item-focused-before);

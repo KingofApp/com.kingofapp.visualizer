@@ -9,12 +9,20 @@
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
+    <link rel="import" href="../../../../../bower_components/neon-animation/neon-animations.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
     <link rel="import" href="../../candy-button/candy-button.html">
+    <link rel="import" href="../../candy-dropdown-menu/candy-dropdown-menu.html">
+    <link rel="import" href="../../candy-item/candy-item.html">
+    <link rel="import" href="../../candy-menu/candy-menu.html">
     <link rel="import" href="../candy-dialog.html">
 
     <style is="custom-style">
+      section {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+
       section > candy-button {
         background-color: var(--google-grey-300);
         padding: 5px;
@@ -49,6 +57,7 @@
       <candy-button data-dialog="dialog">plain dialog</candy-button>
       <candy-button data-dialog="actions">dialog with actions</candy-button>
       <candy-button data-dialog="modal">modal dialog</candy-button>
+      <candy-button data-dialog="dropdown">dialog with dropdown</candy-button>
       <candy-button data-dialog="nested">dialog with nested dialog</candy-button>
 
       <candy-dialog id="dialog">
@@ -71,6 +80,24 @@
         <div class="buttons">
           <candy-button dialog-confirm autofocus>Tap me to close</candy-button>
         </div>
+      </candy-dialog>
+
+      <candy-dialog id="dropdown">
+        <h2>Dialog Title</h2>
+        <candy-dropdown-menu label="Value">
+          <candy-menu class="dropdown-content">
+            <candy-item>1</candy-item>
+            <candy-item>2</candy-item>
+            <candy-item>3</candy-item>
+            <candy-item>4</candy-item>
+            <candy-item>5</candy-item>
+            <candy-item>6</candy-item>
+            <candy-item>7</candy-item>
+            <candy-item>8</candy-item>
+            <candy-item>9</candy-item>
+            <candy-item>10</candy-item>
+          </candy-menu>
+        </candy-dropdown-menu>
       </candy-dialog>
 
       <candy-dialog id="nested">
@@ -100,6 +127,15 @@
       <candy-dialog id="position" class="size-position">
         <h2>Custom Size &amp; Position</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </candy-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Transitions</h4>
+      <candy-button data-dialog="animated">transitions</candy-button>
+      <candy-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </candy-dialog>
     </section>
 

@@ -34,9 +34,12 @@
         };
       }
 
-      .sublist {
-        padding-left: 20px;
-        padding-right: 20px;
+      .sublist candy-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 candy-item {
+        padding-left: 50px;
       }
     </style>
   </head>
@@ -81,25 +84,49 @@
       <div>
         <h4>Sub-menu</h4>
         <div class="horizontal-section">
-          <candy-menu>
-            <candy-submenu>
-              <candy-item class="menu-trigger">Topics</candy-item>
-              <candy-menu class="menu-content sublist">
-                <candy-item>Topic 1</candy-item>
-                <candy-item>Topic 2</candy-item>
-                <candy-item>Topic 3</candy-item>
-              </candy-menu>
-            </candy-submenu>
-            <candy-submenu>
-              <candy-item class="menu-trigger">Faves</candy-item>
+          <candy-menu attr-for-item-title="label" multi>
+            <candy-submenu label="candy-menu">
+              <candy-item class="menu-trigger">candy-menu</candy-item>
               <candy-menu class="menu-content sublist" multi>
-                <candy-item>Fave 1</candy-item>
-                <candy-item>Fave 2</candy-item>
-              </candy-menu>
-            </candy-submenu>
-            <candy-submenu disabled>
+                <candy-submenu label="Properties">
+                  <candy-item class="menu-trigger">Properties</candy-item>
+                  <candy-menu class="menu-content sublist2">
+                    <candy-item>focusedItem</candy-item>
+                    <candy-item>attrForItemTitle</candy-item>
+                  </candy-menu>
+                </candy-submenu>
+                <candy-submenu label="Methods">
+                  <candy-item class="menu-trigger">Methods</candy-item>
+                  <candy-menu class="menu-content sublist2">
+                    <candy-item>select(value)</candy-item>
+                  </candy-menu>
+                </candy-submenu>
+            </candy-menu>
+          </candy-submenu>
+
+          <candy-submenu label="candy-submenu">
+            <candy-item class="menu-trigger">candy-submenu</candy-item>
+            <candy-menu class="menu-content sublist">
+              <candy-submenu label="Properties">
+                <candy-item class="menu-trigger">Properties</candy-item>
+                <candy-menu class="menu-content sublist2">
+                  <candy-item>opened</candy-item>
+                </candy-menu>
+                </candy-submenu>
+                <candy-submenu label="Methods">
+                  <candy-item class="menu-trigger">Methods</candy-item>
+                  <candy-menu class="menu-content sublist2">
+                    <candy-item>open()</candy-item>
+                    <candy-item>close()</candy-item>
+                    <candy-item>toggle()</candy-item>
+                  </candy-menu>
+              </candy-submenu>
+            </candy-menu>
+          </candy-submenu>
+
+            <candy-submenu label="Unavailable" disabled>
               <candy-item class="menu-trigger">Unavailable</candy-item>
-              <candy-menu class="menu-content sublist" multi>
+              <candy-menu class="menu-content sublist">
                 <candy-item>Unavailable 1</candy-item>
                 <candy-item>Unavailable 2</candy-item>
               </candy-menu>

@@ -3,7 +3,7 @@
 <link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-toggle-button">
-  <template>
+  <template strip-whitespace>
     <!-- write your styles here -->
     <style>
       :host {
@@ -89,7 +89,7 @@
       .toggle-label {
         color: var(--toggle-button-label-color, --primary-text-color);
         display: inline-block;
-        margin-left: 10px;
+        padding-left: var(--toggle-button-label-spacing, 8px);
         pointer-events: none;
         position: relative;
         top: -2px;

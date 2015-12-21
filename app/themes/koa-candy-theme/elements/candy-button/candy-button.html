@@ -1,8 +1,8 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-button-behavior.html">
 <link rel="import" href="../../../../bower_components/paper-behaviors/paper-button-behavior.html">
 <link rel="import" href="../../../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-button">
   <template>
@@ -46,17 +46,20 @@
 
       :host(:not([big]):not([link]).keyboard-focus) {
         font-weight: bold;
+
         @apply(--button-keyboard-focus);
       }
 
       :host([big].keyboard-focus) {
         font-weight: bold;
-        @apply(--button-keyboard-focus);
+
+        @apply(--button-big-keyboard-focus);
       }
 
       :host([link].keyboard-focus) {
         font-weight: bold;
-        @apply(--button-keyboard-focus);
+
+        @apply(--button-link-keyboard-focus);
       }
 
       :host > ::content * {

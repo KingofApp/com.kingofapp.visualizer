@@ -43,6 +43,14 @@
         --badge-margin-left: 20px;
         --badge-margin-bottom: 0px;
       }
+
+      .red {
+        --badge-background: var(--paper-red-300);
+      }
+
+      .blue {
+        --badge-background: var(--paper-light-blue-300);
+      }
     </style>
   </head>
   <body>
@@ -67,6 +75,15 @@
           <span>Mood</span>
           <candy-badge icon="social:mood" label="happy"></candy-badge>
         </div>
+      </div>
+
+      <h3>Badges can be customized using custom properties</h3>
+      <div class="horizontal-section">
+        <candy-icon-button id="number2" icon="communication:email" alt="inbox"></candy-icon-button>
+        <candy-badge for="number2" label="4" class="red"></candy-badge>
+
+        <candy-icon-button id="icon2" icon="account-box" alt="account-box"></candy-icon-button>
+        <candy-badge icon="social:mood" for="icon2" label="happy" class="blue"></candy-badge>
       </div>
     </div>
   </body>

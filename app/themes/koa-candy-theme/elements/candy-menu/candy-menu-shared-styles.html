@@ -1,5 +1,6 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-styles/color.html">
 <link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-menu-shared-styles">
@@ -27,7 +28,7 @@
         @apply(--layout-fit);
 
         background: currentColor;
-        opacity: 0.12;
+        opacity: var(--dark-divider-opacity);
         content: '';
 
         @apply(--menu-focused-item-after);

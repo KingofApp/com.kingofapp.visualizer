@@ -1,6 +1,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-tab-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-behaviors/paper-ripple-behavior.html">
 
 <dom-module id="candy-tab">
   <template>
@@ -52,6 +53,10 @@
         opacity: 1;
       }
 
+      paper-ripple {
+        color: var(--tab-ink, --accent-color);
+      }
+
       .tab-content > ::content > a {
         @apply(--layout-flex)
 
@@ -72,8 +77,32 @@
       is: 'candy-tab',
 
       behaviors: [
-        Polymer.KoaTabBehavior
-      ]
+        Polymer.KoaTabBehavior,
+        Polymer.PaperRippleBehavior
+      ],
+
+      listeners: {
+        down: '_updateNoink'
+      },
+
+      ready: function() {
+        var ripple = this.getRipple();
+        ripple.initialOpacity = 0.95;
+        ripple.opacityDecayVelocity = 0.98;
+      },
+
+      attached: function() {
+        this._updateNoink();
+      },
+
+      get _parentNoink () {
+        var parent = Polymer.dom(this).parentNode;
+        return !!parent && !!parent.noink;
+      },
+
+      _updateNoink: function() {
+        this.noink = !!this.noink || !!this._parentNoink;
+      }
     });
   </script>
 </dom-module>

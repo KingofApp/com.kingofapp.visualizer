@@ -1,5 +1,6 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-toggle-button-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-behaviors/paper-checked-element-behavior.html">
 <link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-toggle-button">
@@ -79,6 +80,21 @@
         opacity: 1;
       }
 
+      .toggle-ink {
+        color: var(--toggle-button-unchecked-ink-color, --primary-text-color);
+        height: 48px;
+        left: -14px;
+        opacity: 0.5;
+        pointer-events: none;
+        position: absolute;
+        top: -14px;
+        width: 48px;
+      }
+
+      :host([checked]) .toggle-ink {
+        color: var(--toggle-button-checked-ink-color, --default-primary-color);
+      }
+
       .toggle-container {
         display: inline-block;
         height: 14px;
@@ -114,8 +130,19 @@
       is: 'candy-toggle-button',
 
       behaviors: [
-        Polymer.KoaToggleButtonBehavior
-      ]
+        Polymer.KoaToggleButtonBehavior,
+        Polymer.PaperCheckedElementBehavior
+      ],
+
+      // customize the element's ripple
+      _createRipple: function() {
+        this._rippleContainer = this.$.toggleButton;
+        var ripple = Polymer.PaperRippleBehavior._createRipple();
+        ripple.id = 'ink';
+        ripple.setAttribute('recenters', '');
+        ripple.classList.add('circle', 'toggle-ink');
+        return ripple;
+      }
     });
   </script>
 </dom-module>

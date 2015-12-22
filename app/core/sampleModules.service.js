@@ -749,6 +749,11 @@
           src: 'bower_components/paper-menu/paper-menu.html'
         }, {
           bower: {
+            'paper-item': 'PolymerElements/paper-item#^1.0.0'
+          },
+          src: 'bower_components/paper-item/paper-item.html'
+        }, {
+          bower: {
             'paper-scroll-header-panel': 'PolymerElements/paper-scroll-header-panel#^1.0.0'
           },
           src: 'bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html'

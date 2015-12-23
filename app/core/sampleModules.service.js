@@ -729,34 +729,34 @@
         },
         libs: [{
           bower: {
-            'polymer': 'polymer/polymer#^1.0.0'
+            "polymer/polymer": "^1.0.0"
           },
-          src: 'bower_components/polymer/polymer.html'
+          src: "bower_components/polymer/polymer.html"
         }, {
           bower: {
-            'paper-drawer-panel': 'PolymerElements/paper-drawer-panel#^1.0.0'
+            "PolymerElements/paper-drawer-panel": "^1.0.0"
           },
-          src: 'bower_components/paper-drawer-panel/paper-drawer-panel.html'
+          src: "bower_components/paper-drawer-panel/paper-drawer-panel.html"
         }, {
           bower: {
-            'paper-header-panel': 'PolymerElements/paper-header-panel#^1.0.0'
+            "PolymerElements/paper-header-panel": "^1.0.0"
           },
-          src: 'bower_components/paper-header-panel/paper-header-panel.html'
+          src: "bower_components/paper-header-panel/paper-header-panel.html"
         }, {
           bower: {
-            'paper-menu': 'PolymerElements/paper-menu#^1.0.0'
+            "PolymerElements/paper-menu": "^1.0.0"
           },
-          src: 'bower_components/paper-menu/paper-menu.html'
+          src: "bower_components/paper-menu/paper-menu.html"
         }, {
           bower: {
-            'paper-item': 'PolymerElements/paper-item#^1.0.0'
+            "PolymerElements/paper-scroll-header-panel": "^1.0.0"
           },
-          src: 'bower_components/paper-item/paper-item.html'
+          src: "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
         }, {
           bower: {
-            'paper-scroll-header-panel': 'PolymerElements/paper-scroll-header-panel#^1.0.0'
+            "PolymerElements/paper-item": "^1.0.0"
           },
-          src: 'bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html'
+          src: "bower_components/paper-item/paper-item.html"
         }],
         view: 'modules/polymermenu/index.html',
         files: ['modules/polymermenu/controller.js'],

@@ -1,6 +1,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-input-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-input-container">
@@ -25,6 +26,10 @@
         @apply(--input-container-disabled);
       }
 
+      .floated-label-placeholder {
+        @apply(--paper-font-caption);
+      }
+
       .underline {
         position: relative;
       }
@@ -45,12 +50,20 @@
       .underline.is-highlighted .focused-line {
           -webkit-transform: none;
         transform: none;
+          -webkit-transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+
+        @apply(--input-container-transition-easing);
       }
 
       .underline.is-invalid .focused-line {
         background: var(--input-container-invalid-color, #db4437);
           -webkit-transform: none;
         transform: none;
+          -webkit-transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+
+        @apply(--input-container-transition-easing);
       }
 
       .unfocused-line {
@@ -70,29 +83,86 @@
         @apply(--input-container-underline-disabled);
       }
 
-      ::content label {
+      .label-and-input-container {
+        @apply(--layout-flex-auto);
+        @apply(--layout-relative);
+
         color: var(--input-container-color, --secondary-text-color);
-        font: inherit;
 
         @apply(--input-container-label);
       }
 
       .input-content {
         @apply(--layout-horizontal);
-        @apply(--layout-end);
+        @apply(--layout-center);
 
         position: relative;
       }
 
-      .input-container {
-        @apply(--layout-flex-auto);
-        @apply(--layout-relative);
+      .input-content ::content label,
+      .input-content ::content .paper-input-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        font: inherit;
+        color: var(--input-container-color, --secondary-text-color);
+
+        @apply(--paper-font-common-nowrap);
+        @apply(--paper-font-subhead);
+        @apply(--input-container-label);
+      }
+
+      .input-content.label-is-floating ::content label,
+      .input-content.label-is-floating ::content .paper-input-label {
+        -webkit-transform: translateY(-75%) scale(0.75);
+        transform: translateY(-75%) scale(0.75);
+        -webkit-transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+
+        /* Since we scale to 75/100 of the size, we actually have 100/75 of the
+        original space now available */
+        width: 133%;
+
+        @apply(--input-container-transition-easing);
+        @apply(--input-container-label-floating);
+      }
+
+      :host-context([dir="rtl"]) .input-content.label-is-floating ::content label,
+      :host-context([dir="rtl"]) .input-content.label-is-floating ::content .paper-input-label {
+        /* TODO(noms): Figure out why leaving the width at 133% before the animation
+         * actually makes
+         * it wider on the right side, not left side, as you would expect in RTL */
+        width: 100%;
+        -webkit-transform-origin: right top;
+        transform-origin: right top;
+      }
+
+      .input-content.label-is-highlighted ::content label,
+      .input-content.label-is-highlighted ::content .paper-input-label {
+        color: var(--input-container-focus-color, --default-primary-color);
+
+        @apply(--input-container-label-focus);
+      }
+
+      .input-content.is-invalid ::content label,
+      .input-content.is-invalid ::content .paper-input-label {
+        color: var(--input-container-invalid-color, --google-red-500);
+      }
+
+      .input-content.label-is-hidden ::content label,
+      .input-content.label-is-hidden ::content .paper-input-label {
+        visibility: hidden;
       }
 
       .input-content ::content input,
       .input-content ::content textarea,
       .input-content ::content iron-autogrow-textarea {
-          -webkit-appearance: none;
+        @apply(--paper-font-subhead);
+
+        -webkit-appearance: none;
         background: transparent;
         border: none;
         box-shadow: none;
@@ -107,10 +177,14 @@
       }
 
       ::content [prefix] {
+        @apply(--paper-font-subhead);
+
         @apply(--input-prefix);
       }
 
       ::content [suffix] {
+        @apply(--paper-font-subhead);
+
         @apply(--input-suffix);
       }
 
@@ -138,13 +212,15 @@
     <!-- end styles -->
 
     <!-- write your template here -->
-    <content select="label"></content>
+    <template is="dom-if" if="[[!noLabelFloat]]">
+      <div class="floated-label-placeholder">&nbsp;</div>
+    </template>
 
-    <div class="input-content">
+    <div class$="[[_computeInputContentClass(noLabelFloat, alwaysFloatLabel, focused, invalid, _inputHasContent)]]">
       <content select="[prefix]" id="prefix"></content>
 
-      <div class="input-container" id="inputContainer">
-        <content select=":not(label):not([add-on]):not([prefix]):not([suffix])"></content>
+      <div class="label-and-input-container" id="labelAndInputContainer">
+        <content select=":not([add-on]):not([prefix]):not([suffix])"></content>
       </div>
 
       <content select="[suffix]"></content>

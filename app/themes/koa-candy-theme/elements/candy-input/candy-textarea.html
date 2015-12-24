@@ -17,7 +17,7 @@
     <!-- end styles -->
 
     <!-- write your template here -->
-    <candy-input-container auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]" class="input-container">
+    <candy-input-container no-label-float$="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
       <label hidden$="[[!label]]">[[label]]</label>
 
       <iron-autogrow-textarea id="input"

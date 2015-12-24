@@ -33,10 +33,10 @@
     <!-- end styles -->
 
     <!-- write your template here -->
-    <candy-input-container auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]" class="input-container">
-      <label hidden$="[[!label]]">[[label]]</label>
-
+    <candy-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
       <content select="[prefix]"></content>
+
+      <label hidden$="[[!label]]">[[label]]</label>
 
       <input is="iron-input" id="input"
         aria-labelledby$="[[_ariaLabelledBy]]"
@@ -91,7 +91,31 @@
 
       behaviors: [
         Polymer.KoaInputBehavior
-      ]
+      ],
+
+      properties: {
+        /**
+         * Set to true to disable the floating label. Bind this to the `<paper-input-container>`'s
+         * `noLabelFloat` property.
+         */
+        noLabelFloat: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * Set to true to always float the label. Bind this to the `<paper-input-container>`'s
+         * `alwaysFloatLabel` property.
+         */
+        alwaysFloatLabel: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      _computeAlwaysFloatLabel: function(alwaysFloatLabel, placeholder) {
+        return placeholder || alwaysFloatLabel;
+      }
     });
   </script>
 </dom-module>

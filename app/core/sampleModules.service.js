@@ -271,22 +271,17 @@
           dragDrop: true
         },
         view: 'modules/googlemap/index.html',
-        files: ['modules/googlemap/controller.js', 'modules/googlemap/directive.js'],
+        files: ['modules/googlemap/controller.js'],
         scope: {
           lat: '39.8847281',
           lon: '4.2540999',
-          zoom: '10'
+          zoom: '15'
         },
         libs: [{
           bower: {
-            'lodash': '3.10.1'
+            'GoogleWebComponents/google-map': '^1.1.7'
           },
-          src: 'bower_components/lodash/lodash.js'
-        }, {
-          bower: {
-            'angular-google-maps': '2.1.6'
-          },
-          src: 'bower_components/angular-google-maps/dist/angular-google-maps.js'
+          src: 'bower_components/google-map/google-map.html'
         }]
       };
     }

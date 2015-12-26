@@ -7,7 +7,7 @@
 
 		it('should load google map', function() {
 			browser.get('/app/#/menu/google-map');
-      isPresent('.angular-google-map');
+      isPresent('google-maps-api');
 			expectmodule();
 		});
 
@@ -18,8 +18,8 @@
     }
 
 		function expectmodule() {
-      isPresent('canvas');
-			expect(element.all(by.css('canvas')).count()).toBeGreaterThan(0);
+      isPresent('google-map img');
+			expect(element.all(by.css('google-map img')).count()).toBeGreaterThan(0);
 		}
 
 		afterEach(function() {

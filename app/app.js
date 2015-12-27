@@ -9,6 +9,7 @@ angular.module('myApp', [
   'pascalprecht.translate',
   'king.loaders.common',
   'king.services.puship',
+  'king.services.simpleregisterlogin',
   'king.loaders.jquery',
   'king.loaders.angular',
   'king.core.structureService'

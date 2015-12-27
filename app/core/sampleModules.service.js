@@ -39,14 +39,19 @@
     function services() {
       return {
         'googleAnalytics': {
-          'config': {
+          'scope': {
             'trackingId': 'UA-54151479-3'
           }
         },
         'pushIp': {
-          'config': {
+          'scope': {
             'PushipAppId': 'Lc1oSo20j3DMQs8',
             'GCMCode': '341724041512'
+          }
+        },
+        'registerAndLogin': {
+          'scope': {
+            'firebaseSrc': 'blablbla'
           }
         }
       };

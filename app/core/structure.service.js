@@ -25,6 +25,7 @@ angular
       setModules        : setModules,
       setLoader         : setLoader,
       setColors         : setColors,
+      setIndex          : setIndex,
       getLang           : getLang,
       setLang           : setLang,
       getModule         : getModule,
@@ -70,6 +71,9 @@ angular
       cachedLocations = {};
       data.modules = newData;
       data.modules['/404']=error404();
+    }
+    function setIndex(newIndex){
+      data.config.index = newIndex;
     }
     function setColors(color){
       cachedLocations = {};

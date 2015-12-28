@@ -5,15 +5,14 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
+  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
 
-  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
+  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
     console.log('Pasa por el commonLoaderCtrl');
     var koaApp = document.querySelector('#koaApp');
     $rootScope.showTransition = true;
-
-    if (redirectUrl !== '' && ($location.$$path === '/' || $location.$$path === '')) {
-      $location.path(redirectUrl);
+    if (structureService.getIndex() !== '' && ($location.$$path === '/' || $location.$$path === '')) {
+      $location.path(structureService.getIndex());
     }
 
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
@@ -127,7 +126,7 @@
         $rootScope.showTransition = false;
       });
     });
-
+    //TODO: INSPECT loadconfig
     //Load config
     structureService.loadconfig($rootScope);
 
@@ -143,8 +142,8 @@
       $scope.module = module || $scope.module;
 
       if (!module.type) {
-        //TODO: Display a 404 error or similar
-        if (redirectUrl === '' && $location.$$path !== '/') {
+        //TODO: Display a 404 error or similar structureService.getIndex() === '' && 
+        if ($location.$$path !== '/') {
           $location.path('/404');
         }
       } else if (isAngularModule(module.type)) {

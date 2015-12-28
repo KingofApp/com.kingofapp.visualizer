@@ -12,5 +12,6 @@ angular.module('myApp', [
   'king.services.simpleregisterlogin',
   'king.loaders.jquery',
   'king.loaders.angular',
-  'king.core.structureService'
+  'king.core.structureService',
+  'king.core.structureHooksService'
 ]);

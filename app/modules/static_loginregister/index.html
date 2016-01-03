@@ -1,5 +1,20 @@
 <div ng-controller="static_loginregisterCtrl" class="module static_loginregister">
-
-  <koa-item>New Item</koa-item>
+  <h2>Login / Register</h2>
+  <form is="iron-form" method="post" action="/">
+    <koa-input name="email"
+               label="{{'login.email' | translate}}"
+               type="email"
+               ng-model="static_loginregister.email"
+               auto-validate
+               required>
+    </koa-input>
+    <koa-input name="pwd"
+               label="{{'login.password' | translate}}"
+               ng-model="static_loginregister.pwd"
+               required>
+    </koa-input>
+    <koa-button raised ng-click="send()">{{'login.send' | translate}}</koa-button>
+  </form>
+  <p class="status" ng-if="static_loginregister.status && static_loginregister.modulescope.debug">{{static_loginregister.status}}</p>
 
 </div>

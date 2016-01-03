@@ -63,6 +63,7 @@ angular
 
     function setHooks(){
       if(structureHooks.getIndex()!==""){
+        data.config.indexOld = data.config.index;
         data.config.index = structureHooks.getIndex();
       }
       angular.forEach(structureHooks.getModules(), function(module, path){

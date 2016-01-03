@@ -22,7 +22,7 @@ angular
     function loginRegister(){
       return {
         name: 'Login / Register',
-        identifier: 'loginregister',
+        identifier: 'static_loginregister',
         type : 'A',
         showOn : {
           menu : false,
@@ -30,8 +30,22 @@ angular
           dragDrop : false
         },
         view :   "modules/static_loginregister/index.html",
-        files: [ "modules/static_loginregister/controller.js" ],
-        scope: { "url" : config.firebaseSrc }
+        files: [ "modules/static_loginregister/controller.js", 'modules/static_loginregister/factory.js' ],
+        libs: [{
+          bower: {
+            'firebase': '2.2.4'
+          },
+          src: 'https://cdn.firebase.com/js/client/2.2.4/firebase.js'
+        }, {
+          bower: {
+            'angularfire': '1.1.3'
+          },
+          src: 'https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js'
+        }],
+        scope: {
+          "url" : config.firebaseSrc,
+          "debug": true
+       }
       };
     }
   }]);

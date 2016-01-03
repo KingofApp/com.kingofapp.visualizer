@@ -142,7 +142,7 @@
       $scope.module = module || $scope.module;
 
       if (!module.type) {
-        //TODO: Display a 404 error or similar structureService.getIndex() === '' && 
+        //Display a 404 error or similar structureService.getIndex() === '' && 
         if ($location.$$path !== '/') {
           $location.path('/404');
         }

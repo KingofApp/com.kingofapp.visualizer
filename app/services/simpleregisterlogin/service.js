@@ -1,18 +1,20 @@
 angular
   .module('king.services.simpleregisterlogin',[])
   .run(['configService', 'structureHooks', function (configService,structureHooks) {
+    var config = {};
+    var defaultUrl = "/login-register-XZ";
+    var module = {};
     if(configService.services && configService.services.simpleregisterlogin.scope){
       console.log("Loading Login config ...");
-      load(configService.services.simpleregisterlogin.scope);
+      config = configService.services.simpleregisterlogin.scope;
+      load();
     }
-    function load(config) {
-      console.log("CONFIG", config);
-      structureHooks.setIndex('/polymermenu-abcde');
-      // TODO Add module
-      // Create module loginRegister()
-      // Add module "/loginRegister": loginRegister()
-      // structureHooks.addModule({'/loginregister':loginRegister()});
-      // Conexion con Firebase
+    function load() {
+      structureHooks.setIndex(defaultUrl);
+      module[defaultUrl]=loginRegister();
+      structureHooks.addModule(module);
+
+      // Crear Modulo LOGIN Conexion con Firebase
       // Registro y login para acceder al verdadero Index
       // PRUEBA en dispositivo
       // Prueba en builder
@@ -29,7 +31,7 @@ angular
         },
         view :   "modules/static_loginregister/index.html",
         files: [ "modules/static_loginregister/controller.js" ],
-        scope: { "config" : "x" }
+        scope: { "url" : config.firebaseSrc }
       };
     }
   }]);

@@ -32,8 +32,10 @@ function structureHooksService() {
     return injectableData.modules;
   }
 
-  function addModule() {
-    // TODO
+  function addModule(module) {
+    angular.forEach(module, function(value, key) {
+      injectableData.modules[key]=value;
+    });
   }
 
   function removeModule() {

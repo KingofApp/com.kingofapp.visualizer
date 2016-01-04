@@ -1,5 +1,5 @@
 'use strict';
-// NOTE: A service to intercept data from the original structure used by services.
+// NOTE: A service to intercept data from the original structure used by structureService.
 angular
   .module('king.core.structureHooksService', [])
   .factory('structureHooks', structureHooksService);

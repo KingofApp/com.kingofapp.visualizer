@@ -4,7 +4,7 @@ angular
     var config = {};
     var defaultUrl = "/login-register-XZ";
     var module = {};
-    if(configService.services.simpleregisterlogin && configService.services.simpleregisterlogin.scope){
+    if(configService.services && configService.services.simpleregisterlogin){
       console.log("Loading Login config ...");
       config = configService.services.simpleregisterlogin.scope;
       load();

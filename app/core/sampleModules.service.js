@@ -49,9 +49,9 @@
             'GCMCode': '341724041512'
           }
         },
-        'registerAndLogin': {
-          'scope': {
-            'firebaseSrc': 'blablbla'
+        "simpleregisterlogin": {
+          "scope": {
+            "firebaseSrc": "https://koatest.firebaseio.com"
           }
         }
       };

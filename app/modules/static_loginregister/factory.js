@@ -1,5 +1,11 @@
 angular.module('factoria', ['firebase'])
   .factory("FirebaseAuth", ["$firebaseAuth", function($firebaseAuth){
-    var ref = new Firebase("https://koatest.firebaseio.com");
-    return $firebaseAuth(ref);
+    var ref = {};
+    return {
+      init : init
+    };
+    function init(firebaseSrc) {
+      ref = new Firebase(firebaseSrc);
+      return $firebaseAuth(ref);
+    }
   }]);

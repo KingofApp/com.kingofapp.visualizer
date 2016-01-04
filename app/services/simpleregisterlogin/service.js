@@ -4,7 +4,7 @@ angular
     var config = {};
     var defaultUrl = "/login-register-XZ";
     var module = {};
-    if(configService.services && configService.services.simpleregisterlogin.scope){
+    if(configService.services.simpleregisterlogin && configService.services.simpleregisterlogin.scope){
       console.log("Loading Login config ...");
       config = configService.services.simpleregisterlogin.scope;
       load();
@@ -43,7 +43,7 @@ angular
           src: 'https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js'
         }],
         scope: {
-          "url" : config.firebaseSrc,
+          "firebaseSrc" : config.firebaseSrc,
           "debug": true
        }
       };

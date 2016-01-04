@@ -15,7 +15,6 @@ angular
       structureHooks.addModule(module);
 
       // Crear Modulo LOGIN Conexion con Firebase
-      // Registro y login para acceder al verdadero Index
       // PRUEBA en dispositivo
       // Prueba en builder
     }

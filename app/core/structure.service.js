@@ -4,9 +4,9 @@ angular
   .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
-  structureService.$inject = ['$q', '$injector','$translatePartialLoader', '$translate', 'sampleModules', '$rootScope'];
+  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'sampleModules', 'structureHooks', '$rootScope'];
 
-  function structureService($q, $injector, $translatePartialLoader, $translate, sampleModules, $rootScope){
+  function structureService($q, $translatePartialLoader, $translate, sampleModules, structureHooks, $rootScope){
     var listeners = [];
     var lang;
     var cachedLocations = {};
@@ -25,6 +25,7 @@ angular
       setModules        : setModules,
       setLoader         : setLoader,
       setColors         : setColors,
+      getIndex          : getIndex,
       getLang           : getLang,
       setLang           : setLang,
       getModule         : getModule,
@@ -32,30 +33,17 @@ angular
       getChildren       : getChildren,
       validateScope     : validateScope,
       registerModule    : registerModule,
-      registerServices   : registerServices,
       loadconfig        : loadconfig,
       update            : update,
       onChange          : onChange
     };
-    function registerServices() {
-      angular.forEach(data.services, function(data, key){
-        // console.log("Data!!",data);
-        // console.log("KEy!!!",key);
-        // services[key] = $injector.get(key);
-        // services[key].load(data.config);
-      });
-
-
-    }
 
     function set(newData){
       cachedLocations = {};
       data = newData;
-      //Add static_404 to structure
-      data.modules['/404'] = error404();
 
-      // setColors(data.config.colors);
       setLoader(data.config.loader);
+      setHooks();
       $rootScope.$broadcast("menuUpdated");
     }
     function setLoader(src) {
@@ -66,11 +54,23 @@ angular
         $rootScope.loader="resources/loader.gif";
       }
     }
+
     function setModules(newData){
       cachedLocations = {};
       data.modules = newData;
-      data.modules['/404']=error404();
+      setHooks();
     }
+
+    function setHooks(){
+      if(structureHooks.getIndex()!==""){
+        data.config.indexOld = data.config.index;
+        data.config.index = structureHooks.getIndex();
+      }
+      angular.forEach(structureHooks.getModules(), function(module, path){
+        data.modules[path]=module;
+      });
+    }
+
     function setColors(color){
       cachedLocations = {};
       if(color === null){
@@ -89,7 +89,9 @@ angular
     function get(){
       return data;
     }
-
+    function getIndex() {
+      return data.config.index;
+    }
     function getLang(){
       if(lang) return lang;
       else     return data.config.lang[0];
@@ -193,22 +195,6 @@ angular
 
     function onChange(callback){
       listeners.push[callback];
-    }
-
-    function error404(){
-      return {
-        name: '404 Not found',
-        identifier: 'static_404',
-        type : 'A',
-        showOn : {
-          menu : false,
-          market : false,
-          dragDrop : false
-        },
-        view :   "modules/static_404/index.html",
-        files: [ "modules/static_404/controller.js" ],
-        scope: { config : 'x' }
-      };
     }
 
     function findRoute(path, structure, callback){

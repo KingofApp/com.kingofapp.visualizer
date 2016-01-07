@@ -19,8 +19,8 @@
     "angular-translate": "~2.7.2",
     "angular-xml": "~2.2.1",
     "angular": "1.4.x",
-    "angulartics-google-analytics": "~0.1.1",
-    "angulartics": "~0.20.0",
+    "angulartics-google-analytics": "~0.1.4",
+    "angulartics": "~1.0.2",
     "html5-boilerplate": "~4.3.0",
     "jquery": "2.x",
     "lodash": "~3.10.1",
@@ -52,7 +52,6 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
   "resolutions": {
-    "angular": "1.4.x",
-    "polymer": "^1.2.0"
+    "angular": "1.4.x"
   }
 }

@@ -284,7 +284,7 @@
         },
         libs: [{
           bower: {
-            'GoogleWebComponents/google-map': '^1.1.7'
+            'GoogleWebComponents/google-map': '^1.1.0'
           },
           src: 'bower_components/google-map/google-map.html'
         }]

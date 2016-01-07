@@ -9,11 +9,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/iron-flex-layout/classes/iron-flex-layout.html">
-<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../../../bower_components/iron-behaviors/iron-control-state.html">
 <link rel="import" href="../../../../bower_components/iron-behaviors/iron-button-state.html">
-<link rel="import" href="../../../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../../../bower_components/iron-behaviors/iron-control-state.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-behaviors/paper-ripple-behavior.html">
 
 <!--
 `paper-tab` is styled to look like a tab.  It should be used in conjunction with
@@ -36,6 +35,7 @@ Custom property | Description | Default
 `--paper-tab-ink` | Ink color | `--accent-color`
 `--paper-tab` | Mixin applied to the tab | `{}`
 `--paper-tab-content` | Mixin applied to the tab content | `{}`
+`--paper-tab-content-unselected` | Mixin applied to the tab content when the tab is not selected | `{}`
 
 -->
 
@@ -66,15 +66,19 @@ Custom property | Description | Default
 
       .tab-content {
         height: 100%;
-        -webkit-transform: translateZ(0);
+          -webkit-transform: translateZ(0);
         transform: translateZ(0);
         transition: opacity 0.1s cubic-bezier(0.4, 0.0, 1, 1);
-
+        @apply(--layout-horizontal);
+        @apply(--layout-center-center);
+        @apply(--layout-flex-auto);
         @apply(--paper-tab-content);
       }
 
       :host(:not(.iron-selected)) > .tab-content {
         opacity: 0.8;
+
+        @apply(--paper-tab-content-unselected);
       }
 
       :host(:focus) .tab-content {
@@ -82,29 +86,20 @@ Custom property | Description | Default
         font-weight: 700;
       }
 
-      #ink {
+      paper-ripple {
         color: var(--paper-tab-ink, --accent-color);
-        pointer-events: none;
       }
 
       .tab-content > ::content > a {
+        @apply(--layout-flex)
+
         height: 100%;
-        /* flex */
-        -ms-flex: 1 1 0.000000001px;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-flex-basis: 0.000000001px;
-        flex-basis: 0.000000001px;
       }
     </style>
 
-    <div class="tab-content flex-auto center-center horizontal layout">
+    <div class="tab-content">
       <content></content>
     </div>
-
-    <template is="dom-if" if="[[!noink]]">
-      <paper-ripple id="ink" initial-opacity="0.95" opacity-decay-velocity="0.98"></paper-ripple>
-    </template>
   </template>
 
   <script>
@@ -113,21 +108,9 @@ Custom property | Description | Default
 
       behaviors: [
         Polymer.IronControlState,
-        Polymer.IronButtonState
+        Polymer.IronButtonState,
+        Polymer.PaperRippleBehavior
       ],
-
-      properties: {
-        /**
-         * If true, ink ripple effect is disabled.
-         *
-         * @attribute noink
-         */
-        noink: {
-          type: Boolean,
-          value: false
-        }
-
-      },
 
       hostAttributes: {
         role: 'tab'
@@ -135,6 +118,12 @@ Custom property | Description | Default
 
       listeners: {
         down: '_updateNoink'
+      },
+
+      ready: function() {
+        var ripple = this.getRipple();
+        ripple.initialOpacity = 0.95;
+        ripple.opacityDecayVelocity = 0.98;
       },
 
       attached: function() {

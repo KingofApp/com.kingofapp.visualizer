@@ -10,16 +10,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../../../bower_components/iron-flex-layout/classes/iron-flex-layout.html">
-<link rel="import" href="../../../../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../../../../bower_components/iron-menu-behavior/iron-menubar-behavior.html">
 <link rel="import" href="../../../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../../../bower_components/iron-menu-behavior/iron-menubar-behavior.html">
+<link rel="import" href="../../../../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../../../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../../../bower_components/paper-styles/color.html">
 <link rel="import" href="paper-tabs-icons.html">
 <link rel="import" href="paper-tab.html">
 
 <!--
+Material design: [Tabs](https://www.google.com/design/spec/components/tabs.html)
+
 `paper-tabs` makes it easy to explore and switch between different views or functional aspects of
 an app, or to browse categorized data sets.
 
@@ -57,15 +58,22 @@ element in `paper-tab`.
 
 Example:
 
+    <style is="custom-style">
+      .link {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-center);
+      }
+    </style>
+
     <paper-tabs selected="0">
       <paper-tab link>
-        <a href="#link1" class="horizontal center-center layout">TAB ONE</a>
+        <a href="#link1" class="link">TAB ONE</a>
       </paper-tab>
       <paper-tab link>
-        <a href="#link2" class="horizontal center-center layout">TAB TWO</a>
+        <a href="#link2" class="link">TAB TWO</a>
       </paper-tab>
       <paper-tab link>
-        <a href="#link3" class="horizontal center-center layout">TAB THREE</a>
+        <a href="#link3" class="link">TAB THREE</a>
       </paper-tab>
     </paper-tabs>
 
@@ -95,13 +103,17 @@ Custom property | Description | Default
         font-size: 14px;
         font-weight: 500;
         overflow: hidden;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
         user-select: none;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
 
         @apply(--paper-tabs);
+      }
+
+      :host-context([dir=rtl]) {
+        @apply(--layout-horizontal-reverse);
       }
 
       #tabsContainer {
@@ -109,6 +121,7 @@ Custom property | Description | Default
         height: 100%;
         white-space: nowrap;
         overflow: hidden;
+        @apply(--layout-flex);
       }
 
       #tabsContent {
@@ -120,17 +133,24 @@ Custom property | Description | Default
         white-space: nowrap;
       }
 
+      #tabsContent.horizontal {
+        @apply(--layout-horizontal);
+      }
+
       .hidden {
         display: none;
       }
 
       .not-visible {
         opacity: 0;
+        cursor: default;
       }
 
       paper-icon-button {
-        width: 24px;
-        padding: 16px;
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+        margin: 0 4px;
       }
 
       #selectionBar {
@@ -140,11 +160,11 @@ Custom property | Description | Default
         left: 0;
         right: 0;
         background-color: var(--paper-tabs-selection-bar-color, --accent-color);
-        -webkit-transform-origin: left center;
-        transform-origin: left center;
-        -webkit-transform: scale(0);
+          -webkit-transform: scale(0);
         transform: scale(0);
-        transition: -webkit-transform;
+          -webkit-transform-origin: left center;
+        transform-origin: left center;
+          transition: -webkit-transform;
         transition: transform;
 
         @apply(--paper-tabs-selection-bar);
@@ -170,9 +190,9 @@ Custom property | Description | Default
       }
     </style>
 
-    <paper-icon-button icon="paper-tabs:chevron-left" class$="[[_computeScrollButtonClass(_leftHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onLeftScrollButtonDown"></paper-icon-button>
+    <paper-icon-button icon="paper-tabs:chevron-left" class$="[[_computeScrollButtonClass(_leftHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onLeftScrollButtonDown" tabindex="-1"></paper-icon-button>
 
-    <div id="tabsContainer" class="flex" on-track="_scroll" on-down="_down">
+    <div id="tabsContainer" on-track="_scroll" on-down="_down">
       <div id="tabsContent" class$="[[_computeTabsContentClass(scrollable)]]">
         <content select="*"></content>
         <div id="selectionBar" class$="[[_computeSelectionBarClass(noBar, alignBottom)]]"
@@ -180,7 +200,8 @@ Custom property | Description | Default
       </div>
     </div>
 
-    <paper-icon-button icon="paper-tabs:chevron-right" class$="[[_computeScrollButtonClass(_rightHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onRightScrollButtonDown"></paper-icon-button>
+    <paper-icon-button icon="paper-tabs:chevron-right" class$="[[_computeScrollButtonClass(_rightHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onRightScrollButtonDown" tabindex="-1"></paper-icon-button>
+
   </template>
 
   <script>
@@ -194,11 +215,14 @@ Custom property | Description | Default
 
       properties: {
         /**
-         * If true, ink ripple effect is disabled.
+         * If true, ink ripple effect is disabled. When this property is changed,
+         * all descendant `<paper-tab>` elements have their `noink` property
+         * changed to the new value as well.
          */
         noink: {
           type: Boolean,
-          value: false
+          value: false,
+          observer: '_noinkChanged'
         },
 
         /**
@@ -297,8 +321,25 @@ Custom property | Description | Default
         'iron-deselect': '_onIronDeselect'
       },
 
+      created: function() {
+        this._holdJob = null;
+      },
+
       ready: function() {
         this.setScrollDirection('y', this.$.tabsContainer);
+      },
+
+      _noinkChanged: function(noink) {
+        var childTabs = Polymer.dom(this).querySelectorAll('paper-tab');
+        childTabs.forEach(noink ? this._setNoinkAttribute : this._removeNoinkAttribute);
+      },
+
+      _setNoinkAttribute: function(element) {
+        element.setAttribute('noink', '');
+      },
+
+      _removeNoinkAttribute: function(element) {
+        element.removeAttribute('noink');
       },
 
       _computeScrollButtonClass: function(hideThisButton, scrollable, hideScrollButtons) {
@@ -314,7 +355,7 @@ Custom property | Description | Default
       },
 
       _computeTabsContentClass: function(scrollable) {
-        return scrollable ? 'scrollable' : 'horizontal layout';
+        return scrollable ? 'scrollable' : 'horizontal';
       },
 
       _computeSelectionBarClass: function(noBar, alignBottom) {
@@ -323,6 +364,8 @@ Custom property | Description | Default
         } else if (alignBottom) {
           return 'align-bottom';
         }
+
+        return '';
       },
 
       // TODO(cdata): Add `track` response back in when gesture lands.
@@ -490,7 +533,6 @@ Custom property | Description | Default
           cl.remove('contract');
         }
       }
-
     });
   </script>
 </dom-module>

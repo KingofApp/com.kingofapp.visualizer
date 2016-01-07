@@ -1,30 +1,29 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-item-behavior.html">
-<link rel="import" href="../oblique-styles/default-theme.html">
+<link rel="import" href="../../../../bower_components/paper-styles/color.html">
+<link rel="import" href="../../../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../candy-styles/default-theme.html">
 
-<dom-module id="oblique-item">
+<dom-module id="candy-item">
   <template>
     <!-- write your styles here -->
     <style>
       :host {
         @apply(--layout-horizontal);
         @apply(--layout-center);
+        @apply(--paper-font-subhead);
 
-        -webkit-font-smoothing: antialiased;
-        background-color: rgba(22,134,200,0.95);
-        color: #ffffff;
         display: block;
-        font-family: 'Pacifico', sans-serif;
-        font-size: 18px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        line-height: 24px;
         min-height: var(--item-min-height, 48px);
-        padding: 10px;
+        padding: 0px 16px;
         position: relative;
 
         @apply(--item);
+      }
+
+      :host([hidden]) {
+        display: none !important;
       }
 
       :host(.iron-selected) {
@@ -34,7 +33,6 @@
       }
 
       :host([disabled]) {
-        outline: 0;
         color: var(--item-disabled-color, --disabled-text-color);
 
         @apply(--item-disabled);
@@ -43,7 +41,6 @@
       :host(:focus) {
         position: relative;
         outline: 0;
-        background: #617d8b;
 
         @apply(--item-focused);
       }
@@ -51,7 +48,9 @@
       :host(:focus):before {
         @apply(--layout-fit);
 
+        background: currentColor;
         content: '';
+        opacity: var(--dark-divider-opacity);
         pointer-events: none;
 
         @apply(--item-focused-before);
@@ -66,7 +65,7 @@
 
   <script>
     Polymer({
-      is: 'oblique-item',
+      is: 'candy-item',
 
       behaviors: [
         Polymer.KoaItemBehavior

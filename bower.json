@@ -62,6 +62,7 @@
     "koa-behaviors": "KingofApp/koa-behaviors#^0.6.0",
     "paper-behaviors": "PolymerElements/paper-behaviors#^1.0.0",
     "paper-material": "PolymerElements/paper-material#^1.0.0",
+    "paper-menu-button": "PolymerElements/paper-menu-button#^1.0.0",
     "paper-styles": "PolymerElements/paper-styles#^1.0.0"
   },
   "devDependencies": {

@@ -1,6 +1,8 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-menu-button-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../../../bower_components/paper-menu-button/paper-menu-button-animations.html">
 <link rel="import" href="../candy-styles/default-theme.html">
 
 <dom-module id="candy-menu-button">
@@ -23,13 +25,13 @@
         @apply(--menu-button-disabled);
       }
 
-      :host([vertical-align="top"]) .dropdown-content {
+      :host([vertical-align="top"]) paper-material {
         margin-bottom: 20px;
         margin-top: -10px;
         top: 10px;
       }
 
-      :host([vertical-align="bottom"]) .dropdown-content {
+      :host([vertical-align="bottom"]) paper-material {
         bottom: 10px;
         margin-bottom: -10px;
         margin-top: 20px;
@@ -64,9 +66,9 @@
       close-animation-config="[[closeAnimationConfig]]"
       no-animations="[[noAnimations]]"
       focus-target="[[_dropdownContent]]">
-      <div class="dropdown-content">
+      <paper-material class="dropdown-content">
         <content id="content" select=".dropdown-content"></content>
-      </div>
+      </paper-material>
     </iron-dropdown>
     <!-- end template -->
   </template>
@@ -77,7 +79,67 @@
 
       behaviors: [
         Polymer.KoaMenuButtonBehavior
-      ]
+      ],
+
+      /**
+       * An animation config. If provided, this will be used to animate the
+       * opening of the dropdown.
+       */
+      openAnimationConfig: {
+        type: Object,
+        value: function() {
+          return [{
+            name: 'fade-in-animation',
+            timing: {
+              delay: 100,
+              duration: 200
+            }
+          }, {
+            name: 'paper-menu-grow-width-animation',
+            timing: {
+              delay: 100,
+              duration: 150,
+              easing: 'cubic-bezier(.3,.95,.5,1)'
+            }
+          }, {
+            name: 'paper-menu-grow-height-animation',
+            timing: {
+              delay: 100,
+              duration: 275,
+              easing: 'cubic-bezier(.3,.95,.5,1)'
+            }
+          }];
+        }
+      },
+
+      /**
+       * An animation config. If provided, this will be used to animate the
+       * closing of the dropdown.
+       */
+      closeAnimationConfig: {
+        type: Object,
+        value: function() {
+          return [{
+            name: 'fade-out-animation',
+            timing: {
+              duration: 150
+            }
+          }, {
+            name: 'paper-menu-shrink-width-animation',
+            timing: {
+              delay: 100,
+              duration: 50,
+              easing: 'cubic-bezier(.3,.95,.5,1)'
+            }
+          }, {
+            name: 'paper-menu-shrink-height-animation',
+            timing: {
+              duration: 200,
+              easing: 'ease-in'
+            }
+          }];
+        }
+      },
     });
   </script>
 </dom-module>

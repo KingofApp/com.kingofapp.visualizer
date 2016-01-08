@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-menu demo</title>
+    <title>classical-menu demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../candy-menu.html">
-    <link rel="import" href="../candy-submenu.html">
+    <link rel="import" href="../../classical-item/classical-item.html">
+    <link rel="import" href="../classical-menu.html">
+    <link rel="import" href="../classical-submenu.html">
 
     <style is="custom-style">
       .horizontal-section {
@@ -28,17 +28,17 @@
         background: #ccc;
       }
 
-      candy-item {
+      classical-item {
         --item: {
           cursor: pointer;
         };
       }
 
-      .sublist candy-item {
+      .sublist classical-item {
         padding-left: 30px;
       }
 
-      .sublist2 candy-item {
+      .sublist2 classical-item {
         padding-left: 50px;
       }
     </style>
@@ -48,90 +48,90 @@
       <div>
         <h4>Standard</h4>
         <div class="horizontal-section">
-          <candy-menu>
-            <candy-item>Inbox</candy-item>
-            <candy-item>Starred</candy-item>
-            <candy-item>Sent mail</candy-item>
-            <candy-item>Drafts</candy-item>
-          </candy-menu>
+          <classical-menu>
+            <classical-item>Inbox</classical-item>
+            <classical-item>Starred</classical-item>
+            <classical-item>Sent mail</classical-item>
+            <classical-item>Drafts</classical-item>
+          </classical-menu>
         </div>
       </div>
 
       <div>
         <h4>Pre-selected</h4>
         <div class="horizontal-section">
-          <candy-menu selected="0">
-            <candy-item>Inbox</candy-item>
-            <candy-item disabled>Starred</candy-item>
-            <candy-item>Sent mail</candy-item>
-            <candy-item>Drafts</candy-item>
-          </candy-menu>
+          <classical-menu selected="0">
+            <classical-item>Inbox</classical-item>
+            <classical-item disabled>Starred</classical-item>
+            <classical-item>Sent mail</classical-item>
+            <classical-item>Drafts</classical-item>
+          </classical-menu>
         </div>
       </div>
 
       <div>
         <h4>Multi-select</h4>
         <div class="horizontal-section">
-          <candy-menu multi>
-            <candy-item>Bold</candy-item>
-            <candy-item>Italic</candy-item>
-            <candy-item>Underline</candy-item>
-            <candy-item>Strikethrough</candy-item>
-          </candy-menu>
+          <classical-menu multi>
+            <classical-item>Bold</classical-item>
+            <classical-item>Italic</classical-item>
+            <classical-item>Underline</classical-item>
+            <classical-item>Strikethrough</classical-item>
+          </classical-menu>
         </div>
       </div>
 
       <div>
         <h4>Sub-menu</h4>
         <div class="horizontal-section">
-          <candy-menu attr-for-item-title="label" multi>
-            <candy-submenu label="candy-menu">
-              <candy-item class="menu-trigger">candy-menu</candy-item>
-              <candy-menu class="menu-content sublist" multi>
-                <candy-submenu label="Properties">
-                  <candy-item class="menu-trigger">Properties</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>focusedItem</candy-item>
-                    <candy-item>attrForItemTitle</candy-item>
-                  </candy-menu>
-                </candy-submenu>
-                <candy-submenu label="Methods">
-                  <candy-item class="menu-trigger">Methods</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>select(value)</candy-item>
-                  </candy-menu>
-                </candy-submenu>
-            </candy-menu>
-          </candy-submenu>
+          <classical-menu attr-for-item-title="label" multi>
+            <classical-submenu label="classical-menu">
+              <classical-item class="menu-trigger">classical-menu</classical-item>
+              <classical-menu class="menu-content sublist" multi>
+                <classical-submenu label="Properties">
+                  <classical-item class="menu-trigger">Properties</classical-item>
+                  <classical-menu class="menu-content sublist2">
+                    <classical-item>focusedItem</classical-item>
+                    <classical-item>attrForItemTitle</classical-item>
+                  </classical-menu>
+                </classical-submenu>
+                <classical-submenu label="Methods">
+                  <classical-item class="menu-trigger">Methods</classical-item>
+                  <classical-menu class="menu-content sublist2">
+                    <classical-item>select(value)</classical-item>
+                  </classical-menu>
+                </classical-submenu>
+            </classical-menu>
+          </classical-submenu>
 
-          <candy-submenu label="candy-submenu">
-            <candy-item class="menu-trigger">candy-submenu</candy-item>
-            <candy-menu class="menu-content sublist">
-              <candy-submenu label="Properties">
-                <candy-item class="menu-trigger">Properties</candy-item>
-                <candy-menu class="menu-content sublist2">
-                  <candy-item>opened</candy-item>
-                </candy-menu>
-                </candy-submenu>
-                <candy-submenu label="Methods">
-                  <candy-item class="menu-trigger">Methods</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>open()</candy-item>
-                    <candy-item>close()</candy-item>
-                    <candy-item>toggle()</candy-item>
-                  </candy-menu>
-              </candy-submenu>
-            </candy-menu>
-          </candy-submenu>
+          <classical-submenu label="classical-submenu">
+            <classical-item class="menu-trigger">classical-submenu</classical-item>
+            <classical-menu class="menu-content sublist">
+              <classical-submenu label="Properties">
+                <classical-item class="menu-trigger">Properties</classical-item>
+                <classical-menu class="menu-content sublist2">
+                  <classical-item>opened</classical-item>
+                </classical-menu>
+                </classical-submenu>
+                <classical-submenu label="Methods">
+                  <classical-item class="menu-trigger">Methods</classical-item>
+                  <classical-menu class="menu-content sublist2">
+                    <classical-item>open()</classical-item>
+                    <classical-item>close()</classical-item>
+                    <classical-item>toggle()</classical-item>
+                  </classical-menu>
+              </classical-submenu>
+            </classical-menu>
+          </classical-submenu>
 
-            <candy-submenu label="Unavailable" disabled>
-              <candy-item class="menu-trigger">Unavailable</candy-item>
-              <candy-menu class="menu-content sublist">
-                <candy-item>Unavailable 1</candy-item>
-                <candy-item>Unavailable 2</candy-item>
-              </candy-menu>
-            </candy-submenu>
-          </candy-menu>
+            <classical-submenu label="Unavailable" disabled>
+              <classical-item class="menu-trigger">Unavailable</classical-item>
+              <classical-menu class="menu-content sublist">
+                <classical-item>Unavailable 1</classical-item>
+                <classical-item>Unavailable 2</classical-item>
+              </classical-menu>
+            </classical-submenu>
+          </classical-menu>
         </div>
       </div>
     </div>

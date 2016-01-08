@@ -1,12 +1,12 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-textarea-behavior.html">
-<link rel="import" href="../candy-styles/default-theme.html">
-<link rel="import" href="candy-input-char-counter.html">
-<link rel="import" href="candy-input-container.html">
-<link rel="import" href="candy-input-error.html">
+<link rel="import" href="../classical-styles/default-theme.html">
+<link rel="import" href="classical-input-char-counter.html">
+<link rel="import" href="classical-input-container.html">
+<link rel="import" href="classical-input-error.html">
 
-<dom-module id="candy-textarea">
+<dom-module id="classical-textarea">
   <template>
     <!-- write your styles here -->
     <style>
@@ -17,7 +17,7 @@
     <!-- end styles -->
 
     <!-- write your template here -->
-    <candy-input-container no-label-float$="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
+    <classical-input-container no-label-float$="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
       <label hidden$="[[!label]]">[[label]]</label>
 
       <iron-autogrow-textarea id="input"
@@ -37,19 +37,19 @@
         on-change="_onChange"></iron-autogrow-textarea>
 
       <template is="dom-if" if="[[errorMessage]]">
-        <candy-input-error>[[errorMessage]]</candy-input-error>
+        <classical-input-error>[[errorMessage]]</classical-input-error>
       </template>
 
       <template is="dom-if" if="[[charCounter]]">
-        <candy-input-char-counter></candy-input-char-counter>
+        <classical-input-char-counter></classical-input-char-counter>
       </template>
-    </candy-input-container>
+    </classical-input-container>
     <!-- end template -->
   </template>
 
   <script>
     Polymer({
-      is: 'candy-textarea',
+      is: 'classical-textarea',
 
       behaviors: [
         Polymer.KoaTextareaBehavior

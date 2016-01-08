@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-menu-button demo</title>
+    <title>sky-menu-button demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
@@ -13,24 +13,24 @@
     <link rel="import" href="../../../../../bower_components/iron-image/iron-image.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-button/candy-button.html">
-    <link rel="import" href="../../candy-icon-button/candy-icon-button.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../../candy-menu/candy-menu.html">
-    <link rel="import" href="../candy-menu-button.html">
+    <link rel="import" href="../../sky-button/sky-button.html">
+    <link rel="import" href="../../sky-icon-button/sky-icon-button.html">
+    <link rel="import" href="../../sky-item/sky-item.html">
+    <link rel="import" href="../../sky-menu/sky-menu.html">
+    <link rel="import" href="../sky-menu-button.html">
 
     <style>
-      candy-button {
+      sky-button {
         display: block;
         background: #4285f4;
         color: #fff;
       }
 
-      candy-menu {
+      sky-menu {
         display: block;
       }
 
-      candy-menu-button {
+      sky-menu-button {
         margin: auto;
       }
 
@@ -54,14 +54,14 @@
         <div>
           <h4>Icon Button + Menu</h4>
           <div class="horizontal-section">
-            <candy-menu-button>
-              <candy-icon-button icon="menu" class="dropdown-trigger" alt="menu"></candy-icon-button>
-              <candy-menu class="dropdown-content">
+            <sky-menu-button>
+              <sky-icon-button icon="menu" class="dropdown-trigger" alt="menu"></sky-icon-button>
+              <sky-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <sky-item>[[letter]]</sky-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </sky-menu>
+            </sky-menu-button>
           </div>
         </div>
       </div>
@@ -70,14 +70,14 @@
         <div>
           <h4>Menu with multi selection</h4>
           <div class="horizontal-section">
-            <candy-menu-button ignore-select>
-              <candy-icon-button icon="menu" class="dropdown-trigger" alt="multi select"></candy-icon-button>
-              <candy-menu class="dropdown-content" multi>
+            <sky-menu-button ignore-select>
+              <sky-icon-button icon="menu" class="dropdown-trigger" alt="multi select"></sky-icon-button>
+              <sky-menu class="dropdown-content" multi>
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <sky-item>[[letter]]</sky-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </sky-menu>
+            </sky-menu-button>
           </div>
         </div>
       </div>
@@ -86,14 +86,14 @@
         <div>
           <h4>Disabled</h4>
           <div class="horizontal-section">
-            <candy-menu-button disabled>
-              <candy-icon-button icon="menu" class="dropdown-trigger" alt="menu"></candy-icon-button>
-              <candy-menu class="dropdown-content">
+            <sky-menu-button disabled>
+              <sky-icon-button icon="menu" class="dropdown-trigger" alt="menu"></sky-icon-button>
+              <sky-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <sky-item>[[letter]]</sky-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </sky-menu>
+            </sky-menu-button>
           </div>
         </div>
       </div>
@@ -102,14 +102,14 @@
         <div>
           <h4>Alternate Alignment</h4>
           <div class="horizontal-section">
-            <candy-menu-button vertical-align="bottom" horizontal-align="right">
-              <candy-icon-button icon="menu" class="dropdown-trigger" alt="bottom align"></candy-icon-button>
-              <candy-menu class="dropdown-content">
+            <sky-menu-button vertical-align="bottom" horizontal-align="right">
+              <sky-icon-button icon="menu" class="dropdown-trigger" alt="bottom align"></sky-icon-button>
+              <sky-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <sky-item>[[letter]]</sky-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </sky-menu>
+            </sky-menu-button>
           </div>
         </div>
       </div>
@@ -118,17 +118,17 @@
         <div>
           <h4>Alternate Button</h4>
           <div class="horizontal-section">
-            <candy-menu-button>
-              <candy-button class="dropdown-trigger" raised>
+            <sky-menu-button>
+              <sky-button class="dropdown-trigger" raised>
                 <iron-icon icon="check"></iron-icon>
                 <span>Dinosaurs</span>
-              </candy-button>
-              <candy-menu class="dropdown-content">
+              </sky-button>
+              <sky-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                  <candy-item>[[dinosaur]]</candy-item>
+                  <sky-item>[[dinosaur]]</sky-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </sky-menu>
+            </sky-menu-button>
           </div>
         </div>
       </div>
@@ -137,10 +137,10 @@
         <div>
           <h4>Alternate Content</h4>
           <div class="horizontal-section">
-            <candy-menu-button vertical-align="bottom">
-              <candy-icon-button class="dropdown-trigger" icon="polymer" alt="polymer"></candy-icon-button>
+            <sky-menu-button vertical-align="bottom">
+              <sky-icon-button class="dropdown-trigger" icon="polymer" alt="polymer"></sky-icon-button>
               <iron-image class="dropdown-content" src="../../../../../bower_components/iron-image/demo/polymer.svg"></iron-image>
-            </candy-menu-button>
+            </sky-menu-button>
           </div>
         </div>
       </div>

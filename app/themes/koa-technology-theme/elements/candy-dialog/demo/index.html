@@ -5,42 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-dialog demo</title>
+    <title>technology-dialog demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/neon-animation/neon-animations.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-button/candy-button.html">
-    <link rel="import" href="../../candy-dropdown-menu/candy-dropdown-menu.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../../candy-menu/candy-menu.html">
-    <link rel="import" href="../candy-dialog.html">
+    <link rel="import" href="../../technology-button/technology-button.html">
+    <link rel="import" href="../../technology-dropdown-menu/technology-dropdown-menu.html">
+    <link rel="import" href="../../technology-item/technology-item.html">
+    <link rel="import" href="../../technology-menu/technology-menu.html">
+    <link rel="import" href="../technology-dialog.html">
 
     <style is="custom-style">
       section {
         -webkit-tap-highlight-color: rgba(0,0,0,0);
       }
 
-      section > candy-button {
+      section > technology-button {
         background-color: var(--google-grey-300);
         padding: 5px;
       }
 
-      section > candy-button:hover {
+      section > technology-button:hover {
         background-color: var(--paper-light-blue-200);
         padding: 5px;
       }
 
-      candy-dialog.colored {
+      technology-dialog.colored {
         border: 2px solid;
         border-color: var(--paper-green-500);
         background-color: var(--paper-light-green-50);
         color: var(--paper-green-500);
       }
 
-      candy-dialog.size-position {
+      technology-dialog.size-position {
         position: fixed;
         top: 16px;
         right: 16px;
@@ -54,89 +54,89 @@
     <section onclick="clickHandler(event)">
       <h4>Dialog layouts</h4>
 
-      <candy-button data-dialog="dialog">plain dialog</candy-button>
-      <candy-button data-dialog="actions">dialog with actions</candy-button>
-      <candy-button data-dialog="modal">modal dialog</candy-button>
-      <candy-button data-dialog="dropdown">dialog with dropdown</candy-button>
-      <candy-button data-dialog="nested">dialog with nested dialog</candy-button>
+      <technology-button data-dialog="dialog">plain dialog</technology-button>
+      <technology-button data-dialog="actions">dialog with actions</technology-button>
+      <technology-button data-dialog="modal">modal dialog</technology-button>
+      <technology-button data-dialog="dropdown">dialog with dropdown</technology-button>
+      <technology-button data-dialog="nested">dialog with nested dialog</technology-button>
 
-      <candy-dialog id="dialog">
+      <technology-dialog id="dialog">
         <h2>Dialog Title</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </candy-dialog>
+      </technology-dialog>
 
-      <candy-dialog id="actions">
+      <technology-dialog id="actions">
         <h2>Dialog Title</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <div class="buttons">
-          <candy-button >More Info...</candy-button>
-          <candy-button dialog-dismiss>Decline</candy-button>
-          <candy-button dialog-confirm autofocus>Accept</candy-button>
+          <technology-button >More Info...</technology-button>
+          <technology-button dialog-dismiss>Decline</technology-button>
+          <technology-button dialog-confirm autofocus>Accept</technology-button>
         </div>
-      </candy-dialog>
+      </technology-dialog>
 
-      <candy-dialog id="modal" modal>
+      <technology-dialog id="modal" modal>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <div class="buttons">
-          <candy-button dialog-confirm autofocus>Tap me to close</candy-button>
+          <technology-button dialog-confirm autofocus>Tap me to close</technology-button>
         </div>
-      </candy-dialog>
+      </technology-dialog>
 
-      <candy-dialog id="dropdown">
+      <technology-dialog id="dropdown">
         <h2>Dialog Title</h2>
-        <candy-dropdown-menu label="Value">
-          <candy-menu class="dropdown-content">
-            <candy-item>1</candy-item>
-            <candy-item>2</candy-item>
-            <candy-item>3</candy-item>
-            <candy-item>4</candy-item>
-            <candy-item>5</candy-item>
-            <candy-item>6</candy-item>
-            <candy-item>7</candy-item>
-            <candy-item>8</candy-item>
-            <candy-item>9</candy-item>
-            <candy-item>10</candy-item>
-          </candy-menu>
-        </candy-dropdown-menu>
-      </candy-dialog>
+        <technology-dropdown-menu label="Value">
+          <technology-menu class="dropdown-content">
+            <technology-item>1</technology-item>
+            <technology-item>2</technology-item>
+            <technology-item>3</technology-item>
+            <technology-item>4</technology-item>
+            <technology-item>5</technology-item>
+            <technology-item>6</technology-item>
+            <technology-item>7</technology-item>
+            <technology-item>8</technology-item>
+            <technology-item>9</technology-item>
+            <technology-item>10</technology-item>
+          </technology-menu>
+        </technology-dropdown-menu>
+      </technology-dialog>
 
-      <candy-dialog id="nested">
+      <technology-dialog id="nested">
         <h2>Dialog Title</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <div class="buttons">
-          <candy-button data-dialog="innerDialog">Open nested dialog</candy-button>
+          <technology-button data-dialog="innerDialog">Open nested dialog</technology-button>
         </div>
-      </candy-dialog>
+      </technology-dialog>
 
-      <candy-dialog id="innerDialog">
+      <technology-dialog id="innerDialog">
         <h2>Dialog Title</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </candy-dialog>
+      </technology-dialog>
     </section>
 
     <section onclick="clickHandler(event)">
       <h4>Custom styling</h4>
-      <candy-button data-dialog="colors">colors</candy-button>
-      <candy-button data-dialog="position">size &amp; position</candy-button>
+      <technology-button data-dialog="colors">colors</technology-button>
+      <technology-button data-dialog="position">size &amp; position</technology-button>
 
-      <candy-dialog id="colors" class="colored">
+      <technology-dialog id="colors" class="colored">
         <h2>Custom Colors</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </candy-dialog>
+      </technology-dialog>
 
-      <candy-dialog id="position" class="size-position">
+      <technology-dialog id="position" class="size-position">
         <h2>Custom Size &amp; Position</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </candy-dialog>
+      </technology-dialog>
     </section>
 
     <section onclick="clickHandler(event)">
       <h4>Transitions</h4>
-      <candy-button data-dialog="animated">transitions</candy-button>
-      <candy-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+      <technology-button data-dialog="animated">transitions</technology-button>
+      <technology-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
         <h2>Dialog Title</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </candy-dialog>
+      </technology-dialog>
     </section>
 
     <script>

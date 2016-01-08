@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-menu demo</title>
+    <title>seven-seas-menu demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../candy-menu.html">
-    <link rel="import" href="../candy-submenu.html">
+    <link rel="import" href="../../seven-seas-item/seven-seas-item.html">
+    <link rel="import" href="../seven-seas-menu.html">
+    <link rel="import" href="../seven-seas-submenu.html">
 
     <style is="custom-style">
       .horizontal-section {
@@ -28,17 +28,17 @@
         background: #ccc;
       }
 
-      candy-item {
+      seven-seas-item {
         --item: {
           cursor: pointer;
         };
       }
 
-      .sublist candy-item {
+      .sublist seven-seas-item {
         padding-left: 30px;
       }
 
-      .sublist2 candy-item {
+      .sublist2 seven-seas-item {
         padding-left: 50px;
       }
     </style>
@@ -48,90 +48,90 @@
       <div>
         <h4>Standard</h4>
         <div class="horizontal-section">
-          <candy-menu>
-            <candy-item>Inbox</candy-item>
-            <candy-item>Starred</candy-item>
-            <candy-item>Sent mail</candy-item>
-            <candy-item>Drafts</candy-item>
-          </candy-menu>
+          <seven-seas-menu>
+            <seven-seas-item>Inbox</seven-seas-item>
+            <seven-seas-item>Starred</seven-seas-item>
+            <seven-seas-item>Sent mail</seven-seas-item>
+            <seven-seas-item>Drafts</seven-seas-item>
+          </seven-seas-menu>
         </div>
       </div>
 
       <div>
         <h4>Pre-selected</h4>
         <div class="horizontal-section">
-          <candy-menu selected="0">
-            <candy-item>Inbox</candy-item>
-            <candy-item disabled>Starred</candy-item>
-            <candy-item>Sent mail</candy-item>
-            <candy-item>Drafts</candy-item>
-          </candy-menu>
+          <seven-seas-menu selected="0">
+            <seven-seas-item>Inbox</seven-seas-item>
+            <seven-seas-item disabled>Starred</seven-seas-item>
+            <seven-seas-item>Sent mail</seven-seas-item>
+            <seven-seas-item>Drafts</seven-seas-item>
+          </seven-seas-menu>
         </div>
       </div>
 
       <div>
         <h4>Multi-select</h4>
         <div class="horizontal-section">
-          <candy-menu multi>
-            <candy-item>Bold</candy-item>
-            <candy-item>Italic</candy-item>
-            <candy-item>Underline</candy-item>
-            <candy-item>Strikethrough</candy-item>
-          </candy-menu>
+          <seven-seas-menu multi>
+            <seven-seas-item>Bold</seven-seas-item>
+            <seven-seas-item>Italic</seven-seas-item>
+            <seven-seas-item>Underline</seven-seas-item>
+            <seven-seas-item>Strikethrough</seven-seas-item>
+          </seven-seas-menu>
         </div>
       </div>
 
       <div>
         <h4>Sub-menu</h4>
         <div class="horizontal-section">
-          <candy-menu attr-for-item-title="label" multi>
-            <candy-submenu label="candy-menu">
-              <candy-item class="menu-trigger">candy-menu</candy-item>
-              <candy-menu class="menu-content sublist" multi>
-                <candy-submenu label="Properties">
-                  <candy-item class="menu-trigger">Properties</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>focusedItem</candy-item>
-                    <candy-item>attrForItemTitle</candy-item>
-                  </candy-menu>
-                </candy-submenu>
-                <candy-submenu label="Methods">
-                  <candy-item class="menu-trigger">Methods</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>select(value)</candy-item>
-                  </candy-menu>
-                </candy-submenu>
-            </candy-menu>
-          </candy-submenu>
+          <seven-seas-menu attr-for-item-title="label" multi>
+            <seven-seas-submenu label="seven-seas-menu">
+              <seven-seas-item class="menu-trigger">seven-seas-menu</seven-seas-item>
+              <seven-seas-menu class="menu-content sublist" multi>
+                <seven-seas-submenu label="Properties">
+                  <seven-seas-item class="menu-trigger">Properties</seven-seas-item>
+                  <seven-seas-menu class="menu-content sublist2">
+                    <seven-seas-item>focusedItem</seven-seas-item>
+                    <seven-seas-item>attrForItemTitle</seven-seas-item>
+                  </seven-seas-menu>
+                </seven-seas-submenu>
+                <seven-seas-submenu label="Methods">
+                  <seven-seas-item class="menu-trigger">Methods</seven-seas-item>
+                  <seven-seas-menu class="menu-content sublist2">
+                    <seven-seas-item>select(value)</seven-seas-item>
+                  </seven-seas-menu>
+                </seven-seas-submenu>
+            </seven-seas-menu>
+          </seven-seas-submenu>
 
-          <candy-submenu label="candy-submenu">
-            <candy-item class="menu-trigger">candy-submenu</candy-item>
-            <candy-menu class="menu-content sublist">
-              <candy-submenu label="Properties">
-                <candy-item class="menu-trigger">Properties</candy-item>
-                <candy-menu class="menu-content sublist2">
-                  <candy-item>opened</candy-item>
-                </candy-menu>
-                </candy-submenu>
-                <candy-submenu label="Methods">
-                  <candy-item class="menu-trigger">Methods</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>open()</candy-item>
-                    <candy-item>close()</candy-item>
-                    <candy-item>toggle()</candy-item>
-                  </candy-menu>
-              </candy-submenu>
-            </candy-menu>
-          </candy-submenu>
+          <seven-seas-submenu label="seven-seas-submenu">
+            <seven-seas-item class="menu-trigger">seven-seas-submenu</seven-seas-item>
+            <seven-seas-menu class="menu-content sublist">
+              <seven-seas-submenu label="Properties">
+                <seven-seas-item class="menu-trigger">Properties</seven-seas-item>
+                <seven-seas-menu class="menu-content sublist2">
+                  <seven-seas-item>opened</seven-seas-item>
+                </seven-seas-menu>
+                </seven-seas-submenu>
+                <seven-seas-submenu label="Methods">
+                  <seven-seas-item class="menu-trigger">Methods</seven-seas-item>
+                  <seven-seas-menu class="menu-content sublist2">
+                    <seven-seas-item>open()</seven-seas-item>
+                    <seven-seas-item>close()</seven-seas-item>
+                    <seven-seas-item>toggle()</seven-seas-item>
+                  </seven-seas-menu>
+              </seven-seas-submenu>
+            </seven-seas-menu>
+          </seven-seas-submenu>
 
-            <candy-submenu label="Unavailable" disabled>
-              <candy-item class="menu-trigger">Unavailable</candy-item>
-              <candy-menu class="menu-content sublist">
-                <candy-item>Unavailable 1</candy-item>
-                <candy-item>Unavailable 2</candy-item>
-              </candy-menu>
-            </candy-submenu>
-          </candy-menu>
+            <seven-seas-submenu label="Unavailable" disabled>
+              <seven-seas-item class="menu-trigger">Unavailable</seven-seas-item>
+              <seven-seas-menu class="menu-content sublist">
+                <seven-seas-item>Unavailable 1</seven-seas-item>
+                <seven-seas-item>Unavailable 2</seven-seas-item>
+              </seven-seas-menu>
+            </seven-seas-submenu>
+          </seven-seas-menu>
         </div>
       </div>
     </div>

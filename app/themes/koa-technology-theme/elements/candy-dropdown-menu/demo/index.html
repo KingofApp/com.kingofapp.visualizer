@@ -5,23 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-dropdown-menu demo</title>
+    <title>technology-dropdown-menu demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../../candy-menu/candy-menu.html">
-    <link rel="import" href="../candy-dropdown-menu.html">
+    <link rel="import" href="../../technology-item/technology-item.html">
+    <link rel="import" href="../../technology-menu/technology-menu.html">
+    <link rel="import" href="../technology-dropdown-menu.html">
 
     <style is="custom-style">
-      candy-dropdown-menu {
+      technology-dropdown-menu {
         text-align: left;
         margin: auto;
         width: 180px;
       }
 
-      candy-dropdown-menu.letters {
+      technology-dropdown-menu.letters {
         width: 90px;
       }
 
@@ -42,13 +42,13 @@
         <div>
           <h4>Basic Menu</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu label="Dinosaurs">
-              <candy-menu class="dropdown-content">
+            <technology-dropdown-menu label="Dinosaurs">
+              <technology-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                  <candy-item>[[dinosaur]]</candy-item>
+                  <technology-item>[[dinosaur]]</technology-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </technology-menu>
+            </technology-dropdown-menu>
           </div>
         </div>
       </div>
@@ -57,13 +57,13 @@
         <div>
           <h4>Pre-selected Value</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu label="Dinosaurs">
-              <candy-menu class="dropdown-content" selected="1">
+            <technology-dropdown-menu label="Dinosaurs">
+              <technology-menu class="dropdown-content" selected="1">
                 <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                  <candy-item>[[dinosaur]]</candy-item>
+                  <technology-item>[[dinosaur]]</technology-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </technology-menu>
+            </technology-dropdown-menu>
           </div>
         </div>
       </div>
@@ -72,13 +72,13 @@
         <div>
           <h4>Disabled</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu disabled label="Disabled">
-              <candy-menu class="dropdown-content">
+            <technology-dropdown-menu disabled label="Disabled">
+              <technology-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <technology-item>[[letter]]</technology-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </technology-menu>
+            </technology-dropdown-menu>
           </div>
         </div>
       </div>
@@ -87,13 +87,13 @@
         <div>
           <h4>No underline (menu from bottom)</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu class="nounderline" label="Letters" vertical-align="bottom">
-              <candy-menu class="dropdown-content">
+            <technology-dropdown-menu class="nounderline" label="Letters" vertical-align="bottom">
+              <technology-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <technology-item>[[letter]]</technology-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </technology-menu>
+            </technology-dropdown-menu>
           </div>
         </div>
       </div>
@@ -102,13 +102,13 @@
         <div>
           <h4>No Animations</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu label="Dinosaurs" no-animations>
-              <candy-menu class="dropdown-content">
+            <technology-dropdown-menu label="Dinosaurs" no-animations>
+              <technology-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                  <candy-item>[[dinosaur]]</candy-item>
+                  <technology-item>[[dinosaur]]</technology-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </technology-menu>
+            </technology-dropdown-menu>
           </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
 /* General styles */
 
-candy-card {
+citric-flames-card {
   width: 100%;
 }
 
-candy-card + candy-card {
+citric-flames-card + citric-flames-card {
   margin-top: 15px;
 }
 
@@ -18,7 +18,7 @@ candy-card + candy-card {
   margin: 15px;
 }
 
-.contact form candy-button {
+.contact form citric-flames-button {
   float: right;
   margin-top: 15px;
 }

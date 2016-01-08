@@ -1,8 +1,8 @@
 {
-  "name": "koa-candy-theme",
+  "name": "koa-technology-theme",
   "authors": "Abdón Rodríguez Davila, <thepeer@kingofapp.es>",
-  "description": "candy theme for King of App",
-  "main": "koa-candy-theme.html",
+  "description": "technology theme for King of App",
+  "main": "koa-technology-theme.html",
   "moduleType": [
     "globals"
   ],

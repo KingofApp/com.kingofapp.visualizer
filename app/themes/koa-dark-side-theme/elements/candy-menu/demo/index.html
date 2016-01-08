@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-menu demo</title>
+    <title>dark-side-menu demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../candy-menu.html">
-    <link rel="import" href="../candy-submenu.html">
+    <link rel="import" href="../../dark-side-item/dark-side-item.html">
+    <link rel="import" href="../dark-side-menu.html">
+    <link rel="import" href="../dark-side-submenu.html">
 
     <style is="custom-style">
       .horizontal-section {
@@ -28,17 +28,17 @@
         background: #ccc;
       }
 
-      candy-item {
+      dark-side-item {
         --item: {
           cursor: pointer;
         };
       }
 
-      .sublist candy-item {
+      .sublist dark-side-item {
         padding-left: 30px;
       }
 
-      .sublist2 candy-item {
+      .sublist2 dark-side-item {
         padding-left: 50px;
       }
     </style>
@@ -48,90 +48,90 @@
       <div>
         <h4>Standard</h4>
         <div class="horizontal-section">
-          <candy-menu>
-            <candy-item>Inbox</candy-item>
-            <candy-item>Starred</candy-item>
-            <candy-item>Sent mail</candy-item>
-            <candy-item>Drafts</candy-item>
-          </candy-menu>
+          <dark-side-menu>
+            <dark-side-item>Inbox</dark-side-item>
+            <dark-side-item>Starred</dark-side-item>
+            <dark-side-item>Sent mail</dark-side-item>
+            <dark-side-item>Drafts</dark-side-item>
+          </dark-side-menu>
         </div>
       </div>
 
       <div>
         <h4>Pre-selected</h4>
         <div class="horizontal-section">
-          <candy-menu selected="0">
-            <candy-item>Inbox</candy-item>
-            <candy-item disabled>Starred</candy-item>
-            <candy-item>Sent mail</candy-item>
-            <candy-item>Drafts</candy-item>
-          </candy-menu>
+          <dark-side-menu selected="0">
+            <dark-side-item>Inbox</dark-side-item>
+            <dark-side-item disabled>Starred</dark-side-item>
+            <dark-side-item>Sent mail</dark-side-item>
+            <dark-side-item>Drafts</dark-side-item>
+          </dark-side-menu>
         </div>
       </div>
 
       <div>
         <h4>Multi-select</h4>
         <div class="horizontal-section">
-          <candy-menu multi>
-            <candy-item>Bold</candy-item>
-            <candy-item>Italic</candy-item>
-            <candy-item>Underline</candy-item>
-            <candy-item>Strikethrough</candy-item>
-          </candy-menu>
+          <dark-side-menu multi>
+            <dark-side-item>Bold</dark-side-item>
+            <dark-side-item>Italic</dark-side-item>
+            <dark-side-item>Underline</dark-side-item>
+            <dark-side-item>Strikethrough</dark-side-item>
+          </dark-side-menu>
         </div>
       </div>
 
       <div>
         <h4>Sub-menu</h4>
         <div class="horizontal-section">
-          <candy-menu attr-for-item-title="label" multi>
-            <candy-submenu label="candy-menu">
-              <candy-item class="menu-trigger">candy-menu</candy-item>
-              <candy-menu class="menu-content sublist" multi>
-                <candy-submenu label="Properties">
-                  <candy-item class="menu-trigger">Properties</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>focusedItem</candy-item>
-                    <candy-item>attrForItemTitle</candy-item>
-                  </candy-menu>
-                </candy-submenu>
-                <candy-submenu label="Methods">
-                  <candy-item class="menu-trigger">Methods</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>select(value)</candy-item>
-                  </candy-menu>
-                </candy-submenu>
-            </candy-menu>
-          </candy-submenu>
+          <dark-side-menu attr-for-item-title="label" multi>
+            <dark-side-submenu label="dark-side-menu">
+              <dark-side-item class="menu-trigger">dark-side-menu</dark-side-item>
+              <dark-side-menu class="menu-content sublist" multi>
+                <dark-side-submenu label="Properties">
+                  <dark-side-item class="menu-trigger">Properties</dark-side-item>
+                  <dark-side-menu class="menu-content sublist2">
+                    <dark-side-item>focusedItem</dark-side-item>
+                    <dark-side-item>attrForItemTitle</dark-side-item>
+                  </dark-side-menu>
+                </dark-side-submenu>
+                <dark-side-submenu label="Methods">
+                  <dark-side-item class="menu-trigger">Methods</dark-side-item>
+                  <dark-side-menu class="menu-content sublist2">
+                    <dark-side-item>select(value)</dark-side-item>
+                  </dark-side-menu>
+                </dark-side-submenu>
+            </dark-side-menu>
+          </dark-side-submenu>
 
-          <candy-submenu label="candy-submenu">
-            <candy-item class="menu-trigger">candy-submenu</candy-item>
-            <candy-menu class="menu-content sublist">
-              <candy-submenu label="Properties">
-                <candy-item class="menu-trigger">Properties</candy-item>
-                <candy-menu class="menu-content sublist2">
-                  <candy-item>opened</candy-item>
-                </candy-menu>
-                </candy-submenu>
-                <candy-submenu label="Methods">
-                  <candy-item class="menu-trigger">Methods</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>open()</candy-item>
-                    <candy-item>close()</candy-item>
-                    <candy-item>toggle()</candy-item>
-                  </candy-menu>
-              </candy-submenu>
-            </candy-menu>
-          </candy-submenu>
+          <dark-side-submenu label="dark-side-submenu">
+            <dark-side-item class="menu-trigger">dark-side-submenu</dark-side-item>
+            <dark-side-menu class="menu-content sublist">
+              <dark-side-submenu label="Properties">
+                <dark-side-item class="menu-trigger">Properties</dark-side-item>
+                <dark-side-menu class="menu-content sublist2">
+                  <dark-side-item>opened</dark-side-item>
+                </dark-side-menu>
+                </dark-side-submenu>
+                <dark-side-submenu label="Methods">
+                  <dark-side-item class="menu-trigger">Methods</dark-side-item>
+                  <dark-side-menu class="menu-content sublist2">
+                    <dark-side-item>open()</dark-side-item>
+                    <dark-side-item>close()</dark-side-item>
+                    <dark-side-item>toggle()</dark-side-item>
+                  </dark-side-menu>
+              </dark-side-submenu>
+            </dark-side-menu>
+          </dark-side-submenu>
 
-            <candy-submenu label="Unavailable" disabled>
-              <candy-item class="menu-trigger">Unavailable</candy-item>
-              <candy-menu class="menu-content sublist">
-                <candy-item>Unavailable 1</candy-item>
-                <candy-item>Unavailable 2</candy-item>
-              </candy-menu>
-            </candy-submenu>
-          </candy-menu>
+            <dark-side-submenu label="Unavailable" disabled>
+              <dark-side-item class="menu-trigger">Unavailable</dark-side-item>
+              <dark-side-menu class="menu-content sublist">
+                <dark-side-item>Unavailable 1</dark-side-item>
+                <dark-side-item>Unavailable 2</dark-side-item>
+              </dark-side-menu>
+            </dark-side-submenu>
+          </dark-side-menu>
         </div>
       </div>
     </div>

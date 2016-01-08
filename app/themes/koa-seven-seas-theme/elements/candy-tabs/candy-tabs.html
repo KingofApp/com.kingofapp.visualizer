@@ -2,12 +2,12 @@
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-tabs-behavior.html">
-<link rel="import" href="../candy-icon-button/candy-icon-button.html">
-<link rel="import" href="../candy-styles/default-theme.html">
-<link rel="import" href="candy-tabs-icons.html">
-<link rel="import" href="candy-tab.html">
+<link rel="import" href="../seven-seas-icon-button/seven-seas-icon-button.html">
+<link rel="import" href="../seven-seas-styles/default-theme.html">
+<link rel="import" href="seven-seas-tabs-icons.html">
+<link rel="import" href="seven-seas-tab.html">
 
-<dom-module id="candy-tabs">
+<dom-module id="seven-seas-tabs">
   <template>
     <!-- write your styles here -->
     <style>
@@ -68,7 +68,7 @@
         opacity: 0;
       }
 
-      candy-icon-button {
+      seven-seas-icon-button {
         width: 48px;
         height: 48px;
         padding: 12px;
@@ -114,7 +114,7 @@
     <!-- end styles -->
 
     <!-- write your template here -->
-    <candy-icon-button icon="candy-tabs:chevron-left" class$="[[_computeScrollButtonClass(_leftHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onLeftScrollButtonDown" tabindex="-1"></candy-icon-button>
+    <seven-seas-icon-button icon="seven-seas-tabs:chevron-left" class$="[[_computeScrollButtonClass(_leftHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onLeftScrollButtonDown" tabindex="-1"></seven-seas-icon-button>
 
     <div id="tabsContainer" on-track="_scroll" on-down="_down">
       <div id="tabsContent" class$="[[_computeTabsContentClass(scrollable)]]">
@@ -123,13 +123,13 @@
       </div>
     </div>
 
-    <candy-icon-button icon="candy-tabs:chevron-right" class$="[[_computeScrollButtonClass(_rightHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onRightScrollButtonDown" tabindex="-1"></candy-icon-button>
+    <seven-seas-icon-button icon="seven-seas-tabs:chevron-right" class$="[[_computeScrollButtonClass(_rightHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onRightScrollButtonDown" tabindex="-1"></seven-seas-icon-button>
     <!-- end template -->
   </template>
 
   <script>
     Polymer({
-      is: 'candy-tabs',
+      is: 'seven-seas-tabs',
 
       behaviors: [
         Polymer.KoaTabsBehavior,
@@ -190,7 +190,7 @@
 
         selectable: {
           type: String,
-          value: 'candy-tab'
+          value: 'seven-seas-tab'
         },
 
         _step: {

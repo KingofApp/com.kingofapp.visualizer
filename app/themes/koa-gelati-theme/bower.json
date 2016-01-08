@@ -1,8 +1,8 @@
 {
-  "name": "koa-candy-theme",
+  "name": "koa-gelati-theme",
   "authors": "Abdón Rodríguez Davila, <thepeer@kingofapp.es>",
-  "description": "candy theme for King of App",
-  "main": "koa-candy-theme.html",
+  "description": "gelati theme for King of App",
+  "main": "koa-gelati-theme.html",
   "moduleType": [
     "globals"
   ],

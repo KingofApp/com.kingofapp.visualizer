@@ -1,9 +1,9 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-toolbar-behavior.html">
-<link rel="import" href="../candy-styles/default-theme.html">
+<link rel="import" href="../dark-side-styles/default-theme.html">
 
-<dom-module id="candy-toolbar">
+<dom-module id="dark-side-toolbar">
   <template>
     <!-- write your styles here -->
     <style>
@@ -114,7 +114,7 @@
        * TODO: Refactor these selectors
        * Work in progress.
        */
-      .toolbar-tools > ::content candy-icon-button[icon=menu] {
+      .toolbar-tools > ::content dark-side-icon-button[icon=menu] {
         margin-right: 24px;
       }
 
@@ -124,9 +124,9 @@
         margin-left: 56px;
       }
 
-      .toolbar-tools > ::content > candy-icon-button + .title,
-      .toolbar-tools > ::content[select=".middle"] candy-icon-button + .title,
-      .toolbar-tools > ::content[select=".bottom"] candy-icon-button + .title {
+      .toolbar-tools > ::content > dark-side-icon-button + .title,
+      .toolbar-tools > ::content[select=".middle"] dark-side-icon-button + .title,
+      .toolbar-tools > ::content[select=".bottom"] dark-side-icon-button + .title {
         margin-left: 0;
       }
 
@@ -182,7 +182,7 @@
 
   <script>
     Polymer({
-      is: 'candy-toolbar',
+      is: 'dark-side-toolbar',
 
       behaviors: [
         Polymer.KoaToolbarBehavior

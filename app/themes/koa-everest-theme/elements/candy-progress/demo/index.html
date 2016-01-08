@@ -5,42 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-progress demo</title>
+    <title>everest-progress demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-button/candy-button.html">
-    <link rel="import" href="../candy-progress.html">
+    <link rel="import" href="../../everest-button/everest-button.html">
+    <link rel="import" href="../everest-progress.html">
 
     <style is="custom-style">
       body {
         padding: 40px;
       }
 
-      candy-progress {
+      everest-progress {
         display: block;
         width: 100%;
         margin: 20px 0;
       }
 
-      candy-progress.blue {
+      everest-progress.blue {
         --progress-active-color: var(--paper-light-blue-500);
         --progress-secondary-color: var(--paper-light-blue-100);
       }
 
-      candy-progress.red {
+      everest-progress.red {
         --progress-active-color: var(--paper-red-500);
         --progress-secondary-color: var(--paper-red-100);
       }
 
-      candy-progress.orange {
+      everest-progress.orange {
         --progress-active-color: var(--paper-orange-500);
         --progress-secondary-color: var(--paper-orange-100);
       }
 
-      candy-progress.green {
+      everest-progress.green {
         --progress-active-color: var(--paper-light-green-500);
         --progress-secondary-color: var(--paper-light-green-100);
       }
@@ -50,29 +50,29 @@
     <div class="vertical-section-container">
       <h4>Progress bar</h4>
       <div class="vertical-section">
-        <candy-progress></candy-progress>
-        <candy-button raised onclick="startProgress();">Start</candy-button>
+        <everest-progress></everest-progress>
+        <everest-button raised onclick="startProgress();">Start</everest-button>
       </div>
 
       <h4>Indeterminate</h4>
       <div class="vertical-section">
-        <candy-progress indeterminate></candy-progress><br>
-        <candy-progress class="blue" indeterminate value="800" min="100" max="1000"></candy-progress><br>
+        <everest-progress indeterminate></everest-progress><br>
+        <everest-progress class="blue" indeterminate value="800" min="100" max="1000"></everest-progress><br>
       </div>
 
       <h4>Color</h4>
       <div class="vertical-section">
-        <candy-progress value="40" class="blue"></candy-progress><br>
-        <candy-progress value="800" min="100" max="1000" class="red"></candy-progress><br>
-        <candy-progress value="40" class="orange"></candy-progress><br>
-        <candy-progress value="200" max="200" class="green"></candy-progress><br>
-        <candy-progress value="40" secondary-progress="80" class="blue"></candy-progress><br>
+        <everest-progress value="40" class="blue"></everest-progress><br>
+        <everest-progress value="800" min="100" max="1000" class="red"></everest-progress><br>
+        <everest-progress value="40" class="orange"></everest-progress><br>
+        <everest-progress value="200" max="200" class="green"></everest-progress><br>
+        <everest-progress value="40" secondary-progress="80" class="blue"></everest-progress><br>
       </div>
     </div>
 
     <script>
-      var progress = document.querySelector('candy-progress');
-      var button = document.querySelector('candy-button');
+      var progress = document.querySelector('everest-progress');
+      var button = document.querySelector('everest-button');
       var repeat, maxRepeat = 5, animating = false;
 
       function nextProgress() {

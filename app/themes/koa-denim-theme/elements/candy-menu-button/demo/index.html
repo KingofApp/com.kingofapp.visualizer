@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-menu-button demo</title>
+    <title>denim-menu-button demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
@@ -13,24 +13,24 @@
     <link rel="import" href="../../../../../bower_components/iron-image/iron-image.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-button/candy-button.html">
-    <link rel="import" href="../../candy-icon-button/candy-icon-button.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../../candy-menu/candy-menu.html">
-    <link rel="import" href="../candy-menu-button.html">
+    <link rel="import" href="../../denim-button/denim-button.html">
+    <link rel="import" href="../../denim-icon-button/denim-icon-button.html">
+    <link rel="import" href="../../denim-item/denim-item.html">
+    <link rel="import" href="../../denim-menu/denim-menu.html">
+    <link rel="import" href="../denim-menu-button.html">
 
     <style>
-      candy-button {
+      denim-button {
         display: block;
         background: #4285f4;
         color: #fff;
       }
 
-      candy-menu {
+      denim-menu {
         display: block;
       }
 
-      candy-menu-button {
+      denim-menu-button {
         margin: auto;
       }
 
@@ -54,14 +54,14 @@
         <div>
           <h4>Icon Button + Menu</h4>
           <div class="horizontal-section">
-            <candy-menu-button>
-              <candy-icon-button icon="menu" class="dropdown-trigger" alt="menu"></candy-icon-button>
-              <candy-menu class="dropdown-content">
+            <denim-menu-button>
+              <denim-icon-button icon="menu" class="dropdown-trigger" alt="menu"></denim-icon-button>
+              <denim-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <denim-item>[[letter]]</denim-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </denim-menu>
+            </denim-menu-button>
           </div>
         </div>
       </div>
@@ -70,14 +70,14 @@
         <div>
           <h4>Menu with multi selection</h4>
           <div class="horizontal-section">
-            <candy-menu-button ignore-select>
-              <candy-icon-button icon="menu" class="dropdown-trigger" alt="multi select"></candy-icon-button>
-              <candy-menu class="dropdown-content" multi>
+            <denim-menu-button ignore-select>
+              <denim-icon-button icon="menu" class="dropdown-trigger" alt="multi select"></denim-icon-button>
+              <denim-menu class="dropdown-content" multi>
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <denim-item>[[letter]]</denim-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </denim-menu>
+            </denim-menu-button>
           </div>
         </div>
       </div>
@@ -86,14 +86,14 @@
         <div>
           <h4>Disabled</h4>
           <div class="horizontal-section">
-            <candy-menu-button disabled>
-              <candy-icon-button icon="menu" class="dropdown-trigger" alt="menu"></candy-icon-button>
-              <candy-menu class="dropdown-content">
+            <denim-menu-button disabled>
+              <denim-icon-button icon="menu" class="dropdown-trigger" alt="menu"></denim-icon-button>
+              <denim-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <denim-item>[[letter]]</denim-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </denim-menu>
+            </denim-menu-button>
           </div>
         </div>
       </div>
@@ -102,14 +102,14 @@
         <div>
           <h4>Alternate Alignment</h4>
           <div class="horizontal-section">
-            <candy-menu-button vertical-align="bottom" horizontal-align="right">
-              <candy-icon-button icon="menu" class="dropdown-trigger" alt="bottom align"></candy-icon-button>
-              <candy-menu class="dropdown-content">
+            <denim-menu-button vertical-align="bottom" horizontal-align="right">
+              <denim-icon-button icon="menu" class="dropdown-trigger" alt="bottom align"></denim-icon-button>
+              <denim-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <denim-item>[[letter]]</denim-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </denim-menu>
+            </denim-menu-button>
           </div>
         </div>
       </div>
@@ -118,17 +118,17 @@
         <div>
           <h4>Alternate Button</h4>
           <div class="horizontal-section">
-            <candy-menu-button>
-              <candy-button class="dropdown-trigger" raised>
+            <denim-menu-button>
+              <denim-button class="dropdown-trigger" raised>
                 <iron-icon icon="check"></iron-icon>
                 <span>Dinosaurs</span>
-              </candy-button>
-              <candy-menu class="dropdown-content">
+              </denim-button>
+              <denim-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                  <candy-item>[[dinosaur]]</candy-item>
+                  <denim-item>[[dinosaur]]</denim-item>
                 </template>
-              </candy-menu>
-            </candy-menu-button>
+              </denim-menu>
+            </denim-menu-button>
           </div>
         </div>
       </div>
@@ -137,10 +137,10 @@
         <div>
           <h4>Alternate Content</h4>
           <div class="horizontal-section">
-            <candy-menu-button vertical-align="bottom">
-              <candy-icon-button class="dropdown-trigger" icon="polymer" alt="polymer"></candy-icon-button>
+            <denim-menu-button vertical-align="bottom">
+              <denim-icon-button class="dropdown-trigger" icon="polymer" alt="polymer"></denim-icon-button>
               <iron-image class="dropdown-content" src="../../../../../bower_components/iron-image/demo/polymer.svg"></iron-image>
-            </candy-menu-button>
+            </denim-menu-button>
           </div>
         </div>
       </div>

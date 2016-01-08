@@ -5,39 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-slider demo</title>
+    <title>seven-seas-slider demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../candy-slider.html">
+    <link rel="import" href="../seven-seas-slider.html">
 
     <style is="custom-style">
       body {
         padding: 40px;
       }
 
-      candy-slider {
+      seven-seas-slider {
         width: 100%;
       }
 
-      candy-slider.blue {
+      seven-seas-slider.blue {
         --slider-knob-color: var(--paper-light-blue-500);
         --slider-active-color: var(--paper-light-blue-500);
       }
 
-      candy-slider.red {
+      seven-seas-slider.red {
         --slider-knob-color: var(--paper-red-500);
         --slider-active-color: var(--paper-red-500);
       }
 
-      candy-slider.green {
+      seven-seas-slider.green {
         --slider-knob-color: var(--paper-green-500);
         --slider-active-color: var(--paper-green-500);
       }
 
-      candy-slider.orange {
+      seven-seas-slider.orange {
         --slider-knob-color: var(--paper-orange-500);
         --slider-active-color: var(--paper-orange-500);
         --slider-pin-color: var(--paper-orange-500);
@@ -58,45 +58,45 @@
       <h4>Default</h4>
       <div class="vertical-section">
         <div>Oxygen</div>
-        <candy-slider value="21" id="test"></candy-slider><br><br>
+        <seven-seas-slider value="21" id="test"></seven-seas-slider><br><br>
         <div>Argon</div>
-        <candy-slider value="1"></candy-slider><br><br>
+        <seven-seas-slider value="1"></seven-seas-slider><br><br>
         <div>Hydrogen</div>
-        <candy-slider value="0"></candy-slider><br><br>
+        <seven-seas-slider value="0"></seven-seas-slider><br><br>
         <div>Nitrogen</div>
-        <candy-slider value="78" secondary-progress="85"></candy-slider><br><br>
+        <seven-seas-slider value="78" secondary-progress="85"></seven-seas-slider><br><br>
         <div>Sprinkles</div>
-        <candy-slider disabled value="33"></candy-slider>
+        <seven-seas-slider disabled value="33"></seven-seas-slider>
       </div>
 
       <h4>Editable</h4>
       <div class="vertical-section">
         <div>
           <div>R</div>
-          <candy-slider class="red" value="23" max="255" editable></candy-slider>
+          <seven-seas-slider class="red" value="23" max="255" editable></seven-seas-slider>
         </div>
         <div>
           <div>G</div>
-          <candy-slider class="green" value="183" max="255" editable></candy-slider>
+          <seven-seas-slider class="green" value="183" max="255" editable></seven-seas-slider>
         </div>
         <div>
           <div>B</div>
-          <candy-slider class="blue" value="211" max="255" editable></candy-slider>
+          <seven-seas-slider class="blue" value="211" max="255" editable></seven-seas-slider>
         </div>
         <div>
         <div>&alpha;</div>
-        <candy-slider max="1.0" step="0.01" editable></candy-slider>
+        <seven-seas-slider max="1.0" step="0.01" editable></seven-seas-slider>
         </div>
       </div>
 
       <h4>Labelled pins</h4>
       <div class="vertical-section">
         <div>Brightness</div><br>
-        <candy-slider pin value="20" class="orange"></candy-slider>
+        <seven-seas-slider pin value="20" class="orange"></seven-seas-slider>
         <div>Ratings: <span id="ratingsLabel" class="caption"></span></div><br>
-        <candy-slider id="ratings" pin snaps max="10" max-markers="10" step="1" value="5" class="orange"></candy-slider>
+        <seven-seas-slider id="ratings" pin snaps max="10" max-markers="10" step="1" value="5" class="orange"></seven-seas-slider>
         <div>Grade: <span id="gradeLabel" class="caption"></span></div><br>
-        <candy-slider id="grade" pin value="20" secondary-progress="70" class="blue"></candy-slider>
+        <seven-seas-slider id="grade" pin value="20" secondary-progress="70" class="blue"></seven-seas-slider>
       </div>
     </div>
 

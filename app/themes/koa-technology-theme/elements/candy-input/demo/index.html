@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-input demo</title>
+    <title>technology-input demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
@@ -14,9 +14,9 @@
     <link rel="import" href="../../../../../bower_components/iron-icon/iron-icon.html">
     <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
-    <link rel="import" href="../../candy-icon-button/candy-icon-button.html">
-    <link rel="import" href="../candy-input.html">
-    <link rel="import" href="../candy-textarea.html">
+    <link rel="import" href="../../technology-icon-button/technology-icon-button.html">
+    <link rel="import" href="../technology-input.html">
+    <link rel="import" href="../technology-textarea.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
       .vertical-section-container {
@@ -29,7 +29,7 @@
         @apply(--layout-justified);
       }
 
-      candy-input {
+      technology-input {
         display: block;
       }
 
@@ -42,7 +42,7 @@
         width: calc(100% - 75px);
       }
 
-      candy-icon-button {
+      technology-icon-button {
         color: var(--paper-red-300);
         width: 23px; /* 15px + 2*4px for padding */
         height: 23px;
@@ -58,39 +58,39 @@
     <div class="vertical-section-container centered">
       <h3>Inputs can have different types, and be disabled</h3>
       <div class="horizontal-section">
-        <candy-input label="text input"></candy-input>
-        <candy-textarea label="autoresizing textarea input"></candy-textarea>
-        <candy-input label="password input" type="password"></candy-input>
-        <candy-input label="disabled input" disabled></candy-input>
+        <technology-input label="text input"></technology-input>
+        <technology-textarea label="autoresizing textarea input"></technology-textarea>
+        <technology-input label="password input" type="password"></technology-input>
+        <technology-input label="disabled input" disabled></technology-input>
       </div>
 
       <h3>Inputs can have character counters</h3>
       <div class="horizontal-section">
-        <candy-input label="simple character counter" char-counter></candy-input>
-        <candy-input label="input with at most 10 characters" char-counter maxlength="10"></candy-input>
+        <technology-input label="simple character counter" char-counter></technology-input>
+        <technology-input label="input with at most 10 characters" char-counter maxlength="10"></technology-input>
       </div>
 
       <h3>Inputs can validate automatically or on demand, and can have custom error messages</h3>
       <div class="horizontal-section">
-        <candy-input label="this input requires some text" required auto-validate error-message="needs some text!"></candy-input>
-        <candy-input label="this input requires letters only" auto-validate pattern="[a-zA-Z]*" error-message="letters only!"></candy-input>
-        <candy-input label="this input will only let you type letters" auto-validate allowed-pattern="[a-zA-Z]"></candy-input>
-        <candy-input id="inputForValidation" required label="this input is manually validated" pattern="[a-zA-Z]*" error-message="letters only!"></candy-input>
+        <technology-input label="this input requires some text" required auto-validate error-message="needs some text!"></technology-input>
+        <technology-input label="this input requires letters only" auto-validate pattern="[a-zA-Z]*" error-message="letters only!"></technology-input>
+        <technology-input label="this input will only let you type letters" auto-validate allowed-pattern="[a-zA-Z]"></technology-input>
+        <technology-input id="inputForValidation" required label="this input is manually validated" pattern="[a-zA-Z]*" error-message="letters only!"></technology-input>
         <button onclick="validate()">Validate!</button>
       </div>
 
       <h3>Inputs can have prefixes and suffixes</h3>
       <div class="horizontal-section horizontal">
-        <candy-input label="total" type="number">
+        <technology-input label="total" type="number">
           <div prefix>$</div>
-        </candy-input>
-        <candy-input label="username" id="inputWithButton">
+        </technology-input>
+        <technology-input label="username" id="inputWithButton">
           <iron-icon icon="mail" prefix></iron-icon>
           <div suffix>@email.com</div>
-          <candy-icon-button suffix onclick="clearInput()"
+          <technology-icon-button suffix onclick="clearInput()"
               icon="clear" alt="clear" title="clear">
-          </candy-icon-button>
-        </candy-input>
+          </technology-icon-button>
+        </technology-input>
       </div>
     </div>
 

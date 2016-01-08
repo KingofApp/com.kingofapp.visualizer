@@ -1,8 +1,8 @@
 {
-  "name": "koa-candy-theme",
+  "name": "koa-la-resistance-theme",
   "authors": "Abdón Rodríguez Davila, <thepeer@kingofapp.es>",
-  "description": "candy theme for King of App",
-  "main": "koa-candy-theme.html",
+  "description": "la-resistance theme for King of App",
+  "main": "koa-la-resistance-theme.html",
   "moduleType": [
     "globals"
   ],

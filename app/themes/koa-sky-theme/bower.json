@@ -1,8 +1,8 @@
 {
-  "name": "koa-candy-theme",
+  "name": "koa-sky-theme",
   "authors": "Abdón Rodríguez Davila, <thepeer@kingofapp.es>",
-  "description": "candy theme for King of App",
-  "main": "koa-candy-theme.html",
+  "description": "sky theme for King of App",
+  "main": "koa-sky-theme.html",
   "moduleType": [
     "globals"
   ],

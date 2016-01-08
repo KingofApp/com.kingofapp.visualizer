@@ -1,10 +1,10 @@
 /* General styles */
 
-candy-card {
+everest-card {
   width: 100%;
 }
 
-candy-card + candy-card {
+everest-card + everest-card {
   margin-top: 15px;
 }
 
@@ -18,7 +18,7 @@ candy-card + candy-card {
   margin: 15px;
 }
 
-.contact form candy-button {
+.contact form everest-button {
   float: right;
   margin-top: 15px;
 }

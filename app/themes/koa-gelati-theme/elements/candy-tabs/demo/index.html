@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-tabs demo</title>
+    <title>gelati-tabs demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-toolbar/candy-toolbar.html">
-    <link rel="import" href="../candy-tabs.html">
+    <link rel="import" href="../../gelati-toolbar/gelati-toolbar.html">
+    <link rel="import" href="../gelati-tabs.html">
 
     <style is="custom-style">
       body {
@@ -23,15 +23,15 @@
         color: #333;
       }
 
-      candy-tabs, candy-toolbar {
+      gelati-tabs, gelati-toolbar {
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
       }
 
-      candy-toolbar candy-tabs {
+      gelati-toolbar gelati-tabs {
         box-shadow: none;
       }
 
-      candy-tabs[align-bottom] {
+      gelati-tabs[align-bottom] {
         box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.15);
       }
 
@@ -58,75 +58,75 @@
   <body>
     <h3>A. Standar</h3>
 
-    <candy-tabs selected="0">
-      <candy-tab>ITEM ONE</candy-tab>
-      <candy-tab>ITEM TWO</candy-tab>
-      <candy-tab>ITEM THREE</candy-tab>
-    </candy-tabs>
+    <gelati-tabs selected="0">
+      <gelati-tab>ITEM ONE</gelati-tab>
+      <gelati-tab>ITEM TWO</gelati-tab>
+      <gelati-tab>ITEM THREE</gelati-tab>
+    </gelati-tabs>
 
     <h3>B. Scrollable Tabs</h3>
 
-    <candy-tabs id="scrollableTabs" selected="0" scrollable>
-      <candy-tab>NUMBER ONE ITEM</candy-tab>
-      <candy-tab>ITEM TWO</candy-tab>
-      <candy-tab>THE THIRD ITEM</candy-tab>
-      <candy-tab>THE ITEM FOUR</candy-tab>
-      <candy-tab>FIFTH</candy-tab>
-      <candy-tab>THE SIXTH TAB</candy-tab>
-      <candy-tab>NUMBER SEVEN</candy-tab>
-      <candy-tab>EIGHT</candy-tab>
-      <candy-tab>NUMBER NINE</candy-tab>
-      <candy-tab>THE TENTH</candy-tab>
-      <candy-tab>THE ITEM ELEVEN</candy-tab>
-      <candy-tab>TWELFTH ITEM</candy-tab>
-    </candy-tabs>
+    <gelati-tabs id="scrollableTabs" selected="0" scrollable>
+      <gelati-tab>NUMBER ONE ITEM</gelati-tab>
+      <gelati-tab>ITEM TWO</gelati-tab>
+      <gelati-tab>THE THIRD ITEM</gelati-tab>
+      <gelati-tab>THE ITEM FOUR</gelati-tab>
+      <gelati-tab>FIFTH</gelati-tab>
+      <gelati-tab>THE SIXTH TAB</gelati-tab>
+      <gelati-tab>NUMBER SEVEN</gelati-tab>
+      <gelati-tab>EIGHT</gelati-tab>
+      <gelati-tab>NUMBER NINE</gelati-tab>
+      <gelati-tab>THE TENTH</gelati-tab>
+      <gelati-tab>THE ITEM ELEVEN</gelati-tab>
+      <gelati-tab>TWELFTH ITEM</gelati-tab>
+    </gelati-tabs>
 
     <h3>C. Scrollable tabs within right-to-left region</h3>
 
     <div dir="rtl">
-      <candy-tabs selected="0" scrollable>
-        <candy-tab>NUMBER ONE ITEM</candy-tab>
-        <candy-tab>ITEM TWO</candy-tab>
-        <candy-tab>THE THIRD ITEM</candy-tab>
-        <candy-tab>THE ITEM FOUR</candy-tab>
-        <candy-tab>FIFTH</candy-tab>
-        <candy-tab>THE SIXTH TAB</candy-tab>
-        <candy-tab>NUMBER SEVEN</candy-tab>
-        <candy-tab>EIGHT</candy-tab>
-        <candy-tab>NUMBER NINE</candy-tab>
-        <candy-tab>THE TENTH</candy-tab>
-        <candy-tab>THE ITEM ELEVEN</candy-tab>
-        <candy-tab>TWELFTH ITEM</candy-tab>
-      </candy-tabs>
+      <gelati-tabs selected="0" scrollable>
+        <gelati-tab>NUMBER ONE ITEM</gelati-tab>
+        <gelati-tab>ITEM TWO</gelati-tab>
+        <gelati-tab>THE THIRD ITEM</gelati-tab>
+        <gelati-tab>THE ITEM FOUR</gelati-tab>
+        <gelati-tab>FIFTH</gelati-tab>
+        <gelati-tab>THE SIXTH TAB</gelati-tab>
+        <gelati-tab>NUMBER SEVEN</gelati-tab>
+        <gelati-tab>EIGHT</gelati-tab>
+        <gelati-tab>NUMBER NINE</gelati-tab>
+        <gelati-tab>THE TENTH</gelati-tab>
+        <gelati-tab>THE ITEM ELEVEN</gelati-tab>
+        <gelati-tab>TWELFTH ITEM</gelati-tab>
+      </gelati-tabs>
     </div>
 
     <h3>D. Link Tabs</h3>
 
-    <candy-tabs selected="0">
-      <candy-tab link><a href="#item1" class="link">ITEM ONE</a></candy-tab>
-      <candy-tab link><a href="#item2" class="link">ITEM TWO</a></candy-tab>
-      <candy-tab link><a href="#item3" class="link">ITEM THREE</a></candy-tab>
-    </candy-tabs>
+    <gelati-tabs selected="0">
+      <gelati-tab link><a href="#item1" class="link">ITEM ONE</a></gelati-tab>
+      <gelati-tab link><a href="#item2" class="link">ITEM TWO</a></gelati-tab>
+      <gelati-tab link><a href="#item3" class="link">ITEM THREE</a></gelati-tab>
+    </gelati-tabs>
 
     <h3>E. Tabs in Toolbar</h3>
 
-    <candy-toolbar class="tall">
-      <candy-tabs selected="0" class="bottom self-end" style="width: 300px;">
-        <candy-tab>ITEM ONE</candy-tab>
-        <candy-tab>ITEM TWO</candy-tab>
-      </candy-tabs>
+    <gelati-toolbar class="tall">
+      <gelati-tabs selected="0" class="bottom self-end" style="width: 300px;">
+        <gelati-tab>ITEM ONE</gelati-tab>
+        <gelati-tab>ITEM TWO</gelati-tab>
+      </gelati-tabs>
       <div class="bottom flex"></div>
-    </candy-toolbar>
+    </gelati-toolbar>
 
     <h3>F. Bound Selection</h3>
 
     <template is="dom-bind">
       <h2>Current Tab: <span>[[selected]]</span></h2>
-      <candy-tabs selected="{{selected}}">
-        <candy-tab>ITEM ONE</candy-tab>
-        <candy-tab>ITEM TWO</candy-tab>
-        <candy-tab>ITEM THREE</candy-tab>
-      </candy-tabs>
+      <gelati-tabs selected="{{selected}}">
+        <gelati-tab>ITEM ONE</gelati-tab>
+        <gelati-tab>ITEM TWO</gelati-tab>
+        <gelati-tab>ITEM THREE</gelati-tab>
+      </gelati-tabs>
     </template>
   </body>
 </html>

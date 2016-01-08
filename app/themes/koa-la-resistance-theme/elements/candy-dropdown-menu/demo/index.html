@@ -5,23 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-dropdown-menu demo</title>
+    <title>la-resistance-dropdown-menu demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../../candy-menu/candy-menu.html">
-    <link rel="import" href="../candy-dropdown-menu.html">
+    <link rel="import" href="../../la-resistance-item/la-resistance-item.html">
+    <link rel="import" href="../../la-resistance-menu/la-resistance-menu.html">
+    <link rel="import" href="../la-resistance-dropdown-menu.html">
 
     <style is="custom-style">
-      candy-dropdown-menu {
+      la-resistance-dropdown-menu {
         text-align: left;
         margin: auto;
         width: 180px;
       }
 
-      candy-dropdown-menu.letters {
+      la-resistance-dropdown-menu.letters {
         width: 90px;
       }
 
@@ -42,13 +42,13 @@
         <div>
           <h4>Basic Menu</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu label="Dinosaurs">
-              <candy-menu class="dropdown-content">
+            <la-resistance-dropdown-menu label="Dinosaurs">
+              <la-resistance-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                  <candy-item>[[dinosaur]]</candy-item>
+                  <la-resistance-item>[[dinosaur]]</la-resistance-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </la-resistance-menu>
+            </la-resistance-dropdown-menu>
           </div>
         </div>
       </div>
@@ -57,13 +57,13 @@
         <div>
           <h4>Pre-selected Value</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu label="Dinosaurs">
-              <candy-menu class="dropdown-content" selected="1">
+            <la-resistance-dropdown-menu label="Dinosaurs">
+              <la-resistance-menu class="dropdown-content" selected="1">
                 <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                  <candy-item>[[dinosaur]]</candy-item>
+                  <la-resistance-item>[[dinosaur]]</la-resistance-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </la-resistance-menu>
+            </la-resistance-dropdown-menu>
           </div>
         </div>
       </div>
@@ -72,13 +72,13 @@
         <div>
           <h4>Disabled</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu disabled label="Disabled">
-              <candy-menu class="dropdown-content">
+            <la-resistance-dropdown-menu disabled label="Disabled">
+              <la-resistance-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <la-resistance-item>[[letter]]</la-resistance-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </la-resistance-menu>
+            </la-resistance-dropdown-menu>
           </div>
         </div>
       </div>
@@ -87,13 +87,13 @@
         <div>
           <h4>No underline (menu from bottom)</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu class="nounderline" label="Letters" vertical-align="bottom">
-              <candy-menu class="dropdown-content">
+            <la-resistance-dropdown-menu class="nounderline" label="Letters" vertical-align="bottom">
+              <la-resistance-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[letters]]" as="letter">
-                  <candy-item>[[letter]]</candy-item>
+                  <la-resistance-item>[[letter]]</la-resistance-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </la-resistance-menu>
+            </la-resistance-dropdown-menu>
           </div>
         </div>
       </div>
@@ -102,13 +102,13 @@
         <div>
           <h4>No Animations</h4>
           <div class="horizontal-section">
-            <candy-dropdown-menu label="Dinosaurs" no-animations>
-              <candy-menu class="dropdown-content">
+            <la-resistance-dropdown-menu label="Dinosaurs" no-animations>
+              <la-resistance-menu class="dropdown-content">
                 <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                  <candy-item>[[dinosaur]]</candy-item>
+                  <la-resistance-item>[[dinosaur]]</la-resistance-item>
                 </template>
-              </candy-menu>
-            </candy-dropdown-menu>
+              </la-resistance-menu>
+            </la-resistance-dropdown-menu>
           </div>
         </div>
       </div>

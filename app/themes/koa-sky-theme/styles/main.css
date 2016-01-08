@@ -1,10 +1,10 @@
 /* General styles */
 
-candy-card {
+sky-card {
   width: 100%;
 }
 
-candy-card + candy-card {
+sky-card + sky-card {
   margin-top: 15px;
 }
 
@@ -18,7 +18,7 @@ candy-card + candy-card {
   margin: 15px;
 }
 
-.contact form candy-button {
+.contact form sky-button {
   float: right;
   margin-top: 15px;
 }

@@ -1,12 +1,12 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-input/iron-input.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-input-behavior.html">
-<link rel="import" href="../candy-styles/default-theme.html">
-<link rel="import" href="candy-input-char-counter.html">
-<link rel="import" href="candy-input-container.html">
-<link rel="import" href="candy-input-error.html">
+<link rel="import" href="../seven-seas-styles/default-theme.html">
+<link rel="import" href="seven-seas-input-char-counter.html">
+<link rel="import" href="seven-seas-input-container.html">
+<link rel="import" href="seven-seas-input-error.html">
 
-<dom-module id="candy-input">
+<dom-module id="seven-seas-input">
   <template>
     <!-- write your styles here -->
     <style>
@@ -33,7 +33,7 @@
     <!-- end styles -->
 
     <!-- write your template here -->
-    <candy-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
+    <seven-seas-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
       <content select="[prefix]"></content>
 
       <label hidden$="[[!label]]">[[label]]</label>
@@ -75,19 +75,19 @@
       <content select="[suffix]"></content>
 
       <template is="dom-if" if="[[errorMessage]]">
-        <candy-input-error>[[errorMessage]]</candy-input-error>
+        <seven-seas-input-error>[[errorMessage]]</seven-seas-input-error>
       </template>
 
       <template is="dom-if" if="[[charCounter]]">
-        <candy-input-char-counter></candy-input-char-counter>
+        <seven-seas-input-char-counter></seven-seas-input-char-counter>
       </template>
-    </candy-input-container>
+    </seven-seas-input-container>
     <!-- end template -->
   </template>
 
   <script>
     Polymer({
-      is: 'candy-input',
+      is: 'seven-seas-input',
 
       behaviors: [
         Polymer.KoaInputBehavior

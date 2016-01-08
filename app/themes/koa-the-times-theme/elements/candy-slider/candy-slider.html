@@ -3,11 +3,11 @@
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-slider-behavior.html">
 <link rel="import" href="../../../../bower_components/paper-behaviors/paper-inky-focus-behavior.html">
 <link rel="import" href="../../../../bower_components/paper-styles/color.html">
-<link rel="import" href="../candy-input/candy-input.html">
-<link rel="import" href="../candy-progress/candy-progress.html">
-<link rel="import" href="../candy-styles/default-theme.html">
+<link rel="import" href="../the-times-input/the-times-input.html">
+<link rel="import" href="../the-times-progress/the-times-progress.html">
+<link rel="import" href="../the-times-styles/default-theme.html">
 
-<dom-module id="candy-slider">
+<dom-module id="the-times-slider">
   <template strip-whitespace>
     <!-- write your styles here -->
     <style>
@@ -264,7 +264,7 @@
     <!-- write your template here -->
     <div id="sliderContainer" class$="[[_getClassNames(disabled, pin, snaps, immediateValue, min, expand, dragging, transiting, editable)]]">
       <div class="bar-container">
-        <candy-progress
+        <the-times-progress
           disabled$="[[disabled]]"
           id="sliderBar"
           aria-hidden="true"
@@ -276,7 +276,7 @@
           on-down="_bardown"
           on-up="_resetKnob"
           on-track="_onTrack">
-        </candy-progress>
+        </the-times-progress>
       </div>
 
       <template is="dom-if" if="[[snaps]]">
@@ -297,7 +297,7 @@
     </div>
 
     <template is="dom-if" if="[[editable]]">
-      <candy-input
+      <the-times-input
         id="input"
         type="number"
         step="[[step]]"
@@ -309,14 +309,14 @@
         on-change="_changeValue"
         on-keydown="_inputKeyDown"
         no-label-float>
-      </candy-input>
+      </the-times-input>
     </template>
     <!-- end template -->
   </template>
 
   <script>
     Polymer({
-      is: 'candy-slider',
+      is: 'the-times-slider',
 
       behaviors: [
         Polymer.KoaSliderBehavior,

@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <title>candy-menu demo</title>
+    <title>melon-menu demo</title>
 
     <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
-    <link rel="import" href="../../candy-item/candy-item.html">
-    <link rel="import" href="../candy-menu.html">
-    <link rel="import" href="../candy-submenu.html">
+    <link rel="import" href="../../melon-item/melon-item.html">
+    <link rel="import" href="../melon-menu.html">
+    <link rel="import" href="../melon-submenu.html">
 
     <style is="custom-style">
       .horizontal-section {
@@ -28,17 +28,17 @@
         background: #ccc;
       }
 
-      candy-item {
+      melon-item {
         --item: {
           cursor: pointer;
         };
       }
 
-      .sublist candy-item {
+      .sublist melon-item {
         padding-left: 30px;
       }
 
-      .sublist2 candy-item {
+      .sublist2 melon-item {
         padding-left: 50px;
       }
     </style>
@@ -48,90 +48,90 @@
       <div>
         <h4>Standard</h4>
         <div class="horizontal-section">
-          <candy-menu>
-            <candy-item>Inbox</candy-item>
-            <candy-item>Starred</candy-item>
-            <candy-item>Sent mail</candy-item>
-            <candy-item>Drafts</candy-item>
-          </candy-menu>
+          <melon-menu>
+            <melon-item>Inbox</melon-item>
+            <melon-item>Starred</melon-item>
+            <melon-item>Sent mail</melon-item>
+            <melon-item>Drafts</melon-item>
+          </melon-menu>
         </div>
       </div>
 
       <div>
         <h4>Pre-selected</h4>
         <div class="horizontal-section">
-          <candy-menu selected="0">
-            <candy-item>Inbox</candy-item>
-            <candy-item disabled>Starred</candy-item>
-            <candy-item>Sent mail</candy-item>
-            <candy-item>Drafts</candy-item>
-          </candy-menu>
+          <melon-menu selected="0">
+            <melon-item>Inbox</melon-item>
+            <melon-item disabled>Starred</melon-item>
+            <melon-item>Sent mail</melon-item>
+            <melon-item>Drafts</melon-item>
+          </melon-menu>
         </div>
       </div>
 
       <div>
         <h4>Multi-select</h4>
         <div class="horizontal-section">
-          <candy-menu multi>
-            <candy-item>Bold</candy-item>
-            <candy-item>Italic</candy-item>
-            <candy-item>Underline</candy-item>
-            <candy-item>Strikethrough</candy-item>
-          </candy-menu>
+          <melon-menu multi>
+            <melon-item>Bold</melon-item>
+            <melon-item>Italic</melon-item>
+            <melon-item>Underline</melon-item>
+            <melon-item>Strikethrough</melon-item>
+          </melon-menu>
         </div>
       </div>
 
       <div>
         <h4>Sub-menu</h4>
         <div class="horizontal-section">
-          <candy-menu attr-for-item-title="label" multi>
-            <candy-submenu label="candy-menu">
-              <candy-item class="menu-trigger">candy-menu</candy-item>
-              <candy-menu class="menu-content sublist" multi>
-                <candy-submenu label="Properties">
-                  <candy-item class="menu-trigger">Properties</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>focusedItem</candy-item>
-                    <candy-item>attrForItemTitle</candy-item>
-                  </candy-menu>
-                </candy-submenu>
-                <candy-submenu label="Methods">
-                  <candy-item class="menu-trigger">Methods</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>select(value)</candy-item>
-                  </candy-menu>
-                </candy-submenu>
-            </candy-menu>
-          </candy-submenu>
+          <melon-menu attr-for-item-title="label" multi>
+            <melon-submenu label="melon-menu">
+              <melon-item class="menu-trigger">melon-menu</melon-item>
+              <melon-menu class="menu-content sublist" multi>
+                <melon-submenu label="Properties">
+                  <melon-item class="menu-trigger">Properties</melon-item>
+                  <melon-menu class="menu-content sublist2">
+                    <melon-item>focusedItem</melon-item>
+                    <melon-item>attrForItemTitle</melon-item>
+                  </melon-menu>
+                </melon-submenu>
+                <melon-submenu label="Methods">
+                  <melon-item class="menu-trigger">Methods</melon-item>
+                  <melon-menu class="menu-content sublist2">
+                    <melon-item>select(value)</melon-item>
+                  </melon-menu>
+                </melon-submenu>
+            </melon-menu>
+          </melon-submenu>
 
-          <candy-submenu label="candy-submenu">
-            <candy-item class="menu-trigger">candy-submenu</candy-item>
-            <candy-menu class="menu-content sublist">
-              <candy-submenu label="Properties">
-                <candy-item class="menu-trigger">Properties</candy-item>
-                <candy-menu class="menu-content sublist2">
-                  <candy-item>opened</candy-item>
-                </candy-menu>
-                </candy-submenu>
-                <candy-submenu label="Methods">
-                  <candy-item class="menu-trigger">Methods</candy-item>
-                  <candy-menu class="menu-content sublist2">
-                    <candy-item>open()</candy-item>
-                    <candy-item>close()</candy-item>
-                    <candy-item>toggle()</candy-item>
-                  </candy-menu>
-              </candy-submenu>
-            </candy-menu>
-          </candy-submenu>
+          <melon-submenu label="melon-submenu">
+            <melon-item class="menu-trigger">melon-submenu</melon-item>
+            <melon-menu class="menu-content sublist">
+              <melon-submenu label="Properties">
+                <melon-item class="menu-trigger">Properties</melon-item>
+                <melon-menu class="menu-content sublist2">
+                  <melon-item>opened</melon-item>
+                </melon-menu>
+                </melon-submenu>
+                <melon-submenu label="Methods">
+                  <melon-item class="menu-trigger">Methods</melon-item>
+                  <melon-menu class="menu-content sublist2">
+                    <melon-item>open()</melon-item>
+                    <melon-item>close()</melon-item>
+                    <melon-item>toggle()</melon-item>
+                  </melon-menu>
+              </melon-submenu>
+            </melon-menu>
+          </melon-submenu>
 
-            <candy-submenu label="Unavailable" disabled>
-              <candy-item class="menu-trigger">Unavailable</candy-item>
-              <candy-menu class="menu-content sublist">
-                <candy-item>Unavailable 1</candy-item>
-                <candy-item>Unavailable 2</candy-item>
-              </candy-menu>
-            </candy-submenu>
-          </candy-menu>
+            <melon-submenu label="Unavailable" disabled>
+              <melon-item class="menu-trigger">Unavailable</melon-item>
+              <melon-menu class="menu-content sublist">
+                <melon-item>Unavailable 1</melon-item>
+                <melon-item>Unavailable 2</melon-item>
+              </melon-menu>
+            </melon-submenu>
+          </melon-menu>
         </div>
       </div>
     </div>

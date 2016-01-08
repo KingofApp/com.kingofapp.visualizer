@@ -5,7 +5,6 @@ angular.element(document).ready(function () {
           .module('myApp').run( function run($rootScope) {
               $rootScope.appJsonStructure = data;
           })
-          .constant( 'redirectUrl', data.config.index )
           .config(['configServiceProvider', function (configServiceProvider) {
             configServiceProvider.config({
                 services: data.services

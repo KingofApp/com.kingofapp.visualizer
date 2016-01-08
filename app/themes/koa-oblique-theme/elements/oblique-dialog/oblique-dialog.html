@@ -1,0 +1,77 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-dialog-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+
+<dom-module id="oblique-dialog">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        -webkit-overflow-scrolling: touch;
+        background: var(--dialog-background-color, --primary-background-color);
+        border: 3px solid #b6e1f8;
+        box-shadow: 5px 2px 9px 0px rgba(0, 0, 0, 0.1);
+        color: var(--dialog-color, --primary-text-color);
+        display: block;
+        font-family: 'PT Sans Caption', sans-serif;
+        font-size: 12px;
+        margin: 24px 40px;
+        padding: 10px 20px;
+
+        @apply(--dialog);
+      }
+
+      :host > ::content > * {
+        margin-top: 20px;
+        padding: 0 24px;
+      }
+
+      :host > ::content > .no-padding {
+        padding: 0;
+      }
+
+      :host > ::content > *:first-child {
+        margin-top: 24px;
+      }
+
+      :host > ::content > *:last-child {
+        margin-bottom: 24px;
+      }
+
+      :host > ::content h2 {
+        font-family: 'PT Sans Caption', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0;
+        position: relative;
+
+        @apply(--dialog-title);
+      }
+
+      :host > ::content .buttons {
+        color: var(--dialog-button-color, --default-primary-color);
+        margin: 0;
+        padding: 8px 8px 8px 24px;
+        position: relative;
+
+        @apply(--layout-horizontal);
+        @apply(--layout-end-justified);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-dialog',
+
+      behaviors: [
+        Polymer.KoaDialogBehavior
+      ]
+    });
+  </script>
+</dom-module>

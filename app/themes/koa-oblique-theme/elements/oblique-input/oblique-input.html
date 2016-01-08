@@ -1,0 +1,97 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-input-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+<link rel="import" href="oblique-input-char-counter.html">
+<link rel="import" href="oblique-input-container.html">
+<link rel="import" href="oblique-input-error.html">
+
+<dom-module id="oblique-input">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+      }
+
+      input::-webkit-input-placeholder {
+        color: var(--input-container-color, --secondary-text-color);
+      }
+
+      input:-moz-placeholder {
+        color: var(--input-container-color, --secondary-text-color);
+      }
+
+      input::-moz-placeholder {
+        color: var(--input-container-color, --secondary-text-color);
+      }
+
+      input:-ms-input-placeholder {
+        color: var(--input-container-color, --secondary-text-color);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <oblique-input-container auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]" class="input-container">
+      <label hidden$="[[!label]]">[[label]]</label>
+
+      <content select="[prefix]"></content>
+
+      <input is="iron-input" id="input"
+        aria-labelledby$="[[_ariaLabelledBy]]"
+        aria-describedby$="[[_ariaDescribedBy]]"
+        disabled$="[[disabled]]"
+        bind-value="{{value}}"
+        invalid="{{invalid}}"
+        prevent-invalid-input="[[preventInvalidInput]]"
+        allowed-pattern="[[allowedPattern]]"
+        validator="[[validator]]"
+        type$="[[type]]"
+        pattern$="[[pattern]]"
+        required$="[[required]]"
+        autocomplete$="[[autocomplete]]"
+        autofocus$="[[autofocus]]"
+        inputmode$="[[inputmode]]"
+        minlength$="[[minlength]]"
+        maxlength$="[[maxlength]]"
+        min$="[[min]]"
+        max$="[[max]]"
+        step$="[[step]]"
+        name$="[[name]]"
+        placeholder$="[[placeholder]]"
+        readonly$="[[readonly]]"
+        list$="[[list]]"
+        size$="[[size]]"
+        autocapitalize$="[[autocapitalize]]"
+        autocorrect$="[[autocorrect]]"
+        on-change="_onChange"
+        tabindex$="[[tabindex]]"
+        autosave$="[[autosave]]"
+        results$="[[results]]"
+        accept$="[[accept]]"
+        multiple$="[[multiple]]">
+
+      <content select="[suffix]"></content>
+
+      <template is="dom-if" if="[[errorMessage]]">
+        <oblique-input-error>[[errorMessage]]</oblique-input-error>
+      </template>
+
+      <template is="dom-if" if="[[charCounter]]">
+        <oblique-input-char-counter></oblique-input-char-counter>
+      </template>
+    </oblique-input-container>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-input',
+
+      behaviors: [
+        Polymer.KoaInputBehavior
+      ]
+    });
+  </script>
+</dom-module>

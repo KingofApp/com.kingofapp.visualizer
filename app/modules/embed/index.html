@@ -1,6 +1,10 @@
-<div class='embed' ng-controller='embedCtrl'>
-  <iframe style='position:absolute;' id='embedtest' type="text/html" width="100%"
-    height="100%" ng-src="{{embed.modulescope.url}}"
-    allowfullscreen="" frameborder="0">
-  </iframe>
+<div ng-controller="embedCtrl" class="module embed">
+
+  <iframe id="embedtest" type="text/html" allowfullscreen=""
+    ng-src="{{embed.modulescope.url}}"
+    frameborder="0"
+    width="100%"
+    height="100%"
+    style="position:absolute"></iframe>
+
 </div>

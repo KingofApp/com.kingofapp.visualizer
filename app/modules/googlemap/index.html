@@ -1,19 +1,21 @@
 <style>
-#map_canvas {
-            position: relative;
-}
-.angular-google-map-container {
-    position: absolute;
-    top: 0px;
-    bottom: 0;
-    right: 0;
-    left: 0;
-}
+  google-map {
+    height: 100%;
+    width: 100%;
+    position:absolute;
+  }
+  .module{
+    padding:0px;
+  }
 </style>
-<lazy-load></lazy-load>
-<div class='googlemap' ng-controller='googlemapCtrl'>
-  <ui-gmap-google-map center='map.center' zoom='map.zoom' dragging='false'>
-    <ui-gmap-markers models="marker" coords="'self'" icon="'icon'">
-    </ui-gmap-markers>
-  </ui-gmap-google-map>
+
+<!-- <lazy-load></lazy-load> -->
+
+<div class="module googlemap" ng-controller="googlemapCtrl">
+  <!-- <ui-gmap-google-map center="map.center" zoom="map.zoom" dragging="false">
+    <ui-gmap-markers models="marker" coords="'self'" icon="'icon'"></ui-gmap-markers>
+  </ui-gmap-google-map> -->
+  <google-map fit-to-markers zoom="{{googlemap.modulescope.zoom}}">
+    <google-map-marker latitude="{{googlemap.modulescope.lat}}" longitude="{{googlemap.modulescope.lon}}"></google-map-marker>
+  </google-map>
 </div>

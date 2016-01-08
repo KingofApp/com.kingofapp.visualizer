@@ -10,6 +10,7 @@ function loadFunction($http, $scope, structureService, $location, $routeParams){
   $http.get('https://www.googleapis.com/youtube/v3/search',{  params: {
           channelId : $scope.youtubegallery.modulescope.channelid,
           part:"snippet",
+          order:"date",
           key:$scope.youtubegallery.modulescope.token
       }}
     ).success(function(data){

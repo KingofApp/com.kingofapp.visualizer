@@ -15,5 +15,6 @@ function loadFunction($scope, structureService, $location){
     }
 
   });
+  console.log(list);
   $scope.grouplist.modulescope.newsections=list;
 }

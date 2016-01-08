@@ -1,7 +1,9 @@
-<div class='wordpresssingle auto' ng-controller='wordpresssingleCtrl'>
-  <paper-item>{{wordpresssingle.message}}</paper-item>
-  <paper-card class='orange' image='{{wordpresssingle.item.featured_image.source}}'>
-    <h2 class="title-text card-content paper-card">{{wordpresssingle.item.title | cleanHex}}</h2>
-    <div class='card-content' ng-bind-html='wordpresssingle.item.content'></div>
-  </paper-card>
+<div ng-controller="wordpresssingleCtrl" class="module wordpresssingle">
+
+  <koa-item ng-if="wordpresssingle.message">{{wordpresssingle.message}}</koa-item>
+
+  <koa-card heading="{{wordpresssingle.item.title | cleanHex}}" image="{{wordpresssingle.item.featured_image.source}}">
+    <div class="card-content" ng-bind-html="wordpresssingle.item.content"></div>
+  </koa-card>
+
 </div>

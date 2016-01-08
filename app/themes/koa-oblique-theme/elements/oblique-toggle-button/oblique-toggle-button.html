@@ -1,0 +1,201 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-toggle-button-behavior.html">
+<link rel="import" href="../oblique-styles/default-theme.html">
+
+<dom-module id="oblique-toggle-button">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: inline-block;
+        white-space: nowrap;
+        cursor: pointer;
+        font-family: 'PT Sans Caption', sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+      }
+
+      :host(:focus) {
+        outline: none;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #toggleContainer {
+        display: inline-block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        vertical-align: sub;
+        background-color: transparent;
+      }
+
+      #toggleButton {
+        background-color: var(--toggle-button-unchecked-button-color, #ffffff);
+        border-radius: 50%;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: -6px;
+        left: -7px;
+        height: 25px;
+        width:  25px;
+        transition: -webkit-transform linear .08s, background-color linear .08s;
+        transition: transform linear .08s, background-color linear .08s;
+        will-change: transform;
+        box-sizing: border-box;
+        pointer-events: none;
+
+        @apply(--toggle-button-unchecked-button);
+      }
+
+      .toggle-button.dragging {
+          -webkit-transition: none;
+        transition: none;
+      }
+
+      #toggleBar {
+        background-color: var(--toggle-button-unchecked-bar-color, rgba(0, 0, 0, 0.3));
+        border-radius: 8px;
+        height: 100%;
+        opacity: 0.4;
+        pointer-events: none;
+        transition: background-color linear .08s;
+        width: 100%;
+        border-radius: 2px;
+        pointer-events: none;
+
+        @apply(--toggle-button-unchecked-bar);
+      }
+
+      /* label */
+      #toggleLabel {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 30px;
+        white-space: normal;
+        pointer-events: none;
+      }
+
+      #toggleLabel[hidden] {
+        display: none;
+      }
+
+      :host([presed]) #toggleButton {
+        height: 30px;
+      }
+
+      :host([active]) #toggleButton {
+          -webkit-transition: all 140ms;
+          transition: all 140ms;
+          background-color: #5f89fb;
+          left: 20px;
+      }
+
+      :host([active]) #toggleBar {
+          -webkit-transition: all 140ms;
+          transition: all .14s;
+          background-color: #b6e1f8;
+      }
+
+      :host(:not([active])) #toggleButton {
+          -webkit-transition: all 140ms;
+          transition: all 140ms;
+          background-color: #1b86c8;
+      }
+
+      :host(:not([active])) #toggleBar {
+          -webkit-transition: all 140ms;
+          transition: all 140ms;
+          background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      /* disabled state */
+      :host([disabled]) {
+          pointer-events: none;
+          color: #efefef;
+      }
+
+      :host([disabled]) #toggleButton {
+          background-color: #efefef;
+          opacity: 1;
+      }
+
+      :host([disabled]) #toggleBar {
+          background-color: #d3d3d3;
+      }
+
+      :host([disabled][active]) #toggleButton {
+          background-color: #efefef;
+          left: 20px;
+      }
+
+      :host([disabled]) #toggleLabel  {
+          color: #efefef;
+      }
+
+      :host([checked]:not([disabled])) .toggle-bar {
+        background-color: var(--toggle-button-checked-bar-color, --default-primary-color);
+        opacity: 0.5;
+
+        @apply(--toggle-button-checked-bar);
+      }
+
+      :host([disabled]) .toggle-bar {
+        background-color: #000;
+        opacity: 0.12;
+      }
+
+      :host([checked]) .toggle-button {
+          -webkit-transform: translate(16px, 0);
+        transform: translate(16px, 0);
+      }
+
+      :host([checked]:not([disabled])) .toggle-button {
+        background-color: var(--toggle-button-checked-button-color, --default-primary-color);
+
+        @apply(--toggle-button-checked-button);
+      }
+
+      .toggle-container {
+        display: inline-block;
+        height: 14px;
+        position: relative;
+        width: 36px;
+      }
+
+      .toggle-label {
+        color: var(--toggle-button-label-color, --primary-text-color);
+        display: inline-block;
+        padding-left: var(--toggle-button-label-spacing, 8px);
+        pointer-events: none;
+        position: relative;
+        top: -2px;
+        vertical-align: middle;
+        white-space: normal;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="toggle-container">
+      <div id="toggleBar" class="toggle-bar"></div>
+      <div id="toggleButton" class="toggle-button"></div>
+    </div>
+
+    <div class="toggle-label"><content></content></div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oblique-toggle-button',
+
+      behaviors: [
+        Polymer.KoaToggleButtonBehavior
+      ]
+    });
+  </script>
+</dom-module>

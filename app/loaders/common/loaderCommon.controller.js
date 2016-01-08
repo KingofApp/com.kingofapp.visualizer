@@ -5,15 +5,14 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', '$ocLazyLoad', 'structureService', 'angularLoader', 'trafficGuardiaCivil', 'redirectUrl'];
+  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
 
-  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, $ocLazyLoad, structureService, angularLoader, trafficGuardiaCivil, redirectUrl) {
+  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
     console.log('Pasa por el commonLoaderCtrl');
     var koaApp = document.querySelector('#koaApp');
     $rootScope.showTransition = true;
-
-    if (redirectUrl !== '' && ($location.$$path === '/' || $location.$$path === '')) {
-      $location.path(redirectUrl);
+    if (structureService.getIndex() !== '' && ($location.$$path === '/' || $location.$$path === '')) {
+      $location.path(structureService.getIndex());
     }
 
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
@@ -85,7 +84,7 @@
     $scope.$watch('appColor', function(newValue, oldValue) {
       if (oldValue !== newValue) {
         prevent = true;
-        setColor(newValue);
+        structureService.setColors(newValue);
       }
     });
 
@@ -127,7 +126,7 @@
         $rootScope.showTransition = false;
       });
     });
-
+    //TODO: INSPECT loadconfig
     //Load config
     structureService.loadconfig($rootScope);
 
@@ -143,8 +142,8 @@
       $scope.module = module || $scope.module;
 
       if (!module.type) {
-        //TODO: Display a 404 error or similar
-        if (redirectUrl === '' && $location.$$path !== '/') {
+        //Display a 404 error or similar structureService.getIndex() === '' && 
+        if ($location.$$path !== '/') {
           $location.path('/404');
         }
       } else if (isAngularModule(module.type)) {
@@ -166,29 +165,13 @@
       return type === '$';
     }
 
-    function setColor(color) {
-      structureService.setColors(color);
-      var s = document.createElement('style', 'custom-style');
-      s.textContent = ':root {\n';
-      s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ';';
-      s.textContent += '\n}';
-      document.body.appendChild(s);
-      Polymer.updateStyles();
-      s.remove();
-    }
-
     function setTheme(theme, cb) {
       koaApp.setTheme(theme, cb);
+      structureService.setColors(null);
     }
 
     function addEvents() {
       var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
-      var polymermenuTemplate = document.querySelector('[ng-include="polymermenuTemplate"]');
-
-      if (polymermenuTemplate) {
-        var parent = document.querySelector('[main]');
-        Polymer.dom(parent).appendChild(polymermenuTemplate);
-      }
 
       // console.info('Adding ng-click...');
       $('[ng-click]').click(function() {
@@ -208,7 +191,7 @@
 
       if ($rootScope.appData) {
         console.log('Set Color de ', $rootScope.appData.config.colors);
-        setColor($rootScope.appData.config.colors);
+        structureService.setColors($rootScope.appData.config.colors);
       }
 
       $rootScope.$broadcast('koaLaunched');

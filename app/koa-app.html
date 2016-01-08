@@ -1,7 +1,15 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 
 <dom-module id="koa-app">
   <template>
+    <style>
+      :host {
+        @apply(--layout);
+        @apply(--layout-fullbleed);
+      }
+    </style>
+
     <content></content>
   </template>
   <script>

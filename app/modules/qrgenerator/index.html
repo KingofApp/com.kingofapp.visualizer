@@ -1,13 +1,14 @@
-<div class='qrgenerator' ng-controller='qrgeneratorCtrl'>
+<div ng-controller="qrgeneratorCtrl" class="module qrgenerator">
 
-  <koa-card heading="Client Id" class="pink static">
+  <koa-card heading="Client Id">
     <div class="card-content">
-      <!-- <qrcode ng-show='qrgenerator.modulescope.static' data="{{qrgenerator.modulescope.static}}" size='150' ></qrcode> -->
+      <!-- <qrcode ng-show="qrgenerator.modulescope.static" data="{{qrgenerator.modulescope.static}}" size="150" ></qrcode> -->
       <qr-code data="{{qrgenerator.modulescope.static}}"></qr-code>
     </div>
   </koa-card>
+
   <!-- <template is="dom-repeat" items="{{qrgenerator.list}}">
-      <koa-card class='dynamic' heading="{{item.promocion}}">
+      <koa-card class="dynamic" heading="{{item.promocion}}">
         <div class="card-content"><qr-code data="{{item.valor}}"></qr-code></div>
       </koa-card>
   </template> -->

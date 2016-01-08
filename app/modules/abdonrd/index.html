@@ -1,8 +1,4 @@
-<div ng-controller="abdonrdCtrl">
-  <koa-toolbar>
-    <koa-icon-button icon="menu" on-tap="menuAction"></koa-icon-button>
-    <div class="title">Home</div>
-  </koa-toolbar>
+<div ng-controller="abdonrdCtrl" class="module abdonrd">
 
   <koa-tabs>
     <koa-tab>KoA 1</koa-tab>
@@ -10,7 +6,16 @@
     <koa-tab>KoA 3</koa-tab>
   </koa-tabs>
 
+<br><hr><br>
 
+  <koa-card heading="Card Title" image="{{image}}" ng-repeat="image in abdonrd.modulescope.images track by $index">
+    <div class="card-content">Some content</div>
+    <div class="card-actions">
+      <koa-button>Some action</koa-button>
+    </div>
+  </koa-card>
+
+<br><hr><br>
 
   <form is="iron-form" id="formPost" method="post" action="/">
     <koa-input name="name" label="Name" required></koa-input>
@@ -25,16 +30,11 @@
     }
   </script>
 
-<br><br>
-
-  <koa-card heading="Card Title" image="{{image}}" ng-repeat="image in abdonrd.modulescope.images track by $index">
-    <div class="card-content">Some content</div>
-    <div class="card-actions">
-      <koa-button>Some action</koa-button>
-    </div>
-  </koa-card>
+<br><hr><br>
 
   <koa-button raised big>King of App</koa-button>
+
+<br><hr><br>
 
   <koa-card heading="Card Title">
     <div class="card-content">Some content</div>
@@ -43,9 +43,19 @@
     </div>
   </koa-card>
 
+<br><hr><br>
+
   <koa-checkbox checked>King of App</koa-checkbox>
 
-  <koa-input label="Label"></koa-input>
+<br><hr><br>
+
+  <koa-toggle-button checked></koa-toggle-button>
+
+<br><hr><br>
+
+  <koa-radio-button checked>Label</koa-radio-button>
+
+<br><hr><br>
 
   <koa-menu-button>
     <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
@@ -56,8 +66,14 @@
     </koa-menu>
   </koa-menu-button>
 
+<br><hr><br>
+
+  <koa-input label="Label"></koa-input>
+
+<br><hr><br>
+
   <koa-textarea label="Textarea"></koa-textarea>
 
-  <koa-toggle-button checked></koa-toggle-button>
+<br><hr><br>
 
 </div>

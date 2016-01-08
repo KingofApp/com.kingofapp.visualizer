@@ -1,4 +1,4 @@
-<div ng-controller="contactCtrl" class="contact">
+<div ng-controller="contactCtrl" class="module contact">
 
   <form is="iron-form" id="contactForm" method="post" action="/">
     <koa-input name="name"
@@ -20,6 +20,7 @@
                required></koa-input>
     <koa-button raised ng-click="send()">{{'contact.send' | translate}}</koa-button>
   </form>
-  <p class='status' ng-if='contact.status && contact.modulescope.debug'>{{contact.status}}</p>
+
+  <p class="status" ng-if="contact.status && contact.modulescope.debug">{{contact.status}}</p>
 
 </div>

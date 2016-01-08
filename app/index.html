@@ -3,26 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>King of App Visualizer</title>
+  <title>King of App visualizer</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- build:css css/style.min.css -->
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" type="text/css" href="app.css">
   <!-- endbuild -->
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="cordova.js"></script>
 
   <link rel="import" href="koa-app.html">
-
-  <script src="cordova.js"></script>
 </head>
 <body>
   <div id="main-king"> <!-- ng-controller="setStructure" -->
     <koa-app id="koaApp">
       <div id="koaAppContent">
-        <div id='transitionloader' ng-if='showTransition && transitionOn'>
+        <div id="transitionloader" ng-if="showTransition && transitionOn">
           <!-- <koa-spinner active></koa-spinner> -->
           <img ng-src="{{loader}}" alt="" />
         </div>
@@ -33,6 +34,7 @@
       </div>
     </koa-app>
   </div>
+
   <!-- build:js js/koa.visualizer.min.js -->
   <script src="bower_components/lodash/lodash.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -42,27 +44,11 @@
   <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angulartics/src/angulartics.js"></script>
-  <script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    //Called from Firebase module to re-render new objects
-    function koaRender() {
-      setTimeout(function () {
-        var koaApp = document.querySelector('#koaApp');
-        koaApp.createTree();
-          koaApp.renderThemeElements();
-      }, 2000);
-    }
-    window.onpopstate = function(event) {
-    history.go(1);
-};
-	</script>
 
   <script src="app.js"></script>
 
   <script src="core/structure.service.js"></script>
+  <script src="core/structureHooks.service.js"></script>
   <script src="core/sampleModules.service.js"></script>
 
   <script src="loaders/common/module.js"></script>
@@ -81,46 +67,56 @@
   <script src="js/listener.builder.js"></script>
   <script src="js/bootstrap.app.js"></script>
 
-    <script>
-      function changeTheme() {
-        if (koaApp.theme === 'paper') {
-          koaApp.setTheme('ios');
-        } else {
-          koaApp.setTheme('paper');
-        }
-      }
-
-      function changeThemeTo(theme) {
-        koaApp.setTheme(theme);
-      }
-
-      function changeColor() {
-        var s = document.createElement('style', 'custom-style');
-        var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
-        var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
-        s.textContent = ':root {\n';
-        s.textContent += '--default-primary-color: ' + defaultPrimaryColor + ';';
-        s.textContent += '\n--accent-color: ' + accentColor + ';';
-        s.textContent += '\n}';
-        document.body.appendChild(s);
-        Polymer.updateStyles();
-        s.remove();
-      }
-    </script>
-
   <script>
-    // var koaApp = document.querySelector('#koaApp');
-    // koaApp.theme = 'paper';
-    // var koaApp = document.querySelector('#koaApp');
-    //
-    // setTimeout(function() {
-    //   koaApp.createTree();
-    //   koaApp.theme = 'paper';
-    // }, 3000);
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	</script>
+  <script>
+    //Called from Firebase module to re-render new objects
+    function koaRender() {
+      setTimeout(function () {
+        var koaApp = document.querySelector('#koaApp');
+        koaApp.createTree();
+          koaApp.renderThemeElements();
+      }, 2000);
+    }
+    window.onpopstate = function(event) {
+      history.go(1);
+    };
+  </script>
+  <script>
+    function changeTheme() {
+      if (koaApp.theme === 'paper') {
+        koaApp.setTheme('ios');
+      } else {
+        koaApp.setTheme('paper');
+      }
+    }
+
+    function changeThemeTo(theme) {
+      koaApp.setTheme(theme);
+    }
+
+    function changeColor() {
+      var s = document.createElement('style', 'custom-style');
+      var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
+      var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
+      s.textContent = ':root {\n';
+      s.textContent += '--default-primary-color: ' + defaultPrimaryColor + ';';
+      s.textContent += '\n--accent-color: ' + accentColor + ';';
+      s.textContent += '\n}';
+      document.body.appendChild(s);
+      Polymer.updateStyles();
+      s.remove();
+    }
   </script>
   <!-- endbuild -->
+
   <!-- Services  -->
   <script src="services/googleanalytics/service.js"></script>
   <script src="services/puship/service.js"></script>
+  <script src="services/simpleregisterlogin/service.js"></script>
 </body>
 </html>

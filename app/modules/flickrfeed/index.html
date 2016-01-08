@@ -1,8 +1,9 @@
-<div class='flickrfeed auto' ng-controller='flickrFeedCtrl'>
-  <koa-item ng-hide="isEmpty(flickrfeed.message)">{{flickrfeed.message}}</koa-item>
-  <div ng-repeat="item in flickrfeed.items">
-    <koa-card image='{{item.img}}'>
-      <div class="card-content">{{item.title}}</div>
-    </koa-card>
-  </div>
+<div class="module flickrfeed" ng-controller="flickrFeedCtrl">
+
+  <koa-item ng-if="flickrfeed.message">{{flickrfeed.message}}</koa-item>
+
+  <koa-card image="{{item.img}}" ng-repeat="item in flickrfeed.items">
+    <div class="card-content">{{item.title}}</div>
+  </koa-card>
+
 </div>

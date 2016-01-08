@@ -25,6 +25,7 @@ angular
       setModules        : setModules,
       setLoader         : setLoader,
       setColors         : setColors,
+      getColors         : getColors,
       getIndex          : getIndex,
       getLang           : getLang,
       setLang           : setLang,
@@ -74,7 +75,7 @@ angular
     function setColors(color){
       cachedLocations = {};
       if(color === null){
-        color = data.config.colors;
+        color = getColors();
       }
       // data.config.colors = color;
       var s = document.createElement('style', 'custom-style');
@@ -89,9 +90,15 @@ angular
     function get(){
       return data;
     }
+
+    function getColors(){
+      return data.config.colors;
+    }
+
     function getIndex() {
       return data.config.index;
     }
+
     function getLang(){
       if(lang) return lang;
       else     return data.config.lang[0];

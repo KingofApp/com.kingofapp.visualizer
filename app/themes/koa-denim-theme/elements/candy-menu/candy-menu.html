@@ -1,0 +1,39 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-menu-behavior.html">
+<link rel="import" href="../candy-styles/default-theme.html">
+<link rel="import" href="candy-menu-shared-styles.html">
+
+<dom-module id="candy-menu">
+  <template>
+    <!-- write your styles here -->
+    <style include="candy-menu-shared-styles"></style>
+    <style>
+      :host {
+        background: var(--menu-background-color, --primary-background-color);
+        color: var(--menu-color, --primary-text-color);
+        display: block;
+        padding: 8px 0;
+
+        @apply(--menu);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="selectable-content">
+      <content></content>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'candy-menu',
+
+      behaviors: [
+        Polymer.KoaMenuBehavior
+      ]
+    });
+  </script>
+</dom-module>

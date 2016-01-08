@@ -81,65 +81,67 @@
         Polymer.KoaMenuButtonBehavior
       ],
 
-      /**
-       * An animation config. If provided, this will be used to animate the
-       * opening of the dropdown.
-       */
-      openAnimationConfig: {
-        type: Object,
-        value: function() {
-          return [{
-            name: 'fade-in-animation',
-            timing: {
-              delay: 100,
-              duration: 200
-            }
-          }, {
-            name: 'paper-menu-grow-width-animation',
-            timing: {
-              delay: 100,
-              duration: 150,
-              easing: 'cubic-bezier(.3,.95,.5,1)'
-            }
-          }, {
-            name: 'paper-menu-grow-height-animation',
-            timing: {
-              delay: 100,
-              duration: 275,
-              easing: 'cubic-bezier(.3,.95,.5,1)'
-            }
-          }];
-        }
-      },
+      properties: {
+        /**
+         * An animation config. If provided, this will be used to animate the
+         * opening of the dropdown.
+         */
+        openAnimationConfig: {
+          type: Object,
+          value: function() {
+            return [{
+              name: 'fade-in-animation',
+              timing: {
+                delay: 100,
+                duration: 200
+              }
+            }, {
+              name: 'paper-menu-grow-width-animation',
+              timing: {
+                delay: 100,
+                duration: 150,
+                easing: 'cubic-bezier(.3,.95,.5,1)'
+              }
+            }, {
+              name: 'paper-menu-grow-height-animation',
+              timing: {
+                delay: 100,
+                duration: 275,
+                easing: 'cubic-bezier(.3,.95,.5,1)'
+              }
+            }];
+          }
+        },
 
-      /**
-       * An animation config. If provided, this will be used to animate the
-       * closing of the dropdown.
-       */
-      closeAnimationConfig: {
-        type: Object,
-        value: function() {
-          return [{
-            name: 'fade-out-animation',
-            timing: {
-              duration: 150
-            }
-          }, {
-            name: 'paper-menu-shrink-width-animation',
-            timing: {
-              delay: 100,
-              duration: 50,
-              easing: 'cubic-bezier(.3,.95,.5,1)'
-            }
-          }, {
-            name: 'paper-menu-shrink-height-animation',
-            timing: {
-              duration: 200,
-              easing: 'ease-in'
-            }
-          }];
+        /**
+         * An animation config. If provided, this will be used to animate the
+         * closing of the dropdown.
+         */
+        closeAnimationConfig: {
+          type: Object,
+          value: function() {
+            return [{
+              name: 'fade-out-animation',
+              timing: {
+                duration: 150
+              }
+            }, {
+              name: 'paper-menu-shrink-width-animation',
+              timing: {
+                delay: 100,
+                duration: 50,
+                easing: 'cubic-bezier(.3,.95,.5,1)'
+              }
+            }, {
+              name: 'paper-menu-shrink-height-animation',
+              timing: {
+                duration: 200,
+                easing: 'ease-in'
+              }
+            }];
+          }
         }
-      },
+      }
     });
   </script>
 </dom-module>

@@ -69,6 +69,7 @@
   },
   "resolutions": {
     "angular": "1.4.x",
+    "angular-translate": "~2.8.1",
     "angulartics": "~1.0.2"
   }
 }

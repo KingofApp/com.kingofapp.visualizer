@@ -1,79 +1,447 @@
 <div ng-controller="abdonrdCtrl" class="module abdonrd">
 
-  <koa-tabs>
-    <koa-tab>KoA 1</koa-tab>
-    <koa-tab>KoA 2</koa-tab>
-    <koa-tab>KoA 3</koa-tab>
-  </koa-tabs>
+  <style>
+    section.element {
+      border-bottom: 2px solid black;
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+    }
+  </style>
 
-<br><hr><br>
+  <section class="element">
+    <h3>koa-icon-button</h3>
 
-  <koa-card heading="Card Title" image="{{image}}" ng-repeat="image in abdonrd.modulescope.images track by $index">
-    <div class="card-content">Some content</div>
-    <div class="card-actions">
-      <koa-button>Some action</koa-button>
-    </div>
-  </koa-card>
+    <koa-icon-button id="number" icon="add-box" alt="inbox"></koa-icon-button>
+    <koa-badge for="number" label="4"></koa-badge>
 
-<br><hr><br>
+    <koa-icon-button id="icon" icon="account-box" alt="person"></koa-icon-button>
+    <koa-badge icon="android" for="icon" label="happy"></koa-badge>
+  </section>
 
-  <form is="iron-form" id="formPost" method="post" action="/">
-    <koa-input name="name" label="Name" required></koa-input>
-    <koa-input name="email" label="Email" required type="email"></koa-input>
-    <koa-button raised onclick="clickHandler(event)">Submit</koa-button>
-  </form>
+  <section class="element">
+    <h3>koa-button</h3>
+
+    <koa-button>standar</koa-button>
+    <koa-button big>big</koa-button>
+    <koa-button link>link</koa-button>
+    <koa-button disabled>disabled</koa-button>
+  </section>
+
+  <section class="element">
+    <h3>koa-card</h3>
+
+    <koa-card heading="Titles AND images!" class="pink" image="http://placehold.it/350x150">
+      <div class="card-content">
+        Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae.
+      </div>
+      <div class="card-actions">
+        <koa-button link>No</koa-button>
+        <koa-button link>Yes</koa-button>
+      </div>
+    </koa-card>
+  </section>
+
+  <section class="element">
+    <h3>koa-checkbox</h3>
+
+    <koa-checkbox>Checkbox</koa-checkbox>
+    <koa-checkbox checked>Checkbox</koa-checkbox>
+    <koa-checkbox disabled>Disabled</koa-checkbox>
+  </section>
+
+  <section class="element" onclick="clickHandlerDialog(event)">
+    <h3>koa-dialog</h3>
+
+    <koa-button data-dialog="dialog">plain dialog</koa-button>
+    <koa-button data-dialog="actions">dialog with actions</koa-button>
+    <koa-button data-dialog="modal">modal dialog</koa-button>
+
+    <koa-dialog id="dialog">
+      <h2>Dialog Title</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </koa-dialog>
+
+    <koa-dialog id="actions">
+      <h2>Dialog Title</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div class="buttons">
+        <koa-button >More Info...</koa-button>
+        <koa-button dialog-dismiss>Decline</koa-button>
+        <koa-button dialog-confirm autofocus>Accept</koa-button>
+      </div>
+    </koa-dialog>
+
+    <koa-dialog id="modal" modal>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="buttons">
+        <koa-button dialog-confirm autofocus>Tap me to close</koa-button>
+      </div>
+    </koa-dialog>
+  </section>
 
   <script>
-    function clickHandler(event) {
-      var data = Polymer.dom(event).localTarget.parentElement.serialize();
-      console.log(data);
+    function clickHandlerDialog(e) {
+      var button = e.target;
+      while (!button.hasAttribute('data-dialog') && button !== document.body) {
+        button = button.parentElement;
+      }
+
+      if (!button.hasAttribute('data-dialog')) {
+        return;
+      }
+
+      var id = button.getAttribute('data-dialog');
+      var dialog = document.getElementById(id);
+      if (dialog) {
+        dialog.open();
+      }
     }
   </script>
 
-<br><hr><br>
+  <section class="element">
+    <h3>koa-dropdown-menu</h3>
 
-  <koa-button raised big>King of App</koa-button>
+    <template id="DemoDropdownMenu" is="dom-bind">
+      <koa-dropdown-menu label="Dinosaurs">
+        <koa-menu class="dropdown-content">
+          <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+            <koa-item>[[dinosaur]]</koa-item>
+          </template>
+        </koa-menu>
+      </koa-dropdown-menu>
 
-<br><hr><br>
+      <koa-dropdown-menu label="Dinosaurs">
+        <koa-menu class="dropdown-content" selected="1">
+          <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+            <koa-item>[[dinosaur]]</koa-item>
+          </template>
+        </koa-menu>
+      </koa-dropdown-menu>
 
-  <koa-card heading="Card Title">
-    <div class="card-content">Some content</div>
-    <div class="card-actions">
-      <koa-button>Some action</koa-button>
+      <koa-dropdown-menu disabled label="Disabled">
+        <koa-menu class="dropdown-content">
+          <template is="dom-repeat" items="[[letters]]" as="letter">
+            <koa-item>[[letter]]</koa-item>
+          </template>
+        </koa-menu>
+      </koa-dropdown-menu>
+    </template>
+  </section>
+
+  <script>
+    DemoDropdownMenu.letters = [
+      'alpha',
+      'beta',
+      'gamma',
+      'delta',
+      'epsilon'
+    ];
+    DemoDropdownMenu.dinosaurs = [
+      'allosaurus',
+      'brontosaurus',
+      'carcharodontosaurus',
+      'diplodocus',
+      'ekrixinatosaurus',
+      'fukuiraptor',
+      'gallimimus',
+      'hadrosaurus',
+      'iguanodon',
+      'jainosaurus',
+      'kritosaurus',
+      'liaoceratops',
+      'megalosaurus',
+      'nemegtosaurus',
+      'ornithomimus',
+      'protoceratops',
+      'quetecsaurus',
+      'rajasaurus',
+      'stegosaurus',
+      'triceratops',
+      'utahraptor',
+      'vulcanodon',
+      'wannanosaurus',
+      'xenoceratops',
+      'yandusaurus',
+      'zephyrosaurus'
+    ];
+  </script>
+
+  <section class="element">
+    <h3>koa-icon-button</h3>
+
+    <koa-icon-button icon="favorite" title="heart"></koa-icon-button>
+    <koa-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat" title="octocat"></koa-icon-button>
+    <koa-icon-button disabled icon="reply" title="reply"></koa-icon-button>
+  </section>
+
+  <section class="element">
+    <h3>koa-input & koa-textarea</h3>
+
+    <koa-input label="text input"></koa-input>
+    <koa-textarea label="autoresizing textarea input"></koa-textarea>
+    <koa-input label="password input" type="password"></koa-input>
+    <koa-input label="disabled input" disabled></koa-input>
+    <koa-input label="input with at most 10 characters" char-counter maxlength="10"></koa-input>
+    <koa-input label="this input requires some text" required auto-validate error-message="needs some text!"></koa-input>
+  </section>
+
+  <section class="element">
+    <h3>koa-item</h3>
+
+    <div class="list" role="listbox">
+      <koa-item>Inbox</koa-item>
+      <koa-item>Starred</koa-item>
+      <koa-item>Sent mail</koa-item>
+      <koa-item>Drafts</koa-item>
     </div>
-  </koa-card>
+  </section>
 
-<br><hr><br>
+  <section class="element">
+    <h3>koa-menu & koa-submenu</h3>
 
-  <koa-checkbox checked>King of App</koa-checkbox>
-
-<br><hr><br>
-
-  <koa-toggle-button checked></koa-toggle-button>
-
-<br><hr><br>
-
-  <koa-radio-button checked>Label</koa-radio-button>
-
-<br><hr><br>
-
-  <koa-menu-button>
-    <koa-icon-button icon="menu" class="dropdown-trigger"></koa-icon-button>
-    <koa-menu class="dropdown-content">
-      <koa-item>Share</koa-item>
-      <koa-item>Settings</koa-item>
-      <koa-item>Help</koa-item>
+    <koa-menu>
+      <koa-item>Inbox</koa-item>
+      <koa-item>Starred</koa-item>
+      <koa-item>Sent mail</koa-item>
+      <koa-item>Drafts</koa-item>
     </koa-menu>
-  </koa-menu-button>
+
+    <koa-menu attr-for-item-title="label" multi>
+      <koa-submenu label="koa-menu">
+        <koa-item class="menu-trigger">koa-menu</koa-item>
+        <koa-menu class="menu-content sublist" multi>
+          <koa-submenu label="Properties">
+            <koa-item class="menu-trigger">Properties</koa-item>
+            <koa-menu class="menu-content sublist2">
+              <koa-item>focusedItem</koa-item>
+              <koa-item>attrForItemTitle</koa-item>
+            </koa-menu>
+          </koa-submenu>
+          <koa-submenu label="Methods">
+            <koa-item class="menu-trigger">Methods</koa-item>
+            <koa-menu class="menu-content sublist2">
+              <koa-item>select(value)</koa-item>
+            </koa-menu>
+          </koa-submenu>
+        </koa-menu>
+      </koa-submenu>
+
+      <koa-submenu label="koa-submenu">
+        <koa-item class="menu-trigger">koa-submenu</koa-item>
+        <koa-menu class="menu-content sublist">
+          <koa-submenu label="Properties">
+            <koa-item class="menu-trigger">Properties</koa-item>
+            <koa-menu class="menu-content sublist2">
+              <koa-item>opened</koa-item>
+            </koa-menu>
+          </koa-submenu>
+          <koa-submenu label="Methods">
+            <koa-item class="menu-trigger">Methods</koa-item>
+            <koa-menu class="menu-content sublist2">
+              <koa-item>open()</koa-item>
+              <koa-item>close()</koa-item>
+              <koa-item>toggle()</koa-item>
+            </koa-menu>
+          </koa-submenu>
+        </koa-menu>
+      </koa-submenu>
+
+      <koa-submenu label="Unavailable" disabled>
+        <koa-item class="menu-trigger">Unavailable</koa-item>
+        <koa-menu class="menu-content sublist">
+          <koa-item>Unavailable 1</koa-item>
+          <koa-item>Unavailable 2</koa-item>
+        </koa-menu>
+      </koa-submenu>
+    </koa-menu>
+  </section>
+
+  <section class="element">
+    <h3>koa-menu-button</h3>
+
+    <template id="DemoMenuButton" is="dom-bind">
+      <koa-menu-button>
+        <koa-icon-button icon="menu" class="dropdown-trigger" alt="menu"></koa-icon-button>
+        <koa-menu class="dropdown-content">
+          <template is="dom-repeat" items="[[letters]]" as="letter">
+            <koa-item>[[letter]]</koa-item>
+          </template>
+        </koa-menu>
+      </koa-menu-button>
+
+      <koa-menu-button disabled>
+        <koa-icon-button icon="menu" class="dropdown-trigger" alt="menu"></koa-icon-button>
+        <koa-menu class="dropdown-content">
+          <template is="dom-repeat" items="[[letters]]" as="letter">
+            <koa-item>[[letter]]</koa-item>
+          </template>
+        </koa-menu>
+      </koa-menu-button>
+    </template>
+  </section>
+
+  <script>
+    DemoMenuButton.letters = [
+      'alpha',
+      'beta',
+      'gamma',
+      'delta',
+      'epsilon'
+    ];
+    DemoMenuButton.dinosaurs = [
+      'allosaurus',
+      'brontosaurus',
+      'carcharodontosaurus',
+      'diplodocus',
+      'ekrixinatosaurus',
+      'fukuiraptor',
+      'gallimimus',
+      'hadrosaurus',
+      'iguanodon',
+      'jainosaurus',
+      'kritosaurus',
+      'liaoceratops',
+      'megalosaurus',
+      'nemegtosaurus',
+      'ornithomimus',
+      'protoceratops',
+      'quetecsaurus',
+      'rajasaurus',
+      'stegosaurus',
+      'triceratops',
+      'utahraptor',
+      'vulcanodon',
+      'wannanosaurus',
+      'xenoceratops',
+      'yandusaurus',
+      'zephyrosaurus'
+    ];
+  </script>
+
+  <section class="element">
+    <h3>koa-progress</h3>
+
+    <koa-progress></koa-progress><br>
+    <koa-progress indeterminate></koa-progress><br>
+  </section>
+
+  <section class="element">
+    <h3>koa-radio-button</h3>
+
+    <koa-radio-button>Radio button</koa-radio-button>
+    <koa-radio-button checked>Radio button</koa-radio-button>
+    <koa-radio-button disabled>Disabled</koa-radio-button>
+  </section>
+
+  <section class="element">
+    <h3>koa-slider</h3>
+
+    <koa-slider value="21"></koa-slider>
+    <koa-slider value="0"></koa-slider>
+    <koa-slider value="78" secondary-progress="85"></koa-slider>
+    <koa-slider disabled value="33"></koa-slider>
+    <koa-slider class="red" value="23" max="255" editable></koa-slider>
+  </section>
+
+  <section class="element">
+    <h3>koa-spinner</h3>
+
+    <koa-spinner active></koa-spinner>
+  </section>
+
+  <section class="element">
+    <h3>koa-tabs</h3>
+
+    <koa-tabs selected="0">
+      <koa-tab>ITEM ONE</koa-tab>
+      <koa-tab>ITEM TWO</koa-tab>
+      <koa-tab>ITEM THREE</koa-tab>
+    </koa-tabs>
+
+    <br>
+
+    <koa-tabs id="scrollableTabs" selected="0" scrollable>
+      <koa-tab>NUMBER ONE ITEM</koa-tab>
+      <koa-tab>ITEM TWO</koa-tab>
+      <koa-tab>THE THIRD ITEM</koa-tab>
+      <koa-tab>THE ITEM FOUR</koa-tab>
+      <koa-tab>FIFTH</koa-tab>
+      <koa-tab>THE SIXTH TAB</koa-tab>
+      <koa-tab>NUMBER SEVEN</koa-tab>
+      <koa-tab>EIGHT</koa-tab>
+      <koa-tab>NUMBER NINE</koa-tab>
+      <koa-tab>THE TENTH</koa-tab>
+      <koa-tab>THE ITEM ELEVEN</koa-tab>
+      <koa-tab>TWELFTH ITEM</koa-tab>
+    </koa-tabs>
+
+    <br>
+
+    <koa-toolbar class="tall">
+      <koa-tabs selected="0" class="bottom self-end" style="width: 300px;">
+        <koa-tab>ITEM ONE</koa-tab>
+        <koa-tab>ITEM TWO</koa-tab>
+      </koa-tabs>
+      <div class="bottom flex"></div>
+    </koa-toolbar>
+
+    <br>
+
+    <template is="dom-bind">
+      <div>Current Tab: <span>[[selected]]</span></div>
+      <koa-tabs selected="{{selected}}">
+        <koa-tab>ITEM ONE</koa-tab>
+        <koa-tab>ITEM TWO</koa-tab>
+        <koa-tab>ITEM THREE</koa-tab>
+      </koa-tabs>
+    </template>
+  </section>
+
+  <section class="element">
+    <h3>koa-toggle-button</h3>
+
+    <koa-toggle-button>Toggle</koa-toggle-button>
+    <koa-toggle-button checked>Toggle</koa-toggle-button>
+    <koa-toggle-button disabled>Disabled</koa-toggle-button>
+  </section>
+
+  <section class="element">
+    <h3>koa-toolbar</h3>
+
+    <koa-toolbar>
+      <koa-icon-button icon="menu"></koa-icon-button>
+      <span class="title">Toolbar</span>
+      <koa-icon-button icon="refresh"></koa-icon-button>
+      <koa-icon-button icon="add">+</koa-icon-button>
+    </koa-toolbar>
+  </section>
+
+
+
+
+
+<br><br><hr><br>
+
+<koa-card heading="Card Title" image="{{image}}" ng-repeat="image in abdonrd.modulescope.images track by $index">
+  <div class="card-content">Some content</div>
+  <div class="card-actions">
+    <koa-button>Some action</koa-button>
+  </div>
+</koa-card>
 
 <br><hr><br>
 
-  <koa-input label="Label"></koa-input>
+<form is="iron-form" id="formPost" method="post" action="/">
+  <koa-input name="name" label="Name" required></koa-input>
+  <koa-input name="email" label="Email" required type="email"></koa-input>
+  <koa-button raised onclick="clickHandler(event)">Submit</koa-button>
+</form>
 
-<br><hr><br>
-
-  <koa-textarea label="Textarea"></koa-textarea>
-
-<br><hr><br>
+<script>
+  function clickHandler(event) {
+    var data = Polymer.dom(event).localTarget.parentElement.serialize();
+    console.log(data);
+  }
+</script>
 
 </div>

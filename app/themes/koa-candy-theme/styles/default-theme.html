@@ -7,13 +7,13 @@
    for further information on custom CSS properties.
    */
 
-  @import url("https://fonts.googleapis.com/css?family=Raleway:600|Roboto");
+  @import url("https://fonts.googleapis.com/css?family=Bitter|Raleway");
 
   /* Write your general styles here */
 
   :root {
     --primary-text-color: #636363;
-    --primary-background-color: #f8ecc2;
+    --primary-background-color: #ffffff;
     --secondary-text-color: #636363;
     --disabled-text-color: #2f2b16;
     --divider-color: #e0e0e0;
@@ -21,8 +21,10 @@
     --light-primary-color: #c5cae9;
     --dark-primary-color: #ff003c;
     --accent-color: #ff4081;
-    --light-accent-color: #ff80ab;
-    --dark-accent-color: #f50057;
+    --light-accent-color: #ff4081;
+    --dark-accent-color: #ff4081;
+
+    --background-color: #f8ecc2;
 
     /*
      * Deprecated values because of their confusing names.
@@ -31,8 +33,10 @@
   }
 
   body {
-    background-color: var(--primary-background-color);
+    background-color: var(--background-color);
     color: var(--primary-text-color);
     font-family: 'Raleway', sans-serif;
   }
+
+  h1, h3, h5 { font-family: 'Bitter', serif; }
 </style>

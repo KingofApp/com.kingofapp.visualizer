@@ -7,22 +7,24 @@
    for further information on custom CSS properties.
    */
 
-  @import url("https://fonts.googleapis.com/css?family=Raleway:600|Roboto");
+  @import url("https://fonts.googleapis.com/css?family=Oxygen:700|Source+Sans+Pro");
 
   /* Write your general styles here */
 
   :root {
-    --primary-text-color: #636363;
-    --primary-background-color: #f8ecc2;
-    --secondary-text-color: #636363;
-    --disabled-text-color: #2f2b16;
+    --primary-text-color: #444444;
+    --primary-background-color: #ffffff;
+    --secondary-text-color: #444444;
+    --disabled-text-color: #313238;
     --divider-color: #e0e0e0;
-    --primary-color: #ff003c;
+    --primary-color: #373b50;
     --light-primary-color: #c5cae9;
-    --dark-primary-color: #ff003c;
+    --dark-primary-color: #373b50;
     --accent-color: #ff4081;
-    --light-accent-color: #ff80ab;
-    --dark-accent-color: #f50057;
+    --light-accent-color: #ff4081;
+    --dark-accent-color: #ff4081;
+
+    --background-color: #ffffff;
 
     /*
      * Deprecated values because of their confusing names.
@@ -31,8 +33,10 @@
   }
 
   body {
-    background-color: var(--primary-background-color);
+    background-color: var(--background-color);
     color: var(--primary-text-color);
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   }
+
+  h1, h3, h5 { font-family: 'Oxygen', sans-serif; }
 </style>

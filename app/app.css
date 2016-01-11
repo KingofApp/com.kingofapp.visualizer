@@ -4,6 +4,10 @@ html, body, #main-king {
   height: 100%;
 }
 
+html {
+    overflow:hidden;
+}
+
 body {
   font-family: Arial, sans-serif;
 }

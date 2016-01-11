@@ -10,6 +10,7 @@ html {
 
 body {
   font-family: Arial, sans-serif;
+  margin:0px;
 }
 
 #main-king > div, .template, .template > div {
@@ -27,6 +28,8 @@ img {
 
 
 /* Ads styles */
+
+
 
 .main-ads {
   height: 100%;

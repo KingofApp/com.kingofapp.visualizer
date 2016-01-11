@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>citric-flames-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../citric-flames-item/citric-flames-item.html">
+    <link rel="import" href="../citric-flames-menu.html">
+    <link rel="import" href="../citric-flames-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      citric-flames-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist citric-flames-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 citric-flames-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <citric-flames-menu>
+            <citric-flames-item>Inbox</citric-flames-item>
+            <citric-flames-item>Starred</citric-flames-item>
+            <citric-flames-item>Sent mail</citric-flames-item>
+            <citric-flames-item>Drafts</citric-flames-item>
+          </citric-flames-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <citric-flames-menu selected="0">
+            <citric-flames-item>Inbox</citric-flames-item>
+            <citric-flames-item disabled>Starred</citric-flames-item>
+            <citric-flames-item>Sent mail</citric-flames-item>
+            <citric-flames-item>Drafts</citric-flames-item>
+          </citric-flames-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <citric-flames-menu multi>
+            <citric-flames-item>Bold</citric-flames-item>
+            <citric-flames-item>Italic</citric-flames-item>
+            <citric-flames-item>Underline</citric-flames-item>
+            <citric-flames-item>Strikethrough</citric-flames-item>
+          </citric-flames-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <citric-flames-menu attr-for-item-title="label" multi>
+            <citric-flames-submenu label="citric-flames-menu">
+              <citric-flames-item class="menu-trigger">citric-flames-menu</citric-flames-item>
+              <citric-flames-menu class="menu-content sublist" multi>
+                <citric-flames-submenu label="Properties">
+                  <citric-flames-item class="menu-trigger">Properties</citric-flames-item>
+                  <citric-flames-menu class="menu-content sublist2">
+                    <citric-flames-item>focusedItem</citric-flames-item>
+                    <citric-flames-item>attrForItemTitle</citric-flames-item>
+                  </citric-flames-menu>
+                </citric-flames-submenu>
+                <citric-flames-submenu label="Methods">
+                  <citric-flames-item class="menu-trigger">Methods</citric-flames-item>
+                  <citric-flames-menu class="menu-content sublist2">
+                    <citric-flames-item>select(value)</citric-flames-item>
+                  </citric-flames-menu>
+                </citric-flames-submenu>
+            </citric-flames-menu>
+          </citric-flames-submenu>
+
+          <citric-flames-submenu label="citric-flames-submenu">
+            <citric-flames-item class="menu-trigger">citric-flames-submenu</citric-flames-item>
+            <citric-flames-menu class="menu-content sublist">
+              <citric-flames-submenu label="Properties">
+                <citric-flames-item class="menu-trigger">Properties</citric-flames-item>
+                <citric-flames-menu class="menu-content sublist2">
+                  <citric-flames-item>opened</citric-flames-item>
+                </citric-flames-menu>
+                </citric-flames-submenu>
+                <citric-flames-submenu label="Methods">
+                  <citric-flames-item class="menu-trigger">Methods</citric-flames-item>
+                  <citric-flames-menu class="menu-content sublist2">
+                    <citric-flames-item>open()</citric-flames-item>
+                    <citric-flames-item>close()</citric-flames-item>
+                    <citric-flames-item>toggle()</citric-flames-item>
+                  </citric-flames-menu>
+              </citric-flames-submenu>
+            </citric-flames-menu>
+          </citric-flames-submenu>
+
+            <citric-flames-submenu label="Unavailable" disabled>
+              <citric-flames-item class="menu-trigger">Unavailable</citric-flames-item>
+              <citric-flames-menu class="menu-content sublist">
+                <citric-flames-item>Unavailable 1</citric-flames-item>
+                <citric-flames-item>Unavailable 2</citric-flames-item>
+              </citric-flames-menu>
+            </citric-flames-submenu>
+          </citric-flames-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

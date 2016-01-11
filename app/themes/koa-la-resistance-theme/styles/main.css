@@ -1,0 +1,24 @@
+/* General styles */
+
+la-resistance-card {
+  width: 100%;
+}
+
+la-resistance-card + la-resistance-card {
+  margin-top: 15px;
+}
+
+.module {
+  padding: 10px;
+}
+
+/* Conctact module */
+
+.contact form {
+  margin: 15px;
+}
+
+.contact form la-resistance-button {
+  float: right;
+  margin-top: 15px;
+}

@@ -1,0 +1,24 @@
+/* General styles */
+
+everest-card {
+  width: 100%;
+}
+
+everest-card + everest-card {
+  margin-top: 15px;
+}
+
+.module {
+  padding: 10px;
+}
+
+/* Conctact module */
+
+.contact form {
+  margin: 15px;
+}
+
+.contact form everest-button {
+  float: right;
+  margin-top: 15px;
+}

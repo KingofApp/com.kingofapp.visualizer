@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>la-resistance-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../la-resistance-item/la-resistance-item.html">
+    <link rel="import" href="../la-resistance-menu.html">
+    <link rel="import" href="../la-resistance-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      la-resistance-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist la-resistance-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 la-resistance-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <la-resistance-menu>
+            <la-resistance-item>Inbox</la-resistance-item>
+            <la-resistance-item>Starred</la-resistance-item>
+            <la-resistance-item>Sent mail</la-resistance-item>
+            <la-resistance-item>Drafts</la-resistance-item>
+          </la-resistance-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <la-resistance-menu selected="0">
+            <la-resistance-item>Inbox</la-resistance-item>
+            <la-resistance-item disabled>Starred</la-resistance-item>
+            <la-resistance-item>Sent mail</la-resistance-item>
+            <la-resistance-item>Drafts</la-resistance-item>
+          </la-resistance-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <la-resistance-menu multi>
+            <la-resistance-item>Bold</la-resistance-item>
+            <la-resistance-item>Italic</la-resistance-item>
+            <la-resistance-item>Underline</la-resistance-item>
+            <la-resistance-item>Strikethrough</la-resistance-item>
+          </la-resistance-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <la-resistance-menu attr-for-item-title="label" multi>
+            <la-resistance-submenu label="la-resistance-menu">
+              <la-resistance-item class="menu-trigger">la-resistance-menu</la-resistance-item>
+              <la-resistance-menu class="menu-content sublist" multi>
+                <la-resistance-submenu label="Properties">
+                  <la-resistance-item class="menu-trigger">Properties</la-resistance-item>
+                  <la-resistance-menu class="menu-content sublist2">
+                    <la-resistance-item>focusedItem</la-resistance-item>
+                    <la-resistance-item>attrForItemTitle</la-resistance-item>
+                  </la-resistance-menu>
+                </la-resistance-submenu>
+                <la-resistance-submenu label="Methods">
+                  <la-resistance-item class="menu-trigger">Methods</la-resistance-item>
+                  <la-resistance-menu class="menu-content sublist2">
+                    <la-resistance-item>select(value)</la-resistance-item>
+                  </la-resistance-menu>
+                </la-resistance-submenu>
+            </la-resistance-menu>
+          </la-resistance-submenu>
+
+          <la-resistance-submenu label="la-resistance-submenu">
+            <la-resistance-item class="menu-trigger">la-resistance-submenu</la-resistance-item>
+            <la-resistance-menu class="menu-content sublist">
+              <la-resistance-submenu label="Properties">
+                <la-resistance-item class="menu-trigger">Properties</la-resistance-item>
+                <la-resistance-menu class="menu-content sublist2">
+                  <la-resistance-item>opened</la-resistance-item>
+                </la-resistance-menu>
+                </la-resistance-submenu>
+                <la-resistance-submenu label="Methods">
+                  <la-resistance-item class="menu-trigger">Methods</la-resistance-item>
+                  <la-resistance-menu class="menu-content sublist2">
+                    <la-resistance-item>open()</la-resistance-item>
+                    <la-resistance-item>close()</la-resistance-item>
+                    <la-resistance-item>toggle()</la-resistance-item>
+                  </la-resistance-menu>
+              </la-resistance-submenu>
+            </la-resistance-menu>
+          </la-resistance-submenu>
+
+            <la-resistance-submenu label="Unavailable" disabled>
+              <la-resistance-item class="menu-trigger">Unavailable</la-resistance-item>
+              <la-resistance-menu class="menu-content sublist">
+                <la-resistance-item>Unavailable 1</la-resistance-item>
+                <la-resistance-item>Unavailable 2</la-resistance-item>
+              </la-resistance-menu>
+            </la-resistance-submenu>
+          </la-resistance-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

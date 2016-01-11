@@ -1,0 +1,148 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-toggle-button-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-behaviors/paper-checked-element-behavior.html">
+<link rel="import" href="../melon-styles/default-theme.html">
+
+<dom-module id="melon-toggle-button">
+  <template strip-whitespace>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: inline-block;
+      }
+
+      :host([disabled]) {
+        pointer-events: none;
+      }
+
+      :host(:focus) {
+        outline:none;
+      }
+
+      .toggle-bar {
+        background-color: var(--toggle-button-unchecked-bar-color, #000000);
+        border-radius: 8px;
+        height: 100%;
+        opacity: 0.4;
+        pointer-events: none;
+        position: absolute;
+        transition: background-color linear .08s;
+        width: 100%;
+
+        @apply(--toggle-button-unchecked-bar);
+      }
+
+      .toggle-button {
+        background-color: var(--toggle-button-unchecked-button-color, --paper-grey-50);
+        border-radius: 50%;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+        height: 20px;
+        position: absolute;
+        top: -3px;
+          transition: -webkit-transform linear .08s, background-color linear .08s;
+        transition: transform linear .08s, background-color linear .08s;
+        width: 20px;
+        will-change: transform;
+
+        @apply(--toggle-button-unchecked-button);
+      }
+
+      .toggle-button.dragging {
+          -webkit-transition: none;
+        transition: none;
+      }
+
+      :host([checked]:not([disabled])) .toggle-bar {
+        background-color: var(--toggle-button-checked-bar-color, --default-primary-color);
+        opacity: 0.5;
+
+        @apply(--toggle-button-checked-bar);
+      }
+
+      :host([disabled]) .toggle-bar {
+        background-color: #000;
+        opacity: 0.12;
+      }
+
+      :host([checked]) .toggle-button {
+          -webkit-transform: translate(16px, 0);
+        transform: translate(16px, 0);
+      }
+
+      :host([checked]:not([disabled])) .toggle-button {
+        background-color: var(--toggle-button-checked-button-color, --default-primary-color);
+
+        @apply(--toggle-button-checked-button);
+      }
+
+      :host([disabled]) .toggle-button {
+        background-color: #bdbdbd;
+        opacity: 1;
+      }
+
+      .toggle-ink {
+        color: var(--toggle-button-unchecked-ink-color, --primary-text-color);
+        height: 48px;
+        left: -14px;
+        opacity: 0.5;
+        pointer-events: none;
+        position: absolute;
+        top: -14px;
+        width: 48px;
+      }
+
+      :host([checked]) .toggle-ink {
+        color: var(--toggle-button-checked-ink-color, --default-primary-color);
+      }
+
+      .toggle-container {
+        display: inline-block;
+        height: 14px;
+        position: relative;
+        width: 36px;
+      }
+
+      .toggle-label {
+        color: var(--toggle-button-label-color, --primary-text-color);
+        display: inline-block;
+        padding-left: var(--toggle-button-label-spacing, 8px);
+        pointer-events: none;
+        position: relative;
+        top: -2px;
+        vertical-align: middle;
+        white-space: normal;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="toggle-container">
+      <div id="toggleBar" class="toggle-bar"></div>
+      <div id="toggleButton" class="toggle-button"></div>
+    </div>
+
+    <div class="toggle-label"><content></content></div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'melon-toggle-button',
+
+      behaviors: [
+        Polymer.KoaToggleButtonBehavior,
+        Polymer.PaperCheckedElementBehavior
+      ],
+
+      // customize the element's ripple
+      _createRipple: function() {
+        this._rippleContainer = this.$.toggleButton;
+        var ripple = Polymer.PaperRippleBehavior._createRipple();
+        ripple.id = 'ink';
+        ripple.setAttribute('recenters', '');
+        ripple.classList.add('circle', 'toggle-ink');
+        return ripple;
+      }
+    });
+  </script>
+</dom-module>

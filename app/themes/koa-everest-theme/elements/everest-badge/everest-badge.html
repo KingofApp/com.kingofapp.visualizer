@@ -1,0 +1,61 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-badge-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../everest-styles/default-theme.html">
+
+<dom-module id="everest-badge">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+        position: absolute;
+        outline: none;
+      }
+
+      iron-icon {
+        --iron-icon-width: 12px;
+        --iron-icon-height: 12px;
+      }
+
+      .badge {
+        @apply(--layout);
+        @apply(--layout-center-center);
+        @apply(--paper-font-common-base);
+
+        font-weight: normal;
+        font-size: 11px;
+        border-radius: 50%;
+        margin-left: var(--badge-margin-left, 0px);
+        margin-bottom: var(--badge-margin-bottom, 0px);
+        width: var(--badge-width, 20px);
+        height: var(--badge-height, 20px);
+        background-color: var(--badge-background, --accent-color);
+        opacity: var(--badge-opacity, 1.0);
+        color: var(--badge-text-color, white);
+
+        @apply(--badge);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="badge">
+      <iron-icon hidden$="{{!_computeIsIconBadge(icon)}}" icon="{{icon}}"></iron-icon>
+      <span id="badge-text" hidden$="{{_computeIsIconBadge(icon)}}">{{label}}</span>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'everest-badge',
+
+      behaviors: [
+        Polymer.KoaBadgeBehavior
+      ]
+    });
+  </script>
+</dom-module>

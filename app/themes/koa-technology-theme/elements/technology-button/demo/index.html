@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>technology-button demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-icon/iron-icon.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../technology-button.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 650px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      technology-button {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      technology-button.custom:hover {
+        background-color: var(--paper-indigo-100);
+      }
+
+      technology-button.pink {
+        color: var(--paper-pink-a200);
+      }
+
+      technology-button.indigo {
+        background-color: var(--paper-indigo-500);
+        color: white;
+      }
+
+      technology-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+
+      technology-button.green[active] {
+        background-color: var(--paper-red-500);
+      }
+
+      technology-button.disabled {
+        color: white;
+      }
+
+      iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Buttons can be standar, big, link, toggleable, or disabled</h3>
+      <div class="horizontal-section">
+        <technology-button>standar</technology-button>
+        <technology-button big>big</technology-button>
+        <technology-button link>link</technology-button>
+        <technology-button toggles>toggles</technology-button>
+        <technology-button disabled>disabled</technology-button>
+      </div>
+
+      <h3>Buttons can have icons</h3>
+      <div class="horizontal-section">
+        <technology-button><iron-icon icon="check"></iron-icon>standar</technology-button>
+        <technology-button big><iron-icon icon="file-download"></iron-icon>big</technology-button>
+        <technology-button link><iron-icon icon="file-download"></iron-icon>link</technology-button>
+        <technology-button toggles><iron-icon icon="favorite"></iron-icon>toggles</technology-button>
+        <technology-button disabled><iron-icon icon="block"></iron-icon>disabled</technology-button>
+      </div>
+
+      <h3>Buttons can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <technology-button class="custom pink">standar</technology-button>
+        <technology-button big class="custom indigo">big</technology-button>
+        <technology-button link class="custom">link</technology-button>
+        <technology-button toggles class="custom green">toggles</technology-button>
+        <technology-button disabled class="custom disabled">disabled</technology-button>
+      </div>
+    </div>
+  </body>
+</html>

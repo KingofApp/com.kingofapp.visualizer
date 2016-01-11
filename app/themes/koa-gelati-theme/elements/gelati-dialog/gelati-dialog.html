@@ -1,0 +1,76 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-dialog-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../../../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../gelati-styles/default-theme.html">
+
+<dom-module id="gelati-dialog">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        @apply(--paper-font-body1);
+        @apply(--shadow-elevation-16dp);
+
+        -webkit-overflow-scrolling: touch;
+        background: var(--dialog-background-color, --primary-background-color);
+        color: var(--dialog-color, --primary-text-color);
+        display: block;
+        margin: 24px 40px;
+
+        @apply(--dialog);
+      }
+
+      :host > ::content > * {
+        margin-top: 20px;
+        padding: 0 24px;
+      }
+
+      :host > ::content > .no-padding {
+        padding: 0;
+      }
+
+      :host > ::content > *:first-child {
+        margin-top: 24px;
+      }
+
+      :host > ::content > *:last-child {
+        margin-bottom: 24px;
+      }
+
+      :host > ::content h2 {
+        @apply(--paper-font-title);
+
+        margin: 0;
+        position: relative;
+
+        @apply(--dialog-title);
+      }
+
+      :host > ::content .buttons {
+        color: var(--dialog-button-color, --default-primary-color);
+        margin: 0;
+        padding: 8px 8px 8px 24px;
+        position: relative;
+
+        @apply(--layout-horizontal);
+        @apply(--layout-end-justified);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'gelati-dialog',
+
+      behaviors: [
+        Polymer.KoaDialogBehavior
+      ]
+    });
+  </script>
+</dom-module>

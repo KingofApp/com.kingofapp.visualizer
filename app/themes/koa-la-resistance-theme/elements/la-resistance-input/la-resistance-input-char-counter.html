@@ -1,0 +1,34 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-input-behavior.html">
+<link rel="import" href="../la-resistance-styles/default-theme.html">
+
+<dom-module id="la-resistance-input-char-counter">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: inline-block;
+        float: right;
+      }
+
+      :host-context([dir="rtl"]) {
+        float: left;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <span>[[_charCounterStr]]</span>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'la-resistance-input-char-counter',
+
+      behaviors: [
+        Polymer.KoaInputCharCounterBehavior
+      ]
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>sky-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../sky-item/sky-item.html">
+    <link rel="import" href="../sky-menu.html">
+    <link rel="import" href="../sky-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      sky-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist sky-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 sky-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <sky-menu>
+            <sky-item>Inbox</sky-item>
+            <sky-item>Starred</sky-item>
+            <sky-item>Sent mail</sky-item>
+            <sky-item>Drafts</sky-item>
+          </sky-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <sky-menu selected="0">
+            <sky-item>Inbox</sky-item>
+            <sky-item disabled>Starred</sky-item>
+            <sky-item>Sent mail</sky-item>
+            <sky-item>Drafts</sky-item>
+          </sky-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <sky-menu multi>
+            <sky-item>Bold</sky-item>
+            <sky-item>Italic</sky-item>
+            <sky-item>Underline</sky-item>
+            <sky-item>Strikethrough</sky-item>
+          </sky-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <sky-menu attr-for-item-title="label" multi>
+            <sky-submenu label="sky-menu">
+              <sky-item class="menu-trigger">sky-menu</sky-item>
+              <sky-menu class="menu-content sublist" multi>
+                <sky-submenu label="Properties">
+                  <sky-item class="menu-trigger">Properties</sky-item>
+                  <sky-menu class="menu-content sublist2">
+                    <sky-item>focusedItem</sky-item>
+                    <sky-item>attrForItemTitle</sky-item>
+                  </sky-menu>
+                </sky-submenu>
+                <sky-submenu label="Methods">
+                  <sky-item class="menu-trigger">Methods</sky-item>
+                  <sky-menu class="menu-content sublist2">
+                    <sky-item>select(value)</sky-item>
+                  </sky-menu>
+                </sky-submenu>
+            </sky-menu>
+          </sky-submenu>
+
+          <sky-submenu label="sky-submenu">
+            <sky-item class="menu-trigger">sky-submenu</sky-item>
+            <sky-menu class="menu-content sublist">
+              <sky-submenu label="Properties">
+                <sky-item class="menu-trigger">Properties</sky-item>
+                <sky-menu class="menu-content sublist2">
+                  <sky-item>opened</sky-item>
+                </sky-menu>
+                </sky-submenu>
+                <sky-submenu label="Methods">
+                  <sky-item class="menu-trigger">Methods</sky-item>
+                  <sky-menu class="menu-content sublist2">
+                    <sky-item>open()</sky-item>
+                    <sky-item>close()</sky-item>
+                    <sky-item>toggle()</sky-item>
+                  </sky-menu>
+              </sky-submenu>
+            </sky-menu>
+          </sky-submenu>
+
+            <sky-submenu label="Unavailable" disabled>
+              <sky-item class="menu-trigger">Unavailable</sky-item>
+              <sky-menu class="menu-content sublist">
+                <sky-item>Unavailable 1</sky-item>
+                <sky-item>Unavailable 2</sky-item>
+              </sky-menu>
+            </sky-submenu>
+          </sky-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

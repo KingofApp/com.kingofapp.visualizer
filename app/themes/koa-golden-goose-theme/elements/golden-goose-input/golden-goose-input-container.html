@@ -1,0 +1,298 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-input-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../golden-goose-styles/default-theme.html">
+
+<dom-module id="golden-goose-input-container">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+        padding: 8px 0;
+
+        @apply(--input-container);
+      }
+
+      :host[inline] {
+        display: inline-block;
+      }
+
+      :host([disabled]) {
+        opacity: 0.33;
+        pointer-events: none;
+
+        @apply(--input-container-disabled);
+      }
+
+      .floated-label-placeholder {
+        @apply(--paper-font-caption);
+      }
+
+      .underline {
+        position: relative;
+      }
+
+      .focused-line {
+        @apply(--layout-fit);
+
+        background: var(--input-container-focus-color, --default-primary-color);
+        height: 2px;
+          -webkit-transform: scale3d(0, 1, 1);
+        transform: scale3d(0, 1, 1);
+          -webkit-transform-origin: center center;
+        transform-origin: center center;
+
+        @apply(--input-container-underline-focus);
+      }
+
+      .underline.is-highlighted .focused-line {
+          -webkit-transform: none;
+        transform: none;
+          -webkit-transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+
+        @apply(--input-container-transition-easing);
+      }
+
+      .underline.is-invalid .focused-line {
+        background: var(--input-container-invalid-color, #db4437);
+          -webkit-transform: none;
+        transform: none;
+          -webkit-transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+
+        @apply(--input-container-transition-easing);
+      }
+
+      .unfocused-line {
+        @apply(--layout-fit);
+
+        background: var(--input-container-color, --secondary-text-color);
+        height: 1px;
+
+        @apply(--input-container-underline);
+      }
+
+      :host([disabled]) .unfocused-line {
+        background: transparent;
+        border-bottom: 1px dashed;
+        border-color: var(--input-container-color, --secondary-text-color);
+
+        @apply(--input-container-underline-disabled);
+      }
+
+      .label-and-input-container {
+        @apply(--layout-flex-auto);
+        @apply(--layout-relative);
+
+        color: var(--input-container-color, --secondary-text-color);
+
+        @apply(--input-container-label);
+      }
+
+      .input-content {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+
+        position: relative;
+      }
+
+      .input-content ::content label,
+      .input-content ::content .paper-input-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        font: inherit;
+        color: var(--input-container-color, --secondary-text-color);
+
+        @apply(--paper-font-common-nowrap);
+        @apply(--paper-font-subhead);
+        @apply(--input-container-label);
+      }
+
+      .input-content.label-is-floating ::content label,
+      .input-content.label-is-floating ::content .paper-input-label {
+        -webkit-transform: translateY(-75%) scale(0.75);
+        transform: translateY(-75%) scale(0.75);
+        -webkit-transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+
+        /* Since we scale to 75/100 of the size, we actually have 100/75 of the
+        original space now available */
+        width: 133%;
+
+        @apply(--input-container-transition-easing);
+        @apply(--input-container-label-floating);
+      }
+
+      :host-context([dir="rtl"]) .input-content.label-is-floating ::content label,
+      :host-context([dir="rtl"]) .input-content.label-is-floating ::content .paper-input-label {
+        /* TODO(noms): Figure out why leaving the width at 133% before the animation
+         * actually makes
+         * it wider on the right side, not left side, as you would expect in RTL */
+        width: 100%;
+        -webkit-transform-origin: right top;
+        transform-origin: right top;
+      }
+
+      .input-content.label-is-highlighted ::content label,
+      .input-content.label-is-highlighted ::content .paper-input-label {
+        color: var(--input-container-focus-color, --default-primary-color);
+
+        @apply(--input-container-label-focus);
+      }
+
+      .input-content.is-invalid ::content label,
+      .input-content.is-invalid ::content .paper-input-label {
+        color: var(--input-container-invalid-color, --google-red-500);
+      }
+
+      .input-content.label-is-hidden ::content label,
+      .input-content.label-is-hidden ::content .paper-input-label {
+        visibility: hidden;
+      }
+
+      .input-content ::content input,
+      .input-content ::content textarea,
+      .input-content ::content iron-autogrow-textarea {
+        @apply(--paper-font-subhead);
+
+        -webkit-appearance: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        color: var(--input-container-input-color, --primary-text-color);
+        outline: none;
+        padding: 0;
+        position: relative; /* to make a stacking context */
+        text-align: inherit;
+        width: 100%;
+
+        @apply(--input-container-input);
+      }
+
+      ::content [prefix] {
+        @apply(--paper-font-subhead);
+
+        @apply(--input-prefix);
+      }
+
+      ::content [suffix] {
+        @apply(--paper-font-subhead);
+
+        @apply(--input-suffix);
+      }
+
+      /* Firefox sets a min-width on the input, which can cause layout issues */
+      .input-content ::content input {
+        min-width: 0;
+      }
+
+      .input-content ::content textarea {
+        resize: none;
+      }
+
+      .add-on-content {
+        position: relative;
+      }
+
+      .add-on-content.is-invalid ::content * {
+        color: var(--input-container-invalid-color, #db4437);
+      }
+
+      .add-on-content.is-highlighted ::content * {
+        color: var(--input-container-focus-color, --default-primary-color);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <template is="dom-if" if="[[!noLabelFloat]]">
+      <div class="floated-label-placeholder">&nbsp;</div>
+    </template>
+
+    <div class$="[[_computeInputContentClass(noLabelFloat, alwaysFloatLabel, focused, invalid, _inputHasContent)]]">
+      <content select="[prefix]" id="prefix"></content>
+
+      <div class="label-and-input-container" id="labelAndInputContainer">
+        <content select=":not([add-on]):not([prefix]):not([suffix])"></content>
+      </div>
+
+      <content select="[suffix]"></content>
+    </div>
+
+    <div class$="[[_computeUnderlineClass(focused, invalid)]]">
+      <div class="unfocused-line"></div>
+      <div class="focused-line"></div>
+    </div>
+
+    <div class$="[[_computeAddOnContentClass(focused, invalid)]]">
+      <content id="addOnContent" select="[add-on]"></content>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'golden-goose-input-container',
+
+      behaviors: [
+        Polymer.KoaInputContainerBehavior
+      ],
+
+      properties: {
+        /**
+         * Set to true to disable the floating label. The label disappears when the input value is
+         * not null.
+         */
+        noLabelFloat: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * Set to true to always float the floating label.
+         */
+        alwaysFloatLabel: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      _computeInputContentClass: function(noLabelFloat, alwaysFloatLabel, focused, invalid, _inputHasContent) {
+        var cls = 'input-content';
+        if (!noLabelFloat) {
+          var label = this.querySelector('label');
+
+          if (alwaysFloatLabel || _inputHasContent) {
+            cls += ' label-is-floating';
+            // If the label is floating, ignore any offsets that may have been
+            // applied from a prefix element.
+            this.$.labelAndInputContainer.style.position = 'static';
+
+            if (invalid) {
+              cls += ' is-invalid';
+            } else if (focused) {
+              cls += " label-is-highlighted";
+            }
+          } else {
+            // When the label is not floating, it should overlap the input element.
+            if (label) {
+              this.$.labelAndInputContainer.style.position = 'relative';
+            }
+          }
+        } else {
+          if (_inputHasContent) {
+            cls += ' label-is-hidden';
+          }
+        }
+        return cls;
+      }
+    });
+  </script>
+</dom-module>

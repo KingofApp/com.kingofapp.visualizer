@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>seven-seas-dialog demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/neon-animation/neon-animations.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../seven-seas-button/seven-seas-button.html">
+    <link rel="import" href="../../seven-seas-dropdown-menu/seven-seas-dropdown-menu.html">
+    <link rel="import" href="../../seven-seas-item/seven-seas-item.html">
+    <link rel="import" href="../../seven-seas-menu/seven-seas-menu.html">
+    <link rel="import" href="../seven-seas-dialog.html">
+
+    <style is="custom-style">
+      section {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+
+      section > seven-seas-button {
+        background-color: var(--google-grey-300);
+        padding: 5px;
+      }
+
+      section > seven-seas-button:hover {
+        background-color: var(--paper-light-blue-200);
+        padding: 5px;
+      }
+
+      seven-seas-dialog.colored {
+        border: 2px solid;
+        border-color: var(--paper-green-500);
+        background-color: var(--paper-light-green-50);
+        color: var(--paper-green-500);
+      }
+
+      seven-seas-dialog.size-position {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 300px;
+        height: 300px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <section onclick="clickHandler(event)">
+      <h4>Dialog layouts</h4>
+
+      <seven-seas-button data-dialog="dialog">plain dialog</seven-seas-button>
+      <seven-seas-button data-dialog="actions">dialog with actions</seven-seas-button>
+      <seven-seas-button data-dialog="modal">modal dialog</seven-seas-button>
+      <seven-seas-button data-dialog="dropdown">dialog with dropdown</seven-seas-button>
+      <seven-seas-button data-dialog="nested">dialog with nested dialog</seven-seas-button>
+
+      <seven-seas-dialog id="dialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </seven-seas-dialog>
+
+      <seven-seas-dialog id="actions">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="buttons">
+          <seven-seas-button >More Info...</seven-seas-button>
+          <seven-seas-button dialog-dismiss>Decline</seven-seas-button>
+          <seven-seas-button dialog-confirm autofocus>Accept</seven-seas-button>
+        </div>
+      </seven-seas-dialog>
+
+      <seven-seas-dialog id="modal" modal>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="buttons">
+          <seven-seas-button dialog-confirm autofocus>Tap me to close</seven-seas-button>
+        </div>
+      </seven-seas-dialog>
+
+      <seven-seas-dialog id="dropdown">
+        <h2>Dialog Title</h2>
+        <seven-seas-dropdown-menu label="Value">
+          <seven-seas-menu class="dropdown-content">
+            <seven-seas-item>1</seven-seas-item>
+            <seven-seas-item>2</seven-seas-item>
+            <seven-seas-item>3</seven-seas-item>
+            <seven-seas-item>4</seven-seas-item>
+            <seven-seas-item>5</seven-seas-item>
+            <seven-seas-item>6</seven-seas-item>
+            <seven-seas-item>7</seven-seas-item>
+            <seven-seas-item>8</seven-seas-item>
+            <seven-seas-item>9</seven-seas-item>
+            <seven-seas-item>10</seven-seas-item>
+          </seven-seas-menu>
+        </seven-seas-dropdown-menu>
+      </seven-seas-dialog>
+
+      <seven-seas-dialog id="nested">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="buttons">
+          <seven-seas-button data-dialog="innerDialog">Open nested dialog</seven-seas-button>
+        </div>
+      </seven-seas-dialog>
+
+      <seven-seas-dialog id="innerDialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </seven-seas-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Custom styling</h4>
+      <seven-seas-button data-dialog="colors">colors</seven-seas-button>
+      <seven-seas-button data-dialog="position">size &amp; position</seven-seas-button>
+
+      <seven-seas-dialog id="colors" class="colored">
+        <h2>Custom Colors</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </seven-seas-dialog>
+
+      <seven-seas-dialog id="position" class="size-position">
+        <h2>Custom Size &amp; Position</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </seven-seas-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Transitions</h4>
+      <seven-seas-button data-dialog="animated">transitions</seven-seas-button>
+      <seven-seas-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </seven-seas-dialog>
+    </section>
+
+    <script>
+      function clickHandler(e) {
+        var button = e.target;
+        while (!button.hasAttribute('data-dialog') && button !== document.body) {
+          button = button.parentElement;
+        }
+
+        if (!button.hasAttribute('data-dialog')) {
+          return;
+        }
+
+        var id = button.getAttribute('data-dialog');
+        var dialog = document.getElementById(id);
+        if (dialog) {
+          dialog.open();
+        }
+      }
+    </script>
+  </body>
+</html>

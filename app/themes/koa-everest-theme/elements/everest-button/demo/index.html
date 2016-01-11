@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>everest-button demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-icon/iron-icon.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../everest-button.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 650px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      everest-button {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      everest-button.custom:hover {
+        background-color: var(--paper-indigo-100);
+      }
+
+      everest-button.pink {
+        color: var(--paper-pink-a200);
+      }
+
+      everest-button.indigo {
+        background-color: var(--paper-indigo-500);
+        color: white;
+      }
+
+      everest-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+
+      everest-button.green[active] {
+        background-color: var(--paper-red-500);
+      }
+
+      everest-button.disabled {
+        color: white;
+      }
+
+      iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Buttons can be standar, big, link, toggleable, or disabled</h3>
+      <div class="horizontal-section">
+        <everest-button>standar</everest-button>
+        <everest-button big>big</everest-button>
+        <everest-button link>link</everest-button>
+        <everest-button toggles>toggles</everest-button>
+        <everest-button disabled>disabled</everest-button>
+      </div>
+
+      <h3>Buttons can have icons</h3>
+      <div class="horizontal-section">
+        <everest-button><iron-icon icon="check"></iron-icon>standar</everest-button>
+        <everest-button big><iron-icon icon="file-download"></iron-icon>big</everest-button>
+        <everest-button link><iron-icon icon="file-download"></iron-icon>link</everest-button>
+        <everest-button toggles><iron-icon icon="favorite"></iron-icon>toggles</everest-button>
+        <everest-button disabled><iron-icon icon="block"></iron-icon>disabled</everest-button>
+      </div>
+
+      <h3>Buttons can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <everest-button class="custom pink">standar</everest-button>
+        <everest-button big class="custom indigo">big</everest-button>
+        <everest-button link class="custom">link</everest-button>
+        <everest-button toggles class="custom green">toggles</everest-button>
+        <everest-button disabled class="custom disabled">disabled</everest-button>
+      </div>
+    </div>
+  </body>
+</html>

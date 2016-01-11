@@ -1,0 +1,24 @@
+/* General styles */
+
+seven-seas-card {
+  width: 100%;
+}
+
+seven-seas-card + seven-seas-card {
+  margin-top: 15px;
+}
+
+.module {
+  padding: 10px;
+}
+
+/* Conctact module */
+
+.contact form {
+  margin: 15px;
+}
+
+.contact form seven-seas-button {
+  float: right;
+  margin-top: 15px;
+}

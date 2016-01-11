@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>dark-side-dropdown-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../dark-side-item/dark-side-item.html">
+    <link rel="import" href="../../dark-side-menu/dark-side-menu.html">
+    <link rel="import" href="../dark-side-dropdown-menu.html">
+
+    <style is="custom-style">
+      dark-side-dropdown-menu {
+        text-align: left;
+        margin: auto;
+        width: 180px;
+      }
+
+      dark-side-dropdown-menu.letters {
+        width: 90px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      .nounderline {
+        --input-container-underline: {
+          display: none;
+        };
+      }
+    </style>
+  </head>
+  <body>
+    <template id="Demo" is="dom-bind">
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Basic Menu</h4>
+          <div class="horizontal-section">
+            <dark-side-dropdown-menu label="Dinosaurs">
+              <dark-side-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+                  <dark-side-item>[[dinosaur]]</dark-side-item>
+                </template>
+              </dark-side-menu>
+            </dark-side-dropdown-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Pre-selected Value</h4>
+          <div class="horizontal-section">
+            <dark-side-dropdown-menu label="Dinosaurs">
+              <dark-side-menu class="dropdown-content" selected="1">
+                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+                  <dark-side-item>[[dinosaur]]</dark-side-item>
+                </template>
+              </dark-side-menu>
+            </dark-side-dropdown-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Disabled</h4>
+          <div class="horizontal-section">
+            <dark-side-dropdown-menu disabled label="Disabled">
+              <dark-side-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[letters]]" as="letter">
+                  <dark-side-item>[[letter]]</dark-side-item>
+                </template>
+              </dark-side-menu>
+            </dark-side-dropdown-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>No underline (menu from bottom)</h4>
+          <div class="horizontal-section">
+            <dark-side-dropdown-menu class="nounderline" label="Letters" vertical-align="bottom">
+              <dark-side-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[letters]]" as="letter">
+                  <dark-side-item>[[letter]]</dark-side-item>
+                </template>
+              </dark-side-menu>
+            </dark-side-dropdown-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>No Animations</h4>
+          <div class="horizontal-section">
+            <dark-side-dropdown-menu label="Dinosaurs" no-animations>
+              <dark-side-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+                  <dark-side-item>[[dinosaur]]</dark-side-item>
+                </template>
+              </dark-side-menu>
+            </dark-side-dropdown-menu>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      Demo.letters = [
+        'alpha',
+        'beta',
+        'gamma',
+        'delta',
+        'epsilon'
+      ];
+      Demo.dinosaurs = [
+        'allosaurus',
+        'brontosaurus',
+        'carcharodontosaurus',
+        'diplodocus',
+        'ekrixinatosaurus',
+        'fukuiraptor',
+        'gallimimus',
+        'hadrosaurus',
+        'iguanodon',
+        'jainosaurus',
+        'kritosaurus',
+        'liaoceratops',
+        'megalosaurus',
+        'nemegtosaurus',
+        'ornithomimus',
+        'protoceratops',
+        'quetecsaurus',
+        'rajasaurus',
+        'stegosaurus',
+        'triceratops',
+        'utahraptor',
+        'vulcanodon',
+        'wannanosaurus',
+        'xenoceratops',
+        'yandusaurus',
+        'zephyrosaurus'
+      ];
+    </script>
+  </body>
+</html>

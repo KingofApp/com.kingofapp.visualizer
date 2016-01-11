@@ -1,0 +1,42 @@
+<style is="custom-style">
+  /*
+   Polymer includes a shim for CSS Custom Properties that we can use for application theming.
+   Below, you'll find the default palette for the Polymer Starter Kit layout. Feel free to play
+   with changing the colors used or generate your own palette of colours at MaterialPalette.com.
+   See https://www.polymer-project.org/1.0/docs/devguide/styling.html#xscope-styling-details
+   for further information on custom CSS properties.
+   */
+
+  @import url("https://fonts.googleapis.com/css?family=Oxygen|Source+Sans+Pro");
+
+  /* Write your general styles here */
+
+  :root {
+    --primary-text-color: #bdced7;
+    --primary-background-color: #ffffff;
+    --secondary-text-color: #edf1f4;
+    --disabled-text-color: black;
+    --divider-color: #e0e0e0;
+    --primary-color: #90a4ae;
+    --light-primary-color: #c5cae9;
+    --dark-primary-color: #484e6e;
+    --accent-color: #ff4081;
+    --light-accent-color: #ff4081;
+    --dark-accent-color: #ff4081;
+
+    --background-color: #373b50;
+
+    /*
+     * Deprecated values because of their confusing names.
+     */
+    --default-primary-color: var(--primary-color);
+  }
+
+  body {
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  h1, h3, h5 { font-family: 'Oxygen', sans-serif; }
+</style>

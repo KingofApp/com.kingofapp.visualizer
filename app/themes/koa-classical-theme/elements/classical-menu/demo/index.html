@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>classical-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../classical-item/classical-item.html">
+    <link rel="import" href="../classical-menu.html">
+    <link rel="import" href="../classical-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      classical-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist classical-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 classical-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <classical-menu>
+            <classical-item>Inbox</classical-item>
+            <classical-item>Starred</classical-item>
+            <classical-item>Sent mail</classical-item>
+            <classical-item>Drafts</classical-item>
+          </classical-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <classical-menu selected="0">
+            <classical-item>Inbox</classical-item>
+            <classical-item disabled>Starred</classical-item>
+            <classical-item>Sent mail</classical-item>
+            <classical-item>Drafts</classical-item>
+          </classical-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <classical-menu multi>
+            <classical-item>Bold</classical-item>
+            <classical-item>Italic</classical-item>
+            <classical-item>Underline</classical-item>
+            <classical-item>Strikethrough</classical-item>
+          </classical-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <classical-menu attr-for-item-title="label" multi>
+            <classical-submenu label="classical-menu">
+              <classical-item class="menu-trigger">classical-menu</classical-item>
+              <classical-menu class="menu-content sublist" multi>
+                <classical-submenu label="Properties">
+                  <classical-item class="menu-trigger">Properties</classical-item>
+                  <classical-menu class="menu-content sublist2">
+                    <classical-item>focusedItem</classical-item>
+                    <classical-item>attrForItemTitle</classical-item>
+                  </classical-menu>
+                </classical-submenu>
+                <classical-submenu label="Methods">
+                  <classical-item class="menu-trigger">Methods</classical-item>
+                  <classical-menu class="menu-content sublist2">
+                    <classical-item>select(value)</classical-item>
+                  </classical-menu>
+                </classical-submenu>
+            </classical-menu>
+          </classical-submenu>
+
+          <classical-submenu label="classical-submenu">
+            <classical-item class="menu-trigger">classical-submenu</classical-item>
+            <classical-menu class="menu-content sublist">
+              <classical-submenu label="Properties">
+                <classical-item class="menu-trigger">Properties</classical-item>
+                <classical-menu class="menu-content sublist2">
+                  <classical-item>opened</classical-item>
+                </classical-menu>
+                </classical-submenu>
+                <classical-submenu label="Methods">
+                  <classical-item class="menu-trigger">Methods</classical-item>
+                  <classical-menu class="menu-content sublist2">
+                    <classical-item>open()</classical-item>
+                    <classical-item>close()</classical-item>
+                    <classical-item>toggle()</classical-item>
+                  </classical-menu>
+              </classical-submenu>
+            </classical-menu>
+          </classical-submenu>
+
+            <classical-submenu label="Unavailable" disabled>
+              <classical-item class="menu-trigger">Unavailable</classical-item>
+              <classical-menu class="menu-content sublist">
+                <classical-item>Unavailable 1</classical-item>
+                <classical-item>Unavailable 2</classical-item>
+              </classical-menu>
+            </classical-submenu>
+          </classical-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -14,10 +14,10 @@
 
   function setTranslatorConfig($translateProvider) {
     $translateProvider.useLoader('$translatePartialLoader', {
-      urlTemplate: 'modules/{part}/locale/locale-{lang}.json'
+      urlTemplate: 'modules/{part}/locale/{lang}.json'
     });
 
-    $translateProvider.preferredLanguage("en");
+    $translateProvider.preferredLanguage("en_US");
 
   }
 

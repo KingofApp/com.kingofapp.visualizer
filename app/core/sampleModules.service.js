@@ -18,7 +18,7 @@
 
     function config() {
       return {
-        'lang': ['en'],
+        'lang': ['en_US'],
         'index': '/menu',
         'loader': '',
         'colors': {

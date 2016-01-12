@@ -277,7 +277,7 @@
           dragDrop: true
         },
         view: 'modules/googlemap/index.html',
-        files: ['modules/googlemap/controller.js'],
+        files: ['modules/googlemap/controller.js','modules/googlemap/directive.js'],
         scope: {
           lat: '39.8847281',
           lon: '4.2540999',

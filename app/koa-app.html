@@ -29,7 +29,7 @@
 
       themesPath: 'themes',
 
-      importedThemes: {},
+      importedThemes: [],
 
       createTree: function () {
         this.tree = new Array(0);
@@ -39,12 +39,12 @@
       setTheme: function (theme, callback) {
         this.theme = theme;
 
-        var isNotThemeImported = typeof this.importedThemes[this.theme] === 'undefined';
+        var themeIsNotImported = this.importedThemes.indexOf(this.theme) === -1;
 
-        if (isNotThemeImported) {
+        if (themeIsNotImported) {
           this.importHref(this._getThemePath(), function(e) {
             this.renderThemeElements(callback);
-            this.importedThemes[this.theme] = null;
+            this.importedThemes.push(this.theme);
           });
         } else {
           this.renderThemeElements(callback);

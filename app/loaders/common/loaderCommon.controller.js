@@ -135,14 +135,14 @@
       $rootScope.toolbar = {
         title: module.name
       };
-      if($rootScope.missing){
+      if ($rootScope.missing) {
         $rootScope.showTransition = false;
       }
       $rootScope.current = module.identifier;
       $scope.module = module || $scope.module;
 
       if (!module.type) {
-        //Display a 404 error or similar structureService.getIndex() === '' && 
+        //Display a 404 error or similar structureService.getIndex() === '' &&
         if ($location.$$path !== '/') {
           $location.path('/404');
         }

@@ -73,45 +73,6 @@
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 	</script>
-  <script>
-    //Called from Firebase module to re-render new objects
-    function koaRender() {
-      setTimeout(function () {
-        var koaApp = document.querySelector('#koaApp');
-        koaApp.createTree();
-          koaApp.renderThemeElements();
-      }, 2000);
-    }
-    window.onpopstate = function(event) {
-      history.go(1);
-    };
-  </script>
-  <script>
-    function changeTheme() {
-      if (koaApp.theme === 'paper') {
-        koaApp.setTheme('ios');
-      } else {
-        koaApp.setTheme('paper');
-      }
-    }
-
-    function changeThemeTo(theme) {
-      koaApp.setTheme(theme);
-    }
-
-    function changeColor() {
-      var s = document.createElement('style', 'custom-style');
-      var defaultPrimaryColor = '#'+((1<<24)*Math.random()|0).toString(16);
-      var accentColor = '#'+((1<<24)*Math.random()|0).toString(16);
-      s.textContent = ':root {\n';
-      s.textContent += '--default-primary-color: ' + defaultPrimaryColor + ';';
-      s.textContent += '\n--accent-color: ' + accentColor + ';';
-      s.textContent += '\n}';
-      document.body.appendChild(s);
-      Polymer.updateStyles();
-      s.remove();
-    }
-  </script>
   <!-- endbuild -->
 
   <!-- Services  -->

@@ -222,15 +222,6 @@
         (koaApp.theme)       ? renderElements() :
         ($rootScope.appData) ? setTheme($rootScope.appData.config.theme, $rootScope.appData.config.cssVariables)
                              : setTheme(structureService.getTheme(), structureService.getCssVariables());
-
-        // if (koaApp.theme) {
-        //   renderElements();
-        // } else if ($rootScope.appData) {
-        //   var config = $rootScope.appData.config;
-        //   setTheme(config.theme, config.cssVariables);
-        // } else {
-        //   setTheme(structureService.getTheme(), structureService.getCssVariables());
-        // }
       }, 100);
     }
   }

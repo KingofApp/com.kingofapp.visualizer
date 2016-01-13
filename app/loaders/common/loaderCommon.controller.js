@@ -46,7 +46,7 @@
             }
           }, 400);
 
-          //Launch if there were Petitions
+          // Launch if there were petitions
           if (count === 0 && prev > 0 && !finished) {
             launchKoa();
             finished = true;
@@ -122,8 +122,8 @@
       }
     });
 
-    $scope.$on('koaLaunched', function(event, args) {
-      console.log('Koa Launched');
+    $scope.$on('koaAppRendered', function(event, args) {
+      console.log('koa-app rendered!');
 
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
@@ -180,7 +180,7 @@
           structureService.setColors($rootScope.appData.config.colors);
         }
 
-        $rootScope.$broadcast('koaLaunched');
+        $rootScope.$broadcast('koaAppRendered');
       });
 
       // structureService.setColors(null);
@@ -190,7 +190,7 @@
       koaApp.renderThemeElements(function() {
         addEvents();
 
-        $rootScope.$broadcast('koaLaunched');
+        $rootScope.$broadcast('koaAppRendered');
       });
     }
 

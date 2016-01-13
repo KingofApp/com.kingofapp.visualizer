@@ -171,9 +171,27 @@
       return type === '$';
     }
 
-    function setTheme(theme, cb) {
-      koaApp.setTheme(theme, cb);
-      structureService.setColors(null);
+    function setTheme(theme) {
+      koaApp.setTheme(theme, function() {
+        addEvents();
+
+        if ($rootScope.appData) {
+          console.log('Set Color de ', $rootScope.appData.config.colors);
+          structureService.setColors($rootScope.appData.config.colors);
+        }
+
+        $rootScope.$broadcast('koaLaunched');
+      });
+
+      // structureService.setColors(null);
+    }
+
+    function renderElements() {
+      koaApp.renderThemeElements(function() {
+        addEvents();
+
+        $rootScope.$broadcast('koaLaunched');
+      });
     }
 
     function addEvents() {
@@ -195,13 +213,6 @@
           $scope[model[0]][model[1]] = $(this).val();
         });
       });
-
-      if ($rootScope.appData) {
-        console.log('Set Color de ', $rootScope.appData.config.colors);
-        structureService.setColors($rootScope.appData.config.colors);
-      }
-
-      $rootScope.$broadcast('koaLaunched');
     }
 
     function launchKoa() {
@@ -209,14 +220,14 @@
         // Changing koa-elements to theme-elements...
         koaApp.createTree();
 
-        if (!koaApp.theme) {
-          if ($rootScope.appData) {
-            setTheme($rootScope.appData.config.theme, addEvents);
-          } else {
-            setTheme('paper', addEvents);
-          }
+        if (koaApp.theme) {
+          renderElements();
         } else {
-          koaApp.renderThemeElements(addEvents);
+          if ($rootScope.appData) {
+            setTheme($rootScope.appData.config.theme);
+          } else {
+            setTheme('paper');
+          }
         }
       }, 100);
     }

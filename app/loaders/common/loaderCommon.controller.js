@@ -195,13 +195,13 @@
     }
 
     function addEvents() {
-      // Get current scope
-      var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
+      var scopeElement = document.querySelector('.' + $rootScope.current);
+      var scope = angular.element(scopeElement).scope(); // Get current scope
 
       // Adding ng-click...
       $('[ng-click]').click(function() {
         var functionName = $(this).attr('ng-click').replace('()', '');
-        $scope[functionName]();
+        scope[functionName]();
       });
 
       // Adding ng-model...
@@ -210,7 +210,7 @@
 
         $(this.inputElement).bind('input', function() {
           var model = parent.attr('ng-model').split('.');
-          $scope[model[0]][model[1]] = $(this).val();
+          scope[model[0]][model[1]] = $(this).val();
         });
       });
     }

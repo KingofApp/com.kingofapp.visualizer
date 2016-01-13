@@ -25,6 +25,9 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   return {
     get: get,
     set: set,
+    getTheme: getTheme,
+    setCssVariables: setCssVariables,
+    getCssVariables: getCssVariables,
     setModules: setModules,
     setLoader: setLoader,
     setColors: setColors,
@@ -89,6 +92,26 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     document.body.appendChild(s);
     Polymer.updateStyles();
     s.remove();
+  }
+
+  function getTheme() {
+    return data.config.theme;
+  }
+
+  function setCssVariables(cssVariables) {
+    if (cssVariables === null) {
+      cssVariables = getCssVariables();
+    }
+
+    for (var cssVariable in cssVariables) {
+      Polymer.StyleDefaults.customStyle[cssVariable] = cssVariables[cssVariable];
+    }
+
+    Polymer.updateStyles();
+  }
+
+  function getCssVariables() {
+    return data.config.cssVariables;
   }
 
   function get() {

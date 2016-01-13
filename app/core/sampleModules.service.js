@@ -21,6 +21,23 @@
         'lang': ['en_US'],
         'index': '/menu',
         'loader': '',
+        'theme': 'paper',
+        'cssVariables': {
+          '--primary-text-color': '#212121',
+          '--primary-background-color': '#ffffff',
+          '--secondary-text-color': '#737373',
+          '--disabled-text-color': '#9b9b9b',
+          '--divider-color': '#dbdbdb',
+          '--primary-color': '#3f51b5',
+          '--light-primary-color': '#c5cae9',
+          '--dark-primary-color': '#303f9f',
+          '--accent-color': '#ff4081',
+          '--light-accent-color': '#ff80ab',
+          '--dark-accent-color': '#f50057',
+
+          '--background-color': '#ffffff',
+          '--background-image': 'url("http://www.w3schools.com/css/paper.gif")'
+        },
         'colors': {
           '--primary-text-color': '#212121',
           '--primary-background-color': '#ffffff',

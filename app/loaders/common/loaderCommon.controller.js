@@ -177,7 +177,7 @@
       koaApp.setTheme(theme, function() {
         structureService.setCssVariables(cssVariables);
 
-        addEvents();
+        addDirectives();
 
         $rootScope.$broadcast('koaAppRendered');
       });
@@ -187,31 +187,32 @@
 
     function renderElements() {
       koaApp.renderThemeElements(function() {
-        addEvents();
+        addDirectives();
 
         $rootScope.$broadcast('koaAppRendered');
       });
     }
 
-    function addEvents() {
+    function addDirectives() {
       var scopeElement = document.querySelector('.' + $rootScope.current);
       var scope = angular.element(scopeElement).scope(); // Get current scope
 
-      // Adding ng-click...
-      $('[ng-click]').click(function() {
+      $('[ng-click]').click(ngClickWrapper); // Adding ng-click...
+      $('[ng-model]').each(ngModelWrapper);  // Adding ng-model...
+
+      function ngClickWrapper() {
         var functionName = $(this).attr('ng-click').replace('()', '');
         scope[functionName]();
-      });
+      }
 
-      // Adding ng-model...
-      $('[ng-model]').each(function() {
+      function ngModelWrapper() {
         var parent = $(this);
 
         $(this.inputElement).bind('input', function() {
           var model = parent.attr('ng-model').split('.');
           scope[model[0]][model[1]] = $(this).val();
         });
-      });
+      }
     }
 
     function renderKoaApp() {

@@ -41,14 +41,14 @@
         if ($location.$$path !== '/') {
           setTimeout(function() {
             if (count === 0 && !state && !finished) {
-              launchKoa();
+              renderKoaApp();
               finished = true;
             }
           }, 400);
 
           // Launch if there were petitions
           if (count === 0 && prev > 0 && !finished) {
-            launchKoa();
+            renderKoaApp();
             finished = true;
           }
 
@@ -123,7 +123,7 @@
     });
 
     $scope.$on('koaAppRendered', function(event, args) {
-      console.log('koa-app rendered!');
+      console.info('koa-app rendered!');
 
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
@@ -215,9 +215,8 @@
       });
     }
 
-    function launchKoa() {
+    function renderKoaApp() {
       setTimeout(function() {
-        // Changing koa-elements to theme-elements...
         koaApp.createTree();
 
         if (koaApp.theme) {

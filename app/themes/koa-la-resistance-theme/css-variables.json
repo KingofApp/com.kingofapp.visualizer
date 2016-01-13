@@ -1,0 +1,15 @@
+{
+  "--primary-text-color": "#636363",
+  "--primary-background-color": "#ffffff",
+  "--secondary-text-color": "#636363",
+  "--disabled-text-color": "#424242",
+  "--divider-color": "#e0e0e0",
+  "--primary-color": "#e65540",
+  "--light-primary-color": "#c5cae9",
+  "--dark-primary-color": "#e65540",
+  "--accent-color": "#ff4081",
+  "--light-accent-color": "#ff4081",
+  "--dark-accent-color": "#ff4081",
+
+  "--background-color": "#e0e0e0"
+}

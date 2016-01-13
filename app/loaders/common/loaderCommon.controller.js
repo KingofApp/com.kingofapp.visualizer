@@ -71,7 +71,9 @@
         setTimeout(function() {
           $scope.$apply(function() {
             //Causing first load to not render KOA
-            setTheme(newValue.themes.android.name);
+            var cssVariables = newValue.config.colors;
+
+            setTheme(newValue.themes.android.name, cssVariables);
 
             if (newValue.config.index === $location.path()) {
               $route.reload();
@@ -106,7 +108,7 @@
       if (oldValue !== newValue) {
         console.log('Theme', newValue);
 
-        setTheme(newValue);
+        setTheme(newValue.theme, newValue.cssVariables);
 
         setTimeout(function() {
           $scope.$apply(function() {
@@ -171,14 +173,11 @@
       return type === '$';
     }
 
-    function setTheme(theme) {
+    function setTheme(theme, cssVariables) {
       koaApp.setTheme(theme, function() {
-        addEvents();
+        structureService.setCssVariables(cssVariables);
 
-        if ($rootScope.appData) {
-          console.log('Set Color de ', $rootScope.appData.config.colors);
-          structureService.setColors($rootScope.appData.config.colors);
-        }
+        addEvents();
 
         $rootScope.$broadcast('koaAppRendered');
       });
@@ -219,15 +218,18 @@
       setTimeout(function() {
         koaApp.createTree();
 
-        if (koaApp.theme) {
-          renderElements();
-        } else {
-          if ($rootScope.appData) {
-            setTheme($rootScope.appData.config.theme);
-          } else {
-            setTheme('paper');
-          }
-        }
+        (koaApp.theme)       ? renderElements() :
+        ($rootScope.appData) ? setTheme($rootScope.appData.config.theme, $rootScope.appData.config.cssVariables)
+                             : setTheme(structureService.getTheme(), structureService.getCssVariables());
+
+        // if (koaApp.theme) {
+        //   renderElements();
+        // } else if ($rootScope.appData) {
+        //   var config = $rootScope.appData.config;
+        //   setTheme(config.theme, config.cssVariables);
+        // } else {
+        //   setTheme(structureService.getTheme(), structureService.getCssVariables());
+        // }
       }, 100);
     }
   }

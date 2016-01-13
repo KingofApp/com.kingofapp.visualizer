@@ -17,8 +17,8 @@ window.addEventListener('message', function(event) {
         console.log('Modules', event.data);
         $rootScope.appModules = event.data;
       } else if (event.data.theme) {
-        console.log('Theme', event.data.theme);
-        $rootScope.appTheme = event.data.theme;
+        console.log('Theme', event.data);
+        $rootScope.appTheme = event.data;
       }
     });
   }

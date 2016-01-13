@@ -35,7 +35,8 @@
           '--light-accent-color': '#ff80ab',
           '--dark-accent-color': '#f50057',
 
-          '--background-color': '#ffffff'
+          '--background-color': '#ffffff',
+          '--background-image': 'url("http://www.w3schools.com/css/paper.gif")'
         },
         'colors': {
           '--primary-text-color': '#212121',

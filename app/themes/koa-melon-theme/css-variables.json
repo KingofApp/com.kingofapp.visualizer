@@ -11,5 +11,8 @@
   "--light-accent-color": "#ff4081",
   "--dark-accent-color": "#ff4081",
 
-  "--background-color": "#2a363b"
+  "--background-color": "#2a363b",
+
+  "--primary-font-family": "'Roboto', sans-serif",
+  "--title-font-family": "'Lobster', cursive"
 }

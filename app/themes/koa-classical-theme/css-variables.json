@@ -11,5 +11,8 @@
   "--light-accent-color": "#c5cae9",
   "--dark-accent-color": "#c5cae9",
 
-  "--background-color": "#ececec"
+  "--background-color": "#ececec",
+
+  "--primary-font-family": "'Ledger', serif",
+  "--title-font-family": "'Dancing Script', cursive"
 }

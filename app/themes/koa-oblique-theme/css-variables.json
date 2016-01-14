@@ -11,4 +11,7 @@
   "--divider-color": "#b6b6b6",
 
   "--background-color": "#37a3dc",
+
+  "--primary-font-family": "'PT Sans Caption', sans-serif",
+  "--title-font-family": "'Pacifico', cursive"
 }

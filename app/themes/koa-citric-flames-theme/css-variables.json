@@ -11,5 +11,8 @@
   "--light-accent-color": "#ffffff",
   "--dark-accent-color": "#ffffff",
 
-  "--background-color": "#f5f5f5"
+  "--background-color": "#f5f5f5",
+
+  "--primary-font-family": "'Roboto', sans-serif",
+  "--title-font-family": "'Raleway', sans-serif"
 }

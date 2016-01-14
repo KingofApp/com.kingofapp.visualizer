@@ -11,5 +11,8 @@
   "--light-accent-color": "#3b8183",
   "--dark-accent-color": "#3b8183",
 
-  "--background-color": "#212121"
+  "--background-color": "#212121",
+
+  "--primary-font-family": "'Open Sans', sans-serif",
+  "--title-font-family": "'Oswald', sans-serif"
 }

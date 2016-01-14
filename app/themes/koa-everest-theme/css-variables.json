@@ -11,5 +11,8 @@
   "--light-accent-color": "#ff4081",
   "--dark-accent-color": "#ff4081",
 
-  "--background-color": "#f0f7e6"
+  "--background-color": "#f0f7e6",
+
+  "--primary-font-family": "'Gentium Basic', serif",
+  "--title-font-family": "'Open Sans', sans-serif"
 }

@@ -11,5 +11,8 @@
   "--light-accent-color": "#ff4081",
   "--dark-accent-color": "#ff4081",
 
-  "--background-color": "#ffffff"
+  "--background-color": "#ffffff",
+
+  "--primary-font-family": "'Arimo', sans-serif",
+  "--title-font-family": "'Arimo', sans-serif"
 }

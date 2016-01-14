@@ -11,5 +11,8 @@
   "--light-accent-color": "#ff4081",
   "--dark-accent-color": "#ff4081",
 
-  "--background-color": "#00a0b0"
+  "--background-color": "#00a0b0",
+
+  "--primary-font-family": "'Lato', sans-serif",
+  "--title-font-family": "'Pacifico', cursive"
 }

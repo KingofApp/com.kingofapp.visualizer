@@ -11,5 +11,8 @@
   "--light-accent-color": "#ff4081",
   "--dark-accent-color": "#ff4081",
 
-  "--background-color": "#ffffff"
+  "--background-color": "#ffffff",
+
+  "--primary-font-family": "'Source Sans Pro', sans-serif",
+  "--title-font-family": "'Oxygen', sans-serif"
 }

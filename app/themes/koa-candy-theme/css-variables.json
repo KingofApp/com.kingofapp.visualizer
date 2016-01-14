@@ -11,5 +11,8 @@
   "--light-accent-color": "#fabe28",
   "--dark-accent-color": "#fabe28",
 
-  "--background-color": "#f8ecc2"
+  "--background-color": "#f8ecc2",
+
+  "--primary-font-family": "'Raleway', sans-serif",
+  "--title-font-family": "'Bitter', serif"
 }

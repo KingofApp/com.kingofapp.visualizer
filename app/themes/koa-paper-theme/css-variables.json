@@ -11,5 +11,8 @@
   "--light-accent-color": "#ff80ab",
   "--dark-accent-color": "#f50057",
 
-  "--background-color": "#ffffff"
+  "--background-color": "#ffffff",
+
+  "--primary-font-family": "'Roboto', 'Noto', sans-serif",
+  "--title-font-family": "'Roboto', 'Noto', sans-serif"
 }

@@ -36,10 +36,10 @@
           '--dark-accent-color': '#f50057',
 
           '--background-color': '#ffffff',
-          '--background-image': 'url("http://1x1px.me/FFFFFF-0.png")',
+          '--background-image': 'none',
 
-          '--primary-font-family': 'Verdana',
-          '--title-font-family': 'Impact'
+          '--primary-font-family': '"Roboto", "Noto", sans-serif',
+          '--title-font-family': '"Roboto", "Noto", sans-serif'
         },
         'colors': {
           '--primary-text-color': '#212121',

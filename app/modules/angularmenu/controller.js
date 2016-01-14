@@ -23,7 +23,7 @@ function Menu1Ctrl($scope, $rootScope, $location, structureService) {
   structureService.registerModule($location,$scope,"angularmenu");
 
   $scope.leftVisible = false;
-  $scope.menu        = structureService.getChildren($scope.angularmenu.modulescope.path);
+  $scope.menu        = getMenu();
   $scope.showLeft    = showLeftFn;
   $scope.close       = closeFn;
 
@@ -36,6 +36,23 @@ function Menu1Ctrl($scope, $rootScope, $location, structureService) {
     $scope.leftVisible = false;
   }
 
+  function getMenu() {
+    var menu = new Array(0);
+    var trExp = /[\/\s]+/gi;
+    angular.forEach(structureService.getChildren($scope.angularmenu.modulescope.path), function(value, key) {
+      structureService.getModule(key).then(function(module) {
+        if (module.showOn && module.showOn.menu) {
+          var slug = value.name.replace(trExp, '-');
+          menu.push({
+            text: value.name,
+            url: '#' + key,
+            class: slug
+          });
+        }
+      });
+    });
+    return menu;
+  }
   $rootScope.$on("documentClicked", function _close() {
       $scope.$apply(function() {
           $scope.close();

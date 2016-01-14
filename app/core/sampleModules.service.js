@@ -118,7 +118,7 @@
         '/menu/fire-connector': firebase(),
         '/menu/simple-gallery': simplegallery(),
         '/menu/grouplist': grouplist(),
-        // '/menu'                          : angularmenu('/menu')
+        '/second-menu'                          : angularmenu('/menu')
       };
     }
 
@@ -729,6 +729,10 @@
         },
         view: 'modules/angularmenu/index.html',
         files: ['modules/angularmenu/controller.js'],
+        libs: [{
+          bower: '',
+          src:'modules/angularmenu/styles.html'
+        }],
         scope: {
           path: path
         }

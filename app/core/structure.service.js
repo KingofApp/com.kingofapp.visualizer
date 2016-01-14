@@ -79,19 +79,18 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     });
   }
 
-  function setColors(color) {
+  function setColors(colors) {
     cachedLocations = {};
-    if (color === null) {
-      color = getColors();
+
+    if (colors === null) {
+      colors = getColors();
     }
-    // data.config.colors = color;
-    var s = document.createElement('style', 'custom-style');
-    s.textContent = ':root {\n';
-    s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ';';
-    s.textContent += '\n}';
-    document.body.appendChild(s);
+
+    for (var color in colors) {
+      Polymer.StyleDefaults.customStyle[color] = colors[color];
+    }
+
     Polymer.updateStyles();
-    s.remove();
   }
 
   function getTheme() {

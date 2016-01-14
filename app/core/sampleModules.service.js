@@ -36,7 +36,10 @@
           '--dark-accent-color': '#f50057',
 
           '--background-color': '#ffffff',
-          '--background-image': 'url("http://www.w3schools.com/css/paper.gif")'
+          '--background-image': 'url("http://1x1px.me/FFFFFF-0.png")',
+
+          '--primary-font-family': 'Verdana',
+          '--title-font-family': 'Impact'
         },
         'colors': {
           '--primary-text-color': '#212121',

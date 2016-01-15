@@ -1,18 +1,18 @@
 {
-  "--primary-text-color": "white",
-  "--primary-background-color": "#ffffff",
-  "--secondary-text-color": "white",
-  "--disabled-text-color": "#070809",
-  "--divider-color": "#e0e0e0",
-  "--primary-color": "#e8485f",
-  "--light-primary-color": "#c5cae9",
-  "--dark-primary-color": "#e8485f",
-  "--accent-color": "#ff4081",
-  "--light-accent-color": "#ff4081",
-  "--dark-accent-color": "#ff4081",
+  "primaryTextColor": "white",
+  "primaryBackgroundColor": "#ffffff",
+  "secondaryTextColor": "white",
+  "disabledTextColor": "#070809",
+  "dividerColor": "#e0e0e0",
+  "primaryColor": "#e8485f",
+  "lightPrimaryColor": "#c5cae9",
+  "darkPrimaryColor": "#e8485f",
+  "accentColor": "#ff4081",
+  "lightAccentColor": "#ff4081",
+  "darkAccentColor": "#ff4081",
 
-  "--background-color": "#2a363b",
+  "backgroundColor": "#2a363b",
 
-  "--primary-font-family": "'Roboto', sans-serif",
-  "--title-font-family": "'Lobster', cursive"
+  "primaryFontFamily": "'Roboto', sans-serif",
+  "titleFontFamily": "'Lobster', cursive"
 }

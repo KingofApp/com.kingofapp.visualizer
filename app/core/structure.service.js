@@ -25,6 +25,7 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   return {
     get: get,
     set: set,
+    getConfig: getConfig,
     setCssVariables: setCssVariables,
     setColors: setColors,
     getColors: getColors,

@@ -22,37 +22,32 @@
         'index': '/menu',
         'loader': '',
         'theme': 'paper',
-        'cssVariables': {
-          '--primary-text-color': '#212121',
-          '--primary-background-color': '#ffffff',
-          '--secondary-text-color': '#737373',
-          '--disabled-text-color': '#9b9b9b',
-          '--divider-color': '#dbdbdb',
-          '--primary-color': '#3f51b5',
-          '--light-primary-color': '#c5cae9',
-          '--dark-primary-color': '#303f9f',
-          '--accent-color': '#ff4081',
-          '--light-accent-color': '#ff80ab',
-          '--dark-accent-color': '#f50057',
-
-          '--background-color': '#ffffff',
-          '--background-image': 'none',
-
-          '--primary-font-family': '"Roboto", "Noto", sans-serif',
-          '--title-font-family': '"Roboto", "Noto", sans-serif'
-        },
         'colors': {
-          '--primary-text-color': '#212121',
-          '--primary-background-color': '#ffffff',
-          '--secondary-text-color': '#737373',
-          '--disabled-text-color': '#9b9b9b',
-          '--divider-color': '#dbdbdb',
-          '--primary-color': '#3f51b5',
-          '--light-primary-color': '#c5cae9',
-          '--dark-primary-color': '#303f9f',
-          '--accent-color': '#ff4081',
-          '--light-accent-color': '#ff80ab',
-          '--dark-accent-color': '#f50057'
+          'primaryTextColor': '#212121',
+          'primaryBackgroundColor': '#ffffff',
+          'secondaryTextColor': '#737373',
+          'disabledTextColor': '#9b9b9b',
+          'dividerColor': '#dbdbdb',
+          'primaryColor': '#3f51b5',
+          'lightPrimaryColor': '#c5cae9',
+          'darkPrimaryColor': '#303f9f',
+          'accentColor': '#ff4081',
+          'lightAccentColor': '#ff80ab',
+          'darkAccentColor': '#f50057',
+          'backgroundColor': '#ffffff'
+        },
+        'images': {
+          'background': ''
+        },
+        'fonts': {
+          'primary': {
+            'name': 'Roboto',
+            'url': 'https://fonts.googleapis.com/css?family=Roboto'
+          },
+          'title': {
+            'name': 'Roboto',
+            'url': 'https://fonts.googleapis.com/css?family=Roboto'
+          }
         }
       };
     }

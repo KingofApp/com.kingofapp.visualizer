@@ -71,9 +71,7 @@
         setTimeout(function() {
           $scope.$apply(function() {
             //Causing first load to not render KOA
-            var cssVariables = newValue.config.colors;
-
-            setTheme(newValue.themes.android.name, cssVariables);
+            setTheme(newValue.config);
 
             if (newValue.config.index === $location.path()) {
               $route.reload();
@@ -85,10 +83,18 @@
       }
     });
 
-    $scope.$watch('appColor', function(newValue, oldValue) {
+    $scope.$watch('appColors', function(newValue, oldValue) {
       if (oldValue !== newValue) {
         prevent = true;
         structureService.setColors(newValue);
+      }
+    });
+
+    $scope.$watch('appFonts', function(newValue, oldValue) {
+      if (oldValue !== newValue) {
+        prevent = true;
+        loadFonts(newValue);
+        structureService.setFonts(newValue);
       }
     });
 
@@ -175,16 +181,24 @@
       return type === '$';
     }
 
-    function setTheme(theme, cssVariables) {
-      koaApp.setTheme(theme, function() {
-        structureService.setCssVariables(cssVariables);
+    function loadFonts(fonts) {
+      WebFont.load({
+        google: {
+          families: [fonts.primary.name, fonts.title.name]
+        }
+      });
+    }
+
+    function setTheme(config) {
+      loadFonts(config.fonts);
+
+      koaApp.setTheme(config.theme, function() {
+        structureService.setCssVariables(config);
 
         addDirectives();
 
         $rootScope.$broadcast('koaAppRendered');
       });
-
-      // structureService.setColors(null);
     }
 
     function renderElements() {
@@ -222,8 +236,8 @@
         koaApp.createTree();
 
         (koaApp.theme)       ? renderElements() :
-        ($rootScope.appData) ? setTheme($rootScope.appData.config.theme, $rootScope.appData.config.cssVariables)
-                             : setTheme(structureService.getTheme(), structureService.getCssVariables());
+        ($rootScope.appData) ? setTheme($rootScope.appData.config)
+                             : setTheme(structureService.getConfig());
       }, 100);
     }
   }

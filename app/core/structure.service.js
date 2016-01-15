@@ -25,13 +25,16 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   return {
     get: get,
     set: set,
-    getTheme: getTheme,
+    getConfig: getConfig,
     setCssVariables: setCssVariables,
-    getCssVariables: getCssVariables,
-    setModules: setModules,
-    setLoader: setLoader,
     setColors: setColors,
     getColors: getColors,
+    setFonts: setFonts,
+    getFonts: getFonts,
+    setImages: setImages,
+    getImages: getImages,
+    setModules: setModules,
+    setLoader: setLoader,
     getIndex: getIndex,
     getLang: getLang,
     setLang: setLang,
@@ -45,6 +48,10 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     onChange: onChange
   };
 
+  function get() {
+    return data;
+  }
+
   function set(newData) {
     cachedLocations = {};
     data = newData;
@@ -52,6 +59,90 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     setLoader(data.config.loader);
     setHooks();
     $rootScope.$broadcast('menuUpdated');
+  }
+
+  function getConfig() {
+    return data.config;
+  }
+
+  function setCustomStyle(variableKey, variableValue) {
+    Polymer.StyleDefaults.customStyle[variableKey] = variableValue;
+  }
+
+  function setCssVariables(config) {
+    if (config === null) {
+      config = getConfig();
+    }
+
+    setColors(config.colors);
+    setImages(config.images);
+    setFonts(config.fonts);
+  }
+
+  function getColors() {
+    return data.config.colors;
+  }
+
+  function setColors(colors) {
+    cachedLocations = {};
+
+    if (colors === null) {
+      colors = getColors();
+    }
+
+    setCustomStyle('--primary-text-color', colors.primaryTextColor);
+    setCustomStyle('--primary-background-color', colors.primaryBackgroundColor);
+    setCustomStyle('--secondary-text-color', colors.secondaryTextColor);
+    setCustomStyle('--disabled-text-color', colors.disabledTextColor);
+    setCustomStyle('--divider-color', colors.dividerColor);
+    setCustomStyle('--primary-color', colors.primaryColor);
+    setCustomStyle('--light-primary-color', colors.lightPrimaryColor);
+    setCustomStyle('--dark-primary-color', colors.darkPrimaryColor);
+    setCustomStyle('--accent-color', colors.accentColor);
+    setCustomStyle('--light-accent-color', colors.lightAccentColor);
+    setCustomStyle('--dark-accent-color', colors.darkAccentColor);
+    setCustomStyle('--background-color', colors.backgroundColor);
+
+    Polymer.updateStyles();
+  }
+
+  function getFonts() {
+    return data.config.fonts;
+  }
+
+  function setFonts(fonts) {
+    cachedLocations = {};
+
+    if (fonts === null) {
+      fonts = getFonts();
+    }
+
+    setCustomStyle('--primary-font-family', fonts.primary.name);
+    setCustomStyle('--title-font-family', fonts.title.name);
+
+    Polymer.updateStyles();
+  }
+
+  function getImages() {
+    return data.config.images;
+  }
+
+  function setImages(images) {
+    cachedLocations = {};
+
+    if (images === null) {
+      images = getImages();
+    }
+
+    setCustomStyle('--background-image', images.background);
+
+    Polymer.updateStyles();
+  }
+
+  function setModules(newData) {
+    cachedLocations = {};
+    data.modules = newData;
+    setHooks();
   }
 
   function setLoader(src) {
@@ -63,12 +154,6 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     }
   }
 
-  function setModules(newData) {
-    cachedLocations = {};
-    data.modules = newData;
-    setHooks();
-  }
-
   function setHooks() {
     if (structureHooks.getIndex() !== '') {
       data.config.indexOld = data.config.index;
@@ -77,48 +162,6 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     angular.forEach(structureHooks.getModules(), function(module, path) {
       data.modules[path] = module;
     });
-  }
-
-  function setColors(colors) {
-    cachedLocations = {};
-
-    if (colors === null) {
-      colors = getColors();
-    }
-
-    for (var color in colors) {
-      Polymer.StyleDefaults.customStyle[color] = colors[color];
-    }
-
-    Polymer.updateStyles();
-  }
-
-  function getTheme() {
-    return data.config.theme;
-  }
-
-  function setCssVariables(cssVariables) {
-    if (cssVariables === null) {
-      cssVariables = getCssVariables();
-    }
-
-    for (var cssVariable in cssVariables) {
-      Polymer.StyleDefaults.customStyle[cssVariable] = cssVariables[cssVariable];
-    }
-
-    Polymer.updateStyles();
-  }
-
-  function getCssVariables() {
-    return data.config.cssVariables;
-  }
-
-  function get() {
-    return data;
-  }
-
-  function getColors() {
-    return data.config.colors;
   }
 
   function getIndex() {

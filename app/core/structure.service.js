@@ -28,10 +28,10 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     getTheme: getTheme,
     setCssVariables: setCssVariables,
     getCssVariables: getCssVariables,
-    setModules: setModules,
-    setLoader: setLoader,
     setColors: setColors,
     getColors: getColors,
+    setModules: setModules,
+    setLoader: setLoader,
     getIndex: getIndex,
     getLang: getLang,
     setLang: setLang,
@@ -45,6 +45,10 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     onChange: onChange
   };
 
+  function get() {
+    return data;
+  }
+
   function set(newData) {
     cachedLocations = {};
     data = newData;
@@ -54,29 +58,28 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     $rootScope.$broadcast('menuUpdated');
   }
 
-  function setLoader(src) {
-    if (src) {
-      $rootScope.loader = src;
-    } else {
-      //Default Loader
-      $rootScope.loader = 'resources/loader.gif';
-    }
+  function getTheme() {
+    return data.config.theme;
   }
 
-  function setModules(newData) {
-    cachedLocations = {};
-    data.modules = newData;
-    setHooks();
+  function getCssVariables() {
+    return data.config.cssVariables;
   }
 
-  function setHooks() {
-    if (structureHooks.getIndex() !== '') {
-      data.config.indexOld = data.config.index;
-      data.config.index = structureHooks.getIndex();
+  function setCssVariables(cssVariables) {
+    if (cssVariables === null) {
+      cssVariables = getCssVariables();
     }
-    angular.forEach(structureHooks.getModules(), function(module, path) {
-      data.modules[path] = module;
-    });
+
+    for (var cssVariable in cssVariables) {
+      Polymer.StyleDefaults.customStyle[cssVariable] = cssVariables[cssVariable];
+    }
+
+    Polymer.updateStyles();
+  }
+
+  function getColors() {
+    return data.config.colors;
   }
 
   function setColors(colors) {
@@ -93,32 +96,29 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     Polymer.updateStyles();
   }
 
-  function getTheme() {
-    return data.config.theme;
+  function setModules(newData) {
+    cachedLocations = {};
+    data.modules = newData;
+    setHooks();
   }
 
-  function setCssVariables(cssVariables) {
-    if (cssVariables === null) {
-      cssVariables = getCssVariables();
+  function setLoader(src) {
+    if (src) {
+      $rootScope.loader = src;
+    } else {
+      //Default Loader
+      $rootScope.loader = 'resources/loader.gif';
     }
+  }
 
-    for (var cssVariable in cssVariables) {
-      Polymer.StyleDefaults.customStyle[cssVariable] = cssVariables[cssVariable];
+  function setHooks() {
+    if (structureHooks.getIndex() !== '') {
+      data.config.indexOld = data.config.index;
+      data.config.index = structureHooks.getIndex();
     }
-
-    Polymer.updateStyles();
-  }
-
-  function getCssVariables() {
-    return data.config.cssVariables;
-  }
-
-  function get() {
-    return data;
-  }
-
-  function getColors() {
-    return data.config.colors;
+    angular.forEach(structureHooks.getModules(), function(module, path) {
+      data.modules[path] = module;
+    });
   }
 
   function getIndex() {

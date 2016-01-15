@@ -12,7 +12,10 @@ window.addEventListener('message', function(event) {
         $rootScope.appData = event.data;
       } else if (event.data.color) {
         console.log('Color', event.data.color);
-        $rootScope.appColor = event.data.color;
+        $rootScope.appColors = event.data.color;
+      } else if (event.data.fonts) {
+        console.log('Fonts', event.data.fonts);
+        $rootScope.appFonts = event.data.fonts;
       } else if (event.data.modules) {
         console.log('Modules', event.data);
         $rootScope.appModules = event.data;

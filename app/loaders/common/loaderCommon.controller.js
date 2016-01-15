@@ -152,6 +152,8 @@
       if (!module.type) {
         // Display a 404 error or similar structureService.getIndex() === '' &&
         if ($location.$$path !== '/') {
+          console.log("Redirecting to 404 ", $location.$$path);
+          console.log("getIndex is ", structureService.getIndex());
           $location.path('/404');
         }
       } else if (isAngularModule(module.type)) {

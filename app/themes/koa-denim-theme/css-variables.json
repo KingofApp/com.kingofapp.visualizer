@@ -1,18 +1,18 @@
 {
-  "--primary-text-color": "#bdced7",
-  "--primary-background-color": "#ffffff",
-  "--secondary-text-color": "#edf1f4",
-  "--disabled-text-color": "black",
-  "--divider-color": "#e0e0e0",
-  "--primary-color": "#90a4ae",
-  "--light-primary-color": "#c5cae9",
-  "--dark-primary-color": "#484e6e",
-  "--accent-color": "#ff4081",
-  "--light-accent-color": "#ff4081",
-  "--dark-accent-color": "#ff4081",
+  "primaryTextColor": "#bdced7",
+  "primaryBackgroundColor": "#ffffff",
+  "secondaryTextColor": "#edf1f4",
+  "disabledTextColor": "black",
+  "dividerColor": "#e0e0e0",
+  "primaryColor": "#90a4ae",
+  "lightPrimaryColor": "#c5cae9",
+  "darkPrimaryColor": "#484e6e",
+  "accentColor": "#ff4081",
+  "lightAccentColor": "#ff4081",
+  "darkAccentColor": "#ff4081",
 
-  "--background-color": "#373b50",
+  "backgroundColor": "#373b50",
 
-  "--primary-font-family": "'Source Sans Pro', sans-serif",
-  "--title-font-family": "'Oxygen', sans-serif"
+  "primaryFontFamily": "'Source Sans Pro', sans-serif",
+  "titleFontFamily": "'Oxygen', sans-serif"
 }

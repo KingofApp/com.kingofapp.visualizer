@@ -1,18 +1,29 @@
 {
-  "primaryTextColor": "#e0c453",
-  "primaryBackgroundColor": "#ffffff",
-  "secondaryTextColor": "white",
-  "disabledTextColor": "black",
-  "dividerColor": "#e0e0e0",
-  "primaryColor": "#e0c453",
-  "lightPrimaryColor": "#c5cae9",
-  "darkPrimaryColor": "#e0c453",
-  "accentColor": "#ff4081",
-  "lightAccentColor": "#ff4081",
-  "darkAccentColor": "#ff4081",
-
-  "backgroundColor": "#2b2b2b",
-
-  "primaryFontFamily": "'Source Sans Pro', sans-serif",
-  "titleFontFamily": "'Open Sans', sans-serif"
+  "colors": {
+    "primaryTextColor": "#e0c453",
+    "primaryBackgroundColor": "#ffffff",
+    "secondaryTextColor": "white",
+    "disabledTextColor": "black",
+    "dividerColor": "#e0e0e0",
+    "primaryColor": "#e0c453",
+    "lightPrimaryColor": "#c5cae9",
+    "darkPrimaryColor": "#e0c453",
+    "accentColor": "#ff4081",
+    "lightAccentColor": "#ff4081",
+    "darkAccentColor": "#ff4081",
+    "backgroundColor": "#2b2b2b"
+  },
+  "images": {
+    "background": ""
+  },
+  "fonts": {
+    "primaryFontFamily": {
+      "name": "Source Sans Pro",
+      "url": "https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+    },
+    "titleFontFamily": {
+      "name": "Open Sans",
+      "url": "https://fonts.googleapis.com/css?family=Open+Sans"
+    }
+  }
 }

@@ -1,18 +1,29 @@
 {
-  "primaryTextColor": "#636363",
-  "primaryBackgroundColor": "#ffffff",
-  "secondaryTextColor": "#636363",
-  "disabledTextColor": "#424242",
-  "dividerColor": "#e0e0e0",
-  "primaryColor": "#e65540",
-  "lightPrimaryColor": "#c5cae9",
-  "darkPrimaryColor": "#e65540",
-  "accentColor": "#ff4081",
-  "lightAccentColor": "#ff4081",
-  "darkAccentColor": "#ff4081",
-
-  "backgroundColor": "#e0e0e0",
-
-  "primaryFontFamily": "'Open Sans', sans-serif",
-  "titleFontFamily": "'Oswald', sans-serif"
+  "colors": {
+    "primaryTextColor": "#636363",
+    "primaryBackgroundColor": "#ffffff",
+    "secondaryTextColor": "#636363",
+    "disabledTextColor": "#424242",
+    "dividerColor": "#e0e0e0",
+    "primaryColor": "#e65540",
+    "lightPrimaryColor": "#c5cae9",
+    "darkPrimaryColor": "#e65540",
+    "accentColor": "#ff4081",
+    "lightAccentColor": "#ff4081",
+    "darkAccentColor": "#ff4081",
+    "backgroundColor": "#e0e0e0"
+  },
+  "images": {
+    "background": ""
+  },
+  "fonts": {
+    "primaryFontFamily": {
+      "name": "Open Sans",
+      "url": "https://fonts.googleapis.com/css?family=Open+Sans"
+    },
+    "titleFontFamily": {
+      "name": "Oswald",
+      "url": "https://fonts.googleapis.com/css?family=Oswald"
+    }
+  }
 }

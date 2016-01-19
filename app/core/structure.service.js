@@ -117,8 +117,8 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
       fonts = getFonts();
     }
 
-    setCustomStyle('--primary-font-family', fonts.primary.name);
-    setCustomStyle('--title-font-family', fonts.title.name);
+    setCustomStyle('--primary-font-family', fonts.primaryFontFamily.name);
+    setCustomStyle('--title-font-family', fonts.titleFontFamily.name);
 
     Polymer.updateStyles();
   }

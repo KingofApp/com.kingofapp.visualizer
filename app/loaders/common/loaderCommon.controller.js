@@ -184,7 +184,7 @@
     function loadFonts(fonts) {
       WebFont.load({
         google: {
-          families: [fonts.primary.name, fonts.title.name]
+          families: [fonts.primaryFontFamily.name, fonts.titleFontFamily.name]
         }
       });
     }

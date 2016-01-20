@@ -64,15 +64,19 @@
     $location.$$path = $location.$$path || '/';
 
     $scope.$watch('appData', function(newValue, oldValue) {
+      console.log("REceived AppData",newValue);
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
+        console.log("Inside If to set:",newValue);
         structureService.set(newValue);
         redirected = true;
 
         setTimeout(function() {
           $scope.$apply(function() {
             //Causing first load to not render KOA
+            console.log("New config set", newValue.config);
             setTheme(newValue.config);
-
+            console.log("ACtual location", $location.path());
+            console.log("ACtual INDEX", newValue.config.index);
             if (newValue.config.index === $location.path()) {
               $route.reload();
             } else {
@@ -114,7 +118,7 @@
       if (oldValue !== newValue) {
         console.log('Theme', newValue);
 
-        setTheme(newValue.theme, newValue.cssVariables);
+        setTheme(newValue.config);
 
         setTimeout(function() {
           $scope.$apply(function() {

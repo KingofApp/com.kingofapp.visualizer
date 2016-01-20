@@ -71,7 +71,7 @@
         redirected = true;
 
         setTimeout(function() {
-          $scope.$apply(function() {
+          // $scope.$apply(function() {
             //Causing first load to not render KOA
             console.log("New config set", newValue.config);
             setTheme(newValue.config);
@@ -82,8 +82,8 @@
             } else {
               $location.path(newValue.config.index);
             }
-          });
-        }, 100);
+          // });
+        }, 200);
       }
     });
 

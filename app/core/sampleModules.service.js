@@ -21,7 +21,7 @@
         'lang': ['en_US'],
         'index': '/menu',
         'loader': '',
-        'theme': 'paper',
+        'theme': 'koa-paper-theme',
         'colors': {
           'primaryTextColor': '#212121',
           'primaryBackgroundColor': '#ffffff',
@@ -40,11 +40,11 @@
           'background': ''
         },
         'fonts': {
-          'primary': {
+          'primaryFontFamily': {
             'name': 'Roboto',
             'url': 'https://fonts.googleapis.com/css?family=Roboto'
           },
-          'title': {
+          'titleFontFamily': {
             'name': 'Roboto',
             'url': 'https://fonts.googleapis.com/css?family=Roboto'
           }

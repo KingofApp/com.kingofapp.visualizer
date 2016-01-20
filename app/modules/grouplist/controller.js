@@ -11,10 +11,9 @@ function loadFunction($scope, structureService, $location){
   angular.forEach($scope.grouplist.modulescope.sections, function(value, key){
     if(structureService.get().modules[value.replace(/#/g, '')]){
       var name = structureService.get().modules[value.replace(/#/g, '')].name;
-      list.push( { name:name, url:value } );
+      list.push( { name:name, url:value.replace(/#/g, '') } );
     }
 
   });
-  console.log(list);
   $scope.grouplist.modulescope.newsections=list;
 }

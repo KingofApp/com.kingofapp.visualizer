@@ -213,6 +213,12 @@
         headclass: 'blue',
         view: 'modules/grouplist/index.html',
         files: ['modules/grouplist/controller.js'],
+        libs: [{
+          bower: {
+            'PolymerElements/iron-flex-layout': '^1.0.0'
+          },
+          src: 'bower_components/iron-flex-layout/iron-flex-layout.html'
+        }],
         scope: {
           sections: ['#/menu/facebook', '#/menu/flickr']
         }

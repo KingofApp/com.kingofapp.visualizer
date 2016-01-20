@@ -1,7 +1,7 @@
 {
   "colors": {
     "primaryTextColor": "#202020",
-    "primaryBackgroundColor": "#37a3dc",
+    "primaryBackgroundColor": "#b5e1f8",
     "secondaryTextColor": "#727272",
     "disabledTextColor": "#a2a8aa",
     "dividerColor": "#b6b6b6",
@@ -11,7 +11,7 @@
     "accentColor": "#607d8b",
     "lightAccentColor": "#607d8b",
     "darkAccentColor": "#607d8b",
-    "backgroundColor": "#37a3dc"
+    "backgroundColor": "#ffffff"
   },
   "images": {
     "background": ""

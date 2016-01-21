@@ -28,6 +28,16 @@ paper-card + paper-card {
   margin-top: 15px;
 }
 
+/* Wordpress Posts module */
+
+.wordpressposts a {
+  display: block;
+  color: inherit;
+}
+
+.wordpressposts a + a {
+  margin-top: 15px;
+}
 
 /* Other styles */
 

@@ -1,0 +1,41 @@
+/*
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+*/
+
+/* General styles */
+
+oblique-card {
+  max-width: 100%;
+}
+
+oblique-card + oblique-card {
+  margin-top: 15px;
+}
+
+.module {
+  padding: 10px;
+}
+
+/* Conctact module */
+
+.contact form {
+  margin: 15px;
+}
+
+.contact form oblique-button {
+  float: right;
+  margin-top: 15px;
+}
+
+/* Wordpress Posts module */
+
+.wordpressposts a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.wordpressposts a + a {
+  margin-top: 15px;
+}

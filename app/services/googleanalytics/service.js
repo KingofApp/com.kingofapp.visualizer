@@ -20,7 +20,7 @@
   function($q, $log, ready, debug, trackingId, period) {
     var deferred = $q.defer();
     var deviceReady = false;
-    // console.info('[V] DENTRO !!!!!!!!!!!!!!');
+    // console.log('[V] DENTRO !!!!!!!!!!!!!!');
     window.addEventListener('deviceReady', function() {
       deviceReady = true;
       deferred.resolve();
@@ -86,7 +86,7 @@
 
   .run(['googleAnalyticsCordova', 'configService', function(googleAnalyticsCordova, configService) {
     if (configService.services && configService.services.googleanalytics) {
-      console.info('[V] Loading Analytics config ...');
+      console.log('[V] Loading Analytics config ...');
       googleAnalyticsCordova.init(configService.services.googleanalytics.scope.trackId);
     }
   }]);

@@ -11,12 +11,12 @@ angular.element(document).ready(function() {
       }]);
 
     angular.bootstrap(document, ['myApp']);
-    console.info('[V] Bootstraped ng-app');
+    console.log('[V] Bootstraped ng-app');
   }).fail(function() {
-    console.info('[V] Default loading from samplemodules');
+    console.log('[V] Default loading from samplemodules');
     angular.module('myApp').constant('redirectUrl', '');
     angular.bootstrap(document, ['myApp']);
-    console.info('[V] Bootstraped ng-app');
+    console.log('[V] Bootstraped ng-app');
     window.parent.postMessage('bootstrapped-app', '*');
   });
 });

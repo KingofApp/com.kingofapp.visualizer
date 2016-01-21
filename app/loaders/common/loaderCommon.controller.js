@@ -8,7 +8,7 @@
   commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
 
   function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
-    // console.info('[V] Pasa por el commonLoaderCtrl');
+    // console.log('[V] Pasa por el commonLoaderCtrl');
 
     var koaApp = document.querySelector('#koaApp');
 
@@ -32,7 +32,7 @@
       },
 
       function handleModelChange(count) {
-        console.info('[V] Pending HTTP count:', count,
+        console.log('[V] Pending HTTP count:', count,
           '{',
           trafficGuardiaCivil.pending.get, 'GET ,',
           trafficGuardiaCivil.pending.post, 'POST',
@@ -41,7 +41,7 @@
         if ($location.$$path !== '/') {
           setTimeout(function() {
             if (count === 0 && !state && !finished) {
-              console.log("[TEST] Paso por 1", $location.$$path);
+              console.log('[V] [TEST] Paso por 1', $location.$$path);
               renderKoaApp();
               finished = true;
             }
@@ -49,7 +49,7 @@
 
           // Launch if there were petitions
           if (count === 0 && prev > 0 && !finished) {
-            console.log("[TEST] Paso por 2", $location.$$path);
+            console.log('[V] [TEST] Paso por 2', $location.$$path);
             renderKoaApp();
             finished = true;
           }
@@ -66,19 +66,19 @@
     $location.$$path = $location.$$path || '/';
 
     $scope.$watch('appData', function(newValue, oldValue) {
-      // console.info('[V] REceived AppData', newValue);
+      // console.log('[V] REceived AppData', newValue);
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
-        console.info('[V] Inside If to set:', newValue);
+        console.log('[V] Inside If to set:', newValue);
         structureService.set(newValue);
         redirected = true;
 
         setTimeout(function() {
           // $scope.$apply(function() {
           //Causing first load to not render KOA
-          console.info('[V] New config set', newValue.config);
+          console.log('[V] New config set', newValue.config);
           setTheme(newValue.config);
-          console.info('[V] Actual location', $location.path());
-          console.info('[V] Actual index', newValue.config.index);
+          console.log('[V] Actual location', $location.path());
+          console.log('[V] Actual index', newValue.config.index);
           if (newValue.config.index === $location.path()) {
             $route.reload();
           } else {
@@ -118,7 +118,7 @@
 
     $scope.$watch('appTheme', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        console.info('[V] Theme', newValue);
+        console.log('[V] Theme', newValue);
 
         setTheme(newValue.config);
 

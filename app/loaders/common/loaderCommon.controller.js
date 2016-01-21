@@ -8,7 +8,7 @@
   commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
 
   function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
-    console.log('Pasa por el commonLoaderCtrl');
+    // console.log('Pasa por el commonLoaderCtrl');
 
     var koaApp = document.querySelector('#koaApp');
 
@@ -41,6 +41,7 @@
         if ($location.$$path !== '/') {
           setTimeout(function() {
             if (count === 0 && !state && !finished) {
+              console.log("[TEST] Paso por 1", $location.$$path);
               renderKoaApp();
               finished = true;
             }
@@ -48,6 +49,7 @@
 
           // Launch if there were petitions
           if (count === 0 && prev > 0 && !finished) {
+            console.log("[TEST] Paso por 2", $location.$$path);
             renderKoaApp();
             finished = true;
           }
@@ -64,7 +66,7 @@
     $location.$$path = $location.$$path || '/';
 
     $scope.$watch('appData', function(newValue, oldValue) {
-      console.log("REceived AppData",newValue);
+      // console.log("REceived AppData",newValue);
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
         console.log("Inside If to set:",newValue);
         structureService.set(newValue);

@@ -18,7 +18,13 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   if ($rootScope.appJsonStructure) {
     set($rootScope.appJsonStructure);
   } else {
-    set(sampleModules);
+    // set(sampleModules);
+    data ={
+      "config": {
+        "index":"/",
+        "lang" : ['EN']
+      }
+    } ;
     $rootScope.transitionOn = true;
   }
 
@@ -281,7 +287,7 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   function findRoute(path, structure, callback) {
     // console.log('Path', path);
     // console.log('Structure', structure);
-    if (structure[path]) {
+    if ( structure && structure[path]) {
       callback(structure[path]);
     } else {
       callback(new Error('No module found in path ' + path));

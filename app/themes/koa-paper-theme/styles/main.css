@@ -5,37 +5,31 @@ This code may only be used under the MIT license.
 
 /* General styles */
 
-paper-card {
-  width: 100%;
-}
-
-paper-card + paper-card {
-  margin-top: 15px;
-}
-
 .module {
   padding: 10px;
 }
 
-/* Conctact module */
-
-.contact form {
-  margin: 15px;
+.module > a {
+  color: inherit;
+  display: block;
+  text-decoration: none;
 }
 
-.contact form paper-button {
-  float: right;
+.module > a + a,
+oblique-card + oblique-card {
   margin-top: 15px;
 }
 
-/* Wordpress Posts module */
-
-.wordpressposts a {
-  display: block;
-  color: inherit;
+paper-card {
+  max-width: 100%;
 }
 
-.wordpressposts a + a {
+form {
+  margin: 15px;
+}
+
+form paper-button {
+  float: right;
   margin-top: 15px;
 }
 

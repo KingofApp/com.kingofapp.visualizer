@@ -5,37 +5,37 @@ This code may only be used under the MIT license.
 
 /* General styles */
 
-oblique-card {
-  max-width: 100%;
-}
-
-oblique-card + oblique-card {
-  margin-top: 15px;
-}
-
 .module {
   padding: 10px;
 }
 
-/* Conctact module */
-
-.contact form {
-  margin: 15px;
-}
-
-.contact form oblique-button {
-  float: right;
-  margin-top: 15px;
-}
-
-/* Wordpress Posts module */
-
-.wordpressposts a {
-  display: block;
+.module > a {
   color: inherit;
+  display: block;
   text-decoration: none;
 }
 
-.wordpressposts a + a {
+.module > a + a,
+oblique-card + oblique-card {
   margin-top: 15px;
+}
+
+oblique-card {
+  max-width: 100%;
+}
+
+form {
+  margin: 15px;
+}
+
+form oblique-button {
+  margin-top: 15px;
+}
+
+oblique-input {
+  margin-bottom: 20px;
+}
+
+oblique-button {
+  width: 100%;
 }

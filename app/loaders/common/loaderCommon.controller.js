@@ -8,7 +8,7 @@
   commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
 
   function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
-    // console.log('Pasa por el commonLoaderCtrl');
+    // console.info('[V] Pasa por el commonLoaderCtrl');
 
     var koaApp = document.querySelector('#koaApp');
 
@@ -32,11 +32,11 @@
       },
 
       function handleModelChange(count) {
-        console.log('Pending HTTP count:', count,
-        '{',
+        console.info('[V] Pending HTTP count:', count,
+          '{',
           trafficGuardiaCivil.pending.get, 'GET ,',
           trafficGuardiaCivil.pending.post, 'POST',
-        '}');
+          '}');
 
         if ($location.$$path !== '/') {
           setTimeout(function() {
@@ -66,24 +66,24 @@
     $location.$$path = $location.$$path || '/';
 
     $scope.$watch('appData', function(newValue, oldValue) {
-      // console.log("REceived AppData",newValue);
+      // console.info('[V] REceived AppData', newValue);
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
-        console.log("Inside If to set:",newValue);
+        console.info('[V] Inside If to set:', newValue);
         structureService.set(newValue);
         redirected = true;
 
         setTimeout(function() {
           // $scope.$apply(function() {
-            //Causing first load to not render KOA
-            console.log("New config set", newValue.config);
-            setTheme(newValue.config);
-            console.log("ACtual location", $location.path());
-            console.log("ACtual INDEX", newValue.config.index);
-            if (newValue.config.index === $location.path()) {
-              $route.reload();
-            } else {
-              $location.path(newValue.config.index);
-            }
+          //Causing first load to not render KOA
+          console.info('[V] New config set', newValue.config);
+          setTheme(newValue.config);
+          console.info('[V] Actual location', $location.path());
+          console.info('[V] Actual index', newValue.config.index);
+          if (newValue.config.index === $location.path()) {
+            $route.reload();
+          } else {
+            $location.path(newValue.config.index);
+          }
           // });
         }, 200);
       }
@@ -118,7 +118,7 @@
 
     $scope.$watch('appTheme', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        console.log('Theme', newValue);
+        console.info('[V] Theme', newValue);
 
         setTheme(newValue.config);
 
@@ -137,7 +137,7 @@
     });
 
     $scope.$on('koaAppRendered', function(event, args) {
-      console.info('koa-app rendered!');
+      console.info('[V] koa-app rendered!');
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
       });
@@ -218,7 +218,7 @@
       var scope = angular.element(scopeElement).scope(); // Get current scope
 
       $('[ng-click]').click(ngClickWrapper); // Adding ng-click...
-      $('[ng-model]').each(ngModelWrapper);  // Adding ng-model...
+      $('[ng-model]').each(ngModelWrapper); // Adding ng-model...
 
       function ngClickWrapper() {
         var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');

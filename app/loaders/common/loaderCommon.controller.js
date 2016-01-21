@@ -44,7 +44,7 @@
               renderKoaApp();
               finished = true;
             }
-          }, 400);
+          }, 600);
 
           // Launch if there were petitions
           if (count === 0 && prev > 0 && !finished) {
@@ -136,10 +136,10 @@
 
     $scope.$on('koaAppRendered', function(event, args) {
       console.info('koa-app rendered!');
-
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
       });
+
     });
 
     // TODO: INSPECT loadconfig

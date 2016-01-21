@@ -19,7 +19,7 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     set($rootScope.appJsonStructure);
   } else {
     set(sampleModules);
-    $rootScope.transitionOn = false;
+    $rootScope.transitionOn = true;
   }
 
   return {

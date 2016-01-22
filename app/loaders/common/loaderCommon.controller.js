@@ -41,32 +41,41 @@
         if ($location.$$path !== '/') {
           var visitedLocations = structureService.getVisitedLocations();
           var cachedLocations = structureService.getCachedLocations();
+
           structureService.getCurrentModules($location, function loadmodules(modules) {
-            if(visitedLocations[cachedLocations[$location.$$path].identifier]==="1" && !finished){
-                loadCachedModule();
-            }else if (count === 0 && prev > 0 && !finished) {
+            if (visitedLocations[cachedLocations[$location.$$path].identifier] === '1' && !finished) {
+              loadCachedModule();
+            } else if (count === 0 && prev > 0 && !finished) {
               loadFirstTimeModule(modules);
             }
-            if(count === 0 && prev > 0 && throughcached){
+
+            if (count === 0 && prev > 0 && throughcached) {
               renderKoaApp();
             }
+
             prev = count;
           });
-
         }
+
         function loadFirstTimeModule(modules) {
           finished = true;
-          console.log("[V] First time module load", $location.$$path);
+          console.log('[V] First time module load', $location.$$path);
+
           renderKoaApp();
+
           angular.forEach(modules, function(value, key) {
-            visitedLocations[value.identifier]="1";
+            visitedLocations[value.identifier] = '1';
           });
+
           structureService.setVisitedLocations(visitedLocations);
         }
+
         function loadCachedModule() {
           finished = true;
-          console.log("[V] Loading cached module", $location.$$path);
+          console.log('[V] Loading cached module', $location.$$path);
+
           renderKoaApp();
+
           throughcached = true;
         }
       }
@@ -189,12 +198,28 @@
       return type === '$';
     }
 
+    function isFromGoogleFonts(url) {
+      return url.search('https://fonts.googleapis.com') === 0;
+    }
+
     function loadFonts(fonts) {
-      WebFont.load({
-        google: {
-          families: [fonts.primaryFontFamily.name, fonts.titleFontFamily.name]
-        }
-      });
+      var families = [];
+
+      if (isFromGoogleFonts(fonts.primaryFontFamily.url)) {
+        families.push(fonts.primaryFontFamily.name);
+      }
+
+      if (isFromGoogleFonts(fonts.titleFontFamily.url)) {
+        families.push(fonts.titleFontFamily.name);
+      }
+
+      if (families) {
+        WebFont.load({
+          google: {
+            families: families
+          }
+        });
+      }
     }
 
     function setTheme(config) {

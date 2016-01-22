@@ -21,7 +21,7 @@
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
 
     var prev = 0;
-    var state = false;
+    var throughcached = false;
     var prevent = false;
     var redirected = false;
     var finished = false;
@@ -39,26 +39,35 @@
           '}');
 
         if ($location.$$path !== '/') {
-          setTimeout(function() {
-            if (count === 0 && !state && !finished) {
-              console.log('[V] [TEST] Paso por 1', $location.$$path);
-              renderKoaApp();
-              finished = true;
+          var visitedLocations = structureService.getVisitedLocations();
+          var cachedLocations = structureService.getCachedLocations();
+          structureService.getCurrentModules($location, function loadmodules(modules) {
+            if(visitedLocations[cachedLocations[$location.$$path].identifier]==="1" && !finished){
+                loadCachedModule();
+            }else if (count === 0 && prev > 0 && !finished) {
+              loadFirstTimeModule(modules);
             }
-          }, 600);
+            if(count === 0 && prev > 0 && throughcached){
+              renderKoaApp();
+            }
+            prev = count;
+          });
 
-          // Launch if there were petitions
-          if (count === 0 && prev > 0 && !finished) {
-            console.log('[V] [TEST] Paso por 2', $location.$$path);
-            renderKoaApp();
-            finished = true;
-          }
-
-          if (count > 0) {
-            state = true;
-          }
-
-          prev = count;
+        }
+        function loadFirstTimeModule(modules) {
+          finished = true;
+          console.log("[V] First time module load", $location.$$path);
+          renderKoaApp();
+          angular.forEach(modules, function(value, key) {
+            visitedLocations[value.identifier]="1";
+          });
+          structureService.setVisitedLocations(visitedLocations);
+        }
+        function loadCachedModule() {
+          finished = true;
+          console.log("[V] Loading cached module", $location.$$path);
+          renderKoaApp();
+          throughcached = true;
         }
       }
     );
@@ -68,17 +77,12 @@
     $scope.$watch('appData', function(newValue, oldValue) {
       // console.log('[V] REceived AppData', newValue);
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
-        console.log('[V] Inside If to set:', newValue);
         structureService.set(newValue);
         redirected = true;
 
         setTimeout(function() {
           // $scope.$apply(function() {
-          //Causing first load to not render KOA
-          console.log('[V] New config set', newValue.config);
           setTheme(newValue.config);
-          console.log('[V] Actual location', $location.path());
-          console.log('[V] Actual index', newValue.config.index);
           if (newValue.config.index === $location.path()) {
             $route.reload();
           } else {

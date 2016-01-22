@@ -10,6 +10,7 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   var listeners = [];
   var lang;
   var cachedLocations = {};
+  var visitedLocations = [];
   var data = {};
   var services = [];
 
@@ -42,6 +43,9 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     setModules: setModules,
     setLoader: setLoader,
     getIndex: getIndex,
+    getVisitedLocations: getVisitedLocations,
+    getCachedLocations: getCachedLocations,
+    setVisitedLocations: setVisitedLocations,
     getLang: getLang,
     setLang: setLang,
     getModule: getModule,
@@ -172,6 +176,17 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
 
   function getIndex() {
     return data.config.index;
+  }
+
+  function getVisitedLocations() {
+    return visitedLocations;
+  }
+  function getCachedLocations() {
+    return cachedLocations;
+  }
+
+  function setVisitedLocations(locations) {
+    visitedLocations = locations;
   }
 
   function getLang() {

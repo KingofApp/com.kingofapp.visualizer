@@ -43,7 +43,7 @@
           var cachedLocations = structureService.getCachedLocations();
 
           structureService.getCurrentModules($location, function loadmodules(modules) {
-            if (visitedLocations[cachedLocations[$location.$$path].identifier] === '1' && !finished) {
+            if (visitedLocations[cachedLocations[$location.$$path].identifier] && !finished) {
               loadCachedModule();
             } else if (count === 0 && prev > 0 && !finished) {
               loadFirstTimeModule(modules);
@@ -64,7 +64,7 @@
           renderKoaApp();
 
           angular.forEach(modules, function(value, key) {
-            visitedLocations[value.identifier] = '1';
+            visitedLocations[value.identifier] = true;
           });
 
           structureService.setVisitedLocations(visitedLocations);

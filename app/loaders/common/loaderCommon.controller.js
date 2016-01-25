@@ -213,7 +213,7 @@
         families.push(fonts.titleFontFamily.name);
       }
 
-      if (families) {
+      if (families.length !== 0) {
         WebFont.load({
           google: {
             families: families

@@ -59,3 +59,11 @@ img {
   text-align: center;
   padding-top: 40%;
 }
+
+/*Debug bar*/
+
+div.debug {
+  position:absolute;
+  bottom:0;
+  width:100%;
+}

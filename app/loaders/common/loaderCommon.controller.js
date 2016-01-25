@@ -273,26 +273,140 @@
                              : setTheme(structureService.getConfig());
       }, 100);
     }
-// Debug clicks
-$scope.theme = function(val) {
-  if(val){
-    var obj = {
-        'fonts': {
-        'primaryFontFamily': {
-          'name': 'Roboto',
-          'url': 'https://fonts.googleapis.com/css?family=Roboto'
-        },
-        'titleFontFamily': {
-          'name': 'Roboto',
-          'url': 'https://fonts.googleapis.com/css?family=Roboto'
-        }
-      },
-      "theme": val
+
+    // Debug clicks
+    $scope.theme = function(themeId) {
+      if (themeId) {
+        var paperThemeConfig = {
+          'colors': {
+            'primaryTextColor': '#212121',
+            'primaryBackgroundColor': '#ffffff',
+            'secondaryTextColor': '#737373',
+            'disabledTextColor': '#9b9b9b',
+            'dividerColor': '#dbdbdb',
+            'primaryColor': '#3f51b5',
+            'lightPrimaryColor': '#c5cae9',
+            'darkPrimaryColor': '#303f9f',
+            'accentColor': '#ff4081',
+            'lightAccentColor': '#ff80ab',
+            'darkAccentColor': '#f50057',
+            'backgroundColor': '#ffffff'
+          },
+          'images': {
+            'background': ''
+          },
+          'fonts': {
+            'primaryFontFamily': {
+              'name': 'Roboto',
+              'url': 'https://fonts.googleapis.com/css?family=Roboto'
+            },
+            'titleFontFamily': {
+              'name': 'Roboto',
+              'url': 'https://fonts.googleapis.com/css?family=Roboto'
+            }
+          },
+          'theme': 'koa-paper-theme'
+        };
+
+        var candyThemeConfig = {
+          'colors': {
+            'primaryTextColor': '#636363',
+            'primaryBackgroundColor': '#ffffff',
+            'secondaryTextColor': '#636363',
+            'disabledTextColor': '#2f2b16',
+            'dividerColor': '#e0e0e0',
+            'primaryColor': '#ff003c',
+            'lightPrimaryColor': '#c5cae9',
+            'darkPrimaryColor': '#ff003c',
+            'accentColor': '#fabe28',
+            'lightAccentColor': '#fabe28',
+            'darkAccentColor': '#fabe28',
+            'backgroundColor': '#f8ecc2'
+          },
+          'images': {
+            'background': ''
+          },
+          'fonts': {
+            'primaryFontFamily': {
+              'name': 'Raleway',
+              'url': 'https://fonts.googleapis.com/css?family=Raleway'
+            },
+            'titleFontFamily': {
+              'name': 'Bitter',
+              'url': 'https://fonts.googleapis.com/css?family=Bitter'
+            }
+          },
+          'theme': 'koa-candy-theme'
+        };
+
+        var obliqueThemeConfig = {
+          'colors': {
+            'primaryTextColor': '#202020',
+            'primaryBackgroundColor': '#b5e1f8',
+            'secondaryTextColor': '#727272',
+            'disabledTextColor': '#a2a8aa',
+            'dividerColor': '#b6b6b6',
+            'primaryColor': '#2aa3dc',
+            'lightPrimaryColor': '#b5e1f8',
+            'darkPrimaryColor': '#1a86c8',
+            'accentColor': '#607d8b',
+            'lightAccentColor': '#607d8b',
+            'darkAccentColor': '#607d8b',
+            'backgroundColor': '#ffffff'
+          },
+          'images': {
+            'background': ''
+          },
+          'fonts': {
+            'primaryFontFamily': {
+              'name': 'PT Sans Caption',
+              'url': 'https://fonts.googleapis.com/css?family=PT+Sans+Caption'
+            },
+            'titleFontFamily': {
+              'name': 'Pacifico',
+              'url': 'https://fonts.googleapis.com/css?family=Pacifico'
+            }
+          },
+          'theme': 'koa-oblique-theme'
+        };
+
+        var iosThemeConfig = {
+          'colors': {
+            'primaryTextColor': '#212121',
+            'primaryBackgroundColor': '#ffffff',
+            'secondaryTextColor': '#757575',
+            'disabledTextColor': '#bdbdbd',
+            'dividerColor': '#e0e0e0',
+            'primaryColor': '#007aff',
+            'lightPrimaryColor': 'rgba(0, 122, 255, 0.15)',
+            'darkPrimaryColor': '#0054b0',
+            'accentColor': '#ff4081',
+            'lightAccentColor': '#ff4081',
+            'darkAccentColor': '#ff4081',
+            'backgroundColor': '#ffffff'
+          },
+          'images': {
+            'background': ''
+          },
+          'fonts': {
+            'primaryFontFamily': {
+              'name': '',
+              'url': ''
+            },
+            'titleFontFamily': {
+              'name': '',
+              'url': ''
+            }
+          },
+          'theme': 'koa-ios-theme'
+        };
+
+        (themeId === 'koa-paper-theme')   ? setTheme(paperThemeConfig) :
+        (themeId === 'koa-candy-theme')   ? setTheme(candyThemeConfig) :
+        (themeId === 'koa-oblique-theme') ? setTheme(obliqueThemeConfig) :
+        (themeId === 'koa-ios-theme')     ? setTheme(iosThemeConfig)
+                                          : null;
+      }
     }
-    setTheme(obj);
-  }
-}
-
-
   }
 }());

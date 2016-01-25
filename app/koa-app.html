@@ -42,6 +42,10 @@
 
       importedThemes: [],
 
+      excludedElementsToProcess: [
+        'koa-icon'
+      ],
+
       createTree: function () {
         this.tree = new Array(0);
         this._processElement(this.children[0]);
@@ -84,11 +88,13 @@
         }
 
         if (element.tagName) {
-          var isKoaElement = element.tagName.toLowerCase().search('koa-') === 0;
+          var elementTagName = element.tagName.toLowerCase();
+          var isKoaElement = elementTagName.search('koa-') === 0;
+          var isNotExcludedElement = this.excludedElementsToProcess.indexOf(elementTagName) === -1;
 
-          if (isKoaElement) {
+          if (isKoaElement && isNotExcludedElement) {
             this.tree.push({
-              tag: element.tagName.toLowerCase().replace('koa-', ''),
+              tag: elementTagName.replace('koa-', ''),
               attributes: element.attributes,
               childNodes: element.childNodes,
               actualElement: element

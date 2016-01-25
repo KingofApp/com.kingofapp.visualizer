@@ -1,10 +1,12 @@
-<!-- <div ng-include="template">
-</div> -->
+<!-- <div ng-include="template"></div> -->
+
 <div oc-lazy-load="lazyLoadParams" class='template'>
   <div ng-include="template" class='template'>
   </div>
 </div>
+
 <div class="debug" ng-if='debug'>
-<button ng-click="theme('koa-paper-theme')">Set Paper</button>
-<button ng-click="theme('koa-ios-theme')">Set Ios</button>
+  <button ng-click="theme('koa-paper-theme')">Paper</button>
+  <button ng-click="theme('koa-candy-theme')">Candy</button>
+  <button ng-click="theme('koa-oblique-theme')">Oblique</button>
 </div>

@@ -29,8 +29,6 @@ img {
 
 /* Ads styles */
 
-
-
 .main-ads {
   height: 100%;
   width: 100%;
@@ -60,10 +58,19 @@ img {
   padding-top: 40%;
 }
 
-/*Debug bar*/
+
+/*  Debug bar */
 
 div.debug {
-  position:absolute;
-  bottom:0;
-  width:100%;
+  background-color: #ccc;
+  bottom: 0;
+  padding: 8px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+div.debug button {
+  font-size: 1em;
+  padding: 5px;
 }

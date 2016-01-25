@@ -1,0 +1,23 @@
+{
+  "name": "Simple Gallery",
+  "identifier": "simplegallery",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/simplegallery/index.html",
+  "files": [
+    "modules/simplegallery/controller.js",
+    "modules/simplegallery/swiper/js/swiper.min.js",
+    "modules/simplegallery/swiper/css/swiper.min.css"
+  ],
+  "scope": {
+    "gallery": [
+      "http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
+      "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
+      "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"
+    ]
+  }
+}

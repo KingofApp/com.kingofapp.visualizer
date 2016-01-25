@@ -72,6 +72,12 @@
         }
       },
 
+      setIconset: function (iconset) {
+        this.icons.forEach(function(icon) {
+          icon.icon = iconset + ':' + icon.icon;
+        }, this);
+      },
+
       renderThemeElements: function (callback) {
         this.tree.forEach(function(elementObject) {
           this._renderThemeElement(elementObject);

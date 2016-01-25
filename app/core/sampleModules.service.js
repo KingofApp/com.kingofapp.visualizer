@@ -383,7 +383,7 @@
         identifier: 'soundcloud',
         type: 'A',
         view: 'modules/soundcloud/index.html',
-        files: ['modules/soundcloud/controller.js', 'modules/soundcloud/directive.js'],
+        files: ['modules/soundcloud/controller.js', 'modules/soundcloud/directive.js', 'modules/soundcloud/style.css'],
         scope: {
           client_id: 'b23455855ab96a4556cbd0a98397ae8c',
           track: '65576692'

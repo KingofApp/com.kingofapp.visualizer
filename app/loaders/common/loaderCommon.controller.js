@@ -273,5 +273,26 @@
                              : setTheme(structureService.getConfig());
       }, 100);
     }
+// Debug clicks
+$scope.theme = function(val) {
+  if(val){
+    var obj = {
+        'fonts': {
+        'primaryFontFamily': {
+          'name': 'Roboto',
+          'url': 'https://fonts.googleapis.com/css?family=Roboto'
+        },
+        'titleFontFamily': {
+          'name': 'Roboto',
+          'url': 'https://fonts.googleapis.com/css?family=Roboto'
+        }
+      },
+      "theme": val
+    }
+    setTheme(obj);
+  }
+}
+
+
   }
 }());

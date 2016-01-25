@@ -1,0 +1,34 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="koa-icon">
+  <template>
+    <iron-icon icon="[[icon]]" src="[[src]]"></iron-icon>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'koa-icon',
+
+      properties: {
+        /**
+         * The name of the icon to use. The name should be of the form:
+         * `iconset_name:icon_name`.
+         */
+        icon: {
+          type: String
+        },
+
+        /**
+         * If using iron-icon without an iconset, you can set the src to be
+         * the URL of an individual icon image file. Note that this will take
+         * precedence over a given icon attribute.
+         */
+        src: {
+          type: String
+        }
+      }
+    });
+  </script>
+</dom-module>

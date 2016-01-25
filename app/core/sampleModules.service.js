@@ -97,6 +97,7 @@
         '/menu/pdf': pdfviewer(),
         '/menu/home': homepage(),
         '/menu/facebook': facebookfeed(),
+        '/menu/twitter': twitterfeed(),
         '/facebook': facebookfeed(),
         '/menu/level1-feed': angularstaticfeed(),
         '/menu/translation': translationtest(),
@@ -530,7 +531,7 @@
         identifier: 'twitterfeed',
         type: 'A',
         view: 'modules/twitterfeed/index.html',
-        files: ['modules/twitterfeed/controller.js'],
+        files: ['modules/twitterfeed/controller.js','modules/twitterfeed/directive.js'],
         scope: {
           widgetid: '628892310084939776',
           limite: '2'

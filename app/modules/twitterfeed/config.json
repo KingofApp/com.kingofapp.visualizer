@@ -1,0 +1,16 @@
+{
+  "name": "Twitter Feed",
+  "identifier": "twitterfeed",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/twitterfeed/index.html",
+  "files": ["modules/twitterfeed/controller.js", "modules/twitterfeed/directive.js"],
+  "scope": {
+    "widgetid": "628892310084939776",
+    "limite": "2"
+  }
+}

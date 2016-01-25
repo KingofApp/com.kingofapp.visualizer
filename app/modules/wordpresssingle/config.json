@@ -1,0 +1,17 @@
+{
+  "name": "Wordpress Single",
+  "identifier": "wordpresssingle",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/wordpresssingle/index.html",
+  "files": ["modules/wordpresssingle/controller.js"],
+  "scope": {
+    "domain": "http://rachelbaker.me",
+    "type": "pages",
+    "id": 1626
+  }
+}

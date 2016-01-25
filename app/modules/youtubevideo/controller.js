@@ -7,12 +7,8 @@ function loadFunction($scope, structureService, $location, $routeParams){
   //Register upper level modules
   structureService.registerModule($location,$scope,"youtubevideo");
 
-  if($location.search().video){
-    $scope.youtubevideo.videoid = $location.search().video;
-  }else if($scope.youtubevideo.modulescope.videoid){
-    $scope.youtubevideo.videoid = $scope.youtubevideo.modulescope.videoid;
-  }else{
-    $scope.youtubevideo.message = "Error, video not found";
-  }
+  $scope.youtubevideo.videoid = ($location.search().video) ?
+                                  $location.search().video :
+                                  $scope.youtubevideo.modulescope.videoid;
 
 }

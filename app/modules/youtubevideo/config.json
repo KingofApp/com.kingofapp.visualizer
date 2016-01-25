@@ -1,0 +1,15 @@
+{
+  "name": "Youtube Video",
+  "identifier": "youtubevideo",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/youtubevideo/index.html",
+  "files": ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
+  "scope": {
+    "videoid": "oHg5SJYRHA0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "RSS",
+  "identifier": "rss",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/rss/index.html",
+  "files": ["modules/rss/controller.js"],
+  "scope": {
+    "feed": "http://elpais.com/rss/elpais/portada.xml"
+  }
+}

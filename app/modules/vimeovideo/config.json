@@ -1,0 +1,15 @@
+{
+  "name": "Vimeo Video",
+  "identifier": "vimeovideo",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/vimeovideo/index.html",
+  "files": ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
+  "scope": {
+    "videoid": "136882652"
+  }
+}

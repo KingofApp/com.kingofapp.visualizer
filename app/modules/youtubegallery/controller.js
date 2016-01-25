@@ -27,6 +27,5 @@ function loadFunction($http, $scope, structureService, $location, $routeParams){
       $scope.youtubegallery.items = elements;
     }).error(function(data, error){
     	$scope.youtubegallery.message = 'Opps! There was a problem loading the feed!';
-
     });
 }

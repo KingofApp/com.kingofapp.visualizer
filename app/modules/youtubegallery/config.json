@@ -1,0 +1,17 @@
+{
+  "name": "Youtube Gallery",
+  "identifier": "youtubegallery",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/youtubegallery/index.html",
+  "files": ["modules/youtubegallery/controller.js"],
+  "scope": {
+    "channelid": "UCeIt2DJO8UdtUTmJzTfSXiQ",
+    "token": "XXXX",
+    "singleurl": "/menu/youtubevideo"
+  }
+}

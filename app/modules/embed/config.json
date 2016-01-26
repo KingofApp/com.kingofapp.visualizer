@@ -1,0 +1,15 @@
+{
+  "name": "Embed",
+  "identifier": "embed",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/embed/index.html",
+  "files": ["modules/embed/controller.js"],
+  "scope": {
+    "url": "http://es.lipsum.com"
+  }
+}

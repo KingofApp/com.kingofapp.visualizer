@@ -1,0 +1,15 @@
+{
+  "name": "Pdf",
+  "identifier": "pdfviewer",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/pdfviewer/index.html",
+  "files": ["modules/pdfviewer/controller.js"],
+  "scope": {
+    "value": "http://kingofapp.es/wp-content/uploads/2015/11/wwwhatsnew.pdf",
+  }
+}

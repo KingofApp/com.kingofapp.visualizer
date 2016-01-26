@@ -1,0 +1,17 @@
+{
+  "name": "Flickr Feed",
+  "identifier": "flickrfeed",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/flickrfeed/index.html",
+  "files": ["modules/flickrfeed/controller.js"],
+  "scope": {
+    "accesstoken": "XXXX",
+    "photosetid": "72157649175711353",
+    "results": "5"
+  }
+}

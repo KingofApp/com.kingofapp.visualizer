@@ -38,7 +38,7 @@
           value: []
         },
 
-        icons: {
+        koaIcons: {
           type: Array,
           value: []
         }
@@ -48,12 +48,15 @@
 
       importedThemes: [],
 
+      importedIconsets: [],
+
       excludedElementsToProcess: [
         'koa-icon'
       ],
 
       createTree: function () {
         this.tree = new Array(0);
+        this.koaIcons = new Array(0);
         this._processElement(this.children[0]);
       },
 
@@ -72,12 +75,6 @@
         }
       },
 
-      setIconset: function (iconset) {
-        this.icons.forEach(function(icon) {
-          icon.icon = iconset + ':' + icon.icon;
-        }, this);
-      },
-
       renderThemeElements: function (callback) {
         this.tree.forEach(function(elementObject) {
           this._renderThemeElement(elementObject);
@@ -86,6 +83,29 @@
         if (callback) {
           setTimeout(callback, 0);  // nextTick
         }
+      },
+
+      setIconset: function (iconset) {
+        var iconsetIsNotImported = this.importedIconsets.indexOf(iconset.name) === -1;
+
+        if (iconsetIsNotImported) {
+          this.importHref(iconset.url, function(e) {
+            this.updateIcons(iconset.name);
+            this.importedIconsets.push(iconset.name);
+          });
+        } else {
+          this.updateIcons(iconset.name);
+        }
+      },
+
+      updateIcons: function (iconsetName) {
+        this.koaIcons.forEach(function(koaIcon) {
+          if (koaIcon.icon && koaIcon.icon.search(':') !== -1) {
+            koaIcon.icon = iconsetName + ':' + koaIcon.icon.split(':')[1];
+          } else if (koaIcon.icon) {
+            koaIcon.icon = iconsetName + ':' + koaIcon.icon;
+          }
+        });
       },
 
       _processElement: function (element) {
@@ -112,7 +132,7 @@
               actualElement: element
             });
           } else if (elementTagName === 'koa-icon') {
-            this.icons.push(element);
+            this.koaIcons.push(element);
           }
         }
       },

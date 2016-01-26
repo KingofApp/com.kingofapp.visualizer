@@ -1,0 +1,23 @@
+{
+  "name": "Map",
+  "identifier": "googlemap",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/googlemap/index.html",
+  "files": ["modules/googlemap/controller.js","modules/googlemap/directive.js","modules/googlemap/style.css"],
+  "scope": {
+    "lat": "39.8847281",
+    "lon": "4.2540999",
+    "zoom": "15"
+  },
+  "libs": [{
+    "bower": {
+      "GoogleWebComponents/google-map": "^1.1.0"
+    },
+    "src": "bower_components/google-map/google-map.html"
+  }]
+}

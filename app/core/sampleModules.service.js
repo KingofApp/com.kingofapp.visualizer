@@ -99,6 +99,7 @@
         '/menu/facebook': facebookfeed(),
         '/menu/twitter': twitterfeed(),
         '/facebook': facebookfeed(),
+        '/firebase': firebase(),
         '/menu/level1-feed': angularstaticfeed(),
         '/menu/translation': translationtest(),
         '/menu/flickr': flickrfeed(),
@@ -219,6 +220,12 @@
             'PolymerElements/iron-flex-layout': '^1.0.0'
           },
           src: 'bower_components/iron-flex-layout/iron-flex-layout.html'
+        },
+        {
+          "bower": {
+            "":""
+          },
+          "src": "modules/grouplist/styles.html"
         }],
         scope: {
           sections: ['#/menu/facebook', '#/menu/flickr']
@@ -299,7 +306,7 @@
           dragDrop: true
         },
         view: 'modules/googlemap/index.html',
-        files: ['modules/googlemap/controller.js','modules/googlemap/directive.js'],
+        files: ['modules/googlemap/controller.js','modules/googlemap/directive.js',"modules/googlemap/style.css"],
         scope: {
           lat: '39.8847281',
           lon: '4.2540999',
@@ -733,7 +740,7 @@
           dragDrop: true
         },
         view: 'modules/angularmenu/index.html',
-        files: ['modules/angularmenu/controller.js'],
+        files: ['modules/angularmenu/controller.js', 'modules/angularmenu/directive.js'],
         libs: [{
           bower: '',
           src:'modules/angularmenu/styles.html'

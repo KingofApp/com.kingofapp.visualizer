@@ -1,0 +1,16 @@
+{
+  "name": "Facebook Feed",
+  "identifier": "facebookfeed",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/facebookfeed/index.html",
+  "files": ["modules/facebookfeed/controller.js"],
+  "scope": {
+    "accesstoken": "XXXX",
+    "pageid": "ArchiDesiign"
+  }
+}

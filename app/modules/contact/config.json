@@ -1,0 +1,17 @@
+{
+  "name": "Contact",
+  "identifier": "contact",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/contact/index.html",
+  "files": ["modules/contact/controller.js"],
+  "scope": {
+    "send_address": "info@kingofapp.es",
+    "mandrill_key": "dFOWcqJzBMB69YQGq3GPSQ",
+    "debug": true
+  }
+}

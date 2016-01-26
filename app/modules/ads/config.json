@@ -1,0 +1,16 @@
+{
+  "name": "Ads container",
+  "identifier": "ads",
+  "type": "A",
+  "showOn": {
+    "menu": false,
+    "market": false,
+    "dragDrop": false
+  },
+  "view": "modules/ads/index.html",
+  "files": ["modules/ads/controller.js"],
+  "scope": {
+    "mainsrc": "<h1>Main Ad</h1>",
+    "fixedsrc": "<h3>Fixed Ad</h3>"
+  }
+}

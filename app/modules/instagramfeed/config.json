@@ -1,0 +1,16 @@
+{
+  "name": "Instagram Feed",
+  "identifier": "instagramfeed",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/instagramfeed/index.html",
+  "files": ["modules/instagramfeed/controller.js"],
+  "scope": {
+    "accesstoken": "XXXXX",
+    "userid": "50417061"
+  }
+}

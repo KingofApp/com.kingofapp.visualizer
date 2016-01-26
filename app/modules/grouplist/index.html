@@ -1,56 +1,14 @@
 <div class="module grouplist" ng-controller="grouplistCtrl">
-  <!-- TODO: koa-item, koa-icon-item and koa-item-body only works in koa-paper-theme -->
-  <style is="custom-style">
-    .list {
-      @apply(--layout-vertical);
-      padding-top: 12px;
-      margin: 12px;
-      @apply(--shadow-elevation-2dp);
-    }
 
-    .short {
-      padding-top: 12px;
-    }
-
-    .flex {
-      @apply(--layout-flex);
-    }
-
-    a {
-      outline: none;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-  </style>
   <div class="list short" role="listbox">
     <a href="#{{item.url}}" ng-repeat="item in grouplist.modulescope.newsections">
-
       <koa-item>
-
         <div class='flex'>
-          <!-- <a href="#{{item.url}}"> -->
           {{item.name}}
         </div>
-
-        <!-- </a> -->
         <koa-icon-button icon="arrow-forward"></koa-icon-button>
-
       </koa-item>
     </a>
-
   </div>
-  <!-- <koa-item>
-    <koa-icon-item ng-repeat="item in grouplist.modulescope.newsections">
-      <iron-icon icon="" item-icon></iron-icon>
-      <koa-item-body two-line>
-        <div>{{item.name}}</div>
-        <div secondary>{{item.name}}</div>
-      </koa-item-body>
-      <a href="#{{item.url}}">
-        <koa-icon-button icon="arrow-forward"></koa-icon-button>
-      </a>
-    </koa-icon-item>
-  </koa-item> -->
-
+  
 </div>

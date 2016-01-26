@@ -1,0 +1,27 @@
+{
+  "name": "Firebase Module",
+  "identifier": "firebase",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/firebase/index.html",
+  "files": ["modules/firebase/controller.js", "modules/firebase/factory.js"],
+  "scope": {
+    "src": "XXXX",
+    "debug": true
+  },
+  "libs": [{
+    "bower": {
+      "firebase": "2.2.4"
+    },
+    "src": "https://cdn.firebase.com/js/client/2.2.4/firebase.js"
+  }, {
+    "bower": {
+      "angularfire": "1.1.2"
+    },
+    "src": "https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"
+  }]
+}

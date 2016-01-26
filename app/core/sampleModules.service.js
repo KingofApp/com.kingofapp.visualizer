@@ -786,7 +786,7 @@
           src: 'bower_components/paper-item/paper-item.html'
         }],
         view: 'modules/polymermenu/index.html',
-        files: ['modules/polymermenu/controller.js'],
+        files: ['modules/polymermenu/controller.js', 'modules/polymermenu/style.css'],
         scope: {
           path: path
         }

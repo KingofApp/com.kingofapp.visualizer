@@ -1,7 +1,7 @@
 <div class='angularmenu' ng-controller="Menu1Ctrl">
 
   <div class='statusBar'>
-    <p><button analytics-on analytics-event="Menu Button event" ng-click="showLeft($event)">{{ "angularmenu.sidebar" | translate }}</button>  {{title}}</p>
+    <p><button ng-click="showLeft($event)">{{ "angularmenu.sidebar" | translate }}</button>  {{toolbar.title}}</p>
   </div>
 
   <menu visible="leftVisible" alignment="left">

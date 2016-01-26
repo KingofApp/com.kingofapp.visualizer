@@ -1,0 +1,19 @@
+{
+  "name": "Angular Menu Module",
+  "identifier": "angularmenu",
+  "type": "A",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "view": "modules/angularmenu/index.html",
+  "files": ["modules/angularmenu/controller.js", "modules/angularmenu/directive.js"],
+  "libs": [{
+    "bower": "",
+    "src":"modules/angularmenu/styles.html"
+  }],
+  "scope": {
+    "path": "/menu"
+  }
+}

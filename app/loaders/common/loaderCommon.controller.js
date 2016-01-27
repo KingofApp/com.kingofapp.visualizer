@@ -92,6 +92,7 @@
         setTimeout(function() {
           // $scope.$apply(function() {
           setTheme(newValue.config);
+          setIconset(newValue.config.iconset);
           if (newValue.config.index === $location.path()) {
             $route.reload();
           } else {
@@ -114,6 +115,13 @@
         prevent = true;
         loadFonts(newValue);
         structureService.setFonts(newValue);
+      }
+    });
+
+    $scope.$watch('appIconset', function(newValue, oldValue) {
+      if (oldValue !== newValue) {
+        prevent = true;
+        setIconset(newValue.config.iconset);
       }
     });
 
@@ -220,6 +228,10 @@
           }
         });
       }
+    }
+
+    function setIconset(iconset) {
+      koaApp.setIconset(iconset);
     }
 
     function setTheme(config) {

@@ -35,6 +35,8 @@ img {
   background-color: #fff;
   z-index: 9999;
   position: absolute;
+  left:0;
+  top:0;
 }
 
 .bottom-ads {

@@ -1,0 +1,9 @@
+.adsMobusiBanner{
+  padding:0px; margin:0px;
+}
+.adsMobusiBanner a{
+  display: block;
+}
+.adsMobusiBanner img{
+  vertical-align: -webkit-baseline-middle;
+}

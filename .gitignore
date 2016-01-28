@@ -5,5 +5,4 @@ node_modules/
 testresults/
 tmp
 /dist
-app/core/structure.json
 .tmp

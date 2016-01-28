@@ -4,9 +4,9 @@ angular
   .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
-structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'sampleModules', 'structureHooks', '$rootScope'];
+structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope'];
 
-function structureService($q, $translatePartialLoader, $translate, sampleModules, structureHooks, $rootScope) {
+function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope) {
   var listeners = [];
   var lang;
   var cachedLocations = {};
@@ -19,7 +19,6 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   if ($rootScope.appJsonStructure) {
     set($rootScope.appJsonStructure);
   } else {
-    // set(sampleModules);
     data ={
       "config": {
         "index":"/",
@@ -27,6 +26,7 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
       }
     } ;
     $rootScope.transitionOn = true;
+    $rootScope.debug = false;
   }
 
   return {

@@ -18,7 +18,6 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
 
   if ($rootScope.appJsonStructure) {
     set($rootScope.appJsonStructure);
-    $rootScope.debug = false;
   } else {
     data = {
       'config': {

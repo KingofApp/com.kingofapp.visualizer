@@ -18,15 +18,15 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
 
   if ($rootScope.appJsonStructure) {
     set($rootScope.appJsonStructure);
+    $rootScope.debug = false;
   } else {
-    data ={
-      "config": {
-        "index":"/",
-        "lang" : ['EN']
+    data = {
+      'config': {
+        'index':'/',
+        'lang' : ['EN']
       }
     } ;
     $rootScope.transitionOn = true;
-    $rootScope.debug = false;
   }
 
   return {

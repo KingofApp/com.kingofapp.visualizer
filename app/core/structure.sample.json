@@ -1,0 +1,510 @@
+{
+  "config": {
+    "lang": ["en_US"],
+    "index": "/menu",
+    "loader": "",
+    "theme": "koa-paper-theme",
+    "colors": {
+      "primaryTextColor": "#212121",
+      "primaryBackgroundColor": "#ffffff",
+      "secondaryTextColor": "#737373",
+      "disabledTextColor": "#9b9b9b",
+      "dividerColor": "#dbdbdb",
+      "primaryColor": "#3f51b5",
+      "lightPrimaryColor": "#c5cae9",
+      "darkPrimaryColor": "#303f9f",
+      "accentColor": "#ff4081",
+      "lightAccentColor": "#ff80ab",
+      "darkAccentColor": "#f50057",
+      "backgroundColor": "#ffffff"
+    },
+    "images": {
+      "background": ""
+    },
+    "fonts": {
+      "primaryFontFamily": {
+        "name": "Roboto",
+        "url": "https://fonts.googleapis.com/css?family=Roboto"
+      },
+      "titleFontFamily": {
+        "name": "Roboto",
+        "url": "https://fonts.googleapis.com/css?family=Roboto"
+      }
+    }
+
+  },
+  "services": {
+
+  },
+  "modules": {
+    "/ads": {
+      "name": "Ads container",
+      "identifier": "ads",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/ads/index.html",
+      "files": ["modules/ads/controller.js"],
+      "scope": {
+        "mainsrc": "<h1>Ads Everywhere!</h1>",
+        "fixedsrc": "<h3>fixed</h3>"
+      }
+    },
+    "/ads/menu": {
+      "name": "Polymer Menu Module",
+      "identifier": "polymermenu",
+      "type": "A",
+      "showOn": {
+        "menu": false,
+        "market": true,
+        "dragDrop": true
+      },
+      "libs": [
+        {
+          "bower": {
+            "polymer/polymer": "^1.0.0"
+          },
+          "src": "bower_components/polymer/polymer.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-drawer-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-header-panel/paper-header-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-menu": "^1.0.0"
+          },
+          "src": "bower_components/paper-menu/paper-menu.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-scroll-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-item": "^1.0.0"
+          },
+          "src": "bower_components/paper-item/paper-item.html"
+        }
+      ],
+      "view": "modules/polymermenu/index.html",
+      "files": ["modules/polymermenu/controller.js", "modules/polymermenu/style.css"],
+      "scope": {
+        "path": "/menu"
+      }
+    },
+    "/ads/menu/facebook": {
+      "name": "Facebook Ads",
+      "identifier": "facebookfeed",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/facebookfeed/index.html",
+      "files": ["modules/facebookfeed/controller.js"],
+      "scope": {
+        "accesstoken": "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
+        "pageid": "laneveraroja"
+      }
+    },
+    "/menu": {
+      "name": "Polymer Menu Module",
+      "identifier": "polymermenu",
+      "type": "A",
+      "showOn": {
+        "menu": false,
+        "market": true,
+        "dragDrop": true
+      },
+      "libs": [
+        {
+          "bower": {
+            "polymer/polymer": "^1.0.0"
+          },
+          "src": "bower_components/polymer/polymer.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-drawer-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-header-panel/paper-header-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-menu": "^1.0.0"
+          },
+          "src": "bower_components/paper-menu/paper-menu.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-scroll-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-item": "^1.0.0"
+          },
+          "src": "bower_components/paper-item/paper-item.html"
+        }
+      ],
+      "view": "modules/polymermenu/index.html",
+      "files": ["modules/polymermenu/controller.js", "modules/polymermenu/style.css"],
+      "scope": {
+        "path": "/menu"
+      }
+    },
+    "/menu/abdonrd": {
+      "name": "abdonrd",
+      "identifier": "abdonrd",
+      "type": "A",
+      "view": "modules/abdonrd/index.html",
+      "files": ["modules/abdonrd/controller.js"],
+      "scope": {
+        "value": "Text phrase",
+        "images": [
+          "http://placehold.it/350x150",
+          "http://placehold.it/350x150"
+        ]
+      }
+    },
+    "/menu/rss": {
+      "name": "RSS",
+      "identifier": "rss",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/rss/index.html",
+      "files": ["modules/rss/controller.js"],
+      "scope": {
+        "feed": "http://elpais.com/rss/elpais/portada.xml"
+      }
+    },
+    "/menu/pdf": {
+      "name": "Pdf",
+      "identifier": "pdfviewer",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/pdfviewer/index.html",
+      "files": ["modules/pdfviewer/controller.js"],
+      "scope": {
+        "value": "http://kingofapp.es/wp-content/uploads/2015/11/wwwhatsnew.pdf",
+        "debug": true
+      }
+    },
+    "/menu/facebook": {
+      "name": "Facebook Feed",
+      "identifier": "facebookfeed",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/facebookfeed/index.html",
+      "files": ["modules/facebookfeed/controller.js"],
+      "scope": {
+        "accesstoken": "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
+        "pageid": "laneveraroja"
+      }
+    },
+    "/menu/twitter": {
+      "name": "Twitter Feed",
+      "identifier": "twitterfeed",
+      "type": "A",
+      "view": "modules/twitterfeed/index.html",
+      "files": ["modules/twitterfeed/controller.js", "modules/twitterfeed/directive.js"],
+      "scope": {
+        "widgetid": "628892310084939776",
+        "limite": "2"
+      }
+    },
+    "/menu/flickr": {
+      "name": "Flickr Feed",
+      "identifier": "flickrfeed",
+      "type": "A",
+      "view": "modules/flickrfeed/index.html",
+      "files": ["modules/flickrfeed/controller.js"],
+      "scope": {
+        "accesstoken": "1d2b22596adb2b99645c52ba2f5d1542",
+        "photosetid": "72157649175711353",
+        "results": "5"
+      }
+    },
+    "/menu/instagram": {
+      "name": "Instagram Feed",
+      "identifier": "instagramfeed",
+      "type": "A",
+      "view": "modules/instagramfeed/index.html",
+      "files": ["modules/instagramfeed/controller.js"],
+      "scope": {
+        "accesstoken": "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
+        "userid": "50417061"
+      }
+    },
+    "/menu/youtube-gallery": {
+      "name": "Youtube Gallery",
+      "identifier": "youtubegallery",
+      "type": "A",
+      "view": "modules/youtubegallery/index.html",
+      "files": ["modules/youtubegallery/controller.js"],
+      "scope": {
+        "channelid": "UCeIt2DJO8UdtUTmJzTfSXiQ",
+        "token": "AIzaSyBQ3w6f5mFXyOK5sWC2oXzYcjLbN8IHRjg",
+        "singleurl": "/menu/youtubevideo"
+      }
+    },
+    "/menu/youtubevideo": {
+      "name": "Youtube Video",
+      "identifier": "youtubevideo",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/youtubevideo/index.html",
+      "files": ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
+      "scope": {
+        "videoid": "oHg5SJYRHA0"
+      }
+    },
+    "/menu/contact": {
+      "name": "Contact",
+      "identifier": "contact",
+      "type": "A",
+      "view": "modules/contact/index.html",
+      "files": ["modules/contact/controller.js"],
+      "scope": {
+        "send_address": "theguard@kingofapp.es",
+        "mandrill_key": "dFOWcqJzBMB69YQGq3GPSQ",
+        "debug": true
+      }
+    },
+    "/menu/google-map": {
+      "name": "Map",
+      "identifier": "googlemap",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/googlemap/index.html",
+      "files": ["modules/googlemap/controller.js", "modules/googlemap/directive.js", "modules/googlemap/style.css"],
+      "scope": {
+        "lat": "39.8847281",
+        "lon": "4.2540999",
+        "zoom": "15"
+      },
+      "libs": [{
+        "bower": {
+          "GoogleWebComponents/google-map": "^1.1.0"
+        },
+        "src": "bower_components/google-map/google-map.html"
+      }]
+    },
+    "/menu/html": {
+      "name": "Html Example",
+      "identifier": "html",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/html/index.html",
+      "files": ["modules/html/controller.js"],
+      "scope": {
+        "value": "<p style='color:#39a9d3' lang='es-ES'> Ut tortor mauris, ultrices quis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus, leo ut auctor ultrices, erat arcu tincidunt sapien, Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eget ipsum euismod, posuere odio</p><p style='color:#d36339' lang='es-ES'>Other color text</p>"
+      }
+    },
+    "/menu/wordpress": {
+      "name": "Wordpress Feed",
+      "identifier": "wordpressposts",
+      "type": "A",
+      "view": "modules/wordpressposts/index.html",
+      "files": ["modules/wordpressposts/controller.js"],
+      "scope": {
+        "domain": "http://rachelbaker.me",
+        "postnumber": 3,
+        "category": "",
+        "singleurl": "/menu/wordpresssingle"
+      }
+    },
+    "/menu/wordpresssingle": {
+      "name": "Wordpress Single",
+      "identifier": "wordpresssingle",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/wordpresssingle/index.html",
+      "files": ["modules/wordpresssingle/controller.js"],
+      "scope": {
+        "domain": "http://rachelbaker.me",
+        "type": "pages",
+        "id": 1626
+      }
+    },
+    "/menu/vimeo-video": {
+      "name": "Vimeo Video",
+      "identifier": "vimeovideo",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/vimeovideo/index.html",
+      "files": ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
+      "scope": {
+        "videoid": "136882652"
+      }
+    },
+    "/menu/soundcloud": {
+      "name": "Sound Cloud",
+      "identifier": "soundcloud",
+      "type": "A",
+      "view": "modules/soundcloud/index.html",
+      "files": ["modules/soundcloud/controller.js", "modules/soundcloud/directive.js", "modules/soundcloud/style.css"],
+      "scope": {
+        "client_id": "b23455855ab96a4556cbd0a98397ae8c",
+        "track": "65576692"
+      }
+    },
+    "/menu/fire-connector": {
+      "name": "Firebase Module",
+      "identifier": "firebase",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/firebase/index.html",
+      "files": ["modules/firebase/controller.js", "modules/firebase/factory.js"],
+      "scope": {
+        "src": "https://blinding-heat-1559.firebaseio.com/datatest",
+        "debug": true
+      },
+      "libs": [
+        {
+          "bower": {
+            "firebase": "2.2.4"
+          },
+          "src": "https://cdn.firebase.com/js/client/2.2.4/firebase.js"
+        },
+        {
+          "bower": {
+            "angularfire": "1.1.2"
+          },
+          "src": "https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"
+        }
+      ]
+    },
+    "/menu/fire-connector/list": {
+      "name": "List Module",
+      "identifier": "list",
+      "type": "A",
+      "view": "modules/list/index.html",
+      "files": ["modules/list/controller.js"],
+      "scope": {
+        "src": "x"
+      }
+    },
+    "/menu/simple-gallery": {
+      "name": "Simple Gallery",
+      "identifier": "simplegallery",
+      "type": "A",
+      "view": "modules/simplegallery/index.html",
+      "files": [
+        "modules/simplegallery/controller.js",
+        "modules/simplegallery/swiper/js/swiper.min.js",
+        "modules/simplegallery/swiper/css/swiper.min.css"
+      ],
+      "scope": {
+        "gallery": [
+          "http://www.palaisnamaskar.com/media/113359/Breakfast.jpg",
+          "http://www.cardamombay.co.uk/img/gallery/cardamomBayMenu16big.jpg",
+          "http://www.billyparisi.com/wp-content/uploads/2014/12/xmas-slider-3.jpg"
+        ]
+      }
+    },
+    "/menu/grouplist": {
+      "name": "Group List",
+      "identifier": "grouplist",
+      "type": "A",
+      "view": "modules/grouplist/index.html",
+      "files": ["modules/grouplist/controller.js"],
+      "libs": [
+        {
+          "bower": {
+            "PolymerElements/iron-flex-layout": "^1.0.0"
+          },
+          "src": "bower_components/iron-flex-layout/iron-flex-layout.html"
+        },
+        {
+          "bower": {
+            "": ""
+          },
+          "src": "modules/grouplist/styles.html"
+        }
+      ],
+      "scope": {
+        "sections": ["#/menu/facebook", "#/menu/flickr"]
+      }
+    },
+    "/second-menu": {
+      "name": "Angular Menu Module",
+      "identifier": "angularmenu",
+      "type": "A",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/angularmenu/index.html",
+      "files": ["modules/angularmenu/controller.js", "modules/angularmenu/directive.js"],
+      "libs": [
+        {
+          "bower": "",
+          "src": "modules/angularmenu/styles.html"
+        }
+      ],
+      "scope": {
+        "path": "/menu"
+      }
+    }
+  }
+}

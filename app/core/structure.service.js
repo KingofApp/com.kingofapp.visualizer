@@ -143,7 +143,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
       images = getImages();
     }
 
-    setCustomStyle('--background-image', images.background);
+    setCustomStyle('--background-image', 'url("' + images.background + '")');
 
     Polymer.updateStyles();
   }

@@ -1,4 +1,4 @@
-/*{
+{
   "config": {
     "lang": ["en_US"],
     "index": "/menu",
@@ -62,37 +62,44 @@
         "market": true,
         "dragDrop": true
       },
-      "libs": [{
-        "bower": {
-          "polymer/polymer": "^1.0.0"
+      "libs": [
+        {
+          "bower": {
+            "polymer/polymer": "^1.0.0"
+          },
+          "src": "bower_components/polymer/polymer.html"
         },
-        "src": "bower_components/polymer/polymer.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-drawer-panel": "^1.0.0"
+        {
+          "bower": {
+            "PolymerElements/paper-drawer-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
         },
-        "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-header-panel": "^1.0.0"
+        {
+          "bower": {
+            "PolymerElements/paper-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-header-panel/paper-header-panel.html"
         },
-        "src": "bower_components/paper-header-panel/paper-header-panel.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-menu": "^1.0.0"
+        {
+          "bower": {
+            "PolymerElements/paper-menu": "^1.0.0"
+          },
+          "src": "bower_components/paper-menu/paper-menu.html"
         },
-        "src": "bower_components/paper-menu/paper-menu.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-scroll-header-panel": "^1.0.0"
+        {
+          "bower": {
+            "PolymerElements/paper-scroll-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
         },
-        "src": "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-item": "^1.0.0"
-        },
-        "src": "bower_components/paper-item/paper-item.html"
-      }],
+        {
+          "bower": {
+            "PolymerElements/paper-item": "^1.0.0"
+          },
+          "src": "bower_components/paper-item/paper-item.html"
+        }
+      ],
       "view": "modules/polymermenu/index.html",
       "files": ["modules/polymermenu/controller.js", "modules/polymermenu/style.css"],
       "scope": {
@@ -124,37 +131,44 @@
         "market": true,
         "dragDrop": true
       },
-      "libs": [{
-        "bower": {
-          "polymer/polymer": "^1.0.0"
+      "libs": [
+        {
+          "bower": {
+            "polymer/polymer": "^1.0.0"
+          },
+          "src": "bower_components/polymer/polymer.html"
         },
-        "src": "bower_components/polymer/polymer.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-drawer-panel": "^1.0.0"
+        {
+          "bower": {
+            "PolymerElements/paper-drawer-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
         },
-        "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-header-panel": "^1.0.0"
+        {
+          "bower": {
+            "PolymerElements/paper-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-header-panel/paper-header-panel.html"
         },
-        "src": "bower_components/paper-header-panel/paper-header-panel.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-menu": "^1.0.0"
+        {
+          "bower": {
+            "PolymerElements/paper-menu": "^1.0.0"
+          },
+          "src": "bower_components/paper-menu/paper-menu.html"
         },
-        "src": "bower_components/paper-menu/paper-menu.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-scroll-header-panel": "^1.0.0"
+        {
+          "bower": {
+            "PolymerElements/paper-scroll-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
         },
-        "src": "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
-      }, {
-        "bower": {
-          "PolymerElements/paper-item": "^1.0.0"
-        },
-        "src": "bower_components/paper-item/paper-item.html"
-      }],
+        {
+          "bower": {
+            "PolymerElements/paper-item": "^1.0.0"
+          },
+          "src": "bower_components/paper-item/paper-item.html"
+        }
+      ],
       "view": "modules/polymermenu/index.html",
       "files": ["modules/polymermenu/controller.js", "modules/polymermenu/style.css"],
       "scope": {
@@ -227,7 +241,7 @@
       "identifier": "twitterfeed",
       "type": "A",
       "view": "modules/twitterfeed/index.html",
-      "files": ["modules/twitterfeed/controller.js","modules/twitterfeed/directive.js"],
+      "files": ["modules/twitterfeed/controller.js", "modules/twitterfeed/directive.js"],
       "scope": {
         "widgetid": "628892310084939776",
         "limite": "2"
@@ -305,7 +319,7 @@
         "dragDrop": true
       },
       "view": "modules/googlemap/index.html",
-      "files": ["modules/googlemap/controller.js","modules/googlemap/directive.js","modules/googlemap/style.css"],
+      "files": ["modules/googlemap/controller.js", "modules/googlemap/directive.js", "modules/googlemap/style.css"],
       "scope": {
         "lat": "39.8847281",
         "lon": "4.2540999",
@@ -404,17 +418,20 @@
         "src": "https://blinding-heat-1559.firebaseio.com/datatest",
         "debug": true
       },
-      "libs": [{
-        "bower": {
-          "firebase": "2.2.4"
+      "libs": [
+        {
+          "bower": {
+            "firebase": "2.2.4"
+          },
+          "src": "https://cdn.firebase.com/js/client/2.2.4/firebase.js"
         },
-        "src": "https://cdn.firebase.com/js/client/2.2.4/firebase.js"
-      }, {
-        "bower": {
-          "angularfire": "1.1.2"
-        },
-        "src": "https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"
-      }]
+        {
+          "bower": {
+            "angularfire": "1.1.2"
+          },
+          "src": "https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"
+        }
+      ]
     },
     "/menu/fire-connector/list": {
       "name": "List Module",
@@ -450,18 +467,20 @@
       "type": "A",
       "view": "modules/grouplist/index.html",
       "files": ["modules/grouplist/controller.js"],
-      "libs": [{
-        "bower": {
-          "PolymerElements/iron-flex-layout": "^1.0.0"
+      "libs": [
+        {
+          "bower": {
+            "PolymerElements/iron-flex-layout": "^1.0.0"
+          },
+          "src": "bower_components/iron-flex-layout/iron-flex-layout.html"
         },
-        "src": "bower_components/iron-flex-layout/iron-flex-layout.html"
-      },
-      {
-        "bower": {
-          "":""
-        },
-        "src": "modules/grouplist/styles.html"
-      }],
+        {
+          "bower": {
+            "": ""
+          },
+          "src": "modules/grouplist/styles.html"
+        }
+      ],
       "scope": {
         "sections": ["#/menu/facebook", "#/menu/flickr"]
       }
@@ -477,13 +496,15 @@
       },
       "view": "modules/angularmenu/index.html",
       "files": ["modules/angularmenu/controller.js", "modules/angularmenu/directive.js"],
-      "libs": [{
-        "bower": "",
-        "src":"modules/angularmenu/styles.html"
-      }],
+      "libs": [
+        {
+          "bower": "",
+          "src": "modules/angularmenu/styles.html"
+        }
+      ],
       "scope": {
         "path": "/menu"
       }
     }
   }
-}*/
+}

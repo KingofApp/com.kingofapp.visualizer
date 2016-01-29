@@ -1,8 +1,9 @@
-*.log
+node_modules/
 bower_components/
 logs/*
-node_modules/
+*.log
 testresults/
-tmp
 /dist
+tmp
 .tmp
+structure.json

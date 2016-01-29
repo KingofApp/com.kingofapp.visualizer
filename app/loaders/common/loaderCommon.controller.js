@@ -419,6 +419,24 @@
         (themeId === 'koa-ios-theme')     ? setTheme(iosThemeConfig)
                                           : null;
       }
-    }
+    };
+
+    $scope.iconset = function(iconsetName) {
+      if (iconsetName) {
+        var iconsIconsetConfig = {
+          name: 'icons',
+          url: 'bower_components/iron-icons/iron-icons.html'
+        };
+
+        var ardIconsetConfig = {
+          name: 'ard',
+          url: 'ard-icons.html'
+        };
+
+        (iconsetName === 'icons') ? setIconset(iconsIconsetConfig) :
+        (iconsetName === 'ard')   ? setIconset(ardIconsetConfig)
+                                  : null;
+      }
+    };
   }
 }());

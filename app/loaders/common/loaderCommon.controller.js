@@ -92,6 +92,7 @@
         setTimeout(function() {
           // $scope.$apply(function() {
           setTheme(newValue.config);
+          setIconset(newValue.config.iconset);
           if (newValue.config.index === $location.path()) {
             $route.reload();
           } else {
@@ -114,6 +115,13 @@
         prevent = true;
         loadFonts(newValue);
         structureService.setFonts(newValue);
+      }
+    });
+
+    $scope.$watch('appIconset', function(newValue, oldValue) {
+      if (oldValue !== newValue) {
+        prevent = true;
+        setIconset(newValue.config.iconset);
       }
     });
 
@@ -222,6 +230,10 @@
       }
     }
 
+    function setIconset(iconset) {
+      koaApp.setIconset(iconset);
+    }
+
     function setTheme(config) {
       loadFonts(config.fonts);
 
@@ -273,26 +285,5 @@
                              : setTheme(structureService.getConfig());
       }, 100);
     }
-// Debug clicks
-$scope.theme = function(val) {
-  if(val){
-    var obj = {
-        'fonts': {
-        'primaryFontFamily': {
-          'name': 'Roboto',
-          'url': 'https://fonts.googleapis.com/css?family=Roboto'
-        },
-        'titleFontFamily': {
-          'name': 'Roboto',
-          'url': 'https://fonts.googleapis.com/css?family=Roboto'
-        }
-      },
-      "theme": val
-    }
-    setTheme(obj);
-  }
-}
-
-
   }
 }());

@@ -1,4 +1,5 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-badge-behavior.html">
 <link rel="import" href="../../styles/default-theme.html">
 
@@ -12,7 +13,7 @@
         outline: none;
       }
 
-      iron-icon {
+      koa-icon {
         --iron-icon-width: 12px;
         --iron-icon-height: 12px;
       }
@@ -45,7 +46,7 @@
 
     <!-- write your template here -->
     <div class="badge">
-      <iron-icon hidden$="{{!_computeIsIconBadge(icon)}}" icon="{{icon}}"></iron-icon>
+      <koa-icon hidden$="{{!_computeIsIconBadge(icon)}}" icon="{{icon}}"></koa-icon>
       <span id="badge-text" hidden$="{{_computeIsIconBadge(icon)}}">{{label}}</span>
     </div>
     <!-- end template -->

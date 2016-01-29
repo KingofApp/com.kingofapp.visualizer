@@ -1,5 +1,5 @@
-<link rel="import" href="bower_components/polymer/polymer.html">
-<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 
 <dom-module id="koa-app">
   <template>
@@ -23,6 +23,7 @@
 
     <content></content>
   </template>
+
   <script>
     Polymer({
       is: 'koa-app',
@@ -35,6 +36,11 @@
         tree: {
           type: Array,
           value: []
+        },
+
+        koaIcons: {
+          type: Array,
+          value: []
         }
       },
 
@@ -42,8 +48,15 @@
 
       importedThemes: [],
 
+      importedIconsets: [],
+
+      excludedElementsToProcess: [
+        'koa-icon'
+      ],
+
       createTree: function () {
         this.tree = new Array(0);
+        this.koaIcons = new Array(0);
         this._processElement(this.children[0]);
       },
 
@@ -72,6 +85,29 @@
         }
       },
 
+      setIconset: function (iconset) {
+        var iconsetIsNotImported = this.importedIconsets.indexOf(iconset.name) === -1;
+
+        if (iconsetIsNotImported) {
+          this.importHref(iconset.url, function(e) {
+            this.updateIcons(iconset.name);
+            this.importedIconsets.push(iconset.name);
+          });
+        } else {
+          this.updateIcons(iconset.name);
+        }
+      },
+
+      updateIcons: function (iconsetName) {
+        this.koaIcons.forEach(function(koaIcon) {
+          if (koaIcon.icon && koaIcon.icon.search(':') !== -1) {
+            koaIcon.icon = iconsetName + ':' + koaIcon.icon.split(':')[1];
+          } else if (koaIcon.icon) {
+            koaIcon.icon = iconsetName + ':' + koaIcon.icon;
+          }
+        });
+      },
+
       _processElement: function (element) {
         var hasChildren = element.children.length > 0;
 
@@ -84,15 +120,19 @@
         }
 
         if (element.tagName) {
-          var isKoaElement = element.tagName.toLowerCase().search('koa-') === 0;
+          var elementTagName = element.tagName.toLowerCase();
+          var isKoaElement = elementTagName.search('koa-') === 0;
+          var isNotExcludedElement = this.excludedElementsToProcess.indexOf(elementTagName) === -1;
 
-          if (isKoaElement) {
+          if (isKoaElement && isNotExcludedElement) {
             this.tree.push({
-              tag: element.tagName.toLowerCase().replace('koa-', ''),
+              tag: elementTagName.replace('koa-', ''),
               attributes: element.attributes,
               childNodes: element.childNodes,
               actualElement: element
             });
+          } else if (elementTagName === 'koa-icon') {
+            this.koaIcons.push(element);
           }
         }
       },

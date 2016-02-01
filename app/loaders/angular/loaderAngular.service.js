@@ -79,27 +79,8 @@
 
         function importHref(file) {
           var defer = $q.defer();
-          polymerImportHref(file, defer.resolve, defer.reject);
+          Polymer.Base.importHref(file, defer.resolve, defer.reject);
           return defer.promise;
-        }
-
-        function polymerImportHref(href, onload, onerror) {
-          var l = document.createElement('link');
-          l.rel = 'import';
-          l.href = href;
-          var self = this;
-          if (onload) {
-            l.onload = function(e) {
-              return onload.call(self, e);
-            };
-          }
-          if (onerror) {
-            l.onerror = function(e) {
-              return onerror.call(self, e);
-            };
-          }
-          document.head.appendChild(l);
-          return l;
         }
       });
     }

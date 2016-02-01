@@ -21,11 +21,27 @@
           libsHtml: new Array(0)
         };
 
+        var cache = structureService.getCachedLibs();
         angular.forEach(modules, function(value, key) {
-          this.libs     = this.libs.concat(_.pluck(value.libs, 'src')).filter(function(n){ return n != undefined && n.indexOf(".html") == -1 });
-          this.libsHtml = this.libsHtml.concat(_.pluck(value.libs, 'src')).filter(function(n){ return n != undefined && n.indexOf(".html") > -1 });
+          var libs = value.libs;
+          angular.forEach(libs, function(value, key) {
+            if(value && value.bower){
+              if(cache[Object.keys(value.bower)[0]]){
+                libs[key].src=undefined;
+              }
+              cache[Object.keys(value.bower)[0]]= true;
+            }
+          }, libs);
+          
+          if(libs){
+            this.libs     = this.libs.concat(_.pluck(libs, 'src')).filter(function(n){ return n != undefined && n.indexOf(".html") == -1 });
+            this.libsHtml = this.libsHtml.concat(_.pluck(libs, 'src')).filter(function(n){ return n != undefined && n.indexOf(".html") > -1 });
+          }
           this.files    = this.files.concat(value.files);
         }, dependencies);
+
+        structureService.setCachedLibs(cache);
+
         loadHtmlDeps()
         .then(loadAllDependecies)
         .catch(loadAllDependecies);

@@ -10,6 +10,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   var listeners = [];
   var lang;
   var cachedLocations = {};
+  var cachedLibs = [];
   var visitedLocations = [];
   var data = {};
   var services = [];
@@ -44,6 +45,8 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
     getIndex: getIndex,
     getVisitedLocations: getVisitedLocations,
     getCachedLocations: getCachedLocations,
+    getCachedLibs: getCachedLibs,
+    setCachedLibs: setCachedLibs,
     setVisitedLocations: setVisitedLocations,
     getLang: getLang,
     setLang: setLang,
@@ -183,10 +186,17 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   function getCachedLocations() {
     return cachedLocations;
   }
+  function getCachedLibs() {
+    return cachedLibs;
+  }
 
   function setVisitedLocations(locations) {
     visitedLocations = locations;
   }
+  function setCachedLibs(libs) {
+    cachedLibs = libs;
+  }
+
 
   function getLang() {
     if (lang) {

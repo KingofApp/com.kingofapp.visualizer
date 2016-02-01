@@ -67,37 +67,37 @@
           "bower": {
             "polymer/polymer": "^1.0.0"
           },
-          "src": "bower_components/polymer/polymer.html"
+          "src": "http://resources.kingofapp.com/bower_components/polymer/polymer.html"
         },
         {
           "bower": {
             "PolymerElements/paper-drawer-panel": "^1.0.0"
           },
-          "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-drawer-panel/paper-drawer-panel.html"
         },
         {
           "bower": {
             "PolymerElements/paper-header-panel": "^1.0.0"
           },
-          "src": "bower_components/paper-header-panel/paper-header-panel.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-header-panel/paper-header-panel.html"
         },
         {
           "bower": {
             "PolymerElements/paper-menu": "^1.0.0"
           },
-          "src": "bower_components/paper-menu/paper-menu.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-menu/paper-menu.html"
         },
         {
           "bower": {
             "PolymerElements/paper-scroll-header-panel": "^1.0.0"
           },
-          "src": "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
         },
         {
           "bower": {
             "PolymerElements/paper-item": "^1.0.0"
           },
-          "src": "bower_components/paper-item/paper-item.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-item/paper-item.html"
         }
       ],
       "view": "modules/polymermenu/index.html",
@@ -136,37 +136,37 @@
           "bower": {
             "polymer/polymer": "^1.0.0"
           },
-          "src": "bower_components/polymer/polymer.html"
+          "src": "http://resources.kingofapp.com/bower_components/polymer/polymer.html"
         },
         {
           "bower": {
             "PolymerElements/paper-drawer-panel": "^1.0.0"
           },
-          "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-drawer-panel/paper-drawer-panel.html"
         },
         {
           "bower": {
             "PolymerElements/paper-header-panel": "^1.0.0"
           },
-          "src": "bower_components/paper-header-panel/paper-header-panel.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-header-panel/paper-header-panel.html"
         },
         {
           "bower": {
             "PolymerElements/paper-menu": "^1.0.0"
           },
-          "src": "bower_components/paper-menu/paper-menu.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-menu/paper-menu.html"
         },
         {
           "bower": {
             "PolymerElements/paper-scroll-header-panel": "^1.0.0"
           },
-          "src": "bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
         },
         {
           "bower": {
             "PolymerElements/paper-item": "^1.0.0"
           },
-          "src": "bower_components/paper-item/paper-item.html"
+          "src": "http://resources.kingofapp.com/bower_components/paper-item/paper-item.html"
         }
       ],
       "view": "modules/polymermenu/index.html",
@@ -329,7 +329,7 @@
         "bower": {
           "GoogleWebComponents/google-map": "^1.1.0"
         },
-        "src": "bower_components/google-map/google-map.html"
+        "src": "http://resources.kingofapp.com/bower_components/google-map/google-map.html"
       }]
     },
     "/menu/html": {
@@ -472,7 +472,7 @@
           "bower": {
             "PolymerElements/iron-flex-layout": "^1.0.0"
           },
-          "src": "bower_components/iron-flex-layout/iron-flex-layout.html"
+          "src": "http://resources.kingofapp.com/bower_components/iron-flex-layout/iron-flex-layout.html"
         },
         {
           "bower": {

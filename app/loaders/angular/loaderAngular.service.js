@@ -25,27 +25,32 @@
         angular.forEach(modules, function(value, key) {
           var libs = value.libs;
           angular.forEach(libs, function(value, key) {
-            if(value && value.bower){
-              if(cache[Object.keys(value.bower)[0]]){
-                libs[key].src=undefined;
+            if (value && value.bower) {
+              if (cache[Object.keys(value.bower)[0]]) {
+                libs[key].src = undefined;
               }
-              cache[Object.keys(value.bower)[0]]= true;
+              cache[Object.keys(value.bower)[0]] = true;
             }
           }, libs);
-          
-          if(libs){
-            this.libs     = this.libs.concat(_.pluck(libs, 'src')).filter(function(n){ return n != undefined && n.indexOf(".html") == -1 });
-            this.libsHtml = this.libsHtml.concat(_.pluck(libs, 'src')).filter(function(n){ return n != undefined && n.indexOf(".html") > -1 });
+
+          if (libs) {
+            this.libs = this.libs.concat(_.pluck(libs, 'src')).filter(function(n) {
+              return n != undefined && n.indexOf(".html") == -1
+            });
+            this.libsHtml = this.libsHtml.concat(_.pluck(libs, 'src')).filter(function(n) {
+              return n != undefined && n.indexOf(".html") > -1
+            });
           }
-          this.files    = this.files.concat(value.files);
+          this.files = this.files.concat(value.files);
         }, dependencies);
 
         structureService.setCachedLibs(cache);
 
         loadHtmlDeps()
-        .then(loadAllDependecies)
-        .catch(loadAllDependecies);
-        function loadAllDependecies(){
+          .then(loadAllDependecies)
+          .catch(loadAllDependecies);
+
+        function loadAllDependecies() {
           var defer = $q.defer();
           $q.all({
             'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
@@ -57,43 +62,46 @@
           }).catch(defer.reject);
           return defer.promise;
         }
+
         function loadHtmlDeps() {
           var defer = $q.defer();
           var htmlImports = [];
+
           angular.forEach(dependencies.libsHtml, function(value, key) {
             this.push(importHref(value));
           }, htmlImports);
 
           $q.all(htmlImports)
-          .then(defer.resolve)
-          .catch(defer.reject);
+            .then(defer.resolve)
+            .catch(defer.reject);
           return defer.promise;
         }
-        function importHref(file){
+
+        function importHref(file) {
           var defer = $q.defer();
           polymerImportHref(file, defer.resolve, defer.reject);
           return defer.promise;
         }
+
         function polymerImportHref(href, onload, onerror) {
           var l = document.createElement('link');
           l.rel = 'import';
           l.href = href;
           var self = this;
           if (onload) {
-              l.onload = function(e) {
-                  return onload.call(self, e);
-              };
+            l.onload = function(e) {
+              return onload.call(self, e);
+            };
           }
           if (onerror) {
-              l.onerror = function(e) {
-                  return onerror.call(self, e);
-              };
+            l.onerror = function(e) {
+              return onerror.call(self, e);
+            };
           }
           document.head.appendChild(l);
-            return l;
-          }
-        });
+          return l;
+        }
+      });
     }
   }
-
 }());

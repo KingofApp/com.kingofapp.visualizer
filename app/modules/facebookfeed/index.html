@@ -1,9 +1,0 @@
-<div ng-controller="facebookFeedCtrl" class="module facebookfeed">
-
-  <koa-item ng-if="facebookfeed.message">{{facebookfeed.message}}</koa-item>
-
-  <koa-card image="{{item.full_picture}}" ng-repeat="item in facebookfeed.items">
-    <div class="card-content">{{item.message}}</div>
-  </koa-card>
-
-</div>

@@ -1,8 +1,0 @@
-#drawer paper-menu a {
-  text-decoration: none;
-  color: inherit;
-}
-
-#drawer {
-  z-index: 2;
-}

@@ -1,0 +1,32 @@
+{
+  "name": "koa-theme-ios",
+  "authors": [
+    "Abdón Rodríguez Davila <thepeer@kingofapp.es>"
+  ],
+  "description": "iOS theme for King of App",
+  "main": "koa-theme-ios.html",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "kingofapp",
+    "theme"
+  ],
+  "license": "MIT",
+  "homepage": "http://kingofapp.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "ios-elements": "KingofApp/ios-elements#^0.3.0",
+    "iron-form": "PolymerElements/iron-form#^1.0.0",
+    "iron-icons": "PolymerElements/iron-icons#^1.0.0",
+    "iron-iconset": "PolymerElements/iron-iconset#^1.0.0"
+  }
+}

@@ -3,7 +3,7 @@
     "lang": ["en_US"],
     "index": "/menu",
     "loader": "",
-    "theme": "koa-paper-theme",
+    "theme": "koa-theme-paper",
     "colors": {
       "primaryTextColor": "#212121",
       "primaryBackgroundColor": "#ffffff",

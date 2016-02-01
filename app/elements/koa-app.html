@@ -138,7 +138,7 @@
       },
 
       _createThemeElement: function (tag, attributes, childNodes) {
-        var newElementName = this.theme.replace('koa-', '').replace('-theme', '') + '-' + tag;
+        var newElementName = this.theme.replace('koa-theme-', '') + '-' + tag;
         var newElement = document.createElement(newElementName);
 
         for (var i = 0; i < attributes.length; i++) {

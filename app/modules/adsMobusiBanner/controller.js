@@ -8,7 +8,7 @@
     //Register upper level modules
     structureService.registerModule($location, $scope, 'adsMobusiBanner');
 
-    var interval = $interval(reloadAd, 30*1000);
+    var interval = $interval(reloadAd, 10*1000);
     reloadAd();
 
     function reloadAd(){

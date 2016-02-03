@@ -1,0 +1,365 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-tabs-behavior.html">
+<link rel="import" href="../seven-seas-icon-button/seven-seas-icon-button.html">
+<link rel="import" href="../../styles/default-theme.html">
+<link rel="import" href="seven-seas-tabs-icons.html">
+<link rel="import" href="seven-seas-tab.html">
+
+<dom-module id="seven-seas-tabs">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        @apply(--layout);
+        @apply(--layout-center);
+
+        background-color: var(--tabs-background-color, --default-primary-color);
+        color: var(--tabs-text-color, white);
+        font-size: 14px;
+        font-weight: 500;
+        height: 48px;
+        overflow: hidden;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+        user-select: none;
+
+        /* NOTE: Both values are needed, since some phones require the value to be `transparent`. */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+
+        @apply(--tabs);
+      }
+
+      :host-context([dir=rtl]) {
+        @apply(--layout-horizontal-reverse);
+      }
+
+      #tabsContainer {
+        @apply(--layout-flex);
+
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        white-space: nowrap;
+      }
+
+      #tabsContent {
+        height: 100%;
+      }
+
+      #tabsContent.scrollable {
+        position: absolute;
+        white-space: nowrap;
+      }
+
+      #tabsContent.horizontal {
+        @apply(--layout-horizontal);
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .not-visible {
+        cursor: default;
+        opacity: 0;
+      }
+
+      seven-seas-icon-button {
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+        margin: 0 4px;
+      }
+
+      #selectionBar {
+        bottom: 0;
+        height: 2px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        background-color: var(--tabs-selection-bar-color, --accent-color);
+          -webkit-transform: scale(0);
+        transform: scale(0);
+          -webkit-transform-origin: left center;
+        transform-origin: left center;
+          transition: -webkit-transform;
+        transition: transform;
+
+        @apply(--tabs-selection-bar);
+      }
+
+      #selectionBar.align-bottom {
+        top: 0;
+        bottom: auto;
+      }
+
+      #selectionBar.expand {
+        transition-duration: 0.15s;
+        transition-timing-function: cubic-bezier(0.4, 0.0, 1, 1);
+      }
+
+      #selectionBar.contract {
+        transition-duration: 0.18s;
+        transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+      }
+
+      #tabsContent > ::content > *:not(#selectionBar) {
+        height: 100%;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <seven-seas-icon-button icon="seven-seas-tabs:chevron-left" class$="[[_computeScrollButtonClass(_leftHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onLeftScrollButtonDown" tabindex="-1"></seven-seas-icon-button>
+
+    <div id="tabsContainer" on-track="_scroll" on-down="_down">
+      <div id="tabsContent" class$="[[_computeTabsContentClass(scrollable)]]">
+        <content select="*"></content>
+        <div id="selectionBar" class$="[[_computeSelectionBarClass(noBar, alignBottom)]]" on-transitionend="_onBarTransitionEnd"></div>
+      </div>
+    </div>
+
+    <seven-seas-icon-button icon="seven-seas-tabs:chevron-right" class$="[[_computeScrollButtonClass(_rightHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onRightScrollButtonDown" tabindex="-1"></seven-seas-icon-button>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'seven-seas-tabs',
+
+      behaviors: [
+        Polymer.KoaTabsBehavior,
+        Polymer.IronResizableBehavior
+      ],
+
+      properties: {
+        /**
+         * If true, ink ripple effect is disabled. When this property is changed,
+         * all descendant `<paper-tab>` elements have their `noink` property
+         * changed to the new value as well.
+         */
+        noink: {
+          type: Boolean,
+          value: false,
+          observer: '_noinkChanged'
+        },
+
+        /**
+         * If true, the bottom bar to indicate the selected tab will not be shown.
+         */
+        noBar: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * If true, the slide effect for the bottom bar is disabled.
+         */
+        noSlide: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * If true, dragging on the tabs to scroll is disabled.
+         */
+        disableDrag: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.
+         */
+        hideScrollButtons: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * If true, the tabs are aligned to bottom (the selection bar appears at the top).
+         */
+        alignBottom: {
+          type: Boolean,
+          value: false
+        },
+
+        selectable: {
+          type: String,
+          value: 'seven-seas-tab'
+        },
+
+        _step: {
+          type: Number,
+          value: 10
+        },
+
+        _holdDelay: {
+          type: Number,
+          value: 1
+        }
+      },
+
+      listeners: {
+        'iron-resize': '_onResize'
+      },
+
+      created: function() {
+        this._holdJob = null;
+      },
+
+      _noinkChanged: function(noink) {
+        var childTabs = Polymer.dom(this).querySelectorAll('paper-tab');
+        childTabs.forEach(noink ? this._setNoinkAttribute : this._removeNoinkAttribute);
+      },
+
+      _setNoinkAttribute: function(element) {
+        element.setAttribute('noink', '');
+      },
+
+      _removeNoinkAttribute: function(element) {
+        element.removeAttribute('noink');
+      },
+
+      _computeScrollButtonClass: function(hideThisButton, scrollable, hideScrollButtons) {
+        if (!scrollable || hideScrollButtons) {
+          return 'hidden';
+        }
+
+        if (hideThisButton) {
+          return 'not-visible';
+        }
+
+        return '';
+      },
+
+      _computeSelectionBarClass: function(noBar, alignBottom) {
+        if (noBar) {
+          return 'hidden';
+        } else if (alignBottom) {
+          return 'align-bottom';
+        }
+
+        return '';
+      },
+
+      // TODO(cdata): Add `track` response back in when gesture lands.
+
+      _onResize: function() {
+        this.debounce('_onResize', function() {
+          this._scroll();
+          this._tabChanged(this.selectedItem);
+        }, 10);
+      },
+
+      _down: function(e) {
+        // go one beat async to defeat IronMenuBehavior
+        // autorefocus-on-no-selection timeout
+        this.async(function() {
+          if (this._defaultFocusAsync) {
+            this.cancelAsync(this._defaultFocusAsync);
+            this._defaultFocusAsync = null;
+          }
+        }, 1);
+      },
+
+      _onLeftScrollButtonDown: function() {
+        this._scrollToLeft();
+        this._holdJob = setInterval(this._scrollToLeft.bind(this), this._holdDelay);
+      },
+
+      _onRightScrollButtonDown: function() {
+        this._scrollToRight();
+        this._holdJob = setInterval(this._scrollToRight.bind(this), this._holdDelay);
+      },
+
+      _onScrollButtonUp: function() {
+        clearInterval(this._holdJob);
+        this._holdJob = null;
+      },
+
+      _scrollToLeft: function() {
+        this._affectScroll(-this._step);
+      },
+
+      _scrollToRight: function() {
+        this._affectScroll(this._step);
+      },
+
+      _tabChanged: function(tab, old) {
+        if (!tab) {
+          this._positionBar(0, 0);
+          return;
+        }
+
+        var r = this.$.tabsContent.getBoundingClientRect();
+        var w = r.width;
+        var tabRect = tab.getBoundingClientRect();
+        var tabOffsetLeft = tabRect.left - r.left;
+
+        this._pos = {
+          width: this._calcPercent(tabRect.width, w),
+          left: this._calcPercent(tabOffsetLeft, w)
+        };
+
+        if (this.noSlide || old == null) {
+          // position bar directly without animation
+          this._positionBar(this._pos.width, this._pos.left);
+          return;
+        }
+
+        var oldRect = old.getBoundingClientRect();
+        var oldIndex = this.items.indexOf(old);
+        var index = this.items.indexOf(tab);
+        var m = 5;
+
+        // bar animation: expand
+        this.$.selectionBar.classList.add('expand');
+
+        if (oldIndex < index) {
+          this._positionBar(this._calcPercent(tabRect.left + tabRect.width - oldRect.left, w) - m,
+              this._left);
+        } else {
+          this._positionBar(this._calcPercent(oldRect.left + oldRect.width - tabRect.left, w) - m,
+              this._calcPercent(tabOffsetLeft, w) + m);
+        }
+
+        if (this.scrollable) {
+          this._scrollToSelectedIfNeeded(tabRect.width, tabOffsetLeft);
+        }
+      },
+
+      _calcPercent: function(w, w0) {
+        return 100 * w / w0;
+      },
+
+      _positionBar: function(width, left) {
+        width = width || 0;
+        left = left || 0;
+
+        this._width = width;
+        this._left = left;
+        this.transform(
+            'translate3d(' + left + '%, 0, 0) scaleX(' + (width / 100) + ')',
+            this.$.selectionBar);
+      },
+
+      _onBarTransitionEnd: function(e) {
+        var cl = this.$.selectionBar.classList;
+        // bar animation: expand -> contract
+        if (cl.contains('expand')) {
+          cl.remove('expand');
+          cl.add('contract');
+          this._positionBar(this._pos.width, this._pos.left);
+        // bar animation done
+        } else if (cl.contains('contract')) {
+          cl.remove('contract');
+        }
+      }
+    });
+  </script>
+</dom-module>

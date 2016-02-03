@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>everest-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../everest-item/everest-item.html">
+    <link rel="import" href="../everest-menu.html">
+    <link rel="import" href="../everest-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      everest-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist everest-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 everest-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <everest-menu>
+            <everest-item>Inbox</everest-item>
+            <everest-item>Starred</everest-item>
+            <everest-item>Sent mail</everest-item>
+            <everest-item>Drafts</everest-item>
+          </everest-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <everest-menu selected="0">
+            <everest-item>Inbox</everest-item>
+            <everest-item disabled>Starred</everest-item>
+            <everest-item>Sent mail</everest-item>
+            <everest-item>Drafts</everest-item>
+          </everest-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <everest-menu multi>
+            <everest-item>Bold</everest-item>
+            <everest-item>Italic</everest-item>
+            <everest-item>Underline</everest-item>
+            <everest-item>Strikethrough</everest-item>
+          </everest-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <everest-menu attr-for-item-title="label" multi>
+            <everest-submenu label="everest-menu">
+              <everest-item class="menu-trigger">everest-menu</everest-item>
+              <everest-menu class="menu-content sublist" multi>
+                <everest-submenu label="Properties">
+                  <everest-item class="menu-trigger">Properties</everest-item>
+                  <everest-menu class="menu-content sublist2">
+                    <everest-item>focusedItem</everest-item>
+                    <everest-item>attrForItemTitle</everest-item>
+                  </everest-menu>
+                </everest-submenu>
+                <everest-submenu label="Methods">
+                  <everest-item class="menu-trigger">Methods</everest-item>
+                  <everest-menu class="menu-content sublist2">
+                    <everest-item>select(value)</everest-item>
+                  </everest-menu>
+                </everest-submenu>
+            </everest-menu>
+          </everest-submenu>
+
+          <everest-submenu label="everest-submenu">
+            <everest-item class="menu-trigger">everest-submenu</everest-item>
+            <everest-menu class="menu-content sublist">
+              <everest-submenu label="Properties">
+                <everest-item class="menu-trigger">Properties</everest-item>
+                <everest-menu class="menu-content sublist2">
+                  <everest-item>opened</everest-item>
+                </everest-menu>
+                </everest-submenu>
+                <everest-submenu label="Methods">
+                  <everest-item class="menu-trigger">Methods</everest-item>
+                  <everest-menu class="menu-content sublist2">
+                    <everest-item>open()</everest-item>
+                    <everest-item>close()</everest-item>
+                    <everest-item>toggle()</everest-item>
+                  </everest-menu>
+              </everest-submenu>
+            </everest-menu>
+          </everest-submenu>
+
+            <everest-submenu label="Unavailable" disabled>
+              <everest-item class="menu-trigger">Unavailable</everest-item>
+              <everest-menu class="menu-content sublist">
+                <everest-item>Unavailable 1</everest-item>
+                <everest-item>Unavailable 2</everest-item>
+              </everest-menu>
+            </everest-submenu>
+          </everest-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

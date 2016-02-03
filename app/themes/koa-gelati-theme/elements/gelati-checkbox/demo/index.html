@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>gelati-checkbox demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../gelati-checkbox.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 550px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      gelati-checkbox {
+        margin-right: 24px;
+      }
+
+      gelati-checkbox.red {
+        --checkbox-checked-color: var(--paper-red-500);
+        --checkbox-checked-ink-color: var(--paper-red-500);
+        --checkbox-unchecked-color: var(--paper-red-900);
+        --checkbox-unchecked-ink-color: var(--paper-red-900);
+        --checkbox-label-color: var(--paper-red-500);
+      }
+
+      gelati-checkbox.green {
+        --checkbox-checked-color: var(--paper-green-500);
+        --checkbox-checked-ink-color: var(--paper-green-500);
+        --checkbox-unchecked-color: var(--paper-green-900);
+        --checkbox-unchecked-ink-color: var(--paper-green-900);
+        --checkbox-label-color: var(--paper-green-500);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Checkboxes can be checked or unchecked, or disabled entirely</h3>
+      <div class="horizontal-section">
+        <gelati-checkbox>Checkbox</gelati-checkbox>
+        <gelati-checkbox checked>Checkbox</gelati-checkbox>
+        <gelati-checkbox disabled>Disabled</gelati-checkbox>
+      </div>
+
+      <h3>Checkboxes can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <gelati-checkbox class="red">Checkbox</gelati-checkbox>
+        <gelati-checkbox checked class="green">Checkbox</gelati-checkbox>
+      </div>
+    </div>
+  </body>
+</html>

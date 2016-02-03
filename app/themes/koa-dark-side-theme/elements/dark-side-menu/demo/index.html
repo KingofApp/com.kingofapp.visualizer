@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>dark-side-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../dark-side-item/dark-side-item.html">
+    <link rel="import" href="../dark-side-menu.html">
+    <link rel="import" href="../dark-side-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      dark-side-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist dark-side-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 dark-side-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <dark-side-menu>
+            <dark-side-item>Inbox</dark-side-item>
+            <dark-side-item>Starred</dark-side-item>
+            <dark-side-item>Sent mail</dark-side-item>
+            <dark-side-item>Drafts</dark-side-item>
+          </dark-side-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <dark-side-menu selected="0">
+            <dark-side-item>Inbox</dark-side-item>
+            <dark-side-item disabled>Starred</dark-side-item>
+            <dark-side-item>Sent mail</dark-side-item>
+            <dark-side-item>Drafts</dark-side-item>
+          </dark-side-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <dark-side-menu multi>
+            <dark-side-item>Bold</dark-side-item>
+            <dark-side-item>Italic</dark-side-item>
+            <dark-side-item>Underline</dark-side-item>
+            <dark-side-item>Strikethrough</dark-side-item>
+          </dark-side-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <dark-side-menu attr-for-item-title="label" multi>
+            <dark-side-submenu label="dark-side-menu">
+              <dark-side-item class="menu-trigger">dark-side-menu</dark-side-item>
+              <dark-side-menu class="menu-content sublist" multi>
+                <dark-side-submenu label="Properties">
+                  <dark-side-item class="menu-trigger">Properties</dark-side-item>
+                  <dark-side-menu class="menu-content sublist2">
+                    <dark-side-item>focusedItem</dark-side-item>
+                    <dark-side-item>attrForItemTitle</dark-side-item>
+                  </dark-side-menu>
+                </dark-side-submenu>
+                <dark-side-submenu label="Methods">
+                  <dark-side-item class="menu-trigger">Methods</dark-side-item>
+                  <dark-side-menu class="menu-content sublist2">
+                    <dark-side-item>select(value)</dark-side-item>
+                  </dark-side-menu>
+                </dark-side-submenu>
+            </dark-side-menu>
+          </dark-side-submenu>
+
+          <dark-side-submenu label="dark-side-submenu">
+            <dark-side-item class="menu-trigger">dark-side-submenu</dark-side-item>
+            <dark-side-menu class="menu-content sublist">
+              <dark-side-submenu label="Properties">
+                <dark-side-item class="menu-trigger">Properties</dark-side-item>
+                <dark-side-menu class="menu-content sublist2">
+                  <dark-side-item>opened</dark-side-item>
+                </dark-side-menu>
+                </dark-side-submenu>
+                <dark-side-submenu label="Methods">
+                  <dark-side-item class="menu-trigger">Methods</dark-side-item>
+                  <dark-side-menu class="menu-content sublist2">
+                    <dark-side-item>open()</dark-side-item>
+                    <dark-side-item>close()</dark-side-item>
+                    <dark-side-item>toggle()</dark-side-item>
+                  </dark-side-menu>
+              </dark-side-submenu>
+            </dark-side-menu>
+          </dark-side-submenu>
+
+            <dark-side-submenu label="Unavailable" disabled>
+              <dark-side-item class="menu-trigger">Unavailable</dark-side-item>
+              <dark-side-menu class="menu-content sublist">
+                <dark-side-item>Unavailable 1</dark-side-item>
+                <dark-side-item>Unavailable 2</dark-side-item>
+              </dark-side-menu>
+            </dark-side-submenu>
+          </dark-side-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

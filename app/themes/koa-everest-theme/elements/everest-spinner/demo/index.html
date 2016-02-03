@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>everest-spinner demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../everest-spinner.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        width: 100px;
+      }
+
+      everest-spinner, button {
+        display: block;
+        margin-bottom: 24px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      everest-spinner.red {
+        --spinner-color: var(--google-red-500);
+      }
+
+      everest-spinner.orange {
+        --spinner-color: var(--google-yellow-500);
+      }
+
+      everest-spinner.green {
+        --spinner-color: var(--google-green-500);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>&lt;everest-spinner&gt;</h4>
+        <div class="horizontal-section">
+          <everest-spinner active></everest-spinner>
+          <everest-spinner active class="red"></everest-spinner>
+          <everest-spinner active class="orange"></everest-spinner>
+          <everest-spinner active class="green"></everest-spinner>
+          <button onclick="toggle(event)">Toggle</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggle(event) {
+        var spinners = event.target.parentElement.querySelectorAll('everest-spinner');
+        Array.prototype.forEach.call(spinners, function(spinner) {
+          spinner.active = !spinner.active;
+        });
+      };
+    </script>
+  </body>
+</html>

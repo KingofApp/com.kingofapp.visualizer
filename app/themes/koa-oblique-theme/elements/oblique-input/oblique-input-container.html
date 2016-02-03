@@ -1,7 +1,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-input-behavior.html">
-<link rel="import" href="../oblique-styles/default-theme.html">
+<link rel="import" href="../../styles/default-theme.html">
 
 <dom-module id="oblique-input-container">
   <template>
@@ -37,7 +37,7 @@
       .focused-line {
         @apply(--layout-fit);
 
-        background: var(--input-container-focus-color, --default-primary-color);
+        background: var(--input-container-focus-color, --primary-color);
         height: 2px;
           -webkit-transform: scale3d(0, 1, 1);
         transform: scale3d(0, 1, 1);
@@ -137,7 +137,7 @@
       }
 
       .add-on-content.is-highlighted ::content * {
-        color: var(--input-container-focus-color, --default-primary-color);
+        color: var(--input-container-focus-color, --primary-color);
       }
     </style>
     <!-- end styles -->

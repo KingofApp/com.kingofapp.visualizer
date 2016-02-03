@@ -1,0 +1,41 @@
+{
+  "name": "Instagram Feed",
+  "identifier": "instagramfeed",
+  "description": "Para compartir tus fotos en Instagram, debes seleccionar este módulo y en el apartado de configuración del contenido entrar la url de tu perfil. P.e. http://instagram.com/MiPerfil así como un access token que se consigue en el siguiente enlace: https://instagram.com/developer/authentication/",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo Instagram**\r\n\r\nSi hay una red social fotogr\u00E1fica por excelencia esta es **Instagram**. Sin duda se ha convertido en escaparate visual y fuente de inspiraci\u00F3n para muchos (en clara pugna con **Pinterest**, claro est\u00E1). En **King of App**, sabedores de la importancia de que una buena imagen vale m\u00E1s que mil palabras, hemos desarrollado un m\u00F3dulo para que puedas ense\u00F1ar al mundo todas las fotos colgadas en cualquier perfil de Instagram. Hoy aprenderemos como se configura esta funcionalidad. Como es habitual en todos los m\u00F3dulos que se pueden encontrar en nuestro market, la configuraci\u00F3n del \"instagram feed\" es igualmente sencilla. S\u00F3lo pedimos que se rellenen dos campos: uno con el \"_access token_\" y otro con el _ID_, el identificador de la cuenta. [![Instagram feed configuraci\u00F3n](http://kingofapp.es/wp-content/uploads/2015/12/Instagram-feed-configuraci\u00F3n-300x159.png)](http://kingofapp.es/wp-content/uploads/2015/12/Instagram-feed-configuraci\u00F3n.png)Conseguir estos datos no es nada complicado. Una forma de hacerlo en partiendo de la **documentaci\u00F3n para desarrolladores** que el propio Instagram facilita de manera abierta para el acceso a su API. Estas instrucciones se encuentran en el siguiente enlace:\u00A0_https://instagram.com/developer/authentication/_ Sin embargo, y como nos gusta encontrar herramientas que os faciliten la vida, existen **servicios externos** a esta red social que nos ofrecen estos datos con m\u00E1xima rapidez y fiabilidad. Para el \"access token\", nuestra recomendaci\u00F3n es [Pixelunion](http://instagram.pixelunion.net/). En esta web, con \u00FAnicamente\u00A0pulsar un bot\u00F3n se nos facilita este c\u00F3digo. \u00A1Fant\u00E1stico! Para el ID, el identificador de la cuenta, tambi\u00E9n podemos acudir a un servicio externo que nos lo dar\u00E1 en menos de un segundo. La web en cuesti\u00F3n es [Strategio](http://lab.strategio.fr/instagram-id.php?lang=es). Dos datos que, como has visto, se consiguen muy f\u00E1cilmente y que nos dar\u00E1n plena funcionalidad a uno de los m\u00F3dulos m\u00E1s visuales de una App.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/instagramfeed/index.html",
+  "files": ["modules/instagramfeed/controller.js"],
+  "scope": {
+    "accesstoken": "XXXXX",
+    "userid": "50417061"
+  },
+  "config": [{
+    "type": "input",
+    "key": "accesstoken",
+    "templateOptions": {
+      "label": "accesstoken",
+      "required": true,
+      "description": "token de acceso"
+    }
+  }, {
+    "type": "input",
+    "key": "userid",
+    "templateOptions": {
+      "description": "id del user",
+      "required": true,
+      "pattern": "^[0-9]+$",
+      "label": "userid"
+    }
+  }],
+  "descriptionShort": "Comparte tus fotos de Instagram dentro de tu app."
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>gelati-item demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/shadow.html">
+    <link rel="import" href="../gelati-item.html">
+
+    <style is="custom-style">
+      .list {
+        @apply(--shadow-elevation-2dp);
+
+        background-color: white;
+        display: inline-block;
+        margin: 12px;
+        width: 240px;
+      }
+
+      h4 {
+        margin-left: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h4>Single line items</h4>
+        <div class="list" role="listbox">
+          <gelati-item>Inbox</gelati-item>
+          <gelati-item>Starred</gelati-item>
+          <gelati-item>Sent mail</gelati-item>
+          <gelati-item>Drafts</gelati-item>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

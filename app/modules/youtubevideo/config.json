@@ -1,0 +1,32 @@
+{
+  "name": "Youtube Video",
+  "identifier": "youtubevideo",
+  "description": "Si lo único que quieres cargar es un vídeo concreto, activa esta opción y entra en el apartado de configuración la url de Youtube correspondiente al video que quieras cargar. P.e. http://youtu.be/Mivideo esta url se consigue desde la opción “compartir” de Youtube.",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo Youtube**\r\n\r\n\u00A1**Youtubers** del mundo, un\u00EDos en una App! El poder del v\u00EDdeo tambi\u00E9n ha llegado a **King of App** y por ello hemos desarrollado dos m\u00F3dulos ligados a la principal red social del **broadcasting**. Con uno podr\u00E1s mostrar todos **los v\u00EDdeos de un canal**; con el otro, solo estar\u00E1 disponible para los usuarios de la aplicaci\u00F3n un \u00FAnico v\u00EDdeo.\r\n\r\nEl m\u00F3dulo m\u00E1s sencillo es el m\u00F3dulo \"_Youtube Video_\". Con \u00E9l cargar\u00E1s los v\u00EDdeos de uno en uno. Para configurarlo s\u00F3lo te pedimos el **ID del v\u00EDdeo** que quieras cargar. Para localizarlo s\u00F3lo tienes que fijarte en la url y copiar el c\u00F3digo que sale al final de la misma. Por ejemplo, si tomamos uno de nuestros v\u00EDdeos colgados en **Youtube**, la url es esta:\r\n\r\nwww.youtube.com/watch?v=**7P2oPc9lck4**\r\n\r\nTodas siguen un mismo patr\u00F3n, as\u00ED que basta con fijarse en la zona destacada para localizar el ID a introducir en la configuraci\u00F3n del m\u00F3dulo.\r\n\r\n![P\u00E1gina principal - Ki_ - https___console.developers.google.com_home_dashboard](http://kingofapp.es/wp-content/uploads/2015/12/P\u00E1gina-principal-Ki_-https___console.developers.google.com_home_dashboard-300x157.png)\r\n\r\nSi por el contrario lo que quieres es meter toda una galer\u00EDa de v\u00EDdeos, el m\u00F3dulo \"_Youtube Gallery_\" es el m\u00E1s adecuado. Aqu\u00ED el proceso de\u00A0configuraci\u00F3n ya es algo mayor; aunque no complejo, ni mucho menos.\r\n\r\nPara configurar este m\u00F3dulo pedimos **dos credenciales** distintas. Por un lado el identificador del canal. Este se encuentra en la propia url de Youtube. En nuestro caso, la url del canal es as\u00ED:\r\n\r\nhttps://www.youtube.com/channel/**UCeIt2DJO8UdtUTmJzTfSXiQ**\r\n\r\nLo \u00FAnico que deber\u00EDamos entrar en el campo \"_ChannelID_\" es la parte destacada.\r\n\r\n![Biblioteca de APIs - Ki_ - https___console.developers.google.com_apis_library](http://kingofapp.es/wp-content/uploads/2015/12/Biblioteca-de-APIs-Ki_-https___console.developers.google.com_apis_library-300x157.png)\r\n\r\nPara conseguir el Access Token, deberemos ir a la [consola de desarrolladores de Google](https://console.developers.google.com/). En su p\u00E1gina principal podremos ver la opci\u00F3n de \"_Habilitar y\u00A0administrar APIS_\". Ah\u00ED es donde deber\u00E1s ir. Una vez en la p\u00E1gina correspondiente ver\u00E1s como a la derecha de la pantalla aparecen las opciones espec\u00EDficas para Youtube. Selecciona \"_Youtube Data API_\" y crea el \"_Access Token_\" en el apartado \"credenciales\" que aparece en el men\u00FA de la izquierda de la p\u00E1gina.\r\n\r\nUnos sencillos pasos para **volcar en tu App todos los v\u00EDdeos del canal de Youtube** que quieras. Recuerda que este m\u00F3dulo y su configuraci\u00F3n s\u00F3lo funciona para los canales y no para los usuarios. Distinguir\u00E1s ![Credenciales---King_---https___console.developers.google.com_apis_credentials](http://kingofapp.es/wp-content/uploads/2015/12/Credenciales-King_-https___console.developers.google.com_apis_credentials-300x157.png)entre unos y otros en la url por el distintivo \"_channel_\" o \"_user_\".\r\n\r\nDos m\u00F3dulos, diferentes pero complementarios que van a dotar tu App de un **contenido \u00FAnico y original** as\u00ED que apres\u00FArate a probar todo cuanto Youtube puede darte a tu aplicaci\u00F3n.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/youtubevideo/index.html",
+  "files": ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
+  "scope": {
+    "videoid": "oHg5SJYRHA0"
+  },
+  "config": [{
+    "templateOptions": {
+      "label": "id",
+      "required": true,
+      "pattern": "^[a-zA-Z0-9]+$",
+      "description": "id del video"
+    },
+    "type": "input",
+    "key": "videoid"
+  }],
+  "descriptionShort": "Carga un video concreto de youtube para visualizarlo en tu App"
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Flickr Feed",
+  "identifier": "flickrfeed",
+  "description": "¿Tienes una galería de fotos en Flickr? Activando este módulo podrás compartirla en tu App. Selecciona este widget y, en el apartado de configuración de contenido, entra la url de tu perfil. P.e. https://www.flickr.com/photos/MiPerfil, así como el access token y el número de fotos que quieres enseñar. El acces token se consigue en la siguiente url: https://www.flickr.com/services/api/auth.oauth.html.",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo Flickr**\r\n\r\nLa tr\u00EDada de m\u00F3dulos espec\u00EDficos para im\u00E1genes se completa con dedica do a **Flickr**, una de las **galer\u00EDas de fotos** m\u00E1s extendidas en el mundo. Por ello, en **King of App** hemos desarrollado este m\u00F3dulo. Aqu\u00ED te contamos como configurarlo para que en tu App aparezcan todas las galer\u00EDas que quieras. [![Flickr](http://kingofapp.es/wp-content/uploads/2016/01/Flickr-300x157.png)](http://kingofapp.es/wp-content/uploads/2016/01/Flickr.png)Para configurar el m\u00F3dulo de **Flickr** te pedimos que rellenes tres campos. Por un lado te pedimos un **access token** y por el otro la **identificaci\u00F3n de la galer\u00EDa** que quieres cargar y el **n\u00FAmero de fotograf\u00EDas** que quieres mostrar en la App. Todos los datos son muy f\u00E1ciles de conseguir pero quiz\u00E1 el m\u00E1s laborioso es el token. Para conseguir esta credencial hay que dirigirse a la [p\u00E1gina de servicios](https://www.flickr.com/services/apps/create/) de Flickr. Aqu\u00ED tienes el acceso directo. En **tres pasos** vas a conseguir el **Token**. El primer paso es\u00A0solicitar una **clave API** (en el fondo esta es la clave que necesitar\u00E1s) pulsando en la ![flickr2](http://kingofapp.es/wp-content/uploads/2016/01/flickr2-300x157.png)opci\u00F3n 1, como se ve en la imagen adjunta. De all\u00ED ser\u00E1s redirigido a un formulario, donde **Yahoo**, proveedor de Flickr, te va a pedir un poco de informaci\u00F3n sobre la clave que necesitas. En funci\u00F3n del tipo de App que est\u00E9s haciendo, elije una opci\u00F3n u otra (imagen2). De ah\u00ED, ya solo te quedar\u00E1 un paso para conseguir la credencial y ser\u00E1 rellenar un breve cuestionario\u00A0(var\u00EDa en funci\u00F3n de la opci\u00F3n elegida). Con todo cumplimentado, Flickr te facilitar\u00E1 la clave que debes copiar y pegar en nuestro formulario de configuraci\u00F3n. ![flickr3](http://kingofapp.es/wp-content/uploads/2016/01/flickr3-300x159.png) El segundo de los campos de configuraci\u00F3n se refiere a la **identificaci\u00F3n** de la galer\u00EDa que quieres cargar en el m\u00F3dulo. Esta informaci\u00F3n **se encuentra en la url** de la propia galer\u00EDa. Fij\u00E9monos en una cualquiera: www.flickr.com/photos/111015124@N02/albums/72157650681644318 En ella se pueden observar varias secuencias num\u00E9ricas. Pues bien, **el ID** se corresponde con la \u00FAltima de llas. En este caso, el identificador, el c\u00F3digo que pegar\u00EDamos en la configuraci\u00F3n del m\u00F3dulo ser\u00EDa el siguiente:\u00A0_2157650681644318\\._ Con ello ya \u00FAnicamente faltar\u00EDa el tercer campo a rellenar. En este caso, no hay que ir a buscar nada; simplemente hay que poner **un valor num\u00E9rico correspondiente a la cantidad de im\u00E1genes que quieres que se carguen**. Con estos res datos, el m\u00F3dulo queda perfectamente configurado y listo para ser usado.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/flickrfeed/index.html",
+  "files": ["modules/flickrfeed/controller.js"],
+  "scope": {
+    "accesstoken": "XXXX",
+    "photosetid": "72157649175711353",
+    "results": "5"
+  },
+  "config": [{
+    "key": "accesstoken",
+    "templateOptions": {
+      "label": "accesstoken",
+      "description": "token de acceso",
+      "required": true
+    },
+    "type": "input"
+  }, {
+    "type": "input",
+    "key": "photosetid",
+    "templateOptions": {
+      "label": "photosetid",
+      "required": true,
+      "pattern": "^[a-zA-Z0-9]+$",
+      "description": "id del photoset"
+    }
+  }, {
+    "type": "input",
+    "key": "results",
+    "templateOptions": {
+      "label": "results",
+      "required": true,
+      "maxlength": 2,
+      "pattern": "^[0-9]+$",
+      "description": "resultados"
+    }
+  }],
+  "descriptionShort": "Activa este módulo para poder compartir en tu App una espectacular galería de imágenes"
+}

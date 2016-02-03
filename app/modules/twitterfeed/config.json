@@ -1,0 +1,43 @@
+{
+  "name": "Twitter Feed",
+  "identifier": "twitterfeed",
+  "description": "Activando esta opción, tus seguidores podrán leer todo cuanto publiques en Twitter. Para configurarlo, entra la url de tu perfil. P.e.  https://twitter.com/theKingofApp",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo Twitter**\r\n\r\nLos contenidos de una App son la referencia para conseguir un buen n\u00FAmero de descargas. Acceder a los perfiles sociales es, sin duda, uno de los elementos que todo usuario quiere tener a mano. Por ello hemos desarrollado el m\u00F3dulo de Twitter; para que todas las publicaciones de esta red de microblogging est\u00E9n al alcance de cualquiera. Hoy, te vamos a ense\u00F1ar c\u00F3mo se configura esta funcionalidad.\r\n\r\nComo siempre, hay que acudir al market de m\u00F3dulos y elegir el \"Twitter feed\". Una vez cargado en nuestro editor de la App es el momento de ver qu\u00E9 campos se deben rellenar para un correcto funcionamiento del m\u00F3dulo. En este caso son dos: Twitter ID y N\u00FAmero de posts.\r\n\r\nEl Twitter ID es el identificador de la cuenta que queremos reproducir en la App. Para conseguirlo hay que ir al apartado de configuraci\u00F3n de la cuenta de Twitter en cuesti\u00F3n.\r\n\r\nAh\u00ED se accede clicando en el avatar de Twitter desde nuestra la de perfil. En el men\u00FA desplegable que aparece hay que ir a \"Configuraci\u00F3n\" [![Configuraci\u00F3n Twitter](http://kingofapp.es/wp-content/uploads/2015/12/Configuraci\u00F3n-Twitter-300x159.png)](http://kingofapp.es/wp-content/uploads/2015/12/Configuraci\u00F3n-Twitter.png)Una vez dentro de configuraci\u00F3n, en el men\u00FA lateral aparecen varias opciones. Una de las \u00FAltimas es \"Widgets\". Es ah\u00ED donde debemos ir. [![Configuraci\u00F3n Twitter2](http://kingofapp.es/wp-content/uploads/2015/12/Configuraci\u00F3n-Twitter2-300x198.png)](http://kingofapp.es/wp-content/uploads/2015/12/Configuraci\u00F3n-Twitter2.png)\r\n\r\nEl siguiente paso una vez dentro de Widgets es darle al bot\u00F3n de \"crear nuevo\" en caso de que no tengamos uno anteriormente o en \"editar\" en los existentes. [![configuracion twitter 3](http://kingofapp.es/wp-content/uploads/2015/12/configuracion-twitter-3-300x165.png)](http://kingofapp.es/wp-content/uploads/2015/12/configuracion-twitter-3.png)\r\n\r\nUna vez editado y creado, justo debajo del feed de tweets aparecer\u00E1 una caja con un c\u00F3digo html. Es ah\u00ED donde encontraremos en ID de la cuenta de Twitter. [![Configuraci\u00F3n Twitter4](http://kingofapp.es/wp-content/uploads/2015/12/Configuraci\u00F3n-Twitter4-300x159.png)](http://kingofapp.es/wp-content/uploads/2015/12/Configuraci\u00F3n-Twitter4.png)En nuestro caso, el c\u00F3digo que aparece es algo as\u00ED. Y en \u00E9l se puede localizar muy f\u00E1cilmente el ID:\r\n\r\n_<a class=\"twitter-timeline\" href=\"https://twitter.com/theKingofApp\" **data-widget-id=\"438651236699475968\"**>Tweets por el @theKingofApp.</a>_ _<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>\u00A0_\r\n\r\n[![Twitter feed module King of App](http://kingofapp.es/wp-content/uploads/2015/12/Twitter-feed-module-King-of-App-300x159.png)](http://kingofapp.es/wp-content/uploads/2015/12/Twitter-feed-module-King-of-App.png)Puede parecer algo complicado, pero en realidad no lo es.\r\n\r\nCon este n\u00FAmero en nuestro poder ya s\u00F3lo nos falta por rellenar el campo restante. En \u00E9l, le especificaremos en n\u00FAmero de entradas que queremos mostrar a los usuarios de la App. Este valor num\u00E9rico puede ir desde el 1 hasta el infinito ;)\r\n\r\nDos campos a rellenar para que todo un feed de Twitter est\u00E9 disponible en cualquier app. Un muro sobre el que se podr\u00E1 interactuar respondiendo a los tweets, retwiteando o d\u00E1ndole al \"like\" de cualquier publicaci\u00F3n.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/twitterfeed/index.html",
+  "files": ["modules/twitterfeed/controller.js", "modules/twitterfeed/directive.js"],
+  "scope": {
+    "widgetid": "628892310084939776",
+    "limite": "2"
+  },
+  "config": [{
+    "templateOptions": {
+      "label": "widgetid",
+      "description": "id del widget",
+      "pattern": "^[a-zA-Z0-9]+$",
+      "required": true
+    },
+    "type": "input",
+    "key": "widgetid"
+  }, {
+    "type": "input",
+    "key": "limite",
+    "templateOptions": {
+      "label": "limite",
+      "pattern": "^[0-9]+$",
+      "required": true,
+      "maxlength": 2,
+      "description": "limite tweets"
+    }
+  }],
+  "descriptionShort": "Activando este módulo tus seguidores podrán leer todo cuanto publiques en Twitter."
+}

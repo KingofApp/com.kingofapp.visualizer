@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>golden-goose-dropdown-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../golden-goose-item/golden-goose-item.html">
+    <link rel="import" href="../../golden-goose-menu/golden-goose-menu.html">
+    <link rel="import" href="../golden-goose-dropdown-menu.html">
+
+    <style is="custom-style">
+      golden-goose-dropdown-menu {
+        text-align: left;
+        margin: auto;
+        width: 180px;
+      }
+
+      golden-goose-dropdown-menu.letters {
+        width: 90px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      .nounderline {
+        --input-container-underline: {
+          display: none;
+        };
+      }
+    </style>
+  </head>
+  <body>
+    <template id="Demo" is="dom-bind">
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Basic Menu</h4>
+          <div class="horizontal-section">
+            <golden-goose-dropdown-menu label="Dinosaurs">
+              <golden-goose-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+                  <golden-goose-item>[[dinosaur]]</golden-goose-item>
+                </template>
+              </golden-goose-menu>
+            </golden-goose-dropdown-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Pre-selected Value</h4>
+          <div class="horizontal-section">
+            <golden-goose-dropdown-menu label="Dinosaurs">
+              <golden-goose-menu class="dropdown-content" selected="1">
+                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+                  <golden-goose-item>[[dinosaur]]</golden-goose-item>
+                </template>
+              </golden-goose-menu>
+            </golden-goose-dropdown-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Disabled</h4>
+          <div class="horizontal-section">
+            <golden-goose-dropdown-menu disabled label="Disabled">
+              <golden-goose-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[letters]]" as="letter">
+                  <golden-goose-item>[[letter]]</golden-goose-item>
+                </template>
+              </golden-goose-menu>
+            </golden-goose-dropdown-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>No underline (menu from bottom)</h4>
+          <div class="horizontal-section">
+            <golden-goose-dropdown-menu class="nounderline" label="Letters" vertical-align="bottom">
+              <golden-goose-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[letters]]" as="letter">
+                  <golden-goose-item>[[letter]]</golden-goose-item>
+                </template>
+              </golden-goose-menu>
+            </golden-goose-dropdown-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>No Animations</h4>
+          <div class="horizontal-section">
+            <golden-goose-dropdown-menu label="Dinosaurs" no-animations>
+              <golden-goose-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+                  <golden-goose-item>[[dinosaur]]</golden-goose-item>
+                </template>
+              </golden-goose-menu>
+            </golden-goose-dropdown-menu>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      Demo.letters = [
+        'alpha',
+        'beta',
+        'gamma',
+        'delta',
+        'epsilon'
+      ];
+      Demo.dinosaurs = [
+        'allosaurus',
+        'brontosaurus',
+        'carcharodontosaurus',
+        'diplodocus',
+        'ekrixinatosaurus',
+        'fukuiraptor',
+        'gallimimus',
+        'hadrosaurus',
+        'iguanodon',
+        'jainosaurus',
+        'kritosaurus',
+        'liaoceratops',
+        'megalosaurus',
+        'nemegtosaurus',
+        'ornithomimus',
+        'protoceratops',
+        'quetecsaurus',
+        'rajasaurus',
+        'stegosaurus',
+        'triceratops',
+        'utahraptor',
+        'vulcanodon',
+        'wannanosaurus',
+        'xenoceratops',
+        'yandusaurus',
+        'zephyrosaurus'
+      ];
+    </script>
+  </body>
+</html>

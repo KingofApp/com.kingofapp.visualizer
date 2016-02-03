@@ -1,0 +1,26 @@
+{
+  "name": "Angular Menu Module",
+  "identifier": "angularmenu",
+  "description": "Menu desarrollado con angular",
+  "documentation": "",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": false,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": true,
+  "view": "modules/angularmenu/index.html",
+  "files": ["modules/angularmenu/controller.js", "modules/angularmenu/directive.js"],
+  "libs": [{
+    "bower": "",
+    "src":"modules/angularmenu/styles.html"
+  }],
+  "scope": {
+    "path": "/menu"
+  },
+  "descriptionShort": "Angular menu"
+}

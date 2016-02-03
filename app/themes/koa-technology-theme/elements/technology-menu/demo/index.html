@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>technology-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../technology-item/technology-item.html">
+    <link rel="import" href="../technology-menu.html">
+    <link rel="import" href="../technology-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      technology-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist technology-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 technology-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <technology-menu>
+            <technology-item>Inbox</technology-item>
+            <technology-item>Starred</technology-item>
+            <technology-item>Sent mail</technology-item>
+            <technology-item>Drafts</technology-item>
+          </technology-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <technology-menu selected="0">
+            <technology-item>Inbox</technology-item>
+            <technology-item disabled>Starred</technology-item>
+            <technology-item>Sent mail</technology-item>
+            <technology-item>Drafts</technology-item>
+          </technology-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <technology-menu multi>
+            <technology-item>Bold</technology-item>
+            <technology-item>Italic</technology-item>
+            <technology-item>Underline</technology-item>
+            <technology-item>Strikethrough</technology-item>
+          </technology-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <technology-menu attr-for-item-title="label" multi>
+            <technology-submenu label="technology-menu">
+              <technology-item class="menu-trigger">technology-menu</technology-item>
+              <technology-menu class="menu-content sublist" multi>
+                <technology-submenu label="Properties">
+                  <technology-item class="menu-trigger">Properties</technology-item>
+                  <technology-menu class="menu-content sublist2">
+                    <technology-item>focusedItem</technology-item>
+                    <technology-item>attrForItemTitle</technology-item>
+                  </technology-menu>
+                </technology-submenu>
+                <technology-submenu label="Methods">
+                  <technology-item class="menu-trigger">Methods</technology-item>
+                  <technology-menu class="menu-content sublist2">
+                    <technology-item>select(value)</technology-item>
+                  </technology-menu>
+                </technology-submenu>
+            </technology-menu>
+          </technology-submenu>
+
+          <technology-submenu label="technology-submenu">
+            <technology-item class="menu-trigger">technology-submenu</technology-item>
+            <technology-menu class="menu-content sublist">
+              <technology-submenu label="Properties">
+                <technology-item class="menu-trigger">Properties</technology-item>
+                <technology-menu class="menu-content sublist2">
+                  <technology-item>opened</technology-item>
+                </technology-menu>
+                </technology-submenu>
+                <technology-submenu label="Methods">
+                  <technology-item class="menu-trigger">Methods</technology-item>
+                  <technology-menu class="menu-content sublist2">
+                    <technology-item>open()</technology-item>
+                    <technology-item>close()</technology-item>
+                    <technology-item>toggle()</technology-item>
+                  </technology-menu>
+              </technology-submenu>
+            </technology-menu>
+          </technology-submenu>
+
+            <technology-submenu label="Unavailable" disabled>
+              <technology-item class="menu-trigger">Unavailable</technology-item>
+              <technology-menu class="menu-content sublist">
+                <technology-item>Unavailable 1</technology-item>
+                <technology-item>Unavailable 2</technology-item>
+              </technology-menu>
+            </technology-submenu>
+          </technology-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

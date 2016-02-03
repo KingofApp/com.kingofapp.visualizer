@@ -1,0 +1,13 @@
+<div ng-controller="AdsMobusiInterstitialCtrl" class="module adsMobusiInterstitial">
+  <!--Prepared for adds-->
+
+  <div class="main-ads" ng-if="adsMobusiInterstitial.result === 'ok'" ng-hide="!adsMobusiInterstitial.showflag">
+    <a ng-href="{{adsMobusiInterstitial.url}}">
+      <img ng-src="{{ adsMobusiInterstitial.img}}" alt="{{adsMobusiInterstitial.title}}">
+    </a>
+  </div>
+
+  <!-- moduleIdentifier + Template -->
+  <div ng-include="adsMobusiInterstitialTemplate"></div>
+
+</div>

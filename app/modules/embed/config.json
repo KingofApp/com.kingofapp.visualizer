@@ -1,0 +1,32 @@
+{
+  "name": "Embed",
+  "identifier": "embed",
+  "description": "Esta opción te permite incrustar una página web en tu App. De este modo tus seguidores podrán navegar por ella sin necesidad de abandonar la aplicación. Para ello solo será necesario que entres la dirección web que quieras compartir. P.e. http://www.kingofapp.com",
+  "documentation": "# **(How to) Configurar el Embed Module**\r\n\r\nSi bien no es especialmente recomendable su uso (a los markets y especialmente a **Apple**, no les acaba de gustar este formato) hay ocasiones en que no queda m\u00E1s remedio que **embeber una p\u00E1gina web en una App**. Para estos casos, en King of App hemos desarrollado este m\u00F3dulo de r\u00E1pida y f\u00E1cil configuraci\u00F3n.\r\n\r\nAl tratarse de un contenido embebido s\u00F3lo hay que rellenar el campo habilitado con **la URL de destino**. Nada m\u00E1s y nada menos. Nosotros nos encargamos de que salga en pantalla cogiendo los **par\u00E1metros responsive** de la web.\r\n\r\nLo dicho, si bien este m\u00F3dulo te puede ayudar en m\u00FAltiples ocasiones, como todo gran poder, hay que saber utilizarlo con moderaci\u00F3n y siempre combinado con otros m\u00F3dulos de contenido.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/embed/index.html",
+  "files": ["modules/embed/controller.js"],
+  "scope": {
+    "url": "http://es.lipsum.com"
+  },
+  "config": [{
+    "templateOptions": {
+      "label": "url",
+      "pattern": "(https?://)([/\\w.()-]*).*",
+      "required": true,
+      "description": "url del embed"
+    },
+    "type": "input",
+    "key": "url"
+  }],
+  "descriptionShort": "Esta opción te permite incrustar una página web dentro de tu App!"
+}

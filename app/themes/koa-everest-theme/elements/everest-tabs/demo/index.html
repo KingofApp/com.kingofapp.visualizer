@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>everest-tabs demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../everest-toolbar/everest-toolbar.html">
+    <link rel="import" href="../everest-tabs.html">
+
+    <style is="custom-style">
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 24px;
+        color: #333;
+      }
+
+      everest-tabs, everest-toolbar {
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      everest-toolbar everest-tabs {
+        box-shadow: none;
+      }
+
+      everest-tabs[align-bottom] {
+        box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      h3 {
+        font-size: 16px;
+        font-weight: 400;
+        padding-top: 20px;
+      }
+
+      .link {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-center);
+      }
+
+      .flex {
+        @apply(--layout-flex);
+      }
+
+      .self-end {
+        @apply(--layout-self-end);
+      }
+    </style>
+  </head>
+  <body>
+    <h3>A. Standar</h3>
+
+    <everest-tabs selected="0">
+      <everest-tab>ITEM ONE</everest-tab>
+      <everest-tab>ITEM TWO</everest-tab>
+      <everest-tab>ITEM THREE</everest-tab>
+    </everest-tabs>
+
+    <h3>B. Scrollable Tabs</h3>
+
+    <everest-tabs id="scrollableTabs" selected="0" scrollable>
+      <everest-tab>NUMBER ONE ITEM</everest-tab>
+      <everest-tab>ITEM TWO</everest-tab>
+      <everest-tab>THE THIRD ITEM</everest-tab>
+      <everest-tab>THE ITEM FOUR</everest-tab>
+      <everest-tab>FIFTH</everest-tab>
+      <everest-tab>THE SIXTH TAB</everest-tab>
+      <everest-tab>NUMBER SEVEN</everest-tab>
+      <everest-tab>EIGHT</everest-tab>
+      <everest-tab>NUMBER NINE</everest-tab>
+      <everest-tab>THE TENTH</everest-tab>
+      <everest-tab>THE ITEM ELEVEN</everest-tab>
+      <everest-tab>TWELFTH ITEM</everest-tab>
+    </everest-tabs>
+
+    <h3>C. Scrollable tabs within right-to-left region</h3>
+
+    <div dir="rtl">
+      <everest-tabs selected="0" scrollable>
+        <everest-tab>NUMBER ONE ITEM</everest-tab>
+        <everest-tab>ITEM TWO</everest-tab>
+        <everest-tab>THE THIRD ITEM</everest-tab>
+        <everest-tab>THE ITEM FOUR</everest-tab>
+        <everest-tab>FIFTH</everest-tab>
+        <everest-tab>THE SIXTH TAB</everest-tab>
+        <everest-tab>NUMBER SEVEN</everest-tab>
+        <everest-tab>EIGHT</everest-tab>
+        <everest-tab>NUMBER NINE</everest-tab>
+        <everest-tab>THE TENTH</everest-tab>
+        <everest-tab>THE ITEM ELEVEN</everest-tab>
+        <everest-tab>TWELFTH ITEM</everest-tab>
+      </everest-tabs>
+    </div>
+
+    <h3>D. Link Tabs</h3>
+
+    <everest-tabs selected="0">
+      <everest-tab link><a href="#item1" class="link">ITEM ONE</a></everest-tab>
+      <everest-tab link><a href="#item2" class="link">ITEM TWO</a></everest-tab>
+      <everest-tab link><a href="#item3" class="link">ITEM THREE</a></everest-tab>
+    </everest-tabs>
+
+    <h3>E. Tabs in Toolbar</h3>
+
+    <everest-toolbar class="tall">
+      <everest-tabs selected="0" class="bottom self-end" style="width: 300px;">
+        <everest-tab>ITEM ONE</everest-tab>
+        <everest-tab>ITEM TWO</everest-tab>
+      </everest-tabs>
+      <div class="bottom flex"></div>
+    </everest-toolbar>
+
+    <h3>F. Bound Selection</h3>
+
+    <template is="dom-bind">
+      <h2>Current Tab: <span>[[selected]]</span></h2>
+      <everest-tabs selected="{{selected}}">
+        <everest-tab>ITEM ONE</everest-tab>
+        <everest-tab>ITEM TWO</everest-tab>
+        <everest-tab>ITEM THREE</everest-tab>
+      </everest-tabs>
+    </template>
+  </body>
+</html>

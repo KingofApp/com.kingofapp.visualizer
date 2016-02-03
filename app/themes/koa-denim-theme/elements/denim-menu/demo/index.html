@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>denim-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../denim-item/denim-item.html">
+    <link rel="import" href="../denim-menu.html">
+    <link rel="import" href="../denim-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      denim-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist denim-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 denim-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <denim-menu>
+            <denim-item>Inbox</denim-item>
+            <denim-item>Starred</denim-item>
+            <denim-item>Sent mail</denim-item>
+            <denim-item>Drafts</denim-item>
+          </denim-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <denim-menu selected="0">
+            <denim-item>Inbox</denim-item>
+            <denim-item disabled>Starred</denim-item>
+            <denim-item>Sent mail</denim-item>
+            <denim-item>Drafts</denim-item>
+          </denim-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <denim-menu multi>
+            <denim-item>Bold</denim-item>
+            <denim-item>Italic</denim-item>
+            <denim-item>Underline</denim-item>
+            <denim-item>Strikethrough</denim-item>
+          </denim-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <denim-menu attr-for-item-title="label" multi>
+            <denim-submenu label="denim-menu">
+              <denim-item class="menu-trigger">denim-menu</denim-item>
+              <denim-menu class="menu-content sublist" multi>
+                <denim-submenu label="Properties">
+                  <denim-item class="menu-trigger">Properties</denim-item>
+                  <denim-menu class="menu-content sublist2">
+                    <denim-item>focusedItem</denim-item>
+                    <denim-item>attrForItemTitle</denim-item>
+                  </denim-menu>
+                </denim-submenu>
+                <denim-submenu label="Methods">
+                  <denim-item class="menu-trigger">Methods</denim-item>
+                  <denim-menu class="menu-content sublist2">
+                    <denim-item>select(value)</denim-item>
+                  </denim-menu>
+                </denim-submenu>
+            </denim-menu>
+          </denim-submenu>
+
+          <denim-submenu label="denim-submenu">
+            <denim-item class="menu-trigger">denim-submenu</denim-item>
+            <denim-menu class="menu-content sublist">
+              <denim-submenu label="Properties">
+                <denim-item class="menu-trigger">Properties</denim-item>
+                <denim-menu class="menu-content sublist2">
+                  <denim-item>opened</denim-item>
+                </denim-menu>
+                </denim-submenu>
+                <denim-submenu label="Methods">
+                  <denim-item class="menu-trigger">Methods</denim-item>
+                  <denim-menu class="menu-content sublist2">
+                    <denim-item>open()</denim-item>
+                    <denim-item>close()</denim-item>
+                    <denim-item>toggle()</denim-item>
+                  </denim-menu>
+              </denim-submenu>
+            </denim-menu>
+          </denim-submenu>
+
+            <denim-submenu label="Unavailable" disabled>
+              <denim-item class="menu-trigger">Unavailable</denim-item>
+              <denim-menu class="menu-content sublist">
+                <denim-item>Unavailable 1</denim-item>
+                <denim-item>Unavailable 2</denim-item>
+              </denim-menu>
+            </denim-submenu>
+          </denim-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

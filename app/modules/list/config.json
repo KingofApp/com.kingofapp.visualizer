@@ -1,0 +1,19 @@
+{
+  "name": "List Module",
+  "identifier": "list",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [
+    "firebase"
+  ],
+  "canContain": false,
+  "view": "modules/list/index.html",
+  "files": ["modules/list/controller.js"],
+  "scope": {}
+}

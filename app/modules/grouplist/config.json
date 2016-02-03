@@ -1,0 +1,47 @@
+{
+  "name": "Group List",
+  "identifier": "grouplist",
+  "description": "Modulo de Group List",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo Group List**\r\n\r\nLas opciones a la hora de **dise\u00F1ar una App** son m\u00FAltiples. La presentaci\u00F3n de los contenidos puede (y debe) variar de una a otroa y, por ello, en **King of App** hemos desarrollado un m\u00F3dulo espec\u00EDfico para agrupar estos contenidos que, por cualquier raz\u00F3n, quieras que se mantengan relacionados entre s\u00ED. Este es el m\u00F3dulo \"_Group Lis_t\".\r\n\r\nCon este m\u00F3dulo podemos crear una especie de submen\u00FA donde desplazarnos por determinados contenidos. Para activarlo, sera necesario acudir al market de m\u00F3dulos y elegirlo. Su configuraci\u00F3n es realmente f\u00E1cil ya que \u00FAnicamente deberemos elegir qu\u00E9 elementos se incluyen en \u00E9l a partir de un selector.\r\n\r\n![Group List](http://kingofapp.es/wp-content/uploads/2015/12/Group-List-300x159.png)Por ejemplo, podemos crear un listado de m\u00F3dulos centrado en las im\u00E1genes. En \u00E9l le incluiremos los m\u00F3dulos de \"_Youtube Gallery_\", \"_Youtube Video_\" e \"_Instagram Feed_\".\r\n\r\nDe este modo, se crea un acceso directo a estos m\u00F3dulos en base a un **submen\u00FA**.\r\n\r\nLos m\u00F3dulos que se incluyan en el \"_Group List_\" deben estar previamente configurados en el editor y, como siempre, deben estar bajo el r\u00E9gimen de un men\u00FA principal. \u00BFC\u00F3mo lo hacemos, entonces, para evitar su duplicidad y que s\u00F3lo aparezcan como contenido del submen\u00FA?\r\n\r\n![duplicidad men\u00FA](http://kingofapp.es/wp-content/uploads/2015/12/duplicidad-men\u00FA1-300x159.png)Para evitar esta duplicidad que se observa en la segunda imagen de este sencillo tutorial, en King of App hemos habilitado una opci\u00F3n en la configuraci\u00F3n de todos los m\u00F3dulos: un checkbox para **habilitar que se muestre o no en el men\u00FA**.\r\n\r\nUna r\u00E1pida configuraci\u00F3n que te puede dar mucho juego a la hora de organizar los contenidos de cualquier App. Un m\u00F3dulo que, como todos, se puede **duplicar** y utilizar tantas veces como quieras en tu aplicaci\u00F3n.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/grouplist/index.html",
+  "files": ["modules/grouplist/controller.js"],
+  "libs": [{
+    "bower": {
+      "PolymerElements/iron-flex-layout": "^1.0.0"
+    },
+    "src": "bower_components/iron-flex-layout/iron-flex-layout.html"
+  }, {
+    "bower": {
+      "": ""
+    },
+    "src": "modules/grouplist/styles.html"
+  }],
+  "scope": {
+    "sections": ["#/menu/facebook", "#/menu/flickr"]
+  },
+  "config": [{
+    "key": "sections",
+    "type": "multiInput",
+    "templateOptions": {
+      "label": "Elements",
+      "inputOptions": {
+        "type": "select",
+        "templateOptions": {
+          "label": "Normal Select",
+          "options": []
+        }
+      }
+    }
+  }],
+  "descriptionShort": "Modulo de Group List"
+}

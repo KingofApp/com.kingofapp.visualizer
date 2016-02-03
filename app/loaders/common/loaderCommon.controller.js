@@ -8,9 +8,12 @@
   commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
 
   function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
-    console.log('Pasa por el commonLoaderCtrl');
+    // console.log('[V] Pasa por el commonLoaderCtrl');
+
     var koaApp = document.querySelector('#koaApp');
+
     $rootScope.showTransition = true;
+
     if (structureService.getIndex() !== '' && ($location.$$path === '/' || $location.$$path === '')) {
       $location.path(structureService.getIndex());
     }
@@ -18,7 +21,7 @@
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
 
     var prev = 0;
-    var state = false;
+    var throughcached = false;
     var prevent = false;
     var redirected = false;
     var finished = false;
@@ -29,33 +32,51 @@
       },
 
       function handleModelChange(count) {
-        console.log(
-          'Pending HTTP count:', count,
+        console.log('[V] Pending HTTP count:', count,
           '{',
           trafficGuardiaCivil.pending.get, 'GET ,',
           trafficGuardiaCivil.pending.post, 'POST',
-          '}'
-        );
+          '}');
 
         if ($location.$$path !== '/') {
-          setTimeout(function() {
-            if (count === 0 && !state && !finished) {
-              launchKoa();
-              finished = true;
+          var visitedLocations = structureService.getVisitedLocations();
+          var cachedLocations = structureService.getCachedLocations();
+
+          structureService.getCurrentModules($location, function loadmodules(modules) {
+            if (visitedLocations[cachedLocations[$location.$$path].identifier] && !finished) {
+              loadCachedModule();
+            } else if (count === 0 && prev > 0 && !finished) {
+              loadFirstTimeModule(modules);
             }
-          }, 400);
 
-          //Launch if there were Petitions
-          if (count === 0 && prev > 0 && !finished) {
-            launchKoa();
-            finished = true;
-          }
+            if (count === 0 && prev > 0 && throughcached) {
+              renderKoaApp();
+            }
 
-          if (count > 0) {
-            state = true;
-          }
+            prev = count;
+          });
+        }
 
-          prev = count;
+        function loadFirstTimeModule(modules) {
+          finished = true;
+          console.log('[V] First time module load', $location.$$path);
+
+          renderKoaApp();
+
+          angular.forEach(modules, function(value, key) {
+            visitedLocations[value.identifier] = true;
+          });
+
+          structureService.setVisitedLocations(visitedLocations);
+        }
+
+        function loadCachedModule() {
+          finished = true;
+          console.log('[V] Loading cached module', $location.$$path);
+
+          renderKoaApp();
+
+          throughcached = true;
         }
       }
     );
@@ -63,34 +84,51 @@
     $location.$$path = $location.$$path || '/';
 
     $scope.$watch('appData', function(newValue, oldValue) {
+      // console.log('[V] REceived AppData', newValue);
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
         redirected = true;
-        setTimeout(function() {
-          $scope.$apply(function() {
-            //Causing first load to not render KOA
-            setTheme(newValue.themes.android.name);
-            if (newValue.config.index === $location.path()) {
-              $route.reload();
-            } else {
-              $location.path(newValue.config.index);
-            }
 
-          });
-        }, 100);
+        setTimeout(function() {
+          // $scope.$apply(function() {
+          setTheme(newValue.config);
+          setIconset(newValue.config.iconset);
+          if (newValue.config.index === $location.path()) {
+            $route.reload();
+          } else {
+            $location.path(newValue.config.index);
+          }
+          // });
+        }, 200);
       }
     });
 
-    $scope.$watch('appColor', function(newValue, oldValue) {
+    $scope.$watch('appColors', function(newValue, oldValue) {
       if (oldValue !== newValue) {
         prevent = true;
         structureService.setColors(newValue);
       }
     });
 
+    $scope.$watch('appFonts', function(newValue, oldValue) {
+      if (oldValue !== newValue) {
+        prevent = true;
+        loadFonts(newValue);
+        structureService.setFonts(newValue);
+      }
+    });
+
+    $scope.$watch('appIconset', function(newValue, oldValue) {
+      if (oldValue !== newValue) {
+        prevent = true;
+        setIconset(newValue.config.iconset);
+      }
+    });
+
     $scope.$watch('appModules', function(newValue, oldValue) {
       if (oldValue !== newValue && newValue) {
         structureService.setModules(newValue.modules);
+
         if (newValue.index === $location.path()) {
           $route.reload();
         } else {
@@ -101,8 +139,10 @@
 
     $scope.$watch('appTheme', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        console.log('Theme', newValue);
-        setTheme(newValue);
+        console.log('[V] Theme', newValue);
+
+        setTheme(newValue.config);
+
         setTimeout(function() {
           $scope.$apply(function() {
             $route.reload();
@@ -117,41 +157,42 @@
       }
     });
 
-    $scope.$on('koaLaunched', function(event, args) {
-      console.log('Koa Launched');
+    $scope.$on('koaAppRendered', function(event, args) {
+      console.info('[V] koa-app rendered!');
       $rootScope.$apply(function() {
-        // TODO - Fixer to force android render
-        document.body.scrollTop = 1;
-        document.body.scrollTop = 0;
         $rootScope.showTransition = false;
       });
+
     });
-    //TODO: INSPECT loadconfig
-    //Load config
+
+    // TODO: INSPECT loadconfig
+    // Load config
     structureService.loadconfig($rootScope);
 
-    //Register Route
+    // Register Route
     structureService.getModule($location.$$path).then(function(module) {
       $rootScope.toolbar = {
         title: module.name
       };
-      if($rootScope.missing){
+
+      if ($rootScope.missing) {
         $rootScope.showTransition = false;
       }
+
       $rootScope.current = module.identifier;
       $scope.module = module || $scope.module;
 
       if (!module.type) {
-        //Display a 404 error or similar structureService.getIndex() === '' && 
-        if ($location.$$path !== '/') {
+        // Display a 404 error
+        if (structureService.getIndex() === '' && $location.$$path !== '/') {
           $location.path('/404');
         }
       } else if (isAngularModule(module.type)) {
         angularLoader.module($scope);
       } else if (isJqueryModule(module.type)) {
-        //TODO: Load jquery module from angular
+        // TODO: Load jquery module from angular
       } else {
-        //TODO: Display error and blame developer
+        // TODO: Display error and blame developer
       }
     });
 
@@ -165,55 +206,83 @@
       return type === '$';
     }
 
-    function setTheme(theme, cb) {
-      koaApp.setTheme(theme, cb);
-      structureService.setColors(null);
+    function isFromGoogleFonts(url) {
+      return url.search('https://fonts.googleapis.com') === 0;
     }
 
-    function addEvents() {
-      var $scope = angular.element(document.querySelector('.' + $rootScope.current)).scope();
+    function loadFonts(fonts) {
+      var families = [];
 
-      // console.info('Adding ng-click...');
-      $('[ng-click]').click(function() {
-        var functionName = $(this).attr('ng-click').replace('()', '');
-        $scope[functionName]();
+      if (isFromGoogleFonts(fonts.primaryFontFamily.url)) {
+        families.push(fonts.primaryFontFamily.name);
+      }
+
+      if (isFromGoogleFonts(fonts.titleFontFamily.url)) {
+        families.push(fonts.titleFontFamily.name);
+      }
+
+      if (families.length !== 0) {
+        WebFont.load({
+          google: {
+            families: families
+          }
+        });
+      }
+    }
+
+    function setIconset(iconset) {
+      koaApp.setIconset(iconset);
+    }
+
+    function setTheme(config) {
+      loadFonts(config.fonts);
+
+      koaApp.setTheme(config.theme, function() {
+        structureService.setCssVariables(config);
+
+        addDirectives();
+
+        $rootScope.$broadcast('koaAppRendered');
       });
+    }
 
-      // console.info('Adding ng-model...');
-      $('[ng-model]').each(function() {
+    function renderElements() {
+      koaApp.renderThemeElements(function() {
+        addDirectives();
+
+        $rootScope.$broadcast('koaAppRendered');
+      });
+    }
+
+    function addDirectives() {
+      var scopeElement = document.querySelector('.' + $rootScope.current);
+      var scope = angular.element(scopeElement).scope(); // Get current scope
+
+      $('[ng-click]').click(ngClickWrapper); // Adding ng-click...
+      $('[ng-model]').each(ngModelWrapper); // Adding ng-model...
+
+      function ngClickWrapper() {
+        var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
+        scope[functionName]();
+      }
+
+      function ngModelWrapper() {
         var parent = $(this);
 
         $(this.inputElement).bind('input', function() {
           var model = parent.attr('ng-model').split('.');
-          $scope[model[0]][model[1]] = $(this).val();
+          scope[model[0]][model[1]] = $(this).val();
         });
-      });
-
-      if ($rootScope.appData) {
-        console.log('Set Color de ', $rootScope.appData.config.colors);
-        structureService.setColors($rootScope.appData.config.colors);
       }
-
-      $rootScope.$broadcast('koaLaunched');
     }
 
-    function launchKoa() {
+    function renderKoaApp() {
       setTimeout(function() {
-
-        // console.info('Changing koa-elements to theme-elements...');
-
         koaApp.createTree();
 
-        if (!koaApp.theme) {
-          if ($rootScope.appData) {
-            setTheme($rootScope.appData.config.theme, addEvents);
-          } else {
-            setTheme('paper', addEvents);
-          }
-        } else {
-          koaApp.renderThemeElements(addEvents);
-        }
-
+        (koaApp.theme)       ? renderElements() :
+        ($rootScope.appData) ? setTheme($rootScope.appData.config)
+                             : setTheme(structureService.getConfig());
       }, 100);
     }
   }

@@ -1,0 +1,24 @@
+/* General styles */
+
+gelati-card {
+  width: 100%;
+}
+
+gelati-card + gelati-card {
+  margin-top: 15px;
+}
+
+.module {
+  padding: 10px;
+}
+
+/* Conctact module */
+
+.contact form {
+  margin: 15px;
+}
+
+.contact form gelati-button {
+  float: right;
+  margin-top: 15px;
+}

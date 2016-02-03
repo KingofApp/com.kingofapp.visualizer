@@ -1,0 +1,24 @@
+/* General styles */
+
+sky-card {
+  width: 100%;
+}
+
+sky-card + sky-card {
+  margin-top: 15px;
+}
+
+.module {
+  padding: 10px;
+}
+
+/* Conctact module */
+
+.contact form {
+  margin: 15px;
+}
+
+.contact form sky-button {
+  float: right;
+  margin-top: 15px;
+}

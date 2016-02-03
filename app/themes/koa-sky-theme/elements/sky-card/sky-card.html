@@ -1,0 +1,137 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-card-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-material/paper-material.html">
+
+<dom-module id="sky-card">
+  <template>
+    <!-- write your styles here -->
+    <style include="paper-material">
+      :host {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+
+        background: #fff;
+        border-radius: 2px;
+
+        @apply(--card);
+      }
+
+      /* IE 10 support for HTML5 hidden attr */
+      [hidden] {
+        display: none !important;
+      }
+
+      .header {
+        position: relative;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        overflow: hidden;
+
+        @apply(--card-header);
+      }
+
+      .header iron-image {
+        width: 100%;
+        --iron-image-width: 100%;
+        pointer-events: none;
+
+        @apply(--card-header-image);
+      }
+
+      .header .title-text {
+        padding: 16px;
+        font-size: 24px;
+        font-weight: 400;
+        color: var(--card-header-color, #000);
+
+        @apply(--card-header-text);
+      }
+
+      .header .title-text.over-image {
+        position: absolute;
+        bottom: 0px;
+
+        @apply(--card-header-image-text);
+      }
+
+      :host ::content .card-content {
+        padding: 16px;
+        position: relative;
+
+        @apply(--card-content);
+      }
+
+      :host ::content .card-actions {
+        border-top: 1px solid #e8e8e8;
+        padding: 5px 16px;
+        position: relative;
+
+        @apply(--card-actions);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="header">
+      <iron-image hidden$="[[!image]]" src="[[image]]" preload$="[[preloadImage]]" fade$="[[fadeImage]]"></iron-image>
+      <div hidden$="[[!heading]]" class$="[[_computeHeadingClass(image)]]">[[heading]]</div>
+    </div>
+
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'sky-card',
+
+      behaviors: [
+        Polymer.KoaCardBehavior
+      ],
+
+      properties: {
+        /**
+         * The z-depth of the card, from 0-5.
+         */
+        elevation: {
+          type: Number,
+          value: 1,
+          reflectToAttribute: true
+        },
+
+        /**
+         * Set this to true to animate the card shadow when setting a new
+         * `z` value.
+         */
+        animatedShadow: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * Read-only property used to pass down the `animatedShadow` value to
+         * the underlying paper-material style (since they have different names).
+         */
+        animated: {
+          type: Boolean,
+          reflectToAttribute: true,
+          readOnly: true,
+          computed: '_computeAnimated(animatedShadow)'
+        }
+      },
+
+      _computeHeadingClass: function(image) {
+        var cls = 'title-text';
+        if (image)
+          cls += ' over-image';
+        return cls;
+      },
+
+      _computeAnimated: function(animatedShadow) {
+        return animatedShadow;
+      }
+    });
+  </script>
+</dom-module>

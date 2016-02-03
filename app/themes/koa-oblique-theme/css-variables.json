@@ -1,0 +1,29 @@
+{
+  "colors": {
+    "primaryTextColor": "#202020",
+    "primaryBackgroundColor": "#b5e1f8",
+    "secondaryTextColor": "#727272",
+    "disabledTextColor": "#a2a8aa",
+    "dividerColor": "#b6b6b6",
+    "primaryColor": "#2aa3dc",
+    "lightPrimaryColor": "#b5e1f8",
+    "darkPrimaryColor": "#1a86c8",
+    "accentColor": "#607d8b",
+    "lightAccentColor": "#607d8b",
+    "darkAccentColor": "#607d8b",
+    "backgroundColor": "#ffffff"
+  },
+  "images": {
+    "background": ""
+  },
+  "fonts": {
+    "primaryFontFamily": {
+      "name": "PT Sans Caption",
+      "url": "https://fonts.googleapis.com/css?family=PT+Sans+Caption"
+    },
+    "titleFontFamily": {
+      "name": "Pacifico",
+      "url": "https://fonts.googleapis.com/css?family=Pacifico"
+    }
+  }
+}

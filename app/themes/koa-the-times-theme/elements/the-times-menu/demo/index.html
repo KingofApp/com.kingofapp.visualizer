@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>the-times-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../the-times-item/the-times-item.html">
+    <link rel="import" href="../the-times-menu.html">
+    <link rel="import" href="../the-times-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      the-times-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist the-times-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 the-times-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <the-times-menu>
+            <the-times-item>Inbox</the-times-item>
+            <the-times-item>Starred</the-times-item>
+            <the-times-item>Sent mail</the-times-item>
+            <the-times-item>Drafts</the-times-item>
+          </the-times-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <the-times-menu selected="0">
+            <the-times-item>Inbox</the-times-item>
+            <the-times-item disabled>Starred</the-times-item>
+            <the-times-item>Sent mail</the-times-item>
+            <the-times-item>Drafts</the-times-item>
+          </the-times-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <the-times-menu multi>
+            <the-times-item>Bold</the-times-item>
+            <the-times-item>Italic</the-times-item>
+            <the-times-item>Underline</the-times-item>
+            <the-times-item>Strikethrough</the-times-item>
+          </the-times-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <the-times-menu attr-for-item-title="label" multi>
+            <the-times-submenu label="the-times-menu">
+              <the-times-item class="menu-trigger">the-times-menu</the-times-item>
+              <the-times-menu class="menu-content sublist" multi>
+                <the-times-submenu label="Properties">
+                  <the-times-item class="menu-trigger">Properties</the-times-item>
+                  <the-times-menu class="menu-content sublist2">
+                    <the-times-item>focusedItem</the-times-item>
+                    <the-times-item>attrForItemTitle</the-times-item>
+                  </the-times-menu>
+                </the-times-submenu>
+                <the-times-submenu label="Methods">
+                  <the-times-item class="menu-trigger">Methods</the-times-item>
+                  <the-times-menu class="menu-content sublist2">
+                    <the-times-item>select(value)</the-times-item>
+                  </the-times-menu>
+                </the-times-submenu>
+            </the-times-menu>
+          </the-times-submenu>
+
+          <the-times-submenu label="the-times-submenu">
+            <the-times-item class="menu-trigger">the-times-submenu</the-times-item>
+            <the-times-menu class="menu-content sublist">
+              <the-times-submenu label="Properties">
+                <the-times-item class="menu-trigger">Properties</the-times-item>
+                <the-times-menu class="menu-content sublist2">
+                  <the-times-item>opened</the-times-item>
+                </the-times-menu>
+                </the-times-submenu>
+                <the-times-submenu label="Methods">
+                  <the-times-item class="menu-trigger">Methods</the-times-item>
+                  <the-times-menu class="menu-content sublist2">
+                    <the-times-item>open()</the-times-item>
+                    <the-times-item>close()</the-times-item>
+                    <the-times-item>toggle()</the-times-item>
+                  </the-times-menu>
+              </the-times-submenu>
+            </the-times-menu>
+          </the-times-submenu>
+
+            <the-times-submenu label="Unavailable" disabled>
+              <the-times-item class="menu-trigger">Unavailable</the-times-item>
+              <the-times-menu class="menu-content sublist">
+                <the-times-item>Unavailable 1</the-times-item>
+                <the-times-item>Unavailable 2</the-times-item>
+              </the-times-menu>
+            </the-times-submenu>
+          </the-times-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

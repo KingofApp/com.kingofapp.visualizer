@@ -1,0 +1,42 @@
+{
+  "name": "Contact",
+  "identifier": "contact",
+  "description": "Activa este módulo si quieres que tus seguidores se pongan en contacto contigo. Solo tendrás que indicar una dirección de correo y darte de alta en el servicio gratuito de MandrillApp: https://mandrillapp.com/l",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo Contact**\r\n\r\nUna de las funciones m\u00E1s evidentes de una App es la de mantener en contacto al usuario con la fuente de informaci\u00F3n. Poder mandar un correo a un servicio de atenci\u00F3n al consumidor, tener l\u00EDnea directa con nuestra marca favorita son elementos de gran valor para todo aquel que se descarga una aplicaci\u00F3n m\u00F3vil. Por ello, en **King of App** hemos desarrollado un m\u00F3dulo gratuito en el que todo usuario podr\u00E1 **mantener una comunicaci\u00F3n flu\u00EDda**: es el m\u00F3dulo \"_Contact_\" y hoy te ense\u00F1amos como funciona y se configura.\r\n\r\nEl m\u00F3dulo que hemos creado se sustenta en le servicio de env\u00EDo de mailing de **Mandrill**; por ello ser\u00E1 necesario que te crees una cuenta en este servicio. Y es que si algo es bueno para que crearlo de cero! Mandrill es una aplicaci\u00F3n gratuita si no se supera un m\u00E1ximo de **2.000 env\u00EDos** (que son muchos) as\u00ED que no te preocupes por los costes que te pueda generar aprovecharte de ella.\r\n\r\nUna vez creada la cuenta en [Madrill](https://mandrillapp.com), conseguir el c\u00F3digo que te pedimos para configurar el m\u00F3dulo es muy sencillo. S\u00F3lo se necesita crear una **API Key** en el apartado de \"_Settings_\". Con ella ya solo tendr\u00E1s que rellenar el campo con la direcci\u00F3n de correo donde quieres recibir los mails y listo, el m\u00F3dulo ya funcionar\u00E1 correctamente,\r\n\r\nA partir de ahora cualquiera podr\u00E1 comunicarse v\u00EDa mail utilizando tu App.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/contact/index.html",
+  "files": ["modules/contact/controller.js"],
+  "scope": {
+    "send_address": "info@kingofapp.es",
+    "mandrill_key": "XXXX",
+    "debug": true
+  },
+  "config": [{
+    "type": "input",
+    "key": "send_address",
+    "templateOptions": {
+      "label": "address",
+      "required": true,
+      "pattern": "^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$",
+      "description": "direccion de envio"
+    }
+  }, {
+    "type": "input",
+    "key": "mandrill_key",
+    "templateOptions": {
+      "label": "key mandrill",
+      "required": true,
+      "description": "key de Mandrill"
+    }
+  }],
+  "descriptionShort": "Activa este módulo si quieres que tus seguidores se pongan en contacto contigo."
+}

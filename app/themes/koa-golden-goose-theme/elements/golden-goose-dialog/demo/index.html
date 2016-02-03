@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>golden-goose-dialog demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/neon-animation/neon-animations.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../golden-goose-button/golden-goose-button.html">
+    <link rel="import" href="../../golden-goose-dropdown-menu/golden-goose-dropdown-menu.html">
+    <link rel="import" href="../../golden-goose-item/golden-goose-item.html">
+    <link rel="import" href="../../golden-goose-menu/golden-goose-menu.html">
+    <link rel="import" href="../golden-goose-dialog.html">
+
+    <style is="custom-style">
+      section {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+
+      section > golden-goose-button {
+        background-color: var(--google-grey-300);
+        padding: 5px;
+      }
+
+      section > golden-goose-button:hover {
+        background-color: var(--paper-light-blue-200);
+        padding: 5px;
+      }
+
+      golden-goose-dialog.colored {
+        border: 2px solid;
+        border-color: var(--paper-green-500);
+        background-color: var(--paper-light-green-50);
+        color: var(--paper-green-500);
+      }
+
+      golden-goose-dialog.size-position {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 300px;
+        height: 300px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <section onclick="clickHandler(event)">
+      <h4>Dialog layouts</h4>
+
+      <golden-goose-button data-dialog="dialog">plain dialog</golden-goose-button>
+      <golden-goose-button data-dialog="actions">dialog with actions</golden-goose-button>
+      <golden-goose-button data-dialog="modal">modal dialog</golden-goose-button>
+      <golden-goose-button data-dialog="dropdown">dialog with dropdown</golden-goose-button>
+      <golden-goose-button data-dialog="nested">dialog with nested dialog</golden-goose-button>
+
+      <golden-goose-dialog id="dialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </golden-goose-dialog>
+
+      <golden-goose-dialog id="actions">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="buttons">
+          <golden-goose-button >More Info...</golden-goose-button>
+          <golden-goose-button dialog-dismiss>Decline</golden-goose-button>
+          <golden-goose-button dialog-confirm autofocus>Accept</golden-goose-button>
+        </div>
+      </golden-goose-dialog>
+
+      <golden-goose-dialog id="modal" modal>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="buttons">
+          <golden-goose-button dialog-confirm autofocus>Tap me to close</golden-goose-button>
+        </div>
+      </golden-goose-dialog>
+
+      <golden-goose-dialog id="dropdown">
+        <h2>Dialog Title</h2>
+        <golden-goose-dropdown-menu label="Value">
+          <golden-goose-menu class="dropdown-content">
+            <golden-goose-item>1</golden-goose-item>
+            <golden-goose-item>2</golden-goose-item>
+            <golden-goose-item>3</golden-goose-item>
+            <golden-goose-item>4</golden-goose-item>
+            <golden-goose-item>5</golden-goose-item>
+            <golden-goose-item>6</golden-goose-item>
+            <golden-goose-item>7</golden-goose-item>
+            <golden-goose-item>8</golden-goose-item>
+            <golden-goose-item>9</golden-goose-item>
+            <golden-goose-item>10</golden-goose-item>
+          </golden-goose-menu>
+        </golden-goose-dropdown-menu>
+      </golden-goose-dialog>
+
+      <golden-goose-dialog id="nested">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="buttons">
+          <golden-goose-button data-dialog="innerDialog">Open nested dialog</golden-goose-button>
+        </div>
+      </golden-goose-dialog>
+
+      <golden-goose-dialog id="innerDialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </golden-goose-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Custom styling</h4>
+      <golden-goose-button data-dialog="colors">colors</golden-goose-button>
+      <golden-goose-button data-dialog="position">size &amp; position</golden-goose-button>
+
+      <golden-goose-dialog id="colors" class="colored">
+        <h2>Custom Colors</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </golden-goose-dialog>
+
+      <golden-goose-dialog id="position" class="size-position">
+        <h2>Custom Size &amp; Position</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </golden-goose-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Transitions</h4>
+      <golden-goose-button data-dialog="animated">transitions</golden-goose-button>
+      <golden-goose-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </golden-goose-dialog>
+    </section>
+
+    <script>
+      function clickHandler(e) {
+        var button = e.target;
+        while (!button.hasAttribute('data-dialog') && button !== document.body) {
+          button = button.parentElement;
+        }
+
+        if (!button.hasAttribute('data-dialog')) {
+          return;
+        }
+
+        var id = button.getAttribute('data-dialog');
+        var dialog = document.getElementById(id);
+        if (dialog) {
+          dialog.open();
+        }
+      }
+    </script>
+  </body>
+</html>

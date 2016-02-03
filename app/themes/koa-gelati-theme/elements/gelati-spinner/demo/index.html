@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>gelati-spinner demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../gelati-spinner.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        width: 100px;
+      }
+
+      gelati-spinner, button {
+        display: block;
+        margin-bottom: 24px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      gelati-spinner.red {
+        --spinner-color: var(--google-red-500);
+      }
+
+      gelati-spinner.orange {
+        --spinner-color: var(--google-yellow-500);
+      }
+
+      gelati-spinner.green {
+        --spinner-color: var(--google-green-500);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>&lt;gelati-spinner&gt;</h4>
+        <div class="horizontal-section">
+          <gelati-spinner active></gelati-spinner>
+          <gelati-spinner active class="red"></gelati-spinner>
+          <gelati-spinner active class="orange"></gelati-spinner>
+          <gelati-spinner active class="green"></gelati-spinner>
+          <button onclick="toggle(event)">Toggle</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggle(event) {
+        var spinners = event.target.parentElement.querySelectorAll('gelati-spinner');
+        Array.prototype.forEach.call(spinners, function(spinner) {
+          spinner.active = !spinner.active;
+        });
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>gelati-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../gelati-item/gelati-item.html">
+    <link rel="import" href="../gelati-menu.html">
+    <link rel="import" href="../gelati-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      gelati-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist gelati-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 gelati-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <gelati-menu>
+            <gelati-item>Inbox</gelati-item>
+            <gelati-item>Starred</gelati-item>
+            <gelati-item>Sent mail</gelati-item>
+            <gelati-item>Drafts</gelati-item>
+          </gelati-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <gelati-menu selected="0">
+            <gelati-item>Inbox</gelati-item>
+            <gelati-item disabled>Starred</gelati-item>
+            <gelati-item>Sent mail</gelati-item>
+            <gelati-item>Drafts</gelati-item>
+          </gelati-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <gelati-menu multi>
+            <gelati-item>Bold</gelati-item>
+            <gelati-item>Italic</gelati-item>
+            <gelati-item>Underline</gelati-item>
+            <gelati-item>Strikethrough</gelati-item>
+          </gelati-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <gelati-menu attr-for-item-title="label" multi>
+            <gelati-submenu label="gelati-menu">
+              <gelati-item class="menu-trigger">gelati-menu</gelati-item>
+              <gelati-menu class="menu-content sublist" multi>
+                <gelati-submenu label="Properties">
+                  <gelati-item class="menu-trigger">Properties</gelati-item>
+                  <gelati-menu class="menu-content sublist2">
+                    <gelati-item>focusedItem</gelati-item>
+                    <gelati-item>attrForItemTitle</gelati-item>
+                  </gelati-menu>
+                </gelati-submenu>
+                <gelati-submenu label="Methods">
+                  <gelati-item class="menu-trigger">Methods</gelati-item>
+                  <gelati-menu class="menu-content sublist2">
+                    <gelati-item>select(value)</gelati-item>
+                  </gelati-menu>
+                </gelati-submenu>
+            </gelati-menu>
+          </gelati-submenu>
+
+          <gelati-submenu label="gelati-submenu">
+            <gelati-item class="menu-trigger">gelati-submenu</gelati-item>
+            <gelati-menu class="menu-content sublist">
+              <gelati-submenu label="Properties">
+                <gelati-item class="menu-trigger">Properties</gelati-item>
+                <gelati-menu class="menu-content sublist2">
+                  <gelati-item>opened</gelati-item>
+                </gelati-menu>
+                </gelati-submenu>
+                <gelati-submenu label="Methods">
+                  <gelati-item class="menu-trigger">Methods</gelati-item>
+                  <gelati-menu class="menu-content sublist2">
+                    <gelati-item>open()</gelati-item>
+                    <gelati-item>close()</gelati-item>
+                    <gelati-item>toggle()</gelati-item>
+                  </gelati-menu>
+              </gelati-submenu>
+            </gelati-menu>
+          </gelati-submenu>
+
+            <gelati-submenu label="Unavailable" disabled>
+              <gelati-item class="menu-trigger">Unavailable</gelati-item>
+              <gelati-menu class="menu-content sublist">
+                <gelati-item>Unavailable 1</gelati-item>
+                <gelati-item>Unavailable 2</gelati-item>
+              </gelati-menu>
+            </gelati-submenu>
+          </gelati-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "colors": {
+    "primaryTextColor": "#585e62",
+    "primaryBackgroundColor": "#ffffff",
+    "secondaryTextColor": "#585e62",
+    "disabledTextColor": "#274c4c",
+    "dividerColor": "#e0e0e0",
+    "primaryColor": "#3d6868",
+    "lightPrimaryColor": "#c5cae9",
+    "darkPrimaryColor": "#3d6868",
+    "accentColor": "#ff4081",
+    "lightAccentColor": "#ff4081",
+    "darkAccentColor": "#ff4081",
+    "backgroundColor": "#f0f2dd"
+  },
+  "images": {
+    "background": ""
+  },
+  "fonts": {
+    "primaryFontFamily": {
+      "name": "Lato",
+      "url": "https://fonts.googleapis.com/css?family=Lato"
+    },
+    "titleFontFamily": {
+      "name": "Lustria",
+      "url": "https://fonts.googleapis.com/css?family=Lustria"
+    }
+  }
+}

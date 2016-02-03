@@ -1,0 +1,32 @@
+{
+  "name": "Pdf",
+  "identifier": "pdfviewer",
+  "description": "Sube la información que quieras en formato PDF. Todos los archivos procedentes de una url listos para descargar.",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo PDF Viewer**\r\n\r\nLa **informaci\u00F3n est\u00E1tica** en una App se puede configurar de dos maneras bien distintas, ya sea programando directamente en HTML o bien a\u00F1adiendo archivos espec\u00EDficos. Para esta segunda opci\u00F3n est\u00E1 pensado este m\u00F3dulo, el **PDF Viewer**. Su configuraci\u00F3n es adem\u00E1s muy sencilla.\r\n\r\nEl m\u00F3dulo PDF Viewer carga en pantalla cualquier archivo en PDF, por grande que sea su extensi\u00F3n. Puede ser consultado por completo v\u00EDa m\u00F3vil as\u00ED que resulta muy \u00FAtil para informaci\u00F3n del tipo **cat\u00E1logos, notas de prensa, gr\u00E1ficos o comunicados**. Para que esta funcionalidad sea completamente operativa es necesario que el documento en cuesti\u00F3n est\u00E9 o bien alojado en alguna p\u00E1gina web o subido en alg\u00FAn servicio de almacenaje en la nube (dropbox, drive, etc).\r\n\r\nUna vez subido a la red, s\u00F3lo hay que **copiar la url** de destino en el campo de configuraci\u00F3n y el documento en PDF se cargar\u00E1 autom\u00E1ticamente.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/pdfviewer/index.html",
+  "files": ["modules/pdfviewer/controller.js"],
+  "scope": {
+    "value": "http://kingofapp.es/wp-content/uploads/2015/11/wwwhatsnew.pdf",
+  },
+  "config": [{
+    "type": "input",
+    "key": "value",
+    "templateOptions": {
+      "description": "Url pdf",
+      "pattern": "(https?://)([/\\w.()-]*).*",
+      "required": true,
+      "label": "Url"
+    }
+  }],
+  "descriptionShort": "Sube la información que quieras en formato PDF. ¡Listo para descargar!"
+}

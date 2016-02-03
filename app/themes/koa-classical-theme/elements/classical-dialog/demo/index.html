@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>classical-dialog demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/neon-animation/neon-animations.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../classical-button/classical-button.html">
+    <link rel="import" href="../../classical-dropdown-menu/classical-dropdown-menu.html">
+    <link rel="import" href="../../classical-item/classical-item.html">
+    <link rel="import" href="../../classical-menu/classical-menu.html">
+    <link rel="import" href="../classical-dialog.html">
+
+    <style is="custom-style">
+      section {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+
+      section > classical-button {
+        background-color: var(--google-grey-300);
+        padding: 5px;
+      }
+
+      section > classical-button:hover {
+        background-color: var(--paper-light-blue-200);
+        padding: 5px;
+      }
+
+      classical-dialog.colored {
+        border: 2px solid;
+        border-color: var(--paper-green-500);
+        background-color: var(--paper-light-green-50);
+        color: var(--paper-green-500);
+      }
+
+      classical-dialog.size-position {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 300px;
+        height: 300px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <section onclick="clickHandler(event)">
+      <h4>Dialog layouts</h4>
+
+      <classical-button data-dialog="dialog">plain dialog</classical-button>
+      <classical-button data-dialog="actions">dialog with actions</classical-button>
+      <classical-button data-dialog="modal">modal dialog</classical-button>
+      <classical-button data-dialog="dropdown">dialog with dropdown</classical-button>
+      <classical-button data-dialog="nested">dialog with nested dialog</classical-button>
+
+      <classical-dialog id="dialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </classical-dialog>
+
+      <classical-dialog id="actions">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="buttons">
+          <classical-button >More Info...</classical-button>
+          <classical-button dialog-dismiss>Decline</classical-button>
+          <classical-button dialog-confirm autofocus>Accept</classical-button>
+        </div>
+      </classical-dialog>
+
+      <classical-dialog id="modal" modal>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="buttons">
+          <classical-button dialog-confirm autofocus>Tap me to close</classical-button>
+        </div>
+      </classical-dialog>
+
+      <classical-dialog id="dropdown">
+        <h2>Dialog Title</h2>
+        <classical-dropdown-menu label="Value">
+          <classical-menu class="dropdown-content">
+            <classical-item>1</classical-item>
+            <classical-item>2</classical-item>
+            <classical-item>3</classical-item>
+            <classical-item>4</classical-item>
+            <classical-item>5</classical-item>
+            <classical-item>6</classical-item>
+            <classical-item>7</classical-item>
+            <classical-item>8</classical-item>
+            <classical-item>9</classical-item>
+            <classical-item>10</classical-item>
+          </classical-menu>
+        </classical-dropdown-menu>
+      </classical-dialog>
+
+      <classical-dialog id="nested">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="buttons">
+          <classical-button data-dialog="innerDialog">Open nested dialog</classical-button>
+        </div>
+      </classical-dialog>
+
+      <classical-dialog id="innerDialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </classical-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Custom styling</h4>
+      <classical-button data-dialog="colors">colors</classical-button>
+      <classical-button data-dialog="position">size &amp; position</classical-button>
+
+      <classical-dialog id="colors" class="colored">
+        <h2>Custom Colors</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </classical-dialog>
+
+      <classical-dialog id="position" class="size-position">
+        <h2>Custom Size &amp; Position</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </classical-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Transitions</h4>
+      <classical-button data-dialog="animated">transitions</classical-button>
+      <classical-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </classical-dialog>
+    </section>
+
+    <script>
+      function clickHandler(e) {
+        var button = e.target;
+        while (!button.hasAttribute('data-dialog') && button !== document.body) {
+          button = button.parentElement;
+        }
+
+        if (!button.hasAttribute('data-dialog')) {
+          return;
+        }
+
+        var id = button.getAttribute('data-dialog');
+        var dialog = document.getElementById(id);
+        if (dialog) {
+          dialog.open();
+        }
+      }
+    </script>
+  </body>
+</html>

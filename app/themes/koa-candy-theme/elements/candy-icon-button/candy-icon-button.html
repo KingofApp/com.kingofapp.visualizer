@@ -1,8 +1,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-icon-button-behavior.html">
 <link rel="import" href="../../../../bower_components/paper-behaviors/paper-inky-focus-behavior.html">
-<link rel="import" href="../candy-styles/default-theme.html">
+<link rel="import" href="../../styles/default-theme.html">
 
 <dom-module id="candy-icon-button">
   <template>
@@ -43,7 +42,7 @@
         @apply(--icon-button-disabled);
       }
 
-      iron-icon {
+      koa-icon {
         --iron-icon-width: 100%;
         --iron-icon-height: 100%;
       }
@@ -51,7 +50,7 @@
     <!-- end styles -->
 
     <!-- write your template here -->
-    <iron-icon id="icon" src="[[src]]" icon="[[icon]]" alt$="[[alt]]"></iron-icon>
+    <koa-icon id="icon" src="[[src]]" icon="[[icon]]" alt$="[[alt]]"></koa-icon>
     <!-- end template -->
   </template>
 

@@ -1,0 +1,55 @@
+<style is='custom-style'>
+
+/* SIDEMENU */
+button {
+  width: auto;
+  padding: 7px 22px;
+  background-color:var(--primary-background-color);
+  color:var(--primary-text-color);
+  border:none;
+}
+menu {
+  display: block;
+}
+menu > div {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-transition: -webkit-transform ease 250ms;
+  -moz-transition: -webkit-transform ease 250ms;
+  -ms-transition: -webkit-transform ease 250ms;
+  -o-transition: -webkit-transform ease 250ms;
+  transition: -webkit-transform ease 250ms;
+  -webkit-transition: transform ease 250ms;
+  -moz-transition: transform ease 250ms;
+  -ms-transition: transform ease 250ms;
+  -o-transition: transform ease 250ms;
+  transition: transform ease 250ms;
+}
+menu > div.left {
+  background: var(--primary-background-color);
+  left: -250px;
+}
+menu > div.show.left {
+  transform: translate3d(250px, 0, 0);
+  -ms-transform: translate3d(250px, 0, 0);
+  -webkit-transform: translate3d(250px, 0, 0);
+  -o-transform: translate3d(250px, 0, 0);
+  -moz-transform: translate3d(250px, 0, 0);
+}
+menu > div > menu-item {
+  display: block;
+  padding: 5px;
+  line-height: 28px;
+}
+menu-item a {
+  color:var(--primary-color);
+  text-decoration:none;
+}
+/* END SIDEMENU */
+
+</style>

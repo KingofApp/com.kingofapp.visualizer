@@ -1,5 +1,5 @@
 <div ng-controller="youtubeGalleryCtrl" class="module youtubegallery">
-
+  <!-- Status message -->
   <koa-item ng-if="youtubegallery.message">{{youtubegallery.message}}</koa-item>
 
   <a href="#{{item.link}}" ng-repeat="item in youtubegallery.items">

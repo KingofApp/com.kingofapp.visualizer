@@ -1,0 +1,56 @@
+{
+  "name": "Map",
+  "identifier": "googlemap",
+  "description": "Con este módulo podrás fijar tu posición en el mapa, crear rutas de interés o marcar tus lugares favoritos. Actívalo y entra la dirección que desees.",
+  "documentation": "#(How to) Configurar el m\u00F3dulo mapas\r\n===================================\r\n\r\nLa utilidad de **Google** va m\u00E1s all\u00E1 de las b\u00FAsquedas y la publicidad. Una de las **aplicaciones** que m\u00E1s nos ha solucionado la vida es la referida a los mapas. A\u00F1adir una **ubicaci\u00F3n** a una App es la manera m\u00E1s sencilla de decirle a todo usuario donde estamos y como encontrarnos. Es por ello que en King of App hemos desarrollado el **m\u00F3dulo \u201Cmapas\u201D**; para que nadie se pierda. Pero, \u00BFc\u00F3mo debemos configurarlo? La soluci\u00F3n, en las siguientes cuatro l\u00EDneas.\r\n\r\n 1. El m\u00F3dulo mapas, como todos los dem\u00E1s est\u00E1 **disponible en nuestro market** (y es gratis). As\u00ED que s\u00F3lo hay que seleccionarlo y a\u00F1adirlo al editor de la App. Como en el resto de m\u00F3dulos, **la configuraci\u00F3n es sencilla** pues s\u00F3lo nos reclama rellenar tres campos. Como es natural, podremos cambiarle el nombre al m\u00F3dulo para que al usuario le resulte m\u00E1s descriptivo en el men\u00FA. Los dos campos principales a rellenar son los correspondientes a la **longitud** y la **latitud** del punto que se debe marcar en el mapa. Por ejemplo, si queremos que marque *La Casa Blanca*, porque resulta que tu App es la del presidente de los Estados Unidos de Am\u00E9rica. Los datos a entrar van a ser:\r\n\r\n-   Latitud: 38.8976763\r\n-   Longitud: -77.0387185\r\n\r\n\u00BFQue c\u00F3mo lo he sabido? Muy sencillo, una vez m\u00E1s Google nos da la respuesta a cualquiera de nuestras inquietudes. Una buena f\u00F3rmula de encontrar estos datos es directamente desde [la p\u00E1gina de mapas de Google]. Si nos fijamos en la URL de la direcci\u00F3n que hemos buscado (*La Casa Blanca*) podremos encontrar en ella las dos variables que necesitamos:\r\n\r\nhttps://www.google.es/maps/place/The+White+House/@38.8976763,-77.0387185,17z/data=!3m1!4b1!4m2!3m1!1s0x89b7b7bcdecbb1df:0x715969d86d0b76bf\r\n\r\n[![Maps Module](http://kingofapp.es/wp-content/uploads/2015/12/Maps-Module-300x159.png)](http://kingofapp.es/wp-content/uploads/2015/12/Maps-Module.png)\r\n\r\nF\u00E1cil, \u00BFverdad? El tercer campo que solicitamos para configurar el m\u00F3dulo de mapas es el **Zoom**. Aqu\u00ED hay que entrar un valor num\u00E9rico, entre 1-15 aproximadamente, para que la imagen se acerque m\u00E1s o menos al punto seleccionado. Tres peque\u00F1os datos para una funcionalidad completa.\r\n\r\n  [la p\u00E1gina de mapas de Google]: http://maps.google.com/",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/googlemap/index.html",
+  "files": ["modules/googlemap/controller.js", "modules/googlemap/directive.js", "modules/googlemap/style.css"],
+  "scope": {
+    "lat": "39.8847281",
+    "lon": "4.2540999",
+    "zoom": "15"
+  },
+  "libs": [{
+    "bower": {
+      "GoogleWebComponents/google-map": "^1.1.0"
+    },
+    "src": "bower_components/google-map/google-map.html"
+  }],
+  "config": [{
+    "type": "input",
+    "key": "lat",
+    "templateOptions": {
+      "description": "latitud del map",
+      "required": true,
+      "label": "latitud"
+    }
+  }, {
+    "templateOptions": {
+      "label": "longitud",
+      "required": true,
+      "description": "longitud del map"
+    },
+    "type": "input",
+    "key": "lon"
+  }, {
+    "type": "input",
+    "key": "zoom",
+    "templateOptions": {
+      "label": "zoom",
+      "pattern": "([1-2]?[0-9]{1,1})",
+      "required": true,
+      "description": "zoom del map"
+    }
+  }],
+  "descriptionShort": "Con este módulo podrás fijar tu posición en el mapa, crear rutas y marcar lugares."
+}

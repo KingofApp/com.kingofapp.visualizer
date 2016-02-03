@@ -1,6 +1,6 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-toggle-button-behavior.html">
-<link rel="import" href="../oblique-styles/default-theme.html">
+<link rel="import" href="../../styles/default-theme.html">
 
 <dom-module id="oblique-toggle-button">
   <template>
@@ -137,7 +137,7 @@
       }
 
       :host([checked]:not([disabled])) .toggle-bar {
-        background-color: var(--toggle-button-checked-bar-color, --default-primary-color);
+        background-color: var(--toggle-button-checked-bar-color, --primary-color);
         opacity: 0.5;
 
         @apply(--toggle-button-checked-bar);
@@ -154,7 +154,7 @@
       }
 
       :host([checked]:not([disabled])) .toggle-button {
-        background-color: var(--toggle-button-checked-button-color, --default-primary-color);
+        background-color: var(--toggle-button-checked-button-color, --primary-color);
 
         @apply(--toggle-button-checked-button);
       }

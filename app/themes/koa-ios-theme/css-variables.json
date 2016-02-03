@@ -1,0 +1,29 @@
+{
+  "colors": {
+    "primaryTextColor": "#212121",
+    "primaryBackgroundColor": "#ffffff",
+    "secondaryTextColor": "#757575",
+    "disabledTextColor": "#bdbdbd",
+    "dividerColor": "#e0e0e0",
+    "primaryColor": "#007aff",
+    "lightPrimaryColor": "rgba(0, 122, 255, 0.15)",
+    "darkPrimaryColor": "#0054b0",
+    "accentColor": "#ff4081",
+    "lightAccentColor": "#ff4081",
+    "darkAccentColor": "#ff4081",
+    "backgroundColor": "#ffffff"
+  },
+  "images": {
+    "background": ""
+  },
+  "fonts": {
+    "primaryFontFamily": {
+      "name": "",
+      "url": ""
+    },
+    "titleFontFamily": {
+      "name": "",
+      "url": ""
+    }
+  }
+}

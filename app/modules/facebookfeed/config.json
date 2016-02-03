@@ -1,0 +1,40 @@
+{
+  "name": "Facebook Feed",
+  "identifier": "facebookfeed",
+  "description": "Activando este módulo cargarás todo cuanto publiques en Facebook para que tu seguidores lo puedan ver directamente en tu App. Para ello, tendrás que entrar la url de la página de Facebook que quieras compartir. P.e. https://www.facebook.com/pages/King-Of-App así como el AccessToken; para ello deberás acceder a https://developers.facebook.com.",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo Facebook**\r\n\r\nUna de las partes m\u00E1s importantes de una App es, sin lugar a duda, su contenido.\u00A0Hay que meterle cosas que interesen al usuario, de lo contrario nunca la va a encontrar \u00FAtil para sus prop\u00F3sitos y eso significa la muerte de una App. Incluir un acceso a las rede sociales es un buen punto de partida para que las visitas a una App sean algo recurrente. Por ello, hoy vamos a explicar c\u00F3mo configurar uno de los m\u00F3dulos m\u00E1s recurrentes en King of App: el de Facebook.\r\n\r\nPara todos es sabido que las redes sociales son elemento clave para fidelizar, por ello en nuestro market de m\u00F3dulos ponemos a vuestra disposici\u00F3n todo tipo de accesos a las principales con lo que s\u00F3lo hay que elegir la o las que m\u00E1s os convengan. En el caso de hoy, elegiremos el m\u00F3dulo de Facebook. Con \u00E9l los usuarios de la App tendr\u00E1n acceso al feed de noticias de la p\u00E1gina que elijas.\r\n\r\nCon el m\u00F3dulo cargado en nuestro escritorio de trabajo, llega el momento de configurarlo. Para ello tendr\u00E1s que clicar en el icono \"Editar\", l\u00F3gico \u00BFno?. Ante ti se abrir\u00E1 una pesta\u00F1a donde deber\u00E1s a\u00F1adir una serie de datos. El primero de ellos es darle nombre al m\u00F3dulo. Es decir, debes decidir c\u00F3mo quieres que los usuarios vean este m\u00F3dulo. Si no tocas nada se ver\u00E1 como un gen\u00E9rico \"Facebook feed\". Ed\u00EDtalo como te sientas m\u00E1s c\u00F3modo, baut\u00EDzalo.\r\n\r\nUna vez elegido el nombre del m\u00F3dulo llega el momento de entrar los datos reales de configuraci\u00F3n. Por un lado va a ser necesario que entres el id de la p\u00E1gina. Eso significa copiar la url de destino de la p\u00E1gina. Normalmente todas siguen el siguiente esquema:\r\n\r\nhttp://www.facebook.com/pages/Nombre_de_la_P\u00E1gina. Con ello, nosotros podremos ubicarla y saber donde debemos ir a buscar la informaci\u00F3n.\r\n\r\nEl otro dato ya es algo m\u00E1s complicado pues requiere un paso previo; se trata del acces token. Este c\u00F3digo es necesario para que podamos acceder a los datos del feed de la p\u00E1gina. Es, para que nos entendamos f\u00E1cilmente, una llave de acceso. \u00BFDe donde se saca? Muy sencillo, hay que seguir los pasos que desde Facebook se nos indican en su p\u00E1gina para desarrolladores:\u00A0https://developers.facebook.com/docs/facebook-login/access-tokens En este enlace vas a encontrar toda la informaci\u00F3n necesaria para conseguir este dato.\r\n\r\nSin embaro, como seguro que no tienes ni tiempo ni paciencia, desarrolladores como Cesar\u00A0Mancilla en su blog (http://cesarmansilla.com/blog) nos lo explican paso a paso:\r\n\r\n_Paso 1: \u201C**Obtener un User access token**\u201D_\r\n\r\n1.  _Ir al Graph API Explorer:\u00A0[https://developers.facebook.com/tools/explorer/](https://developers.facebook.com/tools/explorer/ \"Graph API Explorer\")_\r\n2.  _Seleccionar la aplicaci\u00F3n con la que trabajaremos del\u00A0men\u00FA desplegable_\r\n3.  _Hacer click en el bot\u00F3n \u201C**Get Access Token**\u201C_\r\n4.  _Se abrir\u00E1 una ventana, vamos a la solapa de \u201C**Extended Permissions**\u201D y debemos\u00A0tildar el permiso \u201C**manage_pages**\u201D y opcionalmente todos aquellos que creamos necesarios para nuestro programa_\r\n5.  _Click en \u201C**Get Access Token**\u201C. Obtendremos el string con el token en el campo de texto._\r\n\r\n_Paso 2: \u201C**Consultar los pages access token de las fanpages que administramos**\u201D_\r\n\r\n1.  _En el campo para ejecutar llamadas a la API de Facebook esxribiremos: \u201C**me/accounts**\u201C_\r\n2.  _Click en \u201C**Submit**\u201C_\r\n3.  _Obtendremos un listado de fanpages que administramos, deberemos buscar aquella con la que vayamos a trabajar y copiar el valor de \u201C**access_token**\u201C_\r\n\r\n_Este **Page access token** expira luego de 1 hora, por lo que ahora pasaremos al m\u00E9todo para obtener uno que no expire nunca:_\r\n\r\n1.  _Necesitamos un **User access token**, lo podremos obtener con el paso 1 visto anteriormente._\r\n2.  _Necesitamos el \u201C**App Secret**\u201C. Entramos al dashboard de nuestra aplicaci\u00F3n, hacemos click en el bot\u00F3n \u201CShow\u201D al lado del campo \u201CApp Secret\u201D. Nos pedir\u00E1 nuestra contrase\u00F1a para mostrar el campo._\r\n    *   _Aqu\u00ED tambi\u00E9n tendremos nuestro \u201C**App ID**\u201C_\r\n3.  _Estos 3 datos deber\u00E1n ser reemplazados en la siguiente URL seg\u00FAn corresponda:\u00A0https://graph.facebook.com/v2.0/oauth/access_token?grant_type=fb_exchange_token&client_id=**[APP-ID]**&client_secret=**[APP-SECRET]**&fb_exchange_token=**[USER-ACCESS-TOKEN]**_\r\n4.  _Una vez reemplazados los datos, los pegamos en un navegador y tocamos enter, all\u00ED veremos un string\u00A0conocido como \u201C**Long lived User Access Token**\u201D que expira en 2 meses._\r\n5.  _Copiamos este token, lo pegamos en el campo \u201C**Access Token**\u201D en el [Graph API Explorer](https://developers.facebook.com/tools/explorer/ \"Graph API Explorer\")\u00A0y hacemos lo explicado en el paso 2 para obtener un **Page Access Token** que nunca expira._\r\n\r\nCon los tres campos debidamente cumplimentados, ya tenemos el m\u00F3dulo de facebook completamente configurado y listo para ser utilizado en la App.\r\n\r\n\u00BFF\u00E1cil, verdad?",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/facebookfeed/index.html",
+  "files": ["modules/facebookfeed/controller.js"],
+  "scope": {
+    "accesstoken": "XXXX",
+    "pageid": "ArchiDesiign"
+  },
+  "config": [{
+    "templateOptions": {
+      "label": "accesstoken",
+      "required": true,
+      "description": "token de acceso"
+    },
+    "type": "input",
+    "key": "accesstoken"
+  }, {
+    "key": "pageid",
+    "templateOptions": {
+      "label": "pageid",
+      "required": true,
+      "description": "id de la pagina"
+    },
+    "type": "input"
+  }],
+  "descriptionShort": "Carga todo cuanto publiques en Facebook para que tus seguidores lo vean directamente en tu App."
+}

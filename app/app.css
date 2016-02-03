@@ -4,8 +4,13 @@ html, body, #main-king {
   height: 100%;
 }
 
+html {
+    overflow:hidden;
+}
+
 body {
   font-family: Arial, sans-serif;
+  margin:0px;
 }
 
 #main-king > div, .template, .template > div {
@@ -30,6 +35,8 @@ img {
   background-color: #fff;
   z-index: 9999;
   position: absolute;
+  left:0;
+  top:0;
 }
 
 .bottom-ads {
@@ -51,4 +58,21 @@ img {
   background-color: #fff;
   text-align: center;
   padding-top: 40%;
+}
+
+
+/*  Debug bar */
+
+div.debug {
+  background-color: #ccc;
+  bottom: 0;
+  padding: 8px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+div.debug button {
+  font-size: 1em;
+  padding: 5px;
 }

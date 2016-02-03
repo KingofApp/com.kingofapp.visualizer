@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>gelati-radio-button demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../gelati-radio-button.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 630px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      gelati-radio-button {
+        margin-right: 24px;
+      }
+
+      gelati-radio-button.red {
+        --radio-button-checked-color: var(--paper-red-500);
+        --radio-button-checked-ink-color: var(--paper-red-500);
+        --radio-button-unchecked-color: var(--paper-red-900);
+        --radio-button-unchecked-ink-color: var(--paper-red-900);
+        --radio-button-label-color: var(--paper-red-500);
+      }
+
+      gelati-radio-button.green {
+        --radio-button-checked-color: var(--paper-green-500);
+        --radio-button-checked-ink-color: var(--paper-green-500);
+        --radio-button-unchecked-color: var(--paper-green-900);
+        --radio-button-unchecked-ink-color: var(--paper-green-900);
+        --radio-button-label-color: var(--paper-green-500);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Radio buttons can be checked or unchecked, or disabled entirely</h3>
+      <div class="horizontal-section">
+        <gelati-radio-button>Radio button</gelati-radio-button>
+        <gelati-radio-button checked>Radio button</gelati-radio-button>
+        <gelati-radio-button disabled>Disabled</gelati-radio-button>
+      </div>
+
+      <h3>Radio buttons can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <gelati-radio-button class="red">Radio button</gelati-radio-button>
+        <gelati-radio-button checked class="green">Radio button</gelati-radio-button>
+      </div>
+    </div>
+  </body>
+</html>

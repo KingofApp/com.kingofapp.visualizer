@@ -8,9 +8,6 @@ function contactCtrl($scope, $http, $location, $filter, structureService) {
   structureService.registerModule($location, $scope, "contact");
 
   $scope.send = function() {
-    console.log('contact sent!');
-    console.log($scope.contact);
-
     var req = {
       method: 'POST',
       url: 'https://mandrillapp.com/api/1.0/messages/send.json',
@@ -32,26 +29,24 @@ function contactCtrl($scope, $http, $location, $filter, structureService) {
         }
       }
     };
-    // if ($scope.contactForm.$valid) {
-      $http(req)
-        .success(function(data) {
-          if (data[0].status == 'sent') {
-            $scope.contact.status = $filter('translate')('contact.message.sent');
-          } else {
-            $scope.contact.status = $filter('translate')('contact.message.warning') + data[0].status;
-          }
-          if(!$scope.contact.modulescope.debug){
-            document.querySelector("paper-toast").show();
-          }
 
-        })
-        .error(function(data) {
-          console.log("ERROR: ", data.message);
-          $scope.contact.status = $filter('translate')('contact.message.rejected');
-          if(!$scope.contact.modulescope.debug){
-            document.querySelector("paper-toast").show();
-          }
-        });
-    // }
+    $http(req)
+      .success(function(data) {
+        if (data[0].status === 'sent') {
+          $scope.contact.status = $filter('translate')('contact.message.sent');
+        } else {
+          $scope.contact.status = $filter('translate')('contact.message.warning') + data[0].status;
+        }
+        if(!$scope.contact.modulescope.debug){
+          document.querySelector("paper-toast").show();
+        }
+
+      })
+      .error(function(data) {
+        $scope.contact.status = $filter('translate')('contact.message.rejected');
+        if(!$scope.contact.modulescope.debug){
+          document.querySelector("paper-toast").show();
+        }
+      });
   }
 }

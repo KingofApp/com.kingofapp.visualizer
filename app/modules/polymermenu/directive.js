@@ -1,5 +1,4 @@
-//NOTE: Not being used but can be helpful in the future.
-//http://odetocode.com/blogs/scott/archive/2014/04/08/dynamically-injecting-script-tags-with-angularjs.aspx
+//NOTE: http://odetocode.com/blogs/scott/archive/2014/04/08/dynamically-injecting-script-tags-with-angularjs.aspx
 angular
   .directive("polyScripts", function() {
     var updateScripts = function (element) {

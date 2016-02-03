@@ -1,0 +1,29 @@
+{
+  "colors": {
+    "primaryTextColor": "white",
+    "primaryBackgroundColor": "#ffffff",
+    "secondaryTextColor": "white",
+    "disabledTextColor": "#070809",
+    "dividerColor": "#e0e0e0",
+    "primaryColor": "#e8485f",
+    "lightPrimaryColor": "#c5cae9",
+    "darkPrimaryColor": "#e8485f",
+    "accentColor": "#ff4081",
+    "lightAccentColor": "#ff4081",
+    "darkAccentColor": "#ff4081",
+    "backgroundColor": "#2a363b"
+  },
+  "images": {
+    "background": ""
+  },
+  "fonts": {
+    "primaryFontFamily": {
+      "name": "Roboto",
+      "url": "https://fonts.googleapis.com/css?family=Roboto"
+    },
+    "titleFontFamily": {
+      "name": "Lobster",
+      "url": "https://fonts.googleapis.com/css?family=Lobster"
+    }
+  }
+}

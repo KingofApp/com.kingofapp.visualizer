@@ -6,8 +6,8 @@ staticFeedCtrl.$inject = ['$scope', '$rootScope', '$http', '$location', 'structu
 function staticFeedCtrl($scope, $rootScope, $http, $location, structureService) {
   //Register upper level modules
   structureService.registerModule($location, $scope, 'simplegallery');
-  $rootScope.$on("koaLaunched",function() {
-    console.log("Goo");
+  // Event that fires when everything has been rendered
+  $rootScope.$on("koaAppRendered",function() {
     var swiper = new Swiper('.swiper-container', {
       pagination: '.swiper-pagination',
       paginationClickable: true

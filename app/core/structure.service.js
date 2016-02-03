@@ -4,12 +4,14 @@ angular
   .module('king.core.structureService', [])
   .factory('structureService', structureService);
 
-structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'sampleModules', 'structureHooks', '$rootScope'];
+structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope'];
 
-function structureService($q, $translatePartialLoader, $translate, sampleModules, structureHooks, $rootScope) {
+function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope) {
   var listeners = [];
   var lang;
   var cachedLocations = {};
+  var cachedLibs = [];
+  var visitedLocations = [];
   var data = {};
   var services = [];
 
@@ -18,18 +20,34 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   if ($rootScope.appJsonStructure) {
     set($rootScope.appJsonStructure);
   } else {
-    set(sampleModules);
-    $rootScope.transitionOn = false;
+    data = {
+      'config': {
+        'index':'/',
+        'lang' : ['EN']
+      }
+    } ;
+    $rootScope.transitionOn = true;
   }
 
   return {
     get: get,
     set: set,
-    setModules: setModules,
-    setLoader: setLoader,
+    getConfig: getConfig,
+    setCssVariables: setCssVariables,
     setColors: setColors,
     getColors: getColors,
+    setFonts: setFonts,
+    getFonts: getFonts,
+    setImages: setImages,
+    getImages: getImages,
+    setModules: setModules,
+    setLoader: setLoader,
     getIndex: getIndex,
+    getVisitedLocations: getVisitedLocations,
+    getCachedLocations: getCachedLocations,
+    getCachedLibs: getCachedLibs,
+    setCachedLibs: setCachedLibs,
+    setVisitedLocations: setVisitedLocations,
     getLang: getLang,
     setLang: setLang,
     getModule: getModule,
@@ -42,6 +60,10 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     onChange: onChange
   };
 
+  function get() {
+    return data;
+  }
+
   function set(newData) {
     cachedLocations = {};
     data = newData;
@@ -51,6 +73,92 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     $rootScope.$broadcast('menuUpdated');
   }
 
+  function getConfig() {
+    return data.config;
+  }
+
+  function setCustomStyle(variableKey, variableValue) {
+    Polymer.StyleDefaults.customStyle[variableKey] = variableValue;
+  }
+
+  function setCssVariables(config) {
+    if (config === null) {
+      config = getConfig();
+    }
+
+    setColors(config.colors);
+    setImages(config.images);
+    setFonts(config.fonts);
+  }
+
+  function getColors() {
+    return data.config.colors;
+  }
+
+  function setColors(colors) {
+    cachedLocations = {};
+
+    if (colors === null) {
+      colors = getColors();
+    }
+
+    setCustomStyle('--primary-text-color', colors.primaryTextColor);
+    setCustomStyle('--primary-background-color', colors.primaryBackgroundColor);
+    setCustomStyle('--secondary-text-color', colors.secondaryTextColor);
+    setCustomStyle('--disabled-text-color', colors.disabledTextColor);
+    setCustomStyle('--divider-color', colors.dividerColor);
+    setCustomStyle('--primary-color', colors.primaryColor);
+    setCustomStyle('--light-primary-color', colors.lightPrimaryColor);
+    setCustomStyle('--dark-primary-color', colors.darkPrimaryColor);
+    setCustomStyle('--accent-color', colors.accentColor);
+    setCustomStyle('--light-accent-color', colors.lightAccentColor);
+    setCustomStyle('--dark-accent-color', colors.darkAccentColor);
+    setCustomStyle('--background-color', colors.backgroundColor);
+
+    Polymer.updateStyles();
+  }
+
+  function getFonts() {
+    return data.config.fonts;
+  }
+
+  function setFonts(fonts) {
+    cachedLocations = {};
+
+    if (fonts === null) {
+      fonts = getFonts();
+    }
+
+    setCustomStyle('--primary-font-family', fonts.primaryFontFamily.name);
+    setCustomStyle('--title-font-family', fonts.titleFontFamily.name);
+
+    Polymer.updateStyles();
+  }
+
+  function getImages() {
+    return data.config.images;
+  }
+
+  function setImages(images) {
+    cachedLocations = {};
+
+    if (images === null) {
+      images = getImages();
+    }
+
+    var backgroundImage = images.background ? 'url("' + images.background + '")' : 'none';
+
+    setCustomStyle('--background-image', backgroundImage);
+
+    Polymer.updateStyles();
+  }
+
+  function setModules(newData) {
+    cachedLocations = {};
+    data.modules = newData;
+    setHooks();
+  }
+
   function setLoader(src) {
     if (src) {
       $rootScope.loader = src;
@@ -58,12 +166,6 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
       //Default Loader
       $rootScope.loader = 'resources/loader.gif';
     }
-  }
-
-  function setModules(newData) {
-    cachedLocations = {};
-    data.modules = newData;
-    setHooks();
   }
 
   function setHooks() {
@@ -76,32 +178,27 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
     });
   }
 
-  function setColors(color) {
-    cachedLocations = {};
-    if (color === null) {
-      color = getColors();
-    }
-    // data.config.colors = color;
-    var s = document.createElement('style', 'custom-style');
-    s.textContent = ':root {\n';
-    s.textContent += JSON.stringify(color).replace(/"|{|}/g, '').replace(/,/g, ';') + ';';
-    s.textContent += '\n}';
-    document.body.appendChild(s);
-    Polymer.updateStyles();
-    s.remove();
-  }
-
-  function get() {
-    return data;
-  }
-
-  function getColors() {
-    return data.config.colors;
-  }
-
   function getIndex() {
     return data.config.index;
   }
+
+  function getVisitedLocations() {
+    return visitedLocations;
+  }
+  function getCachedLocations() {
+    return cachedLocations;
+  }
+  function getCachedLibs() {
+    return cachedLibs;
+  }
+
+  function setVisitedLocations(locations) {
+    visitedLocations = locations;
+  }
+  function setCachedLibs(libs) {
+    cachedLibs = libs;
+  }
+
 
   function getLang() {
     if (lang) {
@@ -216,7 +313,7 @@ function structureService($q, $translatePartialLoader, $translate, sampleModules
   function findRoute(path, structure, callback) {
     // console.log('Path', path);
     // console.log('Structure', structure);
-    if (structure[path]) {
+    if ( structure && structure[path]) {
       callback(structure[path]);
     } else {
       callback(new Error('No module found in path ' + path));

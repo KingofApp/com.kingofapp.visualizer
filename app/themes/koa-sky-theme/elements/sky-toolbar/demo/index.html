@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>sky-toolbar demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../sky-icon-button/sky-icon-button.html">
+    <link rel="import" href="../sky-toolbar.html">
+
+    <style is="custom-style">
+      sky-toolbar + sky-toolbar {
+        margin-top: 20px;
+      }
+
+      sky-toolbar.red {
+        --toolbar-background: red;
+      }
+
+      .spacer {
+        @apply(--layout-flex);
+      }
+    </style>
+  </head>
+  <body>
+    <sky-toolbar>
+      <sky-icon-button icon="menu"></sky-icon-button>
+      <span class="title">Toolbar</span>
+      <sky-icon-button icon="refresh"></sky-icon-button>
+      <sky-icon-button icon="add">+</sky-icon-button>
+    </sky-toolbar>
+
+    <sky-toolbar class="red">
+      <sky-icon-button icon="menu"></sky-icon-button>
+      <span class="title">Toolbar: custom background color</span>
+      <sky-icon-button icon="refresh"></sky-icon-button>
+      <sky-icon-button icon="add">+</sky-icon-button>
+    </sky-toolbar>
+
+    <sky-toolbar class="tall">
+      <sky-icon-button icon="menu"></sky-icon-button>
+      <span class="title">Toolbar: tall</span>
+      <sky-icon-button icon="refresh"></sky-icon-button>
+      <sky-icon-button icon="add">+</sky-icon-button>
+    </sky-toolbar>
+
+    <sky-toolbar class="tall">
+      <sky-icon-button icon="menu" class="bottom"></sky-icon-button>
+      <span class="bottom title">Toolbar: tall with elements pin to the bottom</span>
+      <sky-icon-button icon="refresh" class="bottom"></sky-icon-button>
+      <sky-icon-button icon="add" class="bottom">+</sky-icon-button>
+    </sky-toolbar>
+
+    <sky-toolbar class="medium-tall">
+      <sky-icon-button icon="menu"></sky-icon-button>
+      <span class="spacer"></span>
+      <sky-icon-button icon="refresh"></sky-icon-button>
+      <sky-icon-button icon="add">+</sky-icon-button>
+      <span class="bottom title">Toolbar: medium-tall with label aligns to the bottom</span>
+    </sky-toolbar>
+
+    <sky-toolbar class="tall">
+      <sky-icon-button icon="menu"></sky-icon-button>
+      <div class="spacer"></div>
+      <sky-icon-button icon="refresh"></sky-icon-button>
+      <sky-icon-button icon="add">+</sky-icon-button>
+      <div class="middle title">label aligns to the middle</div>
+      <div class="bottom title">some stuffs align to the bottom</div>
+    </sky-toolbar>
+
+    <sky-toolbar class="tall">
+      <sky-icon-button icon="menu"></sky-icon-button>
+      <div class="spacer"></div>
+      <sky-icon-button icon="refresh"></sky-icon-button>
+      <sky-icon-button icon="add">+</sky-icon-button>
+      <div class="middle title">element (e.g. progress) fits at the bottom of the toolbar</div>
+      <div class="bottom fit" style="height: 20px; background-color: #0f9d58;"></div>
+    </sky-toolbar>
+  </body>
+</html>

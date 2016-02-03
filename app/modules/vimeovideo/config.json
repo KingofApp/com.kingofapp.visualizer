@@ -1,0 +1,32 @@
+{
+  "name": "Vimeo Video",
+  "identifier": "vimeovideo",
+  "description": "Activando este módulo ofrecerás a tus seguidores tus videos ya sea en forma de canal como si tu cuenta es como usuario, en función de la url que entres en el apartado de configuración. Por ejemplo si entras la url de tu canal http://vimeo.com/channels/MiCanal.",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo Vimeo Video**\r\n\r\nEl mundo no se acaba en **Youtube**. Servicios de reproducci\u00F3n de v\u00EDdeo lo hay a montones y, para gustos, colores. Por ello, en **King of App**, hemos querido desarrollar este m\u00F3dulo, el \"**Vimeo Video**\". Con \u00E9l podr\u00E1s reproducir en tu App cualquier peiza que hayas subido en esta red social. Aqu\u00ED te explicamos como configurarlo. Una vez a\u00F1adido el m\u00F3dulo \"Vimeo V\u00EDdeo\" a tu configuraci\u00F3n de la App, llega el momento de ver c\u00F3mo cargamos la informaci\u00F3n. Lo hacemos de la manera m\u00E1s sencilla que se nos ha ocurrido: con el **ID del v\u00EDdeo**. \u00BFQue de d\u00F3nde sale este identificador? De la URL del propio v\u00EDdeo. Es decir, s\u00F3lo con copiar el c\u00F3digo que aparece en la URL de la barra de navegaci\u00F3n ya podr\u00E1s configurar este m\u00F3dulo. Por ejemplo, en un v\u00EDdeo cualquier, la URL acostumbra a ser as\u00ED: _vimeo.com/84885879_ Pues bien, lo \u00FAnico que debemos entrar en el campo de la identificaci\u00F3n son los n\u00FAmeros que aparecen al final: **84885879**. Tan simple y tan sencillo. **Tus v\u00EDdeos de Vimeo en tu App**.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/vimeovideo/index.html",
+  "files": ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
+  "scope": {
+    "videoid": "136882652"
+  },
+  "config": [{
+    "key": "videoid",
+    "templateOptions": {
+      "label": "id",
+      "required": true,
+      "pattern": "^[0-9]+$",
+      "description": "id del video"
+    },
+    "type": "input"
+  }],
+  "descriptionShort": "Ofrece a tus seguidores vídeos procedentes de Vimeo"
+}

@@ -4,29 +4,29 @@
  * License: MIT
  */
 (function(angular) {
-'use strict';
+  'use strict';
 
-/**
- * @ngdoc overview
- * @name angulartics.google.analytics
- * Enables analytics support for Google Analytics (http://google.com/analytics)
- * for Cordova with google-analytics-plugin (https://github.com/danwilson/google-analytics-plugin)
- */
-angular.module('angulartics.google.analytics.cordova', ['angulartics'])
+  /**
+   * @ngdoc overview
+   * @name angulartics.google.analytics
+   * Enables analytics support for Google Analytics (http://google.com/analytics)
+   * for Cordova with google-analytics-plugin (https://github.com/danwilson/google-analytics-plugin)
+   */
+  angular.module('angulartics.google.analytics.cordova', ['angulartics'])
 
-.provider('googleAnalyticsCordova', function () {
-  var GoogleAnalyticsCordova = [
+  .provider('googleAnalyticsCordova', function() {
+    var GoogleAnalyticsCordova = [
   '$q', '$log', 'ready', 'debug', 'trackingId', 'period',
-  function ($q, $log, ready, debug, trackingId, period) {
+  function($q, $log, ready, debug, trackingId, period) {
     var deferred = $q.defer();
     var deviceReady = false;
-// console.log("DENTRO !!!!!!!!!!!!!!");
-    window.addEventListener('deviceReady', function () {
+    // console.log('[V] DENTRO !!!!!!!!!!!!!!');
+    window.addEventListener('deviceReady', function() {
       deviceReady = true;
       deferred.resolve();
     });
 
-    setTimeout(function () {
+    setTimeout(function() {
       if (!deviceReady) {
         deferred.resolve();
       }
@@ -44,9 +44,9 @@ angular.module('angulartics.google.analytics.cordova', ['angulartics'])
       }
     }
 
-    this.init = function (tracking) {
-      trackingId=tracking;
-      return deferred.promise.then(function () {
+    this.init = function(tracking) {
+      trackingId = tracking;
+      return deferred.promise.then(function() {
         if (typeof analytics != 'undefined') {
           ready(analytics, success, failure);
           analytics.startTrackerWithId(trackingId);
@@ -57,38 +57,38 @@ angular.module('angulartics.google.analytics.cordova', ['angulartics'])
     };
   }];
 
-  return {
-    $get: ['$injector','configService', function ($injector,configService) {
-      return $injector.instantiate(GoogleAnalyticsCordova, {
-        ready: this._ready || angular.noop,
-        debug: this.debug,
-        trackingId: this.trackingId,
-        period: this.period
+    return {
+      $get: ['$injector', 'configService', function($injector, configService) {
+        return $injector.instantiate(GoogleAnalyticsCordova, {
+          ready: this._ready || angular.noop,
+          debug: this.debug,
+          trackingId: this.trackingId,
+          period: this.period
+        });
+      }],
+      ready: function(fn) {
+        this._ready = fn;
+      }
+    };
+  })
+
+  .config(['$analyticsProvider', 'googleAnalyticsCordovaProvider', function($analyticsProvider, googleAnalyticsCordovaProvider) {
+    googleAnalyticsCordovaProvider.ready(function(analytics, success, failure) {
+      $analyticsProvider.registerPageTrack(function(path) {
+        analytics.trackView(path);
       });
-    }],
-    ready: function (fn) {
-      this._ready = fn;
+
+      $analyticsProvider.registerEventTrack(function(action, properties) {
+        analytics.trackEvent(properties.category, action, properties.label, properties.value);
+      });
+    });
+  }])
+
+  .run(['googleAnalyticsCordova', 'configService', function(googleAnalyticsCordova, configService) {
+    if (configService.services && configService.services.googleanalytics) {
+      console.log('[V] Loading Analytics config ...');
+      googleAnalyticsCordova.init(configService.services.googleanalytics.scope.trackId);
     }
-  };
-})
-
-.config(['$analyticsProvider', 'googleAnalyticsCordovaProvider', function ($analyticsProvider, googleAnalyticsCordovaProvider) {
-  googleAnalyticsCordovaProvider.ready(function (analytics, success, failure) {
-    $analyticsProvider.registerPageTrack(function (path) {
-      analytics.trackView(path);
-    });
-
-    $analyticsProvider.registerEventTrack(function (action, properties) {
-      analytics.trackEvent(properties.category, action, properties.label, properties.value);
-    });
-  });
-}])
-
-.run(['googleAnalyticsCordova','configService', function (googleAnalyticsCordova,configService) {
-  if(configService.services && configService.services.googleanalytics){
-    console.log("Loading Analytics config ...");
-    googleAnalyticsCordova.init(configService.services.googleanalytics.scope.trackId);
-  }
-}]);
+  }]);
 
 })(angular);

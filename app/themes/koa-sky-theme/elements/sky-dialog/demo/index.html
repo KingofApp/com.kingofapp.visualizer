@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>sky-dialog demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/neon-animation/neon-animations.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../sky-button/sky-button.html">
+    <link rel="import" href="../../sky-dropdown-menu/sky-dropdown-menu.html">
+    <link rel="import" href="../../sky-item/sky-item.html">
+    <link rel="import" href="../../sky-menu/sky-menu.html">
+    <link rel="import" href="../sky-dialog.html">
+
+    <style is="custom-style">
+      section {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+
+      section > sky-button {
+        background-color: var(--google-grey-300);
+        padding: 5px;
+      }
+
+      section > sky-button:hover {
+        background-color: var(--paper-light-blue-200);
+        padding: 5px;
+      }
+
+      sky-dialog.colored {
+        border: 2px solid;
+        border-color: var(--paper-green-500);
+        background-color: var(--paper-light-green-50);
+        color: var(--paper-green-500);
+      }
+
+      sky-dialog.size-position {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 300px;
+        height: 300px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <section onclick="clickHandler(event)">
+      <h4>Dialog layouts</h4>
+
+      <sky-button data-dialog="dialog">plain dialog</sky-button>
+      <sky-button data-dialog="actions">dialog with actions</sky-button>
+      <sky-button data-dialog="modal">modal dialog</sky-button>
+      <sky-button data-dialog="dropdown">dialog with dropdown</sky-button>
+      <sky-button data-dialog="nested">dialog with nested dialog</sky-button>
+
+      <sky-dialog id="dialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </sky-dialog>
+
+      <sky-dialog id="actions">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="buttons">
+          <sky-button >More Info...</sky-button>
+          <sky-button dialog-dismiss>Decline</sky-button>
+          <sky-button dialog-confirm autofocus>Accept</sky-button>
+        </div>
+      </sky-dialog>
+
+      <sky-dialog id="modal" modal>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="buttons">
+          <sky-button dialog-confirm autofocus>Tap me to close</sky-button>
+        </div>
+      </sky-dialog>
+
+      <sky-dialog id="dropdown">
+        <h2>Dialog Title</h2>
+        <sky-dropdown-menu label="Value">
+          <sky-menu class="dropdown-content">
+            <sky-item>1</sky-item>
+            <sky-item>2</sky-item>
+            <sky-item>3</sky-item>
+            <sky-item>4</sky-item>
+            <sky-item>5</sky-item>
+            <sky-item>6</sky-item>
+            <sky-item>7</sky-item>
+            <sky-item>8</sky-item>
+            <sky-item>9</sky-item>
+            <sky-item>10</sky-item>
+          </sky-menu>
+        </sky-dropdown-menu>
+      </sky-dialog>
+
+      <sky-dialog id="nested">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="buttons">
+          <sky-button data-dialog="innerDialog">Open nested dialog</sky-button>
+        </div>
+      </sky-dialog>
+
+      <sky-dialog id="innerDialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </sky-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Custom styling</h4>
+      <sky-button data-dialog="colors">colors</sky-button>
+      <sky-button data-dialog="position">size &amp; position</sky-button>
+
+      <sky-dialog id="colors" class="colored">
+        <h2>Custom Colors</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </sky-dialog>
+
+      <sky-dialog id="position" class="size-position">
+        <h2>Custom Size &amp; Position</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </sky-dialog>
+    </section>
+
+    <section onclick="clickHandler(event)">
+      <h4>Transitions</h4>
+      <sky-button data-dialog="animated">transitions</sky-button>
+      <sky-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </sky-dialog>
+    </section>
+
+    <script>
+      function clickHandler(e) {
+        var button = e.target;
+        while (!button.hasAttribute('data-dialog') && button !== document.body) {
+          button = button.parentElement;
+        }
+
+        if (!button.hasAttribute('data-dialog')) {
+          return;
+        }
+
+        var id = button.getAttribute('data-dialog');
+        var dialog = document.getElementById(id);
+        if (dialog) {
+          dialog.open();
+        }
+      }
+    </script>
+  </body>
+</html>

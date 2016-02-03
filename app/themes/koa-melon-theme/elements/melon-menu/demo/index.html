@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>melon-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../melon-item/melon-item.html">
+    <link rel="import" href="../melon-menu.html">
+    <link rel="import" href="../melon-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      melon-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist melon-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 melon-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <melon-menu>
+            <melon-item>Inbox</melon-item>
+            <melon-item>Starred</melon-item>
+            <melon-item>Sent mail</melon-item>
+            <melon-item>Drafts</melon-item>
+          </melon-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <melon-menu selected="0">
+            <melon-item>Inbox</melon-item>
+            <melon-item disabled>Starred</melon-item>
+            <melon-item>Sent mail</melon-item>
+            <melon-item>Drafts</melon-item>
+          </melon-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <melon-menu multi>
+            <melon-item>Bold</melon-item>
+            <melon-item>Italic</melon-item>
+            <melon-item>Underline</melon-item>
+            <melon-item>Strikethrough</melon-item>
+          </melon-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <melon-menu attr-for-item-title="label" multi>
+            <melon-submenu label="melon-menu">
+              <melon-item class="menu-trigger">melon-menu</melon-item>
+              <melon-menu class="menu-content sublist" multi>
+                <melon-submenu label="Properties">
+                  <melon-item class="menu-trigger">Properties</melon-item>
+                  <melon-menu class="menu-content sublist2">
+                    <melon-item>focusedItem</melon-item>
+                    <melon-item>attrForItemTitle</melon-item>
+                  </melon-menu>
+                </melon-submenu>
+                <melon-submenu label="Methods">
+                  <melon-item class="menu-trigger">Methods</melon-item>
+                  <melon-menu class="menu-content sublist2">
+                    <melon-item>select(value)</melon-item>
+                  </melon-menu>
+                </melon-submenu>
+            </melon-menu>
+          </melon-submenu>
+
+          <melon-submenu label="melon-submenu">
+            <melon-item class="menu-trigger">melon-submenu</melon-item>
+            <melon-menu class="menu-content sublist">
+              <melon-submenu label="Properties">
+                <melon-item class="menu-trigger">Properties</melon-item>
+                <melon-menu class="menu-content sublist2">
+                  <melon-item>opened</melon-item>
+                </melon-menu>
+                </melon-submenu>
+                <melon-submenu label="Methods">
+                  <melon-item class="menu-trigger">Methods</melon-item>
+                  <melon-menu class="menu-content sublist2">
+                    <melon-item>open()</melon-item>
+                    <melon-item>close()</melon-item>
+                    <melon-item>toggle()</melon-item>
+                  </melon-menu>
+              </melon-submenu>
+            </melon-menu>
+          </melon-submenu>
+
+            <melon-submenu label="Unavailable" disabled>
+              <melon-item class="menu-trigger">Unavailable</melon-item>
+              <melon-menu class="menu-content sublist">
+                <melon-item>Unavailable 1</melon-item>
+                <melon-item>Unavailable 2</melon-item>
+              </melon-menu>
+            </melon-submenu>
+          </melon-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

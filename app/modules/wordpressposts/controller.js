@@ -15,12 +15,9 @@ function loadFunction($http, $scope, structureService, $location, $sce){
     .success(function(data){
       var elements = [];
       angular.forEach( data, function(item){
-        var featured = "";
-        if(item.featured_image){
-          featured=item.featured_image.source;
-        }else{
-          featured = imgFromHtml(item.content);
-        }
+        var featured = (item.featured_image) ?
+                                        item.featured_image.source :
+                                        imgFromHtml(item.content);
         elements.push({ url :  $scope.wordpressposts.modulescope.singleurl+"?id="+item.ID,
           title    : item.title,
           excerpt  : $sce.trustAsHtml(htmlToPlaintext(item.excerpt)),

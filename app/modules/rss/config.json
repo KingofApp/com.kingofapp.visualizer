@@ -1,0 +1,32 @@
+{
+  "name": "RSS",
+  "identifier": "rss",
+  "description": "El RSS de cualquier página web disponible en la App. Para que nadie se pierda ninguna actualizacón.",
+  "documentation": "# **(How to) Configurar el m\u00F3dulo RSS**\r\n\r\nConseguir que todo el mundo est\u00E9 permanentemente i**nformado y actualizado** es quiz\u00E1 el principal objetivo de un **canal RSS**. Por ello, en **King of App** hemos pensado que estar\u00EDa bien desarrollar un m\u00F3dulo que leyera estos formatos y poderlos incluir en una App.\r\n\r\nLa configuraci\u00F3n de este m\u00F3dulo es especialmente sencilla. Solo ser\u00E1 necesario **introducir la URL del feed** de noticias en el campo habilitado.\r\n\r\nUna magn\u00EDfica forma para que todas las actualizaciones de una **App** aparezcan al instante en tu aplicaci\u00F3n.",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "canContain": false,
+  "view": "modules/rss/index.html",
+  "files": ["modules/rss/controller.js"],
+  "scope": {
+    "feed": "http://elpais.com/rss/elpais/portada.xml"
+  },
+  "config": [{
+    "type": "input",
+    "key": "feed",
+    "templateOptions": {
+      "description": "url del feed",
+      "pattern": "(https?://)([/\\w.()-]*).*",
+      "required": true,
+      "label": "feed"
+    }
+  }],
+  "descriptionShort": "El RSS de cualquier página web disponible en la App."
+}

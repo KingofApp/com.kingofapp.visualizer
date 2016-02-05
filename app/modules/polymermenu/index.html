@@ -1,0 +1,28 @@
+<div class="polymermenu" ng-controller="polymerMenuCtrl">
+  <koa-item ng-hide="true"></koa-item>
+
+  <paper-drawer-panel>
+    <paper-scroll-header-panel drawer fixed>
+      <paper-menu>
+        <template is="dom-repeat" items="{{polymermenu.menu}}">
+          <a class="{{item.class}}" href="{{item.url}}">
+            <paper-item>{{item.text}}</paper-item>
+          </a>
+        </template>
+      </paper-menu>
+    </paper-scroll-header-panel>
+
+    <paper-header-panel main>
+      <koa-toolbar class="paper-header">
+        <koa-icon-button icon="menu" paper-drawer-toggle></koa-icon-button>
+        <div>{{toolbar.title}}</div>
+      </koa-toolbar>
+
+      <div id="content">
+        <!-- moduleIdentifier + Template - Needs embracing div -->
+        <div ng-include="polymermenuTemplate" class="template"></div>
+      </div>
+    </paper-header-panel>
+  </paper-drawer-panel>
+
+</div>

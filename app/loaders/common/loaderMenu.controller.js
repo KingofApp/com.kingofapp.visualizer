@@ -1,3 +1,4 @@
+// Used by angular type menus
 (function(){
   'use strict';
   angular

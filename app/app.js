@@ -7,7 +7,6 @@ angular.module('myApp', [
   'oc.lazyLoad',
   'pascalprecht.translate',
   'king.loaders.common',
-  'king.loaders.jquery',
   'king.loaders.angular',
   'king.core.structureService',
   'king.core.structureHooksService'

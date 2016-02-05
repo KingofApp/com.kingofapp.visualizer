@@ -1,3 +1,4 @@
+// Required for wordpress modules
 (function(){
   angular
     .module('king.loaders.common')

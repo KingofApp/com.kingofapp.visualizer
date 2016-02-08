@@ -5,12 +5,12 @@ The king of app visualizer is a project made using both, [AngularJS](http://angu
 
 ## Developers and Designers
 
-Visit our documentation links for more information on building modules and themes for king of app.
+Visit our documentation links for more information on building modules and themes for king of app:
 
 
-[Modules]: https://github.com/KingofApp/docs/tree/master/modules
+[Modules](https://github.com/KingofApp/docs/tree/master/modules)
 
-[Themes]: https://github.com/KingofApp/docs/tree/master/themes
+[Themes](https://github.com/KingofApp/docs/tree/master/themes)
 
 
 ## Contact

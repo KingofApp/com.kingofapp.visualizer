@@ -33,7 +33,7 @@
         // regex to check url.
         var isUrl = new RegExp("(https?://)([/\\w.()-]*).*");
         // regex to check icon.
-        var isIcon = new RegExp("^([\\w\\d:-])*$/gmi");
+        var isIcon = new RegExp("^([/\\w/\\d-:])*$");
 
         if (isUrl.test(icon))
           this.$.ironIcon.setAttribute("src", icon); // Create attribute for icon from url

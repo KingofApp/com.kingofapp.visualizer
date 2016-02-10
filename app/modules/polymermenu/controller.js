@@ -24,6 +24,7 @@ function loadFunction($q, $scope, structureService, $location) {
           var slug = value.name.replace(trExp, '-');
           menu.push({
             text: value.name,
+            icon: getIcon(value.icon),
             url: '#' + key,
             class: slug
           });
@@ -31,6 +32,12 @@ function loadFunction($q, $scope, structureService, $location) {
       });
     });
     return menu;
+  }
+  function getIcon(icon) {
+    if($scope.polymermenu.modulescope.showicons){
+      return icon;
+    }
+    return "";
   }
 
   function setMenu(menu) {

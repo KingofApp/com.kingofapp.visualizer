@@ -4,6 +4,7 @@
   "description": "Menú basado en los parámetros de Google. Perfecto para aplicaciones Android aunque compatible también para iOs y Windows Phone. Cargalo en tu App y nútrelo de contenidos.",
   "documentation": "",
   "type": "A",
+  "icon": "menu",
   "showOn": {
     "menu": false,
     "market": true,
@@ -46,7 +47,16 @@
   "view": "modules/polymermenu/index.html",
   "files": ["modules/polymermenu/controller.js", "modules/polymermenu/style.css"],
   "scope": {
-    "path": "/menu"
+    "path": "/menu",
+    "showicons": false
   },
+  "config": [{
+    "type": "checkbox",
+    "key": "showicons",
+    "templateOptions": {
+      "description": "Show menu icons",
+      "label": "Menu icons"
+    }
+  }],
   "descriptionShort" : "Menú basado en los parámetros de Google. ¡Llénalo de contenido!"
 }

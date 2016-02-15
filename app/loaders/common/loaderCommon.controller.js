@@ -159,10 +159,10 @@
 
     $scope.$on('koaAppRendered', function(event, args) {
       console.info('[V] koa-app rendered!');
+
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
       });
-
     });
 
     // TODO: INSPECT loadconfig
@@ -180,6 +180,7 @@
       }
 
       $rootScope.current = module.identifier;
+
       $scope.module = module || $scope.module;
 
       if (!module.type) {
@@ -280,9 +281,8 @@
       setTimeout(function() {
         koaApp.createTree();
 
-        (koaApp.theme)       ? renderElements() :
-        ($rootScope.appData) ? setTheme($rootScope.appData.config)
-                             : setTheme(structureService.getConfig());
+        (koaApp.theme) ? renderElements():
+          ($rootScope.appData) ? setTheme($rootScope.appData.config) : setTheme(structureService.getConfig());
       }, 100);
     }
   }

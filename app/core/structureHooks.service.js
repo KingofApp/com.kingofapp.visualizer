@@ -9,10 +9,10 @@ structureHooksService.$inject = [];
 function structureHooksService() {
   var injectableData = {
     config: {
-      index: ""
+      index: ''
     },
-    modules : {
-      "/404": error404()
+    modules: {
+      '/404': error404()
     }
   };
 
@@ -34,31 +34,31 @@ function structureHooksService() {
 
   function addModule(module) {
     angular.forEach(module, function(value, key) {
-      injectableData.modules[key]=value;
+      injectableData.modules[key] = value;
     });
   }
 
-  function removeModule() {
-    // TODO
-  }
+  // TODO: Create removeModule() function
 
   function setIndex(newIndex) {
     injectableData.config.index = newIndex;
   }
 
-  function error404(){
+  function error404() {
     return {
       name: '404 Not found',
       identifier: 'static_404',
-      type : 'A',
-      showOn : {
-        menu : false,
-        market : false,
-        dragDrop : false
+      type: 'A',
+      showOn: {
+        menu: false,
+        market: false,
+        dragDrop: false
       },
-      view :   "modules/static_404/index.html",
-      files: [ "modules/static_404/controller.js" ],
-      scope: { "config" : "x" }
+      view: 'modules/static_404/index.html',
+      files: ['modules/static_404/controller.js'],
+      scope: {
+        'config': 'x'
+      }
     };
   }
-};
+}

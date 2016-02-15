@@ -38,7 +38,7 @@ module.exports = function(grunt) {
       cors: {
         options: {
           configFile: 'e2e-tests/protractor.corsconf.js', // Default config file
-          keepAlive: false, // If false, the grunt process stops when the test fails.
+          keepAlive: false // If false, the grunt process stops when the test fails.
         }
       }
     },
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
           wait: false
         },
         args: []
-        // args: ['app/mockApi/apiserver.js']
+          // args: ['app/mockApi/apiserver.js']
       }
     },
     connect: {
@@ -98,27 +98,27 @@ module.exports = function(grunt) {
       }
     },
 
-    clean: ["dist", ".tmp"],
+    clean: ['dist', '.tmp'],
 
     copy: {
-        main: {
-            expand: true,
-            cwd: 'app/',
-            src: ['**', '!**/*.js', '!**/*.css', 'modules/**', 'services/**', 'bower_components/**', 'themes/**'],
-            dest: 'dist/'
-        }
+      main: {
+        expand: true,
+        cwd: 'app/',
+        src: ['**', '!**/*.js', '!**/*.css', 'modules/**', 'services/**', 'bower_components/**', 'themes/**'],
+        dest: 'dist/'
+      }
     },
 
     rev: {
-        files: {
-            src: ['dist/**/*.{js,css}', '!dist/js/shims/**', '!dist/modules/**', '!dist/services/**', '!dist/bower_components/**', '!dist/themes/**']
-        }
+      files: {
+        src: ['dist/**/*.{js,css}', '!dist/js/shims/**', '!dist/modules/**', '!dist/services/**', '!dist/bower_components/**', '!dist/themes/**']
+      }
     },
 
     uglify: {
       options: {
         report: 'min',
-         mangle: false
+        mangle: false
       }
     },
 
@@ -131,10 +131,10 @@ module.exports = function(grunt) {
     },
 
     css_import: {
-        files: {
-          'app/css/delete_imports.css': ['app/css/delete.css'],
-        },
-    },
+      files: {
+        'app/css/delete_imports.css': ['app/css/delete.css']
+      }
+    }
 
   });
 
@@ -149,14 +149,14 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', ['karma:continuous:start', 'run:mock_server', 'connect:livereload', 'watch:karma']);
   //grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
-  grunt.registerTask('local-test', ['connect:test',  'protractor:continuous', 'watch:protractor']);
+  grunt.registerTask('local-test', ['connect:test', 'protractor:continuous', 'watch:protractor']);
 
   grunt.registerTask('test', ['karma:unit:start', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
 
   grunt.registerTask('unit-test', ['karma:unit:start']);
-  grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
+  grunt.registerTask('e2e-test', ['exec:web_driver_update', 'connect:connect', 'protractor:e2e']);
   // grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
-  grunt.registerTask('continuous-test', ['exec:web_driver_update' ,'connect:connect', 'protractor:continuous']);
+  grunt.registerTask('continuous-test', ['exec:web_driver_update', 'connect:connect', 'protractor:continuous']);
 
   grunt.registerTask('start', ['exec:server'])
   grunt.registerTask('dist', ['clean', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);

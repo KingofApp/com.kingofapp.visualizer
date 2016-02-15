@@ -10,7 +10,7 @@
       }
     </style>
 
-    <iron-icon id='ironIcon'></iron-icon>
+    <iron-icon id="ironIcon"></iron-icon>
   </template>
 
   <script>
@@ -18,28 +18,20 @@
       is: 'koa-icon',
 
       properties: {
-        /**
-         * The name of the icon to use. The name should be of the form:
-         * `iconset_name:icon_name`. or URL of an individual icon image file.
-         * The updateIcon function will decide which attribute to populate.
-         */
         icon: {
           type: String,
-          observer: "updateIcon"
+          observer: 'updateIcon'
         }
       },
 
       updateIcon: function(icon) {
-        // regex to check url.
-        var isUrl = new RegExp("(https?://)([/\\w.()-]*).*");
-        // regex to check icon.
-        var isIcon = new RegExp("^([/\\w/\\d-:])*$");
+        var isUrl = new RegExp('(https?://)([/\\w.()-]*).*'); // regex to check url.
+        var isIcon = new RegExp('^([/\\w/\\d-:])*$'); // regex to check icon.
 
         if (isUrl.test(icon))
-          this.$.ironIcon.setAttribute("src", icon); // Create attribute for icon from url
+          this.$.ironIcon.setAttribute('src', icon); // Create attribute for icon from url
         else if (isIcon.test(icon))
-          this.$.ironIcon.setAttribute("icon", icon); // Create attribute for regular icon
-
+          this.$.ironIcon.setAttribute('icon', icon); // Create attribute for regular icon
       }
     });
   </script>

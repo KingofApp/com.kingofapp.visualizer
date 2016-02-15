@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   angular
@@ -8,20 +8,42 @@
 
   function registerProviders($controllerProvider, $provide, $compileProvider, $filterProvider) {
     [
-      {name: 'controller', provider: $controllerProvider, method: 'register'  },
-      {name: 'service',    provider: $provide,            method: 'service'   },
-      {name: 'factory',    provider: $provide,            method: 'factory'   },
-      {name: 'value',      provider: $provide,            method: 'value'     },
-      {name: 'directive',  provider: $compileProvider,    method: 'directive' },
-      {name: 'filter',     provider: $filterProvider,     method: 'register'  }
-    ].forEach(function(row){
-      angular['_'+row.name] = angular[row.name];         // Let's keep the older references.
-      angular[row.name] = function(name, constructor){   // Provider-based controller,service,factory,value,directive, ?filter
+      {
+        name: 'controller',
+        provider: $controllerProvider,
+        method: 'register'
+      },
+      {
+        name: 'service',
+        provider: $provide,
+        method: 'service'
+      },
+      {
+        name: 'factory',
+        provider: $provide,
+        method: 'factory'
+      },
+      {
+        name: 'value',
+        provider: $provide,
+        method: 'value'
+      },
+      {
+        name: 'directive',
+        provider: $compileProvider,
+        method: 'directive'
+      },
+      {
+        name: 'filter',
+        provider: $filterProvider,
+        method: 'register'
+      }
+    ].forEach(function(row) {
+      angular['_' + row.name] = angular[row.name]; // Let's keep the older references.
+      angular[row.name] = function(name, constructor) { // Provider-based controller,service,factory,value,directive, ?filter
         row.provider[row.method](name, constructor);
-        return(this);
+        return (this);
       }
     });
-
   }
-
 }());

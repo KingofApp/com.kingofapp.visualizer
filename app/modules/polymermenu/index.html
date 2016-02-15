@@ -1,4 +1,5 @@
 <div class="polymermenu" ng-controller="polymerMenuCtrl">
+
   <koa-item ng-hide="true"></koa-item>
 
   <paper-drawer-panel>
@@ -6,7 +7,7 @@
       <paper-menu>
         <template is="dom-repeat" items="{{polymermenu.menu}}">
           <a class="{{item.class}}" href="{{item.url}}">
-            <paper-item><koa-icon icon='{{item.icon}}'></koa-icon>{{item.text}}</paper-item>
+            <paper-item><koa-icon icon='{{item.icon}}'></koa-icon> {{item.text}}</paper-item>
           </a>
         </template>
       </paper-menu>

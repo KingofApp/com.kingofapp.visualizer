@@ -282,6 +282,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
         if (modules[key].identifier === item) {
           $scope[item] = {
             custom: modules[key].name,
+            icon: modules[key].icon,
             modulescope: modules[key].scope
           };
           $translatePartialLoader.addPart(item);

@@ -43,7 +43,7 @@
           var cachedLocations = structureService.getCachedLocations();
 
           structureService.getCurrentModules($location, function loadmodules(modules) {
-            if (visitedLocations[cachedLocations[$location.$$path].identifier] && !finished) {
+            if (cachedLocations[$location.$$path] && visitedLocations[cachedLocations[$location.$$path].identifier] && !finished) {
               loadCachedModule();
             } else if (count === 0 && prev > 0 && !finished) {
               loadFirstTimeModule(modules);

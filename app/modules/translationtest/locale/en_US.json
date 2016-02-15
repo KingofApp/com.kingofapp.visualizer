@@ -1,6 +1,0 @@
-{
-  "translationtest.text1": "First text",
-  "translationtest.text2": "Second text",
-  "translationtest.text3": "Third text",
-  "translationtest.text4": "My name is: {{variable}}"
-}

@@ -46,8 +46,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/ads/index.html",
-      "files": ["modules/ads/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/ads/index.html",
+      "files": ["http://resources.kingofapp.com/modules/ads/controller.js"],
       "scope": {
         "mainsrc": "<h1>Ads Everywhere!</h1>",
         "fixedsrc": "<h3>fixed</h3>"
@@ -100,8 +100,8 @@
           "src": "http://resources.kingofapp.com/bower_components/paper-item/paper-item.html"
         }
       ],
-      "view": "modules/polymermenu/index.html",
-      "files": ["modules/polymermenu/controller.js", "modules/polymermenu/style.css"],
+      "view": "http://resources.kingofapp.com/modules/polymermenu/index.html",
+      "files": ["http://resources.kingofapp.com/modules/polymermenu/controller.js", "http://resources.kingofapp.com/modules/polymermenu/style.css"],
       "scope": {
         "path": "/menu"
       }
@@ -115,8 +115,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/facebookfeed/index.html",
-      "files": ["modules/facebookfeed/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/facebookfeed/index.html",
+      "files": ["http://resources.kingofapp.com/modules/facebookfeed/controller.js"],
       "scope": {
         "accesstoken": "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
         "pageid": "laneveraroja"
@@ -169,8 +169,8 @@
           "src": "http://resources.kingofapp.com/bower_components/paper-item/paper-item.html"
         }
       ],
-      "view": "modules/polymermenu/index.html",
-      "files": ["modules/polymermenu/controller.js", "modules/polymermenu/style.css"],
+      "view": "http://resources.kingofapp.com/modules/polymermenu/index.html",
+      "files": ["http://resources.kingofapp.com/modules/polymermenu/controller.js", "http://resources.kingofapp.com/modules/polymermenu/style.css"],
       "scope": {
         "path": "/menu"
       }
@@ -179,8 +179,8 @@
       "name": "abdonrd",
       "identifier": "abdonrd",
       "type": "A",
-      "view": "modules/abdonrd/index.html",
-      "files": ["modules/abdonrd/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/abdonrd/index.html",
+      "files": ["http://resources.kingofapp.com/modules/abdonrd/controller.js"],
       "scope": {
         "value": "Text phrase",
         "images": [
@@ -198,8 +198,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/rss/index.html",
-      "files": ["modules/rss/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/rss/index.html",
+      "files": ["http://resources.kingofapp.com/modules/rss/controller.js"],
       "scope": {
         "feed": "http://elpais.com/rss/elpais/portada.xml"
       }
@@ -213,8 +213,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/pdfviewer/index.html",
-      "files": ["modules/pdfviewer/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/pdfviewer/index.html",
+      "files": ["http://resources.kingofapp.com/modules/pdfviewer/controller.js"],
       "scope": {
         "value": "http://kingofapp.es/wp-content/uploads/2015/11/wwwhatsnew.pdf",
         "debug": true
@@ -229,8 +229,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/facebookfeed/index.html",
-      "files": ["modules/facebookfeed/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/facebookfeed/index.html",
+      "files": ["http://resources.kingofapp.com/modules/facebookfeed/controller.js"],
       "scope": {
         "accesstoken": "583995668377553|9CrhjgiahQTZQ-l4E40edyNgh0k",
         "pageid": "laneveraroja"
@@ -240,8 +240,8 @@
       "name": "Twitter Feed",
       "identifier": "twitterfeed",
       "type": "A",
-      "view": "modules/twitterfeed/index.html",
-      "files": ["modules/twitterfeed/controller.js", "modules/twitterfeed/directive.js"],
+      "view": "http://resources.kingofapp.com/modules/twitterfeed/index.html",
+      "files": ["http://resources.kingofapp.com/modules/twitterfeed/controller.js", "http://resources.kingofapp.com/modules/twitterfeed/directive.js"],
       "scope": {
         "widgetid": "628892310084939776",
         "limite": "2"
@@ -251,8 +251,8 @@
       "name": "Flickr Feed",
       "identifier": "flickrfeed",
       "type": "A",
-      "view": "modules/flickrfeed/index.html",
-      "files": ["modules/flickrfeed/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/flickrfeed/index.html",
+      "files": ["http://resources.kingofapp.com/modules/flickrfeed/controller.js"],
       "scope": {
         "accesstoken": "1d2b22596adb2b99645c52ba2f5d1542",
         "photosetid": "72157649175711353",
@@ -263,8 +263,8 @@
       "name": "Instagram Feed",
       "identifier": "instagramfeed",
       "type": "A",
-      "view": "modules/instagramfeed/index.html",
-      "files": ["modules/instagramfeed/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/instagramfeed/index.html",
+      "files": ["http://resources.kingofapp.com/modules/instagramfeed/controller.js"],
       "scope": {
         "accesstoken": "45358531.5b9e1e6.bd8539f0a0894bf9aeec75af70d7d51b",
         "userid": "50417061"
@@ -274,8 +274,8 @@
       "name": "Youtube Gallery",
       "identifier": "youtubegallery",
       "type": "A",
-      "view": "modules/youtubegallery/index.html",
-      "files": ["modules/youtubegallery/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/youtubegallery/index.html",
+      "files": ["http://resources.kingofapp.com/modules/youtubegallery/controller.js"],
       "scope": {
         "channelid": "UCeIt2DJO8UdtUTmJzTfSXiQ",
         "token": "AIzaSyBQ3w6f5mFXyOK5sWC2oXzYcjLbN8IHRjg",
@@ -291,8 +291,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/youtubevideo/index.html",
-      "files": ["modules/youtubevideo/controller.js", "modules/youtubevideo/directive.js"],
+      "view": "http://resources.kingofapp.com/modules/youtubevideo/index.html",
+      "files": ["http://resources.kingofapp.com/modules/youtubevideo/controller.js", "http://resources.kingofapp.com/modules/youtubevideo/directive.js"],
       "scope": {
         "videoid": "oHg5SJYRHA0"
       }
@@ -301,8 +301,8 @@
       "name": "Contact",
       "identifier": "contact",
       "type": "A",
-      "view": "modules/contact/index.html",
-      "files": ["modules/contact/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/contact/index.html",
+      "files": ["http://resources.kingofapp.com/modules/contact/controller.js"],
       "scope": {
         "send_address": "theguard@kingofapp.es",
         "mandrill_key": "dFOWcqJzBMB69YQGq3GPSQ",
@@ -318,8 +318,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/googlemap/index.html",
-      "files": ["modules/googlemap/controller.js", "modules/googlemap/directive.js", "modules/googlemap/style.css"],
+      "view": "http://resources.kingofapp.com/modules/googlemap/index.html",
+      "files": ["http://resources.kingofapp.com/modules/googlemap/controller.js", "http://resources.kingofapp.com/modules/googlemap/directive.js", "http://resources.kingofapp.com/modules/googlemap/style.css"],
       "scope": {
         "lat": "39.8847281",
         "lon": "4.2540999",
@@ -341,8 +341,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/html/index.html",
-      "files": ["modules/html/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/html/index.html",
+      "files": ["http://resources.kingofapp.com/modules/html/controller.js"],
       "scope": {
         "value": "<p style='color:#39a9d3' lang='es-ES'> Ut tortor mauris, ultrices quis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus, leo ut auctor ultrices, erat arcu tincidunt sapien, Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eget ipsum euismod, posuere odio</p><p style='color:#d36339' lang='es-ES'>Other color text</p>"
       }
@@ -351,8 +351,8 @@
       "name": "Wordpress Feed",
       "identifier": "wordpressposts",
       "type": "A",
-      "view": "modules/wordpressposts/index.html",
-      "files": ["modules/wordpressposts/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/wordpressposts/index.html",
+      "files": ["http://resources.kingofapp.com/modules/wordpressposts/controller.js"],
       "scope": {
         "domain": "http://rachelbaker.me",
         "postnumber": 3,
@@ -369,8 +369,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/wordpresssingle/index.html",
-      "files": ["modules/wordpresssingle/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/wordpresssingle/index.html",
+      "files": ["http://resources.kingofapp.com/modules/wordpresssingle/controller.js"],
       "scope": {
         "domain": "http://rachelbaker.me",
         "type": "pages",
@@ -386,8 +386,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/vimeovideo/index.html",
-      "files": ["modules/vimeovideo/controller.js", "modules/vimeovideo/directive.js"],
+      "view": "http://resources.kingofapp.com/modules/vimeovideo/index.html",
+      "files": ["http://resources.kingofapp.com/modules/vimeovideo/controller.js", "http://resources.kingofapp.com/modules/vimeovideo/directive.js"],
       "scope": {
         "videoid": "136882652"
       }
@@ -396,8 +396,8 @@
       "name": "Sound Cloud",
       "identifier": "soundcloud",
       "type": "A",
-      "view": "modules/soundcloud/index.html",
-      "files": ["modules/soundcloud/controller.js", "modules/soundcloud/directive.js", "modules/soundcloud/style.css"],
+      "view": "http://resources.kingofapp.com/modules/soundcloud/index.html",
+      "files": ["http://resources.kingofapp.com/modules/soundcloud/controller.js", "http://resources.kingofapp.com/modules/soundcloud/directive.js", "http://resources.kingofapp.com/modules/soundcloud/style.css"],
       "scope": {
         "client_id": "b23455855ab96a4556cbd0a98397ae8c",
         "track": "65576692"
@@ -412,8 +412,8 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/firebase/index.html",
-      "files": ["modules/firebase/controller.js", "modules/firebase/factory.js"],
+      "view": "http://resources.kingofapp.com/modules/firebase/index.html",
+      "files": ["http://resources.kingofapp.com/modules/firebase/controller.js", "http://resources.kingofapp.com/modules/firebase/factory.js"],
       "scope": {
         "src": "https://blinding-heat-1559.firebaseio.com/datatest",
         "debug": true
@@ -437,8 +437,8 @@
       "name": "List Module",
       "identifier": "list",
       "type": "A",
-      "view": "modules/list/index.html",
-      "files": ["modules/list/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/list/index.html",
+      "files": ["http://resources.kingofapp.com/modules/list/controller.js"],
       "scope": {
         "src": "x"
       }
@@ -447,11 +447,11 @@
       "name": "Simple Gallery",
       "identifier": "simplegallery",
       "type": "A",
-      "view": "modules/simplegallery/index.html",
+      "view": "http://resources.kingofapp.com/modules/simplegallery/index.html",
       "files": [
-        "modules/simplegallery/controller.js",
-        "modules/simplegallery/swiper/js/swiper.min.js",
-        "modules/simplegallery/swiper/css/swiper.min.css"
+        "http://resources.kingofapp.com/modules/simplegallery/controller.js",
+        "http://resources.kingofapp.com/modules/simplegallery/swiper/js/swiper.min.js",
+        "http://resources.kingofapp.com/modules/simplegallery/swiper/css/swiper.min.css"
       ],
       "scope": {
         "gallery": [
@@ -465,8 +465,8 @@
       "name": "Group List",
       "identifier": "grouplist",
       "type": "A",
-      "view": "modules/grouplist/index.html",
-      "files": ["modules/grouplist/controller.js"],
+      "view": "http://resources.kingofapp.com/modules/grouplist/index.html",
+      "files": ["http://resources.kingofapp.com/modules/grouplist/controller.js"],
       "libs": [
         {
           "bower": {
@@ -478,7 +478,7 @@
           "bower": {
             "": ""
           },
-          "src": "modules/grouplist/styles.html"
+          "src": "http://resources.kingofapp.com/modules/grouplist/styles.html"
         }
       ],
       "scope": {
@@ -494,12 +494,12 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/angularmenu/index.html",
-      "files": ["modules/angularmenu/controller.js", "modules/angularmenu/directive.js"],
+      "view": "http://resources.kingofapp.com/modules/angularmenu/index.html",
+      "files": ["http://resources.kingofapp.com/modules/angularmenu/controller.js", "http://resources.kingofapp.com/modules/angularmenu/directive.js"],
       "libs": [
         {
           "bower": "",
-          "src": "modules/angularmenu/styles.html"
+          "src": "http://resources.kingofapp.com/modules/angularmenu/styles.html"
         }
       ],
       "scope": {

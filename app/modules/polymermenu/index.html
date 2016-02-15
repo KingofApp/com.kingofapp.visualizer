@@ -6,7 +6,7 @@
       <paper-menu>
         <template is="dom-repeat" items="{{polymermenu.menu}}">
           <a class="{{item.class}}" href="{{item.url}}">
-            <paper-item>{{item.text}}</paper-item>
+            <paper-item><koa-icon icon='{{item.icon}}'></koa-icon>{{item.text}}</paper-item>
           </a>
         </template>
       </paper-menu>
@@ -14,7 +14,7 @@
 
     <paper-header-panel main>
       <koa-toolbar class="paper-header">
-        <koa-icon-button icon="menu" paper-drawer-toggle></koa-icon-button>
+        <koa-icon-button icon="{{polymermenu.icon}}" paper-drawer-toggle></koa-icon-button>
         <div>{{toolbar.title}}</div>
       </koa-toolbar>
 

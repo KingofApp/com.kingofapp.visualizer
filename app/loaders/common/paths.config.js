@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('king.loaders.common')
+    .module('king.loaders.common', ['ngRoute'])
     .config(setDefaultPaths);
   setDefaultPaths.$inject = ['$routeProvider', '$sceProvider', '$analyticsProvider'];
 

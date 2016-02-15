@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "angular/timeout-service": 0,
+    "angular/document-service": 0
+  }
+}

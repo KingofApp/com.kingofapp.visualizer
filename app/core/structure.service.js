@@ -113,7 +113,12 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
     setCustomStyle('--accent-color', colors.accentColor);
     setCustomStyle('--light-accent-color', colors.lightAccentColor);
     setCustomStyle('--dark-accent-color', colors.darkAccentColor);
+    setCustomStyle('--error-color', colors.errorColor);
     setCustomStyle('--background-color', colors.backgroundColor);
+
+    if (colors.toolbarColor) {
+      setCustomStyle('--toolbar-color', colors.toolbarColor);
+    }
 
     Polymer.updateStyles();
   }

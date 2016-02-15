@@ -28,11 +28,16 @@
     "grunt-run": "^0.3.0",
     "grunt-usemin": "^3.1.1",
     "gulp": "^3.8.11",
-    "gulp-eslint": "^1.1.1"
+    "gulp-eslint": "^1.1.1",
+    "pre-commit": "^1.1.2"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "gulp serve"
+    "start": "gulp serve",
+    "lint": "gulp lint"
   }
 }

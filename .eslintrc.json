@@ -1,0 +1,24 @@
+{
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-console": 0,
+    "quotes": [2, "single"]
+  },
+  "env": {
+    "browser": true,
+    "jasmine": true,
+    "mocha": true,
+    "protractor": true
+  },
+  "plugins": [
+    "angular",
+    "html"
+  ],
+  "globals": {
+    "angular": true,
+    "module": true,
+    "Polymer": true,
+    "require": true,
+    "WebFont": true
+  }
+}

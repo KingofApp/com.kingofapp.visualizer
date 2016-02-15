@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   angular
@@ -12,10 +12,9 @@
     //Default Route
     $routeProvider
       .otherwise({
-        templateUrl   : 'loaders/common/loaderCommon.view.html',
-        controller : 'commonLoaderCtrl',
-        action     : "section-view2"
+        templateUrl: 'loaders/common/loaderCommon.view.html',
+        controller: 'commonLoaderCtrl',
+        action: 'section-view2'
       });
   }
-
 }());

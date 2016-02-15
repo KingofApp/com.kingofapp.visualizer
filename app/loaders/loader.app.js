@@ -16,6 +16,7 @@ angular.element(document).ready(function() {
     console.log('[V] Default loading from samplemodules');
     angular.module('myApp').constant('redirectUrl', '');
     angular.bootstrap(document, ['myApp']);
+
     console.log('[V] Bootstraped ng-app');
     window.parent.postMessage('bootstrapped-app', '*');
   });

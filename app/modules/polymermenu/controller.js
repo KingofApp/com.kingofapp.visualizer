@@ -18,7 +18,7 @@ function loadFunction($q, $scope, structureService, $location) {
   function getMenu() {
     var menu = new Array(0);
     var trExp = /[\/\s]+/gi;
-    angular.forEach(structureService.getChildren("/"), function(value, key) {
+    angular.forEach(structureService.getChildren('/'), function(value, key) {
       structureService.getModule(key).then(function(module) {
         if (module.showOn && module.showOn.menu) {
           var slug = value.name.replace(trExp, '-');
@@ -33,11 +33,12 @@ function loadFunction($q, $scope, structureService, $location) {
     });
     return menu;
   }
+
   function getIcon(icon) {
-    if($scope.polymermenu.modulescope.showicons){
+    if ($scope.polymermenu.modulescope.showicons) {
       return icon;
     }
-    return "";
+    return '';
   }
 
   function setMenu(menu) {

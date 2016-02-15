@@ -66,7 +66,7 @@
         var themeIsNotImported = this.importedThemes.indexOf(this.theme) === -1;
 
         if (themeIsNotImported) {
-          this.importHref(this._getThemePath(), function(e) {
+          this.importHref(this._getThemePath(), function() {
             this.renderThemeElements(callback);
             this.importedThemes.push(this.theme);
           });
@@ -89,7 +89,7 @@
         var iconsetIsNotImported = this.importedIconsets.indexOf(iconset.name) === -1;
 
         if (iconsetIsNotImported) {
-          this.importHref(iconset.url, function(e) {
+          this.importHref(iconset.url, function() {
             this.updateIcons(iconset.name);
             this.importedIconsets.push(iconset.name);
           });
@@ -146,8 +146,8 @@
           Polymer.dom(newElement).setAttribute(attribute.nodeName, attribute.nodeValue);
         }
 
-        for (var i = 0; i < childNodes.length; i++) {
-          var clonedChildNode = Polymer.dom(childNodes[i]).cloneNode(true);
+        for (var j = 0; j < childNodes.length; j++) {
+          var clonedChildNode = Polymer.dom(childNodes[j]).cloneNode(true);
 
           // Remove the Polymer classes, because they will added next line
           var classList = clonedChildNode.classList;

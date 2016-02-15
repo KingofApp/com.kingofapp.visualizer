@@ -22,10 +22,10 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   } else {
     data = {
       'config': {
-        'index':'/',
-        'lang' : ['EN']
+        'index': '/',
+        'lang': ['EN']
       }
-    } ;
+    };
     $rootScope.transitionOn = true;
   }
 
@@ -185,9 +185,11 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   function getVisitedLocations() {
     return visitedLocations;
   }
+
   function getCachedLocations() {
     return cachedLocations;
   }
+
   function getCachedLibs() {
     return cachedLibs;
   }
@@ -195,6 +197,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   function setVisitedLocations(locations) {
     visitedLocations = locations;
   }
+
   function setCachedLibs(libs) {
     cachedLibs = libs;
   }
@@ -314,7 +317,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   function findRoute(path, structure, callback) {
     // console.log('Path', path);
     // console.log('Structure', structure);
-    if ( structure && structure[path]) {
+    if (structure && structure[path]) {
       callback(structure[path]);
     } else {
       callback(new Error('No module found in path ' + path));

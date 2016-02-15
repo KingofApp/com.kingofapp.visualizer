@@ -3,7 +3,7 @@
     "lang": ["en_US"],
     "index": "/menu",
     "loader": "",
-    "theme": "koa-theme-paper",
+    "theme": "koa-theme-android",
     "colors": {
       "primaryTextColor": "#212121",
       "primaryBackgroundColor": "#ffffff",

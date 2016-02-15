@@ -1,5 +1,5 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="http://resources.kingofapp.com/bower_components/polymer/polymer.html">
+<link rel="import" href="http://resources.kingofapp.com/bower_components/iron-flex-layout/iron-flex-layout.html">
 
 <dom-module id="koa-app">
   <template>
@@ -44,7 +44,7 @@
         }
       },
 
-      themesPath: 'themes',
+      themesPath: 'http://resources.kingofapp.com/themes/',
 
       importedThemes: [],
 
@@ -138,7 +138,7 @@
       },
 
       _createThemeElement: function (tag, attributes, childNodes) {
-        var newElementName = this.theme.replace('koa-', '').replace('-theme', '') + '-' + tag;
+        var newElementName = this.theme.replace('koa-theme-', '') + '-' + tag;
         var newElement = document.createElement(newElementName);
 
         for (var i = 0; i < attributes.length; i++) {
@@ -172,7 +172,7 @@
       },
 
       _getThemePath: function () {
-        return this.themesPath + '/' + this.theme + '/dist/' + this.theme + '.html';
+        return this.themesPath + this.theme + '/' + this.theme + '.html';
       }
     });
   </script>

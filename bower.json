@@ -1,7 +1,6 @@
 {
   "name": "com.kingofapp.visualizer",
   "description": "King of App visualizer.",
-  "version": "0.6.3",
   "homepage": "https://github.com/KingofApp/com.kingofapp.visualizer",
   "license": "MIT",
   "private": true,
@@ -25,8 +24,8 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
   "resolutions": {
-    "angular": "1.4.x",
     "angular-translate": "~2.8.1",
+    "angular": "1.4.x",
     "angulartics": "~1.0.2"
   }
 }

@@ -48,8 +48,8 @@
             } else if (count === 0 && prev > 0 && !finished) {
               loadFirstTimeModule(modules);
             }
-
-            if (count === 0 && prev > 0 && throughcached) {
+            //Render external calls generating new elements
+            if (count === 0 && prev > 0) {
               renderKoaApp();
             }
 
@@ -60,9 +60,6 @@
         function loadFirstTimeModule(modules) {
           finished = true;
           console.log('[V] First time module load', $location.$$path);
-
-          renderKoaApp();
-
           angular.forEach(modules, function(value, key) {
             visitedLocations[value.identifier] = true;
           });

@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild-->
 
-    <script src="http://resources.kingofapp.com/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
     <script src="cordova.js"></script>
+
+    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <!-- endbuild -->
 
     <link rel="import" href="elements/koa-app.html">
     <link rel="import" href="elements/koa-icon.html">
@@ -30,7 +33,7 @@
       </koa-app>
     </div>
 
-    <!-- build:js js/koa.visualizer.min.js -->
+    <!-- build:js scripts/koa.visualizer.min.js -->
     <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>

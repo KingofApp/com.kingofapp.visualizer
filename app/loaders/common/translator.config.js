@@ -14,7 +14,7 @@
 
   function setTranslatorConfig($translateProvider) {
     $translateProvider.useLoader('$translatePartialLoader', {
-      urlTemplate: 'https://s3-eu-west-1.amazonaws.com/resources.kingofapp.com/modules/{part}/locale/{lang}.json'
+      urlTemplate: 'http://resources.kingofapp.com/modules/{part}/locale/{lang}.json'
     });
 
     $translateProvider.preferredLanguage('en_US');

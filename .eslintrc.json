@@ -15,10 +15,10 @@
     "html"
   ],
   "globals": {
-    "angular": true,
-    "module": true,
-    "Polymer": true,
-    "require": true,
-    "WebFont": true
+    "angular": false,
+    "module": false,
+    "Polymer": false,
+    "require": false,
+    "WebFont": false
   }
 }

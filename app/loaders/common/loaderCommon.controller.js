@@ -259,8 +259,11 @@
       $('[ng-click]').click(ngClickWrapper); // Adding ng-click...
       $('[ng-model]').each(ngModelWrapper); // Adding ng-model...
 
-      function ngClickWrapper() {
-        eval(scope[$(this).attr('ng-click')]);
+      function ngClickWrapper(e) {
+        var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
+        scope[functionName]();
+        $scope.$digest();
+        e.stopPropagation();
       }
 
       function ngModelWrapper() {

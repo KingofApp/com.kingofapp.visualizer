@@ -1,10 +1,17 @@
-angular
-  .controller('static_404Ctrl', loadFunction);
+(function() {
+  'use strict';
 
-loadFunction.$inject = ['$scope', 'structureService', '$location', '$routeParams'];
+  angular
+    .module('static_404', [])
+    .controller('Static_404Controller', loadFunction);
 
-function loadFunction($scope, structureService, $location, $routeParams) {
-  //Register upper level modules
-  structureService.registerModule($location, $scope, 'static_404');
-  $scope.mainurl = structureService.get().config.index;
-}
+  loadFunction.$inject = ['$scope', 'structureService', '$location', '$routeParams'];
+
+  function loadFunction($scope, structureService, $location) {
+    //Register upper level modules
+    structureService.registerModule($location, $scope, 'static_404');
+
+    $scope.mainurl = structureService.get().config.index;
+  }
+
+}());

@@ -1,9 +1,11 @@
 (function() {
+
 	describe('Not found test', function() {
 		beforeEach(function() {
       browser.driver.manage().window().setSize(379, 666);
       browser.ignoreSynchronization = true;
     });
+
     var EC = protractor.ExpectedConditions;
 
     it('should load not found', function() {
@@ -16,6 +18,7 @@
       browser.wait(EC.elementToBeClickable(aelement), 10000);
       aelement.click();
     });
+
     it('should load menu after not found', function() {
       expectMenu();
     });
@@ -38,4 +41,5 @@
       browser.ignoreSynchronization = false;
     });
   });
+
 }());

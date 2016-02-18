@@ -52,13 +52,13 @@
         'koa-icon'
       ],
 
-      createTree: function () {
+      createTree: function() {
         this.tree = new Array(0);
         this.koaIcons = new Array(0);
         this._processElement(this.children[0]);
       },
 
-      setTheme: function (theme, callback) {
+      setTheme: function(theme, callback) {
         this.theme = theme;
 
         var themeIsNotImported = this.importedThemes.indexOf(this.theme) === -1;
@@ -73,7 +73,7 @@
         }
       },
 
-      renderThemeElements: function (callback) {
+      renderThemeElements: function(callback) {
         this.tree.forEach(function(elementObject) {
           this._renderThemeElement(elementObject);
         }, this);
@@ -83,7 +83,7 @@
         }
       },
 
-      setIconset: function (iconset) {
+      setIconset: function(iconset) {
         var iconsetIsNotImported = this.importedIconsets.indexOf(iconset.name) === -1;
 
         if (iconsetIsNotImported) {
@@ -96,7 +96,7 @@
         }
       },
 
-      updateIcons: function (iconsetName) {
+      updateIcons: function(iconsetName) {
         this.koaIcons.forEach(function(koaIcon) {
           if (koaIcon.icon && koaIcon.icon.search(':') !== -1) {
             koaIcon.icon = iconsetName + ':' + koaIcon.icon.split(':')[1];
@@ -106,7 +106,7 @@
         });
       },
 
-      _processElement: function (element) {
+      _processElement: function(element) {
         var hasChildren = element.children.length > 0;
 
         if (hasChildren) {
@@ -135,7 +135,7 @@
         }
       },
 
-      _createThemeElement: function (tag, attributes, childNodes) {
+      _createThemeElement: function(tag, attributes, childNodes) {
         var newElementName = this.theme.replace('koa-theme-', '') + '-' + tag;
         var newElement = document.createElement(newElementName);
 
@@ -161,7 +161,7 @@
         return newElement;
       },
 
-      _renderThemeElement: function (treeElement) {
+      _renderThemeElement: function(treeElement) {
         var parentNode = Polymer.dom(treeElement.actualElement).parentNode;
         var newElement = this._createThemeElement(treeElement.tag, treeElement.attributes, treeElement.childNodes);
 
@@ -169,7 +169,7 @@
         treeElement.actualElement = newElement;
       },
 
-      _getThemePath: function () {
+      _getThemePath: function() {
         return this.themesPath + this.theme + '/' + this.theme + '.html';
       }
     });

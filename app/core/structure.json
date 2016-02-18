@@ -102,7 +102,7 @@
       }
     },
     "/menu-abcd/map-abcd": {
-      "name": "Google Map Example",
+      "name": "Google Maps",
       "identifier": "googlemap",
       "type": "A",
       "icon": "room",

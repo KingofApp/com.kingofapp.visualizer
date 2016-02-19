@@ -43,13 +43,13 @@
           var cachedLocations = structureService.getCachedLocations();
 
           structureService.getCurrentModules($location, function loadmodules(modules) {
-            if (visitedLocations[cachedLocations[$location.$$path].identifier] && !finished) {
+            if (cachedLocations[$location.$$path] && visitedLocations[cachedLocations[$location.$$path].identifier] && !finished) {
               loadCachedModule();
             } else if (count === 0 && prev > 0 && !finished) {
               loadFirstTimeModule(modules);
             }
-
-            if (count === 0 && prev > 0 && throughcached) {
+            //Render external calls generating new elements
+            if (count === 0 && prev > 0) {
               renderKoaApp();
             }
 
@@ -60,9 +60,6 @@
         function loadFirstTimeModule(modules) {
           finished = true;
           console.log('[V] First time module load', $location.$$path);
-
-          renderKoaApp();
-
           angular.forEach(modules, function(value, key) {
             visitedLocations[value.identifier] = true;
           });
@@ -159,10 +156,10 @@
 
     $scope.$on('koaAppRendered', function(event, args) {
       console.info('[V] koa-app rendered!');
+
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
       });
-
     });
 
     // TODO: INSPECT loadconfig
@@ -180,6 +177,7 @@
       }
 
       $rootScope.current = module.identifier;
+
       $scope.module = module || $scope.module;
 
       if (!module.type) {
@@ -261,9 +259,11 @@
       $('[ng-click]').click(ngClickWrapper); // Adding ng-click...
       $('[ng-model]').each(ngModelWrapper); // Adding ng-model...
 
-      function ngClickWrapper() {
+      function ngClickWrapper(e) {
         var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
         scope[functionName]();
+        $scope.$digest();
+        e.stopPropagation();
       }
 
       function ngModelWrapper() {
@@ -280,9 +280,8 @@
       setTimeout(function() {
         koaApp.createTree();
 
-        (koaApp.theme)       ? renderElements() :
-        ($rootScope.appData) ? setTheme($rootScope.appData.config)
-                             : setTheme(structureService.getConfig());
+        (koaApp.theme) ? renderElements():
+          ($rootScope.appData) ? setTheme($rootScope.appData.config) : setTheme(structureService.getConfig());
       }, 100);
     }
   }

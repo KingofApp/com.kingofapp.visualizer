@@ -6,3 +6,7 @@
 #drawer {
   z-index: 2;
 }
+
+.polymermenu koa-icon{
+  margin-right:5px;
+}

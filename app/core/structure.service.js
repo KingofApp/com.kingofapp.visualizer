@@ -22,10 +22,10 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   } else {
     data = {
       'config': {
-        'index':'/',
-        'lang' : ['EN']
+        'index': '/',
+        'lang': ['EN']
       }
-    } ;
+    };
     $rootScope.transitionOn = true;
   }
 
@@ -113,7 +113,12 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
     setCustomStyle('--accent-color', colors.accentColor);
     setCustomStyle('--light-accent-color', colors.lightAccentColor);
     setCustomStyle('--dark-accent-color', colors.darkAccentColor);
+    setCustomStyle('--error-color', colors.errorColor);
     setCustomStyle('--background-color', colors.backgroundColor);
+
+    if (colors.toolbarColor) {
+      setCustomStyle('--toolbar-color', colors.toolbarColor);
+    }
 
     Polymer.updateStyles();
   }
@@ -185,9 +190,11 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   function getVisitedLocations() {
     return visitedLocations;
   }
+
   function getCachedLocations() {
     return cachedLocations;
   }
+
   function getCachedLibs() {
     return cachedLibs;
   }
@@ -195,6 +202,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   function setVisitedLocations(locations) {
     visitedLocations = locations;
   }
+
   function setCachedLibs(libs) {
     cachedLibs = libs;
   }
@@ -282,6 +290,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
         if (modules[key].identifier === item) {
           $scope[item] = {
             custom: modules[key].name,
+            icon: modules[key].icon,
             modulescope: modules[key].scope
           };
           $translatePartialLoader.addPart(item);
@@ -313,7 +322,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
   function findRoute(path, structure, callback) {
     // console.log('Path', path);
     // console.log('Structure', structure);
-    if ( structure && structure[path]) {
+    if (structure && structure[path]) {
       callback(structure[path]);
     } else {
       callback(new Error('No module found in path ' + path));

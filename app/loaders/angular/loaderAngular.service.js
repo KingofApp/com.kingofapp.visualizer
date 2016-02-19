@@ -35,10 +35,10 @@
 
           if (libs) {
             this.libs = this.libs.concat(_.pluck(libs, 'src')).filter(function(n) {
-              return n != undefined && n.indexOf(".html") == -1
+              return n != undefined && n.indexOf('.html') == -1
             });
             this.libsHtml = this.libsHtml.concat(_.pluck(libs, 'src')).filter(function(n) {
-              return n != undefined && n.indexOf(".html") > -1
+              return n != undefined && n.indexOf('.html') > -1
             });
           }
           this.files = this.files.concat(value.files);

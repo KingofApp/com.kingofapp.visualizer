@@ -1,0 +1,129 @@
+{
+  "config": {
+    "index": "/menu-abcd/home-abcd",
+    "theme": "koa-theme-android",
+    "colors": {
+      "primaryTextColor": "#212121",
+      "primaryBackgroundColor": "#ffffff",
+      "secondaryTextColor": "#737373",
+      "disabledTextColor": "#9b9b9b",
+      "dividerColor": "#dbdbdb",
+      "primaryColor": "#3f51b5",
+      "lightPrimaryColor": "#c5cae9",
+      "darkPrimaryColor": "#303f9f",
+      "accentColor": "#ff4081",
+      "lightAccentColor": "#ff80ab",
+      "darkAccentColor": "#f50057",
+      "backgroundColor": "#ffffff"
+    },
+    "images": {
+      "background": ""
+    },
+    "fonts": {
+      "primaryFontFamily": {
+        "name": "Roboto",
+        "url": "https://fonts.googleapis.com/css?family=Roboto"
+      },
+      "titleFontFamily": {
+        "name": "Roboto",
+        "url": "https://fonts.googleapis.com/css?family=Roboto"
+      }
+    },
+    "iconset": "icons",
+    "lang": [
+      "en_US"
+    ]
+  },
+  "modules": {
+    "/menu-abcd": {
+      "name": "Menu Module",
+      "identifier": "polymermenu",
+      "type": "A",
+      "icon": "menu",
+      "showOn": {
+        "menu": false,
+        "market": true,
+        "dragDrop": true
+      },
+      "canContain": true,
+      "view": "modules/polymermenu/index.html",
+      "files": ["modules/polymermenu/controller.js", "modules/polymermenu/style.css"],
+      "libs":[
+        {
+          "bower": {
+            "PolymerElements/paper-drawer-panel": "^1.0.0"
+          },
+          "src": "http://resources.kingofapp.com/bower_components/paper-drawer-panel/paper-drawer-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-header-panel": "^1.0.0"
+          },
+          "src": "http://resources.kingofapp.com/bower_components/paper-header-panel/paper-header-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-menu": "^1.0.0"
+          },
+          "src": "http://resources.kingofapp.com/bower_components/paper-menu/paper-menu.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-scroll-header-panel": "^1.0.0"
+          },
+          "src": "http://resources.kingofapp.com/bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-item": "^1.0.0"
+          },
+          "src": "http://resources.kingofapp.com/bower_components/paper-item/paper-item.html"
+        }
+      ],
+      "scope": {
+        "path": "/menu-abcd",
+        "showicons": true
+      }
+    },
+    "/menu-abcd/home-abcd": {
+      "name": "Home",
+      "identifier": "html",
+      "type": "A",
+      "icon": "home",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/html/index.html",
+      "files": ["modules/html/controller.js"],
+      "scope": {
+        "value": "<p style='color:#39a9d3'>Welcome to my </p><p style='color:#d36339'>APP</p>"
+      }
+    },
+    "/menu-abcd/map-abcd": {
+      "name": "Google Maps",
+      "identifier": "googlemap",
+      "type": "A",
+      "icon": "room",
+      "showOn": {
+        "menu": true,
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/googlemap/index.html",
+      "files": ["modules/googlemap/controller.js", "modules/googlemap/directive.js", "modules/googlemap/style.css"],
+      "libs": [{
+        "bower": {
+          "GoogleWebComponents/google-map": "^1.1.7"
+        },
+        "src": "http://resources.kingofapp.com/bower_components/google-map/google-map.html"
+      }],
+      "scope": {
+        "lat": "39.8847281",
+        "lon": "4.2540999",
+        "zoom": "15"
+      }
+    }
+  }
+}

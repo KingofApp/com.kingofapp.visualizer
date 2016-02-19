@@ -1,10 +1,11 @@
-(function(){
+// Used by angular type menus
+(function() {
   'use strict';
   angular
     .module('king.loaders.common')
     .run(function($rootScope) {
-              document.addEventListener("click", function(e) {
-                  $rootScope.$broadcast("documentClicked", e.target);
-              });
-		})
+      document.addEventListener('click', function(e) {
+        $rootScope.$broadcast('documentClicked', e.target);
+      });
+    })
 }());

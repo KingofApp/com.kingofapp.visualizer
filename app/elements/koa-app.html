@@ -1,12 +1,10 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="http://resources.kingofapp.com/bower_components/polymer/polymer.html">
 
 <dom-module id="koa-app">
   <template>
     <style>
       :host {
-        @apply(--layout);
-        @apply(--layout-fullbleed);
+        display: block;
 
         background-color: var(--background-color);
         background-image: var(--background-image);
@@ -44,7 +42,7 @@
         }
       },
 
-      themesPath: 'themes',
+      themesPath: 'http://resources.kingofapp.com/themes/',
 
       importedThemes: [],
 
@@ -54,19 +52,19 @@
         'koa-icon'
       ],
 
-      createTree: function () {
+      createTree: function() {
         this.tree = new Array(0);
         this.koaIcons = new Array(0);
         this._processElement(this.children[0]);
       },
 
-      setTheme: function (theme, callback) {
+      setTheme: function(theme, callback) {
         this.theme = theme;
 
         var themeIsNotImported = this.importedThemes.indexOf(this.theme) === -1;
 
         if (themeIsNotImported) {
-          this.importHref(this._getThemePath(), function(e) {
+          this.importHref(this._getThemePath(), function() {
             this.renderThemeElements(callback);
             this.importedThemes.push(this.theme);
           });
@@ -75,7 +73,7 @@
         }
       },
 
-      renderThemeElements: function (callback) {
+      renderThemeElements: function(callback) {
         this.tree.forEach(function(elementObject) {
           this._renderThemeElement(elementObject);
         }, this);
@@ -85,11 +83,11 @@
         }
       },
 
-      setIconset: function (iconset) {
+      setIconset: function(iconset) {
         var iconsetIsNotImported = this.importedIconsets.indexOf(iconset.name) === -1;
 
         if (iconsetIsNotImported) {
-          this.importHref(iconset.url, function(e) {
+          this.importHref(iconset.url, function() {
             this.updateIcons(iconset.name);
             this.importedIconsets.push(iconset.name);
           });
@@ -98,7 +96,7 @@
         }
       },
 
-      updateIcons: function (iconsetName) {
+      updateIcons: function(iconsetName) {
         this.koaIcons.forEach(function(koaIcon) {
           if (koaIcon.icon && koaIcon.icon.search(':') !== -1) {
             koaIcon.icon = iconsetName + ':' + koaIcon.icon.split(':')[1];
@@ -108,7 +106,7 @@
         });
       },
 
-      _processElement: function (element) {
+      _processElement: function(element) {
         var hasChildren = element.children.length > 0;
 
         if (hasChildren) {
@@ -137,8 +135,8 @@
         }
       },
 
-      _createThemeElement: function (tag, attributes, childNodes) {
-        var newElementName = this.theme.replace('koa-', '').replace('-theme', '') + '-' + tag;
+      _createThemeElement: function(tag, attributes, childNodes) {
+        var newElementName = this.theme.replace('koa-theme-', '') + '-' + tag;
         var newElement = document.createElement(newElementName);
 
         for (var i = 0; i < attributes.length; i++) {
@@ -146,8 +144,8 @@
           Polymer.dom(newElement).setAttribute(attribute.nodeName, attribute.nodeValue);
         }
 
-        for (var i = 0; i < childNodes.length; i++) {
-          var clonedChildNode = Polymer.dom(childNodes[i]).cloneNode(true);
+        for (var j = 0; j < childNodes.length; j++) {
+          var clonedChildNode = Polymer.dom(childNodes[j]).cloneNode(true);
 
           // Remove the Polymer classes, because they will added next line
           var classList = clonedChildNode.classList;
@@ -163,7 +161,7 @@
         return newElement;
       },
 
-      _renderThemeElement: function (treeElement) {
+      _renderThemeElement: function(treeElement) {
         var parentNode = Polymer.dom(treeElement.actualElement).parentNode;
         var newElement = this._createThemeElement(treeElement.tag, treeElement.attributes, treeElement.childNodes);
 
@@ -171,8 +169,8 @@
         treeElement.actualElement = newElement;
       },
 
-      _getThemePath: function () {
-        return this.themesPath + '/' + this.theme + '/dist/' + this.theme + '.html';
+      _getThemePath: function() {
+        return this.themesPath + this.theme + '/' + this.theme + '.html';
       }
     });
   </script>

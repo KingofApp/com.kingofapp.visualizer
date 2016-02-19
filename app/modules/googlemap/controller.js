@@ -1,10 +1,15 @@
-angular
-  .controller('googlemapCtrl', loadFunction);
+(function() {
+  'use strict';
 
-loadFunction.$inject = ['$scope', 'structureService', '$location', '$routeParams'];
+  angular
+    .module('googlemap', [])
+    .controller('GooglemapController', loadFunction);
 
-function loadFunction($scope, structureService, $location, $routeParams){
-  //Register upper level modules
-  structureService.registerModule($location,$scope,"googlemap");
+  loadFunction.$inject = ['$scope', 'structureService', '$location'];
 
-}
+  function loadFunction($scope, structureService, $location) {
+    //Register upper level modules
+    structureService.registerModule($location, $scope, 'googlemap');
+  }
+
+}());

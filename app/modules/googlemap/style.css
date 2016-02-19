@@ -3,6 +3,7 @@ google-map {
   width: 100%;
   position:absolute;
 }
-.module{
+
+.module.googlemap {
   padding:0px;
 }

@@ -1,10 +1,15 @@
-angular
-  .controller('htmlCtrl', loadFunction);
+(function() {
+  'use strict';
 
-loadFunction.$inject = ['$scope', 'structureService', '$location'];
+  angular
+    .module('html', [])
+    .controller('HtmlController', loadFunction);
 
-function loadFunction($scope, structureService, $location){
-  //Register upper level modules
-  structureService.registerModule($location,$scope,"html");
+  loadFunction.$inject = ['$scope', 'structureService', '$location'];
 
-}
+  function loadFunction($scope, structureService, $location) {
+    //Register upper level modules
+    structureService.registerModule($location, $scope, 'html');
+  }
+
+}());

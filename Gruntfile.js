@@ -104,7 +104,7 @@ module.exports = function(grunt) {
       main: {
         expand: true,
         cwd: 'app/',
-        src: ['**', '!**/*.js', '!**/*.css', 'modules/**', 'services/**', 'bower_components/**', 'themes/**'],
+        src: ['**', '!**/*.js', '!**/*.css', 'modules/**', 'services/**', 'bower_components/**', 'themes/**', 'resources/**'],
         dest: 'dist/'
       }
     },

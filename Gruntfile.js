@@ -111,7 +111,7 @@ module.exports = function(grunt) {
 
     rev: {
       files: {
-        src: ['dist/**/*.{js,css}', '!dist/js/shims/**', '!dist/modules/**', '!dist/services/**', '!dist/bower_components/**', '!dist/themes/**']
+        src: ['dist/**/*.{js,css}', '!dist/js/shims/**', '!dist/modules/**', '!dist/services/**', '!dist/bower_components/**', '!dist/resources/**', '!dist/themes/**']
       }
     },
 

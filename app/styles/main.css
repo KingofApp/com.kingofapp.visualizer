@@ -26,6 +26,10 @@ img {
   max-width: 100%;
 }
 
+#koaApp {
+  height: 100%;
+}
+
 
 /* Ads styles */
 

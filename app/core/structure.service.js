@@ -169,7 +169,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
       $rootScope.loader = src;
     } else {
       //Default Loader
-      $rootScope.loader = 'resources/loader.gif';
+      $rootScope.loader = 'images/loader.gif';
     }
   }
 
@@ -276,7 +276,7 @@ function structureService($q, $translatePartialLoader, $translate, structureHook
       }
     });
     if (empty) {
-      return 'resources/missing.html';
+      return 'core/missing.html';
     }
     return module.view;
   }

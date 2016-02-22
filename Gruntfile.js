@@ -104,14 +104,14 @@ module.exports = function(grunt) {
       main: {
         expand: true,
         cwd: 'app/',
-        src: ['**', '!**/*.js', '!**/*.css', 'modules/**', 'services/**', 'bower_components/**', 'themes/**', 'resources/**'],
+        src: ['**', '!**/*.js', '!**/*.css', 'modules/**', 'services/**', 'bower_components/**', 'themes/**'],
         dest: 'dist/'
       }
     },
 
     rev: {
       files: {
-        src: ['dist/**/*.{js,css}', '!dist/js/shims/**', '!dist/modules/**', '!dist/services/**', '!dist/bower_components/**', '!dist/resources/**', '!dist/themes/**']
+        src: ['dist/**/*.{js,css}', '!dist/js/shims/**', '!dist/modules/**', '!dist/services/**', '!dist/bower_components/**', '!dist/themes/**']
       }
     },
 

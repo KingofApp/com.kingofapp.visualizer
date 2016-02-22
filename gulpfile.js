@@ -2,7 +2,9 @@
 
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
+var del = require('del');
 var eslint = require('gulp-eslint');
+var path = require('path');
 var reload = browserSync.reload;
 var DIST = 'dist';
 
@@ -30,6 +32,11 @@ gulp.task('serve', function() {
   });
 
   gulp.watch(['app/**/*', '!app/bower_components/**/*'], reload);
+});
+
+// Clean output directory
+gulp.task('clean', function() {
+  return del(['.tmp', dist()]);
 });
 
 // Lint Javascript

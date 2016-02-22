@@ -31,7 +31,11 @@ gulp.task('serve', function() {
     }
   });
 
-  gulp.watch(['app/**/*', '!app/bower_components/**/*'], reload);
+  gulp.watch(['app/**/*.html', '!app/bower_components/**/*.html'], ['lint', reload]);
+  gulp.watch(['app/{core,loaders}/**/*.js'], ['lint', reload]);
+  gulp.watch(['app/scripts/**/*.js'], ['lint', reload]);
+  gulp.watch(['app/styles/**/*.css'], reload);
+  gulp.watch(['app/images/**/*'], reload);
 });
 
 // Clean output directory

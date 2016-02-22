@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var eslint = require('gulp-eslint');
+var reload = browserSync.reload;
 var DIST = 'dist';
 
 var dist = function(subpath) {
@@ -28,7 +29,7 @@ gulp.task('serve', function() {
     }
   });
 
-  gulp.watch(['app/**/*', '!app/bower_components/**/*'], browserSync.reload);
+  gulp.watch(['app/**/*', '!app/bower_components/**/*'], reload);
 });
 
 // Lint Javascript

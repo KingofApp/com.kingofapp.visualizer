@@ -3,6 +3,11 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var eslint = require('gulp-eslint');
+var DIST = 'dist';
+
+var dist = function(subpath) {
+  return !subpath ? DIST : path.join(DIST, subpath);
+};
 
 // Watch files for changes & reload
 gulp.task('serve', function() {

@@ -1,9 +1,5 @@
 /* General styles */
 
-html, body, #main-king {
-  height: 100%;
-}
-
 html {
     overflow:hidden;
 }
@@ -13,10 +9,6 @@ body {
   margin:0px;
 }
 
-#main-king > div, .template, .template > div {
-  height: 100%;
-}
-
 .auto {
   overflow: auto;
   height: 100%;
@@ -24,10 +16,6 @@ body {
 
 img {
   max-width: 100%;
-}
-
-#koaApp {
-  height: 100%;
 }
 
 

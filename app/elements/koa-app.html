@@ -1,14 +1,17 @@
 <link rel="import" href="http://resources.kingofapp.com/bower_components/polymer/polymer.html">
+<link rel="import" href="http://resources.kingofapp.com/bower_components/iron-flex-layout/iron-flex-layout.html">
 
 <dom-module id="koa-app">
   <template>
     <style>
       :host {
-        display: block;
+        @apply(--layout-block);
+        @apply(--layout-fullbleed);
 
+        color: var(--primary-text-color);
         background-color: var(--background-color);
         background-image: var(--background-image);
-        color: var(--primary-text-color);
+
         font-family: var(--primary-font-family);
       }
 

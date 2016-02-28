@@ -14,7 +14,7 @@
 
   function setTranslatorConfig($translateProvider) {
     $translateProvider.useLoader('$translatePartialLoader', {
-      urlTemplate: 'http://resources.kingofapp.com/modules/{part}/locale/{lang}.json'
+      urlTemplate: '../modules/{part}/locale/{lang}.json'
     });
 
     $translateProvider.preferredLanguage('en_US');

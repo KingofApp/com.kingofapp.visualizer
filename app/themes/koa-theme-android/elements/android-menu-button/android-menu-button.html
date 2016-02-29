@@ -1,0 +1,84 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-menu-button-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-menu-button">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: inline-block;
+        outline: none;
+        padding: 8px;
+        position: relative;
+
+        @apply(--menu-button);
+      }
+
+      :host([disabled]) {
+        color: var(--disabled-text-color);
+        cursor: auto;
+
+        @apply(--menu-button-disabled);
+      }
+
+      :host([vertical-align="top"]) .dropdown-content {
+        margin-bottom: 20px;
+        margin-top: -10px;
+        top: 10px;
+      }
+
+      :host([vertical-align="bottom"]) .dropdown-content {
+        bottom: 10px;
+        margin-bottom: -10px;
+        margin-top: 20px;
+      }
+
+      iron-dropdown {
+        @apply(--menu-button-dropdown);
+      }
+
+      .dropdown-content {
+        background-color: var(--menu-button-dropdown-background, --primary-background-color);
+        border-radius: 2px;
+
+        @apply(--menu-button-content);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div id="trigger" on-tap="open">
+      <content select=".dropdown-trigger"></content>
+    </div>
+
+    <iron-dropdown
+      id="dropdown"
+      opened="{{opened}}"
+      horizontal-align="[[horizontalAlign]]"
+      vertical-align="[[verticalAlign]]"
+      horizontal-offset="[[horizontalOffset]]"
+      vertical-offset="[[verticalOffset]]"
+      open-animation-config="[[openAnimationConfig]]"
+      close-animation-config="[[closeAnimationConfig]]"
+      no-animations="[[noAnimations]]"
+      focus-target="[[_dropdownContent]]">
+      <paper-material class="dropdown-content">
+        <content id="content" select=".dropdown-content"></content>
+      </paper-material>
+    </iron-dropdown>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-menu-button',
+
+      behaviors: [
+        Polymer.KoaMenuButtonBehavior
+      ]
+    });
+  </script>
+</dom-module>

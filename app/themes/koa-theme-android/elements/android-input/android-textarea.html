@@ -1,0 +1,59 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-textarea-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+<link rel="import" href="android-input-char-counter.html">
+<link rel="import" href="android-input-container.html">
+<link rel="import" href="android-input-error.html">
+
+<dom-module id="android-textarea">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <android-input-container no-label-float$="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel, placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
+      <label hidden$="[[!label]]">[[label]]</label>
+
+      <iron-autogrow-textarea id="input" class="input-input"
+        bind-value="{{value}}"
+        disabled$="[[disabled]]"
+        autocomplete$="[[autocomplete]]"
+        autofocus$="[[autofocus]]"
+        inputmode$="[[inputmode]]"
+        name$="[[name]]"
+        placeholder$="[[placeholder]]"
+        readonly$="[[readonly]]"
+        required$="[[required]]"
+        maxlength$="[[maxlength]]"
+        autocapitalize$="[[autocapitalize]]"
+        rows$="[[rows]]"
+        max-rows$="[[maxRows]]"
+        on-change="_onChange"></iron-autogrow-textarea>
+
+      <template is="dom-if" if="[[errorMessage]]">
+        <android-input-error>[[errorMessage]]</android-input-error>
+      </template>
+
+      <template is="dom-if" if="[[charCounter]]">
+        <android-input-char-counter></android-input-char-counter>
+      </template>
+    </android-input-container>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-textarea',
+
+      behaviors: [
+        Polymer.KoaTextareaBehavior
+      ]
+    });
+  </script>
+</dom-module>

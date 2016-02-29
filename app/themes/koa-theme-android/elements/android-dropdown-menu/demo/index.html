@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <title>android-dropdown-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../android-item/android-item.html">
+    <link rel="import" href="../../android-menu/android-menu.html">
+    <link rel="import" href="../android-dropdown-menu.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 500px;
+      }
+
+      .vertical-section {
+        text-align: center;
+        margin: 0 0 40px;
+      }
+
+      android-dropdown-menu {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <div class="vertical-section-container centered">
+      <h4>This is a plain android-dropdown-menu</h4>
+      <div class="vertical-section">
+        <android-dropdown-menu label="Dinosaurs">
+          <android-menu class="dropdown-content">
+            <android-item>allosaurus</android-item>
+            <android-item>brontosaurus</android-item>
+            <android-item>carcharodontosaurus</android-item>
+            <android-item>diplodocus</android-item>
+          </android-menu>
+        </android-dropdown-menu>
+      </div>
+
+      <h4>You can pre-select a value using the <i>selected</i> attribute</h4>
+      <div class="vertical-section">
+        <android-dropdown-menu label="Dinosaurs">
+          <android-menu class="dropdown-content" selected="1">
+            <android-item>allosaurus</android-item>
+            <android-item>brontosaurus</android-item>
+            <android-item>carcharodontosaurus</android-item>
+            <android-item>diplodocus</android-item>
+          </android-menu>
+        </android-dropdown-menu>
+      </div>
+
+      <h4>You can change the direction in which the menu opens</h4>
+      <div class="vertical-section">
+          <android-dropdown-menu label="Upwards and to the left!" vertical-align="bottom" horizontal-align="left">
+            <android-menu class="dropdown-content">
+              <android-item>allosaurus</android-item>
+              <android-item>brontosaurus</android-item>
+              <android-item>carcharodontosaurus</android-item>
+              <android-item>diplodocus</android-item>
+            </android-menu>
+          </android-dropdown-menu>
+      </div>
+
+      <h4>A android-dropdown-menu can be disabled</h4>
+      <div class="vertical-section">
+        <android-dropdown-menu label="Disabled dinosaurs" disabled>
+          <android-menu class="dropdown-content">
+            <android-item>allosaurus</android-item>
+            <android-item>brontosaurus</android-item>
+            <android-item>carcharodontosaurus</android-item>
+            <android-item>diplodocus</android-item>
+          </android-menu>
+        </android-dropdown-menu>
+      </div>
+    </div>
+  </body>
+</html>

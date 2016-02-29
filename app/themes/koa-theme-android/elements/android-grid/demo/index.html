@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <title>android-grid demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../android-card/android-card.html">
+    <link rel="import" href="../../android-item/android-item.html">
+    <link rel="import" href="../android-grid.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 550px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Grid of <code>android-item</code>'s with 2 columns</h3>
+      <div class="vertical-section">
+        <android-grid columns="2">
+          <template is="dom-repeat" items="[0,1,2,3,4,5]" index-as="index">
+            <android-item>Item [[index]]</android-item>
+          </template>
+        </android-grid>
+      </div>
+
+      <h3>Grid of <code>android-card</code>'s with 2 columns and 1em of cell space</h3>
+      <div class="vertical-section">
+        <android-grid columns="2" cell-space="1em">
+          <template is="dom-repeat" items="[0,1,2,3,4,5]" index-as="index">
+            <android-card heading="Card [[index]]" image="http://placehold.it/200x75">
+              <div class="card-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </div>
+            </android-card>
+          </template>
+        </android-grid>
+      </div>
+
+      <h3>Grid of images with 3 columns</h3>
+      <div class="vertical-section">
+        <android-grid columns="3">
+          <img src="http://placehold.it/200x200/867550/ffffff">
+          <img src="http://placehold.it/200x200/4D4D4D/ffffff">
+          <img src="http://placehold.it/200x200/867550/ffffff">
+          <img src="http://placehold.it/200x200/4D4D4D/ffffff">
+          <img src="http://placehold.it/200x200/867550/ffffff">
+          <img src="http://placehold.it/200x200/4D4D4D/ffffff">
+          <img src="http://placehold.it/200x200/867550/ffffff">
+          <img src="http://placehold.it/200x200/4D4D4D/ffffff">
+          <img src="http://placehold.it/200x200/867550/ffffff">
+        </android-grid>
+      </div>
+
+      <h3>Grid of anchor images with 3 columns and 6px of cell space</h3>
+      <div class="vertical-section">
+        <android-grid columns="3" cell-space="6px">
+          <a href="#"><img src="http://placehold.it/200x200/867550/ffffff"></a>
+          <a href="#"><img src="http://placehold.it/200x200/4D4D4D/ffffff"></a>
+          <a href="#"><img src="http://placehold.it/200x200/867550/ffffff"></a>
+          <a href="#"><img src="http://placehold.it/200x200/4D4D4D/ffffff"></a>
+          <a href="#"><img src="http://placehold.it/200x200/867550/ffffff"></a>
+          <a href="#"><img src="http://placehold.it/200x200/4D4D4D/ffffff"></a>
+          <a href="#"><img src="http://placehold.it/200x200/867550/ffffff"></a>
+          <a href="#"><img src="http://placehold.it/200x200/4D4D4D/ffffff"></a>
+          <a href="#"><img src="http://placehold.it/200x200/867550/ffffff"></a>
+        </android-grid>
+      </div>
+    </div>
+  </body>
+</html>

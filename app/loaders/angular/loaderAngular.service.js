@@ -18,7 +18,7 @@
         var dependencies = {
           files: new Array(0),
           libs: new Array(0),
-          libsHtml: new Array(0)
+          htmlSources: new Array(0)
         };
 
         var cache = structureService.getCachedLibs();
@@ -37,11 +37,10 @@
             this.libs = this.libs.concat(_.pluck(libs, 'src')).filter(function(n) {
               return n != undefined && n.indexOf('.html') == -1
             });
-            this.libsHtml = this.libsHtml.concat(_.pluck(libs, 'src')).filter(function(n) {
-              return n != undefined && n.indexOf('.html') > -1
-            });
+            this.htmlSources = this.htmlSources.concat(_.pluck(libs, 'src')).filter(filterHtml);
           }
           this.files = this.files.concat(value.files);
+          this.htmlSources = this.htmlSources.concat(value.files).filter(filterHtml);
         }, dependencies);
 
         structureService.setCachedLibs(cache);
@@ -67,7 +66,7 @@
           var defer = $q.defer();
           var htmlImports = [];
 
-          angular.forEach(dependencies.libsHtml, function(value, key) {
+          angular.forEach(dependencies.htmlSources, function(value, key) {
             this.push(importHref(value));
           }, htmlImports);
 
@@ -81,6 +80,9 @@
           var defer = $q.defer();
           Polymer.Base.importHref(file, defer.resolve, defer.reject);
           return defer.promise;
+        }
+        function filterHtml(n) {
+          return n != undefined && n.indexOf('.html') > -1
         }
       });
     }

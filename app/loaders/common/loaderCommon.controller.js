@@ -282,7 +282,7 @@
 
         (koaApp.theme) ? renderElements():
           ($rootScope.appData) ? setTheme($rootScope.appData.config) : setTheme(structureService.getConfig());
-      }, 100);
+      }, 1000);
     }
   }
 }());

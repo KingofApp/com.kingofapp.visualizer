@@ -5,4 +5,5 @@
 
 #drawer {
   z-index: 2;
+  overflow:auto;
 }

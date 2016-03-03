@@ -1,7 +1,7 @@
 <div class="polymermenu" ng-controller="PolymermenuController">
 
   <paper-drawer-panel>
-    <paper-scroll-header-panel drawer fixed>
+    <div drawer fixed>
       <paper-menu>
         <template is="dom-repeat" items="{{polymermenu.menu}}">
           <a class="{{item.class}}" href="{{item.url}}">
@@ -9,7 +9,7 @@
           </a>
         </template>
       </paper-menu>
-    </paper-scroll-header-panel>
+    </div>
 
     <paper-header-panel main>
       <koa-toolbar class="paper-header">

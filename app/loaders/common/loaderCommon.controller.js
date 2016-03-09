@@ -260,10 +260,13 @@
       $('[ng-model]').each(ngModelWrapper); // Adding ng-model...
 
       function ngClickWrapper(e) {
-        var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
-        scope[functionName]();
-        $scope.$digest();
-        e.stopPropagation();
+        if(!e.isPropagationStopped()){
+          var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
+          scope[functionName]();
+          $scope.$digest();
+          e.stopPropagation();
+        }
+
       }
 
       function ngModelWrapper() {

@@ -176,7 +176,7 @@
         $rootScope.showTransition = false;
       }
 
-      $rootScope.current = module.identifier;
+
 
       $scope.module = module || $scope.module;
 
@@ -185,7 +185,8 @@
         if (structureService.getIndex() === '' && $location.$$path !== '/') {
           $location.path('/404');
         }
-      } else if (isAngularModule(module.type)) {
+      } else if (isAngularModule(module.type) && $rootScope.current!=module.identifier) {
+        $rootScope.current = module.identifier;
         angularLoader.module($scope);
       } else if (isJqueryModule(module.type)) {
         // TODO: Load jquery module from angular

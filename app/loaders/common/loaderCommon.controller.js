@@ -14,7 +14,7 @@
 
     $rootScope.showTransition = true;
 
-    if (structureService.getIndex() !== '' && ($location.$$path === '/' || $location.$$path === '')) {
+    if (structureService.getIndex() !== '' && $location.$$path === '/') {
       $location.path(structureService.getIndex());
     }else{
       configModule();

@@ -16,9 +16,13 @@
 
     if (structureService.getIndex() !== '' && ($location.$$path === '/' || $location.$$path === '')) {
       $location.path(structureService.getIndex());
+    }else{
+      configModule();
     }
 
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
+
+    // $location.$$path = $location.$$path || '/';
 
     var prev = 0;
     var throughcached = false;
@@ -78,7 +82,7 @@
       }
     );
 
-    $location.$$path = $location.$$path || '/';
+
 
     $scope.$watch('appData', function(newValue, oldValue) {
       // console.log('[V] REceived AppData', newValue);
@@ -162,40 +166,42 @@
       });
     });
 
-    // TODO: INSPECT loadconfig
-    // Load config
-    structureService.loadconfig($rootScope);
+    function configModule() {
+      // TODO: INSPECT loadconfig
+      // Load config
+      structureService.loadconfig($rootScope);
 
-    // Register Route
-    structureService.getModule($location.$$path).then(function(module) {
-      $rootScope.toolbar = {
-        title: module.name
-      };
+      // Register Route
+      structureService.getModule($location.$$path).then(function(module) {
+        $rootScope.toolbar = {
+          title: module.name
+        };
 
-      if ($rootScope.missing) {
-        $rootScope.showTransition = false;
-      }
-
-
-
-      $scope.module = module || $scope.module;
-
-      if (!module.type) {
-        // Display a 404 error
-        if (structureService.getIndex() === '' && $location.$$path !== '/') {
-          $location.path('/404');
+        if ($rootScope.missing) {
+          $rootScope.showTransition = false;
         }
-      } else if (isAngularModule(module.type) && $rootScope.current!=module.identifier) {
-        $rootScope.current = module.identifier;
-        angularLoader.module($scope);
-      } else if (isJqueryModule(module.type)) {
-        // TODO: Load jquery module from angular
-      } else {
-        // TODO: Display error and blame developer
-      }
-    });
 
-    $scope.data = JSON.stringify(structureService.get(), null, '    ');
+
+
+        $scope.module = module || $scope.module;
+
+        if (!module.type) {
+          // Display a 404 error
+          if (structureService.getIndex() === '' && $location.$$path !== '/') {
+            $location.path('/404');
+          }
+        } else if (isAngularModule(module.type) && $rootScope.current!=module.identifier) {
+          $rootScope.current = module.identifier;
+          angularLoader.module($scope);
+        } else if (isJqueryModule(module.type)) {
+          // TODO: Load jquery module from angular
+        } else {
+          // TODO: Display error and blame developer
+        }
+      });
+
+      $scope.data = JSON.stringify(structureService.get(), null, '    ');
+    }
 
     function isAngularModule(type) {
       return type === 'A';

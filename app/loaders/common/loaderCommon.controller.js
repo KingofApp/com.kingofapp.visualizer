@@ -190,8 +190,9 @@
           if (structureService.getIndex() === '' && $location.$$path !== '/') {
             $location.path('/404');
           }
-        } else if (isAngularModule(module.type) && $rootScope.current!=module.identifier) {
+        } else if (isAngularModule(module.type) && $rootScope.previous !== module.identifier) {
           $rootScope.current = module.identifier;
+          $rootScope.previous = module.identifier;
           angularLoader.module($scope);
         } else if (isJqueryModule(module.type)) {
           // TODO: Load jquery module from angular

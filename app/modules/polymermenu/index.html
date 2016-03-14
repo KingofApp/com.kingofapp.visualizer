@@ -1,7 +1,14 @@
 <div class="polymermenu" ng-controller="PolymermenuController">
 
   <paper-drawer-panel>
-    <div class='panel' drawer fixed>
+    <div class="panel" drawer fixed>
+      <div id="header" ng-if="polymermenu.modulescope.headerShown" ng-class="[polymermenu.modulescope.headerAlignment, polymermenu.modulescope.headerReverse ? 'reverse' : '']" style="background-image: url('{{polymermenu.modulescope.headerBackgroundImage}}'); background-color: {{polymermenu.modulescope.headerBackgroundColor}};">
+        <div class="logo" ng-if="polymermenu.modulescope.headerLogoShown">
+          <img ng-src="{{polymermenu.modulescope.headerLogo}}">
+        </div>
+        <span class="title" ng-if="polymermenu.modulescope.headerTitleShown">{{polymermenu.modulescope.headerTitle}}</span>
+      </div>
+
       <paper-menu>
         <template is="dom-repeat" items="{{polymermenu.menu}}">
           <a class="{{item.class}}" href="{{item.url}}">
@@ -14,7 +21,8 @@
     <paper-header-panel main>
       <koa-toolbar class="paper-header">
         <koa-icon-button icon="{{polymermenu.icon}}" paper-drawer-toggle></koa-icon-button>
-        <span class="title">{{toolbar.title}}</span>
+        <img id="toolbarLogo" ng-src="{{polymermenu.modulescope.toolbarLogo}}" ng-if="polymermenu.modulescope.toolbarLogo">
+        <span class="title" ng-if="polymermenu.modulescope.toolbarTitle">{{toolbar.title}}</span>
       </koa-toolbar>
 
       <div id="content">

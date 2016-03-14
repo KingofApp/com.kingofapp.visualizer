@@ -14,9 +14,10 @@
           var scope = angular.element(scopeElement).scope();
           var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
           scope[functionName]();
+          $scope.$apply();
           e.stopPropagation();
         }
-        
+
         function ngModelWrapper() {
           var scopeElement = document.querySelector('.' + $rootScope.current);
           var scope = angular.element(scopeElement).scope();

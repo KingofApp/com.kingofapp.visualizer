@@ -246,45 +246,14 @@
       koaApp.setTheme(config.theme, function() {
         structureService.setCssVariables(config);
 
-        addDirectives();
-
         $rootScope.$broadcast('koaAppRendered');
       });
     }
 
     function renderElements() {
       koaApp.renderThemeElements(function() {
-        addDirectives();
-
         $rootScope.$broadcast('koaAppRendered');
       });
-    }
-
-    function addDirectives() {
-      var scopeElement = document.querySelector('.' + $rootScope.current);
-      var scope = angular.element(scopeElement).scope(); // Get current scope
-
-      $('[ng-click]').click(ngClickWrapper); // Adding ng-click...
-      $('[ng-model]').each(ngModelWrapper); // Adding ng-model...
-
-      function ngClickWrapper(e) {
-        if(!e.isPropagationStopped()){
-          var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
-          scope[functionName]();
-          $scope.$digest();
-          e.stopPropagation();
-        }
-
-      }
-
-      function ngModelWrapper() {
-        var parent = $(this);
-
-        $(this.inputElement).bind('input', function() {
-          var model = parent.attr('ng-model').split('.');
-          scope[model[0]][model[1]] = $(this).val();
-        });
-      }
     }
 
     function renderKoaApp() {

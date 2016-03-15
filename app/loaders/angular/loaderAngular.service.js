@@ -18,11 +18,13 @@
         var dependencies = {
           files: new Array(0),
           libs: new Array(0),
-          htmlSources: new Array(0)
+          htmlSources: new Array(0),
+          controllers: new Array(0)
         };
 
         var cache = structureService.getCachedLibs();
         angular.forEach(modules, function(value, key) {
+          this.controllers = this.controllers.concat(value.controller).filter(filterNotHtmlOrUndefined);
           var libs = value.libs;
           angular.forEach(libs, function(value, key) {
             if (value && value.bower) {
@@ -34,9 +36,7 @@
           }, libs);
 
           if (libs) {
-            this.libs = this.libs.concat(_.pluck(libs, 'src')).filter(function(n) {
-              return n != undefined && n.indexOf('.html') == -1
-            });
+            this.libs = this.libs.concat(_.pluck(libs, 'src')).filter(filterNotHtmlOrUndefined);
             this.htmlSources = this.htmlSources.concat(_.pluck(libs, 'src')).filter(filterHtml);
           }
           this.files = this.files.concat(value.files);
@@ -46,9 +46,20 @@
         structureService.setCachedLibs(cache);
 
         loadHtmlDeps()
+          .then(loadController)
           .then(loadAllDependecies)
           .catch(loadAllDependecies);
 
+          function loadController() {
+            var defer = $q.defer();
+            $q.all({
+              'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
+              'dependencies': $ocLazyLoad.load(dependencies.controllers)
+            }).then(function(data) {
+              defer.resolve();
+            }).catch(defer.reject);
+            return defer.promise;
+          }
         function loadAllDependecies() {
           var defer = $q.defer();
           $q.all({
@@ -102,7 +113,10 @@
         }
 
         function filterHtml(n) {
-          return n != undefined && n.indexOf('.html') > -1
+          return n != undefined && n.indexOf('.html') > -1;
+        }
+        function filterNotHtmlOrUndefined(n) {
+          return n != undefined && n.indexOf('.html') == -1;
         }
       });
     }

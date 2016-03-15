@@ -319,7 +319,8 @@
         "dragDrop": true
       },
       "view": "http://resources.kingofapp.com/modules/googlemap/index.html",
-      "files": ["http://resources.kingofapp.com/modules/googlemap/controller.js", "http://resources.kingofapp.com/modules/googlemap/directive.js", "http://resources.kingofapp.com/modules/googlemap/style.css"],
+      "controller": "http://resources.kingofapp.com/modules/googlemap/controller.js",
+      "files": ["http://resources.kingofapp.com/modules/googlemap/directive.js", "http://resources.kingofapp.com/modules/googlemap/style.css"],
       "scope": {
         "lat": "39.8847281",
         "lon": "4.2540999",

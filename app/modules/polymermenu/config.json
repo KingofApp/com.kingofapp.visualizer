@@ -29,14 +29,14 @@
     "es-ES" : ""
   },
   "images" : {
-  "list" : "images/list.png",
-  "screenshots" : [
-    "images/screenshot01.png",
-    "images/screenshot02.png"
-  ],
-  "popover" : "images/popover.png",
-  "banner" : "images/banner.png",
-  "logo" : "images/logo.png"
+    "list" : "images/list.png",
+    "screenshots" : [
+      "images/screenshot01.png",
+      "images/screenshot02.png"
+    ],
+    "popover" : "images/popover.png",
+    "banner" : "images/banner.png",
+    "logo" : "images/logo.png"
   },
   "showOn": {
     "menu": false,
@@ -88,9 +88,7 @@
     "headerBackgroundColor": "",
     "headerReverse": false,
     "headerTitle": "",
-    "headerTitleShown": true,
     "headerLogo": "",
-    "headerLogoShown": true,
     "headerAlignment": "left",
     "showicons": false,
     "toolbarTitle": true,

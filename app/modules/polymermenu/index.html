@@ -3,10 +3,10 @@
   <paper-drawer-panel>
     <div class="panel" drawer fixed>
       <div id="header" ng-if="polymermenu.modulescope.headerShown" ng-class="[polymermenu.modulescope.headerAlignment, polymermenu.modulescope.headerReverse ? 'reverse' : '']" style="background-image: url('{{polymermenu.modulescope.headerBackgroundImage}}'); background-color: {{polymermenu.modulescope.headerBackgroundColor}};">
-        <div class="logo" ng-if="polymermenu.modulescope.headerLogoShown">
+        <div class="logo" ng-if="polymermenu.modulescope.headerLogo">
           <img ng-src="{{polymermenu.modulescope.headerLogo}}">
         </div>
-        <span class="title" ng-if="polymermenu.modulescope.headerTitleShown">{{polymermenu.modulescope.headerTitle}}</span>
+        <span class="title" ng-if="polymermenu.modulescope.headerTitle">{{polymermenu.modulescope.headerTitle}}</span>
       </div>
 
       <paper-menu>

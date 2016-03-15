@@ -24,8 +24,7 @@
     "mocha": "2.2.x",
     "oclazyload": "~1.0.9",
     "polymer": "Polymer/polymer#^1.2.0",
-    "protractor": "2.1.x",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+    "protractor": "2.1.x"
   },
   "resolutions": {
     "angular-translate": "~2.8.1",

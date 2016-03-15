@@ -13,7 +13,7 @@
     var koaApp = document.querySelector('#koaApp');
 
     $rootScope.showTransition = true;
-
+    $location.$$path = $location.$$path || '/';
     if (structureService.getIndex() !== '' && $location.$$path === '/') {
       $location.path(structureService.getIndex());
     }else{

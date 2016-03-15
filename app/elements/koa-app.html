@@ -59,12 +59,12 @@
       setTheme: function(theme, callback) {
         this.theme = theme;
 
-        var themeIsNotImported = this.importedThemes.indexOf(this.theme.name) === -1;
+        var themeIsNotImported = this.importedThemes.indexOf(this.theme.identifier) === -1;
 
         if (themeIsNotImported) {
           this.importHref(this.theme.path, function() {
             this.renderThemeElements(callback);
-            this.importedThemes.push(this.theme.name);
+            this.importedThemes.push(this.theme.identifier);
           });
         } else {
           this.renderThemeElements(callback);
@@ -134,7 +134,7 @@
       },
 
       _createThemeElement: function(tag, attributes, childNodes) {
-        var newElementName = this.theme.name.replace('koa-theme-', '') + '-' + tag;
+        var newElementName = this.theme.identifier.replace('koa-theme-', '') + '-' + tag;
         var newElement = document.createElement(newElementName);
 
         for (var i = 0; i < attributes.length; i++) {

@@ -2,7 +2,7 @@
   "config": {
     "index": "/menu-abcd/home-abcd",
     "theme": {
-      "name": "koa-theme-android",
+      "identifier": "koa-theme-android",
       "path": "themes/koa-theme-android/koa-theme-android.html"
     },
     "colors": {

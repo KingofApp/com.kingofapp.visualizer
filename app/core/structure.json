@@ -1,7 +1,10 @@
 {
   "config": {
     "index": "/menu-abcd/home-abcd",
-    "theme": "koa-theme-android",
+    "theme": {
+      "name": "koa-theme-android",
+      "path": "themes/koa-theme-android/koa-theme-android.html"
+    },
     "colors": {
       "primaryTextColor": "#212121",
       "primaryBackgroundColor": "#ffffff",

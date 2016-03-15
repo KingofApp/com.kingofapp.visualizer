@@ -241,6 +241,8 @@
     }
 
     function setTheme(config) {
+      $rootScope.theme = config.theme;
+
       loadFonts(config.fonts);
 
       app.setTheme(config.theme, function() {

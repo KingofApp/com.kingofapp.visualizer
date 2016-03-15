@@ -10,13 +10,13 @@
   function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
-    var koaApp = document.querySelector('#koaApp');
+    var app = document.querySelector('#app');
 
     $rootScope.showTransition = true;
     $location.$$path = $location.$$path || '/';
     if (structureService.getIndex() !== '' && $location.$$path === '/') {
       $location.path(structureService.getIndex());
-    }else{
+    } else {
       configModule();
     }
 
@@ -237,13 +237,13 @@
     }
 
     function setIconset(iconset) {
-      koaApp.setIconset(iconset);
+      app.setIconset(iconset);
     }
 
     function setTheme(config) {
       loadFonts(config.fonts);
 
-      koaApp.setTheme(config.theme, function() {
+      app.setTheme(config.theme, function() {
         structureService.setCssVariables(config);
 
         $rootScope.$broadcast('koaAppRendered');
@@ -251,16 +251,16 @@
     }
 
     function renderElements() {
-      koaApp.renderThemeElements(function() {
+      app.renderThemeElements(function() {
         $rootScope.$broadcast('koaAppRendered');
       });
     }
 
     function renderKoaApp() {
       setTimeout(function() {
-        koaApp.createTree();
+        app.createTree();
 
-        (koaApp.theme) ? renderElements():
+        (app.theme) ? renderElements():
           ($rootScope.appData) ? setTheme($rootScope.appData.config) : setTheme(structureService.getConfig());
       }, 1000);
     }

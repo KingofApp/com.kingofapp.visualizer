@@ -168,7 +168,7 @@ module.exports = function(grunt) {
   // grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
   grunt.registerTask('continuous-test', ['exec:web_driver_update', 'connect:connect', 'protractor:continuous']);
 
-  grunt.registerTask('start', ['exec:server'])
+  grunt.registerTask('start', ['exec:server']);
   grunt.registerTask('dist', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'clean:dist','usemin']);
   grunt.registerTask('js', ['uglify']);
 };

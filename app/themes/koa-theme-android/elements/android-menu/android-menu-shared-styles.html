@@ -1,0 +1,42 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-menu-shared-styles">
+  <template>
+    <style>
+      /* need a wrapper element to make this higher specificity than the :host rule in android-item */
+      .selectable-content > ::content > .iron-selected {
+        font-weight: bold;
+
+        @apply(--menu-selected-item);
+      }
+
+      .selectable-content > ::content > [disabled] {
+        color: var(--menu-disabled-color, --disabled-text-color);
+      }
+
+      .selectable-content > ::content > *:focus {
+        position: relative;
+        outline: 0;
+
+        @apply(--menu-focused-item);
+      }
+
+      .selectable-content > ::content > *:focus:after {
+        @apply(--layout-fit);
+
+        background: currentColor;
+        opacity: 0.12;
+        content: '';
+        pointer-events: none;
+
+        @apply(--menu-focused-item-after);
+      }
+
+      .selectable-content > ::content > *[colored]:focus:after {
+        opacity: 0.26;
+      }
+    </style>
+  </template>
+</dom-module>

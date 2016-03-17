@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>android-menu-button demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../../../bower_components/iron-image/iron-image.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../android-button/android-button.html">
+    <link rel="import" href="../../android-icon-button/android-icon-button.html">
+    <link rel="import" href="../../android-item/android-item.html">
+    <link rel="import" href="../../android-menu/android-menu.html">
+    <link rel="import" href="../android-menu-button.html">
+
+    <style>
+      android-button {
+        display: block;
+        background: #4285f4;
+        color: #fff;
+      }
+
+      android-menu {
+        display: block;
+      }
+
+      android-menu-button {
+        margin: auto;
+      }
+
+      iron-image {
+        padding: 1em;
+      }
+
+      .item {
+        max-width: 300px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="Demo" is="dom-bind">
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Icon Button + Menu</h4>
+          <div class="horizontal-section">
+            <android-menu-button>
+              <android-icon-button icon="menu" class="dropdown-trigger" alt="menu"></android-icon-button>
+              <android-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[letters]]" as="letter">
+                  <android-item>[[letter]]</android-item>
+                </template>
+              </android-menu>
+            </android-menu-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Menu with multi selection</h4>
+          <div class="horizontal-section">
+            <android-menu-button ignore-select>
+              <android-icon-button icon="menu" class="dropdown-trigger" alt="multi select"></android-icon-button>
+              <android-menu class="dropdown-content" multi>
+                <template is="dom-repeat" items="[[letters]]" as="letter">
+                  <android-item>[[letter]]</android-item>
+                </template>
+              </android-menu>
+            </android-menu-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Disabled</h4>
+          <div class="horizontal-section">
+            <android-menu-button disabled>
+              <android-icon-button icon="menu" class="dropdown-trigger" alt="menu"></android-icon-button>
+              <android-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[letters]]" as="letter">
+                  <android-item>[[letter]]</android-item>
+                </template>
+              </android-menu>
+            </android-menu-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Alternate Alignment</h4>
+          <div class="horizontal-section">
+            <android-menu-button vertical-align="bottom" horizontal-align="right">
+              <android-icon-button icon="menu" class="dropdown-trigger" alt="bottom align"></android-icon-button>
+              <android-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[letters]]" as="letter">
+                  <android-item>[[letter]]</android-item>
+                </template>
+              </android-menu>
+            </android-menu-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Alternate Button</h4>
+          <div class="horizontal-section">
+            <android-menu-button>
+              <android-button class="dropdown-trigger" raised>
+                <koa-icon icon="check"></koa-icon>
+                <span>Dinosaurs</span>
+              </android-button>
+              <android-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+                  <android-item>[[dinosaur]]</android-item>
+                </template>
+              </android-menu>
+            </android-menu-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-section-container">
+        <div>
+          <h4>Alternate Content</h4>
+          <div class="horizontal-section">
+            <android-menu-button vertical-align="bottom">
+              <android-icon-button class="dropdown-trigger" icon="polymer" alt="polymer"></android-icon-button>
+              <iron-image class="dropdown-content" src="../../../../../bower_components/iron-image/demo/polymer.svg"></iron-image>
+            </android-menu-button>
+          </div>
+        </div>
+      </div>
+
+    </template>
+
+    <script>
+      Demo.letters = [
+        'alpha',
+        'beta',
+        'gamma',
+        'delta',
+        'epsilon'
+      ];
+      Demo.dinosaurs = [
+        'allosaurus',
+        'brontosaurus',
+        'carcharodontosaurus',
+        'diplodocus',
+        'ekrixinatosaurus',
+        'fukuiraptor',
+        'gallimimus',
+        'hadrosaurus',
+        'iguanodon',
+        'jainosaurus',
+        'kritosaurus',
+        'liaoceratops',
+        'megalosaurus',
+        'nemegtosaurus',
+        'ornithomimus',
+        'protoceratops',
+        'quetecsaurus',
+        'rajasaurus',
+        'stegosaurus',
+        'triceratops',
+        'utahraptor',
+        'vulcanodon',
+        'wannanosaurus',
+        'xenoceratops',
+        'yandusaurus',
+        'zephyrosaurus'
+      ];
+    </script>
+  </body>
+</html>

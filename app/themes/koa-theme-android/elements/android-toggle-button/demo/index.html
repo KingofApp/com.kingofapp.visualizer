@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <title>android-toggle-button demo</title>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../android-toggle-button.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 550px;
+      }
+
+      .horizontal-section {
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        @apply(--layout-center-justified);
+      }
+
+      android-toggle-button {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      android-toggle-button.green {
+        --toggle-button-checked-bar-color:  var(--paper-green-500);
+        --toggle-button-checked-button-color:  var(--paper-green-500);
+        --toggle-button-checked-ink-color: var(--paper-green-500);
+        --toggle-button-unchecked-bar-color:  var(--paper-teal-500);
+        --toggle-button-unchecked-button-color:  var(--paper-teal-500);
+        --toggle-button-unchecked-ink-color: var(--paper-teal-500);
+      }
+
+      android-toggle-button.pink {
+        --toggle-button-checked-bar-color:  var(--paper-pink-500);
+        --toggle-button-checked-button-color:  var(--paper-pink-500);
+        --toggle-button-checked-ink-color: var(--paper-pink-500);
+        --toggle-button-unchecked-bar-color:  var(--paper-indigo-900);
+        --toggle-button-unchecked-button-color:  var(--paper-indigo-900);
+        --toggle-button-unchecked-ink-color: var(--paper-indigo-900);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Toggle buttons can be checked and disabled</h3>
+      <div class="horizontal-section">
+        <android-toggle-button>Toggle</android-toggle-button>
+        <android-toggle-button checked>Toggle</android-toggle-button>
+        <android-toggle-button disabled>Disabled</android-toggle-button>
+      </div>
+
+      <h3>Toggle buttons can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <android-toggle-button class="green">Toggle</android-toggle-button>
+        <android-toggle-button checked class="pink">Toggle</android-toggle-button>
+      </div>
+    </div>
+  </body>
+</html>

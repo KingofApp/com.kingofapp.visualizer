@@ -1,0 +1,35 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-submenu-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+<link rel="import" href="android-menu-shared-styles.html">
+
+<dom-module id="android-submenu">
+  <template>
+    <!-- write your styles here -->
+    <style include="android-menu-shared-styles"></style>
+    <style>
+
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="selectable-content" on-tap="_onTap">
+      <content id="trigger" select=".menu-trigger"></content>
+    </div>
+    <iron-collapse id="collapse" opened="{{opened}}">
+      <content id="content" select=".menu-content"></content>
+    </iron-collapse>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-submenu',
+
+      behaviors: [
+        Polymer.KoaSubmenuBehavior
+      ]
+    });
+  </script>
+</dom-module>

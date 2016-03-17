@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>android-button demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../android-button.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 650px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      android-button {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      android-button.custom:hover {
+        background-color: var(--paper-indigo-100);
+      }
+
+      android-button.pink {
+        color: var(--paper-pink-a200);
+      }
+
+      android-button.indigo {
+        background-color: var(--paper-indigo-500);
+        color: white;
+      }
+
+      android-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+
+      android-button.green[active] {
+        background-color: var(--paper-red-500);
+      }
+
+      android-button.disabled {
+        color: white;
+      }
+
+      koa-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Buttons can be standar, big, link, toggleable, or disabled</h3>
+      <div class="horizontal-section">
+        <android-button>standar</android-button>
+        <android-button big>big</android-button>
+        <android-button link>link</android-button>
+        <android-button toggles>toggles</android-button>
+        <android-button disabled>disabled</android-button>
+      </div>
+
+      <h3>Buttons can have icons</h3>
+      <div class="horizontal-section">
+        <android-button><koa-icon icon="check"></koa-icon>standar</android-button>
+        <android-button big><koa-icon icon="file-download"></koa-icon>big</android-button>
+        <android-button link><koa-icon icon="file-download"></koa-icon>link</android-button>
+        <android-button toggles><koa-icon icon="favorite"></koa-icon>toggles</android-button>
+        <android-button disabled><koa-icon icon="block"></koa-icon>disabled</android-button>
+      </div>
+
+      <h3>Buttons can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <android-button class="custom pink">standar</android-button>
+        <android-button big class="custom indigo">big</android-button>
+        <android-button link class="custom">link</android-button>
+        <android-button toggles class="custom green">toggles</android-button>
+        <android-button disabled class="custom disabled">disabled</android-button>
+      </div>
+    </div>
+  </body>
+</html>

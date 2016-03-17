@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>android-toolbar demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../styles/default-theme.html">
+    <link rel="import" href="../../android-icon-button/android-icon-button.html">
+    <link rel="import" href="../../android-progress/android-progress.html">
+    <link rel="import" href="../android-toolbar.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .centered {
+        min-width: calc(100% - 200px);
+      }
+
+      android-toolbar android-progress {
+        --progress-active-color: var(--accent-color);
+      }
+
+      .spacer {
+        @apply(--layout-flex);
+      }
+
+      .vertical-section {
+        margin: 0 0 40px;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <div class="vertical-section-container centered">
+      <h3>
+        A plain <code>android-toolbar</code>. Use <code>class="title"</code> to
+        indicate the toolbar's title.
+      </h3>
+      <div class="vertical-section">
+        <android-toolbar>
+          <span class="title">Title</span>
+        </android-toolbar>
+      </div>
+
+      <h3>A styled <code>android-toolbar</code>.</h3>
+      <div class="vertical-section">
+        <style is="custom-style">
+          android-toolbar.red {
+            --toolbar-background: red;
+            --toolbar-title: {
+              font-style: italic;
+              font-weight: bold;
+            };
+          }
+        </style>
+
+        <android-toolbar class="red">
+          <span class="title">Title</span>
+        </android-toolbar>
+      </div>
+
+      <h3>
+        <code>android-icon-button</code> is styled specially when used in a toolbar
+        before the title element or if the button has <code>icon="menu"</code>.
+      </h3>
+      <div class="vertical-section">
+        <android-toolbar>
+          <android-icon-button icon="menu"></android-icon-button>
+          <span class="title">Title</span>
+          <android-icon-button icon="refresh"></android-icon-button>
+          <android-icon-button icon="add">+</android-icon-button>
+        </android-toolbar>
+      </div>
+
+      <h3>
+        Use <code>class="tall"</code> to expand the toolbar to three sections.
+      </h3>
+      <div class="vertical-section">
+        <android-toolbar class="tall">
+          <android-icon-button icon="menu"></android-icon-button>
+          <span class="title">Title</span>
+          <android-icon-button icon="refresh"></android-icon-button>
+          <android-icon-button icon="add">+</android-icon-button>
+        </android-toolbar>
+      </div>
+
+      <h3>
+        Use <code>class="medium-tall"</code> to expand the toolbar to two
+        sections.
+      </h3>
+      <div class="vertical-section">
+        <android-toolbar class="medium-tall">
+          <android-icon-button icon="menu"></android-icon-button>
+          <span class="title">Title</span>
+          <android-icon-button icon="refresh"></android-icon-button>
+          <android-icon-button icon="add">+</android-icon-button>
+        </android-toolbar>
+      </div>
+
+      <h3>
+        Use <code>class="middle"</code> and <code>class="bottom"</code> to
+        indicate which section of the toolbar an element should be placed in.
+        Elements are placed in the top section by default.
+      </h3>
+      <div class="vertical-section">
+        <android-toolbar class="tall">
+          <android-icon-button icon="menu"></android-icon-button>
+          <span class="title">Title</span>
+          <android-icon-button icon="refresh"></android-icon-button>
+          <android-icon-button icon="add">+</android-icon-button>
+
+          <span class="middle title">Middle Title</span>
+
+          <span class="bottom title">Bottom Title</span>
+          <android-icon-button icon="content-cut" class="bottom"></android-icon-button>
+          <android-icon-button icon="content-copy" class="bottom"></android-icon-button>
+          <android-icon-button icon="content-paste" class="bottom"></android-icon-button>
+        </android-toolbar>
+      </div>
+
+      <h3>
+        Don't use both <code>class="middle"</code> and <code>class="bottom"</code>
+        elements in a <code>class="medium-tall"</code> toolbar.
+      </h3>
+      <div class="vertical-section">
+        <android-toolbar class="medium-tall">
+          <android-icon-button icon="menu"></android-icon-button>
+          <span class="title">Top Title</span>
+          <android-icon-button icon="refresh"></android-icon-button>
+          <android-icon-button icon="add">+</android-icon-button>
+
+          <span class="middle title">Middle Title</span>
+
+          <span class="bottom title">Bottom Title</span>
+        </android-toolbar>
+      </div>
+
+      <h3>
+        Elements with <code>class="fit"</code> expand to fit to the bottom of the
+        toolbar section they are in.
+      </h3>
+      <div class="vertical-section">
+        <android-toolbar class="medium-tall">
+          <android-icon-button icon="menu"></android-icon-button>
+          <div class="spacer"></div>
+          <android-icon-button icon="refresh"></android-icon-button>
+          <android-icon-button icon="add">+</android-icon-button>
+          <div class="middle title">Title</div>
+          <android-progress class="middle fit" value="60"></android-progress>
+        </android-toolbar>
+      </div>
+    </div>
+  </body>
+</html>

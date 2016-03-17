@@ -1,0 +1,38 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-input-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-input-char-counter">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: inline-block;
+        float: right;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.011em;
+        line-height: 20px;
+      }
+
+      :host-context([dir="rtl"]) {
+        float: left;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <span>[[_charCounterStr]]</span>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-input-char-counter',
+
+      behaviors: [
+        Polymer.KoaInputCharCounterBehavior
+      ]
+    });
+  </script>
+</dom-module>

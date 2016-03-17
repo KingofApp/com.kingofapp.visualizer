@@ -1,0 +1,196 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-toolbar-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-toolbar">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        background: var(--toolbar-background, --primary-color);
+          -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        color: var(--toolbar-color, #ffffff);
+        display: block;
+        font-family: var(--toolbar-font-family, --title-font-family);
+        height: var(--toolbar-height, 64px);
+        position: relative;
+
+        @apply(--toolbar);
+      }
+
+      :host(.medium-tall) {
+        height: calc(var(--toolbar-height, 64px) * 2);
+        @apply(--toolbar-medium);
+      }
+
+      :host(.tall) {
+        height: calc(var(--toolbar-height, 64px) * 3);
+        @apply(--toolbar-tall);
+      }
+
+      .toolbar-tools {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+
+        height: var(--toolbar-height, 64px);
+        padding: 0 16px;
+        pointer-events: none;
+        position: relative;
+
+        @apply(--toolbar-content);
+      }
+
+      /*
+       * TODO: Where should media query breakpoints live so they can be shared between elements?
+       */
+      @media (max-width: 600px) {
+        :host {
+          height: var(--toolbar-sm-height, 56px);
+        }
+
+        :host(.medium-tall) {
+          height: calc(var(--toolbar-sm-height, 56px) * 2);
+        }
+
+        :host(.tall) {
+          height: calc(var(--toolbar-sm-height, 56px) * 3);
+        }
+
+        .toolbar-tools {
+          height: var(--toolbar-sm-height, 56px);
+        }
+      }
+
+      #topBar {
+        position: relative;
+      }
+
+      #middleBar {
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      :host(.tall) #middleBar,
+      :host(.medium-tall) #middleBar {
+          -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+      }
+
+      #bottomBar {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+      }
+
+      /*
+       * make elements (e.g. buttons) respond to mouse/touch events
+       *
+       * `.toolbar-tools` disables touch events so multiple toolbars can stack
+       * and not absorb events. All children must have pointer events re-enabled
+       * to work as expected.
+       */
+      .toolbar-tools > ::content > *:not([disabled]) {
+        pointer-events: auto;
+      }
+
+      .toolbar-tools > ::content .title {
+        @apply(--layout-flex);
+        @apply(--paper-font-common-base);
+
+        font-family: var(--title-font-family);
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1;
+        overflow: hidden;
+        pointer-events: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        @apply(--toolbar-title);
+      }
+
+      /**
+       * TODO: Refactor these selectors
+       * Work in progress.
+       */
+      .toolbar-tools > ::content android-icon-button[icon=menu] {
+        margin-right: 24px;
+      }
+
+      .toolbar-tools > ::content > .title,
+      .toolbar-tools > ::content[select=".middle"] > .title,
+      .toolbar-tools > ::content[select=".bottom"] > .title {
+        margin-left: 56px;
+      }
+
+      .toolbar-tools > ::content > android-icon-button + .title,
+      .toolbar-tools > ::content[select=".middle"] android-icon-button + .title,
+      .toolbar-tools > ::content[select=".bottom"] android-icon-button + .title {
+        margin-left: 0;
+      }
+
+      .toolbar-tools > ::content > .fit {
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        position: absolute;
+        right: 0;
+        top: auto;
+        width: auto;
+      }
+
+      /**
+       * TODO: Until we have a better solution for classes that don't use /deep/ create our own.
+       */
+      .start-justified {
+        @apply(--layout-start-justified);
+      }
+
+      .center-justified {
+        @apply(--layout-center-justified);
+      }
+
+      .end-justified {
+        @apply(--layout-end-justified);
+      }
+
+      .around-justified {
+        @apply(--layout-around-justified);
+      }
+
+      .justified {
+        @apply(--layout-justified);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div id="topBar" class$="toolbar-tools [[_computeBarExtraClasses(justify)]]">
+      <content select=":not(.middle):not(.bottom)"></content>
+    </div>
+
+    <div id="middleBar" class$="toolbar-tools [[_computeBarExtraClasses(middleJustify)]]">
+      <content select=".middle"></content>
+    </div>
+
+    <div id="bottomBar" class$="toolbar-tools [[_computeBarExtraClasses(bottomJustify)]]">
+      <content select=".bottom"></content>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-toolbar',
+
+      behaviors: [
+        Polymer.KoaToolbarBehavior
+      ]
+    });
+  </script>
+</dom-module>

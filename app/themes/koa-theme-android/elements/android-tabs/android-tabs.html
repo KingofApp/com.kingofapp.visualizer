@@ -1,0 +1,97 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-tabs-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+<link rel="import" href="android-tab.html">
+
+<dom-module id="android-tabs">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        @apply(--layout);
+        @apply(--layout-center);
+
+        background-color: var(--tabs-background-color, --primary-color);
+        color: var(--tabs-text-color, white);
+        height: 48px;
+        font-size: 14px;
+        font-weight: 500;
+        overflow: hidden;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+        user-select: none;
+        /* NOTE: Both values are needed, since some phones require the value to be `transparent`. */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+
+        @apply(--tabs);
+      }
+
+      :host-context([dir=rtl]) {
+        @apply(--layout-horizontal-reverse);
+      }
+
+      #tabsContainer {
+        @apply(--layout-flex-auto);
+
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        white-space: nowrap;
+      }
+
+      #tabsContent {
+        height: 100%;
+        -moz-flex-basis: auto;
+        -ms-flex-basis: auto;
+        flex-basis: auto;
+      }
+
+      #tabsContent.scrollable {
+        position: absolute;
+        white-space: nowrap;
+      }
+
+      #tabsContent.horizontal {
+        @apply(--layout-horizontal);
+      }
+
+      .not-visible {
+        cursor: default;
+        opacity: 0;
+      }
+
+      #tabsContent > ::content > * {
+        height: 100%;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div id="tabsContainer" on-track="_scroll" on-down="_down">
+      <div id="tabsContent" class$="[[_computeTabsContentClass(scrollable)]]">
+        <content select="*"></content>
+      </div>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-tabs',
+
+      behaviors: [
+        Polymer.KoaTabsBehavior
+      ],
+
+      properties: {
+        selectable: {
+          type: String,
+          value: 'android-tab'
+        }
+      }
+    });
+  </script>
+</dom-module>

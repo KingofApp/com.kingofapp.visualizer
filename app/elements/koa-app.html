@@ -1,6 +1,3 @@
-<link rel="import" href="http://resources.kingofapp.com/bower_components/polymer/polymer.html">
-<link rel="import" href="http://resources.kingofapp.com/bower_components/iron-flex-layout/iron-flex-layout.html">
-
 <dom-module id="koa-app">
   <template>
     <style>
@@ -31,7 +28,7 @@
 
       properties: {
         theme: {
-          type: String
+          type: Object
         },
 
         tree: {
@@ -44,8 +41,6 @@
           value: []
         }
       },
-
-      themesPath: 'http://resources.kingofapp.com/themes/',
 
       importedThemes: [],
 
@@ -64,12 +59,12 @@
       setTheme: function(theme, callback) {
         this.theme = theme;
 
-        var themeIsNotImported = this.importedThemes.indexOf(this.theme) === -1;
+        var themeIsNotImported = this.importedThemes.indexOf(this.theme.identifier) === -1;
 
         if (themeIsNotImported) {
-          this.importHref(this._getThemePath(), function() {
+          this.importHref(this.theme.path, function() {
             this.renderThemeElements(callback);
-            this.importedThemes.push(this.theme);
+            this.importedThemes.push(this.theme.identifier);
           });
         } else {
           this.renderThemeElements(callback);
@@ -139,7 +134,7 @@
       },
 
       _createThemeElement: function(tag, attributes, childNodes) {
-        var newElementName = this.theme.replace('koa-theme-', '') + '-' + tag;
+        var newElementName = this.theme.identifier.replace('koa-theme-', '') + '-' + tag;
         var newElement = document.createElement(newElementName);
 
         for (var i = 0; i < attributes.length; i++) {
@@ -170,10 +165,6 @@
 
         Polymer.dom(parentNode).replaceChild(newElement, treeElement.actualElement);
         treeElement.actualElement = newElement;
-      },
-
-      _getThemePath: function() {
-        return this.themesPath + this.theme + '/' + this.theme + '.html';
       }
     });
   </script>

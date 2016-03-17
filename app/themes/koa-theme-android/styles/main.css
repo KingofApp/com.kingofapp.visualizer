@@ -1,0 +1,33 @@
+/* General styles */
+
+.module {
+  padding: 10px;
+}
+
+.module .module {
+  padding: 0;
+}
+
+.module > a {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+
+.module > a + a,
+android-card + android-card {
+  margin-top: 15px;
+}
+
+android-card {
+  max-width: 100%;
+}
+
+form {
+  margin: 15px;
+}
+
+form android-button {
+  float: right;
+  margin-top: 15px;
+}

@@ -1,0 +1,179 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-progress-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-progress">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #progressContainer {
+        position: relative;
+      }
+
+      #progressContainer,
+      .indeterminate::after {
+        height: var(--progress-height, 4px);
+      }
+
+      #primaryProgress,
+      #secondaryProgress,
+      .indeterminate::after {
+        @apply(--layout-fit);
+      }
+
+      #progressContainer,
+      .indeterminate::after {
+        background-color: var(--progress-container-color, #e0e0e0);
+      }
+
+      :host(.transiting) #primaryProgress,
+      :host(.transiting) #secondaryProgress {
+        -webkit-transition-property: -webkit-transform;
+        transition-property: transform;
+
+        /* Duration */
+        -webkit-transition-duration: var(--progress-transition-duration, 0.08s);
+        transition-duration: var(--progress-transition-duration, 0.08s);
+
+        /* Timing function */
+        -webkit-transition-timing-function: var(--progress-transition-timing-function, ease);
+        transition-timing-function: var(--progress-transition-timing-function, ease);
+
+        /* Delay */
+        -webkit-transition-delay: var(--progress-transition-delay, 0s);
+        transition-delay: var(--progress-transition-delay, 0s);
+      }
+
+      #primaryProgress,
+      #secondaryProgress {
+        @apply(--layout-fit);
+
+          -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+          -webkit-transform-origin: left center;
+        transform-origin: left center;
+        will-change: transform;
+      }
+
+      #primaryProgress {
+        background-color: var(--progress-active-color, #0f9d58);
+      }
+
+      #secondaryProgress {
+        background-color: var(--progress-secondary-color, #b7e1cd);
+      }
+
+      :host([disabled]) #primaryProgress {
+        background-color: var(--progress-disabled-active-color, #9e9e9e);
+      }
+
+      :host([disabled]) #secondaryProgress {
+        background-color: var(--progress-disabled-secondary-color, #e0e0e0);
+      }
+
+      :host(:not([disabled])) #primaryProgress.indeterminate {
+          -webkit-animation: indeterminate-bar 2s linear infinite;
+        animation: indeterminate-bar 2s linear infinite;
+          -webkit-transform-origin: right center;
+        transform-origin: right center;
+      }
+
+      :host(:not([disabled])) #primaryProgress.indeterminate::after {
+        content: "";
+          -webkit-animation: indeterminate-splitter 2s linear infinite;
+        animation: indeterminate-splitter 2s linear infinite;
+          -webkit-transform-origin: center center;
+        transform-origin: center center;
+      }
+
+      @-webkit-keyframes indeterminate-bar {
+        0% {
+          -webkit-transform: scaleX(1) translateX(-100%);
+        }
+        50% {
+          -webkit-transform: scaleX(1) translateX(0%);
+        }
+        75% {
+          -webkit-transform: scaleX(1) translateX(0%);
+          -webkit-animation-timing-function: cubic-bezier(.28,.62,.37,.91);
+        }
+        100% {
+          -webkit-transform: scaleX(0) translateX(0%);
+        }
+      }
+
+      @-webkit-keyframes indeterminate-splitter {
+        0% {
+          -webkit-transform: scaleX(.75) translateX(-125%);
+        }
+        30% {
+          -webkit-transform: scaleX(.75) translateX(-125%);
+          -webkit-animation-timing-function: cubic-bezier(.42,0,.6,.8);
+        }
+        90% {
+          -webkit-transform: scaleX(.75) translateX(125%);
+        }
+        100% {
+          -webkit-transform: scaleX(.75) translateX(125%);
+        }
+      }
+
+      @keyframes indeterminate-bar {
+        0% {
+          transform: scaleX(1) translateX(-100%);
+        }
+        50% {
+          transform: scaleX(1) translateX(0%);
+        }
+        75% {
+          transform: scaleX(1) translateX(0%);
+          animation-timing-function: cubic-bezier(.28,.62,.37,.91);
+        }
+        100% {
+          transform: scaleX(0) translateX(0%);
+        }
+      }
+
+      @keyframes indeterminate-splitter {
+        0% {
+          transform: scaleX(.75) translateX(-125%);
+        }
+        30% {
+          transform: scaleX(.75) translateX(-125%);
+          animation-timing-function: cubic-bezier(.42,0,.6,.8);
+        }
+        90% {
+          transform: scaleX(.75) translateX(125%);
+        }
+        100% {
+          transform: scaleX(.75) translateX(125%);
+        }
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div id="progressContainer">
+      <div id="secondaryProgress" hidden$="[[_hideSecondaryProgress(secondaryRatio)]]"></div>
+      <div id="primaryProgress"></div>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-progress',
+
+      behaviors: [
+        Polymer.KoaProgressBehavior
+      ]
+    });
+  </script>
+</dom-module>

@@ -36,8 +36,8 @@
           }, libs);
 
           if (libs) {
-            this.libs = this.libs.concat(_.pluck(libs, 'src')).filter(filterNotHtmlOrUndefined);
-            this.htmlSources = this.htmlSources.concat(_.pluck(libs, 'src')).filter(filterHtml);
+            this.libs = this.libs.concat(_.map(libs, 'src')).filter(filterNotHtmlOrUndefined);
+            this.htmlSources = this.htmlSources.concat(_.map(libs, 'src')).filter(filterHtml);
           }
           this.files = this.files.concat(value.files);
           this.htmlSources = this.htmlSources.concat(value.files).filter(filterHtml);

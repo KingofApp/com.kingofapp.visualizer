@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <title>android-slider demo</title>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../android-slider.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section {
+        margin: 0 0 40px;
+      }
+
+      android-slider {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <div class="vertical-section-container centered">
+      <h3>android-sliders can have values, secondary progress values, or be disabled.</h3>
+      <div class="vertical-section">
+        <android-slider value="21"></android-slider>
+        <android-slider value="0"></android-slider>
+        <android-slider value="50" secondary-progress="85"></android-slider>
+        <android-slider disabled value="33"></android-slider>
+      </div>
+
+      <h3>They can be editable, and styled using custom properties</h3>
+      <div class="vertical-section">
+        <style is="custom-style">
+          android-slider.red {
+            --slider-knob-color: var(--paper-red-500);
+            --slider-active-color: var(--paper-red-500);
+          }
+          android-slider.green {
+            --slider-knob-color: var(--paper-green-500);
+            --slider-active-color: var(--paper-green-500);
+          }
+          android-slider.blue {
+            --slider-knob-color: var(--paper-light-blue-500);
+            --slider-active-color: var(--paper-light-blue-500);
+          }
+        </style>
+
+        <div>R</div>
+        <android-slider class="red" value="23" max="255" editable></android-slider>
+        <div>G</div>
+        <android-slider class="green" value="183" max="255" editable></android-slider>
+        <div>B</div>
+        <android-slider class="blue" value="211" max="255" editable></android-slider>
+      </div>
+
+      <h3>The pins can be labelled</h3>
+      <div class="vertical-section">
+        <style is="custom-style">
+          .caption {
+            padding-left: 12px;
+            color: #a0a0a0;
+          }
+          #grade {
+            --slider-secondary-color: var(--paper-red-a200);
+          }
+        </style>
+        <div>Brightness</div><br>
+        <android-slider pin value="20"></android-slider>
+        <div>Ratings: <span id="ratingsLabel" class="caption"></span></div><br>
+        <android-slider id="ratings" pin snaps max="10" max-markers="10" step="1" value="5"></android-slider>
+        <div>Grade: <span id="gradeLabel" class="caption"></span></div><br>
+        <android-slider id="grade" pin value="20" secondary-progress="70"></android-slider>
+
+        <script>
+          document.addEventListener('WebComponentsReady', function() {
+            var ratings = document.querySelector('#ratings');
+            ratings.addEventListener('value-change', function() {
+              document.querySelector('#ratingsLabel').textContent = ratings.value;
+            });
+
+            var grade = document.querySelector('#grade');
+            grade.addEventListener('value-change', function() {
+              var label = (grade.value < grade.secondaryProgress) ? 'Fail' : 'Pass' ;
+              document.querySelector('#gradeLabel').textContent = grade.value + ' (' + label + ')';
+            });
+          });
+        </script>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('WebComponentsReady', function() {
+        var ratings = document.querySelector('#ratings');
+        ratings.addEventListener('value-change', function() {
+          document.querySelector('#ratingsLabel').textContent = ratings.value;
+        });
+
+        var grade = document.querySelector('#grade');
+        grade.addEventListener('value-change', function() {
+          var label = (grade.value < grade.secondaryProgress) ? 'Fail' : 'Pass' ;
+          document.querySelector('#gradeLabel').textContent = grade.value + ' (' + label + ')';
+        });
+      });
+    </script>
+  </body>
+</html>

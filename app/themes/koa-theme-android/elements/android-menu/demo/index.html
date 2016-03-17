@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>android-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../android-item/android-item.html">
+    <link rel="import" href="../android-menu.html">
+    <link rel="import" href="../android-submenu.html">
+
+    <style is="custom-style">
+      .horizontal-section {
+        padding: 0 !important;
+      }
+
+      .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+      }
+
+      android-item {
+        --item: {
+          cursor: pointer;
+        };
+      }
+
+      .sublist android-item {
+        padding-left: 30px;
+      }
+
+      .sublist2 android-item {
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal-section-container">
+      <div>
+        <h4>Standard</h4>
+        <div class="horizontal-section">
+          <android-menu>
+            <android-item>Inbox</android-item>
+            <android-item>Starred</android-item>
+            <android-item>Sent mail</android-item>
+            <android-item>Drafts</android-item>
+          </android-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Pre-selected</h4>
+        <div class="horizontal-section">
+          <android-menu selected="0">
+            <android-item>Inbox</android-item>
+            <android-item disabled>Starred</android-item>
+            <android-item>Sent mail</android-item>
+            <android-item>Drafts</android-item>
+          </android-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Multi-select</h4>
+        <div class="horizontal-section">
+          <android-menu multi>
+            <android-item>Bold</android-item>
+            <android-item>Italic</android-item>
+            <android-item>Underline</android-item>
+            <android-item>Strikethrough</android-item>
+          </android-menu>
+        </div>
+      </div>
+
+      <div>
+        <h4>Sub-menu</h4>
+        <div class="horizontal-section">
+          <android-menu attr-for-item-title="label" multi>
+            <android-submenu label="android-menu">
+              <android-item class="menu-trigger">android-menu</android-item>
+              <android-menu class="menu-content sublist" multi>
+                <android-submenu label="Properties">
+                  <android-item class="menu-trigger">Properties</android-item>
+                  <android-menu class="menu-content sublist2">
+                    <android-item>focusedItem</android-item>
+                    <android-item>attrForItemTitle</android-item>
+                  </android-menu>
+                </android-submenu>
+                <android-submenu label="Methods">
+                  <android-item class="menu-trigger">Methods</android-item>
+                  <android-menu class="menu-content sublist2">
+                    <android-item>select(value)</android-item>
+                  </android-menu>
+                </android-submenu>
+            </android-menu>
+          </android-submenu>
+
+          <android-submenu label="android-submenu">
+            <android-item class="menu-trigger">android-submenu</android-item>
+            <android-menu class="menu-content sublist">
+              <android-submenu label="Properties">
+                <android-item class="menu-trigger">Properties</android-item>
+                <android-menu class="menu-content sublist2">
+                  <android-item>opened</android-item>
+                </android-menu>
+                </android-submenu>
+                <android-submenu label="Methods">
+                  <android-item class="menu-trigger">Methods</android-item>
+                  <android-menu class="menu-content sublist2">
+                    <android-item>open()</android-item>
+                    <android-item>close()</android-item>
+                    <android-item>toggle()</android-item>
+                  </android-menu>
+              </android-submenu>
+            </android-menu>
+          </android-submenu>
+
+            <android-submenu label="Unavailable" disabled>
+              <android-item class="menu-trigger">Unavailable</android-item>
+              <android-menu class="menu-content sublist">
+                <android-item>Unavailable 1</android-item>
+                <android-item>Unavailable 2</android-item>
+              </android-menu>
+            </android-submenu>
+          </android-menu>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

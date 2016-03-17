@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <title>android-tabs demo</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../android-toolbar/android-toolbar.html">
+    <link rel="import" href="../android-tab.html">
+    <link rel="import" href="../android-tabs.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      #container {
+        max-width: 600px;
+      }
+
+      .vertical-section {
+        margin: 0 0 40px;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <div id="container" class="vertical-section-container centered">
+      <h3>Plain <code>android-tabs</code>.</h3>
+      <div class="vertical-section">
+        <android-tabs selected="0">
+          <android-tab>ITEM ONE</android-tab>
+          <android-tab>ITEM TWO</android-tab>
+          <android-tab>ITEM THREE</android-tab>
+        </android-tabs>
+      </div>
+
+      <h3>
+        The <code>scrollable</code> attribute causes the tabs to scroll, rather
+        than compress, when there is not enough space. Arrow buttons appear when
+        any of the tabs are not completely visible.
+      </h3>
+      <div class="vertical-section">
+        <android-tabs selected="0" scrollable>
+          <android-tab>NUMBER ONE ITEM</android-tab>
+          <android-tab>ITEM TWO</android-tab>
+          <android-tab>THE THIRD ITEM</android-tab>
+          <android-tab>THE ITEM FOUR</android-tab>
+          <android-tab>FIFTH</android-tab>
+          <android-tab>THE SIXTH TAB</android-tab>
+          <android-tab>NUMBER SEVEN</android-tab>
+          <android-tab>EIGHT</android-tab>
+          <android-tab>NUMBER NINE</android-tab>
+          <android-tab>THE TENTH</android-tab>
+          <android-tab>THE ITEM ELEVEN</android-tab>
+          <android-tab>TWELFTH ITEM</android-tab>
+        </android-tabs>
+      </div>
+
+      <h3>
+        Tab layout is effected by the writing direction of the surrounding area.
+      </h3>
+      <div class="vertical-section">
+        <div dir="rtl">
+          <android-tabs selected="0">
+            <android-tab>ITEM ONE</android-tab>
+            <android-tab>ITEM TWO</android-tab>
+            <android-tab>ITEM THREE</android-tab>
+          </android-tabs>
+          &nbsp;
+          <android-tabs selected="0" scrollable>
+            <android-tab>NUMBER ONE ITEM</android-tab>
+            <android-tab>ITEM TWO</android-tab>
+            <android-tab>THE THIRD ITEM</android-tab>
+            <android-tab>THE ITEM FOUR</android-tab>
+            <android-tab>FIFTH</android-tab>
+            <android-tab>THE SIXTH TAB</android-tab>
+            <android-tab>NUMBER SEVEN</android-tab>
+            <android-tab>EIGHT</android-tab>
+            <android-tab>NUMBER NINE</android-tab>
+            <android-tab>THE TENTH</android-tab>
+            <android-tab>THE ITEM ELEVEN</android-tab>
+            <android-tab>TWELFTH ITEM</android-tab>
+          </android-tabs>
+        </div>
+      </div>
+
+      <h3>
+        Tabs can be used in a <code>android-toolbar</code>.
+      </h3>
+      <div class="vertical-section">
+        <style is="custom-style">
+          .self-end {
+            /* This mixin (from iron-flex-layout) aligns the tabs to the
+               bottom of the toolbar. */
+            @apply(--layout-self-end);
+          }
+        </style>
+
+        <android-toolbar class="tall">
+          <android-tabs selected="0" class="bottom self-end" style="width: 300px;">
+            <android-tab>ITEM ONE</android-tab>
+            <android-tab>ITEM TWO</android-tab>
+          </android-tabs>
+        </android-toolbar>
+      </div>
+    </div>
+  </body>
+</html>

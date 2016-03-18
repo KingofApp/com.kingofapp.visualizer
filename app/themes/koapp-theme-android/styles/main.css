@@ -1,13 +1,5 @@
 /* General styles */
 
-.module {
-  padding: 10px;
-}
-
-.module .module {
-  padding: 0;
-}
-
 .module > a {
   color: inherit;
   display: block;

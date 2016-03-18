@@ -28,15 +28,15 @@
     "en-US" : "",
     "es-ES" : ""
   },
-  "images" : {
-    "list" : "images/list.png",
-    "screenshots" : [
-      "images/screenshot01.png",
-      "images/screenshot02.png"
+  "images": {
+    "list": "modules/polymermenu/images/list.png",
+    "screenshots": [
+      "modules/polymermenu/images/screenshot01.png",
+      "modules/polymermenu/images/screenshot02.png"
     ],
-    "popover" : "images/popover.png",
-    "banner" : "images/banner.png",
-    "logo" : "images/logo.png"
+    "popover": "modules/polymermenu/images/popover.png",
+    "banner": "modules/polymermenu/images/banner.png",
+    "logo": "modules/polymermenu/images/logo.png"
   },
   "showOn": {
     "menu": false,

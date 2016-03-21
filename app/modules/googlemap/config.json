@@ -15,9 +15,10 @@
   "requires": [],
   "canContain": false,
   "view" : "modules/googlemap/index.html",
-  "controller" : "modules/googlemap/controller.js",
   "files" : [
-      "modules/googlemap/directive.js","modules/googlemap/style.css"
+    "modules/googlemap/controller.js",
+    "modules/googlemap/directive.js",
+    "modules/googlemap/style.css"
   ],
   "scope": {
     "lat": "39.8847281",

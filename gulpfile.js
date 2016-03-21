@@ -27,7 +27,11 @@ gulp.task('serve', function() {
       }
     },
     server: {
-      baseDir: ['app']
+      baseDir: ['app'],
+      middleware: function(req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }
     }
   });
 

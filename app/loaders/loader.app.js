@@ -1,11 +1,11 @@
 angular.element(document).ready(function() {
 
-  if(location.search==="?builder"){
+  if(location.search.indexOf('builder') !== -1){
     loadFromBuilder();
   }else{
     loadFromStructure();
   }
-  
+
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {
       angular

@@ -18,13 +18,11 @@
         var dependencies = {
           files: new Array(0),
           libs: new Array(0),
-          htmlSources: new Array(0),
-          controllers: new Array(0)
+          htmlSources: new Array(0)
         };
 
         var cache = structureService.getCachedLibs();
         angular.forEach(modules, function(value, key) {
-          this.controllers = this.controllers.concat(value.controller).filter(filterNotHtmlOrUndefined);
           var libs = value.libs;
           angular.forEach(libs, function(value, key) {
             if (value && value.bower) {
@@ -46,32 +44,8 @@
         structureService.setCachedLibs(cache);
 
         loadHtmlDeps()
-          .then(loadController)
-          .then(loadAllDependecies)
-          .catch(loadAllDependecies);
-
-          function loadController() {
-            var defer = $q.defer();
-            $q.all({
-              'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
-              'dependencies': $ocLazyLoad.load(dependencies.controllers)
-            }).then(function(data) {
-              defer.resolve();
-            }).catch(defer.reject);
-            return defer.promise;
-          }
-        function loadAllDependecies() {
-          var defer = $q.defer();
-          $q.all({
-            'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
-            'dependencies': $ocLazyLoad.load(dependencies.libs)
-          }).then(function(data) {
-            scope.lazyLoadParams = [dependencies.files];
-            scope.template = structureService.validateScope(data.rootModule);
-            defer.resolve();
-          }).catch(defer.reject);
-          return defer.promise;
-        }
+          .then(loadLibs)
+          .then(loadFiles);
 
         function loadHtmlDeps() {
           var defer = $q.defer();
@@ -84,6 +58,29 @@
           $q.all(htmlImports)
             .then(defer.resolve)
             .catch(defer.reject);
+          return defer.promise;
+        }
+
+        function loadLibs() {
+          var defer = $q.defer();
+          $q.all({
+            'dependencies': $ocLazyLoad.load(dependencies.libs, {serie: true})
+          }).then(function(data) {
+            defer.resolve();
+          }).catch(defer.reject);
+          return defer.promise;
+        }
+
+        function loadFiles() {
+          var defer = $q.defer();
+          $q.all({
+            'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
+            'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true})
+          }).then(function(data) {
+            scope.lazyLoadParams = [];
+            scope.template = structureService.validateScope(data.rootModule);
+            defer.resolve();
+          }).catch(defer.reject);
           return defer.promise;
         }
 

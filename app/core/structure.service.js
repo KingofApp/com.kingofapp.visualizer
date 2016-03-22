@@ -224,7 +224,7 @@
     function getChildren(menuPath) {
       var menu = {};
       angular.forEach(data.modules, function(data, path) {
-        if (path.indexOf(menuPath) > -1 || path.replace(/((\/)(\bads)((\-?)(\w+)?))/gmi, '').indexOf(menuPath) > -1) {
+        if (path.indexOf(menuPath) > -1) {
           menu[path] = data;
         }
       });

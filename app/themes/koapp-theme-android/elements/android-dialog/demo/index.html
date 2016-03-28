@@ -140,7 +140,9 @@
     </section>
 
     <script>
+      /* eslint-disable no-unused-vars */
       function clickHandler(e) {
+      /* eslint-enable no-unused-vars */
         var button = e.target;
         while (!button.hasAttribute('data-dialog') && button !== document.body) {
           button = button.parentElement;

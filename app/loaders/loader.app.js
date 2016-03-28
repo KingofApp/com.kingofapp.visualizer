@@ -1,8 +1,8 @@
 angular.element(document).ready(function() {
 
-  if(location.search.indexOf('builder') !== -1){
+  if (location.search.indexOf('builder') !== -1) {
     loadFromBuilder();
-  }else{
+  } else {
     loadFromStructure();
   }
 
@@ -21,7 +21,7 @@ angular.element(document).ready(function() {
       angular.bootstrap(document, ['myApp']);
       console.log('[V] Bootstraped ng-app');
     }).fail(function() {
-      console.log("Error Reading structure.json");
+      console.log('Error reading structure.json');
     });
   }
 

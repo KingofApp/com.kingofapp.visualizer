@@ -6,13 +6,13 @@
     .directive('eventListener', function($rootScope) {
       return function($scope, element, attrs) {
 
-        element.on('click', "[ng-click]:not(div)", ngClickWrapper);
-        element.on('change', "[ng-model]", ngModelWrapper);
+        element.on('click', '[ng-click]:not(div)', ngClickWrapper);
+        element.on('change', '[ng-model]', ngModelWrapper);
 
         function ngClickWrapper(e) {
           var scopeElement = document.querySelector('.' + $rootScope.current);
           var scope = angular.element(scopeElement).scope();
-          console.log("SCOPE ES",angular.element($(this)).scope());
+          console.log('SCOPE ES', angular.element($(this)).scope());
           var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
 
           //Match params
@@ -36,17 +36,16 @@
           var paramsList = [];
           angular.forEach(params, function(value) {
             value = value.trim();
-            if(scope[value]){ // Is function from scope
+            if (scope[value]) { // Is function from scope
               this.push(scope[value]);
-            }else{
+            } else {
               this.push(value);
             }
-          },paramsList);
+          }, paramsList);
 
           return paramsList;
         }
       };
     });
-
 
 }());

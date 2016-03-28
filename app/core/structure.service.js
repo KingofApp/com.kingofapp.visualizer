@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   angular
@@ -103,19 +103,19 @@
         colors = getColors();
       }
 
-      setCustomStyle('--primary-text-color',       colors.primaryTextColor);
+      setCustomStyle('--primary-text-color', colors.primaryTextColor);
       setCustomStyle('--primary-background-color', colors.primaryBackgroundColor);
-      setCustomStyle('--secondary-text-color',     colors.secondaryTextColor);
-      setCustomStyle('--disabled-text-color',      colors.disabledTextColor);
-      setCustomStyle('--divider-color',            colors.dividerColor);
-      setCustomStyle('--primary-color',            colors.primaryColor);
-      setCustomStyle('--light-primary-color',      colors.lightPrimaryColor);
-      setCustomStyle('--dark-primary-color',       colors.darkPrimaryColor);
-      setCustomStyle('--accent-color',             colors.accentColor);
-      setCustomStyle('--light-accent-color',       colors.lightAccentColor);
-      setCustomStyle('--dark-accent-color',        colors.darkAccentColor);
-      setCustomStyle('--error-color',              colors.errorColor);
-      setCustomStyle('--background-color',         colors.backgroundColor);
+      setCustomStyle('--secondary-text-color', colors.secondaryTextColor);
+      setCustomStyle('--disabled-text-color', colors.disabledTextColor);
+      setCustomStyle('--divider-color', colors.dividerColor);
+      setCustomStyle('--primary-color', colors.primaryColor);
+      setCustomStyle('--light-primary-color', colors.lightPrimaryColor);
+      setCustomStyle('--dark-primary-color', colors.darkPrimaryColor);
+      setCustomStyle('--accent-color', colors.accentColor);
+      setCustomStyle('--light-accent-color', colors.lightAccentColor);
+      setCustomStyle('--dark-accent-color', colors.darkAccentColor);
+      setCustomStyle('--error-color', colors.errorColor);
+      setCustomStyle('--background-color', colors.backgroundColor);
 
       if (colors.toolbarColor) {
         setCustomStyle('--toolbar-color', colors.toolbarColor);

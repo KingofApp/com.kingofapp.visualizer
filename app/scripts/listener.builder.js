@@ -1,4 +1,5 @@
-var previousData = "";
+var previousData = '';
+
 window.addEventListener('message', function(event) {
   var $body = angular.element(document.body);
 
@@ -8,7 +9,7 @@ window.addEventListener('message', function(event) {
     var $rootScope = $body.injector().get('$rootScope');
 
     $rootScope.$apply(function() {
-      if(JSON.stringify(event.data) !== previousData){
+      if (JSON.stringify(event.data) !== previousData) {
         if (event.data.config) {
           console.log('[V] Data');
           $rootScope.appData = event.data;
@@ -30,8 +31,9 @@ window.addEventListener('message', function(event) {
 
 
     });
+
     function setPreventions() {
-      $rootScope.previous = "";
+      $rootScope.previous = '';
       previousData = JSON.stringify(event.data);
     }
   }

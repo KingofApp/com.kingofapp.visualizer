@@ -1,0 +1,15 @@
+{
+  "name": "koapp-module-googlemap",
+  "authors": "King of App",
+  "description": "googlemap module for King of App",
+  "keywords": [
+    "kingofapp",
+    "module"
+  ],
+  "license": "MIT",
+  "homepage": "http://kingofapp.com",
+  "private": true,
+  "dependencies": {
+    "google-map": "GoogleWebComponents/google-map#^1.1.0"
+  }
+}

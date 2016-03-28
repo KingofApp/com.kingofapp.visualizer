@@ -1,32 +1,64 @@
 {
-  "name": "Html Example",
-  "identifier": "html",
-  "description": "Con este módulo podrás entrar tu mismo el código html. Para ello, y para que te sea más fácil, hemos habilitado un editor wysiwyg.",
-  "documentation": "# **(How to) Configurar el m\u00F3dulo HTML**\r\n\r\nDe entre todos los m\u00F3dulos disponibles este\u00A0ofrece **plena libertad para introducir informaci\u00F3n est\u00E1tica**. Es el m\u00F3dulo HTML. Aunque su configuraci\u00F3n es m\u00E1s que sencilla no est\u00E1 de m\u00E1s explicar su funcionamiento.\r\n\r\nPara poder jugar con el c\u00F3digo, hemos habilitado un campo de texto en el que teclear tanto como se quiera. Con este m\u00F3dulo podr\u00E1s crear archivos en **HTML** de informaci\u00F3n est\u00E1tica para tu App. Sencillo pero completo.",
-  "type": "A",
-  "icon": "code",
-  "version": "1.0",
-  "author": "King of App",
-  "showOn": {
-    "menu": true,
-    "market": true,
-    "dragDrop": true
+  "name" : "Html",
+  "identifier" : "html",
+  "description": {
+    "es-ES": "Con este módulo podrás entrar tu mismo el código html. Para ello, y para que te sea más fácil, hemos habilitado un editor wysiwyg.",
+    "en-US": "Con este módulo podrás entrar tu mismo el código html. Para ello, y para que te sea más fácil, hemos habilitado un editor wysiwyg."
   },
-  "requires": [],
+  "documentation": {
+    "es-ES": "# **(How to) Configurar el m\u00F3dulo HTML**\r\n\r\nDe entre todos los m\u00F3dulos disponibles este\u00A0ofrece **plena libertad para introducir informaci\u00F3n est\u00E1tica**. Es el m\u00F3dulo HTML. Aunque su configuraci\u00F3n es m\u00E1s que sencilla no est\u00E1 de m\u00E1s explicar su funcionamiento.\r\n\r\nPara poder jugar con el c\u00F3digo, hemos habilitado un campo de texto en el que teclear tanto como se quiera. Con este m\u00F3dulo podr\u00E1s crear archivos en **HTML** de informaci\u00F3n est\u00E1tica para tu App. Sencillo pero completo.",
+    "en-US": "# **(How to) Configurar el m\u00F3dulo HTML**\r\n\r\nDe entre todos los m\u00F3dulos disponibles este\u00A0ofrece **plena libertad para introducir informaci\u00F3n est\u00E1tica**. Es el m\u00F3dulo HTML. Aunque su configuraci\u00F3n es m\u00E1s que sencilla no est\u00E1 de m\u00E1s explicar su funcionamiento.\r\n\r\nPara poder jugar con el c\u00F3digo, hemos habilitado un campo de texto en el que teclear tanto como se quiera. Con este m\u00F3dulo podr\u00E1s crear archivos en **HTML** de informaci\u00F3n est\u00E1tica para tu App. Sencillo pero completo."
+  },
+  "descriptionShort": {
+    "es-ES": "Crea tu propio código HTML. ¡Ahora con editor wysiwyg!",
+    "en-US": "Crea tu propio código HTML. ¡Ahora con editor wysiwyg!"
+  },
+  "icon" : "code",
+  "type" : "A",
+  "version" : "1.0",
+  "author" : "King of App",
+  "category" : [
+      "others"
+  ],
+  "price" : 0,
+  "subscription": false,
   "canContain": false,
-  "view": "modules/html/index.html",
-  "files": ["modules/html/controller.js"],
-  "scope": {
-    "value": "<p style='color:#39a9d3'>Hello!</p>"
+  "platforms" : [
+      "android",
+      "ios",
+      "windows"
+  ],
+  "view" : "modules/html/index.html",
+  "files" : [
+      "modules/html/controller.js"
+  ],
+  "scope" : {
+      "value" : ""
   },
-  "config": [{
-    "type": "textarea",
-    "key": "value",
-    "templateOptions": {
-      "label": "value",
-      "required": true,
-      "description": "Código html"
-    }
-  }],
-  "descriptionShort": "Crea tu propio código HTML. ¡Ahora con editor wysiwyg!"
+  "config" : [
+      {
+          "type" : "wysiwyg",
+          "key" : "value",
+          "templateOptions" : {
+              "label" : "Contenido",
+              "required" : true,
+              "description" : "Código html"
+          }
+      }
+  ],
+  "showOn" : {
+      "menu" : true,
+      "market" : true,
+      "dragDrop" : true
+  },
+  "images": {
+    "list": "modules/html/images/list.png",
+    "screenshots": [
+      "modules/html/images/screenshot01.png",
+      "modules/html/images/screenshot02.png"
+    ],
+    "popover": "modules/html/images/popover.png",
+    "banner": "modules/html/images/banner.png",
+    "logo": "modules/html/images/logo.png"
+  }
 }

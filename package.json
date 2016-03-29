@@ -37,11 +37,12 @@
     "lint"
   ],
   "scripts": {
-    "postinstall": "bower install; npm run installModulesDependencies; npm run installThemesDependencies",
+    "postinstall": "bower install",
     "prestart": "npm install",
     "start": "gulp serve",
     "lint": "gulp lint",
     "installModulesDependencies": "cd app/modules/googlemap; bower install; cd ../../..; cd app/modules/polymermenu; bower install",
-    "installThemesDependencies": "cd app/themes/koapp-theme-android; bower install"
+    "installThemesDependencies": "cd app/themes/koapp-theme-android; bower install",
+    "installDependencies": "npm run installModulesDependencies; npm run installThemesDependencies"
   }
 }

@@ -49,7 +49,7 @@ gulp.task('clean', function() {
 
 // Lint Javascript
 gulp.task('lint', function() {
-  return gulp.src(['gulpfile.js', 'app/**/{*.js,*.html}'])
+  return gulp.src(['gulpfile.js', 'app/**/{*.js,*.html}', '!app/modules/**/*'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());

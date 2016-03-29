@@ -1,13 +1,13 @@
-(function() {
-  describe('loaderCommon', function() {
-
-    var list;
-    beforeEach(function() {
-      browser.driver.manage().window().setSize(1124, 850);
-      browser.ignoreSynchronization = true;
-    });
-
-    for (var i = 0; i < 1; i++) {
+// (function() {
+//   describe('loaderCommon', function() {
+//
+//     var list;
+//     beforeEach(function() {
+//       browser.driver.manage().window().setSize(1124, 850);
+//       browser.ignoreSynchronization = true;
+//     });
+//
+//     for (var i = 0; i < 1; i++) {
 
       // describe('should load a Jquery module ('+i+')' , function() {
       //
@@ -135,9 +135,9 @@
       //
       //
       // });
-    }
-    afterEach(function() {
-      browser.ignoreSynchronization = false;
-    });
-  });
-}());
+//     }
+//     afterEach(function() {
+//       browser.ignoreSynchronization = false;
+//     });
+//   });
+// }());

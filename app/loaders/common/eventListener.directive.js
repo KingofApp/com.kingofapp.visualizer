@@ -4,7 +4,7 @@
   angular
     .module('king.loaders.common')
     .directive('eventListener', function($rootScope) {
-      return function($scope, element, attrs) {
+      return function($scope, element) {
 
         element.on('click', '[ng-click]:not(div)', ngClickWrapper);
         element.on('change', '[ng-model]', ngModelWrapper);

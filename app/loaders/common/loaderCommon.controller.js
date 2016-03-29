@@ -25,8 +25,6 @@
     // $location.$$path = $location.$$path || '/';
 
     var prev = 0;
-    var throughcached = false;
-    var prevent = false;
     var redirected = false;
     var finished = false;
 
@@ -64,7 +62,7 @@
         function loadFirstTimeModule(modules) {
           finished = true;
           console.log('[V] First time module load', $location.$$path);
-          angular.forEach(modules, function(value, key) {
+          angular.forEach(modules, function(value) {
             visitedLocations[value.identifier] = true;
           });
           structureService.setVisitedLocations(visitedLocations);
@@ -75,15 +73,13 @@
           console.log('[V] Loading cached module', $location.$$path);
 
           renderKoaApp();
-
-          throughcached = true;
         }
       }
     );
 
 
 
-    $scope.$watch('appData', function(newValue, oldValue) {
+    $scope.$watch('appData', function(newValue) {
       // console.log('[V] REceived AppData', newValue);
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
@@ -105,14 +101,12 @@
 
     $scope.$watch('appColors', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        prevent = true;
         structureService.setColors(newValue);
       }
     });
 
     $scope.$watch('appFonts', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        prevent = true;
         loadFonts(newValue);
         structureService.setFonts(newValue);
       }
@@ -120,7 +114,6 @@
 
     $scope.$watch('appIconset', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        prevent = true;
         setIconset(newValue.config.iconset);
       }
     });
@@ -151,13 +144,13 @@
       }
     });
 
-    $scope.$on('$routeChangeStart', function(event, next, current) {
+    $scope.$on('$routeChangeStart', function(event, next) {
       if (next) {
         $rootScope.showTransition = true;
       }
     });
 
-    $scope.$on('koaAppRendered', function(event, args) {
+    $scope.$on('koaAppRendered', function() {
       console.info('[V] koa-app rendered!');
 
       $rootScope.$apply(function() {
@@ -168,7 +161,7 @@
     function configModule() {
       // TODO: INSPECT loadconfig
       // Load config
-      structureService.loadconfig($rootScope);
+      structureService.loadconfig();
 
       // Register Route
       structureService.getModule($location.$$path).then(function(module) {

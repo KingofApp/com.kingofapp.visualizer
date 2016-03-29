@@ -22,6 +22,7 @@
     "html"
   ],
   "globals": {
+    "_": false,
     "angular": false,
     "module": false,
     "Polymer": false,

@@ -29,12 +29,10 @@ window.addEventListener('message', function(event) {
         setPreventions();
       }
 
-
     });
-
-    function setPreventions() {
-      $rootScope.previous = '';
-      previousData = JSON.stringify(event.data);
-    }
+  }
+  function setPreventions() {
+    $rootScope.previous = '';
+    previousData = JSON.stringify(event.data);
   }
 });

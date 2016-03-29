@@ -22,7 +22,7 @@
         };
 
         var cache = structureService.getCachedLibs();
-        angular.forEach(modules, function(value, key) {
+        angular.forEach(modules, function(value) {
           var libs = value.libs;
           angular.forEach(libs, function(value, key) {
             if (value && value.bower) {
@@ -51,7 +51,7 @@
           var defer = $q.defer();
           var htmlImports = [];
 
-          angular.forEach(dependencies.htmlSources, function(value, key) {
+          angular.forEach(dependencies.htmlSources, function(value) {
             this.push(importHref(value));
           }, htmlImports);
 
@@ -65,7 +65,7 @@
           var defer = $q.defer();
           $q.all({
             'dependencies': $ocLazyLoad.load(dependencies.libs, {serie: true})
-          }).then(function(data) {
+          }).then(function() {
             defer.resolve();
           }).catch(defer.reject);
           return defer.promise;

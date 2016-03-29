@@ -5,7 +5,7 @@
     .filter('cleanHex', function() {
       return function(input) {
         if (input) {
-          return input.replace(/&#(\d+);/g, function(match, contents, offset, s) {
+          return input.replace(/&#(\d+);/g, function(match) {
             return hex2a(match);
           });
         }

@@ -12,7 +12,7 @@
       link: link
     };
 
-    function link(scope, elm, attr, contrl) {
+    function link(scope, elm) {
       structureService.getCurrent($location, function(module) {
         $http.get(module.view).then(function(response) {
           elm.html(response.data);

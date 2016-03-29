@@ -14,7 +14,6 @@
     var cachedLibs = [];
     var visitedLocations = [];
     var data = {};
-    var services = [];
 
     $rootScope.transitionOn = true;
 
@@ -231,7 +230,7 @@
       return menu;
     }
 
-    function loadconfig($rootScope) {
+    function loadconfig() {
       $translate.use(getLang());
       // $rootScope.config = { googleAnalytics: data.config.googleAnalytics };
       // $rootScope.$watch('data.config.googleAnalytics', function(prev,next) {
@@ -239,7 +238,7 @@
       // });
     }
 
-    function getModule(path, callback) {
+    function getModule(path) {
       var deferred = $q.defer();
       if (cachedLocations[path]) {
         deferred.resolve(cachedLocations[path]);
@@ -257,9 +256,9 @@
       var path = $location.$$path;
       var split = path.split('/');
 
-      angular.forEach(split.reverse(), function(value, key) {
+      angular.forEach(split.reverse(), function(value) {
         if (value !== '') {
-          var module = findRoute(path, data.modules, function(module) {
+          findRoute(path, data.modules, function(module) {
             moduleList.push(module);
           });
           path = path.replace('/' + value, '');
@@ -271,7 +270,7 @@
 
     function validateScope(module) {
       var empty = true;
-      angular.forEach(module.scope, function(value, key) {
+      angular.forEach(module.scope, function(value) {
         if (value && value !== '') {
           empty = false;
         }
@@ -321,8 +320,6 @@
     }
 
     function findRoute(path, structure, callback) {
-      // console.log('Path', path);
-      // console.log('Structure', structure);
       if (structure && structure[path]) {
         callback(structure[path]);
       } else {

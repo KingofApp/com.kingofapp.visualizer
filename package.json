@@ -38,11 +38,12 @@
   ],
   "scripts": {
     "postinstall": "bower install",
-    "prestart": "npm install",
+    "prestart": "npm install; node scripts/installPluginDependencies.js",
     "start": "gulp serve",
-    "lint": "gulp lint",
-    "installModulesDependencies": "cd app/modules/googlemap; bower install; cd ../../..; cd app/modules/polymermenu; bower install",
-    "installThemesDependencies": "cd app/themes/koapp-theme-android; bower install",
-    "installDependencies": "npm run installModulesDependencies; npm run installThemesDependencies"
+    "lint": "gulp lint"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.2",
+    "shelljs": "^0.6.0"
   }
 }

@@ -37,9 +37,11 @@ gulp.task('serve', function() {
 
   gulp.watch(['app/**/*.html', '!app/bower_components/**/*.html'], ['lint', reload]);
   gulp.watch(['app/{core,loaders}/**/*.js'], ['lint', reload]);
+  gulp.watch(['app/core/structure.json'], reload);
   gulp.watch(['app/scripts/**/*.js'], ['lint', reload]);
   gulp.watch(['app/styles/**/*.css'], reload);
   gulp.watch(['app/images/**/*'], reload);
+  gulp.watch(['app/{modules,themes}/**/*'], reload);
 });
 
 // Clean output directory
@@ -49,7 +51,7 @@ gulp.task('clean', function() {
 
 // Lint Javascript
 gulp.task('lint', function() {
-  return gulp.src(['gulpfile.js', 'app/**/{*.js,*.html}', '!app/modules/**/*'])
+  return gulp.src(['gulpfile.js', 'app/**/{*.js,*.html}', '!app/{modules,themes}/**/*'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());

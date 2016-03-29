@@ -22,11 +22,11 @@
     "html"
   ],
   "globals": {
+    "Polymer": false,
+    "WebFont": false,
     "_": false,
     "angular": false,
     "module": false,
-    "Polymer": false,
-    "require": false,
-    "WebFont": false
+    "require": false
   }
 }

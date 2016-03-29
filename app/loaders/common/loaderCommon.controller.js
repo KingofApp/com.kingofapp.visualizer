@@ -67,7 +67,6 @@
           angular.forEach(modules, function(value, key) {
             visitedLocations[value.identifier] = true;
           });
-
           structureService.setVisitedLocations(visitedLocations);
         }
 
@@ -190,9 +189,9 @@
           if (structureService.getIndex() === '' && $location.$$path !== '/') {
             $location.path('/404');
           }
-        } else if (isAngularModule(module.type) && $rootScope.previous !== module.identifier) {
+        } else if (isAngularModule(module.type) && $rootScope.previous !== $location.$$path) {
           $rootScope.current = module.identifier;
-          $rootScope.previous = module.identifier;
+          $rootScope.previous = $location.$$path;
           angularLoader.module($scope);
         } else if (isJqueryModule(module.type)) {
           // TODO: Load jquery module from angular

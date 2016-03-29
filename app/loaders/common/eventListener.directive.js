@@ -12,7 +12,6 @@
         function ngClickWrapper(e) {
           var scopeElement = document.querySelector('.' + $rootScope.current);
           var scope = angular.element(scopeElement).scope();
-          console.log('SCOPE ES', angular.element($(this)).scope());
           var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
 
           //Match params

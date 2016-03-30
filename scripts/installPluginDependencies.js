@@ -11,7 +11,7 @@ async.forEachSeries(sh.ls('app/modules'), downloadPlugin('modules') , function(e
 function downloadPlugin(type){
   return function(plugin, callback){
     if(plugin){
-      console.log('*** Installing dependencies from: app/modules/'+plugin);
+      console.log('*** Installing dependencies from: app/' + type + '/' + plugin);
       async.series([
         async.asyncify( async.apply(sh.cd, local) ),
         async.asyncify( async.apply(sh.cd, 'app/'+type+'/'+plugin) ),

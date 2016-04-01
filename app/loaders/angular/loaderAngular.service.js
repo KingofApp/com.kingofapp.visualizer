@@ -34,7 +34,8 @@
           }, libs);
 
           if (libs) {
-            this.libs = this.libs.concat(_.map(libs, 'src')).filter(filterNotHtmlOrUndefined);
+            //Load libs
+            this.files = this.files.concat(_.map(libs, 'src')).filter(filterNotHtmlOrUndefined);
             this.htmlSources = this.htmlSources.concat(_.map(libs, 'src')).filter(filterHtml);
           }
           this.files = this.files.concat(value.files);
@@ -42,15 +43,12 @@
         }, dependencies);
 
         structureService.setCachedLibs(cache);
-
         loadHtmlDeps()
-          .then(loadLibs)
-          .then(loadFiles);
+          .then(loadLibsAndFiles);
 
         function loadHtmlDeps() {
           var defer = $q.defer();
           var htmlImports = [];
-
           angular.forEach(dependencies.htmlSources, function(value) {
             this.push(importHref(value));
           }, htmlImports);
@@ -61,17 +59,7 @@
           return defer.promise;
         }
 
-        function loadLibs() {
-          var defer = $q.defer();
-          $q.all({
-            'dependencies': $ocLazyLoad.load(dependencies.libs, {serie: true})
-          }).then(function() {
-            defer.resolve();
-          }).catch(defer.reject);
-          return defer.promise;
-        }
-
-        function loadFiles() {
+        function loadLibsAndFiles() {
           var defer = $q.defer();
           $q.all({
             'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),

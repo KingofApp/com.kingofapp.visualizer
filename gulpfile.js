@@ -2,7 +2,15 @@
 
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
+var del = require('del');
 var eslint = require('gulp-eslint');
+var path = require('path');
+var reload = browserSync.reload;
+var DIST = 'dist';
+
+var dist = function(subpath) {
+  return !subpath ? DIST : path.join(DIST, subpath);
+};
 
 // Watch files for changes & reload
 gulp.task('serve', function() {
@@ -19,16 +27,31 @@ gulp.task('serve', function() {
       }
     },
     server: {
-      baseDir: ['app']
+      baseDir: ['app'],
+      middleware: function(req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }
     }
   });
 
-  gulp.watch(['app/**/*', '!app/bower_components/**/*'], browserSync.reload);
+  gulp.watch(['app/**/*.html', '!app/bower_components/**/*.html'], ['lint', reload]);
+  gulp.watch(['app/{core,loaders}/**/*.js'], ['lint', reload]);
+  gulp.watch(['app/core/structure.json'], reload);
+  gulp.watch(['app/scripts/**/*.js'], ['lint', reload]);
+  gulp.watch(['app/styles/**/*.css'], reload);
+  gulp.watch(['app/images/**/*'], reload);
+  gulp.watch(['app/{modules,themes}/**/*'], reload);
+});
+
+// Clean output directory
+gulp.task('clean', function() {
+  return del(['.tmp', dist()]);
 });
 
 // Lint Javascript
 gulp.task('lint', function() {
-  return gulp.src(['**/*.js', '**/*.html'])
+  return gulp.src(['gulpfile.js', 'app/**/{*.js,*.html}', '!app/{modules,themes}/**/*'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());

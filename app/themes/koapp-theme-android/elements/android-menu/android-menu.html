@@ -1,0 +1,38 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-menu-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+<link rel="import" href="android-menu-shared-styles.html">
+
+<dom-module id="android-menu">
+  <template>
+    <!-- write your styles here -->
+    <style include="android-menu-shared-styles"></style>
+    <style>
+      :host {
+        background: var(--menu-background-color, --primary-background-color);
+        color: var(--menu-color, --primary-text-color);
+        display: block;
+        padding: 8px 0;
+
+        @apply(--menu);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="selectable-content">
+      <content></content>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-menu',
+
+      behaviors: [
+        Polymer.KoaMenuBehavior
+      ]
+    });
+  </script>
+</dom-module>

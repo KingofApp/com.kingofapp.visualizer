@@ -1,0 +1,72 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-dialog-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-dialog">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        -webkit-overflow-scrolling: touch;
+        background: var(--dialog-background-color, --primary-background-color);
+        box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+                    0  6px 30px 5px rgba(0, 0, 0, 0.12),
+                    0  8px 10px -5px rgba(0, 0, 0, 0.4);
+        color: var(--dialog-color, --primary-text-color);
+        display: block;
+        margin: 24px 40px;
+
+        @apply(--dialog);
+      }
+
+      :host > ::content > * {
+        margin-top: 20px;
+        padding: 0 24px;
+      }
+
+      :host > ::content > .no-padding {
+        padding: 0;
+      }
+
+      :host > ::content > *:first-child {
+        margin-top: 24px;
+      }
+
+      :host > ::content > *:last-child {
+        margin-bottom: 24px;
+      }
+
+      :host > ::content h2 {
+        margin: 0;
+        position: relative;
+
+        @apply(--dialog-title);
+      }
+
+      :host > ::content .buttons {
+        color: var(--dialog-button-color, --primary-color);
+        margin: 0;
+        padding: 8px 8px 8px 24px;
+        position: relative;
+
+        @apply(--layout-horizontal);
+        @apply(--layout-end-justified);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-dialog',
+
+      behaviors: [
+        Polymer.KoaDialogBehavior
+      ]
+    });
+  </script>
+</dom-module>

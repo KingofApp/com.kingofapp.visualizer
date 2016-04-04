@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>android-input demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../android-icon-button/android-icon-button.html">
+    <link rel="import" href="../android-input.html">
+    <link rel="import" href="../android-textarea.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 600px;
+      }
+
+      .horizontal {
+        @apply(--layout-horizontal);
+        @apply(--layout-end);
+        @apply(--layout-justified);
+      }
+
+      android-input {
+        display: block;
+      }
+
+      button {
+        width: 70px;
+      }
+
+      #inputForValidation {
+        display: inline-block;
+        width: calc(100% - 75px);
+      }
+
+      android-icon-button {
+        color: var(--paper-red-300);
+        width: 23px; /* 15px + 2*4px for padding */
+        height: 23px;
+        padding: 0px 4px;
+      }
+
+      koa-icon {
+        padding-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Inputs can have different types, and be disabled</h3>
+      <div class="horizontal-section">
+        <android-input label="text input"></android-input>
+        <android-textarea label="autoresizing textarea input"></android-textarea>
+        <android-input label="password input" type="password"></android-input>
+        <android-input label="disabled input" disabled></android-input>
+      </div>
+
+      <h3>Inputs can have character counters</h3>
+      <div class="horizontal-section">
+        <android-input label="simple character counter" char-counter></android-input>
+        <android-input label="input with at most 10 characters" char-counter maxlength="10"></android-input>
+      </div>
+
+      <h3>Inputs can validate automatically or on demand, and can have custom error messages</h3>
+      <div class="horizontal-section">
+        <android-input label="this input requires some text" required auto-validate error-message="needs some text!"></android-input>
+        <android-input label="this input requires letters only" auto-validate pattern="[a-zA-Z]*" error-message="letters only!"></android-input>
+        <android-input label="this input will only let you type letters" auto-validate allowed-pattern="[a-zA-Z]"></android-input>
+        <android-input id="inputForValidation" required label="this input is manually validated" pattern="[a-zA-Z]*" error-message="letters only!"></android-input>
+        <button onclick="validate()">Validate!</button>
+      </div>
+
+      <h3>Inputs can have prefixes and suffixes</h3>
+      <div class="horizontal-section horizontal">
+        <android-input label="total" type="number">
+          <div prefix>$</div>
+        </android-input>
+        <android-input label="username" id="inputWithButton">
+          <koa-icon icon="mail" prefix></koa-icon>
+          <div suffix>@email.com</div>
+          <android-icon-button suffix onclick="clearInput()"
+              icon="clear" alt="clear" title="clear">
+          </android-icon-button>
+        </android-input>
+      </div>
+    </div>
+
+    <script>
+      function validate() {
+        document.getElementById('inputForValidation').validate();
+      }
+
+      function clearInput() {
+        document.getElementById('inputWithButton').value = '';
+      }
+    </script>
+  </body>
+</html>

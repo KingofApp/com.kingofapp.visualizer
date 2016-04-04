@@ -10,19 +10,21 @@
   function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
-    var koaApp = document.querySelector('#koaApp');
+    var app = document.querySelector('#app');
 
     $rootScope.showTransition = true;
-
-    if (structureService.getIndex() !== '' && ($location.$$path === '/' || $location.$$path === '')) {
+    $location.$$path = $location.$$path || '/';
+    if (structureService.getIndex() !== '' && $location.$$path === '/') {
       $location.path(structureService.getIndex());
+    } else {
+      configModule();
     }
 
     $scope.trafficGuardiaCivil = trafficGuardiaCivil;
 
+    // $location.$$path = $location.$$path || '/';
+
     var prev = 0;
-    var throughcached = false;
-    var prevent = false;
     var redirected = false;
     var finished = false;
 
@@ -60,10 +62,9 @@
         function loadFirstTimeModule(modules) {
           finished = true;
           console.log('[V] First time module load', $location.$$path);
-          angular.forEach(modules, function(value, key) {
+          angular.forEach(modules, function(value) {
             visitedLocations[value.identifier] = true;
           });
-
           structureService.setVisitedLocations(visitedLocations);
         }
 
@@ -72,15 +73,13 @@
           console.log('[V] Loading cached module', $location.$$path);
 
           renderKoaApp();
-
-          throughcached = true;
         }
       }
     );
 
-    $location.$$path = $location.$$path || '/';
 
-    $scope.$watch('appData', function(newValue, oldValue) {
+
+    $scope.$watch('appData', function(newValue) {
       // console.log('[V] REceived AppData', newValue);
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
@@ -102,14 +101,12 @@
 
     $scope.$watch('appColors', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        prevent = true;
         structureService.setColors(newValue);
       }
     });
 
     $scope.$watch('appFonts', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        prevent = true;
         loadFonts(newValue);
         structureService.setFonts(newValue);
       }
@@ -117,7 +114,6 @@
 
     $scope.$watch('appIconset', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        prevent = true;
         setIconset(newValue.config.iconset);
       }
     });
@@ -148,13 +144,13 @@
       }
     });
 
-    $scope.$on('$routeChangeStart', function(event, next, current) {
+    $scope.$on('$routeChangeStart', function(event, next) {
       if (next) {
         $rootScope.showTransition = true;
       }
     });
 
-    $scope.$on('koaAppRendered', function(event, args) {
+    $scope.$on('koaAppRendered', function() {
       console.info('[V] koa-app rendered!');
 
       $rootScope.$apply(function() {
@@ -162,39 +158,43 @@
       });
     });
 
-    // TODO: INSPECT loadconfig
-    // Load config
-    structureService.loadconfig($rootScope);
+    function configModule() {
+      // TODO: INSPECT loadconfig
+      // Load config
+      structureService.loadconfig();
 
-    // Register Route
-    structureService.getModule($location.$$path).then(function(module) {
-      $rootScope.toolbar = {
-        title: module.name
-      };
+      // Register Route
+      structureService.getModule($location.$$path).then(function(module) {
+        $rootScope.toolbar = {
+          title: module.name
+        };
 
-      if ($rootScope.missing) {
-        $rootScope.showTransition = false;
-      }
-
-      $rootScope.current = module.identifier;
-
-      $scope.module = module || $scope.module;
-
-      if (!module.type) {
-        // Display a 404 error
-        if (structureService.getIndex() === '' && $location.$$path !== '/') {
-          $location.path('/404');
+        if ($rootScope.missing) {
+          $rootScope.showTransition = false;
         }
-      } else if (isAngularModule(module.type)) {
-        angularLoader.module($scope);
-      } else if (isJqueryModule(module.type)) {
-        // TODO: Load jquery module from angular
-      } else {
-        // TODO: Display error and blame developer
-      }
-    });
 
-    $scope.data = JSON.stringify(structureService.get(), null, '    ');
+
+
+        $scope.module = module || $scope.module;
+
+        if (!module.type) {
+          // Display a 404 error
+          if (structureService.getIndex() === '' && $location.$$path !== '/') {
+            $location.path('/404');
+          }
+        } else if (isAngularModule(module.type) && $rootScope.previous !== $location.$$path) {
+          $rootScope.current = module.identifier;
+          $rootScope.previous = $location.$$path;
+          angularLoader.module($scope);
+        } else if (isJqueryModule(module.type)) {
+          // TODO: Load jquery module from angular
+        } else {
+          // TODO: Display error and blame developer
+        }
+      });
+
+      $scope.data = JSON.stringify(structureService.get(), null, '    ');
+    }
 
     function isAngularModule(type) {
       return type === 'A';
@@ -229,60 +229,34 @@
     }
 
     function setIconset(iconset) {
-      koaApp.setIconset(iconset);
+      app.setIconset(iconset);
     }
 
     function setTheme(config) {
+      $rootScope.theme = config.theme;
+
       loadFonts(config.fonts);
 
-      koaApp.setTheme(config.theme, function() {
+      app.setTheme(config.theme, function() {
         structureService.setCssVariables(config);
-
-        addDirectives();
 
         $rootScope.$broadcast('koaAppRendered');
       });
     }
 
     function renderElements() {
-      koaApp.renderThemeElements(function() {
-        addDirectives();
-
+      app.renderThemeElements(function() {
         $rootScope.$broadcast('koaAppRendered');
       });
     }
 
-    function addDirectives() {
-      var scopeElement = document.querySelector('.' + $rootScope.current);
-      var scope = angular.element(scopeElement).scope(); // Get current scope
-
-      $('[ng-click]').click(ngClickWrapper); // Adding ng-click...
-      $('[ng-model]').each(ngModelWrapper); // Adding ng-model...
-
-      function ngClickWrapper(e) {
-        var functionName = $(this).attr('ng-click').replace(/(\(.*?\))/, '');
-        scope[functionName]();
-        $scope.$digest();
-        e.stopPropagation();
-      }
-
-      function ngModelWrapper() {
-        var parent = $(this);
-
-        $(this.inputElement).bind('input', function() {
-          var model = parent.attr('ng-model').split('.');
-          scope[model[0]][model[1]] = $(this).val();
-        });
-      }
-    }
-
     function renderKoaApp() {
       setTimeout(function() {
-        koaApp.createTree();
+        app.createTree();
 
-        (koaApp.theme) ? renderElements():
+        (app.theme) ? renderElements():
           ($rootScope.appData) ? setTheme($rootScope.appData.config) : setTheme(structureService.getConfig());
-      }, 100);
+      }, 1000);
     }
   }
 }());

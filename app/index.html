@@ -11,20 +11,18 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script src="cordova.js"></script>
-
     <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
     <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <!-- endbuild -->
 
-    <link rel="import" href="elements/koa-app.html">
-    <link rel="import" href="elements/koa-icon.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+
+    <link rel="import" href="elements/koa-elements.html">
   </head>
   <body>
     <div id="main-king">
-      <koa-app id="koaApp">
-        <div id="koaAppContent">
+      <koa-app id="app" theme="{{theme}}">
+        <div id="appContent">
           <div id="transitionloader" ng-if="showTransition && transitionOn">
             <img ng-src="{{loader}}" alt="" />
           </div>
@@ -34,19 +32,21 @@
     </div>
 
     <!-- build:js scripts/koa.visualizer.min.js -->
-    <script src="bower_components/lodash/lodash.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
     <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
     <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angulartics/src/angulartics.js"></script>
 
-    <script src="app.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/listener.builder.js"></script>
 
     <script src="core/structure.service.js"></script>
     <script src="core/structureHooks.service.js"></script>
+
     <script src="loaders/common/paths.config.js"></script>
     <script src="loaders/common/services.provider.js"></script>
     <script src="loaders/common/loaderCommon.controller.js"></script>
@@ -54,12 +54,15 @@
     <script src="loaders/common/loaderMenu.controller.js"></script>
     <script src="loaders/common/filters.js"></script>
     <script src="loaders/common/httpInterceptor.js"></script>
+    <script src="loaders/common/eventListener.directive.js"></script>
     <script src="loaders/common/translator.config.js"></script>
     <script src="loaders/common/register.providers.js"></script>
     <script src="loaders/common/route.decorator.js"></script>
+
     <script src="loaders/angular/loaderAngular.service.js"></script>
-    <script src="listener.builder.js"></script>
+
     <script src="loaders/loader.app.js"></script>
+
 
     <script>
       (function(i, s, o, g, r, a, m) {
@@ -75,6 +78,7 @@
       })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
     </script>
     <!-- endbuild -->
+    <script src="cordova.js"></script>
 
     <span id="browser-sync-binding"></span>
   </body>

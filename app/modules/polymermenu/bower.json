@@ -1,0 +1,19 @@
+{
+  "name": "koapp-module-polymermenu",
+  "authors": "King of App",
+  "description": "polymermenu module for King of App",
+  "keywords": [
+    "kingofapp",
+    "module"
+  ],
+  "license": "MIT",
+  "homepage": "http://kingofapp.com",
+  "private": true,
+  "dependencies": {
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.3.0",
+    "paper-drawer-panel": "PolymerElements/paper-drawer-panel#^1.0.0",
+    "paper-header-panel": "PolymerElements/paper-header-panel#^1.0.0",
+    "paper-item": "PolymerElements/paper-item#^1.0.0",
+    "paper-menu": "PolymerElements/paper-menu#^1.0.0"
+  }
+}

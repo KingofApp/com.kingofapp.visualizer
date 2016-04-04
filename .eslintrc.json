@@ -1,15 +1,14 @@
 {
   "extends": "eslint:recommended",
   "rules": {
-    "angular/controller-as": 0,
-    "brace-style": 2,
-    "comma-spacing": 2,
-    "keyword-spacing": 2,
-    "no-console": 0,
-    "no-multi-spaces": 2,
-    "quotes": [2, "single"],
-    "space-before-blocks": 2,
-    "space-before-function-paren": [2, "never"]
+    "brace-style": "error",
+    "comma-spacing": ["error", {"before": false, "after": true}],
+    "keyword-spacing": "error",
+    "no-console": "warn",
+    "no-multi-spaces": "error",
+    "quotes": ["error", "single", "avoid-escape"],
+    "space-before-blocks": "error",
+    "space-before-function-paren": ["error", "never"]
   },
   "env": {
     "browser": true,
@@ -22,10 +21,11 @@
     "html"
   ],
   "globals": {
+    "Polymer": false,
+    "WebFont": false,
+    "_": false,
     "angular": false,
     "module": false,
-    "Polymer": false,
-    "require": false,
-    "WebFont": false
+    "require": false
   }
 }

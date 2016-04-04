@@ -1,0 +1,62 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-badge-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-badge">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        display: block;
+        position: absolute;
+        outline: none;
+      }
+
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      koa-icon {
+        --iron-icon-width: 12px;
+        --iron-icon-height: 12px;
+      }
+
+      .badge {
+        @apply(--layout);
+        @apply(--layout-center-center);
+
+        background-color: var(--badge-background, --accent-color);
+        border-radius: 50%;
+        color: var(--badge-text-color, white);
+        font-size: 11px;
+        font-weight: normal;
+        height: var(--badge-height, 20px);
+        margin-bottom: var(--badge-margin-bottom, 0px);
+        margin-left: var(--badge-margin-left, 0px);
+        opacity: var(--badge-opacity, 1.0);
+        width: var(--badge-width, 20px);
+
+        @apply(--badge);
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <div class="badge">
+      <koa-icon hidden$="{{!_computeIsIconBadge(icon)}}" icon="{{icon}}"></koa-icon>
+      <span id="badge-text" hidden$="{{_computeIsIconBadge(icon)}}">{{label}}</span>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-badge',
+
+      behaviors: [
+        Polymer.KoaBadgeBehavior
+      ]
+    });
+  </script>
+</dom-module>

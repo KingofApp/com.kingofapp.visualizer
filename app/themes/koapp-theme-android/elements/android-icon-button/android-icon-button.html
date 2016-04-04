@@ -1,0 +1,68 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-icon-button-behavior.html">
+<link rel="import" href="../../../../bower_components/paper-behaviors/paper-inky-focus-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-icon-button">
+  <template>
+    <!-- write your styles here -->
+    <style>
+      :host {
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-block;
+        height: 40px;
+        line-height: 1;
+        outline: none;
+        padding: 8px;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+        position: relative;
+        user-select: none;
+        width: 40px;
+        z-index: 0;
+
+        /* NOTE: Both values are needed, since some phones require the value to be `transparent`. */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+
+        @apply(--icon-button);
+      }
+
+      :host #ink {
+        color: var(--icon-button-ink-color, --primary-text-color);
+        opacity: 0.6;
+      }
+
+      :host([disabled]) {
+        color: var(--icon-button-disabled-text, --disabled-text-color);
+        cursor: auto;
+        pointer-events: none;
+
+        @apply(--icon-button-disabled);
+      }
+
+      koa-icon {
+        --iron-icon-width: 100%;
+        --iron-icon-height: 100%;
+      }
+    </style>
+    <!-- end styles -->
+
+    <!-- write your template here -->
+    <koa-icon id="icon" icon="[[icon]]" alt$="[[alt]]"></koa-icon>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-icon-button',
+
+      behaviors: [
+        Polymer.KoaIconButtonBehavior,
+        Polymer.PaperInkyFocusBehavior
+      ]
+    });
+  </script>
+</dom-module>

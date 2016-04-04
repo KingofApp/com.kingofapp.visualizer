@@ -1,0 +1,47 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-item-body">
+  <template>
+    <style>
+      :host {
+        overflow: hidden; /* needed for text-overflow: ellipsis to work on ff */
+        @apply(--layout-vertical);
+        @apply(--layout-center-justified);
+        @apply(--layout-flex);
+      }
+
+      :host([two-line]) {
+        min-height: var(--item-body-two-line-min-height, 72px);
+      }
+
+      :host([three-line]) {
+        min-height: var(--item-body-three-line-min-height, 88px);
+      }
+
+      :host > ::content > * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      :host > ::content [secondary] {
+        @apply(--paper-font-body1);
+        
+        color: var(--item-body-secondary-color, --secondary-text-color);
+
+        @apply(--item-body-secondary);
+      }
+    </style>
+
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-item-body'
+    });
+  </script>
+</dom-module>

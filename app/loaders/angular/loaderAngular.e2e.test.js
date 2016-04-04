@@ -1,9 +1,9 @@
-(function() {
-  describe('Angular modules test', function() {
-    beforeEach(function() {
-      browser.driver.manage().window().setSize(379, 666);
-      browser.ignoreSynchronization = true;
-    });
+// (function() {
+//   describe('Angular modules test', function() {
+//     beforeEach(function() {
+//       browser.driver.manage().window().setSize(379, 666);
+//       browser.ignoreSynchronization = true;
+//     });
 
     // describe('for simple modules', function() {
     // 	it('should load angular menu', function() {
@@ -184,79 +184,79 @@
     //
     // });
 
-    function isPresent(selector) {
-      browser.wait(function() {
-        return $(selector).isPresent();
-      }, 6000, 'Main (' + selector + ') not present');
-    }
-
-    function isClickable(selector) {
-      var EC = protractor.ExpectedConditions;
-      var menuelement = element(by.css(selector));
-      browser.wait(EC.elementToBeClickable(menuelement), 10000);
-    }
-
-    function expectEnglishTexts() {
-      expect(element(by.css('p.text1')).getInnerHtml()).toBe('First text');
-      expect(element(by.css('p.text2')).getInnerHtml()).toBe('Second text');
-      expect(element(by.css('p.text3')).getInnerHtml()).toBe('Third text');
-      expect(element(by.css('p.text4')).getInnerHtml()).toBe('My name is: Noemal');
-      // expectEnglishMenu();
-    }
-
-    function expectSpanishTexts() {
-      expect(element(by.css('p.text1')).getInnerHtml()).toBe('Primer texto');
-      expect(element(by.css('p.text2')).getInnerHtml()).toBe('Segundo texto');
-      expect(element(by.css('p.text3')).getInnerHtml()).toBe('Tercero texto');
-      expect(element(by.css('p.text4')).getInnerHtml()).toBe('Mi nombre es: Noemal');
-      // expectSpanishMenu()
-    }
-
-    function expectAds() {
-      expect(element(by.css('.bottom-ads > div > h3')).getInnerHtml()).toBe('fixed');
-    }
-
-    function expectSimpledirective() {
-      expect(element(by.css('directivecompile p')).getInnerHtml()).toBe('P test');
-      expect(element(by.css('directive')).getInnerHtml()).toBe('Element with personal scope');
-    }
-
-    function expectFilters() {
-      expect(element(by.css('.filters span.info')).getInnerHtml()).toBe('Filterstest');
-    }
-
-    function expectMenu() {
-      isPresent('paper-item');
-      var EC = protractor.ExpectedConditions;
-      var menuelement = element(by.css('paper-icon-button'));
-      browser.wait(EC.elementToBeClickable(menuelement), 10000);
-      menuelement.click();
-      isPresent('paper-toolbar');
-    }
-
-    function expectFeed() {
-      expect(element(by.css('.angularstaticfeed > span.info')).getInnerHtml()).toBe('Angular Static Feed Module');
-
-      feedrows = element.all(by.css('.angularstaticfeed > p.item'));
-      expect(feedrows.count()).toEqual(5);
-    }
-
-    function expectScope() {
-      expect(element(by.css('.angularscope > span.info')).getInnerHtml()).toBe('Angular Scope Module');
-
-      element(by.model('yourName')).sendKeys('test');
-      expect(element(by.css('p.result')).getInnerHtml()).toBe('Hello test');
-    }
-
-    function expectDiffScope() {
-      expect(element(by.css('.angularscope > span.info')).getInnerHtml()).toBe('Angular Different Scope Module');
-
-      element(by.model('yourName')).sendKeys('test');
-      expect(element(by.css('p.result')).getInnerHtml()).toBe('Hello test');
-    }
-
-    afterEach(function() {
-      browser.ignoreSynchronization = false;
-    });
-  });
-}());
+//     function isPresent(selector) {
+//       browser.wait(function() {
+//         return $(selector).isPresent();
+//       }, 6000, 'Main (' + selector + ') not present');
+//     }
+//
+//     function isClickable(selector) {
+//       var EC = protractor.ExpectedConditions;
+//       var menuelement = element(by.css(selector));
+//       browser.wait(EC.elementToBeClickable(menuelement), 10000);
+//     }
+//
+//     function expectEnglishTexts() {
+//       expect(element(by.css('p.text1')).getInnerHtml()).toBe('First text');
+//       expect(element(by.css('p.text2')).getInnerHtml()).toBe('Second text');
+//       expect(element(by.css('p.text3')).getInnerHtml()).toBe('Third text');
+//       expect(element(by.css('p.text4')).getInnerHtml()).toBe('My name is: Noemal');
+//       // expectEnglishMenu();
+//     }
+//
+//     function expectSpanishTexts() {
+//       expect(element(by.css('p.text1')).getInnerHtml()).toBe('Primer texto');
+//       expect(element(by.css('p.text2')).getInnerHtml()).toBe('Segundo texto');
+//       expect(element(by.css('p.text3')).getInnerHtml()).toBe('Tercero texto');
+//       expect(element(by.css('p.text4')).getInnerHtml()).toBe('Mi nombre es: Noemal');
+//       // expectSpanishMenu()
+//     }
+//
+//     function expectAds() {
+//       expect(element(by.css('.bottom-ads > div > h3')).getInnerHtml()).toBe('fixed');
+//     }
+//
+//     function expectSimpledirective() {
+//       expect(element(by.css('directivecompile p')).getInnerHtml()).toBe('P test');
+//       expect(element(by.css('directive')).getInnerHtml()).toBe('Element with personal scope');
+//     }
+//
+//     function expectFilters() {
+//       expect(element(by.css('.filters span.info')).getInnerHtml()).toBe('Filterstest');
+//     }
+//
+//     function expectMenu() {
+//       isPresent('paper-item');
+//       var EC = protractor.ExpectedConditions;
+//       var menuelement = element(by.css('paper-icon-button'));
+//       browser.wait(EC.elementToBeClickable(menuelement), 10000);
+//       menuelement.click();
+//       isPresent('paper-toolbar');
+//     }
+//
+//     function expectFeed() {
+//       expect(element(by.css('.angularstaticfeed > span.info')).getInnerHtml()).toBe('Angular Static Feed Module');
+//
+//       feedrows = element.all(by.css('.angularstaticfeed > p.item'));
+//       expect(feedrows.count()).toEqual(5);
+//     }
+//
+//     function expectScope() {
+//       expect(element(by.css('.angularscope > span.info')).getInnerHtml()).toBe('Angular Scope Module');
+//
+//       element(by.model('yourName')).sendKeys('test');
+//       expect(element(by.css('p.result')).getInnerHtml()).toBe('Hello test');
+//     }
+//
+//     function expectDiffScope() {
+//       expect(element(by.css('.angularscope > span.info')).getInnerHtml()).toBe('Angular Different Scope Module');
+//
+//       element(by.model('yourName')).sendKeys('test');
+//       expect(element(by.css('p.result')).getInnerHtml()).toBe('Hello test');
+//     }
+//
+//     afterEach(function() {
+//       browser.ignoreSynchronization = false;
+//     });
+//   });
+// }());

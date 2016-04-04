@@ -1,0 +1,75 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="android-grid">
+  <template>
+    <style>
+      /* write your styles here */
+      :host {
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        @apply(--layout-center-justified);
+      }
+
+      :host > ::content > * {
+        margin: calc(var(--cell-space) / 2);
+        width: calc(100% / var(--grid-columns) - var(--cell-space));
+      }
+
+      :host > ::content > img,
+      :host > ::content > iron-image {
+        height: 100%;
+      }
+
+      :host > ::content > a > img,
+      :host > ::content > a > iron-image {
+        display: block;
+        max-width: 100%;
+      }
+
+      :host > ::content > android-item {
+        box-sizing: border-box;
+      }
+      /* end styles */
+    </style>
+
+    <!-- write your template here -->
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'android-grid',
+
+      properties: {
+        /**
+         * Number of columns to show.
+         */
+        columns: {
+          type: Number,
+          value: 2
+        },
+
+        /**
+         * The space between cells.
+         */
+        cellSpace: {
+          type: String,
+          value: '0'
+        }
+      },
+
+      observers: [
+        '_updateGrid(columns, cellSpace)'
+      ],
+
+      _updateGrid: function(columns, cellSpace) {
+        this.customStyle['--grid-columns'] = columns.toString();
+        this.customStyle['--cell-space'] = (cellSpace !== '0') ? cellSpace : cellSpace + 'px';
+        this.updateStyles();
+      }
+    });
+  </script>
+</dom-module>

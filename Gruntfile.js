@@ -98,20 +98,30 @@ module.exports = function(grunt) {
       }
     },
 
-    clean: ['dist', '.tmp'],
+    clean: {
+      pre: ['dist', '.tmp'],
+      dist: [
+        'dist/modules/googlemap/',
+        'dist/modules/grouplist/',
+        'dist/modules/html/',
+        'dist/modules/polymermenu/',
+        'dist/modules/themes/',
+        'dist/modules/angularscope/'
+      ]
+    },
 
     copy: {
       main: {
         expand: true,
         cwd: 'app/',
-        src: ['**', '!**/*.js', '!**/*.css', 'modules/**', 'services/**', 'bower_components/**', 'themes/**', 'resources/**'],
+        src: ['**', 'modules/**', 'services/**', 'bower_components/**', 'themes/**'],
         dest: 'dist/'
       }
     },
 
     rev: {
       files: {
-        src: ['dist/**/*.{js,css}', '!dist/js/shims/**', '!dist/modules/**', '!dist/services/**', '!dist/bower_components/**', '!dist/resources/**', '!dist/themes/**']
+        src: ['dist/**/*.{js,css}', '!dist/cordova.js', '!dist/js/shims/**', '!dist/modules/**', '!dist/resources/**', '!dist/services/**', '!dist/bower_components/**', '!dist/themes/**']
       }
     },
 
@@ -158,7 +168,7 @@ module.exports = function(grunt) {
   // grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
   grunt.registerTask('continuous-test', ['exec:web_driver_update', 'connect:connect', 'protractor:continuous']);
 
-  grunt.registerTask('start', ['exec:server'])
-  grunt.registerTask('dist', ['clean', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);
+  grunt.registerTask('start', ['exec:server']);
+  grunt.registerTask('dist', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'clean:dist','usemin']);
   grunt.registerTask('js', ['uglify']);
 };

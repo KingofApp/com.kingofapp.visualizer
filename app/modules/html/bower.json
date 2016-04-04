@@ -1,0 +1,13 @@
+{
+  "name": "koapp-module-html",
+  "authors": "King of App",
+  "description": "html module for King of App",
+  "keywords": [
+    "kingofapp",
+    "module"
+  ],
+  "license": "MIT",
+  "homepage": "http://kingofapp.com",
+  "private": true,
+  "dependencies": {}
+}

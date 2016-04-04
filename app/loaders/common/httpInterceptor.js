@@ -17,6 +17,7 @@
       put: 0,
       head: 0
     };
+
     // I keep track of the total number of HTTP requests that have been
     // initiated, but have not yet completed (ie, are still running).
     var pending = {
@@ -27,13 +28,15 @@
       put: 0,
       head: 0
     };
+
     // Return the public API.
     return ({
       pending: pending,
       total: total,
       endRequest: endRequest,
-      startRequest: startRequest,
+      startRequest: startRequest
     });
+
     // ---
     // PUBLIC METHODS.
     // ---
@@ -51,6 +54,7 @@
         redistributePendingCounts(httpMethod);
       }
     }
+
     // I start tracking the given HTTP request.
     function startRequest(httpMethod) {
       httpMethod = normalizedHttpMethod(httpMethod);
@@ -59,6 +63,7 @@
       pending.all++;
       pending[httpMethod]++;
     }
+
     // ---
     // PRIVATE METHODS.
     // ---
@@ -73,10 +78,10 @@
         case 'put':
         case 'head':
           return (httpMethod);
-          break;
       }
       return ('get');
     }
+
     // I attempt to redistribute an [unexpected] negative count to other
     // non-negative counts. The HTTP methods are iterated in likelihood of
     // execution. And, while this isn't an exact science, it will normalize
@@ -84,8 +89,10 @@
     function redistributePendingCounts(negativeMethod) {
       var overflow = Math.abs(pending[negativeMethod]);
       pending[negativeMethod] = 0;
+
       // List in likely order of precedence in the application.
       var methods = ['get', 'post', 'delete', 'put', 'head'];
+
       // Trickle the overflow across the list of methods.
       for (var i = 0; i < methods.length; i++) {
         var method = methods[i];
@@ -101,6 +108,7 @@
       }
     }
   }
+
   interceptor.$inject = ['$httpProvider'];
 
   function interceptor($httpProvider) {
@@ -126,6 +134,7 @@
         response: response,
         responseError: responseError
       });
+
       // ---
       // PUBLIC METHODS.
       // ---
@@ -138,6 +147,7 @@
         // Pass-through original config object.
         return (config);
       }
+
       // Intercept the failed request.
       function requestError(rejection) {
         // At this point, we don't why the outgoing request was rejected.
@@ -151,18 +161,21 @@
         // Pass-through the rejection.
         return ($q.reject(rejection));
       }
+
       // Intercept the successful response.
       function response(response) {
         trafficGuardiaCivil.endRequest(extractMethod(response));
         // Pass-through the resolution.
         return (response);
       }
+
       // Intercept the failed response.
       function responseError(response) {
         trafficGuardiaCivil.endRequest(extractMethod(response));
         // Pass-through the rejection.
         return ($q.reject(response));
       }
+
       // ---
       // PRIVATE METHODS.
       // ---

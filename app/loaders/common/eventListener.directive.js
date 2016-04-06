@@ -35,7 +35,7 @@
           var paramsList = [];
 
           angular.forEach(params, function(value) {
-            if(value.indexOf("'") > -1 || value.indexOf('"') > -1){
+            if (value.indexOf("'") > -1 || value.indexOf('"') > -1) {
               value = value.slice(1, -1);
             }
             value = value.trim();

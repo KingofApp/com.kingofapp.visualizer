@@ -22,6 +22,7 @@
     "mocha": "2.2.x",
     "oclazyload": "~1.0.9",
     "polymer": "Polymer/polymer#^1.2.0",
-    "protractor": "2.1.x"
+    "protractor": "2.1.x",
+    "webfontloader": "^1.6.24"
   }
 }

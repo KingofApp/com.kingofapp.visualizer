@@ -12,7 +12,8 @@
       $indexedDBProvider
         .connection(databaseName)
         .upgradeDatabase(databaseVersion, function(event, db, tx){
-          var objStore = db.createObjectStore('modules', {keyPath: 'key'});
+          db.createObjectStore('modules', {keyPath: 'key'});
+          db.createObjectStore('services', {keyPath: 'key'});
         });
   }
 }());

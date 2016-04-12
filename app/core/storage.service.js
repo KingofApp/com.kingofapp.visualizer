@@ -14,11 +14,14 @@
     init();
 
     return {
+      getAll: getAll,
+      init: init,
+      del: del,
       get: get,
       set: set
     };
 
-    function get() {
+    function getAll() {
       var deferred = $q.defer();
       myObjectStore.getAll().then(function(results) {
         deferred.resolve(results)
@@ -26,16 +29,38 @@
       return deferred.promise;
     }
 
-    function set(key,value) {
+    function get(key) {
       var deferred = $q.defer();
-      myObjectStore.insert({"key":key, "value": value}).then(function(e) {
+      myObjectStore.find(key).then(function(cursor) {
+        deferred.resolve(cursor);
+      });
+      return deferred.promise;
+    }
+    function del(key) {
+      var deferred = $q.defer();
+      myObjectStore.delete(key).then(function(cursor) {
+        deferred.resolve(cursor);
+      });
+      return deferred.promise;
+    }
+
+    function set(key, value) {
+      var deferred = $q.defer();
+      myObjectStore.insert({
+        "key": key,
+        "value": value
+      }).then(function(e) {
         deferred.resolve(e)
       });
       return deferred.promise;
     }
 
-    function init() {
+    function init(name) {
+      if (name) {
+        objectName = name;
+      }
       myObjectStore = $indexedDB.objectStore(objectName);
+
     }
   }
 

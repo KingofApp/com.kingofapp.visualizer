@@ -9,5 +9,6 @@ angular.module('myApp', [
   'king.loaders.common',
   'king.loaders.angular',
   'king.core.structureService',
+  'king.core.storageService',
   'king.core.structureHooksService'
 ]);

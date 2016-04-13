@@ -293,7 +293,8 @@
               icon: modules[key].icon,
               modulescope: modules[key].scope
             };
-            $translatePartialLoader.addPart(item);
+            var type = (modules[key].moduleFolder) ? modules[key].moduleFolder : 'modules';
+            $translatePartialLoader.addPart(type + '/' + item);
           }
         });
       });

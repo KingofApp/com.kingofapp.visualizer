@@ -27,7 +27,7 @@
           var scopeElement = document.querySelector('.' + $rootScope.current);
           var scope = angular.element(scopeElement).scope();
           var model = $(this).attr('ng-model').split('.');
-          if(!scope[model[0]]){
+          if (!scope[model[0]]) {
             scope[model[0]] = [];
           }
           scope[model[0]][model[1]] = $(this).val();
@@ -56,12 +56,12 @@
         }
 
         function isJson(str) {
-            try {
-                JSON.parse(str);
-            } catch (e) {
-                return false;
-            }
-            return true;
+          try {
+            JSON.parse(str);
+          } catch (e) {
+            return false;
+          }
+          return true;
         }
       };
     });

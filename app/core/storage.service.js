@@ -47,8 +47,8 @@
     function set(key, value) {
       var deferred = $q.defer();
       myObjectStore.insert({
-        "key": key,
-        "value": value
+        'key': key,
+        'value': value
       }).then(function(e) {
         deferred.resolve(e)
       });

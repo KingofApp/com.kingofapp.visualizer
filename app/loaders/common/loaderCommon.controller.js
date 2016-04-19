@@ -191,8 +191,9 @@
         } else {
           // TODO: Display error and blame developer
         }
+      }, function(error) {
+        $location.path('/404');
       });
-
       $scope.data = JSON.stringify(structureService.get(), null, '    ');
     }
 

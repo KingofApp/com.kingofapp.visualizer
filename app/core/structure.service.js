@@ -244,8 +244,12 @@
         deferred.resolve(cachedLocations[path]);
       } else {
         findRoute(path, data.modules, function(module) {
-          cachedLocations[path] = module;
-          deferred.resolve(cachedLocations[path]);
+          if (!data.modules[path]) {
+            deferred.reject('Error - Module ' + path + ' not found');
+          } else {
+            cachedLocations[path] = module;
+            deferred.resolve(cachedLocations[path]);
+          }
         });
       }
       return deferred.promise;

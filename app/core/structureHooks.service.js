@@ -1,3 +1,4 @@
+(function() {
 'use strict';
 // NOTE: A service to intercept data from the original structure used by structureService.
 angular
@@ -62,3 +63,4 @@ function structureHooksService() {
     };
   }
 }
+}());

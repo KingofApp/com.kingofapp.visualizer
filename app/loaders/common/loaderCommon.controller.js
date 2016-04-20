@@ -252,12 +252,9 @@
     }
 
     function renderKoaApp() {
-      setTimeout(function() {
-        app.createTree();
-
-        (app.theme) ? renderElements() : ($rootScope.appData)
-                    ? setTheme($rootScope.appData.config) : setTheme(structureService.getConfig());
-      }, 1000);
+          app.createTree(function() {
+            (app.theme) ? renderElements(): ($rootScope.appData) ? setTheme($rootScope.appData.config) : setTheme(structureService.getConfig());
+          });
     }
   }
 }());

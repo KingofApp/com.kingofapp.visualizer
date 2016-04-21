@@ -298,7 +298,8 @@
               modulescope: modules[key].scope
             };
             var type = (modules[key].moduleFolder) ? modules[key].moduleFolder : 'modules';
-            $translatePartialLoader.addPart(type + '/' + item);
+            var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + "/" : "";
+            $translatePartialLoader.addPart(deviceDir + type + '/' + item);
           }
         });
       });

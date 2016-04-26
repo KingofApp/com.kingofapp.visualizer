@@ -244,8 +244,12 @@
         deferred.resolve(cachedLocations[path]);
       } else {
         findRoute(path, data.modules, function(module) {
-          cachedLocations[path] = module;
-          deferred.resolve(cachedLocations[path]);
+          if (!data.modules[path]) {
+            deferred.reject('Error - Module ' + path + ' not found');
+          } else {
+            cachedLocations[path] = module;
+            deferred.resolve(cachedLocations[path]);
+          }
         });
       }
       return deferred.promise;
@@ -293,7 +297,9 @@
               icon: modules[key].icon,
               modulescope: modules[key].scope
             };
-            $translatePartialLoader.addPart(item);
+            var type = (modules[key].moduleFolder) ? modules[key].moduleFolder : 'modules';
+            var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
+            $translatePartialLoader.addPart(deviceDir + type + '/' + item);
           }
         });
       });

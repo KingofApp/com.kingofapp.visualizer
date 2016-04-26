@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('king.loaders.common', ['ngRoute'])
+    .module('king.loaders.common', ['ngRoute', 'xc.indexedDB'])
     .config(setDefaultPaths);
   setDefaultPaths.$inject = ['$routeProvider', '$sceProvider', '$analyticsProvider'];
 

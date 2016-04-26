@@ -170,5 +170,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('start', ['exec:server']);
   grunt.registerTask('dist', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'clean:dist','usemin']);
+  grunt.registerTask('mobile', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev','usemin']);
   grunt.registerTask('js', ['uglify']);
 };

@@ -1,13 +1,14 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../../../bower_components/koa-behaviors/koa-dropdown-menu-behavior.html">
 <link rel="import" href="../../../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../../../elements/koa-icon.html">
 <link rel="import" href="../android-input/android-input.html">
 <link rel="import" href="../android-menu-button/android-menu-button.html">
 <link rel="import" href="../../styles/default-theme.html">
 
 <dom-module id="android-dropdown-menu">
   <template>
-    <!-- write your styles here -->
     <style>
       :host {
         cursor: pointer;
@@ -68,7 +69,6 @@
         @apply(--dropdown-menu-icon);
       }
     </style>
-    <!-- end styles -->
 
     <!-- write your template here -->
     <!-- this div fulfills an a11y requirement for combobox, do not remove -->
@@ -132,7 +132,7 @@
             value: false,
             reflectToAttribute: true
         },
-        
+
         /**
          * Set to true to always float the label. Bind this to the
          * `<paper-input-container>`'s `alwaysFloatLabel` property.

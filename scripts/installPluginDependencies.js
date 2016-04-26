@@ -12,10 +12,11 @@ function downloadPlugin(type) {
   return function(plugin, callback) {
     if (plugin) {
       console.log('*** Installing dependencies from: app/' + type + '/' + plugin);
+      var path = 'app/'+type +'/'+plugin;
       async.series([
         async.asyncify(async.apply(sh.cd, local)),
-        async.asyncify(async.apply(sh.cd, 'app/' + type + '/' + plugin)),
-        async.apply(sh.exec, 'bower i')
+        // async.asyncify(async.apply(sh.cd, 'app/' + type + '/' + plugin)),
+        async.apply(sh.exec, 'cd '+path+'; pwd; bower i; cd ../../..')
       ], function(err, result) {
         err = hasNoBowerJson(err, result) ? null : err;
         callback(err, result);

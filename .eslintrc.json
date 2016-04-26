@@ -8,7 +8,8 @@
     "no-multi-spaces": "error",
     "quotes": ["error", "single", "avoid-escape"],
     "space-before-blocks": "error",
-    "space-before-function-paren": ["error", "never"]
+    "space-before-function-paren": ["error", "never"],
+    "space-infix-ops": ["error"]
   },
   "env": {
     "browser": true,

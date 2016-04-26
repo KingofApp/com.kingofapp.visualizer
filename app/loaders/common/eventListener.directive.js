@@ -27,22 +27,41 @@
           var scopeElement = document.querySelector('.' + $rootScope.current);
           var scope = angular.element(scopeElement).scope();
           var model = $(this).attr('ng-model').split('.');
+          if (!scope[model[0]]) {
+            scope[model[0]] = [];
+          }
           scope[model[0]][model[1]] = $(this).val();
         }
 
         function getParams(element, scope) {
-          var params = element.match(/\((.*?)\)/)[1].split(',');
+          var params = element.match(/(['|{](.*?)['|}]|(\d+)|([a-zA-Z0-9]+))(?=,|\))/gm);
           var paramsList = [];
+
           angular.forEach(params, function(value) {
+            if (value.indexOf("'") > -1 || value.indexOf('"') > -1) {
+              value = value.slice(1, -1);
+            }
             value = value.trim();
+
             if (scope[value]) { // Is function from scope
               this.push(scope[value]);
+            } else if (isJson(value)) {
+              this.push(JSON.parse(value));
             } else {
               this.push(value);
             }
           }, paramsList);
 
           return paramsList;
+        }
+
+        function isJson(str) {
+          try {
+            JSON.parse(str);
+          } catch (e) {
+            return false;
+          }
+          return true;
         }
       };
     });

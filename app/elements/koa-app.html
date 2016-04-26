@@ -50,10 +50,14 @@
         'koa-icon'
       ],
 
-      createTree: function() {
+      createTree: function(callback) {
         this.tree = new Array(0);
         this.koaIcons = new Array(0);
-        this._processElement(this.children[0]);
+        var that = this;
+        setTimeout(function() {
+          if (that._processElement(that.children[0])) callback();
+          else that.createTree(callback);
+        }, 10);
       },
 
       setTheme: function(theme, callback) {
@@ -105,13 +109,14 @@
       },
 
       _processElement: function(element) {
+        var elementsChanged = 0;
         var hasChildren = element.children.length > 0;
 
         if (hasChildren) {
           var children = element.children;
 
           for (var i = 0; i < children.length; i++) {
-            this._processElement(children[i]);
+            elementsChanged += this._processElement(children[i]);
           }
         }
 
@@ -121,6 +126,7 @@
           var isNotExcludedElement = this.excludedElementsToProcess.indexOf(elementTagName) === -1;
 
           if (isKoaElement && isNotExcludedElement) {
+            elementsChanged++;
             this.tree.push({
               tag: elementTagName.replace('koa-', ''),
               attributes: element.attributes,
@@ -131,6 +137,7 @@
             this.koaIcons.push(element);
           }
         }
+        return elementsChanged;
       },
 
       _createThemeElement: function(tag, attributes, childNodes) {
@@ -163,7 +170,8 @@
         var parentNode = Polymer.dom(treeElement.actualElement).parentNode;
         var newElement = this._createThemeElement(treeElement.tag, treeElement.attributes, treeElement.childNodes);
 
-        Polymer.dom(parentNode).replaceChild(newElement, treeElement.actualElement);
+        if (parentNode) Polymer.dom(parentNode).replaceChild(newElement, treeElement.actualElement);
+
         treeElement.actualElement = newElement;
       }
     });

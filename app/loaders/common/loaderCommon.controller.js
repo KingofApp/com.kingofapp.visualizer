@@ -191,7 +191,7 @@
         } else {
           // TODO: Display error and blame developer
         }
-      }, function(error) {
+      }, function() {
         $location.path('/404');
       });
       $scope.data = JSON.stringify(structureService.get(), null, '    ');
@@ -252,9 +252,15 @@
     }
 
     function renderKoaApp() {
-          app.createTree(function() {
-            (app.theme) ? renderElements(): ($rootScope.appData) ? setTheme($rootScope.appData.config) : setTheme(structureService.getConfig());
-          });
+      app.createTree(function() {
+        if (app.theme) {
+          renderElements()
+        } else if ($rootScope.appData) {
+          setTheme($rootScope.appData.config)
+        } else {
+          setTheme(structureService.getConfig());
+        }
+      });
     }
   }
 }());

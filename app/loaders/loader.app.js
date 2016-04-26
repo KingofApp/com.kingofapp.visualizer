@@ -1,9 +1,9 @@
 angular.element(document).ready(function() {
 
   if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-      document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener('deviceready', onDeviceReady, false);
   } else {
-      onDeviceReady();
+    onDeviceReady();
   }
 
   function onDeviceReady() {
@@ -13,7 +13,6 @@ angular.element(document).ready(function() {
       loadFromStructure();
     }
   }
-
 
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {
@@ -45,12 +44,12 @@ angular.element(document).ready(function() {
   }
 
   function setDevicesVariables($rootScope) {
-    if(window.device && window.device.platform=="Android"){
-      $rootScope.partialDir = "www";
-    }else if(window.device && window.device.platform=="iOS"){
-      $rootScope.partialDir = "";
-      document.body.style.marginTop = "20px";
-      document.body.style.position = "relative";
+    if (window.device && window.device.platform == 'Android') {
+      $rootScope.partialDir = 'www';
+    } else if (window.device && window.device.platform == 'iOS') {
+      $rootScope.partialDir = '';
+      document.body.style.marginTop = '20px';
+      document.body.style.position = 'relative';
     }
   }
 

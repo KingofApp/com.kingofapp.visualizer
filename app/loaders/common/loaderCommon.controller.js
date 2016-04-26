@@ -5,12 +5,13 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$window', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
+  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
 
-  function commonLoaderCtrl($scope, $window, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
+  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
     var app = document.querySelector('#app');
+    var firstInterval = {};
 
     $rootScope.showTransition = true;
     $location.$$path = $location.$$path || '/';
@@ -52,7 +53,7 @@
             }
             //Render external calls generating new elements
             if (count === 0 && prev > 0) {
-              renderKoaApp();
+              firstInterval = $interval(renderKoaApp, 10);
             }
 
             prev = count;
@@ -252,15 +253,18 @@
     }
 
     function renderKoaApp() {
-      app.createTree(function() {
-        if (app.theme) {
-          renderElements()
-        } else if ($rootScope.appData) {
-          setTheme($rootScope.appData.config)
-        } else {
-          setTheme(structureService.getConfig());
-        }
-      });
+      if (app.createTree) {
+        $interval.cancel(firstInterval);
+        app.createTree(function() {
+          if (app.theme) {
+            renderElements()
+          } else if ($rootScope.appData) {
+            setTheme($rootScope.appData.config)
+          } else {
+            setTheme(structureService.getConfig());
+          }
+        });
+      }
     }
   }
 }());

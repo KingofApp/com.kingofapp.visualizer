@@ -79,8 +79,10 @@
     );
 
 
-    $rootScope.$on("renderKoaApp", function(){
-      renderKoaApp();
+    $rootScope.$on("renderKoaElements", function(){
+      app.renderThemeElements(function() {
+        $rootScope.$broadcast("koaElementsRendered")
+      })
     });
 
     $scope.$watch('appData', function(newValue) {

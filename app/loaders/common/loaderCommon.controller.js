@@ -74,6 +74,8 @@
           console.log('[V] Loading cached module', $location.$$path);
 
           renderKoaApp();
+          //Prevention, quick transitions.
+          $rootScope.showTransition = false;
 
         }
       }

@@ -79,6 +79,9 @@
     );
 
 
+    $rootScope.$on("renderKoaApp", function(){
+      renderKoaApp();
+    });
 
     $scope.$watch('appData', function(newValue) {
       // console.log('[V] REceived AppData', newValue);

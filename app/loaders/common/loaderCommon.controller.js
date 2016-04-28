@@ -74,15 +74,19 @@
           console.log('[V] Loading cached module', $location.$$path);
 
           renderKoaApp();
+
         }
       }
     );
 
 
     $rootScope.$on("renderKoaElements", function(){
-      app.renderThemeElements(function() {
-        $rootScope.$broadcast("koaElementsRendered")
-      })
+      app.createTree(function() {
+        app.renderThemeElements(function() {
+          $rootScope.showTransition = false;
+          $rootScope.$broadcast("koaElementsRendered")
+        });
+      });
     });
 
     $scope.$watch('appData', function(newValue) {

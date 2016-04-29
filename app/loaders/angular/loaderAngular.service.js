@@ -65,7 +65,6 @@
             'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
             'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true})
           }).then(function(data) {
-            scope.lazyLoadParams = [];
             scope.template = structureService.validateScope(data.rootModule);
             defer.resolve();
           }).catch(defer.reject);

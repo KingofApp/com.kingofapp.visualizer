@@ -13,7 +13,7 @@
     };
 
     function dynamicLoad() {
-
+      var mainDeferred = $q.defer();
       structureService.getCurrentModules($location, function loadmodules(modules) {
         var dependencies = {
           files: new Array(0),
@@ -40,12 +40,15 @@
           }
           this.files = this.files.concat(value.files);
           this.htmlSources = this.htmlSources.concat(value.files).filter(filterHtml);
-          $templateCache.get(value.view);
         }, dependencies);
 
         structureService.setCachedLibs(cache);
         loadHtmlDeps()
-          .then(loadLibsAndFiles);
+          .then(loadLibsAndFiles).then(function(data){
+            mainDeferred.resolve(data);
+          });
+
+
 
         function loadHtmlDeps() {
           var defer = $q.defer();
@@ -66,8 +69,7 @@
             'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true}),
             'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1])
           }).then(function(data) {
-              $rootScope.rootTemplate = structureService.validateScope(data.rootModule);
-              defer.resolve();
+              defer.resolve(structureService.validateScope(data.rootModule));
           }).catch(defer.reject);
           return defer.promise;
         }
@@ -104,6 +106,7 @@
           return n != undefined && n.indexOf('.html') == -1;
         }
       });
+      return mainDeferred.promise;
     }
   }
 }());

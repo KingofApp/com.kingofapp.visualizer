@@ -98,7 +98,6 @@
         redirected = true;
 
         setTimeout(function() {
-          // $scope.$apply(function() {
           setTheme(newValue.config);
           setIconset(newValue.config.iconset);
           if (newValue.config.index === $location.path()) {
@@ -106,7 +105,6 @@
           } else {
             $location.path(newValue.config.index);
           }
-          // });
         }, 200);
       }
     });
@@ -164,7 +162,7 @@
 
     $scope.$on('koaAppRendered', function() {
       console.info('[V] koa-app rendered!');
-
+      $scope.template = $scope.template || $rootScope.rootTemplate;
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
       });
@@ -197,7 +195,13 @@
         } else if (isAngularModule(module.type) && $rootScope.previous !== $location.$$path) {
           $rootScope.current = module.identifier;
           $rootScope.previous = $location.$$path;
-          angularLoader.module();
+
+          angularLoader.module().then(function(url) {
+            $scope.template = url;
+            //Auxiliar variable used for builder loading
+            $rootScope.rootTemplate = url;
+          });
+
         } else if (isJqueryModule(module.type)) {
           // TODO: Load jquery module from angular
         } else {

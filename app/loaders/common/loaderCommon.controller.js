@@ -197,7 +197,7 @@
         } else if (isAngularModule(module.type) && $rootScope.previous !== $location.$$path) {
           $rootScope.current = module.identifier;
           $rootScope.previous = $location.$$path;
-          angularLoader.module($scope);
+          angularLoader.module();
         } else if (isJqueryModule(module.type)) {
           // TODO: Load jquery module from angular
         } else {

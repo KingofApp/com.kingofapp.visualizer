@@ -5,14 +5,14 @@
     .module('king.loaders.angular', ['ngRoute'])
     .factory('angularLoader', angularLoader);
 
-  angularLoader.$inject = ['$q', '$location', '$ocLazyLoad', 'structureService'];
+  angularLoader.$inject = ['$q', '$rootScope', '$location', '$ocLazyLoad', 'structureService', '$templateCache'];
 
-  function angularLoader($q, $location, $ocLazyLoad, structureService) {
+  function angularLoader($q, $rootScope, $location, $ocLazyLoad, structureService, $templateCache) {
     return {
       module: dynamicLoad
     };
 
-    function dynamicLoad(scope) {
+    function dynamicLoad() {
 
       structureService.getCurrentModules($location, function loadmodules(modules) {
         var dependencies = {
@@ -40,6 +40,7 @@
           }
           this.files = this.files.concat(value.files);
           this.htmlSources = this.htmlSources.concat(value.files).filter(filterHtml);
+          $templateCache.get(value.view);
         }, dependencies);
 
         structureService.setCachedLibs(cache);
@@ -62,11 +63,11 @@
         function loadLibsAndFiles() {
           var defer = $q.defer();
           $q.all({
-            'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
-            'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true})
+            'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true}),
+            'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1])
           }).then(function(data) {
-            scope.template = structureService.validateScope(data.rootModule);
-            defer.resolve();
+              $rootScope.rootTemplate = structureService.validateScope(data.rootModule);
+              defer.resolve();
           }).catch(defer.reject);
           return defer.promise;
         }

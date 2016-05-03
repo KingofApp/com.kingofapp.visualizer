@@ -87,8 +87,11 @@
         }
       ],
       "scope": {
+        "menuItems": ["#/menu-abcd/home-abcd", "#/menu-abcd/elements-abcd", "#/menu-abcd/map-abcd"],
+        "backgroundImages": [],
+        "backgroundColors": [],
         "path": "/menu-abcd",
-        "headerShown": true,
+        "headerShown": false,
         "headerBackgroundImage": "",
         "headerBackgroundColor": "",
         "headerReverse": false,

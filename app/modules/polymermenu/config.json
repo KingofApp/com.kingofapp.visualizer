@@ -2,7 +2,7 @@
   "name": "Polymer Menu",
   "identifier": "polymermenu",
   "type": "A",
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "King of App",
   "category": [
     "menu"
@@ -82,8 +82,11 @@
     }
   ],
   "scope": {
+    "menuItems": [],
+    "backgroundImages": [],
+    "backgroundColors": [],
     "path": "/polymermenu",
-    "headerShown": true,
+    "headerShown": false,
     "headerBackgroundImage": "",
     "headerBackgroundColor": "",
     "headerReverse": false,
@@ -95,6 +98,41 @@
     "toolbarLogo": ""
   },
   "config": [
+    {
+      "key": "menuItems",
+      "type": "multiInput",
+      "templateOptions": {
+        "label": "Menu items",
+        "inputOptions": {
+          "type": "select",
+          "templateOptions": {
+            "options": [],
+            "label": "Normal Select"
+          }
+        }
+      }
+    },
+    {
+      "key": "backgroundImages",
+      "type": "multiInput",
+      "templateOptions": {
+        "inputOptions": {
+          "type": "input"
+        },
+        "label": "Background image URLs",
+        "pattern": "(https?://)([/\\w.()-]*).*"
+      }
+    },
+    {
+      "key": "backgroundColors",
+      "type": "multiInput",
+      "templateOptions": {
+        "inputOptions": {
+          "type": "input"
+        },
+        "label": "Background colors"
+      }
+    },
     {
       "key": "headerShown",
       "type": "checkbox",

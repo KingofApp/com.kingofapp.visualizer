@@ -12,7 +12,7 @@
       <paper-menu>
         <template is="dom-repeat" items="{{polymermenu.menu}}">
           <a class="{{item.class}}" href="{{item.url}}">
-            <paper-item><koa-icon icon='{{item.icon}}'></koa-icon> {{item.text}}</paper-item>
+            <paper-item style="background-image: url('{{item.backgroundImage}}'); background-color: {{item.backgroundColor}};"><koa-icon icon='{{item.icon}}'></koa-icon> {{item.text}}</paper-item>
           </a>
         </template>
       </paper-menu>

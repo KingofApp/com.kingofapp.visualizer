@@ -20,17 +20,17 @@
     function getMenu() {
       var menu = new Array(0);
       var trExp = /[\/\s]+/gi;
-      angular.forEach(structureService.getChildren($scope.polymermenu.modulescope.path), function(value, key) {
-        structureService.getModule(key).then(function(module) {
-          if (module.showOn && module.showOn.menu) {
-            var slug = value.name.replace(trExp, '-');
+      var index = 0;
+      angular.forEach($scope.polymermenu.modulescope.menuItems, function(value, key) {
+        structureService.getModule(value.replace('#', '')).then(function(module) {
             menu.push({
-              text: value.name,
-              icon: getIcon(value.icon),
-              url: '#' + key,
-              class: slug
+              text: module.name,
+              icon: getIcon(module.icon),
+              url: value,
+              backgroundImage: $scope.polymermenu.modulescope.backgroundImages[index],
+              backgroundColor: $scope.polymermenu.modulescope.backgroundColors[index]
             });
-          }
+            index++;
         });
       });
       return menu;

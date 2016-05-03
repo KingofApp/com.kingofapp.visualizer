@@ -48,8 +48,13 @@ angular.element(document).ready(function() {
       $rootScope.partialDir = 'www';
     } else if (window.device && window.device.platform == 'iOS') {
       $rootScope.partialDir = '';
-      document.body.style.marginTop = '20px';
-      document.body.style.position = 'relative';
+      //Show ios Toolbar
+      StatusBar.overlaysWebView(false);
+      StatusBar.styleDefault();
+      //Block scroll in the body
+      $('body').on('touchmove', function(evt) {
+        evt.preventDefault();
+      });
     }
   }
 

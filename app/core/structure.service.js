@@ -13,6 +13,7 @@
     var cachedLocations = {};
     var cachedLibs = [];
     var visitedLocations = [];
+    var menuItems = [];
     var data = {};
 
     $rootScope.transitionOn = true;
@@ -33,6 +34,7 @@
       get: get,
       set: set,
       getConfig: getConfig,
+      getMenuItems: getMenuItems,
       setCssVariables: setCssVariables,
       setColors: setColors,
       getColors: getColors,
@@ -173,6 +175,14 @@
       }
     }
 
+    function populateMenuItems() {
+      _.filter(data.modules, function(item){
+        // console.log("Se van a meter:",item.scope.menuItems);
+        menuItems = _.union(menuItems,item.scope.menuItems);
+        // console.log("[AHORA]",menuItems);
+      });
+    }
+
     function setHooks() {
       if (structureHooks.getIndex() !== '') {
         data.config.indexOld = data.config.index;
@@ -181,8 +191,11 @@
       angular.forEach(structureHooks.getModules(), function(module, path) {
         data.modules[path] = module;
       });
+      populateMenuItems();
     }
-
+    function getMenuItems() {
+      return menuItems;
+    }
     function getIndex() {
       return data.config.index;
     }

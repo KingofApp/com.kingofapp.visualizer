@@ -86,7 +86,7 @@
         }
       ],
       "scope": {
-        "menuItems": ["#/menu-abcd/home-abcd", "#/menu-abcd/elements-abcd", "#/menu-abcd/map-abcd"],
+        "menuItems": ["/menu-abcd/home-abcd", "/menu-abcd/elements-abcd", "/menu-abcd/map-abcd"],
         "backgroundImages": [],
         "backgroundColors": [],
         "path": "/menu-abcd",

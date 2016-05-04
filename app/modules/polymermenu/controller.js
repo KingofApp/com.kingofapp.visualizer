@@ -22,11 +22,11 @@
       var trExp = /[\/\s]+/gi;
       var index = 0;
       angular.forEach($scope.polymermenu.modulescope.menuItems, function(value, key) {
-        structureService.getModule(value.replace('#', '')).then(function(module) {
+        structureService.getModule(value).then(function(module) {
             menu.push({
               text: module.name,
               icon: getIcon(module.icon),
-              url: value,
+              url: "#" + value,
               backgroundImage: $scope.polymermenu.modulescope.backgroundImages[index],
               backgroundColor: $scope.polymermenu.modulescope.backgroundColors[index]
             });

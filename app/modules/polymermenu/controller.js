@@ -5,14 +5,13 @@
     .module('polymermenu', [])
     .controller('PolymermenuController', loadFunction);
 
-  loadFunction.$inject = ['$q', '$scope', 'structureService', '$location'];
+  loadFunction.$inject = ['$q', '$rootScope', '$scope', 'structureService', '$location'];
 
-  function loadFunction($q, $scope, structureService, $location) {
+  function loadFunction($q, $rootScope, $scope, structureService, $location) {
     //Register upper level modules
     structureService.registerModule($location, $scope, 'polymermenu');
     $scope.showBack = false;
-
-    if(structureService.getMenuItems().indexOf($location.$$path) === -1){
+    if(structureService.getMenuItems().indexOf($location.$$path) === -1 && $rootScope.current != 'polymermenu'){
       $scope.showBack = true;
     }
     $scope.goBack = function() {

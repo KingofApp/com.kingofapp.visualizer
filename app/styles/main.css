@@ -69,3 +69,16 @@ div.debug button {
   font-size: 1em;
   padding: 5px;
 }
+
+div#appContent > div.ng-scope, div.template{
+  height:100%;
+}
+
+div#appContent{
+  height:100%;
+}
+div#main > div.ng-scope{
+  position: absolute;
+  width: 100%;
+  height:100%;
+}

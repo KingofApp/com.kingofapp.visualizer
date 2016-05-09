@@ -82,11 +82,11 @@
     );
 
 
-    $rootScope.$on("renderKoaElements", function(){
+    $rootScope.$on('renderKoaElements', function() {
       app.createTree(function() {
         app.renderThemeElements(function() {
           $rootScope.showTransition = false;
-          $rootScope.$broadcast("koaElementsRendered")
+          $rootScope.$broadcast('koaElementsRendered')
         });
       });
     });

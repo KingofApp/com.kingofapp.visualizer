@@ -5,9 +5,9 @@
     .module('king.loaders.angular', ['ngRoute'])
     .factory('angularLoader', angularLoader);
 
-  angularLoader.$inject = ['$q', '$rootScope', '$location', '$ocLazyLoad', 'structureService', '$templateCache'];
+  angularLoader.$inject = ['$q', '$rootScope', '$location', '$ocLazyLoad', 'structureService'];
 
-  function angularLoader($q, $rootScope, $location, $ocLazyLoad, structureService, $templateCache) {
+  function angularLoader($q, $rootScope, $location, $ocLazyLoad, structureService) {
     return {
       module: dynamicLoad
     };
@@ -44,7 +44,7 @@
 
         structureService.setCachedLibs(cache);
         loadHtmlDeps()
-          .then(loadLibsAndFiles).then(function(data){
+          .then(loadLibsAndFiles).then(function(data) {
             mainDeferred.resolve(data);
           });
 

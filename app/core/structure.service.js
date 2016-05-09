@@ -176,9 +176,9 @@
     }
 
     function populateMenuItems() {
-      _.filter(data.modules, function(item){
+      _.filter(data.modules, function(item) {
         // console.log("Se van a meter:",item.scope.menuItems);
-        menuItems = _.union(menuItems,item.scope.menuItems);
+        menuItems = _.union(menuItems, item.scope.menuItems);
         // console.log("[AHORA]",menuItems);
       });
     }

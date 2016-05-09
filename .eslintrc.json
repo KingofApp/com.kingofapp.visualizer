@@ -25,6 +25,7 @@
     "Polymer": false,
     "WebFont": false,
     "_": false,
+    "StatusBar": false,
     "angular": false,
     "module": false,
     "require": false

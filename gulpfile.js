@@ -51,7 +51,7 @@ gulp.task('clean', function() {
 
 // Lint Javascript
 gulp.task('lint', function() {
-  return gulp.src(['gulpfile.js', 'app/**/{*.js,*.html}', '!app/{modules,themes}/**/*'])
+  return gulp.src(['gulpfile.js', 'app/**/{*.js,*.html}', '!app/{modules,themes,services}/**/*'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());

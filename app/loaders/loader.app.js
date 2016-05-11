@@ -51,10 +51,6 @@ angular.element(document).ready(function() {
       //Show ios Toolbar
       StatusBar.overlaysWebView(false);
       StatusBar.styleDefault();
-      //Block scroll in the body
-      $('body').on('touchmove', function(evt) {
-        evt.preventDefault();
-      });
     }
   }
 

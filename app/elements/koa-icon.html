@@ -21,13 +21,12 @@
       },
 
       updateIcon: function(icon) {
-        var isUrl = new RegExp('(https?://)([/\\w.()-]*).*'); // regex to check url.
+        // var isUrl = new RegExp('(https?://)([/\\w.()-]*).*'); // regex to check url.
         var isIcon = new RegExp('^([/\\w/\\d-:])*$'); // regex to check icon.
-
-        if (isUrl.test(icon))
-          this.$.ironIcon.setAttribute('src', icon); // Create attribute for icon from url
-        else if (isIcon.test(icon))
+        if (isIcon.test(icon))
           this.$.ironIcon.setAttribute('icon', icon); // Create attribute for regular icon
+        else
+          this.$.ironIcon.setAttribute('src', icon); // Create attribute for icon from url
       }
     });
   </script>

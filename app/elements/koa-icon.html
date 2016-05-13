@@ -25,7 +25,7 @@
         var isIcon = new RegExp('^([/\\w/\\d-:])*$'); // regex to check icon.
         if (isIcon.test(icon))
           this.$.ironIcon.setAttribute('icon', icon); // Create attribute for regular icon
-        else
+        else if (icon.indexOf("{{") === -1)
           this.$.ironIcon.setAttribute('src', icon); // Create attribute for icon from url
       }
     });

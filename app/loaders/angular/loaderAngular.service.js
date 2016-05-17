@@ -44,8 +44,10 @@
 
         structureService.setCachedLibs(cache);
         loadHtmlDeps()
-          .then(loadLibsAndFiles).then(function(data) {
-            mainDeferred.resolve(data);
+          .then(loadLibsAndFiles)
+          .then(mainDeferred.resolve)
+          .catch(function(err) {
+            console.log('[V]Loader Angular catch', err);
           });
 
 

@@ -192,9 +192,9 @@
           if (structureService.getIndex() === '' && $location.$$path !== '/') {
             $location.path('/404');
           }
-        } else if (isAngularModule(module.type) && $rootScope.previous !== $location.$$path) {
-          $rootScope.current = module.identifier;
-          $rootScope.previous = $location.$$path;
+        } else if (isAngularModule(module.type)) {
+          $rootScope.current = module.identifier || $rootScope.current;
+          $rootScope.previous = $location.$$path || $rootScope.previous;
 
           angularLoader.module().then(function(url) {
             $scope.template = url;

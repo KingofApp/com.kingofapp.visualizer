@@ -1,4 +1,4 @@
 /app/bower_components/*
-/app/services/*
 /app/modules/*
+/app/services/*
 /app/themes/*

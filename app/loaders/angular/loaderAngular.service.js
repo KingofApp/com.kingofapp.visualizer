@@ -35,8 +35,9 @@
 
           if (libs) {
             //Load libs
-            this.files = this.files.concat(_.map(libs, 'src')).filter(filterNotHtmlOrUndefined);
-            this.htmlSources = this.htmlSources.concat(_.map(libs, 'src')).filter(filterHtml);
+            var libSources = _.flattenDeep(_.map(libs, 'src'));
+            this.files = this.files.concat(libSources).filter(filterNotHtmlOrUndefined);
+            this.htmlSources = this.htmlSources.concat(libSources).filter(filterHtml);
           }
           this.files = this.files.concat(value.files);
           this.htmlSources = this.htmlSources.concat(value.files).filter(filterHtml);

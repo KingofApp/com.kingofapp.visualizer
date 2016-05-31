@@ -15,7 +15,7 @@ angular.element(document).ready(function() {
     }
   }
   function hideSplash() {
-    if(navigator && navigator.splashscreen) navigator.splashscreen.hide();
+    if (navigator && navigator.splashscreen) navigator.splashscreen.hide();
   }
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {

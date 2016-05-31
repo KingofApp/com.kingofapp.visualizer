@@ -11,9 +11,12 @@ angular.element(document).ready(function() {
       loadFromBuilder();
     } else {
       loadFromStructure();
+      hideSplash();
     }
   }
-
+  function hideSplash() {
+    if(navigator && navigator.splashscreen) navigator.splashscreen.hide();
+  }
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {
       angular

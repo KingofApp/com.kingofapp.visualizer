@@ -177,7 +177,7 @@
 
     function populateMenuItems() {
       _.filter(data.modules, function(item) {
-        if (item.canContain) menuItems = _.union(menuItems, item.scope.menuItems);
+        if (item.canContain) menuItems = _.union(menuItems, _.flattenDeep(_.map(item.scope.menuItems, 'path')));
       });
     }
 

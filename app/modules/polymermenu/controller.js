@@ -29,13 +29,13 @@
       var trExp = /[\/\s]+/gi;
       var index = 0;
       angular.forEach($scope.polymermenu.modulescope.menuItems, function(value, key) {
-        structureService.getModule(value).then(function(module) {
+        structureService.getModule(value.path).then(function(module) {
             menu.push({
               text: module.name,
               icon: getIcon(module.icon),
-              url: "#" + value,
-              backgroundImage: $scope.polymermenu.modulescope.backgroundImages[index],
-              backgroundColor: $scope.polymermenu.modulescope.backgroundColors[index]
+              url: "#" + value.path,
+              backgroundImage: value.bgImage,
+              backgroundColor: value.bgColor
             });
             index++;
         });

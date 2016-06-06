@@ -16,7 +16,7 @@ angular.element(document).ready(function() {
   }
   function hideSplash() {
     //Timeout for slow phones.
-    setTimeout(function () {
+    setTimeout(function() {
       if (navigator && navigator.splashscreen) navigator.splashscreen.hide();
     }, 500);
   }

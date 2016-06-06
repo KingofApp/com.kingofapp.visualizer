@@ -43,7 +43,7 @@
       setImages: setImages,
       getImages: getImages,
       setModules: setModules,
-      setLoader: setLoader,
+      setSpinner: setSpinner,
       getIndex: getIndex,
       getVisitedLocations: getVisitedLocations,
       getCachedLocations: getCachedLocations,
@@ -70,7 +70,7 @@
       cachedLocations = {};
       data = newData;
 
-      setLoader(data.config.loader);
+      setSpinner(data.config.spinner);
       setHooks();
       $rootScope.$broadcast('menuUpdated');
     }
@@ -166,13 +166,21 @@
       setHooks();
     }
 
-    function setLoader(src) {
-      if (src) {
-        $rootScope.loader = src;
-      } else {
-        //Default Loader
-        $rootScope.loader = 'images/loader.gif';
+    function setSpinner(spinner) {
+      // Fallback
+      if (!spinner) {
+        spinner = {
+          'identifier': 'android-spinner',
+          'path': 'spinners/koapp-spinner-android/android-spinner.html'
+        };
       }
+
+      Polymer.Base.importHref(spinner.path, function() {
+        var spinnerContainer = document.querySelector('#transitionloader');
+        var spinnerElement = document.createElement(spinner.identifier);
+        spinnerContainer.appendChild(spinnerElement);
+        spinnerElement.active = true;
+      });
     }
 
     function populateMenuItems() {

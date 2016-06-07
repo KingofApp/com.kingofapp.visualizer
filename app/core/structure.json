@@ -5,6 +5,10 @@
       "identifier": "koapp-theme-android",
       "path": "themes/koapp-theme-android/koapp-theme-android.html"
     },
+    "spinner": {
+      "identifier": "android-spinner",
+      "path": "spinners/koapp-spinner-android/android-spinner.html"
+    },
     "colors": {
       "primaryTextColor": "#212121",
       "primaryBackgroundColor": "#ffffff",

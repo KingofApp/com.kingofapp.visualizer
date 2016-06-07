@@ -70,7 +70,7 @@
       cachedLocations = {};
       data = newData;
 
-      setSpinner(data.config.spinner);
+      setSpinner();
       setHooks();
       $rootScope.$broadcast('menuUpdated');
     }
@@ -166,14 +166,19 @@
       setHooks();
     }
 
-    function setSpinner(spinner) {
-      // Fallback
-      if (!spinner) {
+    function setSpinner() {
+      // LEGACY 01/08/2016
+      var spinner;
+
+      if (!data.config.spinner) {
         spinner = {
           'identifier': 'android-spinner',
           'path': 'spinners/koapp-spinner-android/android-spinner.html'
         };
+      } else {
+        spinner = data.config.spinner;
       }
+      // var spinner = data.config.spinner;
 
       Polymer.Base.importHref(spinner.path, function() {
         var spinnerContainer = document.querySelector('#transitionloader');

@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-
+  //TODO Style following https://github.com/johnpapa/angular-styleguide
   angular
     .module('king.loaders.common')
     .config(setTranslatorConfig)

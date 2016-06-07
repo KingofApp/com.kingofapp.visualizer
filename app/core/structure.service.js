@@ -181,10 +181,12 @@
       // var spinner = data.config.spinner;
 
       Polymer.Base.importHref(spinner.path, function() {
-        var spinnerContainer = document.querySelector('#transitionloader');
-        var spinnerElement = document.createElement(spinner.identifier);
-        spinnerContainer.appendChild(spinnerElement);
-        spinnerElement.active = true;
+        if (document.querySelector('#transitionloader')) {
+          var spinnerContainer = document.querySelector('#transitionloader');
+          var spinnerElement = document.createElement(spinner.identifier);
+          spinnerContainer.appendChild(spinnerElement);
+          spinnerElement.active = true;
+        }
       });
     }
 

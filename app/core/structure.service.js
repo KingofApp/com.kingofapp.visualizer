@@ -11,6 +11,7 @@
     var listeners = [];
     var lang;
     var cachedLocations = {};
+    var cachedModules = {};
     var cachedLibs = [];
     var visitedLocations = [];
     var menuItems = [];
@@ -273,6 +274,15 @@
           if (!data.modules[path]) {
             deferred.reject('Error - Module ' + path + ' not found');
           } else {
+
+            //Load translation files
+            if (!cachedModules[module.identifier]) {
+              var type = (module.moduleFolder) ? module.moduleFolder : 'modules';
+              var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
+              $translatePartialLoader.addPart(deviceDir + type + '/' + module.identifier);
+              cachedModules[module.identifier] = true;
+            }
+
             cachedLocations[path] = module;
             deferred.resolve(cachedLocations[path]);
           }
@@ -323,9 +333,6 @@
               icon: modules[key].icon,
               modulescope: modules[key].scope
             };
-            var type = (modules[key].moduleFolder) ? modules[key].moduleFolder : 'modules';
-            var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
-            $translatePartialLoader.addPart(deviceDir + type + '/' + item);
           }
         });
       });

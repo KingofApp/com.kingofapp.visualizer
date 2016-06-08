@@ -5,9 +5,9 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil', '$translate'];
+  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
 
-  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil, $translate) {
+  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
     var app = document.querySelector('#app');
@@ -163,7 +163,6 @@
 
     $scope.$on('koaAppRendered', function() {
       console.info('[V] koa-app rendered!');
-      $translate.refresh();
       $scope.template = $scope.template || $rootScope.rootTemplate;
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;

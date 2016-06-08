@@ -5,9 +5,9 @@
     .module('king.core.structureService', [])
     .factory('structureService', structureService);
 
-  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope'];
+  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope', '$filter'];
 
-  function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope) {
+  function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope, $filter) {
     var listeners = [];
     var lang;
     var cachedLocations = {};
@@ -174,7 +174,7 @@
       if (!data.config.spinner) {
         spinner = {
           'identifier': 'android-spinner',
-          'path': 'spinners/koapp-spinner-android/android-spinner.html'
+          'path': $filter('loadUrl')('spinners/koapp-spinner-android/android-spinner.html')
         };
       } else {
         spinner = data.config.spinner;
@@ -193,7 +193,7 @@
 
     function populateMenuItems() {
       _.filter(data.modules, function(item) {
-        if (item.canContain) menuItems = _.union(menuItems, _.flattenDeep(_.map(item.scope.menuItems, 'path')));
+        if (item && item.canContain) menuItems = _.union(menuItems, _.flattenDeep(_.map(item.scope.menuItems, 'path')));
       });
     }
 

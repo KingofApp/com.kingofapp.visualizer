@@ -5,11 +5,18 @@
     .module('polymermenu', [])
     .controller('PolymermenuController', loadFunction);
 
-  loadFunction.$inject = ['$q', '$scope', 'structureService', '$location'];
+  loadFunction.$inject = ['$q', '$rootScope', '$scope', 'structureService', '$location'];
 
-  function loadFunction($q, $scope, structureService, $location) {
+  function loadFunction($q, $rootScope, $scope, structureService, $location) {
     //Register upper level modules
     structureService.registerModule($location, $scope, 'polymermenu');
+    $scope.showBack = false;
+    if(structureService.getMenuItems().indexOf($location.$$path) === -1 && $rootScope.current != 'polymermenu'){
+      $scope.showBack = true;
+    }
+    $scope.goBack = function() {
+      window.history.back()
+    };
 
     $q.all({
       menu: getMenu()
@@ -20,17 +27,17 @@
     function getMenu() {
       var menu = new Array(0);
       var trExp = /[\/\s]+/gi;
-      angular.forEach(structureService.getChildren($scope.polymermenu.modulescope.path), function(value, key) {
-        structureService.getModule(key).then(function(module) {
-          if (module.showOn && module.showOn.menu) {
-            var slug = value.name.replace(trExp, '-');
+      var index = 0;
+      angular.forEach($scope.polymermenu.modulescope.menuItems, function(value, key) {
+        structureService.getModule(value.path).then(function(module) {
             menu.push({
-              text: value.name,
-              icon: getIcon(value.icon),
-              url: '#' + key,
-              class: slug
+              text: module.name,
+              icon: getIcon(module.icon),
+              url: "#" + value.path,
+              backgroundImage: value.bgImage,
+              backgroundColor: value.bgColor
             });
-          }
+            index++;
         });
       });
       return menu;

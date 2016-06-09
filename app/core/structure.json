@@ -5,6 +5,10 @@
       "identifier": "koapp-theme-android",
       "path": "themes/koapp-theme-android/koapp-theme-android.html"
     },
+    "spinner": {
+      "identifier": "android-spinner",
+      "path": "spinners/koapp-spinner-android/android-spinner.html"
+    },
     "colors": {
       "primaryTextColor": "#212121",
       "primaryBackgroundColor": "#ffffff",
@@ -45,7 +49,6 @@
       "canContain": true,
       "icon": "menu",
       "showOn": {
-        "menu": false,
         "market": true,
         "dragDrop": true
       },
@@ -87,8 +90,25 @@
         }
       ],
       "scope": {
+        "menuItems": [
+          {
+            "path": "/menu-abcd/home-abcd",
+            "bgImage": "",
+            "bgColor": ""
+          },
+          {
+            "path": "/menu-abcd/elements-abcd",
+            "bgImage": "",
+            "bgColor": ""
+          },
+          {
+            "path": "/menu-abcd/map-abcd",
+            "bgImage": "",
+            "bgColor": ""
+          }
+        ],
         "path": "/menu-abcd",
-        "headerShown": true,
+        "headerShown": false,
         "headerBackgroundImage": "",
         "headerBackgroundColor": "",
         "headerReverse": false,
@@ -108,7 +128,6 @@
       "type": "A",
       "icon": "home",
       "showOn": {
-        "menu": true,
         "market": true,
         "dragDrop": true
       },
@@ -124,7 +143,6 @@
       "type": "A",
       "icon": "polymer",
       "showOn": {
-        "menu": true,
         "market": true,
         "dragDrop": true
       },
@@ -140,7 +158,6 @@
       "type": "A",
       "icon": "room",
       "showOn": {
-        "menu": true,
         "market": true,
         "dragDrop": true
       },

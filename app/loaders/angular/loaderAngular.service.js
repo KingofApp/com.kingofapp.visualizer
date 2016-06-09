@@ -5,15 +5,15 @@
     .module('king.loaders.angular', ['ngRoute'])
     .factory('angularLoader', angularLoader);
 
-  angularLoader.$inject = ['$q', '$location', '$ocLazyLoad', 'structureService'];
+  angularLoader.$inject = ['$q', '$rootScope', '$location', '$ocLazyLoad', 'structureService'];
 
-  function angularLoader($q, $location, $ocLazyLoad, structureService) {
+  function angularLoader($q, $rootScope, $location, $ocLazyLoad, structureService) {
     return {
       module: dynamicLoad
     };
 
-    function dynamicLoad(scope) {
-
+    function dynamicLoad() {
+      var mainDeferred = $q.defer();
       structureService.getCurrentModules($location, function loadmodules(modules) {
         var dependencies = {
           files: new Array(0),
@@ -35,8 +35,9 @@
 
           if (libs) {
             //Load libs
-            this.files = this.files.concat(_.map(libs, 'src')).filter(filterNotHtmlOrUndefined);
-            this.htmlSources = this.htmlSources.concat(_.map(libs, 'src')).filter(filterHtml);
+            var libSources = _.flattenDeep(_.map(libs, 'src'));
+            this.files = this.files.concat(libSources).filter(filterNotHtmlOrUndefined);
+            this.htmlSources = this.htmlSources.concat(libSources).filter(filterHtml);
           }
           this.files = this.files.concat(value.files);
           this.htmlSources = this.htmlSources.concat(value.files).filter(filterHtml);
@@ -44,7 +45,13 @@
 
         structureService.setCachedLibs(cache);
         loadHtmlDeps()
-          .then(loadLibsAndFiles);
+          .then(loadLibsAndFiles)
+          .then(mainDeferred.resolve)
+          .catch(function(err) {
+            console.log('[V]Loader Angular catch', err);
+          });
+
+
 
         function loadHtmlDeps() {
           var defer = $q.defer();
@@ -62,12 +69,10 @@
         function loadLibsAndFiles() {
           var defer = $q.defer();
           $q.all({
-            'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1]),
-            'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true})
+            'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true}),
+            'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1])
           }).then(function(data) {
-            scope.lazyLoadParams = [];
-            scope.template = structureService.validateScope(data.rootModule);
-            defer.resolve();
+              defer.resolve(structureService.validateScope(data.rootModule));
           }).catch(defer.reject);
           return defer.promise;
         }
@@ -104,6 +109,7 @@
           return n != undefined && n.indexOf('.html') == -1;
         }
       });
+      return mainDeferred.promise;
     }
   }
 }());

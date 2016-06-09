@@ -74,11 +74,22 @@
           console.log('[V] Loading cached module', $location.$$path);
 
           renderKoaApp();
+          //Prevention, quick transitions.
+          $rootScope.showTransition = false;
+
         }
       }
     );
 
 
+    $rootScope.$on('renderKoaElements', function() {
+      app.createTree(function() {
+        app.renderThemeElements(function() {
+          $rootScope.showTransition = false;
+          $rootScope.$broadcast('koaElementsRendered')
+        });
+      });
+    });
 
     $scope.$watch('appData', function(newValue) {
       // console.log('[V] REceived AppData', newValue);
@@ -87,7 +98,6 @@
         redirected = true;
 
         setTimeout(function() {
-          // $scope.$apply(function() {
           setTheme(newValue.config);
           setIconset(newValue.config.iconset);
           if (newValue.config.index === $location.path()) {
@@ -95,7 +105,6 @@
           } else {
             $location.path(newValue.config.index);
           }
-          // });
         }, 200);
       }
     });
@@ -148,12 +157,13 @@
     $scope.$on('$routeChangeStart', function(event, next) {
       if (next) {
         $rootScope.showTransition = true;
+        structureService.setSpinner();
       }
     });
 
     $scope.$on('koaAppRendered', function() {
       console.info('[V] koa-app rendered!');
-
+      $scope.template = $scope.template || $rootScope.rootTemplate;
       $rootScope.$apply(function() {
         $rootScope.showTransition = false;
       });
@@ -183,10 +193,16 @@
           if (structureService.getIndex() === '' && $location.$$path !== '/') {
             $location.path('/404');
           }
-        } else if (isAngularModule(module.type) && $rootScope.previous !== $location.$$path) {
-          $rootScope.current = module.identifier;
-          $rootScope.previous = $location.$$path;
-          angularLoader.module($scope);
+        } else if (isAngularModule(module.type)) {
+          $rootScope.current = module.identifier || $rootScope.current;
+          $rootScope.previous = $location.$$path || $rootScope.previous;
+
+          angularLoader.module().then(function(url) {
+            $scope.template = url;
+            //Auxiliar variable used for builder loading
+            $rootScope.rootTemplate = url;
+          });
+
         } else if (isJqueryModule(module.type)) {
           // TODO: Load jquery module from angular
         } else {

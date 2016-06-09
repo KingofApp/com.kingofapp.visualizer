@@ -11,9 +11,15 @@ angular.element(document).ready(function() {
       loadFromBuilder();
     } else {
       loadFromStructure();
+      hideSplash();
     }
   }
-
+  function hideSplash() {
+    //Timeout for slow phones.
+    setTimeout(function() {
+      if (navigator && navigator.splashscreen) navigator.splashscreen.hide();
+    }, 500);
+  }
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {
       angular
@@ -48,8 +54,9 @@ angular.element(document).ready(function() {
       $rootScope.partialDir = 'www';
     } else if (window.device && window.device.platform == 'iOS') {
       $rootScope.partialDir = '';
-      document.body.style.marginTop = '20px';
-      document.body.style.position = 'relative';
+      //Show ios Toolbar
+      StatusBar.overlaysWebView(false);
+      StatusBar.styleDefault();
     }
   }
 

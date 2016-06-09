@@ -5,14 +5,16 @@
     .module('king.core.structureService', [])
     .factory('structureService', structureService);
 
-  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope'];
+  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope', '$filter'];
 
-  function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope) {
+  function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope, $filter) {
     var listeners = [];
     var lang;
     var cachedLocations = {};
+    var cachedModules = {};
     var cachedLibs = [];
     var visitedLocations = [];
+    var menuItems = [];
     var data = {};
 
     $rootScope.transitionOn = true;
@@ -33,6 +35,7 @@
       get: get,
       set: set,
       getConfig: getConfig,
+      getMenuItems: getMenuItems,
       setCssVariables: setCssVariables,
       setColors: setColors,
       getColors: getColors,
@@ -41,7 +44,7 @@
       setImages: setImages,
       getImages: getImages,
       setModules: setModules,
-      setLoader: setLoader,
+      setSpinner: setSpinner,
       getIndex: getIndex,
       getVisitedLocations: getVisitedLocations,
       getCachedLocations: getCachedLocations,
@@ -68,7 +71,7 @@
       cachedLocations = {};
       data = newData;
 
-      setLoader(data.config.loader);
+      setSpinner();
       setHooks();
       $rootScope.$broadcast('menuUpdated');
     }
@@ -164,13 +167,34 @@
       setHooks();
     }
 
-    function setLoader(src) {
-      if (src) {
-        $rootScope.loader = src;
+    function setSpinner() {
+      // LEGACY 01/08/2016
+      var spinner;
+
+      if (!data.config.spinner) {
+        spinner = {
+          'identifier': 'android-spinner',
+          'path': $filter('loadUrl')('spinners/koapp-spinner-android/android-spinner.html')
+        };
       } else {
-        //Default Loader
-        $rootScope.loader = 'images/loader.gif';
+        spinner = data.config.spinner;
       }
+      // var spinner = data.config.spinner;
+
+      Polymer.Base.importHref(spinner.path, function() {
+        if (document.querySelector('#transitionloader')) {
+          var spinnerContainer = document.querySelector('#transitionloader');
+          var spinnerElement = document.createElement(spinner.identifier);
+          spinnerContainer.appendChild(spinnerElement);
+          spinnerElement.active = true;
+        }
+      });
+    }
+
+    function populateMenuItems() {
+      _.filter(data.modules, function(item) {
+        if (item && item.canContain) menuItems = _.union(menuItems, _.flattenDeep(_.map(item.scope.menuItems, 'path')));
+      });
     }
 
     function setHooks() {
@@ -181,8 +205,11 @@
       angular.forEach(structureHooks.getModules(), function(module, path) {
         data.modules[path] = module;
       });
+      populateMenuItems();
     }
-
+    function getMenuItems() {
+      return menuItems;
+    }
     function getIndex() {
       return data.config.index;
     }
@@ -247,6 +274,15 @@
           if (!data.modules[path]) {
             deferred.reject('Error - Module ' + path + ' not found');
           } else {
+
+            //Load translation files
+            if (!cachedModules[module.identifier]) {
+              var type = (module.moduleFolder) ? module.moduleFolder : 'modules';
+              var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
+              $translatePartialLoader.addPart(deviceDir + type + '/' + module.identifier);
+              cachedModules[module.identifier] = true;
+            }
+
             cachedLocations[path] = module;
             deferred.resolve(cachedLocations[path]);
           }
@@ -297,9 +333,6 @@
               icon: modules[key].icon,
               modulescope: modules[key].scope
             };
-            var type = (modules[key].moduleFolder) ? modules[key].moduleFolder : 'modules';
-            var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
-            $translatePartialLoader.addPart(deviceDir + type + '/' + item);
           }
         });
       });

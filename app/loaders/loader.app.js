@@ -18,7 +18,7 @@ angular.element(document).ready(function() {
     //Timeout for slow phones.
     setTimeout(function() {
       if (navigator && navigator.splashscreen) navigator.splashscreen.hide();
-    }, 500);
+    }, 800);
   }
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {

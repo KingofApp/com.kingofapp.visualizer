@@ -21,12 +21,13 @@
     })
     .filter('loadUrl', function($location) {
       return function(url) {
-        if ($location.$$host.indexOf('visualizer.kingofapp.com') !== -1) {
+        if ($location.$$host.indexOf('dev.visualizer.kingofapp.com') !== -1) {
           return 'http://dev.resources.kingofapp.com/' + url;
+        } else if ($location.$$host.indexOf('visualizer.kingofapp.com') !== -1) {
+          return 'http://resources.kingofapp.com/' + url;
         } else {
           return url;
         }
-
       }
     });
 }());

@@ -181,7 +181,8 @@
       }
       // var spinner = data.config.spinner;
 
-      Polymer.Base.importHref(spinner.path, function() {
+      //TODO Function also used in loaders/angular/loaderAngular.service.js - [Fixed, compilation failed]
+      polymerImportHref(spinner.path, function() {
         if (document.querySelector('#transitionloader')) {
           var spinnerContainer = document.querySelector('#transitionloader');
           var spinnerElement = document.createElement(spinner.identifier);
@@ -189,6 +190,27 @@
           spinnerElement.active = true;
         }
       });
+
+
+
+      function polymerImportHref(href, onload, onerror) {
+        var l = document.createElement('link');
+        l.rel = 'import';
+        l.href = href;
+        var self = this;
+        if (onload) {
+          l.onload = function(e) {
+            return onload.call(self, e);
+          };
+        }
+        if (onerror) {
+          l.onerror = function(e) {
+            return onerror.call(self, e);
+          };
+        }
+        document.head.appendChild(l);
+        return l;
+      }
     }
 
     function populateMenuItems() {

@@ -5,9 +5,9 @@
     .module('king.core.structureService', [])
     .factory('structureService', structureService);
 
-  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope', '$filter'];
+  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope', '$filter', '$polymer'];
 
-  function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope, $filter) {
+  function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope, $filter, $polymer) {
     var listeners = [];
     var lang;
     var cachedLocations = {};
@@ -80,10 +80,6 @@
       return data.config;
     }
 
-    function setCustomStyle(variableKey, variableValue) {
-      Polymer.StyleDefaults.customStyle[variableKey] = variableValue;
-    }
-
     function setCssVariables(config) {
       if (config === null) {
         config = getConfig();
@@ -105,25 +101,25 @@
         colors = getColors();
       }
 
-      setCustomStyle('--primary-text-color', colors.primaryTextColor);
-      setCustomStyle('--primary-background-color', colors.primaryBackgroundColor);
-      setCustomStyle('--secondary-text-color', colors.secondaryTextColor);
-      setCustomStyle('--disabled-text-color', colors.disabledTextColor);
-      setCustomStyle('--divider-color', colors.dividerColor);
-      setCustomStyle('--primary-color', colors.primaryColor);
-      setCustomStyle('--light-primary-color', colors.lightPrimaryColor);
-      setCustomStyle('--dark-primary-color', colors.darkPrimaryColor);
-      setCustomStyle('--accent-color', colors.accentColor);
-      setCustomStyle('--light-accent-color', colors.lightAccentColor);
-      setCustomStyle('--dark-accent-color', colors.darkAccentColor);
-      setCustomStyle('--error-color', colors.errorColor);
-      setCustomStyle('--background-color', colors.backgroundColor);
+      $polymer.setCustomStyle('--primary-text-color', colors.primaryTextColor);
+      $polymer.setCustomStyle('--primary-background-color', colors.primaryBackgroundColor);
+      $polymer.setCustomStyle('--secondary-text-color', colors.secondaryTextColor);
+      $polymer.setCustomStyle('--disabled-text-color', colors.disabledTextColor);
+      $polymer.setCustomStyle('--divider-color', colors.dividerColor);
+      $polymer.setCustomStyle('--primary-color', colors.primaryColor);
+      $polymer.setCustomStyle('--light-primary-color', colors.lightPrimaryColor);
+      $polymer.setCustomStyle('--dark-primary-color', colors.darkPrimaryColor);
+      $polymer.setCustomStyle('--accent-color', colors.accentColor);
+      $polymer.setCustomStyle('--light-accent-color', colors.lightAccentColor);
+      $polymer.setCustomStyle('--dark-accent-color', colors.darkAccentColor);
+      $polymer.setCustomStyle('--error-color', colors.errorColor);
+      $polymer.setCustomStyle('--background-color', colors.backgroundColor);
 
       if (colors.toolbarColor) {
-        setCustomStyle('--toolbar-color', colors.toolbarColor);
+        $polymer.setCustomStyle('--toolbar-color', colors.toolbarColor);
       }
 
-      Polymer.updateStyles();
+      $polymer.updateStyles();
     }
 
     function getFonts() {
@@ -137,10 +133,10 @@
         fonts = getFonts();
       }
 
-      setCustomStyle('--primary-font-family', fonts.primaryFontFamily.name);
-      setCustomStyle('--title-font-family', fonts.titleFontFamily.name);
+      $polymer.setCustomStyle('--primary-font-family', fonts.primaryFontFamily.name);
+      $polymer.setCustomStyle('--title-font-family', fonts.titleFontFamily.name);
 
-      Polymer.updateStyles();
+      $polymer.updateStyles();
     }
 
     function getImages() {
@@ -156,9 +152,9 @@
 
       var backgroundImage = images.background ? 'url("' + images.background + '")' : 'none';
 
-      setCustomStyle('--background-image', backgroundImage);
+      $polymer.setCustomStyle('--background-image', backgroundImage);
 
-      Polymer.updateStyles();
+      $polymer.updateStyles();
     }
 
     function setModules(newData) {
@@ -181,8 +177,7 @@
       }
       // var spinner = data.config.spinner;
 
-      //TODO Function also used in loaders/angular/loaderAngular.service.js - [Fixed, compilation failed]
-      polymerImportHref(spinner.path, function() {
+      $polymer.importHref(spinner.path, function() {
         if (document.querySelector('#transitionloader')) {
           var spinnerContainer = document.querySelector('#transitionloader');
           var spinnerElement = document.createElement(spinner.identifier);
@@ -190,27 +185,6 @@
           spinnerElement.active = true;
         }
       });
-
-
-
-      function polymerImportHref(href, onload, onerror) {
-        var l = document.createElement('link');
-        l.rel = 'import';
-        l.href = href;
-        var self = this;
-        if (onload) {
-          l.onload = function(e) {
-            return onload.call(self, e);
-          };
-        }
-        if (onerror) {
-          l.onerror = function(e) {
-            return onerror.call(self, e);
-          };
-        }
-        document.head.appendChild(l);
-        return l;
-      }
     }
 
     function populateMenuItems() {

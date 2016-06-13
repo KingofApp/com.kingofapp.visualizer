@@ -48,10 +48,8 @@
           .then(loadLibsAndFiles)
           .then(mainDeferred.resolve)
           .catch(function(err) {
-            console.log('[V]Loader Angular catch', err);
+            console.info('[V] Loader Angular catch', err);
           });
-
-
 
         function loadHtmlDeps() {
           var defer = $q.defer();
@@ -72,7 +70,7 @@
             'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true}),
             'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1])
           }).then(function(data) {
-              defer.resolve(structureService.validateScope(data.rootModule));
+            defer.resolve(structureService.validateScope(data.rootModule));
           }).catch(defer.reject);
           return defer.promise;
         }
@@ -105,6 +103,7 @@
         function filterHtml(n) {
           return n != undefined && n.indexOf('.html') > -1;
         }
+
         function filterNotHtmlOrUndefined(n) {
           return n != undefined && n.indexOf('.html') == -1;
         }

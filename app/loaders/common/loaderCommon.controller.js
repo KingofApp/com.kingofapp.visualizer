@@ -35,7 +35,7 @@
       },
 
       function handleModelChange(count) {
-        console.log('[V] Pending HTTP count:', count,
+        console.info('[V] Pending HTTP count:', count,
           '{',
           trafficGuardiaCivil.pending.get, 'GET ,',
           trafficGuardiaCivil.pending.post, 'POST',
@@ -62,7 +62,7 @@
 
         function loadFirstTimeModule(modules) {
           finished = true;
-          console.log('[V] First time module load', $location.$$path);
+          console.info('[V] First time module load', $location.$$path);
           angular.forEach(modules, function(value) {
             visitedLocations[value.identifier] = true;
           });
@@ -71,7 +71,7 @@
 
         function loadCachedModule() {
           finished = true;
-          console.log('[V] Loading cached module', $location.$$path);
+          console.info('[V] Loading cached module', $location.$$path);
 
           renderKoaApp();
           //Prevention, quick transitions.
@@ -142,7 +142,7 @@
 
     $scope.$watch('appTheme', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        console.log('[V] Theme', newValue);
+        console.info('[V] Theme', newValue);
 
         setTheme(newValue.config);
 

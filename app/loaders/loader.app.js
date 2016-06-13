@@ -14,12 +14,14 @@ angular.element(document).ready(function() {
       hideSplash();
     }
   }
+
   function hideSplash() {
     //Timeout for slow phones.
     setTimeout(function() {
       if (navigator && navigator.splashscreen) navigator.splashscreen.hide();
-    }, 500);
+    }, 800);
   }
+
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {
       angular
@@ -34,18 +36,18 @@ angular.element(document).ready(function() {
         }]);
 
       angular.bootstrap(document, ['myApp']);
-      console.log('[V] Bootstraped ng-app');
+      console.info('[V] Bootstraped ng-app');
     }).fail(function() {
-      console.log('Error reading structure.json');
+      console.info('Error reading structure.json');
     });
   }
 
   function loadFromBuilder() {
-    console.log('[V] Default loading from samplemodules');
+    console.info('[V] Default loading from samplemodules');
     angular.module('myApp').constant('redirectUrl', '');
     angular.bootstrap(document, ['myApp']);
 
-    console.log('[V] Bootstraped ng-app');
+    console.info('[V] Bootstraped ng-app');
     window.parent.postMessage('bootstrapped-app', '*');
   }
 

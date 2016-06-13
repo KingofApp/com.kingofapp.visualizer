@@ -3,7 +3,7 @@ var previousData = '';
 window.addEventListener('message', function(event) {
   var $body = angular.element(document.body);
 
-  console.log('[V] Recieved!?', event);
+  console.info('[V] Recieved!?', event);
 
   if ($body.injector()) {
     var $rootScope = $body.injector().get('$rootScope');
@@ -11,19 +11,19 @@ window.addEventListener('message', function(event) {
     $rootScope.$apply(function() {
       if (JSON.stringify(event.data) !== previousData) {
         if (event.data.config) {
-          console.log('[V] Data');
+          console.info('[V] Data');
           $rootScope.appData = event.data;
         } else if (event.data.color) {
-          console.log('[V] Color', event.data.color);
+          console.info('[V] Color', event.data.color);
           $rootScope.appColors = event.data.color;
         } else if (event.data.fonts) {
-          console.log('[V] Fonts', event.data.fonts);
+          console.info('[V] Fonts', event.data.fonts);
           $rootScope.appFonts = event.data.fonts;
         } else if (event.data.modules) {
-          console.log('[V] Modules', event.data.modules);
+          console.info('[V] Modules', event.data.modules);
           $rootScope.appModules = event.data;
         } else if (event.data.theme) {
-          console.log('[V] Theme', event.data);
+          console.info('[V] Theme', event.data);
           $rootScope.appTheme = event.data;
         }
         setPreventions();

@@ -5,9 +5,9 @@
     .module('king.loaders.angular', ['ngRoute'])
     .factory('angularLoader', angularLoader);
 
-  angularLoader.$inject = ['$q', '$rootScope', '$location', '$ocLazyLoad', 'structureService'];
+  angularLoader.$inject = ['$q', '$rootScope', '$location', '$ocLazyLoad', 'structureService', '$polymer'];
 
-  function angularLoader($q, $rootScope, $location, $ocLazyLoad, structureService) {
+  function angularLoader($q, $rootScope, $location, $ocLazyLoad, structureService, $polymer) {
     return {
       module: dynamicLoad
     };
@@ -48,10 +48,8 @@
           .then(loadLibsAndFiles)
           .then(mainDeferred.resolve)
           .catch(function(err) {
-            console.log('[V]Loader Angular catch', err);
+            console.info('[V] Loader Angular catch', err);
           });
-
-
 
         function loadHtmlDeps() {
           var defer = $q.defer();
@@ -72,39 +70,21 @@
             'dependencies': $ocLazyLoad.load(dependencies.files, {serie: true}),
             'rootModule': structureService.getModule('/' + $location.$$path.split('/')[1])
           }).then(function(data) {
-              defer.resolve(structureService.validateScope(data.rootModule));
+            defer.resolve(structureService.validateScope(data.rootModule));
           }).catch(defer.reject);
           return defer.promise;
         }
 
         function importHref(file) {
           var defer = $q.defer();
-          polymerImportHref(file, defer.resolve, defer.reject);
+          $polymer.importHref(file, defer.resolve, defer.reject);
           return defer.promise;
-        }
-
-        function polymerImportHref(href, onload, onerror) {
-          var l = document.createElement('link');
-          l.rel = 'import';
-          l.href = href;
-          var self = this;
-          if (onload) {
-            l.onload = function(e) {
-              return onload.call(self, e);
-            };
-          }
-          if (onerror) {
-            l.onerror = function(e) {
-              return onerror.call(self, e);
-            };
-          }
-          document.head.appendChild(l);
-          return l;
         }
 
         function filterHtml(n) {
           return n != undefined && n.indexOf('.html') > -1;
         }
+
         function filterNotHtmlOrUndefined(n) {
           return n != undefined && n.indexOf('.html') == -1;
         }

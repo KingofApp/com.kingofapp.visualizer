@@ -32,7 +32,7 @@ gulp.task('serve', ['lint'], function() {
   serve(['app']);
 
   gulp.watch(['app/core/structure.json'], reload);
-  gulp.watch(['app/**/*.{html,js}', '!app/bower_components/**/*.{html,js}'], ['lint', reload]);
+  gulp.watch(['app/**/*.{html,js}', '!app/bower_components/**/*'], ['lint', reload]);
   gulp.watch(['app/styles/**/*.css'], reload);
   gulp.watch(['app/images/**/*'], reload);
 });

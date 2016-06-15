@@ -2,17 +2,14 @@
   'use strict';
 
   angular
-    .module('king.core.structureService', [])
+    .module('king.core.structureService', ['king.core.structureService.cache'])
     .factory('structureService', structureService);
 
-  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope', '$filter', '$polymer'];
+  structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope', '$filter', '$polymer', 'cachedLibs', 'cachedLocations', 'cachedModules'];
 
-  function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope, $filter, $polymer) {
+  function structureService($q, $translatePartialLoader, $translate, structureHooks, $rootScope, $filter, $polymer, cachedLibs, cachedLocations, cachedModules) {
     var listeners = [];
     var lang;
-    var cachedLocations = {};
-    var cachedModules = {};
-    var cachedLibs = [];
     var visitedLocations = [];
     var menuItems = [];
     var data = {};
@@ -47,9 +44,9 @@
       setSpinner: setSpinner,
       getIndex: getIndex,
       getVisitedLocations: getVisitedLocations,
-      getCachedLocations: getCachedLocations,
-      getCachedLibs: getCachedLibs,
-      setCachedLibs: setCachedLibs,
+      getCachedLocations: cachedLocations.get,
+      getCachedLibs: cachedLibs.get,
+      setCachedLibs: cachedLibs.set,
       setVisitedLocations: setVisitedLocations,
       getLang: getLang,
       setLang: setLang,
@@ -68,7 +65,7 @@
     }
 
     function set(newData) {
-      cachedLocations = {};
+      cachedLocations.reset();
       data = newData;
 
       setSpinner();
@@ -95,7 +92,7 @@
     }
 
     function setColors(colors) {
-      cachedLocations = {};
+      cachedLocations.reset();
 
       if (colors === null) {
         colors = getColors();
@@ -127,7 +124,7 @@
     }
 
     function setFonts(fonts) {
-      cachedLocations = {};
+      cachedLocations.reset();
 
       if (fonts === null) {
         fonts = getFonts();
@@ -144,7 +141,7 @@
     }
 
     function setImages(images) {
-      cachedLocations = {};
+      cachedLocations.reset();
 
       if (images === null) {
         images = getImages();
@@ -158,7 +155,7 @@
     }
 
     function setModules(newData) {
-      cachedLocations = {};
+      cachedLocations.reset();
       data.modules = newData;
       setHooks();
     }
@@ -203,9 +200,11 @@
       });
       populateMenuItems();
     }
+
     function getMenuItems() {
       return menuItems;
     }
+
     function getIndex() {
       return data.config.index;
     }
@@ -214,22 +213,9 @@
       return visitedLocations;
     }
 
-    function getCachedLocations() {
-      return cachedLocations;
-    }
-
-    function getCachedLibs() {
-      return cachedLibs;
-    }
-
     function setVisitedLocations(locations) {
       visitedLocations = locations;
     }
-
-    function setCachedLibs(libs) {
-      cachedLibs = libs;
-    }
-
 
     function getLang() {
       if (lang) {
@@ -263,24 +249,24 @@
 
     function getModule(path) {
       var deferred = $q.defer();
-      if (cachedLocations[path]) {
-        deferred.resolve(cachedLocations[path]);
+      if (cachedLocations.getOne(path)) {
+        deferred.resolve(cachedLocations.getOne(path));
       } else {
         findRoute(path, data.modules, function(module) {
           if (!data.modules[path]) {
             deferred.reject('Error - Module ' + path + ' not found');
           } else {
 
-            //Load translation files
-            if (!cachedModules[module.identifier]) {
+            // Load translation files
+            if (!cachedModules.getOne(module.identifier)) {
               var type = (module.moduleFolder) ? module.moduleFolder : 'modules';
               var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
               $translatePartialLoader.addPart(deviceDir + type + '/' + module.identifier);
-              cachedModules[module.identifier] = true;
+              cachedModules.setOne(module.identifier, true);
             }
 
-            cachedLocations[path] = module;
-            deferred.resolve(cachedLocations[path]);
+            cachedLocations.setOne(path, module);
+            deferred.resolve(cachedLocations.getOne(path));
           }
         });
       }

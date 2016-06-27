@@ -18,7 +18,8 @@
       init: init,
       del: del,
       get: get,
-      set: set
+      set: set,
+      update: update
     };
 
     function getAll() {
@@ -45,6 +46,18 @@
     }
 
     function set(key, value) {
+      var deferred = $q.defer();
+      myObjectStore.insert({
+        'key': key,
+        'value': value
+      }).then(function(e) {
+        deferred.resolve(e)
+      });
+      return deferred.promise;
+    }
+
+    function update(key, value) {
+      del(key);
       var deferred = $q.defer();
       myObjectStore.insert({
         'key': key,

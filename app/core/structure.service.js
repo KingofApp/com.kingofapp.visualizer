@@ -69,6 +69,7 @@
       cachedLocations.reset();
       data = newData;
 
+      launchSpinner();
       setHooks();
       $rootScope.$broadcast('menuUpdated');
     }
@@ -178,8 +179,8 @@
       }
       // var spinner = data.config.spinner;
       $polymer.importHref(spinner.path, function() {
-        if (document.querySelector('#transitionloader')) {
-          var spinnerContainer = document.querySelector('#transitionloader');
+        if (document.querySelector('.transitionloader')) {
+          var spinnerContainer = document.querySelector('.transitionloader');
           var spinnerElement = document.createElement(spinner.identifier);
           spinnerContainer.appendChild(spinnerElement);
           spinnerElement.active = true;

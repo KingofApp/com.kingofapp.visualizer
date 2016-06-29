@@ -163,7 +163,7 @@
     $scope.$on('$routeChangeStart', function(event, next) {
       if (next) {
         $rootScope.showTransition = true;
-        structureService.launchSpinner();
+        structureService.launchSpinner('#transitionloader');
       }
     });
 

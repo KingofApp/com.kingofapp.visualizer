@@ -69,7 +69,6 @@
       cachedLocations.reset();
       data = newData;
 
-      launchSpinner();
       setHooks();
       $rootScope.$broadcast('menuUpdated');
     }
@@ -165,7 +164,7 @@
       data.config.spinner = newData;
     }
 
-    function launchSpinner() {
+    function launchSpinner(selector) {
       // LEGACY 01/08/2016
       var spinner;
 
@@ -179,8 +178,8 @@
       }
       // var spinner = data.config.spinner;
       $polymer.importHref(spinner.path, function() {
-        if (document.querySelector('.transitionloader')) {
-          var spinnerContainer = document.querySelector('.transitionloader');
+        if (document.querySelector(selector)) {
+          var spinnerContainer = document.querySelector(selector);
           var spinnerElement = document.createElement(spinner.identifier);
           spinnerContainer.appendChild(spinnerElement);
           spinnerElement.active = true;

@@ -42,6 +42,7 @@
       getImages: getImages,
       setModules: setModules,
       setSpinner: setSpinner,
+      launchSpinner: launchSpinner,
       getIndex: getIndex,
       getVisitedLocations: getVisitedLocations,
       getCachedLocations: cachedLocations.get,
@@ -68,7 +69,7 @@
       cachedLocations.reset();
       data = newData;
 
-      setSpinner();
+      launchSpinner();
       setHooks();
       $rootScope.$broadcast('menuUpdated');
     }
@@ -160,11 +161,15 @@
       setHooks();
     }
 
-    function setSpinner() {
+    function setSpinner(newData) {
+      data.config.spinner = newData;
+    }
+
+    function launchSpinner() {
       // LEGACY 01/08/2016
       var spinner;
 
-      if (!data.config.spinner) {
+      if (!data.config.spinner || !data.config.spinner.path) {
         spinner = {
           'identifier': 'koapp-spinner-android',
           'path': $filter('loadUrl')('spinners/koapp-spinner-android/koapp-spinner-android.html')

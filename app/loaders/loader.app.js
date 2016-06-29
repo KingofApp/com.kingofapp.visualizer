@@ -46,7 +46,7 @@ angular.element(document).ready(function() {
     console.info('[V] Default loading from samplemodules');
     angular.module('myApp').constant('redirectUrl', '');
     angular.bootstrap(document, ['myApp']);
-    document.body.style.marginTop = '8px';
+    // TO-REVIEW only appearing in non-menu apps document.body.style.marginTop = '8px';
     console.info('[V] Bootstraped ng-app');
     window.parent.postMessage('bootstrapped-app', '*');
   }

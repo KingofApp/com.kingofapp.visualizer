@@ -166,14 +166,13 @@
 
       if (!data.config.spinner) {
         spinner = {
-          'identifier': 'android-spinner',
-          'path': $filter('loadUrl')('spinners/koapp-spinner-android/android-spinner.html')
+          'identifier': 'koapp-spinner-android',
+          'path': $filter('loadUrl')('spinners/koapp-spinner-android/koapp-spinner-android.html')
         };
       } else {
         spinner = data.config.spinner;
       }
       // var spinner = data.config.spinner;
-
       $polymer.importHref(spinner.path, function() {
         if (document.querySelector('#transitionloader')) {
           var spinnerContainer = document.querySelector('#transitionloader');

@@ -6,8 +6,8 @@
       "path": "themes/koapp-theme-android/koapp-theme-android.html"
     },
     "spinner": {
-      "identifier": "android-spinner",
-      "path": "spinners/koapp-spinner-android/android-spinner.html"
+      "identifier": "koapp-spinner-android",
+      "path": "spinners/koapp-spinner-android/koapp-spinner-android.html"
     },
     "colors": {
       "primaryTextColor": "#212121",

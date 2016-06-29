@@ -69,7 +69,6 @@
       cachedLocations.reset();
       data = newData;
 
-      launchSpinner();
       setHooks();
       $rootScope.$broadcast('menuUpdated');
     }

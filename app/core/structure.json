@@ -2,39 +2,38 @@
   "config": {
     "index": "/menu-abcd/home-abcd",
     "theme": {
-      "identifier": "koapp-theme-california",
-      "path": "themes/koapp-theme-california/koapp-theme-california.html"
+      "identifier": "koapp-theme-android",
+      "path": "themes/koapp-theme-android/koapp-theme-android.html"
     },
     "spinner": {
       "identifier": "koapp-spinner-android",
       "path": "spinners/koapp-spinner-android/koapp-spinner-android.html"
     },
     "colors": {
-      "primaryTextColor": "#ffffff",
+      "primaryTextColor": "#212121",
       "primaryBackgroundColor": "#ffffff",
-      "secondaryTextColor": "#111111",
-      "disabledTextColor": "#b0b0b0",
-      "dividerColor": "#b0b0b0",
-      "primaryColor": "#21283b",
-      "lightPrimaryColor": "rgba(246, 144, 34, .4)",
-      "darkPrimaryColor": "#21283b",
-      "accentColor": "#f39d26",
-      "lightAccentColor": "#f39d26",
-      "darkAccentColor": "#f39d26",
-      "errorColor": "#d02418",
-      "backgroundColor": "#2f2637"
+      "secondaryTextColor": "#737373",
+      "disabledTextColor": "#9b9b9b",
+      "dividerColor": "#dbdbdb",
+      "primaryColor": "#3f51b5",
+      "lightPrimaryColor": "#c5cae9",
+      "darkPrimaryColor": "#303f9f",
+      "accentColor": "#ff4081",
+      "lightAccentColor": "#ff80ab",
+      "darkAccentColor": "#f50057",
+      "backgroundColor": "#ffffff"
     },
     "images": {
-      "background": "themes/koapp-theme-california/images/bg.png"
+      "background": ""
     },
     "fonts": {
       "primaryFontFamily": {
-        "name": "Droid Sans",
-        "url": "https://fonts.googleapis.com/css?family=Droid+Sans"
+        "name": "Roboto",
+        "url": "https://fonts.googleapis.com/css?family=Roboto"
       },
       "titleFontFamily": {
-        "name": "Cairo",
-        "url": "https://fonts.googleapis.com/css?family=Cairo"
+        "name": "Roboto",
+        "url": "https://fonts.googleapis.com/css?family=Roboto"
       }
     },
     "iconset": "icons",

@@ -25,6 +25,9 @@ window.addEventListener('message', function(event) {
         } else if (event.data.theme) {
           console.info('[V] Theme', event.data);
           $rootScope.appTheme = event.data;
+        } else if (event.data.spinner) {
+          console.info('[V] Spinner', event.data.spinner);
+          $rootScope.appSpinner = event.data.spinner;
         }
         setPreventions();
       }

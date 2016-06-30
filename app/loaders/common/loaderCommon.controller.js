@@ -122,6 +122,12 @@
       }
     });
 
+    $scope.$watch('appSpinner', function(newValue, oldValue) {
+      if (oldValue !== newValue) {
+        structureService.setSpinner(newValue);
+      }
+    });
+
     $scope.$watch('appIconset', function(newValue, oldValue) {
       if (oldValue !== newValue) {
         setIconset(newValue.config.iconset);
@@ -157,7 +163,7 @@
     $scope.$on('$routeChangeStart', function(event, next) {
       if (next) {
         $rootScope.showTransition = true;
-        structureService.setSpinner();
+        structureService.launchSpinner('#transitionloader');
       }
     });
 

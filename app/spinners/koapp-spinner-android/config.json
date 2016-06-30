@@ -1,0 +1,22 @@
+{
+  "name": "Material Design",
+  "identifier": "koapp-spinner-android",
+  "description": {
+    "en-US" : "",
+    "es-ES" : ""
+  },
+  "version": "1.1.2",
+  "author": "King of App",
+  "category": [],
+  "price": 0,
+  "platforms": [
+    "android",
+    "ios",
+    "windows"
+  ],
+  "showOn": {
+    "market": true
+  },
+  "subscription": false,
+  "main": "spinners/koapp-spinner-android/koapp-spinner-android.html"
+}

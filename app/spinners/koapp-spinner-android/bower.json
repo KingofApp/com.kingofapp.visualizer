@@ -1,0 +1,30 @@
+{
+  "name": "koapp-spinner-android",
+  "authors": "King of App",
+  "description": "android spinner for King of App",
+  "main": "koapp-spinner-android.html",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "kingofapp",
+    "spinner"
+  ],
+  "license": "MIT",
+  "homepage": "http://kingofapp.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "koa-behaviors": "KingofApp/koa-behaviors#^0.11.0"
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

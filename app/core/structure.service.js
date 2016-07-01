@@ -90,33 +90,61 @@
     function getColors() {
       return data.config.colors;
     }
+    // TO-REVIEW Quickfix Leroy
+    function setCustomStyle(variableKey, variableValue) {
+      Polymer.StyleDefaults.customStyle[variableKey] = variableValue;
+    }
 
     function setColors(colors) {
       cachedLocations.reset();
-
+      // TO-REVIEW Quickfix Leroy
       if (colors === null) {
         colors = getColors();
       }
 
-      $polymer.setCustomStyle('--primary-text-color', colors.primaryTextColor);
-      $polymer.setCustomStyle('--primary-background-color', colors.primaryBackgroundColor);
-      $polymer.setCustomStyle('--secondary-text-color', colors.secondaryTextColor);
-      $polymer.setCustomStyle('--disabled-text-color', colors.disabledTextColor);
-      $polymer.setCustomStyle('--divider-color', colors.dividerColor);
-      $polymer.setCustomStyle('--primary-color', colors.primaryColor);
-      $polymer.setCustomStyle('--light-primary-color', colors.lightPrimaryColor);
-      $polymer.setCustomStyle('--dark-primary-color', colors.darkPrimaryColor);
-      $polymer.setCustomStyle('--accent-color', colors.accentColor);
-      $polymer.setCustomStyle('--light-accent-color', colors.lightAccentColor);
-      $polymer.setCustomStyle('--dark-accent-color', colors.darkAccentColor);
-      $polymer.setCustomStyle('--error-color', colors.errorColor);
-      $polymer.setCustomStyle('--background-color', colors.backgroundColor);
+      setCustomStyle('--primary-text-color', colors.primaryTextColor);
+      setCustomStyle('--primary-background-color', colors.primaryBackgroundColor);
+      setCustomStyle('--secondary-text-color', colors.secondaryTextColor);
+      setCustomStyle('--disabled-text-color', colors.disabledTextColor);
+      setCustomStyle('--divider-color', colors.dividerColor);
+      setCustomStyle('--primary-color', colors.primaryColor);
+      setCustomStyle('--light-primary-color', colors.lightPrimaryColor);
+      setCustomStyle('--dark-primary-color', colors.darkPrimaryColor);
+      setCustomStyle('--accent-color', colors.accentColor);
+      setCustomStyle('--light-accent-color', colors.lightAccentColor);
+      setCustomStyle('--dark-accent-color', colors.darkAccentColor);
+      setCustomStyle('--error-color', colors.errorColor);
+      setCustomStyle('--background-color', colors.backgroundColor);
 
       if (colors.toolbarColor) {
-        $polymer.setCustomStyle('--toolbar-color', colors.toolbarColor);
+        setCustomStyle('--toolbar-color', colors.toolbarColor);
       }
 
-      $polymer.updateStyles();
+      Polymer.updateStyles();
+
+      // if (colors === null) {
+      //   colors = getColors();
+      // }
+      //
+      // $polymer.setCustomStyle('--primary-text-color', colors.primaryTextColor);
+      // $polymer.setCustomStyle('--primary-background-color', colors.primaryBackgroundColor);
+      // $polymer.setCustomStyle('--secondary-text-color', colors.secondaryTextColor);
+      // $polymer.setCustomStyle('--disabled-text-color', colors.disabledTextColor);
+      // $polymer.setCustomStyle('--divider-color', colors.dividerColor);
+      // $polymer.setCustomStyle('--primary-color', colors.primaryColor);
+      // $polymer.setCustomStyle('--light-primary-color', colors.lightPrimaryColor);
+      // $polymer.setCustomStyle('--dark-primary-color', colors.darkPrimaryColor);
+      // $polymer.setCustomStyle('--accent-color', colors.accentColor);
+      // $polymer.setCustomStyle('--light-accent-color', colors.lightAccentColor);
+      // $polymer.setCustomStyle('--dark-accent-color', colors.darkAccentColor);
+      // $polymer.setCustomStyle('--error-color', colors.errorColor);
+      // $polymer.setCustomStyle('--background-color', colors.backgroundColor);
+      //
+      // if (colors.toolbarColor) {
+      //   $polymer.setCustomStyle('--toolbar-color', colors.toolbarColor);
+      // }
+      //
+      // $polymer.updateStyles();
     }
 
     function getFonts() {
@@ -129,11 +157,15 @@
       if (fonts === null) {
         fonts = getFonts();
       }
+      // TO-REVIEW Quickfix Leroy
+      setCustomStyle('--primary-font-family', fonts.primaryFontFamily.name);
+      setCustomStyle('--title-font-family', fonts.titleFontFamily.name);
 
-      $polymer.setCustomStyle('--primary-font-family', fonts.primaryFontFamily.name);
-      $polymer.setCustomStyle('--title-font-family', fonts.titleFontFamily.name);
-
-      $polymer.updateStyles();
+      Polymer.updateStyles();
+      // $polymer.setCustomStyle('--primary-font-family', fonts.primaryFontFamily.name);
+      // $polymer.setCustomStyle('--title-font-family', fonts.titleFontFamily.name);
+      //
+      // $polymer.updateStyles();
     }
 
     function getImages() {
@@ -148,12 +180,34 @@
       }
 
       var backgroundImage = images.background ? 'url("' + images.background + '")' : 'none';
+      setCustomStyle('--background-image', backgroundImage);
 
-      $polymer.setCustomStyle('--background-image', backgroundImage);
-
-      $polymer.updateStyles();
+      Polymer.updateStyles();
+      // TO-REVIEW Quickfix Leroy
+      // $polymer.setCustomStyle('--background-image', backgroundImage);
+      //
+      // $polymer.updateStyles();
     }
-
+    // TO-REVIEW Quickfix Leroy
+    function polymerImportHref(href, onload, onerror) {
+        var l = document.createElement('link');
+        l.rel = 'import';
+        l.href = href;
+        var self = this;
+        if (onload) {
+          l.onload = function(e) {
+            return onload.call(self, e);
+          };
+        }
+        if (onerror) {
+          l.onerror = function(e) {
+            return onerror.call(self, e);
+          };
+        }
+        document.head.appendChild(l);
+        return l;
+      }
+    
     function setModules(newData) {
       cachedLocations.reset();
       data.modules = newData;
@@ -177,7 +231,7 @@
         spinner = data.config.spinner;
       }
       // var spinner = data.config.spinner;
-      $polymer.importHref(spinner.path, function() {
+      polymerImportHref(spinner.path, function() {
         if (document.querySelector(selector)) {
           var spinnerContainer = document.querySelector(selector);
           var spinnerElement = document.createElement(spinner.identifier);

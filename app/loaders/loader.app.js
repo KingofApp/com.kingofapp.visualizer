@@ -24,19 +24,24 @@ angular.element(document).ready(function() {
 
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {
-      angular
-        .module('myApp').run(function run($rootScope) {
-          $rootScope.appJsonStructure = data;
-          setDevicesVariables($rootScope);
-        })
-        .config(['configServiceProvider', function(configServiceProvider) {
-          configServiceProvider.config({
-            services: data.services
-          });
-        }]);
 
-      angular.bootstrap(document, ['myApp']);
-      console.info('[V] Bootstraped ng-app');
+      // TO-REVIEW Timeout to load polymer for ios + safari
+      setTimeout(function() {
+        angular
+          .module('myApp').run(function run($rootScope) {
+            $rootScope.appJsonStructure = data;
+            setDevicesVariables($rootScope);
+          })
+          .config(['configServiceProvider', function(configServiceProvider) {
+            configServiceProvider.config({
+              services: data.services
+            });
+          }]);
+
+        angular.bootstrap(document, ['myApp']);
+        console.info('[V] Bootstraped ng-app');
+      }, 500);
+
     }).fail(function() {
       console.info('Error reading structure.json');
     });

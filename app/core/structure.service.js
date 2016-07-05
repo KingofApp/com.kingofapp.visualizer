@@ -56,7 +56,7 @@
       getChildren: getChildren,
       validateScope: validateScope,
       registerModule: registerModule,
-      loadconfig: loadconfig,
+      loadLang: loadLang,
       update: update,
       onChange: onChange
     };
@@ -240,16 +240,14 @@
       return menu;
     }
 
-    function loadconfig() {
+    function loadLang() {
+      $translate.refresh();
       $translate.use(getLang());
-      // $rootScope.config = { googleAnalytics: data.config.googleAnalytics };
-      // $rootScope.$watch('data.config.googleAnalytics', function(prev,next) {
-      //   ga('create', $rootScope.config.googleAnalytics, { 'cookieDomain': 'none' });
-      // });
     }
 
     function getModule(path) {
       var deferred = $q.defer();
+      loadLang();
       if (cachedLocations.getOne(path)) {
         deferred.resolve(cachedLocations.getOne(path));
       } else {
@@ -263,6 +261,7 @@
               var type = (module.moduleFolder) ? module.moduleFolder : 'modules';
               var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
               $translatePartialLoader.addPart(deviceDir + type + '/' + module.identifier);
+
               cachedModules.setOne(module.identifier, true);
             }
 

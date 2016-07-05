@@ -176,9 +176,6 @@
     });
 
     function configModule() {
-      // TODO: INSPECT loadconfig
-      // Load config
-      structureService.loadconfig();
 
       // Register Route
       structureService.getModule($location.$$path).then(function(module) {

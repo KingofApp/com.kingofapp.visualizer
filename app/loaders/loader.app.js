@@ -48,12 +48,13 @@ angular.element(document).ready(function() {
   }
 
   function loadFromBuilder() {
-    console.info('[V] Default loading from samplemodules');
-    angular.module('myApp').constant('redirectUrl', '');
-    angular.bootstrap(document, ['myApp']);
-    // TO-REVIEW only appearing in non-menu apps document.body.style.marginTop = '8px';
-    console.info('[V] Bootstraped ng-app');
-    window.parent.postMessage('bootstrapped-app', '*');
+    window.addEventListener('WebComponentsReady', function() {
+      console.info('[V] Default loading from samplemodules');
+      angular.module('myApp').constant('redirectUrl', '');
+      angular.bootstrap(document, ['myApp']);
+      console.info('[V] Bootstraped ng-app');
+      window.parent.postMessage('bootstrapped-app', '*');
+    });
   }
 
   function setDevicesVariables($rootScope) {

@@ -262,7 +262,7 @@
         structureService.setCssVariables(config);
         //Wait for angular digest cycle to complete.
         $timeout(function() {
-          $scope.$destroy();
+          // $scope.$destroy();
           $rootScope.$broadcast('koaAppRendered');
         });
       });

@@ -24,31 +24,37 @@ angular.element(document).ready(function() {
 
   function loadFromStructure() {
     $.getJSON('core/structure.json', function(data) {
-      angular
-        .module('myApp').run(function run($rootScope) {
-          $rootScope.appJsonStructure = data;
-          setDevicesVariables($rootScope);
-        })
-        .config(['configServiceProvider', function(configServiceProvider) {
-          configServiceProvider.config({
-            services: data.services
-          });
-        }]);
 
-      angular.bootstrap(document, ['myApp']);
-      console.info('[V] Bootstraped ng-app');
+      // TO-REVIEW Timeout to load polymer for ios + safari
+      setTimeout(function() {
+        angular
+          .module('myApp').run(function run($rootScope) {
+            $rootScope.appJsonStructure = data;
+            setDevicesVariables($rootScope);
+          })
+          .config(['configServiceProvider', function(configServiceProvider) {
+            configServiceProvider.config({
+              services: data.services
+            });
+          }]);
+
+        angular.bootstrap(document, ['myApp']);
+        console.info('[V] Bootstraped ng-app');
+      }, 500);
+
     }).fail(function() {
       console.info('Error reading structure.json');
     });
   }
 
   function loadFromBuilder() {
-    console.info('[V] Default loading from samplemodules');
-    angular.module('myApp').constant('redirectUrl', '');
-    angular.bootstrap(document, ['myApp']);
-    // TO-REVIEW only appearing in non-menu apps document.body.style.marginTop = '8px';
-    console.info('[V] Bootstraped ng-app');
-    window.parent.postMessage('bootstrapped-app', '*');
+    window.addEventListener('WebComponentsReady', function() {
+      console.info('[V] Default loading from samplemodules');
+      angular.module('myApp').constant('redirectUrl', '');
+      angular.bootstrap(document, ['myApp']);
+      console.info('[V] Bootstraped ng-app');
+      window.parent.postMessage('bootstrapped-app', '*');
+    });
   }
 
   function setDevicesVariables($rootScope) {

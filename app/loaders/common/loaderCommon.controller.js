@@ -5,9 +5,9 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', 'trafficGuardiaCivil'];
+  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', '$timeout', 'trafficGuardiaCivil'];
 
-  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, trafficGuardiaCivil) {
+  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, $timeout, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
     var app = document.querySelector('#app');
@@ -176,9 +176,6 @@
     });
 
     function configModule() {
-      // TODO: INSPECT loadconfig
-      // Load config
-      structureService.loadconfig();
 
       // Register Route
       structureService.getModule($location.$$path).then(function(module) {
@@ -263,14 +260,19 @@
 
       app.setTheme(config.theme, function() {
         structureService.setCssVariables(config);
-
-        $rootScope.$broadcast('koaAppRendered');
+        //Wait for angular digest cycle to complete.
+        $timeout(function() {
+          // $scope.$destroy();
+          $rootScope.$broadcast('koaAppRendered');
+        });
       });
     }
 
     function renderElements() {
       app.renderThemeElements(function() {
-        $rootScope.$broadcast('koaAppRendered');
+        $timeout(function() {
+          $rootScope.$broadcast('koaAppRendered');
+        });
       });
     }
 

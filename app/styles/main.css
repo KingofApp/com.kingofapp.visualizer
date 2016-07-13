@@ -92,3 +92,8 @@ a, a:hover, a:link, a:active {
 #main-king {
   overflow: hidden;
 }
+
+#drawer {
+  z-index: 2;
+  overflow: auto;
+}

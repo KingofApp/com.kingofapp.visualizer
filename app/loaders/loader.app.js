@@ -43,8 +43,8 @@
           .module('myApp').run(function run($rootScope) {
             if (data.modules) {
               $rootScope.appJsonStructure = data;
-              setDevicesVariables($rootScope);
             }
+            setDevicesVariables($rootScope);
           })
           .config(setTranslatorConfig)
           .config(configServiceProvider);
@@ -62,8 +62,15 @@
         }
 
         function setTranslatorConfig($translateProvider) {
+          var source = '..';
+          if (window.location.href.indexOf('dev.visualizer.kingofapp.com') !== -1) {
+            source = 'http://dev.resources.kingofapp.com';
+          } else if (window.location.href.indexOf('visualizer.kingofapp.com') !== -1) {
+            source = 'http://resources.kingofapp.com';
+          }
+
           $translateProvider.useLoader('$translatePartialLoader', {
-            urlTemplate: '../{part}/locale/{lang}.json'
+            urlTemplate: source + '/{part}/locale/{lang}.json'
           });
           $translateProvider.preferredLanguage(data.config.lang[0]);
         }

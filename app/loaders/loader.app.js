@@ -41,8 +41,10 @@
       window.addEventListener('WebComponentsReady', function() {
         angular
           .module('myApp').run(function run($rootScope) {
-            $rootScope.appJsonStructure = data;
-            setDevicesVariables($rootScope);
+            if (data.modules) {
+              $rootScope.appJsonStructure = data;
+              setDevicesVariables($rootScope);
+            }
           })
           .config(setTranslatorConfig)
           .config(configServiceProvider);

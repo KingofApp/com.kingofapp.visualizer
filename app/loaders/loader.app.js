@@ -10,15 +10,21 @@
 
     function onDeviceReady() {
       if (location.search.indexOf('builder') !== -1) {
-        launchApp({
-          'services': '',
-          'config': {
-            'lang': ['en_US']
-          }
+        //WebComponentsReady Listener
+        window.addEventListener('WebComponentsReady', function() {
+          // Default object for builder
+          launchApp({
+            'services': '',
+            'config': {
+              'lang': ['en_US']
+            }
+          });
         });
       } else {
-        loadJsonStructure();
-        hideSplash();
+        //Android doesnt support WebComponentsReady
+        setTimeout(function() {
+          loadJsonStructure();
+        }, 500);
       }
     }
 
@@ -38,7 +44,6 @@
     }
 
     function launchApp(data) {
-      window.addEventListener('WebComponentsReady', function() {
         angular
           .module('myApp').run(function run($rootScope) {
             if (data.modules) {
@@ -54,6 +59,8 @@
         angular.bootstrap(document, ['myApp']);
         console.info('[V] Bootstraped ng-app');
         window.parent.postMessage('bootstrapped-app', '*');
+
+        hideSplash();
 
         function configServiceProvider(configServiceProvider) {
           configServiceProvider.config({
@@ -74,7 +81,6 @@
           });
           $translateProvider.preferredLanguage(data.config.lang[0]);
         }
-      });
     }
 
     function setDevicesVariables($rootScope) {

@@ -232,11 +232,11 @@
     function loadFonts(fonts) {
       var families = [];
 
-      if (isFromGoogleFonts(fonts.primaryFontFamily.url)) {
+      if (fonts && isFromGoogleFonts(fonts.primaryFontFamily.url)) {
         families.push(fonts.primaryFontFamily.name);
       }
 
-      if (isFromGoogleFonts(fonts.titleFontFamily.url)) {
+      if (fonts && isFromGoogleFonts(fonts.titleFontFamily.url)) {
         families.push(fonts.titleFontFamily.name);
       }
 

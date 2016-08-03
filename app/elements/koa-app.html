@@ -65,7 +65,7 @@
       setTheme: function(theme, callback) {
         this.theme = theme;
 
-        var themeIsNotImported = this.importedThemes.indexOf(this.theme.identifier) === -1;
+        var themeIsNotImported = (this.theme && this.importedThemes.indexOf(this.theme.identifier) === -1);
 
         if (themeIsNotImported) {
           this.importHref(this.theme.path, function() {

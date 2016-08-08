@@ -13,7 +13,7 @@
     var app = document.querySelector('#app');
     var firstInterval = {};
 
-    $rootScope.showTransition = true;
+    showGeneralLoader();
     $location.$$path = $location.$$path || '/';
     if (structureService.getIndex() !== '' && $location.$$path === '/') {
       $location.path(structureService.getIndex());
@@ -86,7 +86,7 @@
       app.createTree(function() {
         app.renderThemeElements(function() {
           $rootScope.showTransition = false;
-          $rootScope.$broadcast('koaElementsRendered')
+          $rootScope.$broadcast('koaElementsRendered');
         });
       });
     });
@@ -162,7 +162,7 @@
 
     $scope.$on('$routeChangeStart', function(event, next) {
       if (next) {
-        $rootScope.showTransition = true;
+        showGeneralLoader();
         structureService.launchSpinner('#transitionloader');
       }
     });
@@ -232,11 +232,11 @@
     function loadFonts(fonts) {
       var families = [];
 
-      if (isFromGoogleFonts(fonts.primaryFontFamily.url)) {
+      if (fonts && isFromGoogleFonts(fonts.primaryFontFamily.url)) {
         families.push(fonts.primaryFontFamily.name);
       }
 
-      if (isFromGoogleFonts(fonts.titleFontFamily.url)) {
+      if (fonts && isFromGoogleFonts(fonts.titleFontFamily.url)) {
         families.push(fonts.titleFontFamily.name);
       }
 
@@ -289,6 +289,13 @@
           }
         });
       }
+    }
+
+    function showGeneralLoader() {
+      $rootScope.showTransition = true;
+      $timeout( function() {
+        $rootScope.showTransition = ($rootScope.showTransition) ? false : $rootScope.showTransition;
+      }, 3000);
     }
   }
 }());

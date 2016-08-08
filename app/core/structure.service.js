@@ -247,7 +247,6 @@
 
     function getModule(path) {
       var deferred = $q.defer();
-      loadLang();
       if (cachedLocations.getOne(path)) {
         deferred.resolve(cachedLocations.getOne(path));
       } else {

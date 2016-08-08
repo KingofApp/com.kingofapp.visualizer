@@ -30,14 +30,15 @@
       var index = 0;
       angular.forEach($scope.polymermenu.modulescope.menuItems, function(value, key) {
         structureService.getModule(value.path).then(function(module) {
-            menu.push({
-              text: module.name,
-              icon: getIcon(module.icon),
-              url: "#" + value.path,
-              backgroundImage: value.bgImage,
-              backgroundColor: value.bgColor
-            });
-            index++;
+          var color = (value.bgColor) ? '#' + value.bgColor.replace('#','') : '';
+          menu.push({
+            text: module.name,
+            icon: getIcon(module.icon),
+            url: "#" + value.path,
+            backgroundImage: value.bgImage,
+            backgroundColor: color
+          });
+          index++;
         });
       });
       return menu;

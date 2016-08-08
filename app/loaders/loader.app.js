@@ -1,71 +1,98 @@
-angular.element(document).ready(function() {
+(function() {
+  'use strict';
+  angular.element(document).ready(function() {
 
-  if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-    document.addEventListener('deviceready', onDeviceReady, false);
-  } else {
-    onDeviceReady();
-  }
-
-  function onDeviceReady() {
-    if (location.search.indexOf('builder') !== -1) {
-      loadFromBuilder();
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+      document.addEventListener('deviceready', onDeviceReady, false);
     } else {
-      loadFromStructure();
-      hideSplash();
+      onDeviceReady();
     }
-  }
 
-  function hideSplash() {
-    //Timeout for slow phones.
-    setTimeout(function() {
-      if (navigator && navigator.splashscreen) navigator.splashscreen.hide();
-    }, 800);
-  }
+    function onDeviceReady() {
+      if (location.search.indexOf('builder') !== -1) {
+        //WebComponentsReady Listener
+        window.addEventListener('WebComponentsReady', function() {
+          // Default object for builder
+          launchApp({
+            'services': '',
+            'config': {
+              'lang': ['en_US']
+            }
+          });
+        });
+      } else {
+        //Android doesnt support WebComponentsReady
+        setTimeout(function() {
+          loadJsonStructure();
+        }, 500);
+      }
+    }
 
-  function loadFromStructure() {
-    $.getJSON('core/structure.json', function(data) {
-
-      // TO-REVIEW Timeout to load polymer for ios + safari
+    function hideSplash() {
+      //Timeout for slow phones.
       setTimeout(function() {
+        if (navigator && navigator.splashscreen) navigator.splashscreen.hide();
+      }, 1000);
+    }
+
+    function loadJsonStructure() {
+      $.getJSON('core/structure.json', function(data) {
+        launchApp(data);
+      }).fail(function() {
+        console.info('Error reading structure.json');
+      });
+    }
+
+    function launchApp(data) {
         angular
           .module('myApp').run(function run($rootScope) {
-            $rootScope.appJsonStructure = data;
+            if (data.modules) {
+              $rootScope.appJsonStructure = data;
+            }
             setDevicesVariables($rootScope);
           })
-          .config(['configServiceProvider', function(configServiceProvider) {
-            configServiceProvider.config({
-              services: data.services
-            });
-          }]);
+          .config(setTranslatorConfig)
+          .config(configServiceProvider);
+        setTranslatorConfig.$inject = ['$translateProvider'];
+        configServiceProvider.$inject = ['configServiceProvider'];
 
         angular.bootstrap(document, ['myApp']);
         console.info('[V] Bootstraped ng-app');
-      }, 500);
+        window.parent.postMessage('bootstrapped-app', '*');
 
-    }).fail(function() {
-      console.info('Error reading structure.json');
-    });
-  }
+        hideSplash();
 
-  function loadFromBuilder() {
-    window.addEventListener('WebComponentsReady', function() {
-      console.info('[V] Default loading from samplemodules');
-      angular.module('myApp').constant('redirectUrl', '');
-      angular.bootstrap(document, ['myApp']);
-      console.info('[V] Bootstraped ng-app');
-      window.parent.postMessage('bootstrapped-app', '*');
-    });
-  }
+        function configServiceProvider(configServiceProvider) {
+          configServiceProvider.config({
+            services: data.services
+          });
+        }
 
-  function setDevicesVariables($rootScope) {
-    if (window.device && window.device.platform == 'Android') {
-      $rootScope.partialDir = 'www';
-    } else if (window.device && window.device.platform == 'iOS') {
-      $rootScope.partialDir = '';
-      //Show ios Toolbar
-      StatusBar.overlaysWebView(false);
-      StatusBar.styleDefault();
+        function setTranslatorConfig($translateProvider) {
+          var source = '..';
+          if (window.location.href.indexOf('dev.visualizer.kingofapp.com') !== -1) {
+            source = 'http://dev.resources.kingofapp.com';
+          } else if (window.location.href.indexOf('visualizer.kingofapp.com') !== -1) {
+            source = 'http://resources.kingofapp.com';
+          }
+
+          $translateProvider.useLoader('$translatePartialLoader', {
+            urlTemplate: source + '/{part}/locale/{lang}.json'
+          });
+          $translateProvider.preferredLanguage(data.config.lang[0]);
+        }
     }
-  }
 
-});
+    function setDevicesVariables($rootScope) {
+      if (window.device && window.device.platform == 'Android') {
+        $rootScope.partialDir = 'www';
+      } else if (window.device && window.device.platform == 'iOS') {
+        $rootScope.partialDir = '';
+        //Show ios Toolbar
+        StatusBar.overlaysWebView(false);
+        StatusBar.styleDefault();
+      }
+    }
+
+  });
+}());

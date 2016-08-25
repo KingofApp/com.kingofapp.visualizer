@@ -158,7 +158,7 @@ module.exports = function(grunt) {
   //grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
   grunt.registerTask('local-test', ['connect:test', 'protractor:continuous', 'watch:protractor']);
 
-  grunt.registerTask('test', ['protractor:web_driver_update', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
+  grunt.registerTask('test', ['connect:connect', 'run:mock_server', 'protractor:continuous']);
 
   grunt.registerTask('unit-test', ['karma:unit:start']);
   grunt.registerTask('e2e-test', ['exec:web_driver_update', 'connect:connect', 'protractor:e2e']);

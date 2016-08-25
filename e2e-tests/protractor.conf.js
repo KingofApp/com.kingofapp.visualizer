@@ -1,6 +1,4 @@
-var jasmineReporters = require('jasmine-reporters');
-
-exports.config = {
+  exports.config = {
   //directConnect: true,
 
   //seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -36,7 +34,7 @@ exports.config = {
   framework: 'jasmine2',
 
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 60000,
     showColors: false, // Use colors in the command line report.
   }
 };

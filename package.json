@@ -39,7 +39,7 @@
     "lint"
   ],
   "scripts": {
-    "postinstall": "bower install; node scripts/installPluginDependencies.js",
+    "postinstall": "bower install && node scripts/installPluginDependencies.js",
     "prestart": "npm install",
     "start": "gulp serve",
     "lint": "gulp lint"

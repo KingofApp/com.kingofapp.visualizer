@@ -2,7 +2,7 @@
   "name": "Polymer Menu",
   "identifier": "polymermenu",
   "type": "A",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "King of App",
   "category": [
     "menu"
@@ -29,14 +29,14 @@
     "es-ES": ""
   },
   "images": {
-    "list": "modules/polymermenu/images/list.png",
+    "list": "modules/polymermenu/images/polymermenu_list.png",
     "screenshots": [
-      "modules/polymermenu/images/screenshot01.png",
-      "modules/polymermenu/images/screenshot02.png"
+      "modules/polymermenu/images/polymermenu_screenshot01.png",
+      "modules/polymermenu/images/polymermenu_screenshot02.png"
     ],
-    "popover": "modules/polymermenu/images/popover.png",
-    "banner": "modules/polymermenu/images/banner.png",
-    "logo": "modules/polymermenu/images/logo.png"
+    "popover": "modules/polymermenu/images/polymermenu_popover.png",
+    "banner": "modules/polymermenu/images/polymermenu_popover.png",
+    "logo": "modules/polymermenu/images/polymermenu_icon.png"
   },
   "showOn": {
     "menu": false,
@@ -110,11 +110,14 @@
           "placeholder": "(Optional)"
         }
       }, {
-        "type": "input",
+        "type": "colorpicker",
         "key": "bgColor",
         "templateOptions": {
           "label": "Background Color",
-          "placeholder": "(Optional)"
+          "colorPickerFormat" : "'rgb'",
+          "colorPickerAlpha" : true,
+          "colorPickerPos" : "'top left'",
+          "colorPickerSwatchBootstrap" : false
         }
       }]
     }
@@ -134,11 +137,15 @@
       "pattern": "(https?://)([/\\w.()-]*).*"
     }
   }, {
-    "key": "headerBackgroundColor",
-    "type": "input",
-    "templateOptions": {
-      "label": "Header color",
-      "description": "The header background color"
+    "key" : "headerBackgroundColor",
+    "type" : "colorpicker",
+    "templateOptions" : {
+      "label" : "Header color",
+      "description" : "The header background color",
+      "colorPickerFormat" : "'rgb'",
+      "colorPickerAlpha" : true,
+      "colorPickerPos" : "'top left'",
+      "colorPickerSwatchBootstrap" : false
     }
   }, {
     "key": "headerReverse",

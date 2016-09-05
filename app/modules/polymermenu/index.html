@@ -22,8 +22,10 @@
       <koa-toolbar class="paper-header">
         <koa-icon-button icon="{{polymermenu.icon}}" ng-if="!showBack" paper-drawer-toggle></koa-icon-button>
         <koa-icon-button icon="arrow-back" ng-click="goBack()" ng-if="showBack"></koa-icon-button>
-        <img id="toolbarLogo" ng-src="{{polymermenu.modulescope.toolbarLogo}}" ng-if="polymermenu.modulescope.toolbarLogo">
-        <span class="title" ng-if="polymermenu.modulescope.toolbarTitle">{{toolbar.title}}</span>
+
+          <div ng-if="polymermenu.modulescope.toolbarLogo" ng-class="polymermenu.modulescope.imgClass" class="title" ><img id="toolbarLogo" ng-src="{{polymermenu.modulescope.toolbarLogo}}"></div>
+          <div ng-class="polymermenu.modulescope.titleClass" class="title" ng-if="polymermenu.modulescope.toolbarTitle">{{toolbar.title}}</div>
+
       </koa-toolbar>
 
       <div id="content">

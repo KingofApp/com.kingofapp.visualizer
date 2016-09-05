@@ -77,6 +77,8 @@
   }],
   "scope": {
     "menuItems": [],
+    "titleClass": "align-left",
+    "imgClass": "align-left",
     "panelClass": "background",
     "path": "/polymermenu",
     "headerShown": false,
@@ -234,6 +236,38 @@
       }, {
         "name": "Primary color",
         "value": "primary"
+      }]
+    }
+  }, {
+    "key": "titleClass",
+    "type": "select",
+    "templateOptions": {
+      "label": "Toolbar title alignment",
+      "options": [{
+        "name": "Left",
+        "value": "align-left"
+      }, {
+        "name": "Right",
+        "value": "align-right"
+      }, {
+        "name": "Center",
+        "value": "align-center"
+      }]
+    }
+  }, {
+    "key": "imgClass",
+    "type": "select",
+    "templateOptions": {
+      "label": "Toolbar logo alignment",
+      "options": [{
+        "name": "Left",
+        "value": "align-left"
+      }, {
+        "name": "Right",
+        "value": "align-right"
+      }, {
+        "name": "Center",
+        "value": "align-center"
       }]
     }
   }]

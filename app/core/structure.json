@@ -108,6 +108,8 @@
           }
         ],
         "panelClass": "lightaccent",
+        "titleClass": "align-left",
+        "imgClass": "align-left",
         "path": "/menu-abcd",
         "headerShown": false,
         "headerBackgroundImage": "",

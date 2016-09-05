@@ -107,6 +107,7 @@
             "bgColor": ""
           }
         ],
+        "panelClass": "lightaccent",
         "path": "/menu-abcd",
         "headerShown": false,
         "headerBackgroundImage": "",

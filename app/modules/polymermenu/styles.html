@@ -13,12 +13,7 @@
     color: inherit;
   }
 
-  .polymermenu #drawer paper-menu a#selectedpmenu {
-    background-color: var(--secondary-text-color) !important;
-    color: var(--primary-background-color) !important;
-  }
-
-  .polymermenu #drawer paper-menu a#selectedpmenu paper-item{
+  .polymermenu #drawer paper-menu a#selectedpmenu, .polymermenu #drawer paper-menu a#selectedpmenu paper-item {
     background-color: var(--secondary-text-color) !important;
     color: var(--primary-background-color) !important;
   }
@@ -57,9 +52,26 @@
     max-height: 60px;
   }
 
-  .polymermenu paper-drawer-panel {
-    --paper-drawer-panel-drawer-container: {
-      background-color: var(--primary-background-color);
-    };
+  /*Variable Colors*/
+  .polymermenu.lightaccent paper-menu, .polymermenu.lightaccent #drawer .panel  {
+    background-color: var(--light-accent-color);
+  }
+  .polymermenu.darkaccent paper-menu, .polymermenu.darkaccent #drawer .panel {
+    background-color: var(--dark-accent-color);
+  }
+  .polymermenu.accent paper-menu, .polymermenu.accent #drawer .panel {
+    background-color: var(--accent-color);
+  }
+  .polymermenu.background paper-menu, .polymermenu.background #drawer .panel {
+    background-color: var(--background-color);
+  }
+  .polymermenu.primary paper-menu, .polymermenu.primary #drawer .panel {
+    background-color: var(--primary-color);
+  }
+  .polymermenu.lightprimary paper-menu, .polymermenu.lightprimary #drawer .panel {
+    background-color: var(--light-primary-color);
+  }
+  .polymermenu.darkprimary paper-menu, .polymermenu.darkprimary #drawer .panel {
+    background-color: var(--dark-primary-color);
   }
 </style>

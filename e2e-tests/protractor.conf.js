@@ -35,6 +35,6 @@
 
   jasmineNodeOpts: {
     defaultTimeoutInterval: 60000,
-    showColors: false, // Use colors in the command line report.
+    showColors: false // Use colors in the command line report.
   }
 };

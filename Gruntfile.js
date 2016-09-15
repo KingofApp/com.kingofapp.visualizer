@@ -158,7 +158,7 @@ module.exports = function(grunt) {
   //grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
   grunt.registerTask('local-test', ['connect:test', 'protractor:continuous', 'watch:protractor']);
 
-  grunt.registerTask('test', ['connect:connect', 'run:mock_server', 'protractor:continuous']);
+  grunt.registerTask('screenshots', ['connect:connect', 'run:mock_server', 'protractor:continuous']);
 
   grunt.registerTask('unit-test', ['karma:unit:start']);
   grunt.registerTask('e2e-test', ['exec:web_driver_update', 'connect:connect', 'protractor:e2e']);
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
   grunt.registerTask('continuous-test', ['exec:web_driver_update', 'connect:connect', 'protractor:continuous']);
 
   grunt.registerTask('start', ['exec:server']);
-  grunt.registerTask('dist', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'clean:dist','usemin']);
-  grunt.registerTask('mobile', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev','usemin']);
+  grunt.registerTask('dist', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'clean:dist', 'usemin']);
+  grunt.registerTask('mobile', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);
   grunt.registerTask('js', ['uglify']);
 };

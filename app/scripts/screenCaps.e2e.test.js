@@ -5,12 +5,12 @@
       config = require('./screenCaps.config.json'),
       structure = require('./../core/structure.json').modules,
       routes = [];
-      // width = config.dimensions.width,
-      // height = config.dimensions.height;
+      width = config.dimensions.width,
+      height = config.dimensions.height;
 
   describe('App screens', function() {
     beforeEach(function() {
-      browser.driver.manage().window().setSize(340, 850);
+      browser.driver.manage().window().setSize(width, height);
       browser.executeScript('window.devicePixelRatio = 2');
       browser.ignoreSynchronization = true;
     });

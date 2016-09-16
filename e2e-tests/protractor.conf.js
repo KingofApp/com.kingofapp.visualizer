@@ -1,4 +1,4 @@
-var helper = require('./helper.js');
+// var helper = require('./helper.js');
 
 exports.config = {
   //directConnect: true,
@@ -11,12 +11,18 @@ exports.config = {
     '../**/*.e2e.test.js'
     // '../**/TODOe2e.test.js'
   ],
-  getMultiCapabilities: helper.getFirefoxProfile,
+
+  // getMultiCapabilities: helper.getFirefoxProfile,
 
 
-  //capabilities: {
+  capabilities: {
     // 'browserName': 'phantomjs',
-    // 'browserName': 'firefox'
+    browserName: 'chrome',
+    chromeOptions: {
+      mobileEmulation: {
+        deviceMetrics: {'width': 890, 'height': 1582, 'pixelRatio': 3}
+      }
+    }
 
     /*
      * Can be used to specify the phantomjs binary path.
@@ -29,9 +35,9 @@ exports.config = {
      * See https://github.com/detro/ghostdriver#faq
      */
     //'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
-  // },
-
+  },
   baseUrl: 'http://localhost:9001/app/',
+
 
   // keepAlive: true,
 

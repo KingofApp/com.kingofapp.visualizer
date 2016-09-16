@@ -96,8 +96,5 @@
     afterEach(function() {
       browser.ignoreSynchronization = false;
     });
-    after(function() {
-      setPixelPerPx(-1);
-    })
   });
 }());

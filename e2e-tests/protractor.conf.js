@@ -20,7 +20,7 @@ exports.config = {
     browserName: 'chrome',
     chromeOptions: {
       mobileEmulation: {
-        deviceMetrics: {'width': 414, 'height': 736, 'pixelRatio': 3}
+        deviceMetrics: {'width': 414, 'height': 736, 'pixelRatio': 2}
       }
     }
 

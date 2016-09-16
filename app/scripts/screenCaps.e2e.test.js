@@ -2,6 +2,7 @@
 
   var fs = require('fs'),
       shell = require('shelljs'),
+      sharp = require('sharp'),
       config = require('./screenCaps.config.json'),
       structure = require('./../core/structure.json').modules,
       routes = [],
@@ -29,7 +30,7 @@
     //   setPixelPerPx(2);
     // });
     beforeEach(function() {
-      browser.driver.manage().window().setSize(width, height);
+      browser.driver.manage().window().setSize(414, 850);
       // setPixelPerPx(2);
       browser.ignoreSynchronization = true;
     });
@@ -58,7 +59,13 @@
               browser.takeScreenshot().then( function(data) {
                 var base64Data = data.replace(/^data:image\/png;base64,/, '');
                 fs.writeFile('screenshot-' + i + '.png', base64Data, 'base64', function(err) {
-                  if (!err) i++;
+                  if (!err) sharp('screenshot-' + i + '.png')
+                              .resize(width, height, {interpolator: sharp.interpolator.nohalo})
+                              .embed()
+                              .ignoreAspectRatio()
+                              .toFile('ios-' + i + '.png', function(err) {
+                                !err ? i++ : console.error(err);
+                              });
                 });
               });
             });

@@ -1,5 +1,3 @@
-// var helper = require('./helper.js');
-
 exports.config = {
   //directConnect: true,
 
@@ -11,9 +9,6 @@ exports.config = {
     '../**/*.e2e.test.js'
     // '../**/TODOe2e.test.js'
   ],
-
-  // getMultiCapabilities: helper.getFirefoxProfile,
-
 
   capabilities: {
     // 'browserName': 'phantomjs',

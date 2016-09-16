@@ -33,6 +33,7 @@
     "gulp-eslint": "^2.0.0",
     "matchdep": "^1.0.1",
     "pre-commit": "^1.1.2",
+    "sharp": "^0.16.0",
     "shelljs": "^0.6.0"
   },
   "pre-commit": [

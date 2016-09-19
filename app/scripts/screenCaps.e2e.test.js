@@ -11,10 +11,8 @@
       height = config.dimensions.height;
 
   describe('App screens', function() {
-    before(function() {
-      shell.mkdir('-p', 'screenshots');
-      shell.cd('screenshots');
-    });
+    shell.mkdir('-p', 'screenshots');
+    shell.cd('screenshots');
 
     beforeEach(function() {
       browser.driver.manage().window().setSize(414, 850);
@@ -34,7 +32,7 @@
       for (var cont = 0; cont < numberOfScreenshots; cont++) {
         var i = 0;
         it ('protractor takes a screenshot at ' + routes[cont], function() {
-          var timeToSleep = (i === 0) ? 10000 : 5000;
+          var timeToSleep = (i === 0) ? 15000 : 5000;
           browser.get(routes[i]);
           browser.sleep(timeToSleep);
           browser.wait(function() {
@@ -48,7 +46,12 @@
                               .embed()
                               .ignoreAspectRatio()
                               .toFile(platform + '-' + i + '.png', function(err) {
-                                !err ? i++ : console.error(err);
+                                if(err) console.error(err);
+                                else {
+                                  fs.unlink('screenshot-' + i + '.png', function(err) {
+                                    !err ? i++ : console.error(err);
+                                  });
+                                }
                               });
                 });
               });

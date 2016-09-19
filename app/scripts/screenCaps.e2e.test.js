@@ -6,29 +6,11 @@
       config = require('./screenCaps.config.json'),
       structure = require('./../core/structure.json').modules,
       routes = [],
+      platform = config.platform,
       width = config.dimensions.width,
       height = config.dimensions.height;
 
-      // function setPixelPerPx(value) {
-      //   var prefs = 'C:\\Users\\Frank\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\zpdhfliz.default\\prefs.js';
-      //   fs.readFile( prefs, 'utf8', function(err, data) {
-      //     if (err) {
-      //       return console.error(err);
-      //     }
-      //     var result = data.replace(/user_pref(\"layout.css.devPixelsPerPx\", \"-1\");/, function(x) {
-      //       return x.replace(/\"-?\d\"/, '\"' + value + '\"');
-      //     });
-      //
-      //     fs.writeFile(prefs, result, 'utf8', function(err) {
-      //       if (err) return console.error(err);
-      //     });
-      //   });
-      // }
-
   describe('App screens', function() {
-    // before(function() {
-    //   setPixelPerPx(2);
-    // });
     before(function() {
       shell.mkdir('-p', 'screenshots');
       shell.cd('screenshots');
@@ -65,7 +47,7 @@
                               .resize(width, height, {interpolator: sharp.interpolator.nohalo})
                               .embed()
                               .ignoreAspectRatio()
-                              .toFile('ios-' + i + '.png', function(err) {
+                              .toFile(platform + '-' + i + '.png', function(err) {
                                 !err ? i++ : console.error(err);
                               });
                 });

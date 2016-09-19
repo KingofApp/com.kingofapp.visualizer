@@ -29,11 +29,17 @@
     // before(function() {
     //   setPixelPerPx(2);
     // });
+    before(function() {
+      shell.mkdir('-p', 'screenshots');
+      shell.cd('screenshots');
+    });
+
     beforeEach(function() {
       browser.driver.manage().window().setSize(414, 850);
       // setPixelPerPx(2);
       browser.ignoreSynchronization = true;
     });
+
     describe('App screenshots', function() {
 
       for (var module in structure) {
@@ -41,10 +47,6 @@
           routes.push('#' + module);
         }
       }
-
-      shell.mkdir('-p', 'screenshots');
-      shell.cd('screenshots');
-
       var numberOfScreenshots = (routes.length < config.max ? routes.length : config.max);
 
       for (var cont = 0; cont < numberOfScreenshots; cont++) {

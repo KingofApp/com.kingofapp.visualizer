@@ -37,10 +37,32 @@
 
     function loadJsonStructure() {
       $.getJSON('core/structure.json', function(data) {
-        launchApp(data);
+        orderLang(data, function(orderedData) {
+          launchApp(orderedData);
+        });
+
       }).fail(function() {
         console.info('Error reading structure.json');
       });
+    }
+
+    function orderLang(data, callback) {
+
+      if (navigator.globalization) {
+        navigator.globalization.getPreferredLanguage(
+          function(language) {
+            var languageFormated = language.value.replace('_', '-');
+            console.info('[V] Language setted to ' + languageFormated + '\n');
+            if (data.config.lang[languageFormated]) {
+              data.config.lang[0] = languageFormated;
+            }
+          },
+          function() {
+            console.info('[V] Error getting language\n');
+          }
+        );
+      }
+      callback(data);
     }
 
     function launchApp(data) {

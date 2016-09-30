@@ -56,7 +56,6 @@
       getChildren: getChildren,
       validateScope: validateScope,
       registerModule: registerModule,
-      loadLang: loadLang,
       update: update,
       onChange: onChange
     };
@@ -238,11 +237,6 @@
         }
       });
       return menu;
-    }
-
-    function loadLang() {
-      $translate.refresh();
-      $translate.use(getLang());
     }
 
     function getModule(path) {

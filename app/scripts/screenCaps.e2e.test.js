@@ -46,7 +46,7 @@
                               .embed()
                               .ignoreAspectRatio()
                               .toFile(platform + '-' + i + '.png', function(err) {
-                                if(err) console.error(err);
+                                if (err) console.error(err);
                                 else {
                                   fs.unlink('screenshot-' + i + '.png', function(err) {
                                     !err ? i++ : console.error(err);

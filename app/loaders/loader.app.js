@@ -51,7 +51,7 @@
       if (navigator.globalization) {
         navigator.globalization.getPreferredLanguage(
           function(language) {
-            var languageFormated = language.value.replace('_', '-');
+            var languageFormated = language.value.replace('-', '_');
             console.info('[V] Language setted to ' + languageFormated + '\n');
             if (data.config.lang[languageFormated]) {
               data.config.lang[0] = languageFormated;

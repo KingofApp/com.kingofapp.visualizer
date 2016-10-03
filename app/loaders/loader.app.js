@@ -37,32 +37,41 @@
 
     function loadJsonStructure() {
       $.getJSON('core/structure.json', function(data) {
-        orderLang(data, function(orderedData) {
+        setLanguage(data, function(orderedData) {
           launchApp(orderedData);
         });
-
       }).fail(function() {
         console.info('Error reading structure.json');
       });
     }
 
-    function orderLang(data, callback) {
-
+    function setLanguage(data, callback) {
       if (navigator.globalization) {
         navigator.globalization.getPreferredLanguage(
           function(language) {
             var languageFormated = language.value.replace('-', '_');
-            console.info('[V] Language setted to ' + languageFormated + '\n');
-            if (data.config.lang[languageFormated]) {
-              data.config.lang[0] = languageFormated;
+            console.log('[V] Mobile Language: ' + languageFormated + '\n');
+            if (data.config.lang.indexOf(languageFormated) !== -1) {
+              data.config.lang = [languageFormated];
+            } else {
+              var formatedWithoutRegion = languageFormated.split('_')[0];
+              var langsWithoutRegion = _.map(data.config.lang, removeRegion);
+              var pos = langsWithoutRegion.indexOf(formatedWithoutRegion);
+              if (pos !== -1) {
+                data.config.lang = [data.config.lang[pos]];
+              }
             }
+            callback(data);
           },
           function() {
-            console.info('[V] Error getting language\n');
+            console.log('[V] Error getting language\n');
+            callback(data);
           }
         );
       }
-      callback(data);
+      function removeRegion(n) {
+        return n.split('_')[0];
+      }
     }
 
     function launchApp(data) {

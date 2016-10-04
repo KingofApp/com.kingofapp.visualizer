@@ -2,7 +2,7 @@
 
   <paper-drawer-panel>
     <div class="panel" drawer fixed>
-      <div id="header" ng-if="polymermenu.modulescope.headerShown" ng-class="[polymermenu.modulescope.headerAlignment, polymermenu.modulescope.headerReverse ? 'reverse' : '']" style="background-image: url('{{polymermenu.modulescope.headerBackgroundImage}}'); background-color: {{polymermenu.modulescope.headerBackgroundColor}};">
+      <div id="header" ng-if="polymermenu.modulescope.headerShown" ng-class="[polymermenu.modulescope.headerAlignment, polymermenu.modulescope.headerReverse ? 'reverse' : '']" ng-style="{'background-color': polymermenu.modulescope.headerBackgroundColor, 'background-image': 'url(' + polymermenu.modulescope.headerBackgroundImage + ')'}">
         <div class="logo" ng-if="polymermenu.modulescope.headerLogo">
           <img ng-src="{{polymermenu.modulescope.headerLogo}}">
         </div>

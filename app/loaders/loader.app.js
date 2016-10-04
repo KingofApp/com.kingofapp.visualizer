@@ -68,6 +68,8 @@
             callback(data);
           }
         );
+      } else {
+        callback(data);
       }
       function removeRegion(n) {
         return n.split('_')[0];

@@ -4,8 +4,7 @@
       shell = require('shelljs'),
       sharp = require('sharp'),
       config = require('./screenCaps.config.json'),
-      structure = require('./../core/structure.json').modules,
-      routes = [],
+      paths = require('./screenCaps.paths.json').paths,
       platform = config.platform,
       width = config.dimensions.width,
       height = config.dimensions.height;
@@ -22,18 +21,11 @@
 
     describe('App screenshots', function() {
 
-      for (var module in structure) {
-        if (!structure[module]['scope']['menuItems']) {
-          routes.push('#' + module);
-        }
-      }
-      var numberOfScreenshots = (routes.length < config.max ? routes.length : config.max);
-
-      for (var cont = 0; cont < numberOfScreenshots; cont++) {
-        var i = 0;
-        it ('protractor takes a screenshot at ' + routes[cont], function() {
+      var i = 0;
+      for (var path in paths) {
+        it ('protractor takes a screenshot at ' + path + '-' + paths[i], function() {
           var timeToSleep = (i === 0) ? 15000 : 5000;
-          browser.get(routes[i]);
+          browser.get('#' + paths[i]);
           browser.sleep(timeToSleep);
           browser.wait(function() {
             var resul = $('koa-app').isPresent();
@@ -47,39 +39,15 @@
                               .ignoreAspectRatio()
                               .toFile(platform + '-' + i + '.png', function(err) {
                                 if (err) console.error(err);
-                                else {
-                                  fs.unlink('screenshot-' + i + '.png', function(err) {
-                                    !err ? i++ : console.error(err);
-                                  });
-                                }
                               });
                 });
               });
             });
+            i++;
             return resul; // keeps waiting until this statement resolves to true
           }, 10000, 'message to log to console if element is not present after that time');
         });
       }
-
-      it ('protractor takes a screenshot of polymermenu', function() {
-        browser.wait(function() {
-          var resul = $('.toolbar-tools [role="button"][icon="menu"]').isPresent();
-          resul.then(
-            function() {
-              $('.toolbar-tools [role="button"][icon="menu"]').click();
-              browser.sleep(1000);
-              browser.takeScreenshot().then(function(data) {
-                var base64Data = data.replace(/^data:image\/png;base64,/, '');
-                fs.writeFile('menu.png', base64Data, 'base64', function(err) {
-                  if (err) console.info('[V] There is an error', err);
-                });
-                return true;
-              });
-            }
-          )
-          return resul;
-        }, 10000, 'message to log to console if element is not present after that time');
-      })
 
       it('protractor close the browser when screenshoots has been taken', function() {
         browser.close();

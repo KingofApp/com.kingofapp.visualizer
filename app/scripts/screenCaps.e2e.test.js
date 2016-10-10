@@ -25,7 +25,7 @@
       for (var path in paths) {
         it ('protractor takes a screenshot at ' + path + '-' + paths[i], function() {
           var timeToSleep = (i === 0) ? 15000 : 5000;
-          browser.get('#' + paths[i]);
+          browser.get('/#' + paths[i]);
           browser.sleep(timeToSleep);
           browser.wait(function() {
             var resul = $('koa-app').isPresent();

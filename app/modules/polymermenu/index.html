@@ -1,8 +1,8 @@
-<div class="polymermenu" ng-controller="PolymermenuController">
+<div ng-class="polymermenu.modulescope.panelClass" class="polymermenu" ng-controller="PolymermenuController">
 
   <paper-drawer-panel>
     <div class="panel" drawer fixed>
-      <div id="header" ng-if="polymermenu.modulescope.headerShown" ng-class="[polymermenu.modulescope.headerAlignment, polymermenu.modulescope.headerReverse ? 'reverse' : '']" style="background-image: url('{{polymermenu.modulescope.headerBackgroundImage}}'); background-color: {{polymermenu.modulescope.headerBackgroundColor}};">
+      <div id="header" ng-if="polymermenu.modulescope.headerShown" ng-class="[polymermenu.modulescope.headerAlignment, polymermenu.modulescope.headerReverse ? 'reverse' : '']" ng-style="{'background-color': polymermenu.modulescope.headerBackgroundColor, 'background-image': 'url(' + polymermenu.modulescope.headerBackgroundImage + ')'}">
         <div class="logo" ng-if="polymermenu.modulescope.headerLogo">
           <img ng-src="{{polymermenu.modulescope.headerLogo}}">
         </div>
@@ -11,7 +11,7 @@
 
       <paper-menu>
         <template is="dom-repeat" items="{{polymermenu.menu}}">
-          <a href$="{{item.url}}">
+          <a href$="{{item.url}}" id$="{{item.class}}">
             <paper-item style$="background-image: url('{{item.backgroundImage}}'); background-color: {{item.backgroundColor}};"><koa-icon icon='{{item.icon}}'></koa-icon> {{item.text}}</paper-item>
           </a>
         </template>
@@ -22,8 +22,10 @@
       <koa-toolbar class="paper-header">
         <koa-icon-button icon="{{polymermenu.icon}}" ng-if="!showBack" paper-drawer-toggle></koa-icon-button>
         <koa-icon-button icon="arrow-back" ng-click="goBack()" ng-if="showBack"></koa-icon-button>
-        <img id="toolbarLogo" ng-src="{{polymermenu.modulescope.toolbarLogo}}" ng-if="polymermenu.modulescope.toolbarLogo">
-        <span class="title" ng-if="polymermenu.modulescope.toolbarTitle">{{toolbar.title}}</span>
+
+          <div ng-if="polymermenu.modulescope.toolbarLogo" ng-class="polymermenu.modulescope.imgClass" class="title" ><img id="toolbarLogo" ng-src="{{polymermenu.modulescope.toolbarLogo}}"></div>
+          <div ng-class="polymermenu.modulescope.titleClass" class="title" ng-if="polymermenu.modulescope.toolbarTitle">{{toolbar.title}}</div>
+
       </koa-toolbar>
 
       <div id="content">

@@ -1,0 +1,9 @@
+{
+  "platform": "android",
+  "min": 2,
+  "max": 6,
+  "dimensions": {
+      "width":  1242,
+      "height":  2208
+    }
+}

@@ -2,7 +2,7 @@
   "name": "Polymer Menu",
   "identifier": "polymermenu",
   "type": "A",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "author": "King of App",
   "category": [
     "menu"
@@ -29,14 +29,14 @@
     "es-ES": ""
   },
   "images": {
-    "list": "modules/polymermenu/images/list.png",
+    "list": "modules/polymermenu/images/polymermenu_list.png",
     "screenshots": [
-      "modules/polymermenu/images/screenshot01.png",
-      "modules/polymermenu/images/screenshot02.png"
+      "modules/polymermenu/images/polymermenu_screenshot01.png",
+      "modules/polymermenu/images/polymermenu_screenshot02.png"
     ],
-    "popover": "modules/polymermenu/images/popover.png",
-    "banner": "modules/polymermenu/images/banner.png",
-    "logo": "modules/polymermenu/images/logo.png"
+    "popover": "modules/polymermenu/images/polymermenu_popover.png",
+    "banner": "modules/polymermenu/images/polymermenu_popover.png",
+    "logo": "modules/polymermenu/images/polymermenu_icon.png"
   },
   "showOn": {
     "menu": false,
@@ -77,6 +77,9 @@
   }],
   "scope": {
     "menuItems": [],
+    "titleClass": "align-left",
+    "imgClass": "align-left",
+    "panelClass": "background",
     "path": "/polymermenu",
     "headerShown": false,
     "headerBackgroundImage": "",
@@ -110,11 +113,14 @@
           "placeholder": "(Optional)"
         }
       }, {
-        "type": "input",
+        "type": "colorpicker",
         "key": "bgColor",
         "templateOptions": {
           "label": "Background Color",
-          "placeholder": "(Optional)"
+          "colorPickerFormat" : "'rgb'",
+          "colorPickerAlpha" : true,
+          "colorPickerPos" : "'top left'",
+          "colorPickerSwatchBootstrap" : false
         }
       }]
     }
@@ -134,11 +140,15 @@
       "pattern": "(https?://)([/\\w.()-]*).*"
     }
   }, {
-    "key": "headerBackgroundColor",
-    "type": "input",
-    "templateOptions": {
-      "label": "Header color",
-      "description": "The header background color"
+    "key" : "headerBackgroundColor",
+    "type" : "colorpicker",
+    "templateOptions" : {
+      "label" : "Header color",
+      "description" : "The header background color",
+      "colorPickerFormat" : "'rgb'",
+      "colorPickerAlpha" : true,
+      "colorPickerPos" : "'top left'",
+      "colorPickerSwatchBootstrap" : false
     }
   }, {
     "key": "headerReverse",
@@ -199,6 +209,66 @@
       "label": "Toolbar logo",
       "description": "The URL of the toolbar logo image",
       "pattern": "(https?://)([/\\w.()-]*).*"
+    }
+  }, {
+    "key": "panelClass",
+    "type": "select",
+    "templateOptions": {
+      "label": "Panel based color",
+      "options": [{
+        "name": "Background color",
+        "value": "background"
+      }, {
+        "name": "Light accent color",
+        "value": "lightaccent"
+      }, {
+        "name": "Dark accent color",
+        "value": "darkaccent"
+      }, {
+        "name": "Accent color",
+        "value": "accent"
+      }, {
+        "name": "Light primary color",
+        "value": "lightprimary"
+      }, {
+        "name": "Dark primary color",
+        "value": "darkprimary"
+      }, {
+        "name": "Primary color",
+        "value": "primary"
+      }]
+    }
+  }, {
+    "key": "titleClass",
+    "type": "select",
+    "templateOptions": {
+      "label": "Toolbar title alignment",
+      "options": [{
+        "name": "Left",
+        "value": "align-left"
+      }, {
+        "name": "Right",
+        "value": "align-right"
+      }, {
+        "name": "Center",
+        "value": "align-center"
+      }]
+    }
+  }, {
+    "key": "imgClass",
+    "type": "select",
+    "templateOptions": {
+      "label": "Toolbar logo alignment",
+      "options": [{
+        "name": "Left",
+        "value": "align-left"
+      }, {
+        "name": "Right",
+        "value": "align-right"
+      }, {
+        "name": "Center",
+        "value": "align-center"
+      }]
     }
   }]
 }

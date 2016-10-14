@@ -5,7 +5,7 @@
     .module('static_404', [])
     .controller('Static_404Controller', loadFunction);
 
-  loadFunction.$inject = ['$scope', 'structureService', '$location', '$routeParams'];
+  loadFunction.$inject = ['$scope', 'structureService', '$location'];
 
   function loadFunction($scope, structureService, $location) {
     //Register upper level modules

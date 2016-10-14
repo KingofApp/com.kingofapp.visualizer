@@ -107,6 +107,9 @@
             "bgColor": ""
           }
         ],
+        "panelClass": "lightaccent",
+        "titleClass": "align-left",
+        "imgClass": "align-left",
         "path": "/menu-abcd",
         "headerShown": false,
         "headerBackgroundImage": "",
@@ -134,7 +137,8 @@
       "view": "modules/html/index.html",
       "files": ["modules/html/controller.js"],
       "scope": {
-        "value": "<p style='color:#39a9d3'>Welcome to my </p><p style='color:#d36339'>APP</p>"
+        "value": "<p style='color:#39a9d3'>Welcome to my </p><p style='color:#d36339'>APP</p>",
+        "display" : ""
       }
     },
     "/menu-abcd/elements-abcd": {

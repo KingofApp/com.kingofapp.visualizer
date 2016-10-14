@@ -35,11 +35,8 @@ module.exports = function(grunt) {
           keepAlive: true
         }
       },
-      cors: {
-        options: {
-          configFile: 'e2e-tests/protractor.corsconf.js', // Default config file
-          keepAlive: false // If false, the grunt process stops when the test fails.
-        }
+      web_driver_update: {
+        command: './node_modules/protractor/bin/webdriver-manager update'
       }
     },
 
@@ -78,7 +75,8 @@ module.exports = function(grunt) {
     connect: {
       options: {
         port: 9001,
-        hostname: 'localhost'
+        hostname: 'localhost',
+        base: 'app'
       },
       livereload: {
         options: {
@@ -93,8 +91,7 @@ module.exports = function(grunt) {
         }
       },
       connect: {
-        port: 9001,
-        base: 'tasks'
+        port: 9001
       }
     },
 
@@ -161,7 +158,7 @@ module.exports = function(grunt) {
   //grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
   grunt.registerTask('local-test', ['connect:test', 'protractor:continuous', 'watch:protractor']);
 
-  grunt.registerTask('test', ['karma:unit:start', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
+  grunt.registerTask('screenshots', ['connect:connect', 'run:mock_server', 'protractor:continuous']);
 
   grunt.registerTask('unit-test', ['karma:unit:start']);
   grunt.registerTask('e2e-test', ['exec:web_driver_update', 'connect:connect', 'protractor:e2e']);
@@ -169,7 +166,7 @@ module.exports = function(grunt) {
   grunt.registerTask('continuous-test', ['exec:web_driver_update', 'connect:connect', 'protractor:continuous']);
 
   grunt.registerTask('start', ['exec:server']);
-  grunt.registerTask('dist', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'clean:dist','usemin']);
-  grunt.registerTask('mobile', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev','usemin']);
+  grunt.registerTask('dist', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'clean:dist', 'usemin']);
+  grunt.registerTask('mobile', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);
   grunt.registerTask('js', ['uglify']);
 };

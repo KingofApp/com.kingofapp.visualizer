@@ -1,6 +1,6 @@
 var config = {
   features: {
-    desktopNotifications = false
+    desktopNotifications: false
   }
 }
 

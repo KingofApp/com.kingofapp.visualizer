@@ -108,7 +108,7 @@
           } else if (window.location.href.indexOf('visualizer.kingofapp.com') !== -1) {
             source = 'http://resources.kingofapp.com';
           }
-
+          $translateProvider.useSanitizeValueStrategy(null);
           $translateProvider.useLoader('$translatePartialLoader', {
             urlTemplate: source + '/{part}/locale/{lang}.json'
           });

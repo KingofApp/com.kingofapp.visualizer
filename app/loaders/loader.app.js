@@ -120,7 +120,7 @@
       if (window.device && window.device.platform == 'Android') {
         $rootScope.partialDir = 'www';
       } else if (window.device && window.device.platform == 'iOS') {
-        $rootScope.partialDir = '';
+        $rootScope.partialDir = 'www';
         //Show ios Toolbar
         StatusBar.overlaysWebView(false);
         StatusBar.styleDefault();

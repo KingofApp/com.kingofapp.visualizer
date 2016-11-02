@@ -138,7 +138,7 @@
       if (oldValue !== newValue && newValue) {
         structureService.setModules(newValue.modules);
 
-        if (newValue.index === $location.path()) {
+        if (newValue.index === $location.path() || newValue.modules[$location.path()]) {
           $route.reload();
         } else {
           $location.path(newValue.index);

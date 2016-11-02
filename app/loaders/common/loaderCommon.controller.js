@@ -100,7 +100,7 @@
         setTimeout(function() {
           setTheme(newValue.config);
           setIconset(newValue.config.iconset);
-          if (newValue.config.index === $location.path()) {
+          if (newValue.config.index === $location.path() || newValue.modules[$location.path()]) {
             $route.reload();
           } else {
             $location.path(newValue.config.index);

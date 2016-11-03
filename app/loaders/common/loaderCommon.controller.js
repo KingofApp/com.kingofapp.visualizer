@@ -106,7 +106,7 @@
         setTimeout(function() {
           setTheme(newValue.config);
           setIconset(newValue.config.iconset);
-          if (newValue.config.index === $location.path() || newValue.modules[$location.path()]) {
+          if (newValue.config.index === $location.path() || (newValue.modules[$location.path()] && $location.path() != '/404' )) {
             $route.reload();
           } else {
             $location.path(newValue.config.index);
@@ -144,7 +144,7 @@
       if (oldValue !== newValue && newValue) {
         structureService.setModules(newValue.modules);
 
-        if (newValue.index === $location.path() || newValue.modules[$location.path()]) {
+        if (newValue.index === $location.path() || (newValue.modules[$location.path()] && $location.path() != '/404' )) {
           $route.reload();
         } else {
           $location.path(newValue.index);

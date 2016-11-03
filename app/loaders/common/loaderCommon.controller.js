@@ -10,6 +10,12 @@
   function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, $timeout, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
+    // Unexpected window size
+    if (window.innerHeight < 80) {
+      console.info('Unexpected window size');
+      location.reload();
+    }
+
     var app = document.querySelector('#app');
     var firstInterval = {};
 

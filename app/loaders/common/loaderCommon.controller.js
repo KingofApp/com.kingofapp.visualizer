@@ -11,7 +11,7 @@
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
     // Unexpected window size
-    if (window.innerHeight < 80) {
+    if (window.innerHeight < 80 && window.innerHeight != 0) {
       console.info('Unexpected window size');
       location.reload();
     }

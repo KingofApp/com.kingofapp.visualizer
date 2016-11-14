@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var fs = require('fs');
 
-var dir = process.argv[5];
+var dir = process.argv[6].substring(1);
 var preferencesIOS = '<key>UISupportedInterfaceOrientations</key>\n' +
 '<array>\n' +
 '<string>UIInterfaceOrientationPortrait</string>\n' +
@@ -16,7 +16,7 @@ var preferencesIOS = '<key>UISupportedInterfaceOrientations</key>\n' +
 '<string>UIInterfaceOrientationPortraitUpsideDown</string>\n' +
 '<string>UIInterfaceOrientationLandscapeRight</string>\n' +
 '</array>';
-var file = 'platforms/ios/'+dir.substr(1)+'-Info.plist';
+var file = 'platforms/ios/'+dir+'/'+dir+'-Info.plist';
 
 fs.readFile(file, function(err, data) {
   if(data){

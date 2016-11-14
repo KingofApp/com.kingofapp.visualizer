@@ -276,7 +276,7 @@
           findRoute(path, data.modules, function(module) {
             moduleList.push(module);
           });
-          path = path.replace('/' + value, '');
+          path = path.replace(new RegExp('\/' + value + '$'), '');
         }
       });
       // console.log("ModuleLIST",moduleList);

@@ -253,7 +253,7 @@
             if (!cachedModules.getOne(module.identifier)) {
               var type = (module.moduleFolder) ? module.moduleFolder : 'modules';
               var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
-              $translatePartialLoader.addPart(deviceDir + type + '/' + module.identifier);
+              $translatePartialLoader.addPart(deviceDir + type + '/' + stripPath(module.view));
 
               cachedModules.setOne(module.identifier, true);
             }
@@ -327,6 +327,12 @@
           error: true
         };
       }
+    }
+    function stripPath(original) {
+      var pieces = original.split('/');
+      pieces.pop();
+      pieces.shift();
+      return pieces.join('/');
     }
 
     function onChange(callback) {

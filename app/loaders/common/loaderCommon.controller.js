@@ -140,6 +140,12 @@
       }
     });
 
+    $scope.$watch('appIndex', function(newValue, oldValue) {
+      if (oldValue !== newValue) {
+        $location.path(newValue.index);
+      }
+    });
+
     $scope.$watch('appModules', function(newValue, oldValue) {
       if (oldValue !== newValue && newValue) {
         structureService.setModules(newValue.modules);

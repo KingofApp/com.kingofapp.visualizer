@@ -22,6 +22,9 @@ window.addEventListener('message', function(event) {
         } else if (event.data.modules) {
           console.info('[V] Modules', event.data.modules);
           $rootScope.appModules = event.data;
+        } else if (event.data.index) {
+          console.info('[V] Index', event.data.index);
+          $rootScope.appIndex = event.data.index;
         } else if (event.data.theme) {
           console.info('[V] Theme', event.data);
           $rootScope.appTheme = event.data;

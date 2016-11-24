@@ -142,7 +142,7 @@
 
     $scope.$watch('appIndex', function(newValue, oldValue) {
       if (oldValue !== newValue) {
-        $location.path(newValue.index);
+        $location.path(newValue);
       }
     });
 

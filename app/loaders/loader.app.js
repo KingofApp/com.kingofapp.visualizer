@@ -108,7 +108,7 @@
           } else if (window.location.href.indexOf('visualizer.kingofapp.com') !== -1) {
             source = 'http://resources.kingofapp.com';
           }
-
+          $translateProvider.useSanitizeValueStrategy(null);
           $translateProvider.useLoader('$translatePartialLoader', {
             urlTemplate: source + '/{part}/locale/{lang}.json'
           });
@@ -120,7 +120,7 @@
       if (window.device && window.device.platform == 'Android') {
         $rootScope.partialDir = 'www';
       } else if (window.device && window.device.platform == 'iOS') {
-        $rootScope.partialDir = '';
+        $rootScope.partialDir = 'www';
         //Show ios Toolbar
         StatusBar.overlaysWebView(false);
         StatusBar.styleDefault();

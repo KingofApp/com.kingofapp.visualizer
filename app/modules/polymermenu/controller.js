@@ -27,7 +27,15 @@
     function getMenu() {
       var menu = new Array(0);
       var trExp = /[\/\s]+/gi;
-      var index = 0;
+      //Dummy element to prevent scroll to top
+      menu.push({
+        text: "Dummy",
+        icon: "",
+        url: "#" ,
+        backgroundImage: "",
+        backgroundColor: "",
+        class: "dummy"
+      });
       angular.forEach($scope.polymermenu.modulescope.menuItems, function(value, key) {
         structureService.getModule(value.path).then(function(module) {
           var color = (value.bgColor) ? '#' + value.bgColor.replace('#','') : '';
@@ -40,7 +48,7 @@
             backgroundColor: color,
             class: currentClass
           });
-          index++;
+
         });
       });
       return menu;

@@ -9,9 +9,15 @@
         background-color: var(--background-color);
         background-image: var(--background-image);
         background-size: cover;
+        background-position: center;
         background-repeat: no-repeat;
 
         font-family: var(--primary-font-family);
+      }
+
+      :host([tile]) {
+        background-repeat: repeat;
+        background-size: initial;
       }
 
       :host ::content h1,

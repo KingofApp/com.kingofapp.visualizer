@@ -12,6 +12,7 @@
       scope: {
         lat: '=',
         lon: '=',
+        api: '=',
         zoom: '='
       },
       controller: function($scope) {
@@ -22,7 +23,7 @@
         function loadGooglemap() {
           if (document.querySelector('.googlemap')) {
             var elem = document.createElement('div');
-            elem.innerHTML = '<google-map fit-to-markers zoom="15"><google-map-marker longitude="' + $scope.lon + '" latitude="' + $scope.lat + '"></google-map-marker></google-map>';
+            elem.innerHTML = '<google-map fit-to-markers zoom="15" api-key="' + $scope.api + '"><google-map-marker longitude="' + $scope.lon + '" latitude="' + $scope.lat + '"></google-map-marker></google-map>';
             document.querySelector('.googlemap').appendChild(elem);
           }
         }

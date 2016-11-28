@@ -10,6 +10,12 @@
   function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, $timeout, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
+    // Unexpected window size
+    if (window.innerHeight < 80 && window.innerHeight != 0) {
+      console.info('Unexpected window size');
+      location.reload();
+    }
+
     var app = document.querySelector('#app');
     var firstInterval = {};
 
@@ -100,7 +106,7 @@
         setTimeout(function() {
           setTheme(newValue.config);
           setIconset(newValue.config.iconset);
-          if (newValue.config.index === $location.path()) {
+          if (newValue.config.index === $location.path() || (newValue.modules[$location.path()] && $location.path() != '/404' )) {
             $route.reload();
           } else {
             $location.path(newValue.config.index);
@@ -134,11 +140,17 @@
       }
     });
 
+    $scope.$watch('appIndex', function(newValue, oldValue) {
+      if (oldValue !== newValue) {
+        $location.path(newValue);
+      }
+    });
+
     $scope.$watch('appModules', function(newValue, oldValue) {
       if (oldValue !== newValue && newValue) {
         structureService.setModules(newValue.modules);
 
-        if (newValue.index === $location.path()) {
+        if (newValue.index === $location.path() || (newValue.modules[$location.path()] && $location.path() != '/404' )) {
           $route.reload();
         } else {
           $location.path(newValue.index);

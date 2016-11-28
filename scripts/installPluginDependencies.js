@@ -16,7 +16,7 @@ function downloadPlugin(type) {
       async.series([
         async.asyncify(async.apply(sh.cd, local)),
         // async.asyncify(async.apply(sh.cd, 'app/' + type + '/' + plugin)),
-        async.apply(sh.exec, 'cd '+path+'; pwd; bower i; cd ../../..')
+        async.apply(sh.exec, 'cd '+path+' && bower i && cd ../../..')
       ], function(err, result) {
         err = hasNoBowerJson(err, result) ? null : err;
         callback(err, result);

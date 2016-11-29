@@ -251,9 +251,9 @@
 
             // Load translation files
             if (!cachedModules.getOne(module.identifier)) {
-              var type = (module.moduleFolder) ? module.moduleFolder : 'modules';
+              // var type = (module.moduleFolder) ? module.moduleFolder : 'modules';
               var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
-              $translatePartialLoader.addPart(deviceDir + type + '/' + stripPath(module.view));
+              $translatePartialLoader.addPart(deviceDir + stripPath(module.view));
 
               cachedModules.setOne(module.identifier, true);
             }

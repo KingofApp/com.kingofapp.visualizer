@@ -44,5 +44,8 @@
     "prestart": "npm install",
     "start": "gulp serve",
     "lint": "gulp lint"
+  },
+  "dependencies": {
+    "glob": "^7.1.1"
   }
 }

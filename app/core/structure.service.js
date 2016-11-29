@@ -329,6 +329,7 @@
       }
     }
     function stripPath(original) {
+      original = original.replace('http://', '');
       var pieces = original.split('/');
       pieces.pop();
       pieces.shift();

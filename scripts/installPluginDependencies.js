@@ -2,26 +2,31 @@ var sh = require('shelljs');
 var async = require('async');
 
 var local = sh.pwd();
+var glob = require("glob")
 
-async.forEachSeries(sh.ls('app/modules'), downloadPlugin('modules'), function() {
-  sh.cd(local);
-  async.forEachSeries(sh.ls('app/themes'), downloadPlugin('themes'));
-});
 
-function downloadPlugin(type) {
+glob("app/**/.bowerrc", function (er, files) {
+  console.log("FILES", files);
+  async.forEachSeries(files, downloadPlugin(), function() {
+  });
+})
+function downloadPlugin() {
   return function(plugin, callback) {
-    if (plugin) {
-      console.log('*** Installing dependencies from: app/' + type + '/' + plugin);
-      var path = 'app/'+type +'/'+plugin;
-      async.series([
-        async.asyncify(async.apply(sh.cd, local)),
-        // async.asyncify(async.apply(sh.cd, 'app/' + type + '/' + plugin)),
-        async.apply(sh.exec, 'cd '+path+' && bower i && cd ../../..')
-      ], function(err, result) {
-        err = hasNoBowerJson(err, result) ? null : err;
-        callback(err, result);
-      });
-    }
+      if (plugin.indexOf("bower_components") !== -1){
+        console.log("Ignore");
+        callback("");
+      }else {
+        plugin = plugin.replace('.bowerrc','');
+        console.log('*** Installing dependencies from: ' + plugin);
+
+        async.series([
+          async.asyncify(async.apply(sh.cd, local)),
+          async.apply(sh.exec, 'cd '+plugin+' && bower i')
+        ], function(err, result) {
+          err = hasNoBowerJson(err, result) ? null : err;
+          callback(err, result);
+        });
+      }
   };
 }
 

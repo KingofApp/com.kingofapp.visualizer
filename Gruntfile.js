@@ -3,21 +3,10 @@
 module.exports = function(grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.initConfig({
-    karma: {
-      options: {
-        configFile: 'karma.conf.js'
-      },
-      unit: {
-        singleRun: true
-      },
-      continuous: {
-        background: true
-      }
-    },
-
     protractor: {
       options: {
         configFile: 'e2e-tests/protractor.conf.js', // Default config file
+        webdriverManagerUpdate: true,
         keepAlive: false, // If false, the grunt process stops when the test fails.
         noColor: true, // If true, protractor will not use colors in its output.
         //debug: true,
@@ -29,38 +18,6 @@ module.exports = function(grunt) {
         options: {
           keepAlive: false
         }
-      },
-      continuous: {
-        options: {
-          keepAlive: true
-        }
-      },
-      web_driver_update: {
-        command: './node_modules/protractor/bin/webdriver-manager update'
-      }
-    },
-
-    watch: {
-      options: {
-        livereload: true
-      },
-
-      karma: {
-        files: ['app/js/**/*.js', 'test/unit/*.js'],
-        tasks: ['karma:continuous:run']
-      },
-      protractor: {
-        files: ['app/js/**/*.js', 'test/e2e/*.js'],
-        tasks: ['protractor:continuous']
-      }
-
-    },
-    exec: {
-      web_driver_update: {
-        command: './node_modules/protractor/bin/webdriver-manager update'
-      },
-      server: {
-        command: 'serve -p 9001'
       }
     },
     run: {
@@ -78,33 +35,13 @@ module.exports = function(grunt) {
         hostname: 'localhost',
         base: 'app'
       },
-      livereload: {
-        options: {
-          livereload: 35729,
-          open: true,
-          base: ['app']
-        }
-      },
-      test: {
-        options: {
-          base: ['app']
-        }
-      },
       connect: {
         port: 9001
       }
     },
 
     clean: {
-      pre: ['dist', '.tmp'],
-      dist: [
-        'dist/modules/googlemap/',
-        'dist/modules/grouplist/',
-        'dist/modules/html/',
-        'dist/modules/polymermenu/',
-        'dist/modules/themes/',
-        'dist/modules/angularscope/'
-      ]
+      pre: ['dist', '.tmp']
     },
 
     copy: {
@@ -137,36 +74,9 @@ module.exports = function(grunt) {
       html: ['dist/index.html']
     },
 
-    css_import: {
-      files: {
-        'app/css/delete_imports.css': ['app/css/delete.css']
-      }
-    }
-
   });
 
-  // grunt.loadNpmTasks('grunt-contrib-watch');
-  // grunt.loadNpmTasks('grunt-contrib-connect');
-  // grunt.loadNpmTasks('grunt-karma');
-  // grunt.loadNpmTasks('grunt-protractor-runner');
-  // grunt.loadNpmTasks('grunt-run');
-  grunt.loadNpmTasks('grunt-exec');
-  // grunt.loadNpmTasks('grunt-browser-sync');
-  // grunt.loadNpmTasks('grunt-contrib-copy');
-
-  grunt.registerTask('serve', ['karma:continuous:start', 'run:mock_server', 'connect:livereload', 'watch:karma']);
-  //grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
-  grunt.registerTask('local-test', ['connect:test', 'protractor:continuous', 'watch:protractor']);
-
-  grunt.registerTask('screenshots', ['exec:web_driver_update', 'connect:connect', 'run:mock_server', 'protractor:continuous']);
-
-  grunt.registerTask('unit-test', ['karma:unit:start']);
-  grunt.registerTask('e2e-test', ['exec:web_driver_update', 'connect:connect', 'protractor:e2e']);
-  // grunt.registerTask('e2e-test',        ['exec:web_driver_update' ,'connect:connect', 'protractor:e2e']);
-  grunt.registerTask('continuous-test', ['exec:web_driver_update', 'connect:connect', 'protractor:continuous']);
-
-  grunt.registerTask('start', ['exec:server']);
-  grunt.registerTask('dist', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'clean:dist', 'usemin']);
+  grunt.registerTask('screenshots', ['connect:connect', 'run:mock_server', 'protractor:e2e']);
   grunt.registerTask('mobile', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);
-  grunt.registerTask('js', ['uglify']);
+
 };

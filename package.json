@@ -13,7 +13,6 @@
     "eslint-plugin-angular": "^1.0.0",
     "eslint-plugin-html": "^1.4.0",
     "grunt": "^0.4.5",
-    "grunt-browser-sync": "^2.1.3",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-compass": "^1.0.4",
@@ -46,7 +45,6 @@
     "lint": "gulp lint"
   },
   "dependencies": {
-    "glob": "^7.1.1",
-    "grunt-exec": "^1.0.1"
+    "glob": "^7.1.1"
   }
 }

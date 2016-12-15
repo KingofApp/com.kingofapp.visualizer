@@ -332,7 +332,7 @@
       original = original.replace('http://', '');
       var pieces = original.split('/');
       pieces.pop();
-      if(pieces[0] !== "modules"){
+      if (pieces[0] !== 'modules' && pieces[0] !== 'services') {
         pieces.shift();
       }
       return pieces.join('/');

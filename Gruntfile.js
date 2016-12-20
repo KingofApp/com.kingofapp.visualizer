@@ -5,7 +5,6 @@ module.exports = function(grunt) {
   grunt.initConfig({
     protractor: {
       options: {
-        configFile: 'e2e-tests/protractor.conf.js', // Default config file
         webdriverManagerUpdate: true,
         keepAlive: false, // If false, the grunt process stops when the test fails.
         noColor: true, // If true, protractor will not use colors in its output.
@@ -16,6 +15,13 @@ module.exports = function(grunt) {
       },
       e2e: {
         options: {
+          configFile: 'e2e-tests/e2e.conf.js', // Default config file
+          keepAlive: false
+        }
+      },
+      screenshots: {
+        options: {
+          configFile: 'e2e-tests/screenshots.conf.js', // Default config file
           keepAlive: false
         }
       }
@@ -76,7 +82,8 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('screenshots', ['connect:connect', 'run:mock_server', 'protractor:e2e']);
+  grunt.registerTask('screenshots', ['connect:connect', 'run:mock_server', 'protractor:screenshots']);
+  grunt.registerTask('test', ['connect:connect', 'run:mock_server', 'protractor:e2e']);
   grunt.registerTask('mobile', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);
 
 };

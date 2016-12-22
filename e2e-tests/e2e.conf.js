@@ -1,3 +1,6 @@
+var jasmineReporters = require('jasmine-reporters');
+var SpecReporter = require('jasmine-spec-reporter');
+
 exports.config = {
   //directConnect: true,
 
@@ -37,6 +40,16 @@ exports.config = {
   // keepAlive: true,
 
   framework: 'jasmine2',
+
+  onPrepare: function() {
+    jasmine.getEnv().addReporter(new SpecReporter());
+    jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+      consolidateAll: true,
+      savePath: 'testresults',
+      filePrefix: 'xmloutput'
+
+    }));
+  },
 
   jasmineNodeOpts: {
     defaultTimeoutInterval: 60000,

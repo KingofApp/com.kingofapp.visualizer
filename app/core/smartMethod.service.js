@@ -5,8 +5,8 @@
     .module('king.core.smartMethodService', [])
     .factory('smartMethodService', smartMethodService);
 
-  smartMethodService.$inject = ['$q'];
-  function smartMethodService($q) {
+  smartMethodService.$inject = ['$rootScope', '$q', '$location'];
+  function smartMethodService($rootScope, $q, $location) {
 
     var methods = {};
 
@@ -23,14 +23,25 @@
     function execute(type, methodData) {
       getBest(type, methodData)
       .then(function(best) {
-        console.log('best method', best);
-        
-        if (!best.method) console.log('redirect to', methodData.callback.fail);
-        best.method.execute(methodData, function(response) {
-          if (response.success) console.log('redirect to', methodData.callback.success);
-          else                  console.log('redirect to', methodData.callback.fail);
-        });
+        delete($rootScope.response);
+        if (!best.method) goToUrl(methodData.callback.fail);
+        else              executeBestMethod(best);
       });
+
+      function executeBestMethod(best) {
+        best.method.execute(methodData, function(response) {
+          $rootScope.response    = angular.copy(response);
+          $rootScope.paymentData = angular.copy(response.paymentData);
+          if (response.success) goToUrl(methodData.callback.success);
+          else                  goToUrl(methodData.callback.fail);
+        });
+      }
+    }
+
+    function goToUrl(url) {
+      var splittedUrl = url.split('?');
+      if (splittedUrl[1]) $location.path(splittedUrl[0]).search(splittedUrl[1]);
+      else                $location.path(url)
     }
 
     function getBest(type, methodData) {

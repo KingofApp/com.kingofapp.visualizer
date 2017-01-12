@@ -5,7 +5,7 @@ var local = sh.pwd();
 var glob = require("glob")
 
 
-glob("app/**/.bowerrc", function (er, files) {
+glob("www/**/.bowerrc", function (er, files) {
   console.log("FILES", files);
   async.forEachSeries(files, downloadPlugin(), function() {
   });

@@ -39,7 +39,7 @@ module.exports = function(grunt) {
       options: {
         port: 9001,
         hostname: 'localhost',
-        base: 'app'
+        base: 'www'
       },
       connect: {
         port: 9001
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     copy: {
       main: {
         expand: true,
-        cwd: 'app/',
+        cwd: 'www/',
         src: ['**', 'modules/**', 'services/**', 'bower_components/**', 'themes/**'],
         dest: 'dist/'
       }
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
     },
 
     useminPrepare: {
-      html: 'app/index.html'
+      html: 'www/index.html'
     },
 
     usemin: {

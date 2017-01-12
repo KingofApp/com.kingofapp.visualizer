@@ -1,14 +1,47 @@
 module.exports = {
 
-  clickElement     : clickElement,
-  wait             : wait,
-  isPresent        : isPresent,
-  correctImage     : correctImage,
-
-  elementExist     : elementExist,
-  checkElementToBe : checkElementToBe,
-  checkUrl         : checkUrl
+  clickElement         : clickElement,
+  wait                 : wait,
+  isPresent            : isPresent,
+  correctImage         : correctImage,
+  checkAriaPressedToBe : checkAriaPressedToBe,
+  checkStyleToContain  : checkStyleToContain,
+  checkElementToBe     : checkElementToBe,
+  checkElementToExist  : checkElementToExist,
+  elementExist         : elementExist,
+  checkUrl             : checkUrl
 };
+
+function checkAttributeToContain(elementId, valueExpected, attribbute, toContain) {
+  elementExist(elementId);
+  element.all(by.css(elementId)).first().getAttribute(attribbute).then(function(value) {
+    (toContain) ? expect(value).toContain(valueExpected) : expect(value).not.toContain(valueExpected);
+  });
+}
+
+function checkElementToBe(elementId, valueExpected) {
+  isPresent(elementId, true);
+  element.all(by.css(elementId)).first().getText().then(function(text) {
+    expect(text).toBe(valueExpected);
+  });
+}
+
+function checkStyleToContain(elementId, valueExpected, toContain) {
+  checkAttributeToContain(elementId, valueExpected, 'style', toContain);
+}
+
+function checkAriaPressedToBe(elementId, valueExpected, toContain) {
+  checkAttributeToContain(elementId, valueExpected, 'aria-pressed', toContain);
+}
+
+
+function checkElementToExist(elementId, attribute, toExist) {
+  isPresent(elementId, true);
+  element.all(by.css(elementId)).first().getAttribute(attribute).then(function(value) {
+    (toExist) ? expect(value).toBeTruthy() : expect(value).toBeFalsy();
+  });
+}
+
 
 function checkUrl(urlToCheck) {
   return wait(500)
@@ -20,7 +53,7 @@ function checkUrl(urlToCheck) {
 
 function clickElement(where) {
   return elementExist(where)
-  .then($(where).click)
+  .then(element.all(by.css(where)).first().click)
   .then(wait(500));
 }
 
@@ -37,13 +70,6 @@ function elementExist(element, time) {
 
 function isPresent(element, status) {
   expect(browser.isElementPresent(by.css(element))).toBe(status);
-}
-
-function checkElementToBe(elementId, value) {
-  isPresent(elementId, true);
-  element.all(by.css(elementId)).first().getText().then(function(text) {
-    expect(text).toContain(value);
-  });
 }
 
 function correctImage(elementId, expectedValue) {

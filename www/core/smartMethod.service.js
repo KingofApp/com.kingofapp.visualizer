@@ -49,8 +49,10 @@
       var deferred     = $q.defer();
       var methodsArray = [];
 
-      for (var i = 0; i < methods[type].length; i++) {
-        methodsArray.push(methods[type][i].evaluate(methodData, checkBetter));
+      if (methods[type]) {  
+        for (var i = 0; i < methods[type].length; i++) {
+          methodsArray.push(methods[type][i].evaluate(methodData, checkBetter));
+        }
       }
 
       $q.all(methodsArray)

@@ -1,0 +1,13 @@
+{
+  "name": "demo",
+  "authors": "King of app",
+  "description": "A module that includes all configurable elements to create a template.",
+  "keywords": [
+    "kingofapp",
+    "module"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {}
+}

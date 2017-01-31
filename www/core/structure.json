@@ -1,0 +1,184 @@
+{
+  "config": {
+    "index": "/menu-abcd/home-abcd",
+    "theme": {
+      "identifier": "koapp-theme-android",
+      "path": "themes/koapp-theme-android/koapp-theme-android.html"
+    },
+    "spinner": {
+      "identifier": "koapp-spinner-android",
+      "path": "spinners/koapp-spinner-android/koapp-spinner-android.html"
+    },
+    "colors": {
+      "primaryTextColor": "#212121",
+      "primaryBackgroundColor": "#ffffff",
+      "secondaryTextColor": "#737373",
+      "disabledTextColor": "#9b9b9b",
+      "dividerColor": "#dbdbdb",
+      "primaryColor": "#3f51b5",
+      "lightPrimaryColor": "#c5cae9",
+      "darkPrimaryColor": "#303f9f",
+      "accentColor": "#ff4081",
+      "lightAccentColor": "#ff80ab",
+      "darkAccentColor": "#f50057",
+      "backgroundColor": "#ffffff"
+    },
+    "images": {
+      "background": ""
+    },
+    "fonts": {
+      "primaryFontFamily": {
+        "name": "Roboto",
+        "url": "https://fonts.googleapis.com/css?family=Roboto"
+      },
+      "titleFontFamily": {
+        "name": "Roboto",
+        "url": "https://fonts.googleapis.com/css?family=Roboto"
+      }
+    },
+    "iconset": "icons",
+    "lang": [
+      "en_US"
+    ]
+  },
+  "modules": {
+    "/menu-abcd": {
+      "name": "Menu Module",
+      "identifier": "polymermenu",
+      "type": "A",
+      "canContain": true,
+      "icon": "menu",
+      "showOn": {
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/polymermenu/index.html",
+      "files": [
+        "modules/polymermenu/controller.js",
+        "modules/polymermenu/styles.html"
+      ],
+      "libs": [
+        {
+          "bower": {
+            "PolymerElements/iron-flex-layout": "^1.3.0"
+          },
+          "src": "bower_components/iron-flex-layout/iron-flex-layout.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-drawer-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-header-panel": "^1.0.0"
+          },
+          "src": "bower_components/paper-header-panel/paper-header-panel.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-menu": "^1.0.0"
+          },
+          "src": "bower_components/paper-menu/paper-menu.html"
+        },
+        {
+          "bower": {
+            "PolymerElements/paper-item": "^1.0.0"
+          },
+          "src": "bower_components/paper-item/paper-item.html"
+        }
+      ],
+      "scope": {
+        "menuItems": [
+          {
+            "path": "/menu-abcd/home-abcd",
+            "bgImage": "",
+            "bgColor": ""
+          },
+          {
+            "path": "/menu-abcd/elements-abcd",
+            "bgImage": "",
+            "bgColor": ""
+          },
+          {
+            "path": "/menu-abcd/map-abcd",
+            "bgImage": "",
+            "bgColor": ""
+          }
+        ],
+        "panelClass": "lightaccent",
+        "titleClass": "align-left",
+        "imgClass": "align-left",
+        "path": "/menu-abcd",
+        "headerShown": false,
+        "headerBackgroundImage": "",
+        "headerBackgroundColor": "",
+        "headerReverse": false,
+        "headerTitle": "",
+        "headerTitleShown": true,
+        "headerLogo": "",
+        "headerLogoShown": true,
+        "headerAlignment": "left",
+        "showicons": true,
+        "toolbarTitle": true,
+        "toolbarLogo": ""
+      }
+    },
+    "/menu-abcd/home-abcd": {
+      "name": "Home",
+      "identifier": "html",
+      "type": "A",
+      "icon": "home",
+      "showOn": {
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/html/index.html",
+      "files": ["modules/html/controller.js"],
+      "scope": {
+        "value": "<p style='color:#39a9d3'>Welcome to my </p><p style='color:#d36339'>APP</p>",
+        "display" : ""
+      }
+    },
+    "/menu-abcd/elements-abcd": {
+      "name": "Elements",
+      "identifier": "demo",
+      "type": "A",
+      "icon": "polymer",
+      "showOn": {
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/demo/index.html",
+      "files": ["modules/demo/controller.js"],
+      "scope": {
+        "value": true
+      }
+    },
+    "/menu-abcd/map-abcd": {
+      "name": "Google Maps",
+      "identifier": "googlemap",
+      "type": "A",
+      "icon": "room",
+      "showOn": {
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/googlemap/index.html",
+      "files": ["modules/googlemap/controller.js", "modules/googlemap/directive.js", "modules/googlemap/style.css"],
+      "libs": [{
+        "bower": {
+          "GoogleWebComponents/google-map": "^1.1.7"
+        },
+        "src": "bower_components/google-map/google-map.html"
+      }],
+      "scope": {
+        "lat": "39.8847281",
+        "lon": "4.2540999",
+        "api": "AIzaSyANxt-hXcUf8PB0Tw1eFIB9qgby2Cmi-7w", 
+        "zoom": "15"
+      }
+    }
+  }
+}

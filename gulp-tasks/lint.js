@@ -8,11 +8,11 @@ gulp.task('lint', function() {
   var filesToLint = [
     'gulpfile.js',
     'gulp-tasks/**/*.js',
-    'app/**/*.{html,js}',
-    '!app/bower_components/**/*',
-    '!app/modules/**/*',
-    '!app/themes/**/*',
-    '!app/spinners/**/*'
+    'www/**/*.{html,js}',
+    '!www/bower_components/**/*',
+    '!www/modules/**/*',
+    '!www/themes/**/*',
+    '!www/spinners/**/*'
   ];
 
   return gulp.src(filesToLint)

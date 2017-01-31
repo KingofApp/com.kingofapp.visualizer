@@ -1,5 +1,5 @@
-app/bower_components/*
-app/modules/*
-app/services/*
-app/spinners/*
-app/themes/*
+www/bower_components/*
+www/modules/*
+www/services/*
+www/spinners/*
+www/themes/*

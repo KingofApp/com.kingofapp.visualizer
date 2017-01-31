@@ -11,6 +11,7 @@
     'king.loaders.angular',
     'king.core.structureService',
     'king.core.storageService',
+    'king.core.smartMethodService',
     'king.core.structureHooksService'
   ]);
 }());

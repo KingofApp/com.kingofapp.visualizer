@@ -1,0 +1,50 @@
+{
+  "name": "demo",
+  "identifier": "demo",
+  "description": {
+    "es-ES": "Módulo que incluye todos los elementos configurables para crear una plantilla.",
+    "en-US": "A module that includes all configurable elements to create a template."
+  },
+  "documentation": {
+    "es-ES": "",
+    "en-US": ""
+  },
+  "descriptionShort": {
+    "es-ES": "Módulo que incluye todos los elementos configurables para crear una plantilla.",
+    "en-US": "A module that includes all configurable elements to create a template."
+  },
+  "icon": "room",
+  "type": "A",
+  "version": "0.0.2",
+  "author": "King of app",
+  "category": ["module"],
+  "price": 0,
+  "subscription": false,
+  "canContain": false,
+  "platforms": [
+    "android",
+    "ios",
+    "windows"
+  ],
+  "view": "modules/demo/index.html",
+  "files": [
+    "modules/demo/controller.js", "modules/demo/style.html"
+  ],
+  "scope": {"demoKey": "demo text"},
+  "libs": [],
+  "config": [],
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "images": {
+    "list": "modules/demo/images/list.png",
+    "screenshots": [
+      "modules/demo/images/screenshot01.png"
+    ],
+    "popover": "modules/demo/images/popover.png",
+    "banner": "modules/demo/images/banner.png",
+    "logo": "modules/demo/images/logo.png"
+  }
+}

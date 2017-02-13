@@ -212,6 +212,9 @@
           $rootScope.current = module.identifier || $rootScope.current;
           $rootScope.previous = $location.$$path || $rootScope.previous;
 
+          storeRoutes();
+
+
           angularLoader.module().then(function(url) {
             $scope.template = url;
             //Auxiliar variable used for builder loading
@@ -227,6 +230,16 @@
         $location.path('/404');
       });
       $scope.data = JSON.stringify(structureService.get(), null, '    ');
+    }
+
+    function storeRoutes() {
+      if (!$rootScope.backUrl) {
+        $rootScope.backUrl = [];
+      }
+
+      if ($rootScope.backUrl[$rootScope.backUrl.length-1]!=$location.$$path) {
+        $rootScope.backUrl.push($location.$$path);
+      }
     }
 
     function isAngularModule(type) {

@@ -19,7 +19,7 @@
 </style>
 
 <section class='koapp-element'>
-  <h3>koa-badge</h3>
+  <h3 id="koabadge">koa-badge</h3>
   <div class='element'>
     <koa-icon-button id='number' icon='add-box' alt='inbox'></koa-icon-button>
     <koa-badge for='number' label='4'></koa-badge>
@@ -29,7 +29,7 @@
 </section>
 
 <section class='koapp-element'>
-  <h3>koa-button</h3>
+  <h3 id="koabutton">koa-button</h3>
   <div class='element'>
     <koa-button translate>standar.button</koa-button>
   </div>
@@ -45,7 +45,7 @@
 </section>
 
   <section class='koapp-element'>
-    <h3>koa-card</h3>
+    <h3 id="koacard">koa-card</h3>
     <koa-card heading='Titles AND images!' class='pink' image='http://placehold.it/350x150'>
       <div class='card-content'>
         Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae.
@@ -86,9 +86,9 @@
   </section>
 
   <section class='koapp-element'>
-    <h3>koa-checkbox</h3>
+    <h3 id="koacheckbox">koa-checkbox</h3>
     <div class='element'>
-      <koa-checkbox>Checkbox</koa-checkbox>
+      <koa-checkbox id="checkboxtest">Checkbox</koa-checkbox>
     </div>
     <div class='element'>
       <koa-checkbox checked>Checkbox</koa-checkbox>
@@ -99,7 +99,7 @@
   </section>
 
   <section class='koapp-element' onclick='clickHandlerDialog(event)'>
-    <h3>koa-dialog</h3>
+    <h3 id="koadialog">koa-dialog</h3>
     <div class='element'>
       <koa-button data-dialog='dialog' translate>dialog.plain</koa-button>
     </div>
@@ -107,7 +107,7 @@
       <koa-button data-dialog='actions' translate>dialog.actions</koa-button>
     </div>
     <div class='element'>
-      <koa-button data-dialog='modal' translate>dialog.modal</koa-button>
+      <koa-button id="modalbutton" data-dialog='modal' translate>dialog.modal</koa-button>
     </div>
     <koa-dialog id='dialog'>
       <h2 translate>dialog.title</h2>
@@ -134,7 +134,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <div class='buttons'>
-          <koa-button dialog-confirm autofocus>dialog.tapme</koa-button>
+          <koa-button id = "tapme" dialog-confirm autofocus translate>dialog.tapme</koa-button>
         </div>
       </koa-dialog>
     </section>
@@ -157,13 +157,13 @@
     </script>
 
     <section class='koapp-element'>
-      <h3>koa-dropdown-menu</h3>
+      <h3 id="koadropmenu">koa-dropdown-menu</h3>
       <template id='DemoDropdownMenu' is='dom-bind'>
         <div class='element'>
-          <koa-dropdown-menu label='Dinosaurs'>
+          <koa-dropdown-menu id="koadropclick" label='Dinosaurs'>
             <koa-menu class='dropdown-content'>
               <template is='dom-repeat' items='[[dinosaurs]]' as='dinosaur'>
-                <koa-item translate>[[dropdown.dinosaur]]</koa-item>
+                <koa-item>[[dinosaur]]</koa-item>
               </template>
             </koa-menu>
           </koa-dropdown-menu>
@@ -172,7 +172,7 @@
           <koa-dropdown-menu label='Dinosaurs'>
             <koa-menu class='dropdown-content' selected='1'>
               <template is='dom-repeat' items='[[dinosaurs]]' as='dinosaur'>
-                <koa-item translate>[[dropdown.dinosaur]]</koa-item>
+                <koa-item>[[dinosaur]]</koa-item>
               </template>
             </koa-menu>
           </koa-dropdown-menu>
@@ -181,7 +181,7 @@
           <koa-dropdown-menu disabled label='Disabled'>
             <koa-menu class='dropdown-content'>
               <template is='dom-repeat' items='[[letters]]' as='letter'>
-                <koa-item translate>[[dropdown.letter]]</koa-item>
+                <koa-item>[[letter]]</koa-item>
               </template>
             </koa-menu>
           </koa-dropdown-menu>
@@ -195,7 +195,7 @@
     </script>
 
     <section class='koapp-element'>
-      <h3>koa-grid</h3>
+      <h3 id="koagrid">koa-grid</h3>
       <div class='element'>
         <koa-grid columns='2' cell-space='1em'>
           <template is='dom-repeat' items='[0,1,2,3,4,5]' index-as='index'>
@@ -239,7 +239,7 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-icon-button</h3>
+      <h3 id="koaiconbutton">koa-icon-button</h3>
       <div class='element'>
         <koa-icon-button icon='favorite' title='heart'></koa-icon-button>
       </div>
@@ -254,7 +254,7 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-input & koa-textarea</h3>
+      <h3 id="koainputtextarea">koa-input & koa-textarea</h3>
       <div class='element'>
         <koa-input label='text input'></koa-input>
       </div>
@@ -276,7 +276,7 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-item</h3>
+      <h3 id="koaitem">koa-item</h3>
       <div class='list' role='listbox'>
         <koa-item translate>element.inbox</koa-item>
         <koa-item translate>element.starred</koa-item>
@@ -320,7 +320,7 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-menu & koa-submenu</h3>
+      <h3 id="koamenus">koa-menu & koa-submenu</h3>
       <koa-menu>
         <koa-item translate>element.inbox</koa-item>
         <koa-item translate>element.starred</koa-item>
@@ -329,8 +329,8 @@
       </koa-menu>
       <br>
       <koa-menu attr-for-item-title='label' multi>
-        <koa-submenu label='koa-menu'>
-          <koa-item class='menu-trigger'>koa-menu</koa-item>
+        <koa-submenu id="testsubmenu" label='koa-menu'>
+          <koa-item id='clickmenu' class='menu-trigger'>koa-menu</koa-item>
           <koa-menu class='menu-content sublist' multi>
             <koa-submenu label='Properties'>
               <koa-item class='menu-trigger' translate>menu.properties</koa-item>
@@ -377,13 +377,13 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-menu-button</h3>
+      <h3 id="koamenubutton">koa-menu-button</h3>
       <template id='DemoMenuButton' is='dom-bind'>
         <koa-menu-button>
-          <koa-icon-button icon='menu' class='dropdown-trigger' alt='menu'></koa-icon-button>
+          <koa-icon-button id="testiconbutton" icon='menu' class='dropdown-trigger' alt='menu'></koa-icon-button>
           <koa-menu class='dropdown-content'>
             <template is='dom-repeat' items='[[letters]]' as='letter'>
-              <koa-item translate>[[dropdown.letter]]</koa-item>
+              <koa-item id="alphatest">[[letter]]</koa-item>
             </template>
           </koa-menu>
         </koa-menu-button>
@@ -392,7 +392,7 @@
           </koa-icon-button>
           <koa-menu class='dropdown-content'>
             <template is='dom-repeat' items='[[letters]]' as='letter'>
-              <koa-item translate>[[dropdown.letter]]</koa-item>
+              <koa-item>[[letter]]</koa-item>
             </template>
           </koa-menu>
         </koa-menu-button>
@@ -404,7 +404,7 @@
     </script>
 
     <section class='koapp-element'>
-      <h3>koa-progress</h3>
+      <h3 id="koaprogress">koa-progress</h3>
       <div class='element'>
         <koa-progress></koa-progress>
         <br>
@@ -416,9 +416,9 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-radio-button</h3>
+      <h3 id="koaradiobutton">koa-radio-button</h3>
       <div class='element'>
-        <koa-radio-button>Radio button</koa-radio-button>
+        <koa-radio-button id="radiobuttontest">Radio button</koa-radio-button>
       </div>
       <div class='element'>
         <koa-radio-button checked>Radio button</koa-radio-button>
@@ -429,7 +429,7 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-slider</h3>
+      <h3 id="koaslider">koa-slider</h3>
       <div class='element'>
         <koa-slider value='21'></koa-slider>
       </div>
@@ -448,12 +448,12 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-spinner</h3>
+      <h3 id="koaspinner">koa-spinner</h3>
       <koa-spinner active></koa-spinner>
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-tabs</h3>
+      <h3 id="koatabs">koa-tabs</h3>
       <koa-tabs selected='0'>
         <koa-tab translate>element.itemone</koa-tab>
         <koa-tab translate>element.itemtwo</koa-tab>
@@ -485,9 +485,9 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-toggle-button</h3>
+      <h3 id="koatogglebutton">koa-toggle-button</h3>
       <div class='element'>
-        <koa-toggle-button>Toggle</koa-toggle-button>
+        <koa-toggle-button id="toggletest">Toggle</koa-toggle-button>
       </div>
       <div class='element'>
         <koa-toggle-button checked>Toggle</koa-toggle-button>
@@ -498,7 +498,7 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-toolbar</h3>
+      <h3 id="koatoolbar">koa-toolbar</h3>
       <koa-toolbar>
         <koa-icon-button icon='menu'></koa-icon-button>
         <span class='title'>Toolbar</span>
@@ -508,7 +508,7 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-table</h3>
+      <h3 id="koatable">koa-table</h3>
         <table>
           <thead>
             <tr>
@@ -565,7 +565,7 @@
         </table>
     </section>
     <section class='koapp-element'>
-      <h3>koa-h</h3>
+      <h3 id="koah">koa-h</h3>
       <h1 translate>helement.h1 This is a test for a h1 html tag</h1>
       <h2 translate>helement.h2 This is a test for a h2 html tag</h2>
       <h3 translate>helement.h3 This is a test for a h3 html tag</h3>
@@ -575,7 +575,7 @@
     </section>
 
     <section class='koapp-element'>
-      <h3>koa-p</h3>
+      <h3 id="koaptag">koa-p</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Atque consectetur accusantium laboriosam obcaecati, dolorum optio hic veniam aperiam,
         quaerat nisi rerum dolore fugit blanditiis expedita et earum itaque. Deleniti ipsum,

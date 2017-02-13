@@ -15,7 +15,11 @@
       $scope.showBack = true;
     }
     $scope.goBack = function() {
-      window.history.back()
+      var tempUrl = angular.copy($rootScope.backUrl);
+      if (tempUrl.length - 2 > -1) {
+        $rootScope.backUrl.pop();
+        $location.path(tempUrl[tempUrl.length - 2]);
+      }
     };
 
     $q.all({

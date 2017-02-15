@@ -249,9 +249,10 @@
             deferred.reject('Error - Module ' + path + ' not found');
           } else {
 
-            // Load translation files
             if (!cachedModules.getOne(module.identifier)) {
-              // var type = (module.moduleFolder) ? module.moduleFolder : 'modules';
+
+              setLang(data.config.lang[0]);
+
               var deviceDir = $rootScope.partialDir ? $rootScope.partialDir + '/' : '';
               $translatePartialLoader.addPart(deviceDir + stripPath(module.view));
 
@@ -279,7 +280,7 @@
           path = path.replace(new RegExp('\/' + value + '$'), '');
         }
       });
-      // console.log("ModuleLIST",moduleList);
+      
       callback(moduleList);
     }
 

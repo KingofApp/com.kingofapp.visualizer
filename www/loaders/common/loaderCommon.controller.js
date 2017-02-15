@@ -5,9 +5,9 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', '$timeout', 'trafficGuardiaCivil'];
+  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', '$timeout', '$translate', 'trafficGuardiaCivil'];
 
-  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, $timeout, trafficGuardiaCivil) {
+  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, $timeout, $translate, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
 
     // Unexpected window size
@@ -102,6 +102,10 @@
       if (structureService.get() !== newValue && newValue !== undefined && !redirected) {
         structureService.set(newValue);
         redirected = true;
+
+        //Update Lang
+        $translate.refresh();
+        $translate.use(newValue.config.lang[0]);
 
         setTimeout(function() {
           setTheme(newValue.config);

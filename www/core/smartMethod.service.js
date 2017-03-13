@@ -21,19 +21,25 @@
     }
 
     function execute(type, methodData) {
+      var deferred = $q.defer();
       getBest(type, methodData)
       .then(function(best) {
         delete($rootScope.response);
         if (!best.method) $rootScope.response = { paymentMethod: 'not found', success: false };
-        else              executeBestMethod(best);
+        else             executeBestMethod(best);
+      })
+      .catch(function(){
+        deferred.reject(err);
       });
 
       function executeBestMethod(best) {
         best.method.execute(methodData, function(response) {
           $rootScope.response    = angular.copy(response);
           $rootScope.paymentData = angular.copy(response.paymentData);
+          deferred.resolve($rootScope.response);
         });
       }
+      return deferred.promise;
     }
 
     function getBest(type, methodData) {

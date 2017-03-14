@@ -28,7 +28,7 @@
         if (!best.method) $rootScope.response = { paymentMethod: 'not found', success: false };
         else             executeBestMethod(best);
       })
-      .catch(function(){
+      .catch(function(err) {
         deferred.reject(err);
       });
 

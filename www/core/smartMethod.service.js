@@ -36,6 +36,7 @@
         best.method.execute(methodData, function(response) {
           $rootScope.response    = angular.copy(response);
           $rootScope.paymentData = angular.copy(response.paymentData);
+          $rootScope.$broadcast('paymentResponse');
           deferred.resolve($rootScope.response);
         });
       }

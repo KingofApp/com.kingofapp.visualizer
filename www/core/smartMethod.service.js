@@ -5,8 +5,8 @@
     .module('king.core.smartMethodService', [])
     .factory('smartMethodService', smartMethodService);
 
-  smartMethodService.$inject = ['$rootScope', '$q', '$location'];
-  function smartMethodService($rootScope, $q, $location) {
+  smartMethodService.$inject = ['$rootScope', '$q'];
+  function smartMethodService($rootScope, $q) {
 
     var methods = {};
 
@@ -21,27 +21,23 @@
     }
 
     function execute(type, methodData) {
+      var deferred = $q.defer();
       getBest(type, methodData)
       .then(function(best) {
         delete($rootScope.response);
-        if (!best.method) goToUrl(methodData.callback.fail);
-        else              executeBestMethod(best);
+        if (!best.method) $rootScope.response = { paymentMethod: 'not found', success: false };
+        else             executeBestMethod(best);
+      })
+      .catch(function(err) {
+        deferred.reject(err);
       });
 
       function executeBestMethod(best) {
         best.method.execute(methodData, function(response) {
-          $rootScope.response    = angular.copy(response);
-          $rootScope.paymentData = angular.copy(response.paymentData);
-          if (response.success) goToUrl(methodData.callback.success);
-          else                  goToUrl(methodData.callback.fail);
+          deferred.resolve(response);
         });
       }
-    }
-
-    function goToUrl(url) {
-      var splittedUrl = url.split('?');
-      if (splittedUrl[1]) $location.path(splittedUrl[0]).search(splittedUrl[1]);
-      else                $location.path(url)
+      return deferred.promise;
     }
 
     function getBest(type, methodData) {
@@ -49,7 +45,7 @@
       var deferred     = $q.defer();
       var methodsArray = [];
 
-      if (methods[type]) {  
+      if (methods[type]) {
         for (var i = 0; i < methods[type].length; i++) {
           methodsArray.push(methods[type][i].evaluate(methodData, checkBetter));
         }

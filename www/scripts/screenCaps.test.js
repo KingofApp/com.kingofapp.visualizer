@@ -20,7 +20,6 @@
     });
 
     describe('App screenshots', function() {
-
       var i = 0;
       for (var path in paths) {
         it ('protractor takes a screenshot at ' + path + '-' + paths[i], function() {
@@ -31,13 +30,13 @@
             var resul = $('koa-app').isPresent();
             resul.then(function() {
               browser.takeScreenshot().then( function(data) {
-                var base64Data = data.replace(/^data:image\/png;base64,/, '');
-                fs.writeFile('screenshot-' + i + '.png', base64Data, 'base64', function(err) {
-                  if (!err) sharp('screenshot-' + i + '.png')
+                var base64Data = data.replace(/^data:image\/jpg;base64,/, '');
+                fs.writeFile('screenshot-' + i + '.jpg', base64Data, 'base64', function(err) {
+                  if (!err) sharp('screenshot-' + i + '.jpg')
                               .resize(width, height, {interpolator: sharp.interpolator.nohalo})
                               .embed()
                               .ignoreAspectRatio()
-                              .toFile(platform + '-' + i + '.png', function(err) {
+                              .toFile(platform + '-' + i + '.jpg', function(err) {
                                 if (err) console.error(err);
                               });
                 });

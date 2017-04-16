@@ -1,0 +1,42 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/default-theme.html">
+<dom-module id="koa-badge">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <span class$="badge {{form}} {{color}}">
+      <content></content>
+    </span>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'koa-badge',
+      properties: {
+        color: {
+          type: String,
+          value: ''
+        },
+        form: {
+          type: String,
+          value: ''
+        }
+      },
+
+      ready: function() {
+        if(Polymer.dom(this).node.getAttribute('color') !== null)
+        this.color = 'badge-' + Polymer.dom(this).node.getAttribute('color');
+
+        if(Polymer.dom(this).node.getAttribute('pill') !== null)
+        this.form = 'badge-pill';
+
+        this.updateStyles();
+
+      }
+
+    });
+  </script>
+</dom-module>

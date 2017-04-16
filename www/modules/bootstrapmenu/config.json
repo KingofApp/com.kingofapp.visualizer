@@ -1,0 +1,274 @@
+{
+  "name": "Bootsrap Menu",
+  "identifier": "bootstrapmenu",
+  "type": "A",
+  "version": "0.0.0",
+  "author": "King of App",
+  "category": [
+    "menu"
+  ],
+  "platforms": [
+    "android",
+    "ios",
+    "windows"
+  ],
+  "price": 0,
+  "subscription": false,
+  "canContain": true,
+  "icon": "menu",
+  "description": {
+    "en-US": "",
+    "es-ES": ""
+  },
+  "descriptionShort": {
+    "en-US": "",
+    "es-ES": ""
+  },
+  "documentation": {
+    "en-US": "",
+    "es-ES": ""
+  },
+  "images": {
+    "list": "modules/bootstrapmenu/images/bootstrapmenu_list.png",
+    "screenshots": [
+      "modules/bootstrapmenu/images/bootstrapmenu_screenshot01.png",
+      "modules/bootstrapmenu/images/bootstrapmenu_screenshot02.png"
+    ],
+    "popover": "modules/bootstrapmenu/images/bootstrapmenu_popover.png",
+    "banner": "modules/bootstrapmenu/images/bootstrapmenu_popover.png",
+    "logo": "modules/bootstrapmenu/images/bootstrapmenu_icon.png"
+  },
+  "showOn": {
+    "menu": false,
+    "market": true,
+    "dragDrop": true
+  },
+  "requires": [],
+  "view": "modules/bootstrapmenu/index.html",
+  "files": [
+    "modules/bootstrapmenu/controller.js",
+    "modules/bootstrapmenu/styles.html"
+  ],
+  "libs": [{
+    "bower": {
+      "PolymerElements/iron-flex-layout": "^1.3.0"
+    },
+    "src": "bower_components/iron-flex-layout/iron-flex-layout.html"
+  }, {
+    "bower": {
+      "PolymerElements/paper-drawer-panel": "^1.0.0"
+    },
+    "src": "bower_components/paper-drawer-panel/paper-drawer-panel.html"
+  }, {
+    "bower": {
+      "PolymerElements/paper-header-panel": "^1.0.0"
+    },
+    "src": "bower_components/paper-header-panel/paper-header-panel.html"
+  }, {
+    "bower": {
+      "PolymerElements/paper-menu": "^1.0.0"
+    },
+    "src": "bower_components/paper-menu/paper-menu.html"
+  }, {
+    "bower": {
+      "PolymerElements/paper-item": "^1.0.0"
+    },
+    "src": "bower_components/paper-item/paper-item.html"
+  }],
+  "scope": {
+    "menuItems": [],
+    "titleClass": "align-left",
+    "imgClass": "align-left",
+    "panelClass": "background",
+    "path": "/bootstrapmenu",
+    "headerShown": false,
+    "headerBackgroundImage": "",
+    "headerBackgroundColor": "",
+    "headerReverse": false,
+    "headerTitle": "",
+    "headerLogo": "",
+    "headerAlignment": "left",
+    "showicons": false,
+    "toolbarTitle": true,
+    "toolbarLogo": ""
+  },
+  "config": [{
+    "type": "repeatSection",
+    "key": "menuItems",
+    "templateOptions": {
+      "label": "Items",
+      "btnText": "Add another item to the menu",
+      "fields": [{
+        "type": "select",
+        "key": "path",
+        "templateOptions": {
+          "label": "Path",
+          "required": true
+        }
+      }, {
+        "type": "input",
+        "key": "bgImage",
+        "templateOptions": {
+          "label": "Background Image URL",
+          "placeholder": "(Optional)"
+        }
+      }, {
+        "type": "colorpicker",
+        "key": "bgColor",
+        "templateOptions": {
+          "label": "Background Color",
+          "colorPickerFormat" : "'rgb'",
+          "colorPickerAlpha" : true,
+          "colorPickerPos" : "'top left'",
+          "colorPickerSwatchBootstrap" : false
+        }
+      }]
+    }
+  }, {
+    "key": "headerShown",
+    "type": "checkbox",
+    "templateOptions": {
+      "label": "Header",
+      "description": "Show header"
+    }
+  }, {
+    "key": "headerBackgroundImage",
+    "type": "input",
+    "templateOptions": {
+      "label": "Header image",
+      "description": "The URL of the header background image",
+      "pattern": "(https?://)([/\\w.()-]*).*"
+    }
+  }, {
+    "key" : "headerBackgroundColor",
+    "type" : "colorpicker",
+    "templateOptions" : {
+      "label" : "Header color",
+      "description" : "The header background color",
+      "colorPickerFormat" : "'rgb'",
+      "colorPickerAlpha" : true,
+      "colorPickerPos" : "'top left'",
+      "colorPickerSwatchBootstrap" : false
+    }
+  }, {
+    "key": "headerReverse",
+    "type": "checkbox",
+    "templateOptions": {
+      "label": "Header reverse",
+      "description": "Reverse order of logo and title"
+    }
+  }, {
+    "key": "headerTitle",
+    "type": "input",
+    "templateOptions": {
+      "label": "Header title",
+      "description": "The header title"
+    }
+  }, {
+    "key": "headerLogo",
+    "type": "input",
+    "templateOptions": {
+      "label": "Header logo",
+      "description": "The URL of the header logo image",
+      "pattern": "(https?://)([/\\w.()-]*).*"
+    }
+  }, {
+    "key": "headerAlignment",
+    "type": "select",
+    "templateOptions": {
+      "label": "Header alignment",
+      "options": [{
+        "name": "left",
+        "value": "left"
+      }, {
+        "name": "center",
+        "value": "center"
+      }, {
+        "name": "right",
+        "value": "right"
+      }]
+    }
+  }, {
+    "key": "showicons",
+    "type": "checkbox",
+    "templateOptions": {
+      "description": "Show menu icons",
+      "label": "Menu icons"
+    }
+  }, {
+    "key": "toolbarTitle",
+    "type": "checkbox",
+    "templateOptions": {
+      "label": "Toolbar title",
+      "description": "Show the toolbar title"
+    }
+  }, {
+    "key": "toolbarLogo",
+    "type": "input",
+    "templateOptions": {
+      "label": "Toolbar logo",
+      "description": "The URL of the toolbar logo image",
+      "pattern": "(https?://)([/\\w.()-]*).*"
+    }
+  }, {
+    "key": "panelClass",
+    "type": "select",
+    "templateOptions": {
+      "label": "Panel based color",
+      "options": [{
+        "name": "Background color",
+        "value": "background"
+      }, {
+        "name": "Light accent color",
+        "value": "lightaccent"
+      }, {
+        "name": "Dark accent color",
+        "value": "darkaccent"
+      }, {
+        "name": "Accent color",
+        "value": "accent"
+      }, {
+        "name": "Light primary color",
+        "value": "lightprimary"
+      }, {
+        "name": "Dark primary color",
+        "value": "darkprimary"
+      }, {
+        "name": "Primary color",
+        "value": "primary"
+      }]
+    }
+  }, {
+    "key": "titleClass",
+    "type": "select",
+    "templateOptions": {
+      "label": "Toolbar title alignment",
+      "options": [{
+        "name": "Left",
+        "value": "align-left"
+      }, {
+        "name": "Right",
+        "value": "align-right"
+      }, {
+        "name": "Center",
+        "value": "align-center"
+      }]
+    }
+  }, {
+    "key": "imgClass",
+    "type": "select",
+    "templateOptions": {
+      "label": "Toolbar logo alignment",
+      "options": [{
+        "name": "Left",
+        "value": "align-left"
+      }, {
+        "name": "Right",
+        "value": "align-right"
+      }, {
+        "name": "Center",
+        "value": "align-center"
+      }]
+    }
+  }]
+}

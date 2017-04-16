@@ -2,26 +2,35 @@
   "config": {
     "index": "/menu-abcd/home-abcd",
     "theme": {
-      "identifier": "koapp-theme-android",
-      "path": "themes/koapp-theme-android/koapp-theme-android.html"
+      "identifier": "koapp-theme-bootstrap",
+      "path": "themes/koapp-theme-bootstrap/koapp-theme-bootstrap.html"
     },
     "spinner": {
       "identifier": "koapp-spinner-android",
       "path": "spinners/koapp-spinner-android/koapp-spinner-android.html"
     },
     "colors": {
-      "primaryTextColor": "#212121",
-      "primaryBackgroundColor": "#ffffff",
+
+      "mutedColor": "#636c72",
+      "primaryColor": "#0275d8",
+      "successColor": "#5cb85c",
+      "infoColor": "#5bc0de",
+      "warningColor": "#f0ad4e",
+      "dangerColor": "#d9534f",
+
+      "primaryTextColor": "#3c4858",
+      "primaryBackgroundColor": "#f9fbfc",
       "secondaryTextColor": "#737373",
       "disabledTextColor": "#9b9b9b",
       "dividerColor": "#dbdbdb",
-      "primaryColor": "#3f51b5",
-      "lightPrimaryColor": "#c5cae9",
-      "darkPrimaryColor": "#303f9f",
-      "accentColor": "#ff4081",
+
+      "lightPrimaryColor": "#00c484",
+      "darkPrimaryColor": "#00a07b",
+      "accentColor": "#ff9900",
       "lightAccentColor": "#ff80ab",
       "darkAccentColor": "#f50057",
-      "backgroundColor": "#ffffff"
+
+      "backgroundColor": "#f9fbfc"
     },
     "images": {
       "background": ""
@@ -44,7 +53,7 @@
   "modules": {
     "/menu-abcd": {
       "name": "Menu Module",
-      "identifier": "polymermenu",
+      "identifier": "bootstrapmenu",
       "type": "A",
       "canContain": true,
       "icon": "menu",
@@ -52,10 +61,10 @@
         "market": true,
         "dragDrop": true
       },
-      "view": "modules/polymermenu/index.html",
+      "view": "modules/bootstrapmenu/index.html",
       "files": [
-        "modules/polymermenu/controller.js",
-        "modules/polymermenu/styles.html"
+        "modules/bootstrapmenu/controller.js",
+        "modules/bootstrapmenu/styles.html"
       ],
       "libs": [
         {
@@ -151,7 +160,7 @@
         "dragDrop": true
       },
       "view": "modules/demo/index.html",
-      "files": ["modules/demo/controller.js"],
+      "files": ["modules/demo/controller.js", "modules/demo/grid/grid.css"],
       "scope": {
         "value": true
       }
@@ -176,7 +185,7 @@
       "scope": {
         "lat": "39.8847281",
         "lon": "4.2540999",
-        "api": "AIzaSyANxt-hXcUf8PB0Tw1eFIB9qgby2Cmi-7w", 
+        "api": "AIzaSyANxt-hXcUf8PB0Tw1eFIB9qgby2Cmi-7w",
         "zoom": "15"
       }
     }

@@ -53,6 +53,7 @@
 
           structureService.getCurrentModules($location, function loadmodules(modules) {
             if (cachedLocations[$location.$$path] && visitedLocations[cachedLocations[$location.$$path].identifier] && !finished) {
+              console.log(cachedLocations[$location.$$path]);
               loadCachedModule();
             } else if (count === 0 && prev > 0 && !finished) {
               loadFirstTimeModule(modules);
@@ -187,9 +188,9 @@
     $scope.$on('koaAppRendered', function() {
       console.info('[V] koa-app rendered!');
       $scope.template = $scope.template || $rootScope.rootTemplate;
-      $rootScope.$apply(function() {
-        $rootScope.showTransition = false;
-      });
+      // $rootScope.$apply(function() {
+      //   $rootScope.showTransition = false;
+      // });
     });
 
     function configModule() {
@@ -226,7 +227,7 @@
             $rootScope.rootTemplate = url;
           });
 
-        
+
         }
       }, function() {
         $location.path('/404');

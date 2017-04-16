@@ -1,0 +1,98 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/default-theme.html">
+<dom-module id="koa-card">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      :host [hidden] {
+        display: none !important;
+      }
+    </style>
+    <div class$="card {{inverse}} {{color}}">
+      <div hidden$="[[!header]]" class="card-header">
+        {{header}}
+      </div>
+      <template is="dom-if" if="[[topPosition]]">
+        <img class="card-img-top" src="{{image}}" alt="Card image cap">
+      </template>
+      <div class$="[[overlays]]">
+        <h4 class="card-title" hidden$="[[!title]]">{{title}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted" hidden$="[[!subtitle]]">{{subtitle}}</h6>
+        <h6 class="card-text" hidden$="[[!text]]">{{text}}</h6>
+        <content></content>
+      </div>
+      <template is="dom-if" if="[[!topPosition]]">
+        <img class="card-img-bottom" src="{{image}}" alt="Card image cap">
+      </template>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'koa-card',
+      properties: {
+        overlays: {
+          type: String,
+          value: 'card-block'
+        },
+        color: {
+          type: String,
+          value: ''
+        },
+        inverse: {
+          type: String,
+          value:''
+        },
+        topPosition: {
+          type: Boolean,
+          value: true
+        },
+        header: {
+          type: String,
+          value: ''
+        },
+        title: {
+          type: String,
+          value: ''
+        },
+        subtitle: {
+          type: String,
+          value: ''
+        },
+        text: {
+          type: String,
+          value: ''
+        }
+      },
+      ready: function() {
+        if(Polymer.dom(this).node.getAttribute('img-position') !== null)
+          this.topPosition = (Polymer.dom(this).node.getAttribute('img-position') === 'top')  ? true : false;
+
+        if(Polymer.dom(this).node.getAttribute('header') !== null)
+          this.header = Polymer.dom(this).node.getAttribute('header');
+
+        if(Polymer.dom(this).node.getAttribute('title') !== null)
+          this.title = Polymer.dom(this).node.getAttribute('title');
+
+        if(Polymer.dom(this).node.getAttribute('subtitle') !== null)
+          this.subtitle = Polymer.dom(this).node.getAttribute('subtitle');
+
+        if(Polymer.dom(this).node.getAttribute('text') !== null)
+          this.text = Polymer.dom(this).node.getAttribute('text');
+
+        if(Polymer.dom(this).node.getAttribute('inverse') !== null) {
+          this.inverse = Polymer.dom(this).node.getAttribute('card-inverse');
+          this.overlays = 'card-img-overlay';
+        }
+
+        if(Polymer.dom(this).node.getAttribute('color') !== null) {
+          var bg = Polymer.dom(this).node.getAttribute('color');
+          this.color = 'card-inverse card-' + bg;
+        }
+      }
+    });
+  </script>
+</dom-module>

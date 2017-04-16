@@ -1,7 +1,7 @@
 {
   "name": "demo",
   "authors": "King of app",
-  "description": "A module that includes all configurable elements to create a template.",
+  "description": "A module that includes all configurable elements to create a theme.",
   "keywords": [
     "kingofapp",
     "module"

@@ -1,17 +1,17 @@
 /* General styles */
 
-/*.module > a {
+.module > a {
   color: inherit;
   display: block;
   text-decoration: none;
 }
 
 .module > a + a,
-koa-card + koa-card {
+android-card + android-card {
   margin-top: 15px;
 }
 
-koa-card {
+android-card {
   max-width: 100%;
 }
 
@@ -19,7 +19,7 @@ form {
   margin: 15px;
 }
 
-form koa-button {
+form android-button {
   float: right;
   margin-top: 15px;
-}*/
+}

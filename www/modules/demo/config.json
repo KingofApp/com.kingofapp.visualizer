@@ -2,20 +2,20 @@
   "name": "demo",
   "identifier": "demo",
   "description": {
-    "es-ES": "Módulo que incluye todos los elementos configurables para crear una plantilla.",
-    "en-US": "A module that includes all configurable elements to create a template."
+    "es-ES": "Da vida a tus ideas diseñando tu propio tema a través de este módulo que incluye todos los elementos configurables necesarios.",
+    "en-US": "Give life to your ideas designing your own theme through this module that includes all the necessary configurable elements."
   },
   "documentation": {
-    "es-ES": "",
-    "en-US": ""
+    "es-ES": "Módulo que incluye todos los elementos configurables para crear un tema. Este módulo está pensado para ayudar a visualizar todos los elementos comunes dentro de un tema con los diferentes cambios de diseño que se le apliquen al tema.",
+    "en-US": "A module that includes all configurable elements to create a theme. This module is designed to help visualize all the common elements within a theme with the different design changes that apply to the theme."
   },
   "descriptionShort": {
-    "es-ES": "Módulo que incluye todos los elementos configurables para crear una plantilla.",
-    "en-US": "A module that includes all configurable elements to create a template."
+    "es-ES": "Diseña tu propio tema y da vida a tus ideas!",
+    "en-US": "Design your own theme and give life to your ideas!"
   },
   "icon": "room",
   "type": "A",
-  "version": "0.0.2",
+  "version": "0.0.8",
   "author": "King of app",
   "category": ["module"],
   "price": 0,
@@ -28,7 +28,7 @@
   ],
   "view": "modules/demo/index.html",
   "files": [
-    "modules/demo/controller.js", "modules/demo/style.html"
+    "modules/demo/controller.js", "modules/demo/style.html", "modules/demo/grid/grid.css"
   ],
   "scope": {"demoKey": "demo text"},
   "libs": [],
@@ -41,7 +41,8 @@
   "images": {
     "list": "modules/demo/images/list.png",
     "screenshots": [
-      "modules/demo/images/screenshot01.png"
+      "modules/demo/images/screenshot01.png",
+      "modules/demo/images/screenshot02.png"
     ],
     "popover": "modules/demo/images/popover.png",
     "banner": "modules/demo/images/banner.png",

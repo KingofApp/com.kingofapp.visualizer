@@ -80,7 +80,7 @@
 
         function processFilesTypeBased(existingFiles, type) {
           var additionalFiles = {
-            'R' : ['https://unpkg.com/react@15/dist/react.js', 'https://unpkg.com/react-dom@15/dist/react-dom.js']
+            'R':['https://unpkg.com/react@15/dist/react.js', 'https://unpkg.com/react-dom@15/dist/react-dom.js']
           };
           if (additionalFiles[type]) {
             existingFiles = existingFiles.concat(additionalFiles[type]);

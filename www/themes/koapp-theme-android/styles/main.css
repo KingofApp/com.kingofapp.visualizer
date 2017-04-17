@@ -7,11 +7,11 @@
 }
 
 .module > a + a,
-android-card + android-card {
+koa-card + koa-card {
   margin-top: 15px;
 }
 
-android-card {
+koa-card {
   max-width: 100%;
 }
 
@@ -19,7 +19,7 @@ form {
   margin: 15px;
 }
 
-form android-button {
+form koa-button {
   float: right;
   margin-top: 15px;
 }

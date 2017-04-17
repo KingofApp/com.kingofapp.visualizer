@@ -58,14 +58,14 @@
         'koa-icon'
       ],
 
-      createTree: function(callback) {
-        this.tree = new Array(0);
-        this.koaIcons = new Array(0);
-        var that = this;
-        setTimeout(function() {
-          if (that._processElement(that.children[0])) callback();
-          else that.createTree(callback);
-        }, 10);
+      createTree: function() {
+        // this.tree = new Array(0);
+        // this.koaIcons = new Array(0);
+        // var that = this;
+        // setTimeout(function() {
+        //   if (that._processElement(that.children[0])) callback();
+        //   else that.createTree(callback);
+        // }, 10);
       },
 
       setTheme: function(theme, callback) {
@@ -74,6 +74,7 @@
         var themeIsNotImported = (this.theme && this.importedThemes.indexOf(this.theme.identifier) === -1);
 
         if (themeIsNotImported) {
+          console.log('THEME PATH', this.theme.path);
           this.importHref(this.theme.path, function() {
             this.renderThemeElements(callback);
             this.importedThemes.push(this.theme.identifier);
@@ -83,14 +84,14 @@
         }
       },
 
-      renderThemeElements: function(callback) {
-        this.tree.forEach(function(elementObject) {
-          this._renderThemeElement(elementObject);
-        }, this);
+      renderThemeElements: function() {
+        // this.tree.forEach(function(elementObject) {
+        //   this._renderThemeElement(elementObject);
+        // }, this);
 
-        if (callback) {
-          setTimeout(callback, 0);  // nextTick
-        }
+        // if (callback) {
+        //   setTimeout(callback, 0);  // nextTick
+        // }
       },
 
       setIconset: function(iconset) {
@@ -146,42 +147,42 @@
           }
         }
         return elementsChanged;
-      },
-
-      _createThemeElement: function(tag, attributes, childNodes) {
-        var newElementName = this.theme.identifier.replace('koapp-theme-', '') + '-' + tag;
-        var newElement = document.createElement(newElementName);
-
-        for (var i = 0; i < attributes.length; i++) {
-          var attribute = attributes[i];
-          Polymer.dom(newElement).setAttribute(attribute.nodeName, attribute.nodeValue);
-        }
-
-        for (var j = 0; j < childNodes.length; j++) {
-          var clonedChildNode = Polymer.dom(childNodes[j]).cloneNode(true);
-
-          // Remove the Polymer classes, because they will added next line
-          var classList = clonedChildNode.classList;
-          if (classList && classList.contains('x-scope')) {
-            classList.remove('x-scope');
-            var classToRemove = (new RegExp('(' + clonedChildNode.tagName.toLowerCase() + '-)(\\d)')).exec(clonedChildNode.className)[0];
-            classList.remove(classToRemove);
-          }
-
-          Polymer.dom(newElement).appendChild(clonedChildNode);
-        }
-
-        return newElement;
-      },
-
-      _renderThemeElement: function(treeElement) {
-        var parentNode = Polymer.dom(treeElement.actualElement).parentNode;
-        var newElement = this._createThemeElement(treeElement.tag, treeElement.attributes, treeElement.childNodes);
-
-        if (parentNode) Polymer.dom(parentNode).replaceChild(newElement, treeElement.actualElement);
-
-        treeElement.actualElement = newElement;
       }
+
+      // _createThemeElement: function(tag, attributes, childNodes) {
+      //   var newElementName = this.theme.identifier.replace('koapp-theme-', '') + '-' + tag;
+      //   var newElement = document.createElement(newElementName);
+
+      //   for (var i = 0; i < attributes.length; i++) {
+      //     var attribute = attributes[i];
+      //     Polymer.dom(newElement).setAttribute(attribute.nodeName, attribute.nodeValue);
+      //   }
+
+      //   for (var j = 0; j < childNodes.length; j++) {
+      //     var clonedChildNode = Polymer.dom(childNodes[j]).cloneNode(true);
+
+      //     // Remove the Polymer classes, because they will added next line
+      //     var classList = clonedChildNode.classList;
+      //     if (classList && classList.contains('x-scope')) {
+      //       classList.remove('x-scope');
+      //       var classToRemove = (new RegExp('(' + clonedChildNode.tagName.toLowerCase() + '-)(\\d)')).exec(clonedChildNode.className)[0];
+      //       classList.remove(classToRemove);
+      //     }
+
+      //     Polymer.dom(newElement).appendChild(clonedChildNode);
+      //   }
+
+      //   return newElement;
+      // },
+
+      // _renderThemeElement: function(treeElement) {
+      //   var parentNode = Polymer.dom(treeElement.actualElement).parentNode;
+      //   var newElement = this._createThemeElement(treeElement.tag, treeElement.attributes, treeElement.childNodes);
+
+      //   if (parentNode) Polymer.dom(parentNode).replaceChild(newElement, treeElement.actualElement);
+
+      //   treeElement.actualElement = newElement;
+      // }
     });
   </script>
 </dom-module>

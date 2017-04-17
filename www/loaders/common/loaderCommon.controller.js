@@ -17,7 +17,7 @@
     }
 
     var app = document.querySelector('#app');
-    var firstInterval = {};
+    // var firstInterval = {};
 
     showGeneralLoader();
     $location.$$path = $location.$$path || '/';
@@ -59,7 +59,8 @@
             }
             //Render external calls generating new elements
             if (count === 0 && prev > 0) {
-              firstInterval = $interval(renderKoaApp, 10);
+              // firstInterval = $interval(renderKoaApp, 10);
+              renderKoaApp();
             }
 
             prev = count;
@@ -275,7 +276,7 @@
       $rootScope.theme = config.theme;
 
       loadFonts(config.fonts);
-
+      // debugger;
       app.setTheme(config.theme, function() {
         structureService.setCssVariables(config);
         //Wait for angular digest cycle to complete.
@@ -286,27 +287,32 @@
       });
     }
 
-    function renderElements() {
-      app.renderThemeElements(function() {
-        $timeout(function() {
-          $rootScope.$broadcast('koaAppRendered');
-        });
-      });
-    }
+    // function renderElements() {
+    //   app.renderThemeElements(function() {
+    //     $timeout(function() {
+    //       $rootScope.$broadcast('koaAppRendered');
+    //     });
+    //   });
+    // }
 
     function renderKoaApp() {
-      if (app.createTree) {
-        $interval.cancel(firstInterval);
-        app.createTree(function() {
-          if (app.theme) {
-            renderElements()
-          } else if ($rootScope.appData) {
-            setTheme($rootScope.appData.config)
-          } else {
-            setTheme(structureService.getConfig());
-          }
-        });
+      if ($rootScope.appData) {
+        setTheme($rootScope.appData.config)
+      } else {
+        setTheme(structureService.getConfig());
       }
+      // if (app.createTree) {
+        // $interval.cancel(firstInterval);
+        // app.createTree(function() {
+        //   if (app.theme) {
+        //     renderElements()
+        //   } else if ($rootScope.appData) {
+        //     setTheme($rootScope.appData.config)
+        //   } else {
+        //     setTheme(structureService.getConfig());
+        //   }
+        // });
+      // }
     }
 
     function showGeneralLoader() {

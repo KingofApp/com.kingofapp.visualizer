@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>koa-item demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-icons/communication-icons.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/demo-pages.html">
+    <link rel="import" href="../../koa-icon-button/koa-icon-button.html">
+    <link rel="import" href="../koa-item.html">
+    <link rel="import" href="../koa-item-body.html">
+
+    <style is="custom-style">
+      div[role="listbox"] {
+        border: 1px solid #e5e5e5;
+      }
+
+      .avatar {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--paper-amber-500);
+      }
+
+      .blue {
+        background-color: var(--paper-light-blue-300);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>koa-items are simple list elements, ideally used in an element with <i>role="listbox"</i></h3>
+      <div class="vertical-section">
+        <div role="listbox">
+          <koa-item>Inbox</koa-item>
+          <koa-item>Starred</koa-item>
+          <koa-item>Sent mail</koa-item>
+        </div>
+      </div>
+
+      <h3>They can be styled using custom properties</h3>
+      <div class="vertical-section">
+        <style is="custom-style">
+          koa-item.fancy {
+            --item-focused: {
+              background: var(--paper-amber-500);
+              font-weight: bold;
+            };
+            --item-focused-before: {
+              opacity: 0;
+            };
+          }
+        </style>
+        <div role="listbox">
+          <koa-item class="fancy">Inbox</koa-item>
+          <koa-item class="fancy">Starred</koa-item>
+          <koa-item class="fancy">Sent mail</koa-item>
+        </div>
+      </div>
+
+      <h3>To add a leading element, use a koa-item with an <i>item-icon</i> attribute. This
+      leading image can be an koa-icon, or any other regular element.</h3>
+      <div class="vertical-section">
+        <div role="listbox">
+          <koa-item>
+            <koa-icon icon="inbox" item-icon></koa-icon>
+            Inbox
+          </koa-item>
+          <koa-item>
+            <koa-icon icon="star" item-icon></koa-icon>
+            Starred
+          </koa-item>
+        </div>
+      </div>
+
+      <h3>For two-line or three-line items, use a koa-item-body inside a koa-item</h3>
+      <div class="vertical-section">
+        <div role="listbox">
+          <koa-item>
+            <koa-item-body two-line>
+              <div>Profile Photo</div>
+              <div secondary>Change your Google+ profile photo</div>
+            </koa-item-body>
+          </koa-item>
+          <koa-item>
+            <koa-item-body three-line>
+              <div>Ali Connors</div>
+              <div secondary>Brunch this weekend?</div>
+              <div secondary>I'll be in your neighborhood doing errands</div>
+            </koa-item-body>
+          </koa-item>
+          <koa-item>
+            <koa-icon icon="communication:phone" item-icon></koa-icon>
+            <koa-item-body two-line>
+              <div>(650) 555-1234</div>
+              <div secondary>Mobile</div>
+            </koa-item-body>
+          </koa-item>
+          <koa-item>
+            <div class="avatar blue" item-icon></div>
+            <koa-item-body two-line>
+              <div>Alphonso Engelking</div>
+              <div secondary>Change photo</div>
+            </koa-item-body>
+          </koa-item>
+        </div>
+      </div>
+
+      <h3>Complex layouts are usually a combination of all these elements</h3>
+      <div class="vertical-section">
+        <div role="listbox">
+          <koa-item>
+            <div class="avatar blue" item-icon></div>
+            <koa-item-body two-line>
+              <div>Photos</div>
+              <div secondary>Jan 9, 2014</div>
+            </koa-item-body>
+            <paper-icon-button icon="star" alt="favourite this!">
+            </paper-icon-button>
+          </koa-item>
+          <koa-item>
+            <div class="avatar" item-icon></div>
+            <koa-item-body two-line>
+              <div>Recipes</div>
+              <div secondary>Jan 17, 2014</div>
+            </koa-item-body>
+            <paper-icon-button icon="star" alt="favourite this!">
+            </paper-icon-button>
+          </koa-item>
+        </div>
+      </div>
+
+      <h3>koa-items can be used as links</h3>
+      <div class="vertical-section">
+        <style is="custom-style">
+          .koa-item-link {
+            color: inherit;
+            text-decoration: none;
+          }
+        </style>
+        <div role="listbox">
+          <a class="koa-item-link" href="#inbox" tabindex="-1">
+            <koa-item>Inbox</koa-item>
+          </a>
+          <a class="koa-item-link" href="#starred" tabindex="-1">
+            <koa-item>Starred</koa-item>
+          </a>
+          <a class="koa-item-link" href="#sent" tabindex="-1">
+            <koa-item>Sent mail</koa-item>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

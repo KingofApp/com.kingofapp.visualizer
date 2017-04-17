@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  // angular
-  //   .module('king.loaders.common')
-  //   .directive('eventListener', function($rootScope) {
-  //     return function($scope, element) {
+  angular
+    .module('king.loaders.common')
+    .directive('eventListener', function($rootScope) {
+      return function($scope, element) {
 
   //       element.on('click', '[ng-click]:not(div)', ngClickWrapper);
-  //       element.on('change', '[ng-model]', ngModelWrapper);
+        element.on('change', '[ng-model]:not(input)', ngModelWrapper);
 
   //       function ngClickWrapper(e) {
   //         var scopeElement = document.querySelector('.' + $rootScope.current);
@@ -23,15 +23,20 @@
   //         e.stopPropagation();
   //       }
 
-  //       function ngModelWrapper() {
-  //         var scopeElement = document.querySelector('.' + $rootScope.current);
-  //         var scope = angular.element(scopeElement).scope();
-  //         var model = $(this).attr('ng-model').split('.');
-  //         if (!scope[model[0]]) {
-  //           scope[model[0]] = [];
-  //         }
-  //         scope[model[0]][model[1]] = $(this).val();
-  //       }
+        function ngModelWrapper() {
+          var scopeElement = document.querySelector('.' + $rootScope.current);
+          var scope = angular.element(scopeElement).scope();
+          scope.set = function(p, value) {
+            var obj = this;
+
+            p = p.split('.');
+            for (var i = 0, len = p.length; i < len - 1; i++)
+              obj = obj[p[i]];
+
+            obj[p[len - 1]] = value;
+          };
+          scope.set($(this).attr('ng-model'), $(this).val());
+        }
 
   //       function getParams(element, scope) {
   //         var params = element.match(/(['|{](.*?)['|}]|(\d+)|([a-zA-Z0-9]+))(?=,|\))/gm);
@@ -63,7 +68,7 @@
   //         }
   //         return true;
   //       }
-  //     };
-  //   });
+      };
+    });
 
 }());

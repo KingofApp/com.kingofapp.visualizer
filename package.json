@@ -7,6 +7,9 @@
   "license": "MIT",
   "devDependencies": {
     "async": "^2.0.0-rc.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "bower": "^1.7.0",
     "browser-sync": "^2.11.0",
     "del": "^2.2.0",
@@ -29,7 +32,11 @@
     "grunt-run": "^0.3.0",
     "grunt-usemin": "^3.1.1",
     "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
     "gulp-eslint": "^2.0.0",
+    "gulp-foreach": "^0.1.0",
+    "gulp-react": "^3.1.0",
     "jasmine": "^2.3.1",
     "jasmine-core": "^2.3.4",
     "jasmine-reporters": "^2.0.7",
@@ -46,7 +53,8 @@
     "postinstall": "bower install && node scripts/installPluginDependencies.js",
     "prestart": "npm install",
     "start": "gulp serve",
-    "lint": "gulp lint"
+    "lint": "gulp lint",
+    "transpile": "gulp transpile"
   },
   "dependencies": {
     "glob": "^7.1.1"

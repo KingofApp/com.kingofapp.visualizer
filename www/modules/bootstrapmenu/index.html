@@ -16,15 +16,6 @@
         <img ng-src="{{bootstrapmenu.modulescope.headerLogo}}">
       </div>
       <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li> -->
         <template is="dom-repeat" items="{{bootstrapmenu.menu}}">
           <li class="nav-item">
             <a class="nav-link" href$="{{item.url}}" id$="{{item.class}}">
@@ -41,40 +32,5 @@
     <div ng-include="bootstrapmenuTemplate" class="template"></div>
   </div>
 
-
-
-  <!-- <paper-drawer-panel>
-    <div class="panel" drawer fixed>
-      <div id="header" ng-if="bootstrapmenu.modulescope.headerShown" ng-class="[bootstrapmenu.modulescope.headerAlignment, bootstrapmenu.modulescope.headerReverse ? 'reverse' : '']" ng-style="{'background-color': bootstrapmenu.modulescope.headerBackgroundColor, 'background-image': 'url(' + bootstrapmenu.modulescope.headerBackgroundImage + ')'}">
-        <div class="logo" ng-if="bootstrapmenu.modulescope.headerLogo">
-          <img ng-src="{{bootstrapmenu.modulescope.headerLogo}}">
-        </div>
-        <span class="title" ng-if="bootstrapmenu.modulescope.headerTitle">{{bootstrapmenu.modulescope.headerTitle}}</span>
-      </div>
-
-      <paper-menu>
-        <template is="dom-repeat" items="{{bootstrapmenu.menu}}">
-          <a href$="{{item.url}}" id$="{{item.class}}">
-            <paper-item style$="background-image: url('{{item.backgroundImage}}'); background-color: {{item.backgroundColor}};"><koa-icon icon='{{item.icon}}'></koa-icon> {{item.text}}</paper-item>
-          </a>
-        </template>
-      </paper-menu>
-    </div>
-
-    <paper-header-panel main>
-      <koa-toolbar class="paper-header">
-        <koa-icon-button icon="{{bootstrapmenu.icon}}" ng-if="!showBack" paper-drawer-toggle></koa-icon-button>
-        <koa-icon-button icon="arrow-back" ng-click="goBack()" ng-if="showBack"></koa-icon-button>
-
-          <div ng-if="bootstrapmenu.modulescope.toolbarLogo" ng-class="bootstrapmenu.modulescope.imgClass" class="title" ><img id="toolbarLogo" ng-src="{{bootstrapmenu.modulescope.toolbarLogo}}"></div>
-          <div ng-class="bootstrapmenu.modulescope.titleClass" class="title" ng-if="bootstrapmenu.modulescope.toolbarTitle">{{toolbar.title}}</div>
-
-      </koa-toolbar>
-
-      <div id="content">
-        <div ng-include="bootstrapmenuTemplate" class="template"></div>
-      </div>
-    </paper-header-panel>
-  </paper-drawer-panel> -->
 
 </div>

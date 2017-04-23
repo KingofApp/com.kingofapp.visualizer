@@ -1,5 +1,8 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-badge-behavior.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-icon-button-behavior.html">
 <link rel="import" href="../../styles/default-theme.html">
+
 <dom-module id="koa-badge">
   <template>
     <style>
@@ -25,6 +28,11 @@
           value: ''
         }
       },
+
+      behaviors: [
+        Polymer.KoaBadgeBehavior,
+        Polymer.KoaIconButtonBehavior
+      ],
 
       ready: function() {
         if(Polymer.dom(this).node.getAttribute('color') !== null)

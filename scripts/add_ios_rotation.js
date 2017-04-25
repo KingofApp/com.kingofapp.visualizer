@@ -19,12 +19,12 @@ var preferencesIOS = '<key>UISupportedInterfaceOrientations</key>\n' +
 var file = 'platforms/ios/'+dir+'/'+dir+'-Info.plist';
 
 fs.readFile(file, function(err, data) {
-  if(data){
+  if (data) {
     data = data.toString().replace('<dict>', '<dict>' + preferencesIOS);
     fs.writeFile(file, data, function(err) {
       console.log('[File written]');
     });
-  }else{
+  } else {
     console.log('[Error reading file]');
   }
 });

@@ -2,21 +2,21 @@ var sh = require('shelljs');
 var async = require('async');
 
 var local = sh.pwd();
-var glob = require("glob")
+var glob = require('glob')
 
 
-glob("www/**/.bowerrc", function (er, files) {
-  console.log("FILES", files);
+glob('www/**/.bowerrc', function(er, files) {
+  console.log('FILES', files);
   async.forEachSeries(files, downloadPlugin(), function() {
   });
 })
 function downloadPlugin() {
   return function(plugin, callback) {
-      if (plugin.indexOf("bower_components") !== -1){
-        console.log("Ignore");
-        callback("");
-      }else {
-        plugin = plugin.replace('.bowerrc','');
+      if (plugin.indexOf('bower_components') !== -1) {
+        console.log('Ignore');
+        callback('');
+      } else {
+        plugin = plugin.replace('.bowerrc', '');
         console.log('*** Installing dependencies from: ' + plugin);
 
         async.series([

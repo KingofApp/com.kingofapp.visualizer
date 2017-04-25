@@ -3,12 +3,14 @@
   "rules": {
     "brace-style": "error",
     "comma-spacing": ["error", {"before": false, "after": true}],
+    "comma-dangle": ["error", "never"],
     "keyword-spacing": "error",
     "no-console": ["warn", {"allow": ["info"]}],
     "no-multi-spaces": "off",
     "quotes": ["error", "single", "avoid-escape"],
     "space-before-blocks": "error",
-    "space-before-function-paren": ["error", "never"]
+    "space-before-function-paren": ["error", "never"],
+    "func-call-spacing": "off"
   },
   "env": {
     "browser": true,
@@ -27,6 +29,7 @@
     "StatusBar": false,
     "angular": false,
     "module": false,
-    "require": false
+    "require": false,
+    "exports": false
   }
 }

@@ -1,0 +1,17 @@
+<div class="module html" ng-controller="repeatdemoController">
+<!--Sample single card-->
+<koa-card id="xy" listen imageb="http://placehold.it/150/92c952" headingb="TEXT">
+  <div class="card-actions">
+    <koa-button>Some action</koa-button>
+  </div>
+</koa-card>
+<!--Sample repeated card-->
+<koa-card listen ng-repeat="n in sampleData" imageb="{{n.thumbnailUrl}}" headingb="{{n.title}}">
+  <strong>{{n.title}}</strong>
+  <div class="card-actions">
+    <koa-button>Some action</koa-button>
+  </div>
+</koa-card>
+
+
+<div>

@@ -97,6 +97,11 @@
             "bgColor": ""
           },
           {
+            "path": "/menu-abcd/repeat-demo-abcd",
+            "bgImage": "",
+            "bgColor": ""
+          },
+          {
             "path": "/menu-abcd/elements-abcd",
             "bgImage": "",
             "bgColor": ""
@@ -136,6 +141,22 @@
       },
       "view": "modules/html/index.html",
       "files": ["modules/html/controller.js"],
+      "scope": {
+        "value": "<p style='color:#39a9d3'>Welcome to my </p><p style='color:#d36339'>APP</p>",
+        "display" : ""
+      }
+    },
+    "/menu-abcd/repeat-demo-abcd": {
+      "name": "Repeat Demo",
+      "identifier": "repeatdemo",
+      "type": "A",
+      "icon": "home",
+      "showOn": {
+        "market": true,
+        "dragDrop": true
+      },
+      "view": "modules/repeatdemo/index.html",
+      "files": ["modules/repeatdemo/controller.js"],
       "scope": {
         "value": "<p style='color:#39a9d3'>Welcome to my </p><p style='color:#d36339'>APP</p>",
         "display" : ""

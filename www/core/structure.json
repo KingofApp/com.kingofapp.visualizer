@@ -17,6 +17,8 @@
       "infoColor": "#5bc0de",
       "warningColor": "#f0ad4e",
       "dangerColor": "#d9534f",
+      "bgPrimary": "#428bca",
+
 
       "primaryTextColor": "#3c4858",
       "primaryBackgroundColor": "#f9fbfc",

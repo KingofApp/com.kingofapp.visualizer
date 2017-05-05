@@ -1,0 +1,47 @@
+<dom-module id="koa-card-group">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      :host .card-deck ::content koa-card:not(:last-child) {
+        margin-right: 15px;
+      }
+      :host .card-deck ::content koa-card:not(:first-child) {
+        margin-left: 15px;
+      }
+
+      :host ::content koa-card {
+        flex: 1 0 0%;
+        -webkit-box-flex: 1;
+        align-self: stretch;
+        -webkit-box-orient: vertical;
+        position: relative;
+      }
+
+      :host ::content koa-card .card {
+        height: 100%;
+      }
+
+    </style>
+    <div class$="[[deck]]">
+      <content></content>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'koa-card-group',
+      properties: {
+        deck: {
+          type: String,
+          value: 'card-group'
+        }
+      },
+      ready: function() {
+        if(Polymer.dom(this).node.getAttribute('deck') !== null)
+        this.deck = 'card-deck';
+      }
+    });
+  </script>
+</dom-module>

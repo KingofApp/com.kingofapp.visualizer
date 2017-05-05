@@ -11,22 +11,52 @@
       :host [hidden] {
         display: none !important;
       }
+
+      .card-block {
+        padding-top: 0!important;
+      }
+
+      :host .card-block:not([class="koa-card"]) {
+        padding-bottom: 0!important;
+      }
+      :host .card-block.koa-card {
+        padding: 1.25rem!important;
+      }
+
+      :host .inverse-color,
+      :host .inverse-color h4,
+      :host .inverse-color h5,
+      :host .inverse-color h6,
+      :host .inverse-color ::content .card-block blockquote footer{
+        color: #fff!important;
+      }
+
+      :host .card-img-top,
+      :host .card-img-bottom {
+        width: inherit!important;
+      }
     </style>
-    <div class$="card {{inverse}} {{color}}">
+    <div class$="card {{alignment}} {{inverse}} {{color}} {{inverseColor}}">
       <div hidden$="[[!header]]" class="card-header">
         {{header}}
       </div>
-      <template is="dom-if" if="[[topPosition]]">
-        <img class="card-img-top" src="{{image}}" alt="Card image cap">
+      <template is="dom-if" if="[[image]]">
+        <template is="dom-if" if="[[topPosition]]">
+          <img class="card-img-top" hidden$="[[!image]]" src="{{image}}" alt="Card image cap">
+        </template>
       </template>
-      <div class$="[[overlays]]">
-        <h4 class="card-title" hidden$="[[!title]]">{{title}}</h4>
-        <h6 class="card-subtitle mb-2 text-muted" hidden$="[[!subtitle]]">{{subtitle}}</h6>
-        <h6 class="card-text" hidden$="[[!text]]">{{text}}</h6>
-        <content></content>
-      </div>
-      <template is="dom-if" if="[[!topPosition]]">
-        <img class="card-img-bottom" src="{{image}}" alt="Card image cap">
+      <template is="dom-if" if="[[hasContent]]">
+        <div class$="[[overlays]]">
+          <h4 class="card-title" hidden$="[[!title]]">{{title}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted" hidden$="[[!subtitle]]">{{subtitle}}</h6>
+          <p class="card-text" hidden$="[[!text]]">{{text}}</p>
+        </div>
+      </template>
+      <content></content>
+      <template is="dom-if" if="[[image]]">
+        <template is="dom-if" if="[[!topPosition]]">
+          <img class="card-img-bottom"  hidden$="[[!image]]" src="{{image}}" alt="Card image cap">
+        </template>
       </template>
     </div>
   </template>
@@ -43,6 +73,10 @@
           value: ''
         },
         inverse: {
+          type: String,
+          value:''
+        },
+        alignment: {
           type: String,
           value:''
         },
@@ -65,9 +99,14 @@
         text: {
           type: String,
           value: ''
+        },
+        hasContent: {
+          type: Boolean,
+          value: false
         }
       },
       ready: function() {
+
         if(Polymer.dom(this).node.getAttribute('img-position') !== null)
           this.topPosition = (Polymer.dom(this).node.getAttribute('img-position') === 'top')  ? true : false;
 
@@ -83,15 +122,42 @@
         if(Polymer.dom(this).node.getAttribute('text') !== null)
           this.text = Polymer.dom(this).node.getAttribute('text');
 
+        if(Polymer.dom(this).node.getAttribute('title') !== null ||
+          Polymer.dom(this).node.getAttribute('subtitle') !== null ||
+          Polymer.dom(this).node.getAttribute('text') !== null) {
+            this.hasContent = true;
+          }
+
+        if(Polymer.dom(this).node.getAttribute('alignment') !== null) {
+          switch (Polymer.dom(this).node.getAttribute('alignment')) {
+            case 'left':
+              this.alignment = '';
+              break;
+            case 'center':
+              this.alignment = 'text-center';
+              break;
+            case 'right':
+              this.alignment = 'text-right';
+              break;
+            default:
+              this.alignment = '';
+          }
+        }
+
         if(Polymer.dom(this).node.getAttribute('inverse') !== null) {
-          this.inverse = Polymer.dom(this).node.getAttribute('card-inverse');
-          this.overlays = 'card-img-overlay';
+          this.inverse = 'card-inverse';
+          if(Polymer.dom(this).node.getAttribute('image') !== null) this.overlays = 'card-img-overlay';
         }
 
         if(Polymer.dom(this).node.getAttribute('color') !== null) {
-          var bg = Polymer.dom(this).node.getAttribute('color');
-          this.color = 'card-inverse card-' + bg;
+          this.color = (Polymer.dom(this).node.getAttribute('color').indexOf('card-') > -1)
+          ? Polymer.dom(this).node.getAttribute('color')
+          : 'card-' + Polymer.dom(this).node.getAttribute('color');
         }
+
+        if(Polymer.dom(this).node.getAttribute('color') !== null
+          && Polymer.dom(this).node.getAttribute('inverse') !== null)
+          this.inverseColor = 'inverse-color';
       }
     });
   </script>

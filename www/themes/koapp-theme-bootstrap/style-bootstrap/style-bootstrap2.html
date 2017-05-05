@@ -1,6 +1,3 @@
-
-<link rel="import" href="../../../bower_components/polymer/polymer.html">
-
 <style is="custom-style">
 /*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
@@ -10,107 +7,42 @@
 
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 
-html /deep/ a {
-  background: transparent;
-}
-html /deep/ mark {
-  color: #000;
-  background: #ff0;
-}
-html /deep/ fieldset {
-  padding: .35em .625em .75em;
-  margin: 0 2px;
-  border: 1px solid #c0c0c0;
-}
-@media print {
-  html /deep/ * {
-    color: #000 !important;
-    text-shadow: none !important;
-    background: transparent !important;
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-  }
-  html /deep/ pre,
-  html /deep/ blockquote {
-    border: 1px solid #999;
 
-    page-break-inside: avoid;
-  }
-  html /deep/ select {
-    background: #fff !important;
-  }
-  html /deep/ .table td,
-  html /deep/ .table th {
-    background-color: #fff !important;
-  }
-  html /deep/ .btn > .caret,
-  html /deep/ .dropup > .btn > .caret {
-    border-top-color: #000 !important;
-  }
-  html /deep/ .label {
-    border: 1px solid #000;
-  }
-  html /deep/ .table-bordered th,
-  html /deep/ .table-bordered td {
-    border: 1px solid #ddd !important;
-  }
-}
 html /deep/ body {
   /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
-}
-html /deep/ a {
-  color: #428bca;
-  text-decoration: none;
-}
-html /deep/ a:hover,
-html /deep/ a:focus {
-  color: #2a6496;
-  text-decoration: underline;
-}
-
-html /deep/ .img-thumbnail {
-  display: inline-block;
-  width: 100% \9;
-  max-width: 100%;
-  height: auto;
-  padding: 4px;
-  line-height: 1.42857143;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: all .2s ease-in-out;
-       -o-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
+  color: var(--primary-text-color)!important;
+  background-color: var(--background-color)!important;
 }
 
 html /deep/ h1,
 html /deep/ h2,
-html /deep/ h3,
+html /deep/ h3 {
+  color: var(--primary-text-color)!important;
+}
 html /deep/ h4,
 html /deep/ h5,
-html /deep/ h6,
-html /deep/ .h1,
-html /deep/ .h2,
-html /deep/ .h3,
-html /deep/ .h4,
-html /deep/ .h5,
-html /deep/ .h6 {
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
-  color: inherit;
+html /deep/ h6 {
+  color: var(--secondary-text-color)!important;
 }
+html /deep/ a {
+  color: #428bca;
+}
+html /deep/ a:hover,
+html /deep/ a:focus {
+  color: #2a6496;
+}
+
+html /deep/ .img-thumbnail {
+  background-color: #fff;
+}
+
 html /deep/ mark,
 html /deep/ .mark {
-  padding: .2em;
   background-color: #fcf8e3;
 }
 html /deep/ .text-muted {
-  color: #777;
+  color: var(--muted-color);
 }
 html /deep/ .text-primary {
   color: var(--primary-color);
@@ -144,34 +76,34 @@ html /deep/ a.text-danger:hover {
 }
 html /deep/ .bg-primary {
   color: #fff;
-  background-color: #428bca;
+  background-color: var(--primary-background-color)!important;
 }
 html /deep/ a.bg-primary:hover {
-  background-color: #3071a9;
+  background-color: var(--primary-color)!important;
 }
 html /deep/ .bg-success {
-  background-color: #dff0d8;
+  background-color: var(--success-background-color)!important;
 }
 html /deep/ a.bg-success:hover {
-  background-color: #c1e2b3;
+  background-color: var(--success-color)!important;
 }
 html /deep/ .bg-info {
-  background-color: #d9edf7;
+  background-color: var(--info-background-color)!important;
 }
 html /deep/ a.bg-info:hover {
-  background-color: #afd9ee;
+  background-color: var(--info-color)!important;
 }
 html /deep/ .bg-warning {
-  background-color: #fcf8e3;
+  background-color: var(--warning-background-color)!important;
 }
 html /deep/ a.bg-warning:hover {
-  background-color: #f7ecb5;
+  background-color: var(--warning-color)!important;
 }
 html /deep/ .bg-danger {
-  background-color: #f2dede;
+  background-color: var(--danger-background-color)!important;
 }
 html /deep/ a.bg-danger:hover {
-  background-color: #e4b9b9;
+  background-color: var(--danger-color)!important;
 }
 html /deep/ .page-header {
   padding-bottom: 9px;
@@ -559,89 +491,74 @@ html /deep/ .help-block {
   color: #737373;
 }
 
-html /deep/ .btn:focus,
-html /deep/ .btn:active:focus,
-html /deep/ .btn.active:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
 html /deep/ .btn:hover,
 html /deep/ .btn:focus {
   color: #333;
   text-decoration: none;
 }
-html /deep/ .btn:active,
-html /deep/ .btn.active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+
+html /deep/ .btn-secondary {
+  color: var(--secondary-text-color)!important;
+  background-color: var(--divider-color)!important;
+  border-color: var(--disabled-color)!important;
 }
-html /deep/ .btn.disabled,
-html /deep/ .btn[disabled],
-html /deep/ fieldset[disabled] .btn {
-  pointer-events: none;
-  cursor: not-allowed;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  opacity: .65;
-}
-html /deep/ .btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
-}
-html /deep/ .btn-default:hover,
-html /deep/ .btn-default:focus,
-html /deep/ .btn-default:active,
-html /deep/ .btn-default.active,
-html /deep/ .open > .dropdown-toggle.btn-default {
+html /deep/ .btn-secondary:hover,
+html /deep/ .btn-secondary:focus,
+html /deep/ .btn-secondary:active,
+html /deep/ .btn-secondary.active,
+html /deep/ .open > .dropdown-toggle.btn-secondary {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
-html /deep/ .btn-default:active,
-html /deep/ .btn-default.active,
-html /deep/ .open > .dropdown-toggle.btn-default {
+html /deep/ .btn-secondary:active,
+html /deep/ .btn-secondary.active,
+html /deep/ .open > .dropdown-toggle.btn-secondary {
   background-image: none;
 }
-html /deep/ .btn-default.disabled,
-html /deep/ .btn-default[disabled],
-html /deep/ fieldset[disabled] .btn-default,
-html /deep/ .btn-default.disabled:hover,
-html /deep/ .btn-default[disabled]:hover,
-html /deep/ fieldset[disabled] .btn-default:hover,
-html /deep/ .btn-default.disabled:focus,
-html /deep/ .btn-default[disabled]:focus,
-html /deep/ fieldset[disabled] .btn-default:focus,
-html /deep/ .btn-default.disabled:active,
-html /deep/ .btn-default[disabled]:active,
-html /deep/ fieldset[disabled] .btn-default:active,
-html /deep/ .btn-default.disabled.active,
-html /deep/ .btn-default[disabled].active,
-html /deep/ fieldset[disabled] .btn-default.active {
+html /deep/ .btn-secondary.disabled,
+html /deep/ .btn-secondary[disabled],
+html /deep/ fieldset[disabled] .btn-secondary,
+html /deep/ .btn-secondary.disabled:hover,
+html /deep/ .btn-secondary[disabled]:hover,
+html /deep/ fieldset[disabled] .btn-secondary:hover,
+html /deep/ .btn-secondary.disabled:focus,
+html /deep/ .btn-secondary[disabled]:focus,
+html /deep/ fieldset[disabled] .btn-secondary:focus,
+html /deep/ .btn-secondary.disabled:active,
+html /deep/ .btn-secondary[disabled]:active,
+html /deep/ fieldset[disabled] .btn-secondary:active,
+html /deep/ .btn-secondary.disabled.active,
+html /deep/ .btn-secondary[disabled].active,
+html /deep/ fieldset[disabled] .btn-secondary.active {
   background-color: #fff;
   border-color: #ccc;
 }
-html /deep/ .btn-default .badge {
+html /deep/ .badge-default {
   color: #fff;
-  background-color: #333;
+  background-color: var(--default-color)!important;
 }
 html /deep/ .btn-primary {
   color: #fff;
-  background-color: var(--primary-color);
-  border-color: #357ebd;
+  background-color: var(--primary-color)!important;
+  border-color: var(--primary-border-color) !important;
+}
+html /deep/ .btn-outline-primary {
+  color: var(--primary-color)!important;
+  border-color: var(--primary-border-color) !important;
 }
 html /deep/ .btn-primary:hover,
 html /deep/ .btn-primary:focus,
 html /deep/ .btn-primary:active,
 html /deep/ .btn-primary.active,
+html /deep/ .btn-outline-primary:hover,
+html /deep/ .btn-outline-primary:focus,
+html /deep/ .btn-outline-primary:active,
+html /deep/ .btn-outline-primary.active,
 html /deep/ .open > .dropdown-toggle.btn-primary {
-  color: #fff;
-  background-color: #3071a9;
-  border-color: #285e8e;
+  color: #fff!important;
+  background-color: var(--primary-active-color) !important;
+  border-color: var(--primary-border-color) !important;
 }
 html /deep/ .btn-primary:active,
 html /deep/ .btn-primary.active,
@@ -663,26 +580,34 @@ html /deep/ fieldset[disabled] .btn-primary:active,
 html /deep/ .btn-primary.disabled.active,
 html /deep/ .btn-primary[disabled].active,
 html /deep/ fieldset[disabled] .btn-primary.active {
-  background-color: #428bca;
-  border-color: #357ebd;
+  background-color: var(--primary-color)!important;
+  border-color: var(--primary-border-color)!important;
 }
-html /deep/ .btn-primary .badge {
-  color: #428bca;
-  background-color: #fff;
+html /deep/ .badge-primary {
+  color: #fff;
+  background-color: var(--primary-color)!important;
 }
 html /deep/ .btn-success {
   color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+  background-color: var(--success-color)!important;
+  border-color: var(--success-border-color)!important;
+}
+html /deep/ .btn-outline-success {
+  color: var(--success-color)!important;
+  border-color: var(--success-border-color) !important;
 }
 html /deep/ .btn-success:hover,
 html /deep/ .btn-success:focus,
 html /deep/ .btn-success:active,
 html /deep/ .btn-success.active,
+html /deep/ .btn-outline-success:hover,
+html /deep/ .btn-outline-success:focus,
+html /deep/ .btn-outline-success:active,
+html /deep/ .btn-outline-success.active,
 html /deep/ .open > .dropdown-toggle.btn-success {
-  color: #fff;
-  background-color: #449d44;
-  border-color: #398439;
+  color: #fff!important;
+  background-color: var(--success-active-color)!important;
+  border-color: var(--success-border-color)!important;
 }
 html /deep/ .btn-success:active,
 html /deep/ .btn-success.active,
@@ -707,23 +632,31 @@ html /deep/ fieldset[disabled] .btn-success.active {
   background-color: #5cb85c;
   border-color: #4cae4c;
 }
-html /deep/ .btn-success .badge {
-  color: #5cb85c;
-  background-color: #fff;
+html /deep/ .badge-success {
+  background-color: var(--success-color)!important;
+  color: #fff;
 }
 html /deep/ .btn-info {
   color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  background-color: var(--info-color)!important;
+  border-color: var(--info-border-color)!important;
+}
+html /deep/ .btn-outline-info {
+  color: var(--info-color)!important;
+  border-color: var(--info-border-color) !important;
 }
 html /deep/ .btn-info:hover,
 html /deep/ .btn-info:focus,
 html /deep/ .btn-info:active,
 html /deep/ .btn-info.active,
+html /deep/ .btn-outline-info:hover,
+html /deep/ .btn-outline-info:focus,
+html /deep/ .btn-outline-info:active,
+html /deep/ .btn-outline-info.active,
 html /deep/ .open > .dropdown-toggle.btn-info {
-  color: #fff;
-  background-color: #31b0d5;
-  border-color: #269abc;
+  color: #fff!important;
+  background-color: var(--info-active-color)!important;
+  border-color: var(--info-border-color)!important;
 }
 html /deep/ .btn-info:active,
 html /deep/ .btn-info.active,
@@ -748,23 +681,31 @@ html /deep/ fieldset[disabled] .btn-info.active {
   background-color: #5bc0de;
   border-color: #46b8da;
 }
-html /deep/ .btn-info .badge {
-  color: #5bc0de;
-  background-color: #fff;
+html /deep/ .badge-info {
+  background-color: var(--info-color)!important;
+  color: #fff;
 }
 html /deep/ .btn-warning {
   color: #fff;
-  background-color: #f0ad4e;
-  border-color: #eea236;
+  background-color: var(--warning-color)!important;
+  border-color: var(--warning-border-color)!important;
+}
+html /deep/ .btn-outline-warning {
+  color: var(--warning-color)!important;
+  border-color: var(--warning-border-color) !important;
 }
 html /deep/ .btn-warning:hover,
 html /deep/ .btn-warning:focus,
 html /deep/ .btn-warning:active,
 html /deep/ .btn-warning.active,
+html /deep/ .btn-outline-warning:hover,
+html /deep/ .btn-outline-warning:focus,
+html /deep/ .btn-outline-warning:active,
+html /deep/ .btn-outline-warning.active,
 html /deep/ .open > .dropdown-toggle.btn-warning {
-  color: #fff;
-  background-color: #ec971f;
-  border-color: #d58512;
+  color: #fff!important;
+  background-color: var(--warning-active-color)!important;
+  border-color: var(--warning-border-color);
 }
 html /deep/ .btn-warning:active,
 html /deep/ .btn-warning.active,
@@ -789,23 +730,31 @@ html /deep/ fieldset[disabled] .btn-warning.active {
   background-color: #f0ad4e;
   border-color: #eea236;
 }
-html /deep/ .btn-warning .badge {
-  color: #f0ad4e;
-  background-color: #fff;
+html /deep/ .badge-warning {
+  background-color: var(--warning-color)!important;
+  color: #fff;
 }
 html /deep/ .btn-danger {
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  background-color: var(--danger-color)!important;
+  border-color: var(--danger-border-color)!important;
+}
+html /deep/ .btn-outline-danger {
+  color: var(--danger-color)!important;
+  border-color: var(--danger-border-color) !important;
 }
 html /deep/ .btn-danger:hover,
 html /deep/ .btn-danger:focus,
 html /deep/ .btn-danger:active,
 html /deep/ .btn-danger.active,
+html /deep/ .btn-outline-danger:hover,
+html /deep/ .btn-outline-danger:focus,
+html /deep/ .btn-outline-danger:active,
+html /deep/ .btn-outline-danger.active,
 html /deep/ .open > .dropdown-toggle.btn-danger {
-  color: #fff;
-  background-color: #c9302c;
-  border-color: #ac2925;
+  color: #fff!important;
+  background-color: var(--danger-active-color)!important;
+  border-color: var(--danger-border-color)!important;
 }
 html /deep/ .btn-danger:active,
 html /deep/ .btn-danger.active,
@@ -830,9 +779,9 @@ html /deep/ fieldset[disabled] .btn-danger.active {
   background-color: #d9534f;
   border-color: #d43f3a;
 }
-html /deep/ .btn-danger .badge {
-  color: #d9534f;
-  background-color: #fff;
+html /deep/ .badge-danger {
+  background-color: var(--danger-color)!important;
+  color: #fff;
 }
 html /deep/ .btn-link {
   font-weight: normal;
@@ -867,6 +816,33 @@ html /deep/ fieldset[disabled] .btn-link:focus {
   color: #777;
   text-decoration: none;
 }
+
+html /deep/ .card-primary {
+  background-color: var(--primary-color)!important;
+  color: #fff!important;
+  border: none!important;
+}
+html /deep/ .card-success {
+  background-color: var(--success-color)!important;
+  color: #fff!important;
+  border: none!important;
+}
+html /deep/ .card-info {
+  background-color: var(--info-color)!important;
+  color: #fff!important;
+  border: none!important;
+}
+html /deep/ .card-warning {
+  background-color: var(--warning-color)!important;
+  color: #fff!important;
+  border: none!important;
+}
+html /deep/ .card-danger {
+  background-color: var(--danger-color)!important;
+  color: #fff!important;
+  border: none!important;
+}
+
 html /deep/ .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1395,18 +1371,7 @@ html /deep/ .label-danger[href]:focus {
   background-color: #c9302c;
 }
 html /deep/ .badge {
-  display: inline-block;
-  min-width: 10px;
-  padding: 3px 7px;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 1;
   color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  background-color: #777;
-  border-radius: 10px;
 }
 html /deep/ a.badge:hover,
 html /deep/ a.badge:focus {
@@ -1458,48 +1423,46 @@ html /deep/ .alert h4 {
   color: inherit;
 }
 html /deep/ .alert-success {
-  color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+  color: var(--success-color)!important;
+  background-color: var(--success-background-color)!important;
+  border-color: var(--success-border-color)!important;
 }
 html /deep/ .alert-success hr {
   border-top-color: #c9e2b3;
 }
 html /deep/ .alert-success .alert-link {
-  color: #2b542c;
+  color: var(--success-active-color)!important;
 }
 html /deep/ .alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  color: var(--info-color)!important;
+  background-color: var(--info-background-color)!important;
+  border-color: var(--info-border-color)!important;
 }
 html /deep/ .alert-info hr {
   border-top-color: #a6e1ec;
 }
 html /deep/ .alert-info .alert-link {
-  color: #245269;
+  color: var(--info-active-color)!important;
 }
 html /deep/ .alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+  color: var(--warning-color)!important;
+  background-color: var(--warning-background-color)!important;
+  border-color: var(--warning-border-color)!important;
 }
 html /deep/ .alert-warning hr {
   border-top-color: #f7e1b5;
 }
 html /deep/ .alert-warning .alert-link {
-  color: #66512c;
+  color: var(--warning-active-color)!important;
 }
 html /deep/ .alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
+  color: var(--danger-color)!important;
+  background-color: var(--danger-background-color)!important;
+  border-color: var(--danger-border-color)!important;
 }
-html /deep/ .alert-danger hr {
-  border-top-color: #e4b9c0;
-}
+
 html /deep/ .alert-danger .alert-link {
-  color: #843534;
+  color: var(--danger-active-color)!important;
 }
 html /deep/ .progress {
   height: 20px;
@@ -1848,10 +1811,7 @@ html /deep/ .well {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
 }
-html /deep/ .well blockquote {
-  border-color: #ddd;
-  border-color: rgba(0, 0, 0, .15);
-}
+
 html /deep/ .close {
   float: right;
   font-size: 21px;

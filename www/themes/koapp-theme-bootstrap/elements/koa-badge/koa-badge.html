@@ -36,7 +36,9 @@
 
       ready: function() {
         if(Polymer.dom(this).node.getAttribute('color') !== null)
-        this.color = 'badge-' + Polymer.dom(this).node.getAttribute('color');
+        this.color = ((Polymer.dom(this).node.getAttribute('color')).indexOf('badge-') > -1)
+        ? Polymer.dom(this).node.getAttribute('color')
+        :'badge-' + Polymer.dom(this).node.getAttribute('color');
 
         if(Polymer.dom(this).node.getAttribute('pill') !== null)
         this.form = 'badge-pill';

@@ -11,7 +11,7 @@
       }
     </style>
 
-    <button type="button" class$="btn {{size}} {{color}} {{isDisabled}} {{isActive}}">
+    <button type="button" class$="btn {{size}} {{color}} {{isDisabled}} {{isActive}} {{isBlock}}">
       <content></content>
     </button>
   </template>
@@ -22,14 +22,15 @@
       properties: {
         color: {
           type: String,
-          value: 'btn-default'
+          value: 'btn-secondary'
         },
         size: {
           type: String,
           value: 'btn-md'
         },
         isActive: String,
-        isDisabled: String
+        isDisabled: String,
+        isBlock: String
       },
 
 
@@ -38,8 +39,10 @@
       ],
 
       ready: function() {
+
         if(Polymer.dom(this).node.getAttribute('active') !== null) this.isActive = 'active';
         if(Polymer.dom(this).node.getAttribute('disabled') !== null) this.isDisabled = 'disabled';
+        if(Polymer.dom(this).node.getAttribute('block') !== null) this.isDisabled = 'btn-block';
       }
     });
   </script>

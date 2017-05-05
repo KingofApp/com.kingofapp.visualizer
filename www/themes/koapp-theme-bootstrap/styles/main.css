@@ -18,8 +18,3 @@ android-card {
 form {
   margin: 15px;
 }
-
-form android-button {
-  float: right;
-  margin-top: 15px;
-}

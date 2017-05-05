@@ -76,22 +76,24 @@
         if (themeIsNotImported) {
           console.log('THEME PATH', this.theme.path);
           this.importHref(this.theme.path, function() {
-            this.renderThemeElements(callback);
+            // this.renderThemeElements(callback);
             this.importedThemes.push(this.theme.identifier);
           });
-        } else {
-          this.renderThemeElements(callback);
+
+          callback();
         }
+        // else {
+        //   this.renderThemeElements(callback);
+        // }
       },
 
       renderThemeElements: function() {
-        // this.tree.forEach(function(elementObject) {
-        //   this._renderThemeElement(elementObject);
-        // }, this);
-
         // if (callback) {
         //   setTimeout(callback, 0);  // nextTick
         // }
+        // if (typeof callback === 'function') {
+        //   setTimeout(callback, 0);  // nextTick
+        //  }
       },
 
       setIconset: function(iconset) {

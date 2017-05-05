@@ -1,17 +1,21 @@
 <div class="module html" ng-controller="repeatdemoController">
-<!--Sample single card-->
-<koa-card id="xy" listen imageb="http://placehold.it/150/92c952" headingb="TEXT">
-  <div class="card-actions">
-    <koa-button>Some action</koa-button>
-  </div>
-</koa-card>
+<!--Regular Button-->
+<button ng-click='doSomething($event)' > RegularOuter Click</button>
+
+<!--Regular Button-->
+<koa-button ng-click='update($event)' >KoaOuter CLICK</koa-button>
+
+
 <!--Sample repeated card-->
-<koa-card listen ng-repeat="n in sampleData" imageb="{{n.thumbnailUrl}}" headingb="{{n.title}}">
-  <strong>{{n.title}}</strong>
+<koa-card listen ng-repeat="n in sampleData" koa-image="{{n.thumbnailUrl}}" koa-heading="{{n.title}}" caption="Remove" content="{{n.title}}">
+  <div class="content">
+  </div>
   <div class="card-actions">
-    <koa-button>Some action</koa-button>
+    <koa-button ng-click="doSomething()">Some action</koa-button>
+    <koa-button class="caption" ng-click="remove()">Remove</koa-button>
   </div>
 </koa-card>
+
 
 
 <div>

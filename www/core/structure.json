@@ -113,6 +113,11 @@
             "bgColor": ""
           },
           {
+            "path": "/menu-abcd/facebook",
+            "bgImage": "",
+            "bgColor": ""
+          },
+          {
             "path": "/menu-abcd/map-abcd",
             "bgImage": "",
             "bgColor": ""
@@ -152,6 +157,124 @@
         "display" : ""
       }
     },
+    "/menu-abcd/facebook": {
+      "name": "Facebook Feed",
+      "identifier": "facebookfeed",
+      "icon": "facebook",
+      "type": "A",
+      "version": "1.0.9",
+      "author": "King of App",
+      "category": [
+        "others"
+      ],
+      "view": "modules/koapp-module-facebookfeed/index.html",
+      "files": [
+        "modules/koapp-module-facebookfeed/controller.js",
+        "modules/koapp-module-facebookfeed/style.css"
+      ],
+      "libs": [
+        {
+          "bower": { "moment": "^2.11.2" },
+          "src": "bower_components/moment/moment.js"
+        }
+      ],
+      "scope": {
+        "accesstoken": "1589974041318229|xyI5PQyxjQoyAMfl0TJAe4JozMA",
+        "pageid": "50689135867",
+        "inverse": "false",
+        "imgPosition": "bottom",
+        "color": "",
+        "alignment": ""
+      },
+      "config": [{
+        "templateOptions": {
+          "label": "accesstoken",
+          "required": true,
+          "description": "token de acceso"
+        },
+        "type": "input",
+        "key": "accesstoken"
+      }, {
+        "key": "pageid",
+        "templateOptions": {
+          "label": "pageid",
+          "required": true,
+          "description": "id de la pagina"
+        },
+        "type": "input"
+      },
+      {
+        "type": "select",
+        "key": "inverse",
+        "templateOptions": {
+          "description": "Inverse cards",
+          "label": "inverse",
+          "options": [
+            {"name": "true", "value": "true" },
+            {"name": "false", "value": "false" }
+          ]
+        }
+      },
+      {
+        "type": "select",
+        "key": "imgPosition",
+        "hideExpression": "model.inverse",
+        "templateOptions": {
+          "description": "Image position",
+          "label": "img-position",
+          "options": [
+            {"name": "Top", "value": "top" },
+            {"name": "Bottom", "value": "bottom" }
+          ]
+        }
+      },
+      {
+        "type": "select",
+        "key": "color",
+        "hideExpression": "!model.inverse",
+        "templateOptions": {
+          "description": "Card color",
+          "label": "color",
+          "options": [
+            {"name": "Primary", "value": "primary" },
+            {"name": "Success", "value": "success" },
+            {"name": "Info", "value": "info" },
+            {"name": "Warning", "value": "warning" },
+            {"name": "Danger", "value": "danger" },
+            {"name": "Outline Primary", "value": "outline-primary" },
+            {"name": "Outline Success", "value": "outline-success" },
+            {"name": "Outline Info", "value": "outline-info" },
+            {"name": "Outline Warning", "value": "outline-warning" },
+            {"name": "Outline Danger", "value": "outline-danger" }
+          ]
+        }
+      },
+      {
+        "type": "select",
+        "key": "alignment",
+        "templateOptions": {
+          "description": "Content Alignment",
+          "label": "alignment",
+          "options": [
+            {"name": "Left", "value": "left" },
+            {"name": "Center", "value": "center" },
+            {"name": "Right", "value": "right" }
+          ]
+        }
+      },
+      {
+        "type": "frame",
+        "templateOptions": {
+          "url": "/modules/koapp-module-facebookfeed/builder/index.html#/config",
+          "label": "Iframe config button",
+          "buttonText": "Config Service",
+          "description": "",
+          "width": "",
+          "height": ""
+        }
+      }]
+    }
+,
     "/menu-abcd/elements-abcd": {
       "name": "Elements",
       "identifier": "demo",

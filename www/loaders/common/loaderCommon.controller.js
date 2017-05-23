@@ -5,10 +5,11 @@
     .module('king.loaders.common')
     .controller('commonLoaderCtrl', commonLoaderCtrl);
 
-  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'angularLoader', '$timeout', '$translate', 'trafficGuardiaCivil'];
+  commonLoaderCtrl.$inject = ['$scope', '$interval', '$rootScope', '$route', '$location', 'structureService', 'smartMethodService', 'angularLoader', '$timeout', '$translate', 'trafficGuardiaCivil'];
 
-  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, $timeout, $translate, trafficGuardiaCivil) {
+  function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, smartMethodService, angularLoader, $timeout, $translate, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
+    registerKoappVariable(this);
 
     // Unexpected window size
     if (window.innerHeight < 80 && window.innerHeight != 0) {
@@ -315,5 +316,15 @@
         $rootScope.showTransition = ($rootScope.showTransition) ? false : $rootScope.showTransition;
       }, 3000);
     }
+
+    function registerKoappVariable() {
+      if (!window.koapp || !window.koapp.structureService || !window.koapp.smartMethodService) {
+        window.koapp = {
+          structureService: structureService,
+          smartMethodService: smartMethodService
+        };
+      }
+    }
+    
   }
 }());

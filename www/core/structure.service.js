@@ -310,6 +310,9 @@
               modulescope: modules[key].scope
             };
           }
+          if (value.type === '$') {
+            window.koapp[modules[key].identifier]();
+          }
         });
       });
     }

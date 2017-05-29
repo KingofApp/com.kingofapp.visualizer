@@ -6,8 +6,7 @@
       config = require('./screenCaps.config.json'),
       paths = require('./screenCaps.paths.json').paths,
       platform = config.platform,
-      width = config.dimensions.width,
-      height = config.dimensions.height;
+      dimensions = config.dimensions;
 
   describe('App screens', function() {
     shell.mkdir('-p', 'screenshots');
@@ -19,7 +18,17 @@
       browser.ignoreSynchronization = true;
     });
 
-    describe('App screenshots', function() {
+    describe('Device screenshots', function() {
+
+      takeScrenshot('handset');
+      takeScrenshot('tablet');
+
+      it('protractor close the browser when screenshoots has been taken', function() {
+        browser.close();
+        return true;
+      })
+    });
+    function takeScrenshot(device) {
       var i = 0;
       for (var path in paths) {
         it ('protractor takes a screenshot at ' + path + '-' + paths[i], function() {
@@ -31,12 +40,12 @@
             resul.then(function() {
               browser.takeScreenshot().then( function(data) {
                 var base64Data = data.replace(/^data:image\/jpg;base64,/, '');
-                fs.writeFile('screenshot-' + i + '.jpg', base64Data, 'base64', function(err) {
-                  if (!err) sharp('screenshot-' + i + '.jpg')
-                              .resize(width, height, {interpolator: sharp.interpolator.nohalo})
+                fs.writeFile(device + '-screenshot-' + i + '.jpg', base64Data, 'base64', function(err) {
+                  if (!err) sharp(device + '-screenshot-' + i + '.jpg')
+                              .resize(dimensions[device].width, dimensions[device].height, {interpolator: sharp.interpolator.nohalo})
                               .embed()
                               .ignoreAspectRatio()
-                              .toFile(platform + '-' + i + '.jpg', function(err) {
+                              .toFile(device + '-' + platform + '-' + i + '.jpg', function(err) {
                                 if (err) console.error(err);
                               });
                 });
@@ -46,14 +55,8 @@
             return resul; // keeps waiting until this statement resolves to true
           }, 10000, 'message to log to console if element is not present after that time');
         });
-      }
-
-      it('protractor close the browser when screenshoots has been taken', function() {
-        browser.close();
-        return true;
-      })
-    });
-
+      }   
+    }
     afterEach(function() {
       browser.ignoreSynchronization = false;
     });

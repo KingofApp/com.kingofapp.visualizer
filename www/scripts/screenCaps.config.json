@@ -3,7 +3,13 @@
   "min": 2,
   "max": 6,
   "dimensions": {
-      "width":  1242,
-      "height":  2208
+    "handset": {
+      "width": 1242,
+      "height": 2208
+    },
+    "tablet": {
+      "width": 2048,
+      "height": 2732
     }
+  }
 }

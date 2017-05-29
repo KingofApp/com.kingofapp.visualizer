@@ -9,7 +9,8 @@ module.exports = {
   checkElementToBe     : checkElementToBe,
   checkElementToExist  : checkElementToExist,
   elementExist         : elementExist,
-  checkUrl             : checkUrl
+  checkUrl             : checkUrl,
+  setValue             : setValue
 };
 
 function checkAttributeToContain(elementId, valueExpected, attribbute, toContain) {
@@ -76,4 +77,10 @@ function correctImage(elementId, expectedValue) {
   element.all(by.css(elementId)).first().getAttribute('src').then(function(value) {
     expect(value).toContain(expectedValue);
   });
+}
+
+function setValue(elementName, elementValue, clear) {
+  isPresent(elementName, true);
+  if (clear) element(by.css(elementName)).clear();
+  element(by.css(elementName)).sendKeys(elementValue);
 }

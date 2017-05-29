@@ -212,7 +212,7 @@
           if (structureService.getIndex() === '' && $location.$$path !== '/') {
             $location.path('/404');
           }
-        } else if (isAngularModule(module.type)) {
+        } else {
           $rootScope.current = module.identifier || $rootScope.current;
           $rootScope.previous = $location.$$path || $rootScope.previous;
 
@@ -225,10 +225,7 @@
             $rootScope.rootTemplate = url;
           });
 
-        } else if (isJqueryModule(module.type)) {
-          // TODO: Load jquery module from angular
-        } else {
-          // TODO: Display error and blame developer
+        
         }
       }, function() {
         $location.path('/404');
@@ -244,14 +241,6 @@
       if ($rootScope.backUrl[$rootScope.backUrl.length-1]!=$location.$$path) {
         $rootScope.backUrl.push($location.$$path);
       }
-    }
-
-    function isAngularModule(type) {
-      return type === 'A';
-    }
-
-    function isJqueryModule(type) {
-      return type === '$';
     }
 
     function isFromGoogleFonts(url) {

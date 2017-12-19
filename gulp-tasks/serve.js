@@ -1,38 +1,35 @@
 'use strict';
 
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-
-var serve = function(baseDir) {
-  browserSync({
-    port: 9001,
-    notify: false,
-    logPrefix: 'KOA',
-    snippetOptions: {
-      rule: {
-        match: '<span id="browser-sync-binding"></span>',
-        fn: function(snippet) {
-          return snippet;
-        }
-      }
-    },
-    server: {
-      baseDir: baseDir,
-      middleware: function(req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
-      }
-    }
-  });
-};
+// Dependencies
+var gulp       = require('gulp')
+var nodemon    = require('nodemon')
+var opn        = require('opn')
+var livereload = require('gulp-livereload')
+var path       = require('path')
+var config     = require('../config.json')
+var start      = true
 
 // Serve project and watch files for changes
 gulp.task('serve', ['lint'], function() {
-  serve(['www']);
+  gulp.watch(config.lint, ['lint']);
 
-  gulp.watch(['www/core/structure.json'], reload);
-  gulp.watch(['www/**/*.{html,js}', '!www/bower_components/**/*'], ['lint', reload]);
-  gulp.watch(['www/styles/**/*.css'], reload);
-  gulp.watch(['www/images/**/*'], reload);
-});
+  livereload.listen()
+  // Serve project
+  nodemon({
+    script: path.resolve(__dirname, '..', config.services, 'server.js'),
+    stdout: false,
+    ext: 'js json html css',
+    watch: path.resolve(__dirname, '..', config.folder)
+  })
+  // Watch changes
+  .on('readable', function() {
+    this.stdout.on('data', function(chunk) {
+      livereload.reload()
+      process.stdout.write(chunk)
+      if (start) {
+        opn('http://localhost:' + config.port)
+        start = false
+      }
+    })
+  })
+})

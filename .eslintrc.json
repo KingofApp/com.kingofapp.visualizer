@@ -21,6 +21,8 @@
     "html"
   ],
   "globals": {
+    "__dirname": false,
+    "process": false,
     "Polymer": false,
     "WebFont": false,
     "_": false,

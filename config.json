@@ -1,0 +1,15 @@
+{
+  "port": 9001,
+  "folder": "www",
+  "services": "services",
+  "lint": [
+    "gulpfile.js",
+    "gulp-tasks/**/*.js",
+    "services/**/*.js",
+    "www/**/*.{html,js}",
+    "!www/bower_components/**/*",
+    "!www/modules/**/*",
+    "!www/themes/**/*",
+    "!www/spinners/**/*"
+  ]
+}

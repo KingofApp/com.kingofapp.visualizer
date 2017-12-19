@@ -2,3 +2,14 @@ node_modules/
 bower_components/
 dist/
 .tmp/
+yarn-error.log
+www/modules/
+www/services/
+www/spinners/
+services/
+!services/server.js
+!www/modules/demo/
+!www/modules/googlemap/
+!www/modules/html/
+!www/modules/polymermenu/
+!www/modules/static_404/

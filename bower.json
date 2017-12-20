@@ -19,12 +19,12 @@
     "iron-icons": "PolymerElements/iron-icons#^1.1.0",
     "jquery": "2.x",
     "lodash": "^4.6.0",
-    "mocha": "2.2.x",
     "oclazyload": "~1.0.9",
     "polymer": "Polymer/polymer#^1.2.0",
-    "protractor": "2.1.x",
     "webfontloader": "^1.6.24",
     "angular-indexedDB": "angularjs-indexedDB#*",
-    "angular-slugify": "^1.0.1"
+    "angular-slugify": "^1.0.1",
+    "iframe-resizer": "^3.5.15",
+    "koa-behaviors": "^0.11.0"
   }
 }

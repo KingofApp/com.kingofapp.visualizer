@@ -23,6 +23,9 @@ var serve = function(baseDir) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
       }
+    },
+    ui: {
+      port: 3002
     }
   });
 };

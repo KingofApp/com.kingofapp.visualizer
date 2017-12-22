@@ -99,6 +99,6 @@ a, a:hover, a:link, a:active {
 }
 
 /* Hidden scroll bar */
-#main-king ::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }

@@ -97,3 +97,8 @@ a, a:hover, a:link, a:active {
   z-index: 2;
   overflow: auto;
 }
+
+/* Hidden scroll bar */
+::-webkit-scrollbar {
+  display: none;
+}

@@ -56,6 +56,7 @@
       getChildren: getChildren,
       validateScope: validateScope,
       registerModule: registerModule,
+      registerChildrenViewModule: registerChildrenViewModule,
       update: update,
       onChange: onChange
     };
@@ -280,7 +281,7 @@
           path = path.replace(new RegExp('\/' + value + '$'), '');
         }
       });
-      
+
       callback(moduleList);
     }
 
@@ -294,13 +295,19 @@
       if (empty) {
         return 'core/missing.html';
       }
+      // console.log('log', module.view)
       return module.view;
     }
 
     function registerModule($location, $scope, item) {
+      // console.log('registerModule', item);
       getCurrentModules($location, function(modules) {
+        // console.log(modules);
         angular.forEach(modules, function(value, key) {
           if (modules[key + 1]) {
+            // console.log('CHIULDREN', getChildren(modules[key + 1].path))
+            // console.log('unooo y es ', modules[key])
+            // console.log('dosss y es ', modules[key + 1])
             $scope[modules[key + 1].identifier + 'Template'] = validateScope(modules[key]);
           }
           if (modules[key].identifier === item) {
@@ -312,6 +319,26 @@
           }
         });
       });
+    }
+
+    function registerChildrenViewModule($location, $scope, item) {
+      var childrenTemplates = [];
+      getCurrentModules($location, function(modules) {
+        angular.forEach(modules, function(value, key) {
+          if (modules[key].identifier === item) {
+            var childrenModules = getChildren(modules[key].path);
+            // console.log('childrenModules', childrenModules);
+            if (modules[key].childrenPaths) {
+              modules[key].childrenPaths.forEach(function(childrenPath) {
+                // console.log(childrenModules[childrenPath]);
+                childrenTemplates.push(validateScope(childrenModules[childrenPath]));
+              });
+            }
+          }
+        });
+      });
+      // console.log('children2', childrenTemplates)
+      $scope.childrenTemplates = childrenTemplates;
     }
 
     function update(newData) {

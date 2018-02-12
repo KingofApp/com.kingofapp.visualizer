@@ -12,7 +12,8 @@ gulp.task('lint', function() {
     '!www/bower_components/**/*',
     '!www/modules/**/*',
     '!www/themes/**/*',
-    '!www/spinners/**/*'
+    '!www/spinners/**/*',
+    '!www/scripts/**/*'
   ];
 
   return gulp.src(filesToLint)

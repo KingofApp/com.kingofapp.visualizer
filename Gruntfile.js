@@ -18,12 +18,11 @@ module.exports = function(grunt) {
           configFile: 'e2e-tests/e2e.conf.js', // Default config file
           keepAlive: false
         }
-      },
-      screenshots: {
-        options: {
-          configFile: 'e2e-tests/screenshots.conf.js', // Default config file
-          keepAlive: false
-        }
+      }
+    },
+    exec: {
+      puppeteer: {
+        command: 'node ./www/scripts/takeScreenshots.js'
       }
     },
     run: {
@@ -82,7 +81,7 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('screenshots', ['connect:connect', 'run:mock_server', 'protractor:screenshots']);
+  grunt.registerTask('screenshots', ['connect:connect', 'run:mock_server', 'exec:puppeteer']);
   grunt.registerTask('test', ['connect:connect', 'run:mock_server', 'protractor:e2e']);
   grunt.registerTask('mobile', ['clean:pre', 'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin']);
 

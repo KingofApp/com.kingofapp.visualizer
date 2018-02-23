@@ -102,7 +102,7 @@
         function filterNotHtmlOrUndefined(n) {
           return n != undefined && n.indexOf('.html') == -1;
         }
-      });
+    }, ($location.$$path.indexOf('viewcontainer') > -1) ? structureService.getChildrenPaths($location.$$path) : null);
       return mainDeferred.promise;
     }
   }

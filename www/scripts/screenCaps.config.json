@@ -7,9 +7,17 @@
       "width": 1242,
       "height": 2208
     },
+    "handset-horizontal": {
+      "width": 2208,
+      "height": 1242
+    },
     "tablet": {
       "width": 2048,
       "height": 2732
+    },
+    "tablet-horizontal": {
+      "width": 2732,
+      "height": 2048
     }
   }
 }

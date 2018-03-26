@@ -24,6 +24,7 @@
     "grunt-contrib-qunit": "^0.7.0",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-exec": "^3.0.0",
     "grunt-protractor-runner": "^5.0.0",
     "grunt-rev": "^0.1.0",
     "grunt-run": "^0.3.0",
@@ -38,6 +39,7 @@
     "mocha": "^4.0.1",
     "pre-commit": "^1.1.2",
     "protractor": "^5.2.2",
+    "puppeteer": "^1.0.0",
     "sharp": "^0.16.0",
     "shelljs": "^0.6.0"
   },

@@ -1,7 +1,7 @@
 /* General styles */
 
 html {
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100%;
 }
 body {
@@ -90,7 +90,7 @@ a, a:hover, a:link, a:active {
   color: inherit;
 }
 #main-king {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 #drawer {

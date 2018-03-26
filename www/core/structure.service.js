@@ -13,6 +13,7 @@
     var visitedLocations = [];
     var menuItems = [];
     var data = {};
+    var childrenPaths = [];
 
     $rootScope.transitionOn = true;
 
@@ -54,8 +55,10 @@
       getModule: getModule,
       getCurrentModules: getCurrentModules,
       getChildren: getChildren,
+      getChildrenPaths: getChildrenPaths,
       validateScope: validateScope,
       registerModule: registerModule,
+      registerChildrenViewModule: registerChildrenViewModule,
       update: update,
       onChange: onChange
     };
@@ -239,6 +242,16 @@
       return menu;
     }
 
+    function getChildrenPaths(menuPath) {
+     var menuPaths = [];
+     angular.forEach(data.modules, function(data, path) {
+       if ((path.indexOf(menuPath) > -1) && (menuPath !== path)) {
+         menuPaths.push(path);
+       }
+     });
+     return menuPaths;
+    }
+
     function getModule(path) {
       var deferred = $q.defer();
       if (cachedLocations.getOne(path)) {
@@ -267,20 +280,39 @@
       return deferred.promise;
     }
 
-    function getCurrentModules($location, callback) {
+    function getCurrentModules($location, callback, extraPaths) {
       var moduleList = [];
-      var path = $location.$$path;
-      var split = path.split('/');
+      var path;
+      var split;
+      if (extraPaths && (extraPaths.length > 0)) {
+        extraPaths.forEach(function(pat) {
+          split = pat.split('/');
+          angular.forEach(split.reverse(), function(value) {
+            if (value !== '') {
+              findRoute(pat, data.modules, function(module) {
+                moduleList.push(module);
+              });
+            }
+          });
+        })
+      }
+
+      if (childrenPaths.length > 0 && $location.$$path.split('/').pop().indexOf('viewcontainer') > -1) {
+        path = childrenPaths.shift();
+      } else {
+        path = $location.$$path;
+      }
+
+      split = path.split('/');
 
       angular.forEach(split.reverse(), function(value) {
-        if (value !== '') {
-          findRoute(path, data.modules, function(module) {
-            moduleList.push(module);
-          });
-          path = path.replace(new RegExp('\/' + value + '$'), '');
-        }
+       if (value !== '') {
+         findRoute(path, data.modules, function(module) {
+           moduleList.push(module);
+         });
+         path = path.replace(new RegExp('\/' + value + '$'), '');
+       }
       });
-      
       callback(moduleList);
     }
 
@@ -312,6 +344,22 @@
           }
         });
       });
+    }
+
+    function registerChildrenViewModule($location, $scope, item) {
+      var childrenTemplates = [];
+      getCurrentModules($location, function(modules) {
+        angular.forEach(modules, function(value, key) {
+          if (modules[key].identifier === item) {
+            var childrenModules = getChildren(modules[key].path);
+            childrenPaths = getChildrenPaths(modules[key].path);
+            childrenPaths.forEach(function(childrenPath) {
+              childrenTemplates.push(validateScope(childrenModules[childrenPath]));
+            });
+          }
+        });
+      });
+      $scope.childrenTemplates = childrenTemplates;
     }
 
     function update(newData) {

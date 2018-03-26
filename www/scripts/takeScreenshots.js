@@ -1,6 +1,5 @@
 const fs         = require('fs');
 const shell      = require('shelljs');
-const sharp      = require('sharp');
 const config     = require('./screenCaps.config.json');
 const paths      = require('./screenCaps.paths.json').paths;
 const platform   = config.platform;
@@ -12,11 +11,9 @@ const puppeteer  = require('puppeteer');
   let browser, page;
   
   for (let path in paths) {
-    console.log(`${baseUrl+paths[path]}`);
-
     try {
-      browser     = await puppeteer.launch();
-      page        = await browser.newPage();
+      browser = await puppeteer.launch();
+      page    = await browser.newPage();
       await page.goto(`${baseUrl+paths[path]}`);
       await page.waitForNavigation({
         waitUntil: 'networkidle0'

@@ -1,7 +1,7 @@
 {
   "name": "com.kingofapp.visualizer",
   "private": true,
-  "version": "1.1.2",
+  "version": "1.2.2",
   "description": "King of App visualizer.",
   "repository": "https://github.com/KingofApp/com.kingofapp.visualizer",
   "license": "MIT",
@@ -40,7 +40,6 @@
     "pre-commit": "^1.1.2",
     "protractor": "^5.2.2",
     "puppeteer": "^1.0.0",
-    "sharp": "^0.16.0",
     "shelljs": "^0.6.0"
   },
   "pre-commit": [

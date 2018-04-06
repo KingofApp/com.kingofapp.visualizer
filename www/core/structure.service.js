@@ -13,7 +13,6 @@
     var visitedLocations = [];
     var menuItems = [];
     var data = {};
-    var childrenPaths = [];
 
     $rootScope.transitionOn = true;
 
@@ -285,11 +284,11 @@
       var path;
       var split;
       if (extraPaths && (extraPaths.length > 0)) {
-        extraPaths.forEach(function(pat) {
-          split = pat.split('/');
-          angular.forEach(split.reverse(), function(value) {
-            if (value !== '') {
-              findRoute(pat, data.modules, function(module) {
+        extraPaths.forEach(function(_path) {
+          split = _path.split('/');
+          angular.forEach(split.reverse(), function(value, index) {
+            if (value !== '' && index === 0) {
+              findRoute(_path, data.modules, function(module) {
                 moduleList.push(module);
               });
             }
@@ -297,14 +296,8 @@
         })
       }
 
-      if (childrenPaths.length > 0 && $location.$$path.split('/').pop().indexOf('viewcontainer') > -1) {
-        path = childrenPaths.shift();
-      } else {
-        path = $location.$$path;
-      }
-
+      path = $location.$$path;
       split = path.split('/');
-
       angular.forEach(split.reverse(), function(value) {
        if (value !== '') {
          findRoute(path, data.modules, function(module) {
@@ -343,7 +336,7 @@
             };
           }
         });
-      });
+      }, ($location.$$path.indexOf('viewcontainer') > -1) ? getChildrenPaths($location.$$path) : null);
     }
 
     function registerChildrenViewModule($location, $scope, item) {
@@ -352,7 +345,7 @@
         angular.forEach(modules, function(value, key) {
           if (modules[key].identifier === item) {
             var childrenModules = getChildren(modules[key].path);
-            childrenPaths = getChildrenPaths(modules[key].path);
+            var childrenPaths = getChildrenPaths(modules[key].path);
             childrenPaths.forEach(function(childrenPath) {
               childrenTemplates.push(validateScope(childrenModules[childrenPath]));
             });

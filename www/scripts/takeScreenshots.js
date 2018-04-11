@@ -9,14 +9,15 @@ const puppeteer  = require('puppeteer');
 (async () => {
   const baseUrl = 'http://localhost:9001/#';
   let browser, page;
-  
+
   for (let path in paths) {
     try {
       browser = await puppeteer.launch();
       page    = await browser.newPage();
       await page.goto(`${baseUrl+paths[path]}`);
       await page.waitForNavigation({
-        waitUntil: 'networkidle0'
+        waitUntil: 'networkidle0',
+        timeout: 0
       });
     } catch(e) {
       console.log(e);
@@ -25,7 +26,7 @@ const puppeteer  = require('puppeteer');
     for (let dimension in dimensions) {
       try {
         await page.setViewport(dimensions[dimension]);
-        await page.screenshot({path: `./screenshots/${dimension}-${Number(path)+1}.jpg`});
+        await page.screenshot({ path: `./www/screenshots/${dimension}-${Number(path)+1}.jpg` });
       } catch(e) {
         console.log(e);
       }

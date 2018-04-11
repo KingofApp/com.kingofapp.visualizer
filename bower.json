@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "1.4.x",
+    "angular": "1.4.14",
     "angular-cache": "~4.4.3",
     "angular-loader": "1.4.x",
     "angular-mocks": "~1.4.x",
@@ -19,7 +19,7 @@
     "iron-icons": "PolymerElements/iron-icons#^1.1.0",
     "jquery": "~2.x.x",
     "lodash": "^4.6.0",
-    "oclazyload": "~1.0.9",
+    "oclazyload": "1.0.9",
     "polymer": "Polymer/polymer#^1.2.0",
     "webfontloader": "^1.6.24",
     "angular-indexedDB": "angularjs-indexedDB#*",

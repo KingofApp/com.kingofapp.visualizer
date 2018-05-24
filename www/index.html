@@ -1,88 +1,97 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>King of App visualizer</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
 
-    <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>King of App visualizer</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
 
-    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <!-- endbuild -->
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
 
-    <link rel="import" href="elements/koa-elements.html">
-  </head>
-  <body>
-    <div id="main-king">
-      <koa-app id="app" theme="{{theme}}">
-        <div id="appContent">
-          <div id="transitionloader" ng-if="showTransition && transitionOn"></div>
-          <div ng-view></div>
-        </div>
-      </koa-app>
-    </div>
+  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <!-- endbuild -->
 
-    <!-- build:js scripts/koa.visualizer.min.js -->
-    <script src="bower_components/webfontloader/webfontloader.js"></script>
-    <script src="bower_components/lodash/dist/lodash.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-translate/angular-translate.js"></script>
-    <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
-    <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angulartics/src/angulartics.js"></script>
-    <script src="bower_components/angular-indexedDB/src/indexeddb.js"></script>
+  <link rel="import" href="elements/koa-elements.html">
+</head>
 
-    <script src="scripts/app.js"></script>
-    <script src="scripts/listener.builder.js"></script>
+<body>
+  <div id="main-king">
+    <koa-app id="app" theme="{{theme}}">
+      <div id="appContent">
+        <div id="transitionloader" ng-if="showTransition && transitionOn"></div>
+        <div ng-view></div>
+      </div>
+    </koa-app>
+  </div>
 
-    <script src="core/structure.service.js"></script>
-    <script src="core/polymer.service.js"></script>
-    <script src="core/smartMethod.service.js"></script>
-    <script src="core/storage.service.js"></script>
-    <script src="core/structureCache.service.js"></script>
-    <script src="core/structureHooks.service.js"></script>
+  <!-- build:js scripts/koa.visualizer.min.js -->
+  <script src="bower_components/webfontloader/webfontloader.js"></script>
+  <script src="bower_components/lodash/dist/lodash.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-translate/angular-translate.js"></script>
+  <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+  <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angulartics/src/angulartics.js"></script>
+  <script src="bower_components/angular-indexedDB/src/indexeddb.js"></script>
 
-    <script src="loaders/common/paths.config.js"></script>
-    <script src="loaders/common/storage.config.js"></script>
-    <script src="loaders/common/services.provider.js"></script>
-    <script src="loaders/common/loaderCommon.controller.js"></script>
-    <script src="loaders/common/loaderCommon.directive.js"></script>
-    <script src="loaders/common/loaderMenu.controller.js"></script>
-    <script src="loaders/common/filters.js"></script>
-    <script src="loaders/common/httpInterceptor.js"></script>
-    <script src="loaders/common/eventListener.directive.js"></script>
-    <script src="loaders/common/translator.config.js"></script>
-    <script src="loaders/common/register.providers.js"></script>
-    <script src="loaders/common/route.decorator.js"></script>
+  <!-- onsenui -->
+  <link rel="stylesheet" href="bower_components/onsenui/css/onsenui.css" />
+  <link rel="stylesheet" href="bower_components/onsenui/css/onsen-css-components.css" />
+  <script src="bower_components/onsenui/js/onsenui.min.js"></script>
+  <script src="bower_components/onsenui/js/angular-onsenui.min.js"></script>
 
-    <script src="loaders/angular/loaderAngular.service.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/listener.builder.js"></script>
 
-    <script src="loaders/loader.app.js"></script>
+  <script src="core/structure.service.js"></script>
+  <script src="core/polymer.service.js"></script>
+  <script src="core/smartMethod.service.js"></script>
+  <script src="core/storage.service.js"></script>
+  <script src="core/structureCache.service.js"></script>
+  <script src="core/structureHooks.service.js"></script>
+
+  <script src="loaders/common/paths.config.js"></script>
+  <script src="loaders/common/storage.config.js"></script>
+  <script src="loaders/common/services.provider.js"></script>
+  <script src="loaders/common/loaderCommon.controller.js"></script>
+  <script src="loaders/common/loaderCommon.directive.js"></script>
+  <script src="loaders/common/loaderMenu.controller.js"></script>
+  <script src="loaders/common/filters.js"></script>
+  <script src="loaders/common/httpInterceptor.js"></script>
+  <script src="loaders/common/eventListener.directive.js"></script>
+  <script src="loaders/common/translator.config.js"></script>
+  <script src="loaders/common/register.providers.js"></script>
+  <script src="loaders/common/route.decorator.js"></script>
+
+  <script src="loaders/angular/loaderAngular.service.js"></script>
+
+  <script src="loaders/loader.app.js"></script>
 
 
-    <script>
-      (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    </script>
-    <!-- endbuild -->
-    <script src="cordova.js"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  </script>
+  <!-- endbuild -->
+  <script src="cordova.js"></script>
 
-    <span id="browser-sync-binding"></span>
-  </body>
+  <span id="browser-sync-binding"></span>
+</body>
+
 </html>

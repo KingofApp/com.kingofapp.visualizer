@@ -316,6 +316,11 @@
           empty = false;
         }
       });
+      angular.forEach(module['scope-lang'], function(value) {
+        if (value && value !== '') {
+          empty = false;
+        }
+      });
       if (empty) {
         return 'core/missing.html';
       }

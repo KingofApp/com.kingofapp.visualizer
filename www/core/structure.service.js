@@ -327,17 +327,20 @@
       return module.view;
     }
 
-    function registerModule($location, $scope, item) {
+    function registerModule($location, $scope, item, actualLang) {
       getCurrentModules($location, function(modules) {
         angular.forEach(modules, function(value, key) {
           if (modules[key + 1]) {
             $scope[modules[key + 1].identifier + 'Template'] = validateScope(modules[key]);
           }
           if (modules[key].identifier === item) {
+            var scopeall = (actualLang)? Object.assign(modules[key].scope, modules[key]["scope-lang"][actualLang]): undefined;
             $scope[item] = {
               custom: modules[key].name,
               icon: modules[key].icon,
-              modulescope: modules[key].scope
+              modulescope: modules[key].scope,
+              modulescopeLang: modules[key]["scope-lang"],
+              modulescopeall: scopeall
             };
           }
         });

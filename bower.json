@@ -25,7 +25,6 @@
     "angular-indexedDB": "angularjs-indexedDB#*",
     "angular-slugify": "^1.0.1",
     "iframe-resizer": "^3.5.15",
-    "koa-behaviors": "^0.11.0",
-    "onsenui":"2.10.0"
+    "koa-behaviors": "^0.11.0"
   }
 }

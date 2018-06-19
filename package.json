@@ -1,7 +1,7 @@
 {
   "name": "com.kingofapp.visualizer",
   "private": true,
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "King of App visualizer.",
   "repository": "https://github.com/KingofApp/com.kingofapp.visualizer",
   "license": "MIT",
@@ -52,6 +52,7 @@
     "lint": "gulp lint"
   },
   "dependencies": {
-    "glob": "^7.1.1"
+    "glob": "^7.1.1",
+    "uglify-js": "^3.4.0"
   }
 }

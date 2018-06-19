@@ -1,7 +1,7 @@
 {
   "name": "com.kingofapp.visualizer",
   "private": true,
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "King of App visualizer.",
   "repository": "https://github.com/KingofApp/com.kingofapp.visualizer",
   "license": "MIT",

@@ -52,6 +52,7 @@
     "lint": "gulp lint"
   },
   "dependencies": {
-    "glob": "^7.1.1"
+    "glob": "^7.1.1",
+    "uglify-js": "^3.4.0"
   }
 }

@@ -5,7 +5,10 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var baseDir = ['www'];
 
-gulp.task('reload', reload);
+gulp.task('reload', function(done) {
+  reload();
+  done();
+});
 
 gulp.task('browserSync', function(done) {
   browserSync({

@@ -2,31 +2,24 @@
   'use strict';
   angular.element(document).ready(function() {
 
-    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-      document.addEventListener('deviceready', onDeviceReady, false);
+    if (location.search.indexOf('builder') !== -1) {
+      //WebComponentsReady Listener
+      window.addEventListener('WebComponentsReady', function() {
+        // Default object for builder
+        launchApp({
+          'services': '',
+          'config': {
+            'lang': ['en_US']
+          }
+        });
+      });
     } else {
-      onDeviceReady();
+      //Android doesnt support WebComponentsReady
+      setTimeout(function() {
+        loadJsonStructure();
+      }, 500);
     }
 
-    function onDeviceReady() {
-      if (location.search.indexOf('builder') !== -1) {
-        //WebComponentsReady Listener
-        window.addEventListener('WebComponentsReady', function() {
-          // Default object for builder
-          launchApp({
-            'services': '',
-            'config': {
-              'lang': ['en_US']
-            }
-          });
-        });
-      } else {
-        //Android doesnt support WebComponentsReady
-        setTimeout(function() {
-          loadJsonStructure();
-        }, 500);
-      }
-    }
 
     function hideSplash() {
       //Timeout for slow phones.
@@ -77,43 +70,43 @@
     }
 
     function launchApp(data) {
-        angular
-          .module('myApp').run(function run($rootScope) {
-            if (data.modules) {
-              $rootScope.appJsonStructure = data;
-            }
-            setDevicesVariables($rootScope);
-          })
-          .config(setTranslatorConfig)
-          .config(configServiceProvider);
-        setTranslatorConfig.$inject = ['$translateProvider'];
-        configServiceProvider.$inject = ['configServiceProvider'];
-
-        angular.bootstrap(document, ['myApp']);
-        console.info('[V] Bootstraped ng-app');
-        window.parent.postMessage('bootstrapped-app', '*');
-
-        hideSplash();
-
-        function configServiceProvider(configServiceProvider) {
-          configServiceProvider.config({
-            services: data.services
-          });
-        }
-
-        function setTranslatorConfig($translateProvider) {
-          var source = '..';
-          if (window.location.href.indexOf('dev.visualizer.kingofapp.com') !== -1) {
-            source = 'http://dev.resources.kingofapp.com';
-          } else if (window.location.href.indexOf('visualizer.kingofapp.com') !== -1) {
-            source = 'http://resources.kingofapp.com';
+      angular
+        .module('myApp').run(function run($rootScope) {
+          if (data.modules) {
+            $rootScope.appJsonStructure = data;
           }
-          $translateProvider.useSanitizeValueStrategy(null);
-          $translateProvider.useLoader('$translatePartialLoader', {
-            urlTemplate: source + '/{part}/locale/{lang}.json'
-          });
-          $translateProvider.preferredLanguage(data.config.lang[0]);
+          setDevicesVariables($rootScope);
+        })
+        .config(setTranslatorConfig)
+        .config(configServiceProvider);
+      setTranslatorConfig.$inject = ['$translateProvider'];
+      configServiceProvider.$inject = ['configServiceProvider'];
+
+      angular.bootstrap(document, ['myApp']);
+      console.info('[V] Bootstraped ng-app');
+      window.parent.postMessage('bootstrapped-app', '*');
+
+      hideSplash();
+
+      function configServiceProvider(configServiceProvider) {
+        configServiceProvider.config({
+          services: data.services
+        });
+      }
+
+      function setTranslatorConfig($translateProvider) {
+        var source = '..';
+        if (window.location.href.indexOf('dev.visualizer.kingofapp.com') !== -1) {
+          source = 'http://dev.resources.kingofapp.com';
+        } else if (window.location.href.indexOf('visualizer.kingofapp.com') !== -1) {
+          source = 'http://resources.kingofapp.com';
         }
+        $translateProvider.useSanitizeValueStrategy(null);
+        $translateProvider.useLoader('$translatePartialLoader', {
+          urlTemplate: source + '/{part}/locale/{lang}.json'
+        });
+        $translateProvider.preferredLanguage(data.config.lang[0]);
+      }
     }
 
     function setDevicesVariables($rootScope) {

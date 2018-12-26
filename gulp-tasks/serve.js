@@ -3,8 +3,14 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+var baseDir = ['www'];
 
-var serve = function(baseDir) {
+gulp.task('reload', function(done) {
+  reload();
+  done();
+});
+
+gulp.task('browserSync', function(done) {
   browserSync({
     port: 9001,
     notify: false,
@@ -28,14 +34,17 @@ var serve = function(baseDir) {
       port: 3002
     }
   });
-};
+  done();
+});
+
+gulp.task('watcher', function(done) {
+  gulp.watch('www/core/structure.json', gulp.parallel('reload'));
+  gulp.watch(['www/**/*.{html,js}', '!www/bower_components/**/*'], gulp.parallel('lint', 'reload'));
+  gulp.watch('www/styles/**/*.css', gulp.parallel('reload'));
+  gulp.watch('www/images/**/*', gulp.parallel('reload'));
+
+  done();
+});
 
 // Serve project and watch files for changes
-gulp.task('serve', ['lint'], function() {
-  serve(['www']);
-
-  gulp.watch(['www/core/structure.json'], reload);
-  gulp.watch(['www/**/*.{html,js}', '!www/bower_components/**/*'], ['lint', reload]);
-  gulp.watch(['www/styles/**/*.css'], reload);
-  gulp.watch(['www/images/**/*'], reload);
-});
+gulp.task('serve', gulp.parallel('lint', 'browserSync', 'watcher'));

@@ -16,7 +16,7 @@ const puppeteer  = require('puppeteer');
       page    = await browser.newPage();
       await page.goto(`${baseUrl+paths[path]}`);
       await page.waitForNavigation({
-        waitUntil: 'networkidle0',
+        waitUntil: 'networkidle',
         timeout: 0
       });
     } catch(e) {
@@ -26,7 +26,7 @@ const puppeteer  = require('puppeteer');
     for (let dimension in dimensions) {
       try {
         await page.setViewport(dimensions[dimension]);
-        await page.screenshot({ path: `./www/screenshots/${dimension}-${Number(path)+1}.jpg` });
+        await page.screenshot({ path: `./screenshots/${dimension}-${Number(path)+1}.jpg` });
       } catch(e) {
         console.log(e);
       }

@@ -16,8 +16,8 @@ const puppeteer  = require('puppeteer');
       page    = await browser.newPage();
       await page.goto(`${baseUrl+paths[path]}`);
       await page.waitForNavigation({
-        waitUntil: 'networkidle',
-        timeout: 0
+        waitUntil: 'networkidle2',
+        timeout: 3000
       });
     } catch(e) {
       console.log(e);

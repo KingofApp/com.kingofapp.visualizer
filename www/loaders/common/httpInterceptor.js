@@ -29,16 +29,10 @@
       head: 0
     };
 
-    var lastRequest = {
-      url    : '',
-      status : 0
-    };
-
     // Return the public API.
     return ({
       pending: pending,
       total: total,
-      lastRequest: lastRequest,
       endRequest: endRequest,
       startRequest: startRequest
     });
@@ -47,16 +41,10 @@
     // PUBLIC METHODS.
     // ---
     // I stop tracking the given HTTP request.
-    function endRequest(httpMethod, url, status) {
+    function endRequest(httpMethod) {
       httpMethod = normalizedHttpMethod(httpMethod);
       pending.all--;
       pending[httpMethod]--;
-      total.all--;
-      total[httpMethod]--;
-
-      lastRequest.url = url;
-      lastRequest.status = status;
-      
       // EDGE CASE: In the unlikely event that the interceptors were not
       // able to obtain the config object; or, the method was changed after
       // our interceptor reached it, there's a chance that our numbers will
@@ -175,15 +163,15 @@
       }
 
       // Intercept the successful response.
-      function response(response) {   
-        trafficGuardiaCivil.endRequest(extractMethod(response), extractUrl(response), extractStatus(response));
+      function response(response) {
+        trafficGuardiaCivil.endRequest(extractMethod(response));
         // Pass-through the resolution.
         return (response);
       }
 
       // Intercept the failed response.
       function responseError(response) {
-        trafficGuardiaCivil.endRequest(extractMethod(response), extractUrl(response), extractStatus(response));
+        trafficGuardiaCivil.endRequest(extractMethod(response));
         // Pass-through the rejection.
         return ($q.reject(response));
       }
@@ -202,25 +190,6 @@
           return ('get');
         }
       }
-
-      function extractUrl(response) {
-        try {
-          return (response.config.url)
-        } catch (error) {
-          console.error('[E] Extracting url: ', error)
-          return (false)
-        }
-      }
-
-      function extractStatus(response) {
-        try {
-          return (response.status)
-        } catch (error) {
-          console.error('[E] Extracting url: ', error)
-          return (false)
-        }
-      }
-
     }
   }
 }());

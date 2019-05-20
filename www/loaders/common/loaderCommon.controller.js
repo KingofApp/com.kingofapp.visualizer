@@ -9,7 +9,6 @@
 
   function commonLoaderCtrl($scope, $interval, $rootScope, $route, $location, structureService, angularLoader, $timeout, $translate, trafficGuardiaCivil) {
     // console.log('[V] Pasa por el commonLoaderCtrl');
-
     // Unexpected window size
     if (window.innerHeight < 80 && window.innerHeight != 0) {
       console.info('Unexpected window size');
@@ -17,9 +16,9 @@
     }
 
     var app = document.querySelector('#app');
-    var firstInterval = {};
 
-    showGeneralLoader();
+    $rootScope.showTransition = true;
+    //showGeneralLoader();
     $location.$$path = $location.$$path || '/';
     if (structureService.getIndex() !== '' && $location.$$path === '/') {
       $location.path(structureService.getIndex());
@@ -27,71 +26,53 @@
       configModule();
     }
 
-    $scope.trafficGuardiaCivil = trafficGuardiaCivil;
-
-    // $location.$$path = $location.$$path || '/';
-
-    var prev = 0;
     var redirected = false;
-    var finished = false;
-
+    var urlsList = {
+      'loaders/common/loaderCommon.view.html': false
+    };
     $scope.$watch(
-      function calculateModelValue() {
-        return (trafficGuardiaCivil.pending.all);
+      function() {
+        return trafficGuardiaCivil.lastRequest.url
       },
-
-      function handleModelChange(count) {
-        console.info('[V] Pending HTTP count:', count,
-          '{',
+      function(recivedData) {
+        console.info('[V] Pending HTTP count:', trafficGuardiaCivil.pending.all, '{',
           trafficGuardiaCivil.pending.get, 'GET ,',
           trafficGuardiaCivil.pending.post, 'POST',
           '}');
 
         if ($location.$$path !== '/') {
-          var visitedLocations = structureService.getVisitedLocations();
-          var cachedLocations = structureService.getCachedLocations();
-
           structureService.getCurrentModules($location, function loadmodules(modules) {
-            if (cachedLocations[$location.$$path] && visitedLocations[cachedLocations[$location.$$path].identifier] && !finished) {
-              loadCachedModule();
-            } else if (count === 0 && prev > 0 && !finished) {
-              loadFirstTimeModule(modules);
-            }
-            //Render external calls generating new elements
-            if (count === 0 && prev > 0) {
-              firstInterval = $interval(renderKoaApp, 10);
-            }
+            //Crea un objeto con todos los archivos necesarios para cargar
+            if (Object.keys(urlsList).length < 2) setUrlsList(modules);
 
-            prev = count;
+            //when file load check as loaded
+            if (urlsList.hasOwnProperty(recivedData)) {
+              urlsList[recivedData] = true;
+            }
+            //check if all required files are loaded
+            var count = 0;
+            for (var prop in urlsList) {
+              if (urlsList[prop] === true) {
+                count++
+              }
+            }
+            if (count != Object.keys(urlsList).length) return;
+            renderKoaApp();
           });
         }
 
-        function loadFirstTimeModule(modules) {
-          finished = true;
-          console.info('[V] First time module load', $location.$$path);
-          angular.forEach(modules, function(value) {
-            visitedLocations[value.identifier] = true;
+        function setUrlsList(modules) {
+          modules.forEach(function(module) {
+            urlsList[module.view] = false;
           });
-          structureService.setVisitedLocations(visitedLocations);
-        }
-
-        function loadCachedModule() {
-          finished = true;
-          console.info('[V] Loading cached module', $location.$$path);
-
-          renderKoaApp();
-          //Prevention, quick transitions.
-          $rootScope.showTransition = false;
-
         }
       }
     );
 
-
     $rootScope.$on('renderKoaElements', function() {
       app.createTree(function() {
         app.renderThemeElements(function() {
-          $rootScope.showTransition = false;
+          //$rootScope.showTransition = false;
           $rootScope.$broadcast('koaElementsRendered');
         });
       });
@@ -178,7 +159,6 @@
 
     $scope.$on('$routeChangeStart', function(event, next) {
       if (next) {
-        showGeneralLoader();
         structureService.launchSpinner('#transitionloader');
       }
     });
@@ -199,11 +179,9 @@
           title: module.name
         };
 
-        if ($rootScope.missing) {
-          $rootScope.showTransition = false;
-        }
-
-
+        // if ($rootScope.missing) {
+        //   //$rootScope.showTransition = false;
+        // }
 
         $scope.module = module || $scope.module;
 
@@ -225,7 +203,6 @@
             $rootScope.rootTemplate = url;
           });
 
-        
         }
       }, function() {
         $location.path('/404');
@@ -296,7 +273,6 @@
 
     function renderKoaApp() {
       if (app.createTree) {
-        $interval.cancel(firstInterval);
         app.createTree(function() {
           if (app.theme) {
             renderElements()
@@ -309,11 +285,11 @@
       }
     }
 
-    function showGeneralLoader() {
-      $rootScope.showTransition = true;
-      $timeout( function() {
-        $rootScope.showTransition = ($rootScope.showTransition) ? false : $rootScope.showTransition;
-      }, 3000);
-    }
+    // function showGeneralLoader() {
+    //   $rootScope.showTransition = true;
+    //   $timeout( function() {
+    //     $rootScope.showTransition = ($rootScope.showTransition) ? false : $rootScope.showTransition;
+    //   }, 3000);
+    // }
   }
 }());

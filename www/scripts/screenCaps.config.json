@@ -11,6 +11,22 @@
       "width": 2208,
       "height": 1242
     },
+    "iphone11":{
+      "width": 1242,
+      "height": 2688
+    },
+    "iphone11-horizontal":{
+      "width": 2688,
+      "height": 1242
+    },
+    "ipad3rd":{
+      "width": 2048,
+      "height": 2732
+    },
+    "ipad3rd-horizontal":{
+      "width": 2732,
+      "height": 2048
+    },
     "tablet": {
       "width": 2048,
       "height": 2732

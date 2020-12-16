@@ -3,7 +3,7 @@ var previousData = '';
 window.addEventListener('message', function(event) {
   var $body = angular.element(document.body);
 
-  console.info('[V] Recieved!?', event);
+  //console.info('[V] Recieved!?', event);
 
   if ($body.injector()) {
     var $rootScope = $body.injector().get('$rootScope');

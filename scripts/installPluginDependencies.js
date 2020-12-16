@@ -4,7 +4,7 @@ var async = require('async');
 var local = sh.pwd();
 var glob = require("glob")
 
-
+sh.mkdir('-p', 'www/bower_components');
 glob("www/**/.bowerrc", function (er, files) {
   console.log("FILES", files);
   async.forEachSeries(files, downloadPlugin(), function() {

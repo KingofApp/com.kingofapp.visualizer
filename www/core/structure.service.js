@@ -3,6 +3,11 @@
 
   angular
     .module('king.core.structureService', ['king.core.structureService.cache'])
+    .config(
+      function ($compileProvider) {
+          $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|app|chrome-extension):/);
+      }
+    )
     .factory('structureService', structureService);
 
   structureService.$inject = ['$q', '$translatePartialLoader', '$translate', 'structureHooks', '$rootScope', '$filter', '$polymer', 'cachedLibs', 'cachedLocations', 'cachedModules'];

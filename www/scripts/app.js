@@ -12,6 +12,7 @@
     'king.core.structureService',
     'king.core.storageService',
     'king.core.smartMethodService',
-    'king.core.structureHooksService'
+    'king.core.structureHooksService',
+    'king.core.nopayService'
   ]);
 }());

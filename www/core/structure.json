@@ -1,4 +1,5 @@
 {
+  "_id": "5d861a6c26e06f0f867e7bcd",
   "config": {
     "index": "/menu-abcd/home-abcd",
     "theme": {
@@ -180,5 +181,6 @@
         "zoom": "15"
       }
     }
-  }
+  },
+  "bought": {}
 }

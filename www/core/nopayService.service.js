@@ -13,6 +13,9 @@
             if(!data.bought)return;
             if(data._id){
                 if (hasOneDayPassed()) checkExpiration(data._id);
+                if ( localStorage.getItem("appExpire") === "true" ){
+                    setNopayScreen();
+                }
             }
 
         }).fail(function () {
@@ -24,10 +27,8 @@
                 method: 'GET',
                 url: 'http://api.kingofapp.com/apps/' + appId + '/expire'
             }).then(function successCallback(response) {
-
-                if (response.data.appExpired) {
-                    setNopayScreen();
-                }
+                
+                localStorage.setItem("appExpire", response.data.appExpired);
 
             }, function errorCallback(response) {
                 console.error('ERROR', response.error);

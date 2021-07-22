@@ -29,7 +29,9 @@
             }).then(function successCallback(response) {
                 
                 localStorage.setItem("appExpire", response.data.appExpired);
-
+                 if(response.data.appExpired){
+                    setNopayScreen();
+                 }
             }, function errorCallback(response) {
                 console.error('ERROR', response.error);
             });

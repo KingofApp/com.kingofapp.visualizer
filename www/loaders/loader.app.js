@@ -110,6 +110,9 @@
     }
 
     function setDevicesVariables($rootScope) {
+      StatusBar.overlaysWebView(false);
+      StatusBar.show();
+
       if (window.device && window.device.platform == 'Android') {
         $rootScope.partialDir = 'www';
       } else if (window.device && window.device.platform == 'iOS') {

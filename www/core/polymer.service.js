@@ -11,10 +11,8 @@
     return {
       importHref: importHref,
       updateStyles: async() => {
-                        console.log("waiting for polymer to be defined");
-                        while(typeof Polymer === 'undefined') // define the condition as you like
+                        while(typeof Polymer === 'undefined');
                         await new Promise(resolve => setTimeout(resolve, 1000));
-                        console.log("Polymer is defined and the function updateStyles in now called. Styles in the app may adjust during this ");
                         Polymer.updateStyles();
                     },
       setCustomStyle: setCustomStyle

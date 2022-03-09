@@ -10,7 +10,11 @@
   function $polymer() {
     return {
       importHref: importHref,
-      updateStyles: Polymer.updateStyles,
+      updateStyles: async() => {
+                        while(typeof Polymer === 'undefined');
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        Polymer.updateStyles();
+                    },
       setCustomStyle: setCustomStyle
     };
 

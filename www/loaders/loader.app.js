@@ -110,16 +110,20 @@
     }
 
     function setDevicesVariables($rootScope) {
-      StatusBar.overlaysWebView(false);
-      StatusBar.show();
-
-      if (window.device && window.device.platform == 'Android') {
-        $rootScope.partialDir = 'www';
-      } else if (window.device && window.device.platform == 'iOS') {
-        $rootScope.partialDir = 'www';
-        //Show ios Toolbar
-        StatusBar.overlaysWebView(false);
-        StatusBar.styleDefault();
+      try{
+        if (window.device && window.device.platform == 'Android') {
+          $rootScope.partialDir = 'www';
+          StatusBar.overlaysWebView(false);
+          StatusBar.show();
+        } else if (window.device && window.device.platform == 'iOS') {
+          $rootScope.partialDir = 'www';
+          //Show ios Toolbar
+          StatusBar.overlaysWebView(false);
+          StatusBar.styleDefault();
+        }
+      }
+      catch(e){
+        console.error(e);
       }
     }
 

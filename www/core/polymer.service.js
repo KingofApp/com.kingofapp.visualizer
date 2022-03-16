@@ -10,7 +10,7 @@
   function $polymer($q) {
     return {
       importHref: importHref,
-      updateStyles: $q.when(Polymer).then(function(){ Polymer.updateStyles() }),
+      updateStyles: function(){$q.when(Polymer).then(function(){ Polymer.updateStyles() })},
       setCustomStyle: setCustomStyle
       };
 

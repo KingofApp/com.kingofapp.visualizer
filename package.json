@@ -6,7 +6,7 @@
   "repository": "https://github.com/KingofApp/com.kingofapp.visualizer",
   "license": "MIT",
   "devDependencies": {
-    "async": "^2.0.0-rc.2",
+    "async": "^2.6.4",
     "bower": "^1.7.0",
     "browser-sync": "^2.11.0",
     "del": "^2.2.0",

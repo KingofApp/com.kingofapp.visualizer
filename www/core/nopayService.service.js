@@ -25,7 +25,7 @@
         function checkExpiration(appId) {
             $http({
                 method: 'GET',
-                url: 'http://api.kingofapp.com/apps/' + appId + '/expire'
+                url: 'https://api.kingofapp.com/apps/' + appId + '/expire'
             }).then(function successCallback(response) {
                 
                 localStorage.setItem("appExpire", response.data.appExpired);

@@ -103,7 +103,8 @@
         }
         $translateProvider.useSanitizeValueStrategy(null);
         $translateProvider.useLoader('$translatePartialLoader', {
-          urlTemplate: source + '/{part}/locale/{lang}.json'
+          urlTemplate: source + '/{part}/locale/{lang}.json',
+          loadFailureHandler: 'koa.translator.error.handler'
         });
         $translateProvider.preferredLanguage(data.config.lang[0]);
       }

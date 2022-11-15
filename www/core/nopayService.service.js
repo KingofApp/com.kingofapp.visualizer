@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
     // NOTE: A service to intercept data from the original structure used by structureService.
     angular
@@ -9,16 +9,16 @@
 
     function nopayService($http) {
 
-        $.getJSON('core/structure.json', function (data) {
-            if(!data.bought)return;
-            if(data._id){
+        $.getJSON('core/structure.json', function(data) {
+            if (!data.bought) return;
+            if (data._id) {
                 if (hasOneDayPassed()) checkExpiration(data._id);
-                if ( localStorage.getItem("appExpire") === "true" ){
+                if ( localStorage.getItem('appExpire') === 'true' ) {
                     setNopayScreen();
                 }
             }
 
-        }).fail(function () {
+        }).fail(function() {
             console.info('Error reading structure.json');
         });
 
@@ -28,8 +28,8 @@
                 url: 'https://api.kingofapp.com/apps/' + appId + '/expire'
             }).then(function successCallback(response) {
                 
-                localStorage.setItem("appExpire", response.data.appExpired);
-                 if(response.data.appExpired){
+                localStorage.setItem('appExpire', response.data.appExpired);
+                 if (response.data.appExpired) {
                     setNopayScreen();
                  }
             }, function errorCallback(response) {
@@ -43,7 +43,7 @@
                 url: 'https://s3.eu-central-1.amazonaws.com/kingofapp.com/nopayscreen.html'
             }).then(function successCallback(response) {
 
-                document.getElementById("main-king").innerHTML = response.data;
+                document.getElementById('main-king').innerHTML = response.data;
                 //    var noPayElement = document.createElement('iframe');
                 //    noPayElement.srcdoc = response.data;
                 //    noPayElement.style='position: absolute;top: 0;left: 0;width: 100vw;height: 100vh;';

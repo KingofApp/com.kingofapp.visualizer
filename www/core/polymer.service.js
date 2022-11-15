@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -10,7 +10,11 @@
   function $polymer($q) {
     return {
       importHref: importHref,
-      updateStyles: function(){$q.when(Polymer).then(function(){ Polymer.updateStyles() })},
+      updateStyles: function() {
+        $q.when(Polymer).then(function() { 
+          Polymer.updateStyles(); 
+        })
+      },
       setCustomStyle: setCustomStyle
       };
 
@@ -20,12 +24,12 @@
       l.href = href;
       var self = this;
       if (onload) {
-        l.onload = function (e) {
+        l.onload = function(e) {
           return onload.call(self, e);
         };
       }
       if (onerror) {
-        l.onerror = function (e) {
+        l.onerror = function(e) {
           return onerror.call(self, e);
         };
       }

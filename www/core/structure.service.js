@@ -4,7 +4,7 @@
   angular
     .module('king.core.structureService', ['king.core.structureService.cache'])
     .config(
-      function ($compileProvider) {
+      function($compileProvider) {
           $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|app|chrome-extension):/);
       }
     )

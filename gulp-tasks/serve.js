@@ -31,11 +31,11 @@ var serve = function(baseDir) {
 };
 
 // Serve project and watch files for changes
-gulp.task('serve', ['lint'], function() {
+gulp.task('serve', gulp.series('lint', function() {
   serve(['www']);
 
   gulp.watch(['www/core/structure.json'], reload);
-  gulp.watch(['www/**/*.{html,js}', '!www/bower_components/**/*'], ['lint', reload]);
+  gulp.watch(['www/**/*.{html,js}', '!www/bower_components/**/*'], gulp.series('lint', reload));
   gulp.watch(['www/styles/**/*.css'], reload);
   gulp.watch(['www/images/**/*'], reload);
-});
+}));

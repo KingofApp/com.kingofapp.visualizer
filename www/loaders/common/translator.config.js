@@ -9,8 +9,8 @@
       });
       $rootScope.lang = 'en';
     })
-    .factory('koa.translator.error.handler', function ($q, $log) {
-      return function (part, lang, response) {
+    .factory('koa.translator.error.handler', function($q, $log) {
+      return function(part, lang) {
         $log.error('The "' + part + '/' + lang + '" part was not loaded.');
         return $q.when({});
       };

@@ -103,20 +103,27 @@
         }
         $translateProvider.useSanitizeValueStrategy(null);
         $translateProvider.useLoader('$translatePartialLoader', {
-          urlTemplate: source + '/{part}/locale/{lang}.json'
+          urlTemplate: source + '/{part}/locale/{lang}.json',
+          loadFailureHandler: 'koa.translator.error.handler'
         });
         $translateProvider.preferredLanguage(data.config.lang[0]);
       }
     }
 
     function setDevicesVariables($rootScope) {
-      if (window.device && window.device.platform == 'Android') {
-        $rootScope.partialDir = 'www';
-      } else if (window.device && window.device.platform == 'iOS') {
-        $rootScope.partialDir = 'www';
-        //Show ios Toolbar
-        StatusBar.overlaysWebView(false);
-        StatusBar.styleDefault();
+      try {
+        if (window.device && window.device.platform == 'Android') {
+          $rootScope.partialDir = 'www';
+          StatusBar.overlaysWebView(false);
+          StatusBar.show();
+        } else if (window.device && window.device.platform == 'iOS') {
+          $rootScope.partialDir = 'www';
+          //Show ios Toolbar
+          StatusBar.overlaysWebView(false);
+          StatusBar.styleDefault();
+        }
+      } catch (e) {
+        console.error(e);
       }
     }
 

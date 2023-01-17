@@ -15,9 +15,9 @@ const puppeteer  = require('puppeteer');
       browser = await puppeteer.launch();
       page    = await browser.newPage();
       await page.goto(`${baseUrl+paths[path]}`);
-      await page.waitForNavigation();
+      await page.waitForSelector("#app");
     } catch(e) {
-      console.log(e);
+      console.log("Navigation ERROR", e);
     }
 
     for (let dimension in dimensions) {
@@ -29,11 +29,7 @@ const puppeteer  = require('puppeteer');
       }
     }
     
-    try {
-        await browser.close();
-    } catch(e) {
-        console.log(e);
-    }
+    await browser.close();
     
   }
 })();

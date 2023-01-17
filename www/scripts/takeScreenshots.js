@@ -28,7 +28,12 @@ const puppeteer  = require('puppeteer');
         console.log(e);
       }
     }
-
-    await browser.close();
+    
+    try {
+        await browser.close();
+    } catch(e) {
+        console.log(e);
+    }
+    
   }
 })();

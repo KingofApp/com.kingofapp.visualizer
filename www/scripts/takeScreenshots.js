@@ -5,6 +5,7 @@ const paths      = require('./screenCaps.paths.json').paths;
 const platform   = config.platform;
 const dimensions = config.dimensions;
 const puppeteer  = require('puppeteer');
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
 (async () => {
   const baseUrl = 'http://localhost:9001/#';
@@ -16,6 +17,24 @@ const puppeteer  = require('puppeteer');
       page    = await browser.newPage();
       await page.goto(`${baseUrl+paths[path]}`);
       await page.waitForSelector("#app");
+      
+      //check if there are menus
+      if(paths[path].split("/").length > 2 ){
+         await page.waitForSelector("div[ng-controller][class='module'] [ng-include]"); 
+      }
+      
+      //when embed module
+      if(paths[path].includes("embed")){
+        await page.waitForSelector("#iframetest");
+        await delay(2000);
+      }
+      
+      //when html module
+      if(paths[path].includes("superhtml")){
+        await page.waitForSelector(".superhtml");
+        await delay(500);
+      }
+      
     } catch(e) {
       console.log("Navigation ERROR", e);
     }

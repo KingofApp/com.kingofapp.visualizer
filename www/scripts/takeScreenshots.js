@@ -18,11 +18,6 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
       await page.goto(`${baseUrl+paths[path]}`);
       await page.waitForSelector("#app");
       
-      //check if there are menus
-      if(paths[path].split("/").length > 2 ){
-         await page.waitForSelector("div[ng-controller][class='module'] [ng-include]"); 
-      }
-      
       //when embed module
       if(paths[path].includes("embed")){
         await page.waitForSelector("#iframetest");
@@ -47,7 +42,7 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
         console.log(e);
       }
     }
-    
+   
     await browser.close();
     
   }

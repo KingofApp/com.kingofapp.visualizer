@@ -39,7 +39,7 @@
     "mocha": "^4.0.1",
     "pre-commit": "^1.1.2",
     "protractor": "^5.2.2",
-    "puppeteer": "^1.0.0",
+    "puppeteer": "^19.0.0",
     "shelljs": "^0.6.0"
   },
   "pre-commit": [

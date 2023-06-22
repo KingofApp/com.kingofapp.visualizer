@@ -15,9 +15,10 @@ const puppeteer  = require('puppeteer');
       browser = await puppeteer.launch();
       page    = await browser.newPage();
       await page.goto(`${baseUrl+paths[path]}`);
-      await page.waitForNavigation();
+      //await page.waitForNavigation();
+      await page.waitForSelector("#app");
     } catch(e) {
-      console.log(e);
+      console.log("ERROR", e);
     }
 
     for (let dimension in dimensions) {

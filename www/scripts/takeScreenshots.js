@@ -5,6 +5,7 @@ const paths      = require('./screenCaps.paths.json').paths;
 const platform   = config.platform;
 const dimensions = config.dimensions;
 const puppeteer  = require('puppeteer');
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
 (async () => {
   const baseUrl = 'http://localhost:9001/#';
@@ -29,7 +30,8 @@ const puppeteer  = require('puppeteer');
         console.log(e);
       }
     }
-
+   
     await browser.close();
+    
   }
 })();

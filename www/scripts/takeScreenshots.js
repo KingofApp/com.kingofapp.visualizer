@@ -13,7 +13,7 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 
   for (let path in paths) {
     try {
-      browser = await puppeteer.launch();
+      browser = await puppeteer.launch({ headless: "new" });
       page    = await browser.newPage();
       await page.goto(`${baseUrl+paths[path]}`);
       //await page.waitForNavigation();

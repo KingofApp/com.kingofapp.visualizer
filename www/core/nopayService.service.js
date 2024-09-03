@@ -10,28 +10,49 @@
     function nopayService($http) {
 
         $.getJSON('core/structure.json', function(data) {
-            if (!data.bought) return;
-            if (data._id) {
-                if (hasOneDayPassed()) checkExpiration(data._id);
-                if ( localStorage.getItem('appExpire') === 'true' ) {
-                    setNopayScreen();
-                }
+            if (!data.bought || !data.compilationObj) return;
+            if (!data._id) return;
+            
+            if ( hasOneDayPassed()) checkExpiration(data);   
+
+            if ( localStorage.getItem('appExpire') === 'true' ) {
+                setNopayScreen();
             }
+
+            if ( data.compilationObj.name && data.compilationObj.name === 'downloadApk' && localStorage.getItem('testApp') === 'true' ) {
+                setNopayScreen();
+            }
+
+            if ( !data.compilationObj.expire) return;
+            var expireDate = new Date(data.compilationObj.expire);
+            var now = new Date();
+            if ( expireDate < now) {
+                setNopayScreen();
+            }
+            
 
         }).fail(function() {
             console.info('Error reading structure.json');
         });
 
-        function checkExpiration(appId) {
+        function checkExpiration(appData) {
+            var appId = appData._id
+            var compilationObj = appData.compilationObj;
             $http({
                 method: 'GET',
                 url: 'https://api.kingofapp.com/apps/' + appId + '/expire'
             }).then(function successCallback(response) {
                 
                 localStorage.setItem('appExpire', response.data.appExpired);
-                 if (response.data.appExpired) {
+                localStorage.setItem('testApp', response.data.testApp);
+                if (response.data.appExpired) {
                     setNopayScreen();
-                 }
+                }
+
+                if ( compilationObj.name && compilationObj.name === 'downloadApk' && response.data.testApp ) {
+                    setNopayScreen();
+                }
+
             }, function errorCallback(response) {
                 console.error('ERROR', response.error);
             });

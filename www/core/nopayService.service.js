@@ -26,7 +26,7 @@
             if ( !data.compilationObj.expire) return;
             var expireDate = new Date(data.compilationObj.expire);
             var now = new Date();
-            if ( expireDate < now) {
+            if ( expireDate < now && localStorage.getItem('testApp') != 'true') {
                 setNopayScreen();
             }
             

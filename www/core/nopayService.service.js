@@ -10,7 +10,7 @@
     function nopayService($http) {
 
         $.getJSON('core/structure.json', function(data) {
-            if (!data.bought || !data.compilationObj) return;
+            if (!data.bought) return;
             if (!data._id) return;
             
             if ( hasOneDayPassed()) checkExpiration(data);   
@@ -18,6 +18,8 @@
             if ( localStorage.getItem('appExpire') === 'true' ) {
                 setNopayScreen();
             }
+
+            if(!data.compilationObj) return;
 
             if ( data.compilationObj.name && data.compilationObj.name === 'downloadApk' && localStorage.getItem('testApp') === 'true' ) {
                 setNopayScreen();

@@ -17,9 +17,11 @@
 
             if ( localStorage.getItem('appExpire') === 'true' ) {
                 setNopayScreen();
+            } else {
+                return;
             }
 
-            if(!data.compilationObj) return;
+            if (!data.compilationObj) return;
 
             if ( data.compilationObj.name && data.compilationObj.name === 'downloadApk' && localStorage.getItem('testApp') === 'true' ) {
                 setNopayScreen();
@@ -48,10 +50,12 @@
                 localStorage.setItem('appExpire', response.data.appExpired);
                 localStorage.setItem('testApp', response.data.testApp);
                 if (response.data.appExpired) {
-                    setNopayScreen();
+                    setNopayScreen(); 
+                } else {
+                    return;
                 }
 
-                if ( compilationObj.name && compilationObj.name === 'downloadApk' && response.data.testApp ) {
+                if ( compilationObj.name && compilationObj.name === 'downloadApk' && response.data.testApp) {
                     setNopayScreen();
                 }
 

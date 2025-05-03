@@ -5,16 +5,20 @@
     .module('king.core.structureService')
     .factory('$polymer', $polymer);
 
-  $polymer.$inject = [];
+  $polymer.$inject = ['$q'];
 
-  function $polymer() {
+  function $polymer($q) {
     return {
       importHref: importHref,
-      updateStyles: Polymer.updateStyles,
+      updateStyles: function() {
+        $q.when(Polymer).then(function() { 
+          Polymer.updateStyles(); 
+        })
+      },
       setCustomStyle: setCustomStyle
-    };
+      };
 
-    function importHref(href, onload, onerror) {
+      function importHref(href, onload, onerror) {
       var l = document.createElement('link');
       l.rel = 'import';
       l.href = href;

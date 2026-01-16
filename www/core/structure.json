@@ -45,6 +45,16 @@
   "modules": {
     "/menu-abcd": {
       "name": "Menu Module",
+      "name-lang": {
+        "ru": "us7dg",
+        "en-US": "Home",
+        "es-ES": "casa"
+      },
+      "scope-lang":{
+        "ru": {"a":"us7dg"},
+        "en-US": {"a":"menu"},
+        "es-ES": {"a":"us7dg"}
+      },
       "identifier": "polymermenu",
       "type": "A",
       "canContain": true,
@@ -128,6 +138,16 @@
     },
     "/menu-abcd/home-abcd": {
       "name": "Home",
+      "name-lang": {
+        "ru": "us7dg",
+        "en-US": "Home",
+        "es-ES": "casa"
+      },
+      "scope-lang":{
+        "ru": {"a":"us7dg"},
+        "en-US": {"a":"menu"},
+        "es-ES": {"a":"us7dg"}
+      },
       "identifier": "html",
       "type": "A",
       "icon": "home",
@@ -144,6 +164,16 @@
     },
     "/menu-abcd/elements-abcd": {
       "name": "Elements",
+      "name-lang": {
+        "ru": "us7dg",
+        "en-US": "Home",
+        "es-ES": "casa"
+      },
+      "scope-lang":{
+        "ru": {"a":"us7dg"},
+        "en-US": {"a":"menu"},
+        "es-ES": {"a":"us7dg"}
+      },
       "identifier": "demo",
       "type": "A",
       "icon": "polymer",
@@ -159,6 +189,16 @@
     },
     "/menu-abcd/map-abcd": {
       "name": "Google Maps",
+      "name-lang": {
+        "ru": "us7dg",
+        "en-US": "Home",
+        "es-ES": "casa"
+      },
+      "scope-lang":{
+        "ru": {"a":"us7dg"},
+        "en-US": {"a":"menu"},
+        "es-ES": {"a":"us7dg"}
+      },
       "identifier": "googlemap",
       "type": "A",
       "icon": "room",

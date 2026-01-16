@@ -5,11 +5,11 @@
     .module('polymermenu', [])
     .controller('PolymermenuController', loadFunction);
 
-  loadFunction.$inject = ['$q', '$rootScope', '$scope', 'structureService', '$location'];
+  loadFunction.$inject = ['$q', '$rootScope', '$scope', 'structureService', '$location', '$translate'];
 
-  function loadFunction($q, $rootScope, $scope, structureService, $location) {
+  function loadFunction($q, $rootScope, $scope, structureService, $location, $translate) {
     //Register upper level modules
-    structureService.registerModule($location, $scope, 'polymermenu');
+    structureService.registerModule($location, $scope, 'polymermenu', $translate.use());
     $scope.showBack = false;
     if(structureService.getMenuItems().indexOf($location.$$path) === -1 && $rootScope.current != 'polymermenu'){
       $scope.showBack = true;

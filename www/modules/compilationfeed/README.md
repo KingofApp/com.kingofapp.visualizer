@@ -10,17 +10,17 @@ Use `DELETE /apps/{appId}/compilation-feed` with the same authentication to revo
 
 ## Insert in a website
 
-The JavaScript and its locale files are static Builder assets under `www/widgets`. They are not served by the API. After publishing the visualizer assets, the Builder-hosted snippet is:
+The JavaScript and its locale files are served as static files through jsDelivr from the Visualizer repository. This host is separate from the API: the API is used only for the sanitized JSON status response. The current pinned widget revision is:
 
 ```html
 <script async
-  src="https://builder.kingofapp.com/widgets/compilation-feed.js"
+  src="https://cdn.jsdelivr.net/gh/KingofApp/com.kingofapp.visualizer@fdb32b85a11f93bca854c547c2822adfbb06c3ef/www/widgets/compilation-feed.js"
   data-api="https://api.kingofapp.com"
   data-token="PASTE_PUBLIC_FEED_TOKEN"
   data-locale="es-ES"></script>
 ```
 
-The data API is a separate service and only returns the sanitized status JSON. For a local API, set `data-api="http://your-lan-host:PORT"`; a local-only API cannot be reached by visitors outside that network. The widget JS can also be copied to any static website host. Use HTTPS for production pages.
+The `data-api` value points only to the status JSON service. For a local API, set `data-api="http://your-lan-host:PORT"`; a local-only API cannot be reached by visitors outside that network. The widget JS can also be copied to any static website host. Use HTTPS for production pages.
 
 ## Local verification
 

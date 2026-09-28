@@ -1,0 +1,35 @@
+<div class="module compilation-feed" ng-controller="CompilationFeedController">
+  <div ng-include="'modules/compilationfeed/style.html'"></div>
+  <section class="cf-panel" aria-live="polite" aria-atomic="true" ng-if="feed.labels">
+    <header class="cf-head">
+      <span class="cf-mark" aria-hidden="true"></span>
+      <h2>{{feed.labels.title}}</h2>
+    </header>
+    <p class="cf-idle" ng-if="!feed.loading && !feed.data && !feed.error">{{feed.labels.idle}}</p>
+    <p class="cf-help" ng-if="!feed.configured">{{feed.labels.howTo}}</p>
+    <div class="cf-status" ng-if="feed.data">
+      <div class="cf-app-line">
+        <strong>{{feed.data.appName}}</strong>
+        <span>{{feed.labels.platform[feed.data.platform] || feed.labels.platform.other}}</span>
+      </div>
+      <p class="cf-state" ng-class="'cf-' + feed.data.status">
+        <i aria-hidden="true"></i>
+        {{feed.labels.status[feed.data.status] || feed.labels.idle}}
+      </p>
+      <p class="cf-error" ng-if="feed.data.error">{{feed.labels.error[feed.data.error] || feed.labels.error.build_failed}}</p>
+      <p class="cf-updated" ng-if="feed.data.updatedAt">{{feed.labels.updated}} · {{feed.data.updatedAt | date:'short'}}</p>
+      <section class="cf-timeline" ng-if="feed.data.events.length">
+        <h3>{{feed.labels.eventsTitle}}</h3>
+        <ol>
+          <li ng-repeat="event in feed.data.events track by $index">
+            <span>{{feed.labels.status[event.status] || feed.labels.status.in_progress}}</span>
+            <time>{{event.updatedAt | date:'shortTime'}}</time>
+            <small ng-if="event.error">{{feed.labels.error[event.error] || feed.labels.error.build_failed}}</small>
+          </li>
+        </ol>
+      </section>
+    </div>
+    <p class="cf-error" ng-if="feed.error">{{feed.labels.unavailable}}</p>
+    <footer>{{feed.labels.live}}</footer>
+  </section>
+</div>

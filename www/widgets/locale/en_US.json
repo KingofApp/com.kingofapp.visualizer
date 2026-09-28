@@ -1,0 +1,31 @@
+{
+  "title": "Build status",
+  "platform": { "ios": "iOS", "android": "Android", "pwa": "Web app", "windows": "Windows", "other": "App" },
+  "status": {
+    "preparing": "Preparing the build",
+    "preparing_project": "Preparing the project",
+    "preparing_signing": "Preparing app signing",
+    "verification": "Waiting for Apple verification",
+    "building": "Building the app",
+    "saving_artifact": "Saving the installable file",
+    "uploading": "Uploading the app",
+    "publishing": "Sending the app to the store",
+    "complete": "Build complete",
+    "failed": "The build needs attention",
+    "in_progress": "Build in progress"
+  },
+  "error": {
+    "network_unavailable": "A required service could not be reached. Check the build server connection.",
+    "verification": "Account verification was not completed. Check the Builder.",
+    "signing_setup": "App signing could not be prepared.",
+    "project_assets": "Required project files are missing.",
+    "artifact_upload": "The generated file could not be saved or uploaded.",
+    "publishing": "The store rejected the publishing request.",
+    "build_failed": "The build did not finish successfully. Contact technical support."
+  },
+  "idle": "There is no recent build yet.",
+  "updated": "Last updated",
+  "eventsTitle": "Recent activity",
+  "live": "Auto-refreshing",
+  "unavailable": "The status could not be loaded. Please try again later."
+}

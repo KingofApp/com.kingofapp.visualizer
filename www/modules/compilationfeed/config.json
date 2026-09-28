@@ -1,0 +1,49 @@
+{
+  "name": "Estado de compilación",
+  "identifier": "compilationfeed",
+  "description": {
+    "es-ES": "Consulta de forma segura el estado de una compilación de King of App.",
+    "en-US": "Securely view the status of a King of App build."
+  },
+  "descriptionShort": {
+    "es-ES": "Muestra el estado de compilación sin exponer datos personales.",
+    "en-US": "Shows build status without exposing personal data."
+  },
+  "documentation": {
+    "es-ES": "Configura el enlace público y el servidor de API. El enlace contiene un token revocable, no el identificador interno de la app.",
+    "en-US": "Configure the public feed token and API server. The link contains a revocable token, not the app's internal ID."
+  },
+  "icon": "hourglass_empty",
+  "type": "A",
+  "version": "1.0.0",
+  "author": "King of App",
+  "category": ["others"],
+  "price": 0,
+  "subscription": false,
+  "canContain": false,
+  "platforms": ["android", "ios", "windows"],
+  "view": "modules/compilationfeed/index.html",
+  "files": ["modules/compilationfeed/controller.js", "modules/compilationfeed/style.html", "modules/compilationfeed/locale/es_ES.json", "modules/compilationfeed/locale/en_US.json"],
+  "scope": { "token": "", "apiBase": "https://api.kingofapp.com" },
+  "config": [
+    {
+      "type": "input",
+      "key": "token",
+      "templateOptions": {
+        "label": "Token de seguimiento",
+        "description": "Pega el token generado desde King of App. Trátalo como un enlace privado.",
+        "required": true
+      }
+    },
+    {
+      "type": "input",
+      "key": "apiBase",
+      "templateOptions": {
+        "label": "Servidor API",
+        "description": "Servidor HTTPS de King of App o URL de tu instalación local.",
+        "required": true
+      }
+    }
+  ],
+  "showOn": { "menu": true, "market": true, "dragDrop": true }
+}

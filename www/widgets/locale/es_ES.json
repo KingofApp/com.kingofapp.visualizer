@@ -1,0 +1,31 @@
+{
+  "title": "Estado de la compilación",
+  "platform": { "ios": "iOS", "android": "Android", "pwa": "Web app", "windows": "Windows", "other": "App" },
+  "status": {
+    "preparing": "Preparando la compilación",
+    "preparing_project": "Preparando el proyecto",
+    "preparing_signing": "Preparando la firma",
+    "verification": "Esperando la verificación de Apple",
+    "building": "Generando la aplicación",
+    "saving_artifact": "Guardando el archivo de instalación",
+    "uploading": "Subiendo la aplicación",
+    "publishing": "Enviando la aplicación a la tienda",
+    "complete": "Compilación completada",
+    "failed": "La compilación necesita atención",
+    "in_progress": "Compilación en curso"
+  },
+  "error": {
+    "network_unavailable": "No se pudo conectar con un servicio necesario. Comprueba la conexión del servidor.",
+    "verification": "La verificación de la cuenta no se completó. Revisa el Builder.",
+    "signing_setup": "No se pudo preparar la firma de la aplicación.",
+    "project_assets": "Faltan archivos necesarios del proyecto.",
+    "artifact_upload": "No se pudo guardar o subir el archivo generado.",
+    "publishing": "La tienda rechazó la solicitud de publicación.",
+    "build_failed": "La compilación no terminó correctamente. Contacta con soporte técnico."
+  },
+  "idle": "Aún no hay una compilación reciente.",
+  "updated": "Última actualización",
+  "eventsTitle": "Actividad reciente",
+  "live": "Actualización automática",
+  "unavailable": "No se pudo cargar el estado. Inténtalo de nuevo más tarde."
+}

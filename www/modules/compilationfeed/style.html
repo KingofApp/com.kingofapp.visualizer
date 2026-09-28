@@ -1,0 +1,26 @@
+<style>
+.compilation-feed { padding: 16px; color: #163c2c; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.cf-panel { max-width: 620px; margin: 0 auto; padding: 20px 22px; background: #fff; border: 1px solid #dce9e2; border-radius: 14px; }
+.cf-head { display: flex; align-items: center; gap: 10px; }
+.cf-mark { width: 11px; height: 11px; flex: 0 0 11px; border-radius: 50%; background: #11A07C; }
+.cf-head h2 { margin: 0; font-size: 1.1rem; line-height: 1.35; font-weight: 650; }
+.cf-app-line { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 22px; }
+.cf-app-line strong { font-size: 1rem; overflow-wrap: anywhere; }
+.cf-app-line span, .cf-updated, .compilation-feed footer { color: #52665b; font-size: .84rem; }
+.cf-state { display: flex; align-items: center; gap: 9px; margin: 15px 0 0; font-size: 1rem; font-weight: 600; }
+.cf-state i { width: 9px; height: 9px; border-radius: 50%; background: #11A07C; box-shadow: 0 0 0 4px #e4f8ec; }
+.cf-state.cf-failed i { background: #b42318; box-shadow: 0 0 0 4px #fde8e7; }
+.cf-state.cf-complete i { background: #087443; box-shadow: 0 0 0 4px #e4f8ec; }
+.cf-error { margin: 13px 0 0; color: #8e211b; line-height: 1.5; }
+.cf-updated { margin: 15px 0 0; font-variant-numeric: tabular-nums; }
+.cf-idle { margin: 20px 0; color: #52665b; }
+.cf-help { margin: 10px 0; color: #52665b; line-height: 1.5; }
+.cf-timeline { margin-top: 20px; border-top: 1px solid #e8efeb; padding-top: 14px; }
+.cf-timeline h3 { margin: 0 0 8px; color: #52665b; font-size: .88rem; font-weight: 600; }
+.cf-timeline ol { list-style: none; margin: 0; padding: 0; }
+.cf-timeline li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 12px; padding: 8px 0; border-bottom: 1px solid #eef3f0; font-size: .88rem; }
+.cf-timeline time { color: #52665b; font-size: .8rem; }
+.cf-timeline small { grid-column: 1 / -1; color: #8e211b; line-height: 1.4; }
+.compilation-feed footer { margin-top: 17px; padding-top: 12px; border-top: 1px solid #e8efeb; }
+@media (max-width: 420px) { .compilation-feed { padding: 10px; } .cf-panel { padding: 17px; } }
+</style>

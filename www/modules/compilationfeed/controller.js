@@ -8,7 +8,8 @@
 
   function loadFunction($scope, $http, $location, structureService, $interval) {
     structureService.registerModule($location, $scope, 'compilationfeed');
-    var locale = (navigator.language || 'en-US').toLowerCase().indexOf('es') === 0 ? 'es_ES' : 'en_US';
+    var appLocale = String(structureService.getLang() || navigator.language || 'en-US').toLowerCase().replace('-', '_');
+    var locale = appLocale.indexOf('es') === 0 ? 'es_ES' : 'en_US';
     var base = String($scope.compilationfeed.modulescope.apiBase || 'https://api.kingofapp.com').replace(/\/$/, '');
     var token = String($scope.compilationfeed.modulescope.token || '').trim();
     var timer;

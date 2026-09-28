@@ -1,5 +1,9 @@
 {
-  "name": "Estado de compilación / Compilation Feed",
+  "name": "Estado de compilación",
+  "name-lang": {
+    "es-ES": "Estado de compilación",
+    "en-US": "Compilation Feed"
+  },
   "identifier": "compilationfeed",
   "description": {
     "es-ES": "Consulta de forma segura el estado de una compilación de King of App.",
@@ -10,8 +14,8 @@
     "en-US": "Shows build status without exposing personal data."
   },
   "documentation": {
-    "es-ES": "Configura el enlace público y el servidor de API. El enlace contiene un token revocable, no el identificador interno de la app.",
-    "en-US": "Configure the public feed token and API server. The link contains a revocable token, not the app's internal ID."
+    "es-ES": "modules/compilationfeed/documentation/es_ES.md",
+    "en-US": "modules/compilationfeed/documentation/en_US.md"
   },
   "icon": "hourglass_empty",
   "type": "A",
